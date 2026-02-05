@@ -215,7 +215,7 @@ At the end of each chapter there is a section entitled "**Problems**" that conta
 
 If you notice any mistakes or unclear things in the learning guide, please point them out to me in the class sessions or at [gustav.delius@york.ac.uk](mailto:gustav.delius@york.ac.uk). Many thanks go to Ben Mason and Toby Cheshire for the corrections they had sent in for a previous version of this guide.
 
-You will need two **notebooks** for working through the exercises in this guide: one in **paper** form and one **electronic**. Some of the exercises are pen-and-paper exercises (and often these are marked with a pen icon ✏️) while others are coding exercises and some require both writing or sketching and coding. You can keep your two notebooks linked through the numbering of the exercises.
+You will need two **notebooks** for working through the exercises in this guide: one in **paper** form and one **electronic**. Some of the exercises are pen-and-paper exercises (and often these are marked with a pen icon ✏️) while others are coding exercises (often marked with a computer icon 💻) and some require both writing or sketching and coding. You can keep your two notebooks linked through the numbering of the exercises. There are also some exercises that are marked with a Discussion icon 💬. These are exercises that you should be discussing with other members of your group.
 
 You will keep your coding notebooks in **Google Colab**, which we will discuss below. Most students find it easiest to have one dedicated Colab notebook per section, but some students will want to have one per chapter. You are highly encouraged to write explanatory text into your Google Colab notebooks as you go so that future-you can tell what it is that you were doing, which problem(s) you were solving, and what your thought processes were. 
 
@@ -278,7 +278,7 @@ Google Colab allows you to keep all of your Python code on your Google Drive. Th
 Now the time has come for the first two exercises of this module.
 
 ::: {#exr-A.3}
-Spend a bit of time poking around in Colab. Figure out how to
+💻 Spend a bit of time poking around in Colab. Figure out how to
 
 -   Create new Colab notebooks.
 
@@ -302,14 +302,10 @@ Spend a bit of time poking around in Colab. Figure out how to
 ------------------------------------------------------------------------
 
 ::: {#exr-A.3b}
--  Click on this [link to a Colab notebook](https://colab.research.google.com/drive/1FSRWGvo9jsoHvT33PUm-ZMDuIxKU1tzY?usp=sharing). It should open it in Colab.
+💻 Click on this [link to a Colab notebook](https://colab.research.google.com/drive/1FSRWGvo9jsoHvT33PUm-ZMDuIxKU1tzY?usp=sharing). It should open it in Colab.
+Then save a __copy__ of it to your Google Drive. You need a copy because you will
+not have permission to edit the original. Follow the instructions in the notebook.
 
--  Save a __copy__ of it to your Google Drive. You need a copy because you will
-   not have permission to edit the original.
-   
--  Follow the instructions in the notebook.
-
--  Share that notebook with your lecturer [gustav.delius@york.ac.uk](mailto:gustav.delius@york.ac.uk), giving him at least "Commenter" privileges.
 :::
 
 ------------------------------------------------------------------------
@@ -326,7 +322,7 @@ During the 10 assessment quizzes you will not be allowed to use any AI. In parti
 ## About you
 
 ::: {#exr-intro-3}
-I am interested to learn more about you to help me make this module work well for you. It would be helpful if you would answer the questionnaire at [https://forms.gle/YHHExaAnVzcLtBcU7](https://forms.gle/YHHExaAnVzcLtBcU7). Of course you are free to share as much or as little as you like.
+💻 I am interested to learn more about you to help me make this module work well for you. It would be helpful if you would answer the questionnaire at https://forms.gle/YHHExaAnVzcLtBcU7. Of course you are free to share as much or as little as you like.
 
 :::
 

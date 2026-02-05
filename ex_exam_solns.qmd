@@ -1,0 +1,62 @@
+# Example Exam Solutions
+
+## Numbers
+
+**Q1 Solution**
+
+**(a) Machine Precision**
+
+Machine precision is the smallest number $\epsilon$ such that $1 + \epsilon > 1$ in the system. With 4 bits for the mantissa, the smallest number greater than $1$ that can be represented is $1.0001_2$. So machine precision is $\epsilon = 0.0001_2=1/16$. The machine precision is the upper bound for the relative rounding error.
+
+**(b) Conversion of 13.5**
+
+*   Sign: Positive ($+13.5$), so **$s=0$**.
+*   Convert 13.5 to binary:
+    *   $13_{10} = 1101_2$.
+    *   $0.5_{10} = 0.1_2$.
+    *   Result: $1101.1_2$.
+*   Normalize: $1.1011 \times 2^3$.
+*   Exponent ($E=3$):
+    *   Stored exponent $e = E + 3 = 3 + 3 = 6$.
+    *   $6_{10} = 110_2$.
+*   Mantissa ($m$): Drop the leading 1 $\rightarrow$ `1011`.
+*   **Final Bit Pattern:** **`0 110 1011`**.
+
+**(c) Addition: 13.5 + 0.25**
+
+*   **Convert second number (0.25):**
+    *   $0.25 = 1/4 = 1.0 \times 2^{-2}$.
+*   **Align Exponents:**
+    *   $x_1 = 1.1011 \times 2^3$
+    *   $x_2 = 1.0000 \times 2^{-2}$
+    *   Shift $x_2$ to match exponent $3$: Shift right by $3 - (-2) = 5$ positions.
+    *   $x_2 \rightarrow 0.00001 \times 2^3$.
+*   **Add Significands:**
+
+    ``` text
+      1.1011      (13.5)
+    + 0.00001     (0.25 aligned)
+    -----------
+      1.10111
+    ```
+
+*   **Rounding:**
+    *   The result $1.10111_2$ has 5 fractional bits, but we can only store 4.
+    *   It lies exactly halfway between $1.1011$ ($13.5$) and $1.1100$ ($14.0$).
+    *   Tie-breaking rule: "Ties to Even".
+    *   The Least Significant Bit (4th bit) is `1` (odd). To make it even, we round **up** (add 1 to the LSB).
+    *   $1.1011 + 0.0001 = 1.1100$.
+*   **Final Result:**
+    *   Significand: $1.1100$
+    *   Value: $1.1100_2 \times 2^3 = 1110.0_2 = \mathbf{14.0}$.
+*   **Error:**
+    *   Exact sum: $13.75$.
+    *   Stored sum: $14.0$.
+    *   Absolute Error: $|13.75 - 14.0| = \mathbf{0.25}$.
+
+**(d) Loss of Significance**
+
+*   **Error Type:** Catastrophic Cancellation (or Loss of Significant Digits).
+*   **Explanation:** When $x$ is very large ($10^8$), $x^2 + 1 \approx x^2$, so $\sqrt{x^2+1} \approx x$. Subtracting two extremely close numbers causes the cancellation of the leading digits, leaving only the random "noise" from the least significant bits.
+*   **Improved (Stable) Formula:** Multiply by the conjugate:
+    $$f(x) = \frac{(\sqrt{x^2+1} - x)(\sqrt{x^2+1} + x)}{\sqrt{x^2+1} + x} = \frac{1}{\sqrt{x^2+1} + x}.$$

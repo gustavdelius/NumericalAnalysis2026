@@ -15,7 +15,7 @@ Let's start with a striking example of how bad computers actually are at doing e
 🖋 By hand (no computers!) compute the first few terms of the sequence
 
 \begin{equation}
-x_{n+1} = \left\{ \begin{array}{ll} 2x_n, & x_n \in [0,\frac{1}{2}] \\ 2x_n - 1, & x_n \in (\frac{1}{2},1] \end{array} \right.
+x_{n+1} = \left\{ \begin{array}{ll} 2x_n, & x_n \in [0,\frac{1}{2}) \\ 2x_n - 1, & x_n \in ([frac{1}{2},1] \end{array} \right.
 \end{equation}
 with the initial condition $x_0 = 1/10$. Calculate enough terms so that you can see a pattern.
 :::

@@ -348,7 +348,7 @@ window.Quarto = {
 <div id="exr-1.1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.1</strong></span> 🖋 By hand (no computers!) compute the first few terms of the sequence</p>
 <p><span class="math display">\[\begin{equation}
-x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n - 1, &amp; x_n \in (\frac{1}{2},1] \end{array} \right.
+x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}) \\ 2x_n - 1, &amp; x_n \in ([frac{1}{2},1] \end{array} \right.
 \end{equation}\]</span> with the initial condition <span class="math inline">\(x_0 = 1/10\)</span>. Calculate enough terms so that you can see a pattern.</p>
 </div>
 <hr>
@@ -583,7 +583,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n 
 \]</span> Mathematically, this is strictly equal to <span class="math display">\[
 (10^{10}  - 10^{10}) + 0.123456789=0.123456789.
 \]</span> However, let us evaluate this in Python:</p>
-<div id="35cc8524" class="cell" data-execution_count="2">
+<div id="625ff864" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="op">**</span><span class="dv">10</span> <span class="op">+</span> <span class="fl">0.123456789</span> <span class="op">-</span> <span class="dv">10</span><span class="op">**</span><span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>0.12345695495605469</code></pre>

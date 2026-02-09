@@ -10,7 +10,7 @@ How does a computer *understand* a function like $f(x) = e^x$ or $f(x) = \sin(x)
 A class of functions that computers are very good at working with are polynomial functions. This is because to evaluate a polynomial function at any point we only need to addition and multiplication operations. In this section we will explore how we can use polynomial functions to approximate other functions.
 
 ::: {#exr-1.22}
-💬 In this exercise we are going to make a bit of a wish list for all of the things that a computer will do when approximating a function. We are going to complete the following sentence:\
+💬 In this exercise you are going to make a bit of a wish list for all of the things that a computer will do when approximating a function. We are going to complete the following sentence:\
 *If we are going to approximate* a smooth function $f(x)$ near the point $x=x_0$ with a simpler function $g(x)$ then ...
 
 (I will get us started with the first two things that seems natural to wish for. The rest of the wish list is for you to complete.)

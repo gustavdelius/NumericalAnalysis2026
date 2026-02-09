@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Appendix B — Example Exam Solutions – Numerical Analysis</title>
+<title>Appendix B — Exam solutions – Numerical Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -101,10 +101,10 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Appendix B — Example Exam Solutions – Numerical Analysis">
+<meta property="og:title" content="Appendix B — Exam solutions – Numerical Analysis">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="Numerical Analysis">
-<meta name="twitter:title" content="Appendix B — Example Exam Solutions – Numerical Analysis">
+<meta name="twitter:title" content="Appendix B — Exam solutions – Numerical Analysis">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -118,7 +118,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nmPython.html">Appendices</a></li><li class="breadcrumb-item"><a href="./ex_exam_solns.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Example Exam Solutions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nmPython.html">Appendices</a></li><li class="breadcrumb-item"><a href="./ex_exam_solns.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exam solutions</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -235,7 +235,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ex_exam_solns.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Example Exam Solutions</span></span></a>
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exam solutions</span></span></a>
   </div>
 </li>
       </ul>
@@ -252,14 +252,14 @@ window.Quarto = {
   <ul>
   <li><a href="#numbers" id="toc-numbers" class="nav-link active" data-scroll-target="#numbers"><span class="header-section-number">B.1</span> Numbers</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/master/ex_exam_solns.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/ex_exam_solns.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nmPython.html">Appendices</a></li><li class="breadcrumb-item"><a href="./ex_exam_solns.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Example Exam Solutions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./nmPython.html">Appendices</a></li><li class="breadcrumb-item"><a href="./ex_exam_solns.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Exam solutions</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Appendix B — Example Exam Solutions</h1>
+<h1 class="title">Appendix B — Exam solutions</h1>
 </div>
 
 
@@ -276,15 +276,15 @@ window.Quarto = {
 </header>
 
 
+<p>In this appendix you find example solutions to the exam-style questions.</p>
 <section id="numbers" class="level2" data-number="B.1">
 <h2 data-number="B.1" class="anchored" data-anchor-id="numbers"><span class="header-section-number">B.1</span> Numbers</h2>
-<p><strong>Q1 Solution</strong></p>
 <p><strong>(a) Machine Precision</strong></p>
-<p>Machine precision is the smallest number <span class="math inline">\(\epsilon\)</span> such that <span class="math inline">\(1 + \epsilon &gt; 1\)</span> in the system. With 4 bits for the mantissa, the smallest number greater than <span class="math inline">\(1\)</span> that can be represented is <span class="math inline">\(1.0001_2\)</span>. So machine precision is <span class="math inline">\(\epsilon = 0.0001_2=1/16\)</span>. The machine precision is the upper bound for the relative rounding error.</p>
+<p>Machine precision is the gap between the number 1 and the next larger floating point number. With 4 bits for the mantissa, the smallest number greater than <span class="math inline">\(1\)</span> that can be represented is <span class="math inline">\(1.0001_2\)</span>. So machine precision is <span class="math inline">\(\epsilon = 0.0001_2=1/16\)</span>. The machine precision is the upper bound for the relative rounding error.</p>
 <p><strong>(b) Conversion of 13.5</strong></p>
 <ul>
 <li>Sign: Positive (<span class="math inline">\(+13.5\)</span>), so <strong><span class="math inline">\(s=0\)</span></strong>.</li>
-<li>Convert 13.5 to binary:
+<li>Convert <span class="math inline">\(13.5\)</span> to binary:
 <ul>
 <li><span class="math inline">\(13_{10} = 1101_2\)</span>.</li>
 <li><span class="math inline">\(0.5_{10} = 0.1_2\)</span>.</li>
@@ -767,4 +767,4 @@ window.Quarto = {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/master/ex_exam_solns.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/ex_exam_solns.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>

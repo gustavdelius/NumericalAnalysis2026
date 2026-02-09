@@ -15,7 +15,9 @@ Many mathematical problems cannot be solved analytically in closed form. In Nume
 
 ### Example from Algebra {#sec-example_algebra}
 
-Solve the equation $\log(x) = \sin(x)$ for $x$ in the interval $x \in (0,\pi)$. Stop and try using all of the algebra that you ever learned to find $x$. You will quickly realize that there are no by-hand techniques that can solve this problem! A numerical approximation, however, is not so hard to come by. The following graph shows that there is a solution to this equation somewhere between $x=2$ and $x=2.5$.
+Solve the equation 
+$$\log(x) = \sin(x)$$
+for $x$ in the interval $x \in (0,\pi)$. Stop and try using all of the algebra that you ever learned to find $x$. You will quickly realize that there are no by-hand techniques that can solve this problem! A numerical approximation, however, is not so hard to come by. The following graph shows that there is a solution to this equation somewhere between $x=2$ and $x=2.5$.
 
 ```{python}
 #| label: fig-lnsin
@@ -207,7 +209,7 @@ You will find that this text is not a set of lecture notes. Instead it mostly ju
 
 Therefore the whole-class sessions form only a very small part of your work on this module. For each hour of whole-class work you should timetable yourself about two and a half hours of **work outside class** for working through the exercises on your own. I strongly recommend that you put those two and a half hours (ten hours spread throughout the week) into your timetable. 
 
-In order to enable you to get immediate feedback on your work also in between class sessions, I have made feedback quizzes where you can test your understanding of the material and your results from some of the exercises. Exercises that have an associated question in the feedback quiz are marked with a 🎓.
+In order to enable you to get immediate feedback on your work also in between class sessions, I have made **feedback quizzes** where you can test your understanding of the material and your results from some of the exercises. Exercises that have an associated question in the feedback quiz are marked with a 🎓.
 
 There are no traditional problem sheets in this module. In this module you will be working on exercises continuously throughout the week rather than working through a problem sheet only every other week.
 
@@ -231,11 +233,11 @@ If you have a **computer**, bring it along to the class sessions. However this i
 
 Unfortunately, your learning in the module also needs to be assessed. The final mark will be made up of 40% coursework and 60% final exam. 
 
-The **40\% coursework** mark will come from 10 short quizzes that will take place during the "Computer practical" in weeks 2 to 11. Answering each quiz should take less than 5 minutes but you will be given 16 minutes each to complete the quizzes in order to give you a large safety margin and remove stress. Late answers will not be accepted. The quizzes will be based on exercises that you will already have worked through and for which you will have had time to discuss them in class, so they will be really easy if you have engaged with the exercises as intended. Each quiz will be worth 5 points. There will be a practice quiz in the computer practical in week 1.
+The **40\% coursework** mark will come from **10 short quizzes** that will take place during the "Computer practical" in weeks 2 to 11. Answering each quiz should take less than 5 minutes but you will be given 16 minutes each to complete the quizzes in order to give you a large safety margin and remove stress. Late answers will not be accepted. The quizzes will be based on exercises that you will already have worked through and for which you will have had time to discuss them in class, so they will be really easy if you have engaged with the exercises as intended. Each quiz will be worth 5 points. There will be a practice quiz in the computer practical in week 1.
 
 While working on the assessment quizzes you can already check your answers. If one of your answers is incorrect you can correct it and submit it again. However this will attract a penalty of 30% of the total mark for that answer. For multiple choice questions the penalty for a wrong answer may be even higher to discourage guessing. So it pays to be careful. 
 
-During the assessment quizzes you will be required to work exclusively on one of the PCs in the computer practical room rather than your own machine. While working on the quiz you are only allowed to use a web browser, and the only pages you are allowed to have open are this guide, the quiz page on Moodle and any of your notebooks on Google Colab, with the AI features switched off. You are not allowed to use any AI assistants or other web pages. Besides your digital notebooks on Google Colab you may also use any hand-written notes as long as you have written them yourself.
+During the assessment quizzes you will be required to work exclusively on one of the PCs in the **computer practical room** rather than your own machine. This means in particular that you need to be physically present for the assessment. While working on the quiz you are only allowed to use a web browser, and the only pages you are allowed to have open are this guide, the quiz page on Moodle and any of your notebooks on Google Colab, with the AI features switched off. You are not allowed to use any AI assistants or other web pages. Besides your digital notebooks on Google Colab you may also use any hand-written notes as long as you have written them yourself.
 
 To allow for the fact that there may be weeks in which you are ill or otherwise prevented from performing to your best in the assessment quizzes, your final coursework mark will be calculated as the average over your 8 best marks. If exceptional circumstances affect more than two of the 10 quizzes then you would need to submit an exceptional circumstances claim.
 

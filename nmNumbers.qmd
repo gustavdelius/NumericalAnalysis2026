@@ -426,7 +426,7 @@ x = \frac{-b+\sqrt{b^2-4ac}}{2a}.
 $$
 Let's assume that the parameters are given as
 $$ a = 1,~~~b = 1000000, ~~~ c = 1.$$
-Use the quadratic formula to find the larger of the two solutions, by coding the formula up in Python. You should get a solution slightly larger than 1. Hint: use `math.sqrt()` to code up the square root.
+Use the quadratic formula to find the larger of the two solutions, by coding the formula up in Python. You should get a solution slightly smaller than $-10^{-6}$. Hint: use `math.sqrt()` to code up the square root.
 
 Then check whether your value for $x$ really does solve the quadratic equation by evaluating $ax^2+bx+c$ with your value of $x$. You will notice that it does not work. Discuss the cause of the error.
 

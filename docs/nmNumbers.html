@@ -581,7 +581,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n 
 \]</span> Mathematically, this is strictly equal to <span class="math display">\[
 (10^{10}  - 10^{10}) + 0.123456789=0.123456789.
 \]</span> However, let us evaluate this in Python:</p>
-<div id="b502c5c0" class="cell" data-execution_count="2">
+<div id="6bbf550c" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="op">**</span><span class="dv">10</span> <span class="op">+</span> <span class="fl">0.123456789</span> <span class="op">-</span> <span class="dv">10</span><span class="op">**</span><span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>0.12345695495605469</code></pre>
@@ -615,7 +615,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n 
 a x^2+bx+c=0.
 \]</span> You know the quadratic formula. For the larger of the two solutions the formula is <span class="math display">\[
 x = \frac{-b+\sqrt{b^2-4ac}}{2a}.
-\]</span> Let’s assume that the parameters are given as <span class="math display">\[ a = 1,~~~b = 1000000, ~~~ c = 1.\]</span> Use the quadratic formula to find the larger of the two solutions, by coding the formula up in Python. You should get a solution slightly larger than 1. Hint: use <code>math.sqrt()</code> to code up the square root.</p>
+\]</span> Let’s assume that the parameters are given as <span class="math display">\[ a = 1,~~~b = 1000000, ~~~ c = 1.\]</span> Use the quadratic formula to find the larger of the two solutions, by coding the formula up in Python. You should get a solution slightly smaller than <span class="math inline">\(-10^{-6}\)</span>. Hint: use <code>math.sqrt()</code> to code up the square root.</p>
 <p>Then check whether your value for <span class="math inline">\(x\)</span> really does solve the quadratic equation by evaluating <span class="math inline">\(ax^2+bx+c\)</span> with your value of <span class="math inline">\(x\)</span>. You will notice that it does not work. Discuss the cause of the error.</p>
 <p>Now, on a piece of paper, rearrange the quadratic formula for the larger solution by multiplying both the numerator and denominator by <span class="math inline">\(-b-\sqrt{b^2-4ac}\)</span> and then simplify by multiplying out the resulting numerator. This should give you the alternative formula <span class="math display">\[
 x = \frac{2c}{-b-\sqrt{b^2-4ac}}.

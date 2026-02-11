@@ -15,7 +15,7 @@ Let's start with a striking example of how bad computers actually are at doing e
 🖋 By hand (no computers!) compute the first few terms of the sequence
 
 \begin{equation}
-x_{n+1} = \left\{ \begin{array}{ll} 2x_n, & x_n \in [0,\frac{1}{2}) \\ 2x_n - 1, & x_n \in ([frac{1}{2},1] \end{array} \right.
+x_{n+1} = \left\{ \begin{array}{ll} 2x_n, & x_n \in \left[0,\frac{1}{2}\right) \\ 2x_n - 1, & x_n \in \left[\frac{1}{2},1\right] \end{array} \right.
 \end{equation}
 with the initial condition $x_0 = 1/10$. Calculate enough terms so that you can see a pattern.
 :::
@@ -34,7 +34,7 @@ with the initial condition $x_0 = 1/10$. Calculate enough terms so that you can 
 ``` python
 x = 1.0/10
 for n in range(50):
-    if x<= 0.5:
+    if x< 0.5:
         # put the correct assignment here
     else:
         # put the correct assigment here
@@ -199,7 +199,7 @@ $$x = -123.15625_{10} = -1111011.00101_2$$
 If a computer needs to store this number then first they put in the binary version of scientific notation. In this case this will be
 
 $$
-x = -1.111011.00101_2 \times 2^{-6}.
+x = -1.11101100101_2 \times 2^{6}.
 $$
 This is the **floating point representation** of the number. 
 :::

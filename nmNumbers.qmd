@@ -89,7 +89,9 @@ $$101,101_2 = 32 + 0 + 8 + 4 + 0 + 1 = 45_{10}.$$
 
 2.  $10,101_2$
 
-3.  $1,111,111,111_2$
+3.  $1,111,111,111_2$ 
+
+For the last one you can save yourself some work by noticing that $1,111,111,111_2 = 10,000,000,000_2 - 1$. This is a generally useful trick that will help you again in some later exercises.
 :::
 
 ------------------------------------------------------------------------

@@ -49,6 +49,7 @@ book:
   appendices:
     - nmPython.qmd
     - ex_exam_solns.qmd
+    - nmLinAlg.qmd
 
 bibliography: references.bib
 

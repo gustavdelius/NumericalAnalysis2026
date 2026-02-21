@@ -243,13 +243,13 @@ def bisection(f, a, b, tol=1e-5):
 
 ::: {#exr-2.13}
 💻 Now use the comments from @exr-2.11 as structure to complete a Python function for the Bisection Method.
-Test your Bisection Method code on the following equations.
+Test your Bisection Method code on the following equations. For each equation make a plot of the function on the interval to verify your result.
 
 1.  $x^2 - 2 = 0$ on $x \in [0,2]$
 
 2. $\sin(x) + x^2 = 2\log(x) + 5$ on $x \in [1,5]$
 
-3.  $(5-x)e^{x}=5$ on $x \in [0,5]$
+3. 🎓 $3\sin(x) + 9 = x^2+\cos(x)$ on $x \in [1,5]$
 
 :::
 
@@ -390,12 +390,15 @@ Solving for the number $n$ of iterations we get
  n = \log_2\left( \frac{|b-a|}{\varepsilon} \right). 
 \end{equation}
 
-Rounding the value of $n$ up to the nearest integer gives the number of iterations necessary to approximate the root to a precision less than $\varepsilon$.
+Rounding the value of $n$ up to the next integer gives the number of iterations necessary to approximate the root to a precision less than $\varepsilon$.
 
 ------------------------------------------------------------------------
 
 ::: {#exr-2.19}
-💻 Create a second version of your Python Bisection Method function that uses a `for` loop that takes the exact number of steps required to guarantee that the approximation to the root lies within a requested tolerance. This should be in contrast to your first version which likely used a `while` loop to decide when to stop. Is there an advantage to using one of these version of the Bisection Method over the other?
+🖋 🎓 Apply what you have learned in @thm-2.2 to determine how many iterations the bisection method will take to approximate the solution of the equation $$3\sin(x) + 9 = x^2+\cos(x)$$
+on $x \in [1,5]$ to within a tolerance of $10^{-6}$.
+
+💻 Now create a second version of your Python Bisection Method function that uses a `for` loop that takes the exact number of steps required to guarantee that the approximation to the root lies within a requested tolerance. This should be in contrast to your first version which likely used a `while` loop to decide when to stop. Is there an advantage to using one of these version of the Bisection Method over the other?
 
 :::
 
@@ -535,7 +538,11 @@ There will be times later in this course where we will not have a nice theorem l
 ------------------------------------------------------------------------
 
 ::: {#exr-2.20}
-💻 Carefully read and understand all of the details of the previous example and plots. Then create plots similar to that example to solve a different equation to which you know the exact solution. You should see the same basic behaviour based on the theorem that you proved in @exr-2.17. If you do not see the same basic behaviour then something has gone wrong.
+💻 Carefully read and understand all of the details of the previous example and plots. Then create plots similar to that example to solve the equation
+$$
+e^{x-3}+\sqrt{x+6}=4
+$$
+on the interval $x \in [0,5]$ to which the exact solution is $x=3$. You should see the same basic behaviour based on the theorem that you proved in @exr-2.17. If you do not see the same basic behaviour then something has gone wrong. 💬 Also, the plot will look much more regular than in the previous example. Can you explain why?
 
 :::
 
@@ -593,7 +600,7 @@ Exponentiating both sides we see that this linear relationship turns into
 ------------------------------------------------------------------------
 
 ::: {#exr-2.20b}
-💻 Reproduce plots like those in the previous example but for the different equation that you used in @exr-2.20. Again check that the plots have the expected shape.
+💻 Reproduce plots like that in the previous example but for the equation that you used in @exr-2.20. Again check that the plots have the expected shape.
 
 :::
 

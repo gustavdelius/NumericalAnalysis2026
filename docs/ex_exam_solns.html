@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -291,7 +291,8 @@ window.Quarto = {
    
   <ul>
   <li><a href="#numbers" id="toc-numbers" class="nav-link active" data-scroll-target="#numbers"><span class="header-section-number">B.1</span> Numbers</a></li>
-  <li><a href="#roots-1" id="toc-roots-1" class="nav-link" data-scroll-target="#roots-1"><span class="header-section-number">B.2</span> Roots 1</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">B.2</span> Functions</a></li>
+  <li><a href="#roots-1" id="toc-roots-1" class="nav-link" data-scroll-target="#roots-1"><span class="header-section-number">B.3</span> Roots 1</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/ex_exam_solns.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -385,8 +386,32 @@ window.Quarto = {
 <li><strong>Improved (Stable) Formula:</strong> Multiply by the conjugate: <span class="math display">\[f(x) = \frac{(\sqrt{x^2+1} - x)(\sqrt{x^2+1} + x)}{\sqrt{x^2+1} + x} = \frac{1}{\sqrt{x^2+1} + x}.\]</span></li>
 </ul>
 </section>
-<section id="roots-1" class="level2" data-number="B.2">
-<h2 data-number="B.2" class="anchored" data-anchor-id="roots-1"><span class="header-section-number">B.2</span> Roots 1</h2>
+<section id="functions" class="level2" data-number="B.2">
+<h2 data-number="B.2" class="anchored" data-anchor-id="functions"><span class="header-section-number">B.2</span> Functions</h2>
+<p><strong>(a) Missing <span class="math inline">\(x^2\)</span> term</strong></p>
+<p>The coefficient for the <span class="math inline">\(x^2\)</span> term in the Taylor Series expansion around <span class="math inline">\(x_0 = 0\)</span> is given by <span class="math inline">\(\frac{f''(0)}{2!}\)</span>. For <span class="math inline">\(f(x) = \sin(x)\)</span>, the second derivative is <span class="math inline">\(f''(x) = -\sin(x)\)</span>. Evaluating this at <span class="math inline">\(x=0\)</span> yields <span class="math inline">\(f''(0) = -\sin(0) = 0\)</span>. Hence, the coefficient is 0. Alternatively, one could note that <span class="math inline">\(\sin(x)\)</span> is an odd function, so its Taylor series only contains odd powers of <span class="math inline">\(x\)</span>.</p>
+<p><strong>(b) Python Code</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> math</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sin_taylor(x, n):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Calculate the Taylor expansion for f(x) = sin(x) centred at x_0 = 0 up to order n.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    term <span class="op">=</span> x <span class="op">/</span> <span class="dv">1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> term</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>, n <span class="op">+</span> <span class="dv">1</span>, <span class="dv">2</span>):</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        term <span class="op">=</span> <span class="op">-</span>term <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> (i <span class="op">*</span> (i<span class="op">-</span><span class="dv">1</span>))</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        result <span class="op">+=</span> term</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><em>(Other valid implementations, such as computing terms from scratch using <code>math.factorial</code> or checking if <code>i % 2 != 0</code> within a regular loop, are also acceptable).</em></p>
+<p><strong>(c) Truncation Error</strong></p>
+<ul>
+<li><strong>i)</strong> If we truncate the series after the <span class="math inline">\(x^3\)</span> term, the next term in the mathematical Taylor series is the <span class="math inline">\(x^5\)</span> term (since the <span class="math inline">\(x^4\)</span> term is 0). Therefore, the truncation error is <strong><span class="math inline">\(\mathcal{O}(x^5)\)</span></strong>.</li>
+<li><strong>ii)</strong> Evaluating the function at <span class="math inline">\(x = 0.05\)</span> instead of <span class="math inline">\(x = 0.1\)</span> reduces <span class="math inline">\(x\)</span> by a factor of <span class="math inline">\(1/2\)</span>. Because the error scales as <span class="math inline">\(\mathcal{O}(x^5)\)</span>, the truncation error is expected to decrease by a factor of <span class="math inline">\((1/2)^5 = \mathbf{1/32}\)</span>.</li>
+</ul>
+</section>
+<section id="roots-1" class="level2" data-number="B.3">
+<h2 data-number="B.3" class="anchored" data-anchor-id="roots-1"><span class="header-section-number">B.3</span> Roots 1</h2>
 <p><strong>(a) Conditions for Bisection Method Convergence</strong></p>
 <ul>
 <li>The function <span class="math inline">\(f\)</span> must be continuous on the closed interval <span class="math inline">\([a, b]\)</span>.</li>
@@ -428,11 +453,11 @@ window.Quarto = {
 <li>Since <span class="math inline">\(|g'(x)| &lt; 1\)</span> for all <span class="math inline">\(x \in [1, 2]\)</span> and <span class="math inline">\(g(x) \in [1, 2]\)</span> on this interval (as <span class="math inline">\(g(1) \approx 1.44\)</span> and <span class="math inline">\(g(2) \approx 1.58\)</span>), the Fixed-Point Theorem guarantees convergence for any <span class="math inline">\(x_0 \in [1, 2]\)</span>.</li>
 </ul></li>
 <li><p><strong>ii) Code:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fixed_point_iteration():</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> (x <span class="op">+</span> <span class="dv">2</span>)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fixed_point_iteration():</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> (x <span class="op">+</span> <span class="dv">2</span>)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
 </ul>
 
 

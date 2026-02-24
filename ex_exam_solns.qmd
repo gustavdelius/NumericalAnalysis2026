@@ -60,3 +60,50 @@ Machine precision is the gap between the number 1 and the next larger floating p
 *   **Explanation:** When $x$ is very large ($10^8$), $x^2 + 1 \approx x^2$, so $\sqrt{x^2+1} \approx x$. Subtracting two extremely close numbers causes the cancellation of the leading digits, leaving only the random "noise" from the least significant bits.
 *   **Improved (Stable) Formula:** Multiply by the conjugate:
     $$f(x) = \frac{(\sqrt{x^2+1} - x)(\sqrt{x^2+1} + x)}{\sqrt{x^2+1} + x} = \frac{1}{\sqrt{x^2+1} + x}.$$
+
+## Roots 1
+
+**(a) Conditions for Bisection Method Convergence**
+
+*   The function $f$ must be continuous on the closed interval $[a, b]$.
+*   The function values at the endpoints must have opposite signs, i.e., $f(a) \cdot f(b) < 0$. 
+
+
+**(b) Number of Iterations**
+
+*   The error after $n$ iterations is bounded by $\frac{|b-a|}{2^n} = \frac{1}{2^n}$.
+*   We need $\frac{1}{2^n} \le 2^{-20}$. Therefore, $n = 20$ iterations are required.
+
+**(c) Three Iterations of Bisection Method**
+
+*   **Iteration 1:**
+    *   Interval: $[a, b] = [1, 2]$.
+    *   Midpoint $m_1 = 1.5$.
+*   **Iteration 2:**
+    *   From the graph, $f(1.5)$ is slightly below the x-axis, so $f(1.5) < 0$.
+    *   Since $f(1.5) < 0$ and $f(2) > 0$, the root must lie in the new interval $[1.5, 2]$.
+    *   Midpoint $m_2 = \frac{1.5 + 2}{2} = 1.75$.
+*   **Iteration 3:**
+    *   From the graph, at $x=1.75$, the function curve is clearly above the x-axis, so $f(1.75) > 0$.
+    *   Since $f(1.5) < 0$ and $f(1.75) > 0$, the narrower interval containing the root is $[1.5, 1.75]$.
+    *   Midpoint $m_3 = \frac{1.5 + 1.75}{2} = 1.625$.
+
+
+**(d) Fixed-Point Iteration**
+
+*   **i) Convergence check:**
+    *   $g(x) = (x+2)^{1/3}$
+    *   $g'(x) = \frac{1}{3}(x+2)^{-2/3}$.
+    *   For $x \in [1, 2]$, the denominator is positive and increasing.
+    *   The maximum of $|g'(x)|$ on this interval occurs at $x = 1$, where $g'(1) = \frac{1}{3(3)^{2/3}}$.
+    *   Since $|g'(x)| < 1$ for all $x \in [1, 2]$ and $g(x) \in [1, 2]$ on this interval (as $g(1) \approx 1.44$ and $g(2) \approx 1.58$), the Fixed-Point Theorem guarantees convergence for any $x_0 \in [1, 2]$.
+
+*   **ii) Code:**
+
+    ``` python
+    def fixed_point_iteration():
+        x = 1.0
+        for i in range(10):
+            x = (x + 2)**(1/3)
+        return x
+    ```

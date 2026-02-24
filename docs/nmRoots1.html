@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -325,6 +325,7 @@ window.Quarto = {
   <li><a href="#sec-bisec_analysis" id="toc-sec-bisec_analysis" class="nav-link" data-scroll-target="#sec-bisec_analysis"><span class="header-section-number">3.2.3</span> Analysis</a></li>
   </ul></li>
   <li><a href="#sec-fixedpoint1d" id="toc-sec-fixedpoint1d" class="nav-link" data-scroll-target="#sec-fixedpoint1d"><span class="header-section-number">3.3</span> Fixed Point Iteration</a></li>
+  <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">3.4</span> Exam-style question</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/nmRoots1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -736,36 +737,36 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img0ae510f3235640ca8d1b97826647629f" class="figure-img">
+  <img id="_anim_imge052b42d6794421fbdaf889b074da73b" class="figure-img">
   <div class="anim-controls">
-    <input id="_anim_slider0ae510f3235640ca8d1b97826647629f" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="anim0ae510f3235640ca8d1b97826647629f.set_frame(parseInt(this.value));">
+    <input id="_anim_slidere052b42d6794421fbdaf889b074da73b" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="anime052b42d6794421fbdaf889b074da73b.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim0ae510f3235640ca8d1b97826647629f.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anime052b42d6794421fbdaf889b074da73b.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim0ae510f3235640ca8d1b97826647629f.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anime052b42d6794421fbdaf889b074da73b.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim0ae510f3235640ca8d1b97826647629f.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anime052b42d6794421fbdaf889b074da73b.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim0ae510f3235640ca8d1b97826647629f.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anime052b42d6794421fbdaf889b074da73b.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim0ae510f3235640ca8d1b97826647629f.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anime052b42d6794421fbdaf889b074da73b.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim0ae510f3235640ca8d1b97826647629f.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anime052b42d6794421fbdaf889b074da73b.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim0ae510f3235640ca8d1b97826647629f.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anime052b42d6794421fbdaf889b074da73b.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim0ae510f3235640ca8d1b97826647629f.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anime052b42d6794421fbdaf889b074da73b.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim0ae510f3235640ca8d1b97826647629f.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anime052b42d6794421fbdaf889b074da73b.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select0ae510f3235640ca8d1b97826647629f" class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_0ae510f3235640ca8d1b97826647629f" checked="">
-      <label for="_anim_radio1_0ae510f3235640ca8d1b97826647629f">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_0ae510f3235640ca8d1b97826647629f">
-      <label for="_anim_radio2_0ae510f3235640ca8d1b97826647629f">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_0ae510f3235640ca8d1b97826647629f">
-      <label for="_anim_radio3_0ae510f3235640ca8d1b97826647629f">Reflect</label>
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selecte052b42d6794421fbdaf889b074da73b" class="anim-state">
+      <input type="radio" name="state" value="once" id="_anim_radio1_e052b42d6794421fbdaf889b074da73b" checked="">
+      <label for="_anim_radio1_e052b42d6794421fbdaf889b074da73b">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_e052b42d6794421fbdaf889b074da73b">
+      <label for="_anim_radio2_e052b42d6794421fbdaf889b074da73b">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_e052b42d6794421fbdaf889b074da73b">
+      <label for="_anim_radio3_e052b42d6794421fbdaf889b074da73b">Reflect</label>
     </form>
   </div>
 </div>
@@ -775,13 +776,13 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img0ae510f3235640ca8d1b97826647629f";
-    var slider_id = "_anim_slider0ae510f3235640ca8d1b97826647629f";
-    var loop_select_id = "_anim_loop_select0ae510f3235640ca8d1b97826647629f";
+    var img_id = "_anim_imge052b42d6794421fbdaf889b074da73b";
+    var slider_id = "_anim_slidere052b42d6794421fbdaf889b074da73b";
+    var loop_select_id = "_anim_loop_selecte052b42d6794421fbdaf889b074da73b";
     var frames = new Array(7);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAYb5JREFUeJzt3XlcVFUfBvBnBgYY9h0UldUNUcEtc18wUnPL3HJPLVNTMyqt\
 3NPq1dSstFILt7Lcysy9NMmsXAAXBEFZXEH2bQZmue8f6E0CFxDmwvB8P5/5vC/nnrn3NxeCx3vv\
 OUcmCIIAIiIiIiIDkUtdABERERHVLgygRERERGRQDKBEREREZFAMoERERERkUAygRERERGRQDKBE\
@@ -1224,7 +1225,7 @@ REREBsUASkREREQGxQBKRERERAbFAEpEREREBsUASkREREQGxQBKRERERAbFAEpEREREBsUASkRE\
 REQGxQBKRERERAb1f8jroVx/iahyAAAAAElFTkSuQmCC\
 "
   frames[1] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAYV1JREFUeJzt3Xd4U9UfBvA3SdOSdO+yOmgpUFbLkimrgGxwMGQq8BNZDlBB\
 ZQ8XAiqCCsiWPUSUVQVBRC3QllEoZbRltnSvpM24vz8KF0rLKm1uk76f58mjPfck95ubjpd77zlH\
 JgiCACIiIiIiE5FLXQARERERVSwMoERERERkUgygRERERGRSDKBEREREZFIMoERERERkUgygRERE\
@@ -1665,7 +1666,7 @@ ERERkUkxgBIRERGRSTGAEhEREZFJMYASERERkUkxgBIRERGRSTGAEhEREZFJMYASERERkUkxgBIR\
 ERGRSTGAEhEREZFJMYASERERkUkxgBIRERGRSf0fp8njZB+bwP0AAAAASUVORK5CYII=\
 "
   frames[2] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAY8xJREFUeJzt3XlYVNUfBvB3BgYY9l0UlFVU3MAtc19QU3M3c19Sy9TUjBbr\
 5760aGpaWqmFW1mammmupUm2uAEuKIIKuILs2wwwM/f3B3l1BBUQ5sLwfp5nnuLc7Tt3EF7uvecc\
 mSAIAoiIiIiIDEQudQFEREREVL0wgBIRERGRQTGAEhEREZFBMYASERERkUExgBIRERGRQTGAEhER\
@@ -2117,7 +2118,7 @@ KAZQIiIiIjIoBlAiIiIiMigGUCIiIiIyKAZQIiIiIjIoBlAiIiIiMigGUCIiIiIyKAZQIiIiIjIo\
 BlAiIiIiMigGUCIiIiIyKAZQIiIiIjKo/wO2Lz+oo/3vfwAAAABJRU5ErkJggg==\
 "
   frames[3] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAZGBJREFUeJzt3XlcVFUfBvBnBgYcGPZFVBQQ3FHBLXdRMdy3zCU1Ne3N1FyS\
 FrPctc3UNk0txa3cSjPLtTTJLFFBRRRxAVxB9m0GZrnvH+g1BBUQ5sLwfD+f+bwv55659zcXgsd7\
 7zlHJgiCACIiIiIiI5FLXQARERERVS0MoERERERkVAygRERERGRUDKBEREREZFQMoERERERkVAyg\
@@ -2572,7 +2573,7 @@ ZFQMoERERERkVAygRERERGRUDKBEREREZFQMoERERERkVAygRERERGRUDKBEREREZFQMoERERERk\
 VP8HUYRRiK2sWYkAAAAASUVORK5CYII=\
 "
   frames[4] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAZkNJREFUeJzt3XlYVNUfBvB3gAGGfRcFZVURUcEt9xXFJXczzT21TM2VTFvc\
 tfppalZamYVbWZqaWW6UppklKuCCIqiAGyD7NsMyc39/kFcRUECYC8P7eZ55as49M/O9F4SXe+85\
 RyYIggAiIiIiIi3Rk7oAIiIiIqpdGECJiIiISKsYQImIiIhIqxhAiYiIiEirGECJiIiISKsYQImI\
@@ -3035,7 +3036,7 @@ iIiIiLSKAZSIiIiItIoBlIiIiIi0igGUiIiIiLSKAZSIiIiItIoBlIiIiIi0igGUiIiIiLSKAZSI\
 iIiItIoBlIiIiIi0igGUiIiIiLSKAZSIiIiItOr/KnnN8Z3DJt0AAAAASUVORK5CYII=\
 "
   frames[5] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAZ8NJREFUeJzt3XdYFFcbBfCzC0vvTRSVakNUsMXYC5bYezT2aBKjxhhDYoyx\
 lzQ/NcaSWGKPRo0aY2Ij0YjGGFTAgiIWwArS2y5sme8PdOIKNoQdWM7vefZJ9s7s7DuzKxxm5t4r\
 EwRBABERERGRgcilLoCIiIiIKhYGUCIiIiIyKAZQIiIiIjIoBlAiIiIiMigGUCIiIiIyKAZQIiIi\
@@ -3505,7 +3506,7 @@ ERERERkUAygRERERGRQDKBEREREZFAMoERERERkUAygRERERGRQDKBEREREZFAMoERERERkUAygR\
 ERERGRQDKBEREREZ1P8BC9lCn4kC4UYAAAAASUVORK5CYII=\
 "
   frames[6] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAaZRJREFUeJzt3XlcFOUfB/DPLiyw3DeoKDcqooJX5n2geOSZmuadVl6pKR1m\
 3mn1y9QsjzzyTk1TM80LjzSz8gA8UMQD8AS5r12O3fn9QU6u4IHCDiyf9+u1r+KZmZ3vzCJ8mJnn\
 eWSCIAggIiIiItITudQFEBEREVHlwgBKRERERHrFAEpEREREesUASkRERER6xQBKRERERHrFAEpE\
@@ -3987,7 +3988,7 @@ iYiIiEivGECJiIiISK8YQImIiIhIr/4PAKIaUsHWanUAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim0ae510f3235640ca8d1b97826647629f = new Animation(frames, img_id, slider_id, 1000.0,
+        anime052b42d6794421fbdaf889b074da73b = new Animation(frames, img_id, slider_id, 1000.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -4098,7 +4099,7 @@ n = \log_2\left( \frac{|b-a|}{\varepsilon} \right).
 \text{Absolute Error} = | \text{Approximate Solution} - \text{Exact Solution}|.
 \end{equation}\]</span></p>
 <p>Let us write a Python function that implements the bisection method and collects the absolute errors at each iteration into a list.</p>
-<div id="ec51de17" class="cell" data-execution_count="4">
+<div id="0c6c9d36" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> bisection_with_error_tracking(f, x_exact, a, b, tol):</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Implements the bisection method and tracks absolute error at each iteration.</span></span>
@@ -4127,7 +4128,7 @@ n = \log_2\left( \frac{|b-a|}{\varepsilon} \right).
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> errors</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>We can now use this function to see the absolute error at each iteration when solving the equation <span class="math inline">\(x^2-2=0\)</span> with the bisection method.</p>
-<div id="93fe63d2" class="cell" data-execution_count="5">
+<div id="4cad2b2e" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> f(x):</span>
@@ -4512,36 +4513,36 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img8dd6d25f686b4d5fa955ffe27dafa1f3" class="figure-img">
+  <img id="_anim_imgd3b7cc359c2949a291b07b17d43d6005" class="figure-img">
   <div class="anim-controls">
-    <input id="_anim_slider8dd6d25f686b4d5fa955ffe27dafa1f3" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="anim8dd6d25f686b4d5fa955ffe27dafa1f3.set_frame(parseInt(this.value));">
+    <input id="_anim_sliderd3b7cc359c2949a291b07b17d43d6005" type="range" class="anim-slider" name="points" min="0" max="1" step="1" value="0" oninput="animd3b7cc359c2949a291b07b17d43d6005.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="animd3b7cc359c2949a291b07b17d43d6005.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="animd3b7cc359c2949a291b07b17d43d6005.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="animd3b7cc359c2949a291b07b17d43d6005.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="animd3b7cc359c2949a291b07b17d43d6005.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="animd3b7cc359c2949a291b07b17d43d6005.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.play_animation()">
+      <button title="Play" aria-label="Play" onclick="animd3b7cc359c2949a291b07b17d43d6005.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="animd3b7cc359c2949a291b07b17d43d6005.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="animd3b7cc359c2949a291b07b17d43d6005.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim8dd6d25f686b4d5fa955ffe27dafa1f3.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="animd3b7cc359c2949a291b07b17d43d6005.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select8dd6d25f686b4d5fa955ffe27dafa1f3" class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_8dd6d25f686b4d5fa955ffe27dafa1f3" checked="">
-      <label for="_anim_radio1_8dd6d25f686b4d5fa955ffe27dafa1f3">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_8dd6d25f686b4d5fa955ffe27dafa1f3">
-      <label for="_anim_radio2_8dd6d25f686b4d5fa955ffe27dafa1f3">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_8dd6d25f686b4d5fa955ffe27dafa1f3">
-      <label for="_anim_radio3_8dd6d25f686b4d5fa955ffe27dafa1f3">Reflect</label>
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectd3b7cc359c2949a291b07b17d43d6005" class="anim-state">
+      <input type="radio" name="state" value="once" id="_anim_radio1_d3b7cc359c2949a291b07b17d43d6005" checked="">
+      <label for="_anim_radio1_d3b7cc359c2949a291b07b17d43d6005">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_d3b7cc359c2949a291b07b17d43d6005">
+      <label for="_anim_radio2_d3b7cc359c2949a291b07b17d43d6005">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_d3b7cc359c2949a291b07b17d43d6005">
+      <label for="_anim_radio3_d3b7cc359c2949a291b07b17d43d6005">Reflect</label>
     </form>
   </div>
 </div>
@@ -4551,13 +4552,13 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img8dd6d25f686b4d5fa955ffe27dafa1f3";
-    var slider_id = "_anim_slider8dd6d25f686b4d5fa955ffe27dafa1f3";
-    var loop_select_id = "_anim_loop_select8dd6d25f686b4d5fa955ffe27dafa1f3";
+    var img_id = "_anim_imgd3b7cc359c2949a291b07b17d43d6005";
+    var slider_id = "_anim_sliderd3b7cc359c2949a291b07b17d43d6005";
+    var loop_select_id = "_anim_loop_selectd3b7cc359c2949a291b07b17d43d6005";
     var frames = new Array(9);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAZ8JJREFUeJzt3Xl4VOXBxuFf9n0jgUBINOzIHkREIYqCIAJlE1srilZQARWL\
 tIJKqTv9CojWpSx1KbZStawiS0WCUbClQAjIHiABwYTsJJkkM5nz/TGaOgJKcDInM3nu65oLzuRM\
 5jnkZXg42+tjGIaBiIiIiIib+JodQEREREQaFxVQEREREXErFVARERERcSsVUBERERFxKxVQERER\
@@ -5027,7 +5028,7 @@ IiIi4lYqoCIiIiLiViqgIiIiIuJWKqAiIiIi4lYqoCIiIiLiViqgIiIiIuJWKqAiIiIi4lYqoCIi\
 IiLiViqgIiIiIuJW/w/VNf+dchiPywAAAABJRU5ErkJggg==\
 "
   frames[1] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAaYlJREFUeJzt3Xl4VNX9x/F39n0jgUBINOzIHkREIYqCIAKVRWytVLSCCrgV\
 aQWVUnf6KyBal7JUbbWVqmUVWSoCRsGWAiEge4AEBBOyk30mc39/jKaOLBK4mZuZfF7PMw+cO3dm\
 vpcchg/33nOOj2EYBiIiIiIibuJrdQEiIiIi0rgogIqIiIiIWymAioiIiIhbKYCKiIiIiFspgIqI\
@@ -5505,7 +5506,7 @@ IiLiVgqgIiIiIuJWCqAiIiIi4lYKoCIiIiLiVgqgIiIiIuJWCqAiIiIi4lYKoCIiIiLiVgqgIiIi\
 IuJWCqAiIiIi4lb/DyWnMdIU8ltVAAAAAElFTkSuQmCC\
 "
   frames[2] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAakFJREFUeJzt3Xl8FPX9x/FX7vsigUBINNyIXEFEFKIoCCJQOcTWSkUrqICK\
 RVpBpdSb/gqI1qMcVVttpWrlEjkqEoyCLQVCQO4ACQgm5Cb3bnZ+f6ymrhwhMNlJNu/n47EP+G5m\
 dz9DvrPzZma+8/UyDMNARERERMRNvK0uQERERESaFgVQEREREXErBVARERERcSsFUBERERFxKwVQ\
@@ -5986,7 +5987,7 @@ bqUAKiIiIiJupQAqIiIiIm6lACoiIiIibqUAKiIiIiJupQAqIiIiIm6lACoiIiIibqUAKiIiIiJu\
 pQAqIiIiIm6lACoiIiIibqUAKiIiIiJu9f9JBYvAfZztBgAAAABJRU5ErkJggg==\
 "
   frames[3] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAaqlJREFUeJzt3Xl8FPX9x/FX7vsigXAkGm5EriAiClEUBBGoHGJrpaIVVMCr\
 SCuolHrTXwHRepSjaqutVK1yiBwVAaNgS4EQkDtAAoIJucm9m53fH6upK2dgsrO7eT8fj33Ad3d2\
 9zPMd3bezPX1MwzDQERERETETfytLkBEREREGhcFUBERERFxKwVQEREREXErBVARERERcSsFUBER\
@@ -6469,7 +6470,7 @@ gIqIiIiIWymAioiIiIhbKYCKiIiIiFspgIqIiIiIWymAioiIiIhbKYCKiIiIiFspgIqIiIiIWymA\
 ioiIiIhbKYCKiIiIiFv9P+UbycCk7M2MAAAAAElFTkSuQmCC\
 "
   frames[4] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAaqtJREFUeJzt3Xl4VOXdxvFv9n0jgbAkGnZEVkVEIYqCIAKVRWytVLSCCrgV\
 aQWVUnd8BUTrUpa6FFupWmURWSoCRsGWAiEge4AEBBOyk30mc94/RqMja+Bkzszk/lzXXOSZOTPz\
 O3OemXNztsfPMAwDERERERE38be6ABERERFpWBRARURERMStFEBFRERExK0UQEVERETErRRARURE\
@@ -6952,7 +6953,7 @@ KwVQEREREXErBVARERERcSsFUBERERFxKwVQEREREXErBVARERERcSsFUBERERFxKwVQEREREXEr\
 BVARERERcSsFUBERERFxq/8HVvlClBIDUesAAAAASUVORK5CYII=\
 "
   frames[5] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAampJREFUeJzt3Xl8FPX9x/FX7vsi4QqJhBuRUxFRiKIgiEDlEFsrFa2gAioW\
 aQWVUm/8FRCtRznqUWylapVD5KgIGgVbCoSA3AESEEzITe7d7Pz+WE1dOQOTnd3N+/l47AO+u7M7\
 n2G/s/Nmrq+fYRgGIiIiIiJu4m91ASIiIiLSsCiAioiIiIhbKYCKiIiIiFspgIqIiIiIWymAioiI\
@@ -7434,7 +7435,7 @@ rRRARURERMStFEBFRERExK0UQEVERETErRRARURERMStFEBFRERExK0UQEVERETErRRARURERMSt\
 FEBFRERExK3+H7P3SUJIa1hgAAAAAElFTkSuQmCC\
 "
   frames[6] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAafVJREFUeJzt3Xl8FPX9x/FX7vsi4QqJhBuRUxFRiKIiiEDlEFsrFa3gAV5F\
 WkGl1Bt/BUTrUY56FFupJ4fIoQgYBVsKhIDcARIQTMhN7t3s/P5YSV05A5Od3c37+XjsA767szuf\
 Yb+z82aur59hGAYiIiIiIm7ib3UBIiIiItKwKICKiIiIiFspgIqIiIiIWymAioiIiIhbKYCKiIiI\
@@ -7914,7 +7915,7 @@ FRERERG3UgAVEREREbdSABURERERt1IAFRERERG3UgAVEREREbdSABURERERt1IAFRERERG3UgAV\
 EREREbf6f2hlPkx1RNLGAAAAAElFTkSuQmCC\
 "
   frames[7] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAab5JREFUeJzt3Xl8FPX9x/FX7vsigUBINNyInIp4QBQVQQQqh9haqWgFD/Aq\
 0gIqpd74KyBaj3LUo9hKPTlEDkXAKNhSIATkDpCAYEJucu9m5/fHaurKGZjs7G7ez8djH/Ddnd35\
 DPudnTdzff0MwzAQEREREXETf6sLEBEREZHGRQFURERERNxKAVRERERE3EoBVERERETcSgFURERE\
@@ -8393,7 +8394,7 @@ FEBFRERExK0UQEVERETErRRARURERMStFEBFRERExK0UQEVERETErRRARURERMStFEBFRERExK0U\
 QEVERETErf4fX9QSIfyzWNEAAAAASUVORK5CYII=\
 "
   frames[8] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAqAAAAHgCAYAAAB6jN80AAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
-bGliIHZlcnNpb24zLjEwLjEsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvc2/+5QAAAAlwSFlzAAAO\
+bGliIHZlcnNpb24zLjEwLjcsIGh0dHBzOi8vbWF0cGxvdGxpYi5vcmcvTLEjVAAAAAlwSFlzAAAO\
 xAAADsQBlSsOGwAAaUhJREFUeJzt3Xl8FPX9x/FX7vsigXAkGm5ETkU8MIqCIAKVQ2ytVLSCB6hY\
 pAVUSr3xV0C0HuWo2qKVenKIAhUJRsGWAiEgd4AEBBNyk3s3O78/VqMrZ2Cys7t5Px+Pfch3d3bn\
 M+53dt6Z6+tnGIaBiIiIiIib+FtdgIiIiIg0LgqgIiIiIuJWCqAiIiIi4lYKoCIiIiLiVgqgIiIi\
@@ -8874,7 +8875,7 @@ iLjV/wMEMLo3rcTaxgAAAABJRU5ErkJggg==\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim8dd6d25f686b4d5fa955ffe27dafa1f3 = new Animation(frames, img_id, slider_id, 200.0,
+        animd3b7cc359c2949a291b07b17d43d6005 = new Animation(frames, img_id, slider_id, 200.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -8994,6 +8995,42 @@ x&amp;=g(x)=x-(x^{2}-2), &amp;
 \end{array}
 \]</span> Implement this algorithm in Python. Use it to approximate the fixed point of the function <span class="math inline">\(g(x)=\cos(x)\)</span> with start value <span class="math inline">\(x_0=2\)</span> and tolerance <span class="math inline">\(tol=10^{-8}\)</span>.</p>
 </div>
+<hr>
+</section>
+<section id="exam-style-question" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">3.4</span> Exam-style question</h2>
+<ol type="a">
+<li><p>What are the conditions on a function <span class="math inline">\(f\)</span> that guarantees that the bisection method on an interval <span class="math inline">\([a,b]\)</span> converges to a root of <span class="math inline">\(f\)</span>? [2 marks]</p></li>
+<li><p>How many iterations of the bisection method starting with the interval <span class="math inline">\([1, 2]\)</span> would be required to guarantee that the approximation to the root is no further than a distance of <span class="math inline">\(\varepsilon = 2^{-20}\)</span> from the true root? [1 mark]</p></li>
+</ol>
+<p>Consider the function <span class="math inline">\(f(x) = x^3 - x - 2\)</span>. We want to find a root of this function in the interval <span class="math inline">\([1, 2]\)</span>. To help you, the graph of <span class="math inline">\(f(x)\)</span> on this interval is provided below.</p>
+<div id="cell-fig-exam" class="cell" data-execution_count="11">
+<div class="cell-output cell-output-display">
+<div id="fig-exam" class="quarto-float quarto-figure quarto-figure-left anchored" alt="Graph of $f(x) = x^3 - x - 2$.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-exam-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="nmRoots1_files/figure-html/fig-exam-output-1.png" alt="Graph of $f(x) = x^3 - x - 2$." width="598" height="429" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-exam-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.8: Graph of <span class="math inline">\(f(x) = x^3 - x - 2\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ol start="3" type="a">
+<li><p>Using the graph to roughly estimate function values, carry out the first three iterations of the Bisection Method. [3 marks]</p></li>
+<li><p>The equation <span class="math inline">\(x^3 - x - 2 = 0\)</span> can be rewritten as a fixed-point problem <span class="math inline">\(x = g(x)\)</span> in several ways. Consider the rearrangement <span class="math inline">\(g(x) = \sqrt[3]{x+2}\)</span>. We have <span class="math inline">\(g(1) \approx 1.44\)</span> and <span class="math inline">\(g(2) \approx 1.58\)</span>.</p>
+<ol type="i">
+<li>Calculate the derivative <span class="math inline">\(g'(x)\)</span>. Use it to show whether the fixed-point iteration <span class="math inline">\(x_n = g(x_{n-1})\)</span> is guaranteed to converge for any starting value <span class="math inline">\(x_0 \in [1, 2]\)</span>. [3 marks]</li>
+<li>Complete the following Python code to perform 10 iterations of the fixed-point iteration <span class="math inline">\(x_n = g(x_{n-1})\)</span> starting with <span class="math inline">\(x_0 = 1.0\)</span>. [3 marks]</li>
+</ol></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> fixed_point_iteration():</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(...):</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> ...</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 <p>Further reading: Section 2.2 of <span class="citation" data-cites="Burden_Faires">(<a href="#ref-Burden_Faires" role="doc-biblioref">Burden and Faires 2010</a>)</span>.</p>
 <hr>

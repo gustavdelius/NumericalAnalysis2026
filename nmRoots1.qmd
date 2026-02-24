@@ -924,6 +924,53 @@ Implement this algorithm in Python. Use it to approximate the fixed point of the
 
 ------------------------------------------------------------------------
 
+## Exam-style question
+
+(a) What are the conditions on a function $f$ that guarantees that the bisection method on an interval $[a,b]$ converges to a root of $f$? [2 marks]
+
+(b) How many iterations of the bisection method starting with the interval $[1, 2]$ would be required to guarantee that the approximation to the root is no further than a distance of $\varepsilon = 2^{-20}$ from the true root? [1 mark]
+
+Consider the function $f(x) = x^3 - x - 2$. We want to find a root of this function in the interval $[1, 2]$. To help you, the graph of $f(x)$ on this interval is provided below.
+
+```{python}
+#| label: fig-exam
+#| fig-cap: Graph of $f(x) = x^3 - x - 2$.
+#| fig-alt: Graph of $f(x) = x^3 - x - 2$.
+#| echo: false
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(1, 2, 100)
+f = x**3 - x - 2
+
+plt.plot(x, f, 'b-', linewidth=2)
+plt.axhline(0, color='black', linewidth=1)
+plt.grid(True)
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.xlim(1, 2)
+plt.ylim(-2, 4.5)
+plt.show()
+```
+
+
+(c) Using the graph to roughly estimate function values, carry out the first three iterations of the Bisection Method. [3 marks]
+
+
+(d) The equation $x^3 - x - 2 = 0$ can be rewritten as a fixed-point problem $x = g(x)$ in several ways. Consider the rearrangement $g(x) = \sqrt[3]{x+2}$. We have $g(1) \approx 1.44$ and $g(2) \approx 1.58$.
+    i) Calculate the derivative $g'(x)$. Use it to show whether the fixed-point iteration $x_n = g(x_{n-1})$ is guaranteed to converge for any starting value $x_0 \in [1, 2]$. [3 marks]
+    ii) Complete the following Python code to perform 10 iterations of the fixed-point iteration $x_n = g(x_{n-1})$ starting with $x_0 = 1.0$. [3 marks]
+
+``` python
+def fixed_point_iteration():
+    x = 1.0
+    for i in range(...):
+        x = ...
+    return x
+```
+
+------------------------------------------------------------------------
+
 Further reading: Section 2.2 of [@Burden_Faires].
 
 ------------------------------------------------------------------------

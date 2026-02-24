@@ -568,7 +568,8 @@ def sin_taylor(x, n):
     return result
 ```
 
-(c) i) If we only keep terms up to $x^3$ in this Taylor Series expansion, what is the truncation error in Big-O notation for the approximation? [2 marks]
+(c) i) If we only keep terms up to $x^3$ in this Taylor Series expansion, what is the 
+largest integer $n$ so that the truncation error is $O(x^n)$? [2 marks]
 
     ii) If we use the same approximation to calculate $\sin(0.05)$ instead of $\sin(0.1)$, by what factor do we expect the truncation error to decrease? [2 marks]
 

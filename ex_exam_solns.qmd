@@ -61,6 +61,36 @@ Machine precision is the gap between the number 1 and the next larger floating p
 *   **Improved (Stable) Formula:** Multiply by the conjugate:
     $$f(x) = \frac{(\sqrt{x^2+1} - x)(\sqrt{x^2+1} + x)}{\sqrt{x^2+1} + x} = \frac{1}{\sqrt{x^2+1} + x}.$$
 
+## Functions
+
+**(a) Missing $x^2$ term**
+
+The coefficient for the $x^2$ term in the Taylor Series expansion around $x_0 = 0$ is given by $\frac{f''(0)}{2!}$. For $f(x) = \sin(x)$, the second derivative is $f''(x) = -\sin(x)$. Evaluating this at $x=0$ yields $f''(0) = -\sin(0) = 0$. Hence, the coefficient is 0. Alternatively, one could note that $\sin(x)$ is an odd function, so its Taylor series only contains odd powers of $x$.
+
+**(b) Python Code**
+
+``` python
+import math
+
+def sin_taylor(x, n):
+    """
+    Calculate the Taylor expansion for f(x) = sin(x) centred at x_0 = 0 up to order n.
+    """
+    term = x / 1
+    result = term
+    for i in range(3, n + 1, 2):
+        term = -term * x**2 / (i * (i-1))
+        result += term
+    return result
+```
+
+*(Other valid implementations, such as computing terms from scratch using `math.factorial` or checking if `i % 2 != 0` within a regular loop, are also acceptable).*
+
+**(c) Truncation Error**
+
+*   **i)** If we truncate the series after the $x^3$ term, the next term in the mathematical Taylor series is the $x^5$ term (since the $x^4$ term is 0). Therefore, the truncation error is **$\mathcal{O}(x^5)$**.
+*   **ii)** Evaluating the function at $x = 0.05$ instead of $x = 0.1$ reduces $x$ by a factor of $1/2$. Because the error scales as $\mathcal{O}(x^5)$, the truncation error is expected to decrease by a factor of $(1/2)^5 = \mathbf{1/32}$.
+
 ## Roots 1
 
 **(a) Conditions for Bisection Method Convergence**

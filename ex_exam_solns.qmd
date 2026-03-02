@@ -137,3 +137,49 @@ def sin_taylor(x, n):
             x = (x + 2)**(1/3)
         return x
     ```
+
+## Roots 2
+
+**(a) Secant Method vs Newton's Method**
+
+*   **Explanation:** The Secant method replaces the exact derivative $f'(x_n)$ in Newton's iteration formula with a finite difference approximation (the slope of the secant line) using the two previous iterates: $f'(x_n) \approx \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}$.
+*   **Advantage:** It does not require an explicit formula for the derivative of the function, which is useful if the derivative is difficult or computationally expensive to evaluate.
+*   **Disadvantage:** It has a lower order of convergence (superlinear, $\alpha \approx 1.62$) compared to Newton's method (quadratic, $\alpha = 2$), so it may require more iterations to achieve the same accuracy. It also requires two initial guesses instead of one.
+
+**(b) Order of Convergence**
+
+*   **Definition:** A sequence $\{x_n\}$ converging to $p$ (with $x_n \neq p$) has an order of convergence $\alpha \ge 1$ if there exists a constant $\lambda > 0$ such that $\lim_{n \to \infty} \frac{|x_{n+1}-p|}{|x_n - p|^\alpha} = \lambda$.
+*   **Orders of convergence:**
+    *   Bisection Method: 1 (Linear)
+    *   Secant Method: $\frac{1+\sqrt{5}}{2} \approx 1.618$ (Superlinear)
+    *   Newton's Method: 2 (Quadratic)
+
+**(c) Applying the Methods to $f(x) = x^2 - 5$**
+
+*   **i) Newton's method:**
+    *   $f(x) = x^2 - 5 \implies f'(x) = 2x$.
+    *   Formula: $x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$.
+    *   $x_0 = 2$.
+    *   $f(2) = 2^2 - 5 = -1$.
+    *   $f'(2) = 2(2) = 4$.
+    *   $x_1 = 2 - \frac{-1}{4} = 2.25$.
+*   **ii) Secant method:**
+    *   Formula: $x_{n+1} = x_n - \frac{f(x_n)(x_n - x_{n-1})}{f(x_n) - f(x_{n-1})}$.
+    *   $x_0 = 3, f(x_0) = 3^2 - 5 = 4$.
+    *   $x_1 = 2, f(x_1) = 2^2 - 5 = -1$.
+    *   $x_2 = 2 - \frac{(-1)(2 - 3)}{(-1) - 4} = 2 - \frac{(-1)(-1)}{-5} = 2 - \frac{1}{-5} = 2.2$.
+
+**(d) Error Estimation**
+
+*   Given $E_{n+1} \approx E_n^2$.
+*   $E_3 \approx E_2^2 = (10^{-3})^2 = 10^{-6}$.
+*   $E_4 \approx E_3^2 = (10^{-6})^2 = 10^{-12}$.
+*   The expected error $E_4$ is roughly $10^{-12}$.
+
+**(e) Order of Convergence for Newton's Method**
+
+*   Newton's method is defined by $x_{n+1} = g(x_n)$ where $g(x) = x - \frac{f(x)}{f'(x)}$.
+*   To find the order of convergence, we evaluate the derivatives of $g(x)$ at the root $p$.
+*   First derivative: $g'(x) = 1 - \frac{f'(x)f'(x) - f(x)f''(x)}{[f'(x)]^2} = \frac{[f'(x)]^2 - [f'(x)]^2 + f(x)f''(x)}{[f'(x)]^2} = \frac{f(x)f''(x)}{[f'(x)]^2}$.
+*   Evaluate $g'(x)$ at $p$: since $p$ is a root, $f(p) = 0$. Since it is a simple root, $f'(p) \neq 0$. Thus, $g'(p) = \frac{f(p)f''(p)}{[f'(p)]^2} = \frac{0 \cdot f''(p)}{[f'(p)]^2} = 0$.
+*   According to the theorem on the order of convergence for fixed-point iterations, if $g(p) = p$ and $g'(p) = 0$, but $g''(p) \neq 0$ (which is generally true unless $f''(p)=0$), the sequence has an order of convergence of $m=2$ (quadratic convergence).

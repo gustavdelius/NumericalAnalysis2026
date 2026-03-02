@@ -829,7 +829,7 @@ $$
 and since $h$ is continuous on $[a,b]$ the Intermediate Value Theorem guarantees the existence of $p\in(a,b)$ for which $h(p)=0$, equivalently $g(p)=p$, so that $p$ is a fixed point of $g$.
 
 To show that the fixed point is unique, suppose that $q\neq p$ is a fixed point of $g$ in $[a,b]$.
-The Mean Value Theorem implies the existence of a number $\xi\in(\min\{p,q\},\max\{p,q\})\subseteq(a,b)$ such that 
+The Mean Value Theorem implies the existence of a number $\xi\in(\min\{p,q\},\max\{p,q\})\in(a,b)$ such that 
 $$
 \frac{g(p)-g(q)}{p-q}=g'(\xi).
 $$ 
@@ -842,7 +842,7 @@ This is a contradiction, which must have come from the assumption $p\neq q$.
 Thus $p=q$ and the fixed point is unique.
 
 Since $g$ maps $[a,b]$ onto itself, the sequence $\{x_n\}$ is well defined.
-For each $n\ge0$ the Mean Value Theorem gives the existence of a $\xi\in(\min\{x_n,p\},\max\{x_n,p\})\subseteq(a,b)$ such that
+For each $n\ge0$ the Mean Value Theorem gives the existence of a $\xi\in(\min\{x_n,p\},\max\{x_n,p\})\in(a,b)$ such that
 $$
 \frac{g(x_n)-g(p)}{x_n-p}=g'(\xi).
 $$ 

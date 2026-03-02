@@ -14,13 +14,13 @@ Root finding is really the process of finding the $x$-intercept of the function.
 
 ::: {#exr-2.32}
 🖋 A tangent line approximation to a function $f(x)$ near a point $x_0$ is 
-\begin{equation}
+$$
  y = f(x_0) + f'(x_0) \left( x - x_0 \right). 
-\end{equation}
+$$
  Set $y$ to zero and solve for $x$ to find the $x$-intercept of the tangent line. 
-\begin{equation}
+$$
  \text{$x$-intercept of tangent line is } x = \underline{\hspace{0.5in}} 
-\end{equation}
+$$
 
 
 :::
@@ -136,9 +136,9 @@ def newton(f, fprime, x0, tol=1e-10):
 ### Failures
 
 There are several ways in which Newton's Method will behave unexpectedly -- or downright fail. Some of these issues can be foreseen by examining the Newton iteration formula 
-\begin{equation}
+$$
  x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}. 
-\end{equation}
+$$
  Some of the failures that we will see are a little more surprising.
 
 
@@ -181,9 +181,9 @@ There are several ways in which Newton's Method will behave unexpectedly -- or d
 
 ::: {#exr-2.43}
 🖋 Now let us consider the function $f(x) = \sqrt[3]{x}$. This function has a root $x=0$. Furthermore, it is differentiable everywhere except at $x=0$ since 
-\begin{equation}
+$$
 f'(x) = \frac{1}{3} x^{-2/3} = \frac{1}{3x^{2/3}}.
-\end{equation}
+$$
  The point of this exercise is to show what can happen when the point of non-differentiability is precisely the point that you are looking for.
 
 1.  Fill in the table of iterations starting at $x=-1$, draw the tangent lines on the plot, and make a general observation of what is happening with the Newton iterations.
@@ -200,9 +200,9 @@ f'(x) = \frac{1}{3} x^{-2/3} = \frac{1}{3x^{2/3}}.
 ![Another surprising Newton's Method failure when $f(x) = \sqrt[3]{x}$.](figures/Algebra/Newton03.png){#fig-2.10 alt="Another surprising Newton's Method failure."}
 
 2.  Now let us look at the Newton iteration in a bit more detail. Since $f(x) = x^{1/3}$ and $f'(x) = \frac{1}{3} x^{-2/3}$ the Newton iteration can be simplified as 
-\begin{equation}
+$$
 x_{n+1} = x_n - \frac{x_n^{1/3}}{ \left( \frac{1}{3} x_n^{-2/3} \right)} = x_n - 3 \frac{x_n^{1/3}}{x_n^{-2/3}} = x_n - 3x_n = -2x_n.
-\end{equation}
+$$
  What does this tell us about the Newton iterations?\
     Hint: You should have found the exact same thing in the numerical experiment in part 1.
 
@@ -275,9 +275,9 @@ that you used in @exr-2.20 with the initial guess $x_0=1$ and tolerance $10^{-10
 Newton's Method has second-order (quadratic) convergence and, as such, will perform faster than the Bisection method. However, Newton's Method requires that you have a function and a derivative of that function. The conundrum here is that sometimes the derivative is cumbersome or impossible to obtain but you still want to have the great quadratic convergence exhibited by Newton's method.
 
 Recall that Newton's method is 
-\begin{equation}
+$$
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
-\end{equation}
+$$
  If we replace $f'(x_n)$ with an approximation of the derivative then we may have a method that is *close* to Newton's method in terms of convergence rate but is less troublesome to compute. Any method that replaces the derivative in Newton's method with an approximation is called a **Quasi-Newton Method**. 
  
 The first, and most obvious, way to approximate the derivative is just to use the slope of a secant line instead of the slope of the tangent line in the Newton iteration. If we choose two starting points that are quite close to each other then the slope of the secant line through those points will be approximately the same as the slope of the tangent line.
@@ -288,14 +288,14 @@ The first, and most obvious, way to approximate the derivative is just to use th
 
 ::: {#exr-2.46}
 🖋 Use the backward difference 
-\begin{equation}
+$$
 f'(x_n) \approx \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}
-\end{equation}
+$$
  to approximate the derivative of $f$ at $x_n$.  Discuss why this approximates the derivative. Use this approximation of $f'(x_n)$ in the expression for $x_{n+1}$ of Newton's method.
 Show that that the result simplifies to 
-\begin{equation}
+$$
 x_{n+1} = x_n - \frac{f(x_n)\left( x_n - x_{n-1} \right)}{f(x_n) - f(x_{n-1})}.
-\end{equation}
+$$
 :::
 
 -------------------------------------------------
@@ -451,9 +451,18 @@ $$  {#eq-nonlin39}
 Suppose that sequence $\{x_{n}\}$ converges to $p$ and $f'(p)\neq 0$.
 We have 
 $$
-g'(x)=\frac{f(x)f''(x)}{[f'(x)]^2} \quad \Rightarrow \quad g'(p)=\frac{f(p)f''(p)}{[f'(p)]^2}=0 .
+g'(x)=\frac{f(x)f''(x)}{f'(x)^2} \quad \Rightarrow \quad g'(p)=\frac{f(p)f''(p)}{f'(p)^2}=0 .
 $$  {#eq-nonlin40}
-It follows from the above theorem that the order of convergence of Newton's method is 2 (except in the special case where $g''(p)=0$).
+It follows from the above theorem that the order of convergence of Newton's method is at least 2. 
+We also have
+$$
+g''(x)=\frac{f'(x)f''(x)+f(x)f'''(x)}{f'(x)^2} - \frac{f(x)f''(x)^2}{f'(x)^3}
+$$
+and hence, again using that $f(p)=0$, we find
+$$
+g''(p)=\frac{f''(p)}{f'(p)}\neq 0 \qquad\text{if } f''(p)\neq 0
+$$  {#eq-nonlin41}
+If $f''(p)=0$, then $g''(p)=0$ and the order of convergence is at least 3.
 
 ### Secant Method
 The situation with the secant method is more complicated (since it cannot be reduced to the fixed point iteration) and requires a separate treatment.
@@ -554,6 +563,21 @@ Further reading: Section 2.4 of [@Burden_Faires].
 
 ------------------------------------------------------------------------
 
+## Exam-style question
+
+(a) Briefly explain how the Secant method modifies Newton's method. Give one advantage and one disadvantage of the Secant method compared to Newton's method. [3 marks]
+
+(b) Define what it means for a sequence $\{x_n\}$ converging to $p$ to have an *order of convergence* $\alpha \ge 1$. State the order of convergence for the Bisection method, the Secant method, and Newton's method. [4 marks]
+
+(c) Consider finding the root of $f(x) = x^2 - 5$.
+    i) Apply Newton's method with an initial guess $x_0 = 2$ to find the next approximation $x_1$. [2 marks]
+    ii) Apply the Secant method with initial guesses $x_0 = 3$ and $x_1 = 2$ to find the next approximation $x_2$. [2 marks]
+
+(d) Suppose a root-finding method produces a sequence $\{x_n\}$ with quadratic convergence, and the errors $E_n = |x_n - p|$ satisfy $E_{n+1} \approx E_n^2$. If the current error is $E_2 = 10^{-3}$, roughly what is the expected error $E_4$? [1 mark]
+
+(e) Show that if $p$ is a simple root of $f(x)$ (that is, $f(p) = 0$ and $f'(p) \neq 0$) and $f(x)$ is sufficiently smooth, Newton's method has an order of convergence of at least $\alpha=2$. You may use the theorem on the order of convergence for fixed-point iteration. [4 marks]
+
+------------------------------------------------------------------------
 
 
 ## Problems {#sec-nonlinear-problems}
@@ -581,9 +605,9 @@ Refer back to @exm-2.1 and demonstrate that you get the same results for the ord
 
 ::: {#exr-2.57}
 In this problem you will demonstrate that all of your root finding codes work. At the beginning of this chapter we proposed the equation solving problem 
-\begin{equation}
+$$
 3\sin(x) + 9 = x^2 - \cos(x).
-\end{equation}
+$$
  Write a script that calls upon your Bisection, Newton, and Secant methods one at a time to find the positive solution to this equation. Your script needs to output the solutions in a clear and readable way so you can tell which answer came from which root finding algorithm.
 
 :::
@@ -606,17 +630,17 @@ d.  In your own words, what does it mean for a root finding method to have a "fi
 There are MANY other root finding techniques beyond the four that we have studied thus far. We can build these methods using Taylor Series as follows:
 
 Near $x=x_0$ the function $f(x)$ is approximated by the Taylor Series 
-\begin{equation}
+$$
 f(x) \approx y = f(x_0) + \sum_{n=1}^N \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n
-\end{equation}
+$$
  where $N$ is a positive integer. In a root-finding algorithm we set $y$ to zero to find the root of the approximation function. The root of this function *should* be close to the actual root that we are looking for. Therefore, to find the next iterate we solve the equation 
-\begin{equation}
+$$
 0 = f(x_0) + \sum_{n=1}^N \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n
-\end{equation}
+$$
  for $x$. For example, if $N=1$ then we need to solve $0 = f(x_0) + f'(x_0)(x-x_0)$ for $x$. In doing so we get $x = x_0 - f(x_0)/f'(x_0)$. This is exactly Newton's method. If $N=2$ then we need to solve 
-\begin{equation}
+$$
 0 = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2!}(x-x_0)^2
-\end{equation}
+$$
  for $x$.
 
 (a)  Solve for $x$ in the case that $N=2$. Then write a Python function that implements this root-finding method.
@@ -633,10 +657,10 @@ f(x) \approx y = f(x_0) + \sum_{n=1}^N \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n
 
 ::: {#exr-2.61}
 (modified from [@Burden_Faires]) An object falling vertically through the air is subject to friction due to air resistance as well as gravity. The function describing the position of such an object is 
-\begin{equation}
+$$
 s(t) = s_0 - \frac{mg}{k} t + \frac{m^2 g}{k^2}\left( 1- e^{-kt/m} \right),
-\end{equation}
- where $m$ is the mass measured in kg, $g$ is gravity measured in meters per second per second, $s_0$ is the initial position measured in meters, and $k$ is the coefficient of air resistance.
+$$
+where $m$ is the mass measured in kg, $g$ is gravity measured in meters per second per second, $s_0$ is the initial position measured in meters, and $k$ is the coefficient of air resistance.
 
 1.  What are the dimensions of the parameter $k$?
 
@@ -672,9 +696,9 @@ Find the local extrema for the function $f(x) = x^3(x-3)(x-6)^4$ using numerical
 3.  Demonstrate how to use `fsolve()` using any non-trivial nonlinear equation solving problem. Demonstrate what some of the options of `fsolve()` do.
 
 4.  The `scipy.optimize.fsolve()` command can also solve systems of equations (something we have not built algorithms for in this chapter). Consider the system of equations 
-\begin{equation}
- \begin{aligned} x_0 \cos(x_1) &= 4 \\ x_0 x_1 - x_1 &= 5 \end{aligned} 
-\end{equation}
+$$
+ \begin{split} x_0 \cos(x_1) &= 4 \\ x_0 x_1 - x_1 &= 5 \end{split} 
+$$
  The following Python code allows you to use `scipy.optimize.fsolve()` so solve this system of nonlinear equations in much the same way as we did in part (b) of this problem. However, be aware that we need to think of `x` as a vector of $x$-values. Go through the code below and be sure that you understand every line of code.
  
  ``` python         
@@ -689,14 +713,15 @@ fsolve(F, [6,1], full_output=1)
 ```
 
 5.  Solve the system of nonlinear equations below using `.fsolve()`. 
-\begin{equation}
+$$
  \begin{aligned} x^2-xy^2 &=2 \\ xy &= 2 \end{aligned} 
-\end{equation}
+$$
 
 
 :::
 
 ------------------------------------------------------------------------
+
 
 ## Projects
 

@@ -293,6 +293,7 @@ window.Quarto = {
   <li><a href="#numbers" id="toc-numbers" class="nav-link active" data-scroll-target="#numbers"><span class="header-section-number">B.1</span> Numbers</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">B.2</span> Functions</a></li>
   <li><a href="#roots-1" id="toc-roots-1" class="nav-link" data-scroll-target="#roots-1"><span class="header-section-number">B.3</span> Roots 1</a></li>
+  <li><a href="#roots-2" id="toc-roots-2" class="nav-link" data-scroll-target="#roots-2"><span class="header-section-number">B.4</span> Roots 2</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/ex_exam_solns.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -458,6 +459,59 @@ window.Quarto = {
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">10</span>):</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> (x <span class="op">+</span> <span class="dv">2</span>)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section>
+<section id="roots-2" class="level2" data-number="B.4">
+<h2 data-number="B.4" class="anchored" data-anchor-id="roots-2"><span class="header-section-number">B.4</span> Roots 2</h2>
+<p><strong>(a) Secant Method vs Newton’s Method</strong></p>
+<ul>
+<li><strong>Explanation:</strong> The Secant method replaces the exact derivative <span class="math inline">\(f'(x_n)\)</span> in Newton’s iteration formula with a finite difference approximation (the slope of the secant line) using the two previous iterates: <span class="math inline">\(f'(x_n) \approx \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}\)</span>.</li>
+<li><strong>Advantage:</strong> It does not require an explicit formula for the derivative of the function, which is useful if the derivative is difficult or computationally expensive to evaluate.</li>
+<li><strong>Disadvantage:</strong> It has a lower order of convergence (superlinear, <span class="math inline">\(\alpha \approx 1.62\)</span>) compared to Newton’s method (quadratic, <span class="math inline">\(\alpha = 2\)</span>), so it may require more iterations to achieve the same accuracy. It also requires two initial guesses instead of one.</li>
+</ul>
+<p><strong>(b) Order of Convergence</strong></p>
+<ul>
+<li><strong>Definition:</strong> A sequence <span class="math inline">\(\{x_n\}\)</span> converging to <span class="math inline">\(p\)</span> (with <span class="math inline">\(x_n \neq p\)</span>) has an order of convergence <span class="math inline">\(\alpha \ge 1\)</span> if there exists a constant <span class="math inline">\(\lambda &gt; 0\)</span> such that <span class="math inline">\(\lim_{n \to \infty} \frac{|x_{n+1}-p|}{|x_n - p|^\alpha} = \lambda\)</span>.</li>
+<li><strong>Orders of convergence:</strong>
+<ul>
+<li>Bisection Method: 1 (Linear)</li>
+<li>Secant Method: <span class="math inline">\(\frac{1+\sqrt{5}}{2} \approx 1.618\)</span> (Superlinear)</li>
+<li>Newton’s Method: 2 (Quadratic)</li>
+</ul></li>
+</ul>
+<p><strong>(c) Applying the Methods to <span class="math inline">\(f(x) = x^2 - 5\)</span></strong></p>
+<ul>
+<li><strong>i) Newton’s method:</strong>
+<ul>
+<li><span class="math inline">\(f(x) = x^2 - 5 \implies f'(x) = 2x\)</span>.</li>
+<li>Formula: <span class="math inline">\(x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}\)</span>.</li>
+<li><span class="math inline">\(x_0 = 2\)</span>.</li>
+<li><span class="math inline">\(f(2) = 2^2 - 5 = -1\)</span>.</li>
+<li><span class="math inline">\(f'(2) = 2(2) = 4\)</span>.</li>
+<li><span class="math inline">\(x_1 = 2 - \frac{-1}{4} = 2.25\)</span>.</li>
+</ul></li>
+<li><strong>ii) Secant method:</strong>
+<ul>
+<li>Formula: <span class="math inline">\(x_{n+1} = x_n - \frac{f(x_n)(x_n - x_{n-1})}{f(x_n) - f(x_{n-1})}\)</span>.</li>
+<li><span class="math inline">\(x_0 = 3, f(x_0) = 3^2 - 5 = 4\)</span>.</li>
+<li><span class="math inline">\(x_1 = 2, f(x_1) = 2^2 - 5 = -1\)</span>.</li>
+<li><span class="math inline">\(x_2 = 2 - \frac{(-1)(2 - 3)}{(-1) - 4} = 2 - \frac{(-1)(-1)}{-5} = 2 - \frac{1}{-5} = 2.2\)</span>.</li>
+</ul></li>
+</ul>
+<p><strong>(d) Error Estimation</strong></p>
+<ul>
+<li>Given <span class="math inline">\(E_{n+1} \approx E_n^2\)</span>.</li>
+<li><span class="math inline">\(E_3 \approx E_2^2 = (10^{-3})^2 = 10^{-6}\)</span>.</li>
+<li><span class="math inline">\(E_4 \approx E_3^2 = (10^{-6})^2 = 10^{-12}\)</span>.</li>
+<li>The expected error <span class="math inline">\(E_4\)</span> is roughly <span class="math inline">\(10^{-12}\)</span>.</li>
+</ul>
+<p><strong>(e) Order of Convergence for Newton’s Method</strong></p>
+<ul>
+<li>Newton’s method is defined by <span class="math inline">\(x_{n+1} = g(x_n)\)</span> where <span class="math inline">\(g(x) = x - \frac{f(x)}{f'(x)}\)</span>.</li>
+<li>To find the order of convergence, we evaluate the derivatives of <span class="math inline">\(g(x)\)</span> at the root <span class="math inline">\(p\)</span>.</li>
+<li>First derivative: <span class="math inline">\(g'(x) = 1 - \frac{f'(x)f'(x) - f(x)f''(x)}{[f'(x)]^2} = \frac{[f'(x)]^2 - [f'(x)]^2 + f(x)f''(x)}{[f'(x)]^2} = \frac{f(x)f''(x)}{[f'(x)]^2}\)</span>.</li>
+<li>Evaluate <span class="math inline">\(g'(x)\)</span> at <span class="math inline">\(p\)</span>: since <span class="math inline">\(p\)</span> is a root, <span class="math inline">\(f(p) = 0\)</span>. Since it is a simple root, <span class="math inline">\(f'(p) \neq 0\)</span>. Thus, <span class="math inline">\(g'(p) = \frac{f(p)f''(p)}{[f'(p)]^2} = \frac{0 \cdot f''(p)}{[f'(p)]^2} = 0\)</span>.</li>
+<li>According to the theorem on the order of convergence for fixed-point iterations, if <span class="math inline">\(g(p) = p\)</span> and <span class="math inline">\(g'(p) = 0\)</span>, but <span class="math inline">\(g''(p) \neq 0\)</span> (which is generally true unless <span class="math inline">\(f''(p)=0\)</span>), the sequence has an order of convergence of <span class="math inline">\(m=2\)</span> (quadratic convergence).</li>
 </ul>
 
 

@@ -331,11 +331,12 @@ window.Quarto = {
   <li><a href="#newtons-method" id="toc-newtons-method" class="nav-link" data-scroll-target="#newtons-method"><span class="header-section-number">4.3.3</span> Newton’s Method</a></li>
   <li><a href="#secant-method" id="toc-secant-method" class="nav-link" data-scroll-target="#secant-method"><span class="header-section-number">4.3.4</span> Secant Method</a></li>
   </ul></li>
-  <li><a href="#sec-nonlinear-problems" id="toc-sec-nonlinear-problems" class="nav-link" data-scroll-target="#sec-nonlinear-problems"><span class="header-section-number">4.4</span> Problems</a></li>
-  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects"><span class="header-section-number">4.5</span> Projects</a>
+  <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">4.4</span> Exam-style question</a></li>
+  <li><a href="#sec-nonlinear-problems" id="toc-sec-nonlinear-problems" class="nav-link" data-scroll-target="#sec-nonlinear-problems"><span class="header-section-number">4.5</span> Problems</a></li>
+  <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects"><span class="header-section-number">4.6</span> Projects</a>
   <ul>
-  <li><a href="#basins-of-attraction" id="toc-basins-of-attraction" class="nav-link" data-scroll-target="#basins-of-attraction"><span class="header-section-number">4.5.1</span> Basins of Attraction</a></li>
-  <li><a href="#artillery" id="toc-artillery" class="nav-link" data-scroll-target="#artillery"><span class="header-section-number">4.5.2</span> Artillery</a></li>
+  <li><a href="#basins-of-attraction" id="toc-basins-of-attraction" class="nav-link" data-scroll-target="#basins-of-attraction"><span class="header-section-number">4.6.1</span> Basins of Attraction</a></li>
+  <li><a href="#artillery" id="toc-artillery" class="nav-link" data-scroll-target="#artillery"><span class="header-section-number">4.6.2</span> Artillery</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/nmRoots2.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -371,11 +372,11 @@ window.Quarto = {
 <p>Root finding is really the process of finding the <span class="math inline">\(x\)</span>-intercept of the function. If the function is complicated (e.g.&nbsp;highly nonlinear or does not lend itself to traditional by-hand techniques) then we can approximate the <span class="math inline">\(x\)</span>-intercept by creating a Taylor Series approximation of the function at a nearby point and then finding the <span class="math inline">\(x\)</span>-intercept of that simpler Taylor Series. The simplest non-trivial Taylor Series is a linear function – a tangent line!</p>
 <hr>
 <div id="exr-2.32" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.1</strong></span> 🖋 A tangent line approximation to a function <span class="math inline">\(f(x)\)</span> near a point <span class="math inline">\(x_0\)</span> is <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 4.1</strong></span> 🖋 A tangent line approximation to a function <span class="math inline">\(f(x)\)</span> near a point <span class="math inline">\(x_0\)</span> is <span class="math display">\[
 y = f(x_0) + f'(x_0) \left( x - x_0 \right).
-\end{equation}\]</span> Set <span class="math inline">\(y\)</span> to zero and solve for <span class="math inline">\(x\)</span> to find the <span class="math inline">\(x\)</span>-intercept of the tangent line. <span class="math display">\[\begin{equation}
+\]</span> Set <span class="math inline">\(y\)</span> to zero and solve for <span class="math inline">\(x\)</span> to find the <span class="math inline">\(x\)</span>-intercept of the tangent line. <span class="math display">\[
 \text{$x$-intercept of tangent line is } x = \underline{\hspace{0.5in}}
-\end{equation}\]</span></p>
+\]</span></p>
 </div>
 <hr>
 <p>The idea of approximating the function by its tangent line gives us an algorithm for approximating the root of a function:</p>
@@ -509,9 +510,9 @@ g(x)= \dots.
 </section>
 <section id="failures" class="level3" data-number="4.1.3">
 <h3 data-number="4.1.3" class="anchored" data-anchor-id="failures"><span class="header-section-number">4.1.3</span> Failures</h3>
-<p>There are several ways in which Newton’s Method will behave unexpectedly – or downright fail. Some of these issues can be foreseen by examining the Newton iteration formula <span class="math display">\[\begin{equation}
+<p>There are several ways in which Newton’s Method will behave unexpectedly – or downright fail. Some of these issues can be foreseen by examining the Newton iteration formula <span class="math display">\[
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
-\end{equation}\]</span> Some of the failures that we will see are a little more surprising.</p>
+\]</span> Some of the failures that we will see are a little more surprising.</p>
 <hr>
 <div id="exr-2.41" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 4.9</strong></span> 💻 One of the failures of Newton’s Method is that it requires a division by <span class="math inline">\(f'(x_n)\)</span>. If <span class="math inline">\(f'(x_n)\)</span> is zero then the algorithm completely fails. Go back to your Python function and put an <code>if</code> statement in the function that catches instances when Newton’s Method fails in this way.</p>
@@ -600,9 +601,9 @@ Figure&nbsp;4.3: Another surprising Newton’s Method failure when <span class="
 </div>
 <hr>
 <div id="exr-2.43" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.12</strong></span> 🖋 Now let us consider the function <span class="math inline">\(f(x) = \sqrt[3]{x}\)</span>. This function has a root <span class="math inline">\(x=0\)</span>. Furthermore, it is differentiable everywhere except at <span class="math inline">\(x=0\)</span> since <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 4.12</strong></span> 🖋 Now let us consider the function <span class="math inline">\(f(x) = \sqrt[3]{x}\)</span>. This function has a root <span class="math inline">\(x=0\)</span>. Furthermore, it is differentiable everywhere except at <span class="math inline">\(x=0\)</span> since <span class="math display">\[
 f'(x) = \frac{1}{3} x^{-2/3} = \frac{1}{3x^{2/3}}.
-\end{equation}\]</span> The point of this exercise is to show what can happen when the point of non-differentiability is precisely the point that you are looking for.</p>
+\]</span> The point of this exercise is to show what can happen when the point of non-differentiability is precisely the point that you are looking for.</p>
 <ol type="1">
 <li>Fill in the table of iterations starting at <span class="math inline">\(x=-1\)</span>, draw the tangent lines on the plot, and make a general observation of what is happening with the Newton iterations.</li>
 </ol>
@@ -671,9 +672,9 @@ Figure&nbsp;4.4: Another surprising Newton’s Method failure when <span class="
 </figure>
 </div>
 <ol start="2" type="1">
-<li><p>Now let us look at the Newton iteration in a bit more detail. Since <span class="math inline">\(f(x) = x^{1/3}\)</span> and <span class="math inline">\(f'(x) = \frac{1}{3} x^{-2/3}\)</span> the Newton iteration can be simplified as <span class="math display">\[\begin{equation}
+<li><p>Now let us look at the Newton iteration in a bit more detail. Since <span class="math inline">\(f(x) = x^{1/3}\)</span> and <span class="math inline">\(f'(x) = \frac{1}{3} x^{-2/3}\)</span> the Newton iteration can be simplified as <span class="math display">\[
 x_{n+1} = x_n - \frac{x_n^{1/3}}{ \left( \frac{1}{3} x_n^{-2/3} \right)} = x_n - 3 \frac{x_n^{1/3}}{x_n^{-2/3}} = x_n - 3x_n = -2x_n.
-\end{equation}\]</span> What does this tell us about the Newton iterations?<br>
+\]</span> What does this tell us about the Newton iterations?<br>
 Hint: You should have found the exact same thing in the numerical experiment in part 1.</p></li>
 <li><p>Was there anything special about the starting point <span class="math inline">\(x_0=-1\)</span>? Will this problem exist for every starting point?</p></li>
 </ol>
@@ -721,9 +722,9 @@ f(x)=e^{x-3}+\sqrt{x+6}-4
 <section id="intuition-and-implementation" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="intuition-and-implementation"><span class="header-section-number">4.2.1</span> Intuition and Implementation</h3>
 <p>Newton’s Method has second-order (quadratic) convergence and, as such, will perform faster than the Bisection method. However, Newton’s Method requires that you have a function and a derivative of that function. The conundrum here is that sometimes the derivative is cumbersome or impossible to obtain but you still want to have the great quadratic convergence exhibited by Newton’s method.</p>
-<p>Recall that Newton’s method is <span class="math display">\[\begin{equation}
+<p>Recall that Newton’s method is <span class="math display">\[
 x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
-\end{equation}\]</span> If we replace <span class="math inline">\(f'(x_n)\)</span> with an approximation of the derivative then we may have a method that is <em>close</em> to Newton’s method in terms of convergence rate but is less troublesome to compute. Any method that replaces the derivative in Newton’s method with an approximation is called a <strong>Quasi-Newton Method</strong>.</p>
+\]</span> If we replace <span class="math inline">\(f'(x_n)\)</span> with an approximation of the derivative then we may have a method that is <em>close</em> to Newton’s method in terms of convergence rate but is less troublesome to compute. Any method that replaces the derivative in Newton’s method with an approximation is called a <strong>Quasi-Newton Method</strong>.</p>
 <p>The first, and most obvious, way to approximate the derivative is just to use the slope of a secant line instead of the slope of the tangent line in the Newton iteration. If we choose two starting points that are quite close to each other then the slope of the secant line through those points will be approximately the same as the slope of the tangent line.</p>
 <div id="fig-secant" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -737,11 +738,11 @@ Figure&nbsp;4.5: Using successive secant line approximations to find the root of
 </div>
 <hr>
 <div id="exr-2.46" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.18</strong></span> 🖋 Use the backward difference <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 4.18</strong></span> 🖋 Use the backward difference <span class="math display">\[
 f'(x_n) \approx \frac{f(x_n) - f(x_{n-1})}{x_n - x_{n-1}}
-\end{equation}\]</span> to approximate the derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\(x_n\)</span>. &nbsp;Discuss why this approximates the derivative. Use this approximation of <span class="math inline">\(f'(x_n)\)</span> in the expression for <span class="math inline">\(x_{n+1}\)</span> of Newton’s method. Show that that the result simplifies to <span class="math display">\[\begin{equation}
+\]</span> to approximate the derivative of <span class="math inline">\(f\)</span> at <span class="math inline">\(x_n\)</span>. &nbsp;Discuss why this approximates the derivative. Use this approximation of <span class="math inline">\(f'(x_n)\)</span> in the expression for <span class="math inline">\(x_{n+1}\)</span> of Newton’s method. Show that that the result simplifies to <span class="math display">\[
 x_{n+1} = x_n - \frac{f(x_n)\left( x_n - x_{n-1} \right)}{f(x_n) - f(x_{n-1})}.
-\end{equation}\]</span></p>
+\]</span></p>
 </div>
 <hr>
 <div id="exr-2.47" class="theorem exercise">
@@ -840,8 +841,12 @@ E_{n+1}&amp;=\vert x_{n+1}-p\vert=\vert g(x_{n})-p\vert= \left\vert\frac{(x_{n}-
 <p>Newton’s method for approximating the root <span class="math inline">\(p\)</span> of the equation <span class="math inline">\(f(x)=0\)</span> is equivalent to the fixed-point iteration <span class="math inline">\(x_{n+1}=g(x_{n})\)</span> with <span id="eq-nonlin39"><span class="math display">\[
 g(x)=x-\frac{f(x)}{f'(x)}.
 \tag{4.9}\]</span></span> Suppose that sequence <span class="math inline">\(\{x_{n}\}\)</span> converges to <span class="math inline">\(p\)</span> and <span class="math inline">\(f'(p)\neq 0\)</span>. We have <span id="eq-nonlin40"><span class="math display">\[
-g'(x)=\frac{f(x)f''(x)}{[f'(x)]^2} \quad \Rightarrow \quad g'(p)=\frac{f(p)f''(p)}{[f'(p)]^2}=0 .
-\tag{4.10}\]</span></span> It follows from the above theorem that the order of convergence of Newton’s method is 2 (except in the special case where <span class="math inline">\(g''(p)=0\)</span>).</p>
+g'(x)=\frac{f(x)f''(x)}{f'(x)^2} \quad \Rightarrow \quad g'(p)=\frac{f(p)f''(p)}{f'(p)^2}=0 .
+\tag{4.10}\]</span></span> It follows from the above theorem that the order of convergence of Newton’s method is at least 2. We also have <span class="math display">\[
+g''(x)=\frac{f'(x)f''(x)+f(x)f'''(x)}{f'(x)^2} - \frac{f(x)f''(x)^2}{f'(x)^3}
+\]</span> and hence, again using that <span class="math inline">\(f(p)=0\)</span>, we find <span id="eq-nonlin41"><span class="math display">\[
+g''(p)=\frac{f''(p)}{f'(p)}\neq 0 \qquad\text{if } f''(p)\neq 0
+\tag{4.11}\]</span></span> If <span class="math inline">\(f''(p)=0\)</span>, then <span class="math inline">\(g''(p)=0\)</span> and the order of convergence is at least 3.</p>
 </section>
 <section id="secant-method" class="level3" data-number="4.3.4">
 <h3 data-number="4.3.4" class="anchored" data-anchor-id="secant-method"><span class="header-section-number">4.3.4</span> Secant Method</h3>
@@ -849,11 +854,11 @@ g'(x)=\frac{f(x)f''(x)}{[f'(x)]^2} \quad \Rightarrow \quad g'(p)=\frac{f(p)f''(p
 <p>Note that <span class="math inline">\(\alpha\)</span> is known as the <em>golden ratio</em>. If you are intrigued to see the golden ratio appear in this context, you can find a proof below. If you are happy to just accept the miracle, you can skip the proof.</p>
 <p>Suppose that a sequence <span class="math inline">\(\{x_{n}\}\)</span>, generated by the secant method <span id="eq-secant1"><span class="math display">\[
 x_{n+1}=x_{n}- \frac{f(x_{n})(x_{n}-x_{n-1})}{f(x_{n})-f(x_{n-1})},
-\tag{4.11}\]</span></span> converges to <span class="math inline">\(p\)</span>. Let <span id="eq-nonlin41"><span class="math display">\[
+\tag{4.12}\]</span></span> converges to <span class="math inline">\(p\)</span>. Let <span id="eq-nonlin41"><span class="math display">\[
 e_{n}=x_{n}-p,
-\tag{4.12}\]</span></span> so that <span class="math inline">\(E_n=\vert e_n\vert\)</span>, and we assume that <span class="math inline">\(E_n \ll 1\)</span>, which is definitely true for sufficiently large <span class="math inline">\(n\)</span> (since the sequence <span class="math inline">\(\{x_n\}\)</span> is converging to <span class="math inline">\(p\)</span>). Subtracting <span class="math inline">\(p\)</span> from both sides of <a href="#eq-secant1" class="quarto-xref">Eq.&nbsp;<span>4.11</span></a>, we obtain <span id="eq-secant2"><span class="math display">\[
+\tag{4.13}\]</span></span> so that <span class="math inline">\(E_n=\vert e_n\vert\)</span>, and we assume that <span class="math inline">\(E_n \ll 1\)</span>, which is definitely true for sufficiently large <span class="math inline">\(n\)</span> (since the sequence <span class="math inline">\(\{x_n\}\)</span> is converging to <span class="math inline">\(p\)</span>). Subtracting <span class="math inline">\(p\)</span> from both sides of <a href="#eq-secant1" class="quarto-xref">Eq.&nbsp;<span>4.12</span></a>, we obtain <span id="eq-secant2"><span class="math display">\[
 e_{n+1}=e_{n}- \frac{f(p+e_{n})(e_{n}-e_{n-1})}{f(p+e_{n})-f(p+e_{n-1})},
-\tag{4.13}\]</span></span> Expanding <span class="math inline">\(f(p+e_{n})\)</span> and <span class="math inline">\(f(p+e_{n-1})\)</span> in Taylor series about <span class="math inline">\(p\)</span> and taking into account that <span class="math inline">\(f(p)=0\)</span>, we find that <span id="eq-secant3"><span class="math display">\[
+\tag{4.14}\]</span></span> Expanding <span class="math inline">\(f(p+e_{n})\)</span> and <span class="math inline">\(f(p+e_{n-1})\)</span> in Taylor series about <span class="math inline">\(p\)</span> and taking into account that <span class="math inline">\(f(p)=0\)</span>, we find that <span id="eq-secant3"><span class="math display">\[
 \begin{split}
 f(p+e_{n})&amp;=e_{n}f^{\prime}(p)+
 \frac{e_{n}^{2}}{2}f^{\prime\prime}(p)+ \cdots \\
@@ -862,47 +867,62 @@ f(p+e_{n-1})&amp;=e_{n-1}f^{\prime}(p)+
 \frac{e_{n-1}^{2}}{2}f^{\prime\prime}(p)+ \cdots  \\
 &amp;=e_{n-1}f^{\prime}(p)(1+e_{n-1}Q)+ \cdots,
 \end{split}
-\tag{4.14}\]</span></span> where <span id="eq-nonlin42"><span class="math display">\[
+\tag{4.15}\]</span></span> where <span id="eq-nonlin42"><span class="math display">\[
 Q=\frac{f^{\prime\prime}(p)}{2f^{\prime}(p)}.
-\tag{4.15}\]</span></span> Substitution of <a href="#eq-secant3" class="quarto-xref">Eq.&nbsp;<span>4.14</span></a> into <a href="#eq-secant2" class="quarto-xref">Eq.&nbsp;<span>4.13</span></a> yields <span id="eq-nonlin43"><span class="math display">\[
+\tag{4.16}\]</span></span> Substitution of <a href="#eq-secant3" class="quarto-xref">Eq.&nbsp;<span>4.15</span></a> into <a href="#eq-secant2" class="quarto-xref">Eq.&nbsp;<span>4.14</span></a> yields <span id="eq-nonlin43"><span class="math display">\[
 \begin{split}
 e_{n+1}&amp;=e_{n}- \frac{e_{n}(e_{n}-e_{n-1})f^{\prime}(p)(1+e_{n}Q)+\cdots}{f^{\prime}(p)
 \left[e_{n}-e_{n-1}+Q(e_{n}^2-e_{n-1}^2)+\cdots\right]} \\
 &amp;=e_{n}\left(1-\frac{1+e_{n}Q+\cdots}{1+Q(e_{n}+e_{n-1})+\cdots}\right).
 \end{split}
-\tag{4.16}\]</span></span> Since, for small <span class="math inline">\(x\)</span>, <span id="eq-nonlin44"><span class="math display">\[
+\tag{4.17}\]</span></span> Since, for small <span class="math inline">\(x\)</span>, <span id="eq-nonlin44"><span class="math display">\[
 \frac{1}{1+x+\cdots}= 1-x+\cdots ,
-\tag{4.17}\]</span></span> we obtain <span id="eq-nonlin45"><span class="math display">\[
+\tag{4.18}\]</span></span> we obtain <span id="eq-nonlin45"><span class="math display">\[
 \begin{split}
 e_{n+1}&amp;=e_{n}\left(1-\left(1+e_{n}Q+\cdots\right)\left(1-Q(e_{n}+e_{n-1})+\cdots\right)\right)\\
 &amp;=Q e_{n}e_{n-1}+\cdots.
 \end{split}
-\tag{4.18}\]</span></span> Thus, for sufficiently large <span class="math inline">\(n\)</span>, we have <span id="eq-nonlin46"><span class="math display">\[
+\tag{4.19}\]</span></span> Thus, for sufficiently large <span class="math inline">\(n\)</span>, we have <span id="eq-nonlin46"><span class="math display">\[
 e_{n+1} \approx Q e_{n}e_{n-1}.
-\tag{4.19}\]</span></span> Hence, <span id="eq-bb7"><span class="math display">\[
+\tag{4.20}\]</span></span> Hence, <span id="eq-bb7"><span class="math display">\[
 E_{n+1} \approx \vert Q\vert \, E_{n}E_{n-1}.
-\tag{4.20}\]</span></span> Now we assume that (for all sufficiently large <span class="math inline">\(n\)</span>) <span id="eq-bb8"><span class="math display">\[
+\tag{4.21}\]</span></span> Now we assume that (for all sufficiently large <span class="math inline">\(n\)</span>) <span id="eq-bb8"><span class="math display">\[
 E_{n+1} \approx \lambda E_{n}^{\alpha},
-\tag{4.21}\]</span></span> where <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span> are positive constants. Substituting <a href="#eq-bb8" class="quarto-xref">Eq.&nbsp;<span>4.21</span></a> into <a href="#eq-bb7" class="quarto-xref">Eq.&nbsp;<span>4.20</span></a>, we find <span id="eq-nonlin47"><span class="math display">\[
+\tag{4.22}\]</span></span> where <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span> are positive constants. Substituting <a href="#eq-bb8" class="quarto-xref">Eq.&nbsp;<span>4.22</span></a> into <a href="#eq-bb7" class="quarto-xref">Eq.&nbsp;<span>4.21</span></a>, we find <span id="eq-nonlin47"><span class="math display">\[
 \lambda E_{n}^{\alpha} \approx \vert Q\vert E_{n}E_{n-1} \quad \text{  or } \quad
 \lambda E_{n}^{\alpha-1} \approx \vert Q\vert E_{n-1}.
-\tag{4.22}\]</span></span> Applying <a href="#eq-bb8" class="quarto-xref">Eq.&nbsp;<span>4.21</span></a> one more time (with <span class="math inline">\(n\)</span> replaced by <span class="math inline">\(n-1\)</span>), we obtain <span id="eq-nonlin48"><span class="math display">\[
+\tag{4.23}\]</span></span> Applying <a href="#eq-bb8" class="quarto-xref">Eq.&nbsp;<span>4.22</span></a> one more time (with <span class="math inline">\(n\)</span> replaced by <span class="math inline">\(n-1\)</span>), we obtain <span id="eq-nonlin48"><span class="math display">\[
 \lambda \left(\lambda E_{n-1}^{\alpha}\right)^{\alpha-1} \approx \vert Q\vert E_{n-1}
-\tag{4.23}\]</span></span> or, equivalently, <span id="eq-nonlin49"><span class="math display">\[
+\tag{4.24}\]</span></span> or, equivalently, <span id="eq-nonlin49"><span class="math display">\[
 \lambda^{\alpha} E_{n-1}^{\alpha(\alpha-1)} \approx \vert Q\vert E_{n-1}.
-\tag{4.24}\]</span></span> The last equation will be satisfied provided that <span id="eq-nonlin50"><span class="math display">\[
+\tag{4.25}\]</span></span> The last equation will be satisfied provided that <span id="eq-nonlin50"><span class="math display">\[
 \lambda^{\alpha}=\vert Q\vert, \quad \alpha(\alpha-1)=1 ,
-\tag{4.25}\]</span></span> which requires that <span id="eq-nonlin51"><span class="math display">\[
+\tag{4.26}\]</span></span> which requires that <span id="eq-nonlin51"><span class="math display">\[
 \lambda=\vert Q\vert^{1/\alpha}, \quad \alpha=(1+\sqrt{5})/2\approx 1.62.
-\tag{4.26}\]</span></span> Thus, we have shown that if <span class="math inline">\(\{x_{n}\}\)</span> is a convergent sequence generated by the secant method, then <span id="eq-nonlin52"><span class="math display">\[
+\tag{4.27}\]</span></span> Thus, we have shown that if <span class="math inline">\(\{x_{n}\}\)</span> is a convergent sequence generated by the secant method, then <span id="eq-nonlin52"><span class="math display">\[
 \lim_{n\to\infty}\frac{E_{n+1}}{E_{n}^{\alpha}}=\vert Q\vert^{1/\alpha}.
-\tag{4.27}\]</span></span> Thus, the secant method has <em>superlinear</em> convergence.</p>
+\tag{4.28}\]</span></span> Thus, the secant method has <em>superlinear</em> convergence.</p>
 <p>Further reading: Section 2.4 of <span class="citation" data-cites="Burden_Faires">(<a href="#ref-Burden_Faires" role="doc-biblioref">Burden and Faires 2010</a>)</span>.</p>
 <hr>
 </section>
 </section>
-<section id="sec-nonlinear-problems" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="sec-nonlinear-problems"><span class="header-section-number">4.4</span> Problems</h2>
+<section id="exam-style-question" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">4.4</span> Exam-style question</h2>
+<ol type="a">
+<li><p>Briefly explain how the Secant method modifies Newton’s method. Give one advantage and one disadvantage of the Secant method compared to Newton’s method. [3 marks]</p></li>
+<li><p>Define what it means for a sequence <span class="math inline">\(\{x_n\}\)</span> converging to <span class="math inline">\(p\)</span> to have an <em>order of convergence</em> <span class="math inline">\(\alpha \ge 1\)</span>. State the order of convergence for the Bisection method, the Secant method, and Newton’s method. [4 marks]</p></li>
+<li><p>Consider finding the root of <span class="math inline">\(f(x) = x^2 - 5\)</span>.</p>
+<ol type="i">
+<li>Apply Newton’s method with an initial guess <span class="math inline">\(x_0 = 2\)</span> to find the next approximation <span class="math inline">\(x_1\)</span>. [2 marks]</li>
+<li>Apply the Secant method with initial guesses <span class="math inline">\(x_0 = 3\)</span> and <span class="math inline">\(x_1 = 2\)</span> to find the next approximation <span class="math inline">\(x_2\)</span>. [2 marks]</li>
+</ol></li>
+<li><p>Suppose a root-finding method produces a sequence <span class="math inline">\(\{x_n\}\)</span> with quadratic convergence, and the errors <span class="math inline">\(E_n = |x_n - p|\)</span> satisfy <span class="math inline">\(E_{n+1} \approx E_n^2\)</span>. If the current error is <span class="math inline">\(E_2 = 10^{-3}\)</span>, roughly what is the expected error <span class="math inline">\(E_4\)</span>? [1 mark]</p></li>
+<li><p>Show that if <span class="math inline">\(p\)</span> is a simple root of <span class="math inline">\(f(x)\)</span> (that is, <span class="math inline">\(f(p) = 0\)</span> and <span class="math inline">\(f'(p) \neq 0\)</span>) and <span class="math inline">\(f(x)\)</span> is sufficiently smooth, Newton’s method has an order of convergence of at least <span class="math inline">\(\alpha=2\)</span>. You may use the theorem on the order of convergence for fixed-point iteration. [4 marks]</p></li>
+</ol>
+<hr>
+</section>
+<section id="sec-nonlinear-problems" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sec-nonlinear-problems"><span class="header-section-number">4.5</span> Problems</h2>
 <div id="exr-2.62" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 4.24</strong></span> Can the Bisection Method or Newton’s Method be used to find the roots of the function <span class="math inline">\(f(x) = \cos(x) + 1\)</span>? Explain why or why not for each technique? What is the rate of convergence? Be careful here, the answer is surprising.</p>
 </div>
@@ -916,9 +936,9 @@ E_{n+1} \approx \lambda E_{n}^{\alpha},
 </div>
 <hr>
 <div id="exr-2.57" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.27</strong></span> In this problem you will demonstrate that all of your root finding codes work. At the beginning of this chapter we proposed the equation solving problem <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 4.27</strong></span> In this problem you will demonstrate that all of your root finding codes work. At the beginning of this chapter we proposed the equation solving problem <span class="math display">\[
 3\sin(x) + 9 = x^2 - \cos(x).
-\end{equation}\]</span> Write a script that calls upon your Bisection, Newton, and Secant methods one at a time to find the positive solution to this equation. Your script needs to output the solutions in a clear and readable way so you can tell which answer came from which root finding algorithm.</p>
+\]</span> Write a script that calls upon your Bisection, Newton, and Secant methods one at a time to find the positive solution to this equation. Your script needs to output the solutions in a clear and readable way so you can tell which answer came from which root finding algorithm.</p>
 </div>
 <hr>
 <div id="exr-2.58" class="theorem exercise">
@@ -940,13 +960,13 @@ Figure&nbsp;4.6: Six Error Plots
 <hr>
 <div id="exr-2.60" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 4.29</strong></span> There are MANY other root finding techniques beyond the four that we have studied thus far. We can build these methods using Taylor Series as follows:</p>
-<p>Near <span class="math inline">\(x=x_0\)</span> the function <span class="math inline">\(f(x)\)</span> is approximated by the Taylor Series <span class="math display">\[\begin{equation}
+<p>Near <span class="math inline">\(x=x_0\)</span> the function <span class="math inline">\(f(x)\)</span> is approximated by the Taylor Series <span class="math display">\[
 f(x) \approx y = f(x_0) + \sum_{n=1}^N \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n
-\end{equation}\]</span> where <span class="math inline">\(N\)</span> is a positive integer. In a root-finding algorithm we set <span class="math inline">\(y\)</span> to zero to find the root of the approximation function. The root of this function <em>should</em> be close to the actual root that we are looking for. Therefore, to find the next iterate we solve the equation <span class="math display">\[\begin{equation}
+\]</span> where <span class="math inline">\(N\)</span> is a positive integer. In a root-finding algorithm we set <span class="math inline">\(y\)</span> to zero to find the root of the approximation function. The root of this function <em>should</em> be close to the actual root that we are looking for. Therefore, to find the next iterate we solve the equation <span class="math display">\[
 0 = f(x_0) + \sum_{n=1}^N \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n
-\end{equation}\]</span> for <span class="math inline">\(x\)</span>. For example, if <span class="math inline">\(N=1\)</span> then we need to solve <span class="math inline">\(0 = f(x_0) + f'(x_0)(x-x_0)\)</span> for <span class="math inline">\(x\)</span>. In doing so we get <span class="math inline">\(x = x_0 - f(x_0)/f'(x_0)\)</span>. This is exactly Newton’s method. If <span class="math inline">\(N=2\)</span> then we need to solve <span class="math display">\[\begin{equation}
+\]</span> for <span class="math inline">\(x\)</span>. For example, if <span class="math inline">\(N=1\)</span> then we need to solve <span class="math inline">\(0 = f(x_0) + f'(x_0)(x-x_0)\)</span> for <span class="math inline">\(x\)</span>. In doing so we get <span class="math inline">\(x = x_0 - f(x_0)/f'(x_0)\)</span>. This is exactly Newton’s method. If <span class="math inline">\(N=2\)</span> then we need to solve <span class="math display">\[
 0 = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2!}(x-x_0)^2
-\end{equation}\]</span> for <span class="math inline">\(x\)</span>.</p>
+\]</span> for <span class="math inline">\(x\)</span>.</p>
 <ol type="a">
 <li><p>Solve for <span class="math inline">\(x\)</span> in the case that <span class="math inline">\(N=2\)</span>. Then write a Python function that implements this root-finding method.</p></li>
 <li><p>Demonstrate that your code from part (a) is indeed working by solving several problems where you know the exact solution.</p></li>
@@ -956,9 +976,9 @@ f(x) \approx y = f(x_0) + \sum_{n=1}^N \frac{f^{(n)}(x_0)}{n!} (x-x_0)^n
 </div>
 <hr>
 <div id="exr-2.61" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.30</strong></span> (modified from <span class="citation" data-cites="Burden_Faires">(<a href="#ref-Burden_Faires" role="doc-biblioref">Burden and Faires 2010</a>)</span>) An object falling vertically through the air is subject to friction due to air resistance as well as gravity. The function describing the position of such an object is <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 4.30</strong></span> (modified from <span class="citation" data-cites="Burden_Faires">(<a href="#ref-Burden_Faires" role="doc-biblioref">Burden and Faires 2010</a>)</span>) An object falling vertically through the air is subject to friction due to air resistance as well as gravity. The function describing the position of such an object is <span class="math display">\[
 s(t) = s_0 - \frac{mg}{k} t + \frac{m^2 g}{k^2}\left( 1- e^{-kt/m} \right),
-\end{equation}\]</span> where <span class="math inline">\(m\)</span> is the mass measured in kg, <span class="math inline">\(g\)</span> is gravity measured in meters per second per second, <span class="math inline">\(s_0\)</span> is the initial position measured in meters, and <span class="math inline">\(k\)</span> is the coefficient of air resistance.</p>
+\]</span> where <span class="math inline">\(m\)</span> is the mass measured in kg, <span class="math inline">\(g\)</span> is gravity measured in meters per second per second, <span class="math inline">\(s_0\)</span> is the initial position measured in meters, and <span class="math inline">\(k\)</span> is the coefficient of air resistance.</p>
 <ol type="1">
 <li><p>What are the dimensions of the parameter <span class="math inline">\(k\)</span>?</p></li>
 <li><p>If <span class="math inline">\(m = 1\)</span>kg, <span class="math inline">\(g=9.8\)</span>m/s<span class="math inline">\(^2\)</span>, <span class="math inline">\(k=0.1kg/s\)</span>, and <span class="math inline">\(s_0 = 100\)</span>m how long will it take for the object to hit the ground? Find your answer to within 0.01 seconds.</p></li>
@@ -982,9 +1002,9 @@ Find the local extrema for the function <span class="math inline">\(f(x) = x^3(x
 <li><p>Fully explain each of the outputs from the <code>scipy.optimize.fsolve()</code> command. You should use the <code>fsolve()</code> command with <code>full_output=1</code> so you can see all of the solver diagnostics.</p></li>
 </ol></li>
 <li><p>Demonstrate how to use <code>fsolve()</code> using any non-trivial nonlinear equation solving problem. Demonstrate what some of the options of <code>fsolve()</code> do.</p></li>
-<li><p>The <code>scipy.optimize.fsolve()</code> command can also solve systems of equations (something we have not built algorithms for in this chapter). Consider the system of equations <span class="math display">\[\begin{equation}
-\begin{aligned} x_0 \cos(x_1) &amp;= 4 \\ x_0 x_1 - x_1 &amp;= 5 \end{aligned}
-\end{equation}\]</span> The following Python code allows you to use <code>scipy.optimize.fsolve()</code> so solve this system of nonlinear equations in much the same way as we did in part (b) of this problem. However, be aware that we need to think of <code>x</code> as a vector of <span class="math inline">\(x\)</span>-values. Go through the code below and be sure that you understand every line of code.</p></li>
+<li><p>The <code>scipy.optimize.fsolve()</code> command can also solve systems of equations (something we have not built algorithms for in this chapter). Consider the system of equations <span class="math display">\[
+\begin{split} x_0 \cos(x_1) &amp;= 4 \\ x_0 x_1 - x_1 &amp;= 5 \end{split}
+\]</span> The following Python code allows you to use <code>scipy.optimize.fsolve()</code> so solve this system of nonlinear equations in much the same way as we did in part (b) of this problem. However, be aware that we need to think of <code>x</code> as a vector of <span class="math inline">\(x\)</span>-values. Go through the code below and be sure that you understand every line of code.</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> fsolve</span>
@@ -995,18 +1015,18 @@ Find the local extrema for the function <span class="math inline">\(f(x) = x^3(x
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>fsolve(F, [<span class="dv">6</span>,<span class="dv">1</span>], full_output<span class="op">=</span><span class="dv">1</span>) </span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: full_output=1 gives the solver diagnostics</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="5" type="1">
-<li>Solve the system of nonlinear equations below using <code>.fsolve()</code>. <span class="math display">\[\begin{equation}
+<li>Solve the system of nonlinear equations below using <code>.fsolve()</code>. <span class="math display">\[
 \begin{aligned} x^2-xy^2 &amp;=2 \\ xy &amp;= 2 \end{aligned}
-\end{equation}\]</span></li>
+\]</span></li>
 </ol>
 </div>
 <hr>
 </section>
-<section id="projects" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="projects"><span class="header-section-number">4.5</span> Projects</h2>
+<section id="projects" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="projects"><span class="header-section-number">4.6</span> Projects</h2>
 <p>At the end of every chapter we propose a few projects related to the content in the preceding chapter(s). In this section we propose two ideas for a project related to numerical algebra. The projects in this book are meant to be open ended, to encourage creative mathematics, to push your coding skills, and to require you to write and communicate your mathematics.</p>
-<section id="basins-of-attraction" class="level3" data-number="4.5.1">
-<h3 data-number="4.5.1" class="anchored" data-anchor-id="basins-of-attraction"><span class="header-section-number">4.5.1</span> Basins of Attraction</h3>
+<section id="basins-of-attraction" class="level3" data-number="4.6.1">
+<h3 data-number="4.6.1" class="anchored" data-anchor-id="basins-of-attraction"><span class="header-section-number">4.6.1</span> Basins of Attraction</h3>
 <p>Let <span class="math inline">\(f(x)\)</span> be a differentiable function with several roots. Given a starting <span class="math inline">\(x\)</span> value we should be able to apply Newton’s Method to that starting point and we will converge to one of the roots (so long as you are not in one of the special cases discussed earlier in the chapter). It stands to reason that starting points <em>near</em> each other should all end up at the same root, and for some functions this is true. However, it is not true in general.</p>
 <p>A <strong>basin of attraction</strong> for a root is the set of <span class="math inline">\(x\)</span> values that converges to that root under Newton iterations. In this problem you will produce coloured plots showing the basins of attraction for all of the following functions. Do this as follows:</p>
 <ul>
@@ -1036,8 +1056,8 @@ Figure&nbsp;4.7: A sample basin of attraction image for a cubic function.
 <li><p>Now pick your favourite complex-valued function and build a picture of the basins of attraction. Consider this an art project! See if you can come up with the prettiest basin of attraction picture.</p></li>
 </ol>
 </section>
-<section id="artillery" class="level3" data-number="4.5.2">
-<h3 data-number="4.5.2" class="anchored" data-anchor-id="artillery"><span class="header-section-number">4.5.2</span> Artillery</h3>
+<section id="artillery" class="level3" data-number="4.6.2">
+<h3 data-number="4.6.2" class="anchored" data-anchor-id="artillery"><span class="header-section-number">4.6.2</span> Artillery</h3>
 <p>An artillery officer wishes to fire his cannon on an enemy brigade. He wants to know the angle to aim the cannon in order to strike the target. If we have control over the initial velocity of the cannon ball, <span class="math inline">\(v_0\)</span>, and the angle of the cannon above horizontal, <span class="math inline">\(\theta\)</span>, then the initial vertical component of the velocity of the ball is <span class="math inline">\(v_y(0) = v_0 \sin(\theta)\)</span> and the initial horizontal component of the velocity of the ball is <span class="math inline">\(v_x(0) = v_0 \cos(\theta)\)</span>. In this problem we will assume the following:</p>
 <ul>
 <li><p>We will neglect air resistance<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> so, for all time, the differential equations <span class="math inline">\(v_y'(t) = -g\)</span> and <span class="math inline">\(v_x'(t) = 0\)</span> must both hold.</p></li>

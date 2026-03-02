@@ -460,7 +460,7 @@ g''(x)=\frac{f'(x)f''(x)+f(x)f'''(x)}{f'(x)^2} - \frac{f(x)f''(x)^2}{f'(x)^3}
 $$
 and hence, again using that $f(p)=0$, we find
 $$
-g''(p)=\frac{f''(p)}{f'(p)}\neq 0 \qquad\text{if } f''(p)\neq 0
+g''(p)=\frac{f''(p)}{f'(p)}\neq 0 \qquad\text{if } f''(p)\neq 0.
 $$  {#eq-nonlin41}
 If $f''(p)=0$, then $g''(p)=0$ and the order of convergence is at least 3.
 

@@ -97,7 +97,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -365,10 +365,10 @@ window.Quarto = {
 </blockquote>
 <section id="intro-to-numerical-linear-algebra" class="level2" data-number="C.1">
 <h2 data-number="C.1" class="anchored" data-anchor-id="intro-to-numerical-linear-algebra"><span class="header-section-number">C.1</span> Intro to Numerical Linear Algebra</h2>
-<p>The preceding comment says it all – linear algebra is the most important of all of the mathematical tools that you can learn as a practitioner of the mathematical sciences. The theorems, proofs, conjectures, and big ideas in almost every other mathematical field find their roots in linear algebra. Our goal in this chapter is to explore numerical algorithms for the primary questions of linear algebra:</p>
+<p>The preceding comment says it all – linear algebra is the most important of all of the mathematical tools that you can learn as a practitioner of the mathematical sciences. The theorems, proofs, conjectures, and big ideas in almost every other mathematical field find their roots in linear algebra. Numerical Linear Algebra is the study of algorithms for solving problems in linear algebra. This subject has a somewhat different flavour than the numerical analysis we are studying in the main text and hence we present it as an optional appendix.</p>
+<p>Our goal in this appendix is to explore numerical algorithms for the primary questions of linear algebra:</p>
 <ul>
 <li><p>solving systems of equations,</p></li>
-<li><p>approximating solutions to over-determined systems of equations, and</p></li>
 <li><p>finding eigenvalue-eigenvector pairs for a matrix.</p></li>
 </ul>
 <p>Take careful note that in our current digital age, numerical linear algebra and its fast algorithms are behind the scenes for wide varieties of computing applications. Applications of numerical linear algebra include:</p>
@@ -473,7 +473,7 @@ A = \begin{pmatrix} A_{0,0} &amp; A_{0,1} &amp; A_{0,2} &amp; \cdots &amp; A_{0,
 </div>
 <hr>
 <div id="exr-4.1" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.1</strong></span> 💻 Build your own matrix in Python and practice choosing individual entries from the matrix.</p>
+<p><span class="theorem-title"><strong>Exercise C.1</strong></span> Build your own matrix in Python and practice choosing individual entries from the matrix.</p>
 </div>
 <hr>
 <div id="exm-4.5" class="theorem example">
@@ -492,7 +492,7 @@ A = \begin{pmatrix} A_{0,0} &amp; A_{0,1} &amp; A_{0,2} &amp; \cdots &amp; A_{0,
 </div>
 <hr>
 <div id="exr-4.2" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.2</strong></span> 💻 Define the matrix <span class="math inline">\(A\)</span> and the vector <span class="math inline">\(u\)</span> in Python. Then perform all of the tasks below. <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.2</strong></span> Define the matrix <span class="math inline">\(A\)</span> and the vector <span class="math inline">\(u\)</span> in Python. Then perform all of the tasks below. <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 3 &amp; 5 &amp; 7 \\ 2 &amp; 4 &amp; 6 &amp; 8 \\ -3 &amp; -2 &amp; -1 &amp; 0 \end{pmatrix} \quad \text{and} \quad \boldsymbol{u} = \begin{pmatrix} 10\\20\\30 \end{pmatrix}
 \end{equation}\]</span></p>
 <ol type="1">
@@ -512,7 +512,7 @@ A = \begin{pmatrix} 1 &amp; 3 &amp; 5 &amp; 7 \\ 2 &amp; 4 &amp; 6 &amp; 8 \\ -3
 <section id="the-dot-product" class="level3" data-number="C.4.1">
 <h3 data-number="C.4.1" class="anchored" data-anchor-id="the-dot-product"><span class="header-section-number">C.4.1</span> The Dot Product</h3>
 <div id="exr-4.3" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.3</strong></span> 🖋 💬 This problem is meant to jog your memory about dot products, how to compute them, and what you might use them for. If your linear algebra is a bit rusty then read ahead a bit and then come back to this problem.</p>
+<p><span class="theorem-title"><strong>Exercise C.3</strong></span> This problem is meant to jog your memory about dot products, how to compute them, and what you might use them for. If your linear algebra is a bit rusty then read ahead a bit and then come back to this problem.</p>
 <p>Consider two vectors <span class="math inline">\(\boldsymbol{u}\)</span> and <span class="math inline">\(\boldsymbol{v}\)</span> defined as <span class="math display">\[\begin{equation}
 \boldsymbol{u} = \begin{pmatrix} 1 \\ 2 \end{pmatrix} \quad \text{and} \quad \boldsymbol{v} = \begin{pmatrix} 3\\4 \end{pmatrix}.
 \end{equation}\]</span></p>
@@ -549,14 +549,14 @@ A = \begin{pmatrix} 1 &amp; 3 &amp; 5 &amp; 7 \\ 2 &amp; 4 &amp; 6 &amp; 8 \\ -3
 </div>
 <hr>
 <div id="exr-4.5" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.4</strong></span> 💻 Write a Python function that accepts two vectors (defined as <code>numpy</code> arrays) and returns the dot product. Write this code without the use any loops.</p>
+<p><span class="theorem-title"><strong>Exercise C.4</strong></span> Write a Python function that accepts two vectors (defined as <code>numpy</code> arrays) and returns the dot product. Write this code without the use any loops.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> myDotProduct(u,v):</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="co"># the dot product formula uses a product inside a sum.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-4.6" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.5</strong></span> 💻 Test your <code>myDotProduct()</code> function on several dot products to make sure that it works. Example code to find the dot product between <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.5</strong></span> Test your <code>myDotProduct()</code> function on several dot products to make sure that it works. Example code to find the dot product between <span class="math display">\[\begin{equation}
 \boldsymbol{u} = \begin{pmatrix} 1 \\ 2\\ 3\end{pmatrix} \quad \text{and} \quad \boldsymbol{v} = \begin{pmatrix} 4\\5\\6\end{pmatrix}
 \end{equation}\]</span> is given below. Test your code on other vectors. Then implement an error catch into your code to catch the case where the two input vectors are not the same size. You will want to use the <code>len()</code> command to find the length of the vectors.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>])</span>
@@ -565,14 +565,14 @@ A = \begin{pmatrix} 1 &amp; 3 &amp; 5 &amp; 7 \\ 2 &amp; 4 &amp; 6 &amp; 8 \\ -3
 </div>
 <hr>
 <div id="exr-4.7" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.6</strong></span> 💻 💬 Try sending Python lists instead of <code>numpy</code> arrays into your <code>myDotProduct</code> function. What happens? Why does it happen? What is the cautionary tale here? Modify your <code>myDotProduct()</code> function one more time so that it starts by converting the input vectors into <code>numpy</code> arrays.</p>
+<p><span class="theorem-title"><strong>Exercise C.6</strong></span> Try sending Python lists instead of <code>numpy</code> arrays into your <code>myDotProduct</code> function. What happens? Why does it happen? What is the cautionary tale here? Modify your <code>myDotProduct()</code> function one more time so that it starts by converting the input vectors into <code>numpy</code> arrays.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>]</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>myDotProduct(u,v)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-4.8" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.7</strong></span> 💻 The <code>numpy</code> library in Python has a built-in command for doing the dot product: <code>np.dot()</code>. Test the <code>np.dot()</code> command and be sure that it does the same thing as your <code>myDotProduct()</code> function.</p>
+<p><span class="theorem-title"><strong>Exercise C.7</strong></span> The <code>numpy</code> library in Python has a built-in command for doing the dot product: <code>np.dot()</code>. Test the <code>np.dot()</code> command and be sure that it does the same thing as your <code>myDotProduct()</code> function.</p>
 </div>
 <hr>
 </section>
@@ -580,7 +580,7 @@ A = \begin{pmatrix} 1 &amp; 3 &amp; 5 &amp; 7 \\ 2 &amp; 4 &amp; 6 &amp; 8 \\ -3
 <h3 data-number="C.4.2" class="anchored" data-anchor-id="matrix-multiplication"><span class="header-section-number">C.4.2</span> Matrix Multiplication</h3>
 <p>Next we will blow the dust off of your matrix multiplication skills.</p>
 <div id="exr-4.9" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.8</strong></span> 🖋 Verify that the product of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is indeed what we show below. Work out all of the details by hand. <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.8</strong></span> Verify that the product of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> is indeed what we show below. Work out all of the details by hand. <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{pmatrix} \qquad B = \begin{pmatrix} 7 &amp; 8 &amp; 9 \\ 10 &amp; 11 &amp; 12 \end{pmatrix}
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
@@ -600,7 +600,7 @@ AB = \begin{pmatrix} 27 &amp; 30 &amp; 33 \\ 61 &amp; 68 &amp; 75 \\ 95 &amp; 10
 </div>
 <hr>
 <div id="exr-4.10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.9</strong></span> 🖋 💬 The definition of matrix multiplication above contains the cryptic phrase <em>a moment’s reflection reveals that each entry in the matrix product is actually a dot product.</em> Let us go back to the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> defined in <a href="#exr-4.9" class="quarto-xref">Exercise&nbsp;<span>C.8</span></a> above and re-evaluate the matrix multiplication algorithm to make sure that you see each entry as the end result of a dot product.</p>
+<p><span class="theorem-title"><strong>Exercise C.9</strong></span> The definition of matrix multiplication above contains the cryptic phrase <em>a moment’s reflection reveals that each entry in the matrix product is actually a dot product.</em> Let us go back to the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> defined in <a href="#exr-4.9" class="quarto-xref">Exercise&nbsp;<span>C.8</span></a> above and re-evaluate the matrix multiplication algorithm to make sure that you see each entry as the end result of a dot product.</p>
 <p>We want to find the product of matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> using dot products. <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{pmatrix} \qquad B = \begin{pmatrix} 7 &amp; 8 &amp; 9 \\ 10 &amp; 11 &amp; 12 \end{pmatrix}
 \end{equation}\]</span></p>
@@ -639,7 +639,7 @@ AB = \begin{pmatrix} 27 &amp; 30 &amp; 33 \\ 61 &amp; 68 &amp; 75 \\ 95 &amp; 10
 </div>
 <hr>
 <div id="exr-4.11" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.10</strong></span> 💻 The observation that matrix multiplication is just a bunch of dot products is what makes the code for doing matrix multiplication very fast and very streamlined. We want to write a Python function that accepts two <code>numpy</code> matrices and returns the product of the two matrices. Inside the code we will leverage the <code>np.dot()</code> command to do the appropriate dot products.</p>
+<p><span class="theorem-title"><strong>Exercise C.10</strong></span> The observation that matrix multiplication is just a bunch of dot products is what makes the code for doing matrix multiplication very fast and very streamlined. We want to write a Python function that accepts two <code>numpy</code> matrices and returns the product of the two matrices. Inside the code we will leverage the <code>np.dot()</code> command to do the appropriate dot products.</p>
 <p>Partial code is given below. Fill in all of the details and give ample comments showing what each line does.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> myMatrixMult(A,B):</span>
@@ -667,17 +667,17 @@ AB = \begin{pmatrix} 27 &amp; 30 &amp; 33 \\ 61 &amp; 68 &amp; 75 \\ 95 &amp; 10
 </div>
 <hr>
 <div id="exr-4.12" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.11</strong></span> 💻 Try your <code>myMatrixMult()</code> function on several other matrix multiplication problems.</p>
+<p><span class="theorem-title"><strong>Exercise C.11</strong></span> Try your <code>myMatrixMult()</code> function on several other matrix multiplication problems.</p>
 </div>
 <hr>
 <div id="exr-4.13" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.12</strong></span> 💻 Build in an error catch so that your <code>myMatrixMult()</code> function catches when the input matrices do not have compatible sizes for multiplication. Write your code so that it returns an appropriate error message in this special case.</p>
+<p><span class="theorem-title"><strong>Exercise C.12</strong></span> Build in an error catch so that your <code>myMatrixMult()</code> function catches when the input matrices do not have compatible sizes for multiplication. Write your code so that it returns an appropriate error message in this special case.</p>
 </div>
 <hr>
 <p>Now that you have been through the exercise of building a matrix multiplication function we will admit that using it inside larger coding problems would be a bit cumbersome (and perhaps annoying). It would be nice to just type <code>@</code> and have Python just <em>know</em> that you mean to do matrix multiplication. This is where <code>numpy</code> arrays come in quite handy.</p>
 <hr>
 <div id="exr-4.14" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.13 (Matrix Multiplication with Python)</strong></span> 💻 💬 Python will handle matrix multiplication easily so long as the matrices are defined as <code>numpy</code> arrays. For example, with the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> from above if you can just type <code>A @ B</code> (or <code>np.dot(A, B)</code>) in Python and you will get the correct result. Pretty nice!! Let us take another moment to notice, though, that regular Python lists do not behave in the same way. Can you guess what happens if you run the following Python code? (Note: <code>*</code> does strictly element-wise multiplication for numpy arrays, which we will see in a moment).</p>
+<p><span class="theorem-title"><strong>Exercise C.13 (Matrix Multiplication with Python)</strong></span> Python will handle matrix multiplication easily so long as the matrices are defined as <code>numpy</code> arrays. For example, with the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> from above if you can just type <code>A @ B</code> (or <code>np.dot(A, B)</code>) in Python and you will get the correct result. Pretty nice!! Let us take another moment to notice, though, that regular Python lists do not behave in the same way. Can you guess what happens if you run the following Python code? (Note: <code>*</code> does strictly element-wise multiplication for numpy arrays, which we will see in a moment).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [[<span class="dv">1</span>,<span class="dv">2</span>],[<span class="dv">3</span>,<span class="dv">4</span>],[<span class="dv">5</span>,<span class="dv">6</span>]] <span class="co"># a Python list of lists</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [[<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">9</span>],[<span class="dv">10</span>,<span class="dv">11</span>,<span class="dv">12</span>]] <span class="co"># a Python list of lists</span></span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">@</span> B</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -710,7 +710,7 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{pmatrix} \quad \tex
 <p>Let us blow the dust off your row reduction skills before we look at something better.</p>
 <hr>
 <div id="exr-4.15" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.14</strong></span> 🖋 Solve the following system of equations by hand. <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.14</strong></span> Solve the following system of equations by hand. <span class="math display">\[\begin{equation}
 \begin{array}{rl} x_0 + 2x_1 + 3x_2 &amp;= 1 \\ 4x_0 + 5x_1 + 6x_2 &amp;= 0 \\ 7x_0 + 8x_1 &amp;= 2 \end{array}
 \end{equation}\]</span> Note that the system of equations can also be written in the matrix form <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 2\end{pmatrix}
@@ -719,7 +719,7 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{pmatrix} \quad \tex
 </div>
 <hr>
 <div id="exr-4.16" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.15</strong></span> 🖋 💬 We want to solve the system of equations <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.15</strong></span> We want to solve the system of equations <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 2\end{pmatrix}
 \end{equation}\]</span></p>
 <p><strong>Row Reduction Process:</strong></p>
@@ -774,7 +774,7 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{pmatrix} \quad \tex
 </div>
 <hr>
 <div id="exr-4.17" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.16</strong></span> 💬 Summarize the process for doing Gaussian Elimination to solve a square system of linear equations.</p>
+<p><span class="theorem-title"><strong>Exercise C.16</strong></span> Summarize the process for doing Gaussian Elimination to solve a square system of linear equations.</p>
 </div>
 <hr>
 </section>
@@ -790,7 +790,7 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{pmatrix} \quad \tex
 <p>That’s what the next several exercises are going to lead you to. Our goal here is to develop an algorithm that is fast to implement on a computer and simultaneously performs the same basic operations as row reduction for solving systems of linear equations.</p>
 <hr>
 <div id="exr-4.18" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.17</strong></span> 🖋 💬 Let <span class="math inline">\(A\)</span> be defined as <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.17</strong></span> Let <span class="math inline">\(A\)</span> be defined as <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 \end{pmatrix}.
 \end{equation}\]</span></p>
 <ol type="1">
@@ -814,13 +814,13 @@ L_3 \left( L_2 L_1 A \right) = \begin{pmatrix} \underline{\hspace{0.25in}} &amp;
 </div>
 <hr>
 <div id="exr-4.19" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.18</strong></span> 🖋 Apply the same idea from the previous problem to do the first three steps of row reduction to the matrix <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.18</strong></span> Apply the same idea from the previous problem to do the first three steps of row reduction to the matrix <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 2 &amp; 6 &amp; 9 \\ -6 &amp; 8 &amp; 1 \\ 2 &amp; 2 &amp; 10 \end{pmatrix}
 \end{equation}\]</span></p>
 </div>
 <hr>
 <div id="exr-4.20" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.19</strong></span> 💬 Now let us make a few observations about the two previous problems.</p>
+<p><span class="theorem-title"><strong>Exercise C.19</strong></span> Now let us make a few observations about the two previous problems.</p>
 <ol type="1">
 <li><p>What will multiplying <span class="math inline">\(A\)</span> by a matrix of the form <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ c &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}
@@ -836,7 +836,7 @@ A = \begin{pmatrix} 2 &amp; 6 &amp; 9 \\ -6 &amp; 8 &amp; 1 \\ 2 &amp; 2 &amp; 1
 </div>
 <hr>
 <div id="exr-4.21" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.20</strong></span> 🖋 💬 After doing all of the matrix products, <span class="math inline">\(L_3 L_2 L_1 A\)</span>, the resulting matrix will have zeros in the entire lower triangle. That is, all of the non-zero entries of the resulting matrix will be on the main diagonal or above. We call this matrix <span class="math inline">\(U\)</span>, for upper-triangular. Hence, we have formed a matrix <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.20</strong></span> After doing all of the matrix products, <span class="math inline">\(L_3 L_2 L_1 A\)</span>, the resulting matrix will have zeros in the entire lower triangle. That is, all of the non-zero entries of the resulting matrix will be on the main diagonal or above. We call this matrix <span class="math inline">\(U\)</span>, for upper-triangular. Hence, we have formed a matrix <span class="math display">\[\begin{equation}
 L_3 L_2 L_1 A = U
 \end{equation}\]</span> and if we want to solve for <span class="math inline">\(A\)</span> we would get <span class="math display">\[\begin{equation}
 A = (\underline{\hspace{0.5in}})^{-1} (\underline{\hspace{0.5in}})^{-1} (\underline{\hspace{0.5in}})^{-1} U
@@ -844,11 +844,11 @@ A = (\underline{\hspace{0.5in}})^{-1} (\underline{\hspace{0.5in}})^{-1} (\underl
 </div>
 <hr>
 <div id="exr-4.22" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.21</strong></span> 💻 💬 It would be nice, now, if the inverses of the <span class="math inline">\(L\)</span> matrices were easy to find. Use <code>np.linalg.inv()</code> to directly compute the inverse of <span class="math inline">\(L_1\)</span>, <span class="math inline">\(L_2\)</span>, and <span class="math inline">\(L_3\)</span> for each of the example matrices. Then complete the statement: If <span class="math inline">\(L_k\)</span> is an identity matrix with some non-zero <span class="math inline">\(c\)</span> in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> then <span class="math inline">\(L_k^{-1}\)</span> is what matrix?</p>
+<p><span class="theorem-title"><strong>Exercise C.21</strong></span> It would be nice, now, if the inverses of the <span class="math inline">\(L\)</span> matrices were easy to find. Use <code>np.linalg.inv()</code> to directly compute the inverse of <span class="math inline">\(L_1\)</span>, <span class="math inline">\(L_2\)</span>, and <span class="math inline">\(L_3\)</span> for each of the example matrices. Then complete the statement: If <span class="math inline">\(L_k\)</span> is an identity matrix with some non-zero <span class="math inline">\(c\)</span> in row <span class="math inline">\(i\)</span> and column <span class="math inline">\(j\)</span> then <span class="math inline">\(L_k^{-1}\)</span> is what matrix?</p>
 </div>
 <hr>
 <div id="exr-4.23" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.22</strong></span> 🖋 We started this discussion with <span class="math inline">\(A\)</span> as <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.22</strong></span> We started this discussion with <span class="math inline">\(A\)</span> as <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 \end{pmatrix}
 \end{equation}\]</span> and we defined <span class="math display">\[\begin{equation}
 L_1 = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ -4 &amp; 1 &amp; 0 \\ 0 &amp; 0 &amp; 1 \end{pmatrix}, \quad L_2 = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ -7 &amp; 0 &amp; 1 \end{pmatrix}, \quad \text{and} \quad L_3 = \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 0 &amp; 1 &amp; 0 \\ 0 &amp; -2 &amp; 1 \end{pmatrix}.
@@ -877,7 +877,7 @@ A = L_1^{-1} L_2^{-1} L_3^{-1} U.
 </div>
 <hr>
 <div id="exr-4.24" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.23</strong></span> 🖋 Go to <a href="#exm-4.LU" class="quarto-xref">Example&nbsp;<span>C.7</span></a> and go through every iteration of every loop <strong>by hand</strong> starting with the matrix <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.23</strong></span> Go to <a href="#exm-4.LU" class="quarto-xref">Example&nbsp;<span>C.7</span></a> and go through every iteration of every loop <strong>by hand</strong> starting with the matrix <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 \end{pmatrix}.
 \end{equation}\]</span> Give details of what happens at every step of the algorithm. I will get you started.</p>
 <ul>
@@ -901,7 +901,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 
 </div>
 <hr>
 <div id="exr-4.25" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.24</strong></span> 💻 Apply your new <code>myLU</code> code to other square matrices and verify that indeed <span class="math inline">\(A\)</span> is the product of the resulting <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> matrices. You can produce a random matrix with <code>np.random.randn(n,n)</code> where <code>n</code> is the number of rows and columns of the matrix. For example, <code>np.random.randn(10,10)</code> will produce a random <span class="math inline">\(10 \times 10\)</span> matrix with entries chosen from the normal distribution with centre 0 and standard deviation 1. Random matrices are just as good as any other when testing your algorithm.</p>
+<p><span class="theorem-title"><strong>Exercise C.24</strong></span> Apply your new <code>myLU</code> code to other square matrices and verify that indeed <span class="math inline">\(A\)</span> is the product of the resulting <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> matrices. You can produce a random matrix with <code>np.random.randn(n,n)</code> where <code>n</code> is the number of rows and columns of the matrix. For example, <code>np.random.randn(10,10)</code> will produce a random <span class="math inline">\(10 \times 10\)</span> matrix with entries chosen from the normal distribution with centre 0 and standard deviation 1. Random matrices are just as good as any other when testing your algorithm.</p>
 </div>
 <hr>
 </section>
@@ -916,13 +916,13 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 
 <p>In the following exercises we will devise algorithms for solving triangular systems. After we know how to work with triangular systems we will put all of the pieces together and show how to leverage the <span class="math inline">\(LU\)</span> decomposition and the solution techniques for triangular systems to quickly and efficiently solve linear systems.</p>
 <hr>
 <div id="exr-4.26" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.25</strong></span> 🖋 💬 Outline a fast algorithm (without formal row reduction) for solving the lower-triangular system <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.25</strong></span> Outline a fast algorithm (without formal row reduction) for solving the lower-triangular system <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 4 &amp; 1 &amp; 0 \\ 7 &amp; 2 &amp; 1 \end{pmatrix} \begin{pmatrix} y_0 \\ y_1 \\ y_2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 2\end{pmatrix}.
 \end{equation}\]</span></p>
 </div>
 <hr>
 <div id="exr-4.27" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.26</strong></span> 🖋 💬 As a convention we will always write our lower-triangular matrices with ones on the main diagonal. Generalize your steps from the previous exercise so that you have an algorithm for solving any lower-triangular system. The most natural algorithm that most people devise here is called <strong>forward substitution</strong>.</p>
+<p><span class="theorem-title"><strong>Exercise C.26</strong></span> As a convention we will always write our lower-triangular matrices with ones on the main diagonal. Generalize your steps from the previous exercise so that you have an algorithm for solving any lower-triangular system. The most natural algorithm that most people devise here is called <strong>forward substitution</strong>.</p>
 </div>
 <hr>
 <div id="def-4.5" class="theorem definition">
@@ -942,7 +942,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 
 </div>
 <hr>
 <div id="exr-4.28" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.27</strong></span> 🖋 💬 Work with your partner(s) to apply the <code>lsolve()</code> code to the lower-triangular system<br>
+<p><span class="theorem-title"><strong>Exercise C.27</strong></span> Work with your partner(s) to apply the <code>lsolve()</code> code to the lower-triangular system<br>
 </p>
 <p><span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 0 &amp; 0 \\ 4 &amp; 1 &amp; 0 \\ 7 &amp; 2 &amp; 1 \end{pmatrix} \begin{pmatrix} y_0 \\ y_1 \\ y_2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 2\end{pmatrix}
@@ -980,19 +980,19 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 
 </div>
 <hr>
 <div id="exr-4.29" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.28</strong></span> 💻 Copy the code from <a href="#def-4.5" class="quarto-xref">Definition&nbsp;<span>C.4</span></a> into a Python function but in your code write a comment on every line stating what it is doing. Write a test script that creates a lower-triangular matrix of the correct form and a right-hand side <span class="math inline">\(\boldsymbol{b}\)</span> and solve for <span class="math inline">\(\boldsymbol{y}\)</span>. Test your code by giving it a large lower-triangular system.</p>
+<p><span class="theorem-title"><strong>Exercise C.28</strong></span> Copy the code from <a href="#def-4.5" class="quarto-xref">Definition&nbsp;<span>C.4</span></a> into a Python function but in your code write a comment on every line stating what it is doing. Write a test script that creates a lower-triangular matrix of the correct form and a right-hand side <span class="math inline">\(\boldsymbol{b}\)</span> and solve for <span class="math inline">\(\boldsymbol{y}\)</span>. Test your code by giving it a large lower-triangular system.</p>
 </div>
 <hr>
 <p>Now that we have a method for solving lower-triangular systems, let us build a similar method for solving upper-triangular systems. The merging of lower and upper-triangular systems will play an important role in solving systems of equations.</p>
 <hr>
 <div id="exr-4.30" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.29</strong></span> 🖋 💬 Outline a fast algorithm (without formal row reduction) for solving the upper-triangular system <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.29</strong></span> Outline a fast algorithm (without formal row reduction) for solving the upper-triangular system <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 0 &amp; -3 &amp; -6 \\ 0 &amp; 0 &amp; -9 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 1 \\ -4 \\ 3\end{pmatrix}
 \end{equation}\]</span> The most natural algorithm that most people devise here is called <strong>backward substitution</strong>. Notice that in our upper-triangular matrix we do not have a diagonal containing all ones.</p>
 </div>
 <hr>
 <div id="exr-4.31" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.30</strong></span> 🖋 💬 Generalize your backward substitution algorithm from the previous problem so that it could be applied to any upper-triangular system.</p>
+<p><span class="theorem-title"><strong>Exercise C.30</strong></span> Generalize your backward substitution algorithm from the previous problem so that it could be applied to any upper-triangular system.</p>
 </div>
 <hr>
 <div id="def-4.6" class="theorem definition">
@@ -1010,7 +1010,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 
 </div>
 <hr>
 <div id="exr-4.32" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.31</strong></span> 🖋 💻 Now we will work through the backward substitution algorithm to help fill in the blanks in the code. Consider the upper-triangular system <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.31</strong></span> Now we will work through the backward substitution algorithm to help fill in the blanks in the code. Consider the upper-triangular system <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 0 &amp; -3 &amp; -6 \\ 0 &amp; 0 &amp; -9 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 1 \\ -4 \\ 3\end{pmatrix}
 \end{equation}\]</span></p>
 <p>Work the code from <a href="#def-4.6" class="quarto-xref">Definition&nbsp;<span>C.5</span></a> to solve the system. Keep track of all of the indices as you work through the code. You may want to work this problem in conjunction with the previous two problems to unpack all of the parts of the <em>backward substitution</em> algorithm.</p>
@@ -1052,7 +1052,7 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 </div>
 <hr>
 <div id="exr-4.33" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.32</strong></span> 💻 Copy the code from <a href="#def-4.6" class="quarto-xref">Definition&nbsp;<span>C.5</span></a> into a Python function but in your code write a comment on every line stating what it is doing. Write a test script that creates an upper-triangular matrix of the correct form and a right-hand side <span class="math inline">\(\boldsymbol{y}\)</span> and solve for <span class="math inline">\(\boldsymbol{x}\)</span>. Your code needs to work on systems of arbitrarily large size.</p>
+<p><span class="theorem-title"><strong>Exercise C.32</strong></span> Copy the code from <a href="#def-4.6" class="quarto-xref">Definition&nbsp;<span>C.5</span></a> into a Python function but in your code write a comment on every line stating what it is doing. Write a test script that creates an upper-triangular matrix of the correct form and a right-hand side <span class="math inline">\(\boldsymbol{y}\)</span> and solve for <span class="math inline">\(\boldsymbol{x}\)</span>. Your code needs to work on systems of arbitrarily large size.</p>
 </div>
 <hr>
 </section>
@@ -1061,7 +1061,7 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 <p>We are finally ready for the punch line of this whole <span class="math inline">\(LU\)</span> and triangular systems business!</p>
 <hr>
 <div id="exr-4.34" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.33</strong></span> 💻 💬 If we want to solve <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> then</p>
+<p><span class="theorem-title"><strong>Exercise C.33</strong></span> If we want to solve <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> then</p>
 <ol type="1">
 <li><p>If we can, write the system of equations as <span class="math inline">\(LU \boldsymbol{x} = \boldsymbol{b}\)</span>.</p></li>
 <li><p>Solve <span class="math inline">\(L \boldsymbol{y} = \boldsymbol{b}\)</span> for <span class="math inline">\(\boldsymbol{y}\)</span> using forward substitution.</p></li>
@@ -1071,7 +1071,7 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 </div>
 <hr>
 <div id="exr-4.35" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.34</strong></span> 🖋 💻 Try the process again on the <span class="math inline">\(3\times 3\)</span> system of equations <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.34</strong></span> Try the process again on the <span class="math inline">\(3\times 3\)</span> system of equations <span class="math display">\[\begin{equation}
 \begin{pmatrix} 3 &amp; 6 &amp; 8\\ 2 &amp; 7 &amp; -1 \\ 5 &amp; 2 &amp; 2 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} -13 \\ 4 \\ 1 \end{pmatrix}
 \end{equation}\]</span> That is: Find matrices <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> such that <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> can be written as <span class="math inline">\(LU\boldsymbol{x} = \boldsymbol{b}\)</span>. Then do two triangular solves to determine <span class="math inline">\(\boldsymbol{x}\)</span>.</p>
 </div>
@@ -1099,11 +1099,11 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 </div>
 <hr>
 <div id="exr-4.37" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.35</strong></span> 💬 The <span class="math inline">\(LU\)</span> decomposition is not perfect. Discuss where the algorithm will fail.</p>
+<p><span class="theorem-title"><strong>Exercise C.35</strong></span> The <span class="math inline">\(LU\)</span> decomposition is not perfect. Discuss where the algorithm will fail.</p>
 </div>
 <hr>
 <div id="exr-4.38" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.36</strong></span> 💻 💬 What happens when you try to solve the system of equations <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.36</strong></span> What happens when you try to solve the system of equations <span class="math display">\[\begin{equation}
 \begin{pmatrix} 0 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 0 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 7 \\ 9\\-3\end{pmatrix}
 \end{equation}\]</span> with the <span class="math inline">\(LU\)</span> decomposition algorithm? Discuss.</p>
 </div>
@@ -1114,7 +1114,7 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 <p>In this section we will try to find an improvement on the <span class="math inline">\(LU\)</span> factorization scheme from the previous section. What we will do here is leverage the geometry of the column space of the <span class="math inline">\(A\)</span> matrix instead of leveraging the row reduction process.</p>
 <hr>
 <div id="exr-4.39" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.37</strong></span> 🖋 💻 💬 We want to solve the system of equations <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.37</strong></span> We want to solve the system of equations <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1/3 &amp; 2/3 &amp; 2/3 \\ 2/3 &amp; 1/3 &amp; -2/3 \\ -2/3 &amp; 2/3 &amp; -1/3 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 6 \\ 12\\ -9 \end{pmatrix}.
 \end{equation}\]</span></p>
 <ol type="1">
@@ -1141,7 +1141,7 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 <p>What we will study in this section is a new matrix factorization called the <span class="math inline">\(QR\)</span> factorization whose goal is to convert the matrix <span class="math inline">\(A\)</span> into a product of two matrices, <span class="math inline">\(Q\)</span> and <span class="math inline">\(R\)</span>, where <span class="math inline">\(Q\)</span> is orthonormal and <span class="math inline">\(R\)</span> is upper-triangular.</p>
 <hr>
 <div id="exr-4.40" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.38</strong></span> 💬 Let us say that we have a matrix <span class="math inline">\(A\)</span> and we know that it can be factored into <span class="math inline">\(A = QR\)</span> where <span class="math inline">\(Q\)</span> is an orthonormal matrix and <span class="math inline">\(R\)</span> is an upper-triangular matrix. How would we then leverage this factorization to solve the system of equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for <span class="math inline">\(\boldsymbol{x}\)</span>?</p>
+<p><span class="theorem-title"><strong>Exercise C.38</strong></span> Let us say that we have a matrix <span class="math inline">\(A\)</span> and we know that it can be factored into <span class="math inline">\(A = QR\)</span> where <span class="math inline">\(Q\)</span> is an orthonormal matrix and <span class="math inline">\(R\)</span> is an upper-triangular matrix. How would we then leverage this factorization to solve the system of equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for <span class="math inline">\(\boldsymbol{x}\)</span>?</p>
 </div>
 <hr>
 <p>Before proceeding to the algorithm for the <span class="math inline">\(QR\)</span> factorization let us pause for a moment and review scalar and vector projections from Linear Algebra. In <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>C.1</span></a> we see a graphical depiction of the vector <span class="math inline">\(\boldsymbol{u}\)</span> projected onto vector <span class="math inline">\(\boldsymbol{v}\)</span>. Notice that the projection is indeed the perpendicular projection as this is what seems natural geometrically.</p>
@@ -1181,7 +1181,7 @@ A = \begin{pmatrix} | &amp; | \\ \boldsymbol{u} &amp; \boldsymbol{v} \\ | &amp; 
 <p>Now we return to our goal of finding a way to factor a matrix <span class="math inline">\(A\)</span> into an orthonormal matrix <span class="math inline">\(Q\)</span> and an upper-triangular matrix <span class="math inline">\(R\)</span>. The algorithm that we are about to build depends greatly on the ideas of scalar and vector projections.</p>
 <hr>
 <div id="exr-4.41" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.39</strong></span> 🖋 We want to build a <span class="math inline">\(QR\)</span> factorization of the matrix <span class="math inline">\(A\)</span> in the matrix equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> so that we can leverage the fact that solving the equation <span class="math inline">\(QR\boldsymbol{x} = \boldsymbol{b}\)</span> is easy. Consider the matrix <span class="math inline">\(A\)</span> defined as <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.39</strong></span> We want to build a <span class="math inline">\(QR\)</span> factorization of the matrix <span class="math inline">\(A\)</span> in the matrix equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> so that we can leverage the fact that solving the equation <span class="math inline">\(QR\boldsymbol{x} = \boldsymbol{b}\)</span> is easy. Consider the matrix <span class="math inline">\(A\)</span> defined as <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 3 &amp; 1 \\ 4 &amp; 1 \end{pmatrix}.
 \end{equation}\]</span> Notice that the columns of <span class="math inline">\(A\)</span> are NOT orthonormal (they are not unit vectors and they are not perpendicular to each other).</p>
 <ol type="1">
@@ -1215,7 +1215,7 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </div>
 <hr>
 <div id="exr-4.42" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.40</strong></span> 💻 Keeping track of all of the arithmetic in the <span class="math inline">\(QR\)</span> factorization process is quite challenging, so let us leverage Python to do some of the work for us. The following block of code walks through the previous exercise without any looping (that way we can see every step transparently). Some of the code is missing so you will need to fill it in.</p>
+<p><span class="theorem-title"><strong>Exercise C.40</strong></span> Keeping track of all of the arithmetic in the <span class="math inline">\(QR\)</span> factorization process is quite challenging, so let us leverage Python to do some of the work for us. The following block of code walks through the previous exercise without any looping (that way we can see every step transparently). Some of the code is missing so you will need to fill it in.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the matrix $A$</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">3</span>,<span class="dv">1</span>],[<span class="dv">4</span>,<span class="dv">1</span>]])</span>
@@ -1245,15 +1245,15 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </div>
 <hr>
 <div id="exr-4.43" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.41</strong></span> 💻 You should notice that the code in the previous exercise does not depend on the specific matrix <span class="math inline">\(A\)</span> that we used? Put in a different <span class="math inline">\(2 \times 2\)</span> matrix and verify that the process still works. That is, verify that <span class="math inline">\(Q\)</span> is orthonormal, <span class="math inline">\(R\)</span> is upper-triangular, and <span class="math inline">\(A = QR\)</span>. Be sure, however, that your matrix <span class="math inline">\(A\)</span> is full rank.</p>
+<p><span class="theorem-title"><strong>Exercise C.41</strong></span> You should notice that the code in the previous exercise does not depend on the specific matrix <span class="math inline">\(A\)</span> that we used? Put in a different <span class="math inline">\(2 \times 2\)</span> matrix and verify that the process still works. That is, verify that <span class="math inline">\(Q\)</span> is orthonormal, <span class="math inline">\(R\)</span> is upper-triangular, and <span class="math inline">\(A = QR\)</span>. Be sure, however, that your matrix <span class="math inline">\(A\)</span> is full rank.</p>
 </div>
 <hr>
 <div id="exr-4.44" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.42</strong></span> 🖋 Draw two generic vectors in <span class="math inline">\(\mathbb{R}^2\)</span> and demonstrate the process outlined in the previous problem to build the vectors for the <span class="math inline">\(Q\)</span> matrix starting from your generic vectors.</p>
+<p><span class="theorem-title"><strong>Exercise C.42</strong></span> Draw two generic vectors in <span class="math inline">\(\mathbb{R}^2\)</span> and demonstrate the process outlined in the previous problem to build the vectors for the <span class="math inline">\(Q\)</span> matrix starting from your generic vectors.</p>
 </div>
 <hr>
 <div id="exr-4.45" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.43</strong></span> 🖋 Now we will extend the process from the previous exercises to three dimensions. This time we will seek a matrix <span class="math inline">\(Q\)</span> that has three orthonormal vectors starting from the three original columns of a <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(A\)</span>. Perform each of the following steps <strong>by hand</strong> on the matrix <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.43</strong></span> Now we will extend the process from the previous exercises to three dimensions. This time we will seek a matrix <span class="math inline">\(Q\)</span> that has three orthonormal vectors starting from the three original columns of a <span class="math inline">\(3 \times 3\)</span> matrix <span class="math inline">\(A\)</span>. Perform each of the following steps <strong>by hand</strong> on the matrix <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1 \end{pmatrix}.
 \end{equation}\]</span> In the end you should end up with an orthonormal matrix <span class="math inline">\(Q\)</span> and an upper-triangular matrix <span class="math inline">\(R\)</span>.</p>
 <ul>
@@ -1269,7 +1269,7 @@ A = \begin{pmatrix} 1 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1 
 </div>
 <hr>
 <div id="exr-4.46" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.44</strong></span> 💻 Repeat the previous exercise but write code for each step so that Python can handle all of the computations. Again use the matrix <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.44</strong></span> Repeat the previous exercise but write code for each step so that Python can handle all of the computations. Again use the matrix <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 1 &amp; 0 \\ 1 &amp; 0 &amp; 1 \\ 0 &amp; 1 &amp; 1 \end{pmatrix}.
 \end{equation}\]</span></p>
 </div>
@@ -1291,7 +1291,7 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </div>
 <hr>
 <div id="exr-4.47" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.45 (The QR Factorization)</strong></span> 💻 Now we are ready to build general code for the <span class="math inline">\(QR\)</span> factorization. The following Python function definition is partially complete. Fill in the missing pieces of code and then test your code on square matrices of many different sizes. The easiest way to check if you have an error is to find the normed difference between <span class="math inline">\(A\)</span> and <span class="math inline">\(QR\)</span> with <code>np.linalg.norm(A - Q*R)</code>.</p>
+<p><span class="theorem-title"><strong>Exercise C.45 (The QR Factorization)</strong></span> Now we are ready to build general code for the <span class="math inline">\(QR\)</span> factorization. The following Python function definition is partially complete. Fill in the missing pieces of code and then test your code on square matrices of many different sizes. The easiest way to check if you have an error is to find the normed difference between <span class="math inline">\(A\)</span> and <span class="math inline">\(QR\)</span> with <code>np.linalg.norm(A - Q*R)</code>.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> myQR(A):</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
@@ -1322,23 +1322,22 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </div>
 <hr>
 <div id="exr-4.48" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.46</strong></span> 💻 Solve the system of equations <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.46</strong></span> Solve the system of equations <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ 2 \end{pmatrix}
 \end{equation}\]</span> by first computing the <span class="math inline">\(QR\)</span> factorization of <span class="math inline">\(A\)</span> and then solving the resulting upper-triangular system.</p>
 </div>
 <hr>
 <div id="exr-4.49" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.47</strong></span> 💻 Write code that builds a random <span class="math inline">\(n \times n\)</span> matrix and a random <span class="math inline">\(n \times 1\)</span> vector. Solve the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> using the <span class="math inline">\(QR\)</span> factorization and compare the answer to what we find from <code>np.linalg.solve()</code>. Do this many times for various values of <span class="math inline">\(n\)</span> and create a plot with <span class="math inline">\(n\)</span> on the horizontal axis and the normed error between Python’s answer and your answer from the <span class="math inline">\(QR\)</span> algorithm on the vertical axis. It would be wise to use a <code>plt.semilogy()</code> plot. To find the normed difference you should use <code>np.linalg.norm()</code>. What do you notice?</p>
+<p><span class="theorem-title"><strong>Exercise C.47</strong></span> Write code that builds a random <span class="math inline">\(n \times n\)</span> matrix and a random <span class="math inline">\(n \times 1\)</span> vector. Solve the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> using the <span class="math inline">\(QR\)</span> factorization and compare the answer to what we find from <code>np.linalg.solve()</code>. Do this many times for various values of <span class="math inline">\(n\)</span> and create a plot with <span class="math inline">\(n\)</span> on the horizontal axis and the normed error between Python’s answer and your answer from the <span class="math inline">\(QR\)</span> algorithm on the vertical axis. It would be wise to use a <code>plt.semilogy()</code> plot. To find the normed difference you should use <code>np.linalg.norm()</code>. What do you notice?</p>
 </div>
 <hr>
 </section>
 <section id="over-determined-systems-and-curve-fitting" class="level2" data-number="C.7">
 <h2 data-number="C.7" class="anchored" data-anchor-id="over-determined-systems-and-curve-fitting"><span class="header-section-number">C.7</span> Over-determined Systems and Curve Fitting</h2>
 <div id="exr-4.50" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.48</strong></span> 🖋 💻 💬 In <span class="quarto-unresolved-ref">?exr-3.81</span> we considered finding the quadratic function <span class="math inline">\(f(x) = ax^2 + bx + c\)</span> that <em>best fits</em> the points <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.48</strong></span> Consider the problem of finding the quadratic function <span class="math inline">\(f(x) = ax^2 + bx + c\)</span> that <em>best fits</em> the points <span class="math display">\[\begin{equation}
 (0, 1.07), (1, 3.9), (2, 14.8), (3, 26.8).
-\end{equation}\]</span> Back in <span class="quarto-unresolved-ref">?exr-3.81</span> and the subsequent problems we approached this problem using an optimization tool in Python. You might be surprised to learn that there is a way to do this same optimization with linear algebra!!</p>
-<p>We do not know the values of <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, or <span class="math inline">\(c\)</span> but we do have four different <span class="math inline">\((x,y)\)</span> ordered pairs. Hence, we have four equations: <span class="math display">\[\begin{equation}
+\end{equation}\]</span> We do not know the values of <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, or <span class="math inline">\(c\)</span> but we do have four different <span class="math inline">\((x,y)\)</span> ordered pairs. Hence, we have four equations: <span class="math display">\[\begin{equation}
 1.07 = a(0)^2 + b(0) + c
 \end{equation}\]</span></p>
 <p><span class="math display">\[\begin{equation}
@@ -1364,7 +1363,7 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 <li><p>The projections of <span class="math inline">\(\boldsymbol{b}\)</span> onto the columns of <span class="math inline">\(A\)</span> are the dot products of <span class="math inline">\(\boldsymbol{b}\)</span> with each of the columns of <span class="math inline">\(A\)</span>.</p></li>
 <li><p>What matrix can we multiply both sides of the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> by in order for the right-hand side to become the projection that we want? (Now do the projection in Python)</p></li>
 </ul></li>
-<li><p>If you have done part (d) correctly then you should now have a square system (i.e.&nbsp;the matrix on the left-hand side should now be square). Solve this system for <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>. Compare your answers to what you found way back in <span class="quarto-unresolved-ref">?exr-3.81</span>.</p></li>
+<li><p>If you have done part (d) correctly then you should now have a square system (i.e.&nbsp;the matrix on the left-hand side should now be square). Solve this system for <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, and <span class="math inline">\(c\)</span>.</p></li>
 </ol>
 </div>
 <hr>
@@ -1374,7 +1373,7 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </div>
 <hr>
 <div id="exr-4.51" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.49</strong></span> 💻 Fit a linear function to the following data. Solve for the slope and intercept using the technique outlined in <a href="#thm-4.3" class="quarto-xref">Theorem&nbsp;<span>C.3</span></a>. Make a plot of the points along with your best fit curve.</p>
+<p><span class="theorem-title"><strong>Exercise C.49</strong></span> Fit a linear function to the following data. Solve for the slope and intercept using the technique outlined in <a href="#thm-4.3" class="quarto-xref">Theorem&nbsp;<span>C.3</span></a>. Make a plot of the points along with your best fit curve.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1429,18 +1428,10 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </tr>
 </tbody>
 </table>
-<p>Code to download the data directly is given below.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>URL1 <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/NumericalMethodsSullivan'</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>URL2 <span class="op">=</span> <span class="st">'/NumericalMethodsSullivan.github.io/master/data/'</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>URL <span class="op">=</span> URL1<span class="op">+</span>URL2</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array( pd.read_csv(URL<span class="op">+</span><span class="st">'Exercise4_51.csv'</span>) )</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise4_51.csv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-4.52" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.50</strong></span> 💻 Fit a quadratic function to the following data using the technique outlined in <a href="#thm-4.3" class="quarto-xref">Theorem&nbsp;<span>C.3</span></a>. Make a plot of the points along with your best fit curve.</p>
+<p><span class="theorem-title"><strong>Exercise C.50</strong></span> Fit a quadratic function to the following data using the technique outlined in <a href="#thm-4.3" class="quarto-xref">Theorem&nbsp;<span>C.3</span></a>. Make a plot of the points along with your best fit curve.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1496,17 +1487,17 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </tbody>
 </table>
 <p>Code to download the data directly is given below.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>URL1 <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/NumericalMethodsSullivan'</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>URL2 <span class="op">=</span> <span class="st">'/NumericalMethodsSullivan.github.io/master/data/'</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>URL <span class="op">=</span> URL1<span class="op">+</span>URL2</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array( pd.read_csv(URL<span class="op">+</span><span class="st">'Exercise4_52.csv'</span>) )</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise4_52.csv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>URL1 <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/NumericalMethodsSullivan'</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>URL2 <span class="op">=</span> <span class="st">'/NumericalMethodsSullivan.github.io/master/data/'</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>URL <span class="op">=</span> URL1<span class="op">+</span>URL2</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array( pd.read_csv(URL<span class="op">+</span><span class="st">'Exercise4_52.csv'</span>) )</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise4_52.csv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-4.53" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.51</strong></span> 💬 The Statistical technique of curve fitting is often called “linear regression.” This even holds when we are fitting quadratic functions, cubic functions, etc to the data … we still call that linear regression! Why?</p>
+<p><span class="theorem-title"><strong>Exercise C.51</strong></span> The Statistical technique of curve fitting is often called “linear regression.” This even holds when we are fitting quadratic functions, cubic functions, etc to the data … we still call that linear regression! Why?</p>
 </div>
 <hr>
 <p>This section of the text on solving over determined systems is just a bit of a teaser for a bit of higher-level statistics, data science, and machine learning. The normal equations and solving systems via projections is the starting point of many modern machine learning algorithms.</p>
@@ -1514,7 +1505,7 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </section>
 <section id="the-eigenvalue-eigenvector-problem" class="level2" data-number="C.8">
 <h2 data-number="C.8" class="anchored" data-anchor-id="the-eigenvalue-eigenvector-problem"><span class="header-section-number">C.8</span> The Eigenvalue-Eigenvector Problem</h2>
-<p>We finally turn our attention to the last major topic in numerical linear algebra in this course.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
+<p>We finally turn our attention to another major topic in numerical linear algebra.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <div id="def-4.8" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition C.7 (The Eigenvalue Problem)</strong></span> Recall that the eigenvectors, <span class="math inline">\(\boldsymbol{x}\)</span>, and the eigenvalues, <span class="math inline">\(\lambda\)</span> of a square matrix satisfy the equation <span class="math inline">\(A\boldsymbol{x}=\lambda \boldsymbol{x}\)</span>. Geometrically, the eigen-problem is the task of finding the special vectors <span class="math inline">\(\boldsymbol{x}\)</span> such that multiplication by the matrix <span class="math inline">\(A\)</span> only produces a scalar multiple of <span class="math inline">\(\boldsymbol{x}\)</span>.</p>
 </div>
@@ -1538,13 +1529,13 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </ol>
 <hr>
 <div id="exr-4.54" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.52</strong></span> 🖋 Find the eigenvalues and eigenvectors of <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.52</strong></span> Find the eigenvalues and eigenvectors of <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 \\ 4 &amp; 3 \end{pmatrix}.
 \end{equation}\]</span></p>
 </div>
 <hr>
 <div id="exr-4.55" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.53</strong></span> 🖋 💬 In the matrix <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.53</strong></span> In the matrix <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 \end{pmatrix}
 \end{equation}\]</span> one of the eigenvalues is <span class="math inline">\(\lambda_1 = 0\)</span>.</p>
 <ol type="1">
@@ -1557,7 +1548,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 9 
 <p>OK. Now that you have recalled some of the basics, let us play with a little limit problem. The following exercises are going to work us toward the <strong>power method</strong> for finding certain eigen-structures of a matrix.</p>
 <hr>
 <div id="exr-4.56" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.54</strong></span> 💻 💬 Consider the matrix <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.54</strong></span> Consider the matrix <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 8 &amp; 5 &amp; -6 \\ -12 &amp; -9 &amp; 12 \\ -3 &amp; -3 &amp; 5 \end{pmatrix}.
 \end{equation}\]</span> This matrix has the following eigen-structure: <span class="math display">\[\begin{equation}
 \boldsymbol{v}_1 = \begin{pmatrix} 1\\-1\\0\end{pmatrix} \quad \text{with} \quad \lambda_1 = 3
@@ -1582,33 +1573,33 @@ A = \begin{pmatrix} 8 &amp; 5 &amp; -6 \\ -12 &amp; -9 &amp; 12 \\ -3 &amp; -3 &
 \lim_{k \to \infty} \frac{A^k \boldsymbol{x}}{\lambda_{max}^k} = ???.
 \end{equation}\]</span> In this limit we are really interested in the direction of the resulting vector, not the magnitude. Therefore, in the code below you will see that we normalize the resulting vector so that it is a unit vector.</p>
 <p>Note: be careful, computers do not do infinity, so for powers that are too large you will not get any results.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">8</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">6</span>],[<span class="op">-</span><span class="dv">12</span>,<span class="op">-</span><span class="dv">9</span>,<span class="dv">12</span>],[<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">5</span>]])</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([[<span class="dv">3</span>],[<span class="op">-</span><span class="dv">7</span>],[<span class="op">-</span><span class="dv">1</span>]])</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>eigval_max <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: For numpy arrays, A**k is element-wise power. </span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We must use np.linalg.matrix_power for matrix power.</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> np.linalg.matrix_power(A, k) <span class="op">@</span> x <span class="op">/</span> eigval_max<span class="op">**</span>k</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result <span class="op">/</span> np.linalg.norm(result) )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">8</span>,<span class="dv">5</span>,<span class="op">-</span><span class="dv">6</span>],[<span class="op">-</span><span class="dv">12</span>,<span class="op">-</span><span class="dv">9</span>,<span class="dv">12</span>],[<span class="op">-</span><span class="dv">3</span>,<span class="op">-</span><span class="dv">3</span>,<span class="dv">5</span>]])</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.array([[<span class="dv">3</span>],[<span class="op">-</span><span class="dv">7</span>],[<span class="op">-</span><span class="dv">1</span>]])</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>eigval_max <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: For numpy arrays, A**k is element-wise power. </span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># We must use np.linalg.matrix_power for matrix power.</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> np.linalg.matrix_power(A, k) <span class="op">@</span> x <span class="op">/</span> eigval_max<span class="op">**</span>k</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result <span class="op">/</span> np.linalg.norm(result) )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-4.57" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.55</strong></span> 💻 💬 If a matrix <span class="math inline">\(A\)</span> has eigenvectors <span class="math inline">\(\boldsymbol{v}_1\)</span>, <span class="math inline">\(\boldsymbol{v}_2\)</span>, <span class="math inline">\(\boldsymbol{v}_3\)</span>, <span class="math inline">\(\cdots,\)</span> <span class="math inline">\(\boldsymbol{v}_n\)</span> with eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \lambda_3, \ldots, \lambda_n\)</span> and <span class="math inline">\(\boldsymbol{x}\)</span> is in the column space of <span class="math inline">\(A\)</span> then what will we get, approximately, if we evaluate <span class="math inline">\(A^k \boldsymbol{x} / \max_{j}(\lambda_j)^k\)</span> for very large values of <span class="math inline">\(k\)</span>?</p>
+<p><span class="theorem-title"><strong>Exercise C.55</strong></span> If a matrix <span class="math inline">\(A\)</span> has eigenvectors <span class="math inline">\(\boldsymbol{v}_1\)</span>, <span class="math inline">\(\boldsymbol{v}_2\)</span>, <span class="math inline">\(\boldsymbol{v}_3\)</span>, <span class="math inline">\(\cdots,\)</span> <span class="math inline">\(\boldsymbol{v}_n\)</span> with eigenvalues <span class="math inline">\(\lambda_1, \lambda_2, \lambda_3, \ldots, \lambda_n\)</span> and <span class="math inline">\(\boldsymbol{x}\)</span> is in the column space of <span class="math inline">\(A\)</span> then what will we get, approximately, if we evaluate <span class="math inline">\(A^k \boldsymbol{x} / \max_{j}(\lambda_j)^k\)</span> for very large values of <span class="math inline">\(k\)</span>?</p>
 <p>Discuss your conjecture with your peers. Then try to verify it with several numerical examples.</p>
 </div>
 <hr>
 <div id="exr-4.58" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.56</strong></span> 💬 Explain your result from the previous exercise geometrically.</p>
+<p><span class="theorem-title"><strong>Exercise C.56</strong></span> Explain your result from the previous exercise geometrically.</p>
 </div>
 <hr>
 <div id="exr-4.59" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.57</strong></span> 💬 The algorithm that we have been toying with will find the dominant eigenvector of a matrix fairly quickly. Why might you be only interested in the dominant eigenvector of a matrix? Discuss.</p>
+<p><span class="theorem-title"><strong>Exercise C.57</strong></span> The algorithm that we have been toying with will find the dominant eigenvector of a matrix fairly quickly. Why might you be only interested in the dominant eigenvector of a matrix? Discuss.</p>
 </div>
 <hr>
 <div id="exr-4.60" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.58</strong></span> 🖋 In this problem we will formally prove the conjecture that you just made. This conjecture will lead us to the <strong>power method</strong> for finding the dominant eigenvector and eigenvalue of a matrix.</p>
+<p><span class="theorem-title"><strong>Exercise C.58</strong></span> In this problem we will formally prove the conjecture that you just made. This conjecture will lead us to the <strong>power method</strong> for finding the dominant eigenvector and eigenvalue of a matrix.</p>
 <ol type="1">
 <li><p>Assume that <span class="math inline">\(A\)</span> has <span class="math inline">\(n\)</span> linearly independent eigenvectors <span class="math inline">\(\boldsymbol{v}_1, \boldsymbol{v}_2, \dots, \boldsymbol{v}_n\)</span> and choose <span class="math inline">\(\boldsymbol{x} = \sum_{j=1}^n c_j \boldsymbol{v}_j\)</span>. You have proved in the past that <span class="math display">\[\begin{equation}
 A^k \boldsymbol{x} = c_1 \lambda_1^k \boldsymbol{v}_1 + c_2 \lambda_2^k \boldsymbol{v}_2 + \cdots c_n \lambda_n^k \boldsymbol{v}_n.
@@ -1650,39 +1641,39 @@ A^k \boldsymbol{x} = \lambda_1^k \left( c_1 ??? + c_2 \left( \frac{???}{???} \ri
 </div>
 <hr>
 <div id="exr-4.61" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.59</strong></span> 💻 💬 Go through <a href="#thm-4.5" class="quarto-xref">Theorem&nbsp;<span>C.4</span></a> carefully and describe what we need to do in each step and why we are doing it. Then complete all of the missing pieces of the following Python function.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> myPower(A, tol <span class="op">=</span> <span class="fl">1e-8</span>):</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.random.randn(n)</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="co"># turn x into a unit vector</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we do not actually need to keep track of the old iterates</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="dv">1</span> <span class="co"># initialize the dominant eigenvalue</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> <span class="dv">0</span> <span class="co"># keep track of how many steps we have taken</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># You can build a stopping rule from the definition</span></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ax = lambda x ... </span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (???) <span class="op">&gt;</span> tol <span class="kw">and</span> counter <span class="op">&lt;</span> <span class="dv">10000</span>:</span>
-<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> A <span class="op">@</span> x <span class="co"># update the dominant eigenvector</span></span>
-<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> ??? <span class="co"># normalize</span></span>
-<span id="cb25-14"><a href="#cb25-14" aria-hidden="true" tabindex="-1"></a>        L <span class="op">=</span> ??? <span class="co"># approximate the eignevalue</span></span>
-<span id="cb25-15"><a href="#cb25-15" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">+=</span> <span class="dv">1</span> <span class="co"># increment the counter</span></span>
-<span id="cb25-16"><a href="#cb25-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x, L</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="theorem-title"><strong>Exercise C.59</strong></span> Go through <a href="#thm-4.5" class="quarto-xref">Theorem&nbsp;<span>C.4</span></a> carefully and describe what we need to do in each step and why we are doing it. Then complete all of the missing pieces of the following Python function.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> myPower(A, tol <span class="op">=</span> <span class="fl">1e-8</span>):</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.random.randn(n)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="co"># turn x into a unit vector</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># we do not actually need to keep track of the old iterates</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    L <span class="op">=</span> <span class="dv">1</span> <span class="co"># initialize the dominant eigenvalue</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    counter <span class="op">=</span> <span class="dv">0</span> <span class="co"># keep track of how many steps we have taken</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># You can build a stopping rule from the definition</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Ax = lambda x ... </span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> (???) <span class="op">&gt;</span> tol <span class="kw">and</span> counter <span class="op">&lt;</span> <span class="dv">10000</span>:</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> A <span class="op">@</span> x <span class="co"># update the dominant eigenvector</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> ??? <span class="co"># normalize</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>        L <span class="op">=</span> ??? <span class="co"># approximate the eignevalue</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">+=</span> <span class="dv">1</span> <span class="co"># increment the counter</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> x, L</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-4.62" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.60</strong></span> 💻 Test your <code>myPower()</code> function on several matrices where you know the eigenstructure. Then try the <code>myPower()</code> function on larger random matrices. You can check that it is working using <code>np.linalg.eig()</code> (be sure to normalize the vectors in the same way so you can compare them.)</p>
+<p><span class="theorem-title"><strong>Exercise C.60</strong></span> Test your <code>myPower()</code> function on several matrices where you know the eigenstructure. Then try the <code>myPower()</code> function on larger random matrices. You can check that it is working using <code>np.linalg.eig()</code> (be sure to normalize the vectors in the same way so you can compare them.)</p>
 </div>
 <hr>
 <div id="exr-4.63" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.61</strong></span> 💻 💬 In the Power Method iteration you may end up getting a different sign on your eigenvector as compared to <code>np.linalg.eig()</code>. Why might this happen? Generate a few examples so you can see this. You can avoid this issue if you use a <code>while</code> loop in your Power Method code and the logical check takes advantage of the fact that we are trying to solve the equation <span class="math inline">\(A\boldsymbol{x} = \lambda \boldsymbol{x}\)</span>. Hint: <span class="math inline">\(A\boldsymbol{x} = \lambda \boldsymbol{x}\)</span> is equivalent to <span class="math inline">\(A\boldsymbol{x} - \lambda \boldsymbol{x} = \boldsymbol{0}\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise C.61</strong></span> In the Power Method iteration you may end up getting a different sign on your eigenvector as compared to <code>np.linalg.eig()</code>. Why might this happen? Generate a few examples so you can see this. You can avoid this issue if you use a <code>while</code> loop in your Power Method code and the logical check takes advantage of the fact that we are trying to solve the equation <span class="math inline">\(A\boldsymbol{x} = \lambda \boldsymbol{x}\)</span>. Hint: <span class="math inline">\(A\boldsymbol{x} = \lambda \boldsymbol{x}\)</span> is equivalent to <span class="math inline">\(A\boldsymbol{x} - \lambda \boldsymbol{x} = \boldsymbol{0}\)</span>.</p>
 </div>
 <hr>
 <div id="exr-4.64" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.62</strong></span> 💬 What happens in the power method iterations when <span class="math inline">\(\lambda_1\)</span> is complex. The maximum eigenvalue can certainly be complex if <span class="math inline">\(|\lambda_1|\)</span> (the modulus of the complex number) is larger than all of the other eigenvalues. It may be helpful to build a matrix specifically with complex eigenvalues.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise C.62</strong></span> What happens in the power method iterations when <span class="math inline">\(\lambda_1\)</span> is complex. The maximum eigenvalue can certainly be complex if <span class="math inline">\(|\lambda_1|\)</span> (the modulus of the complex number) is larger than all of the other eigenvalues. It may be helpful to build a matrix specifically with complex eigenvalues.<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></p>
 </div>
 <hr>
 <div id="exr-4.65" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.63 (Convergence Rate of the Power Method)</strong></span> 💻 💬 The proof that the power method will work hinges on the fact that <span class="math inline">\(|\lambda_1| &gt; |\lambda_2| \geq |\lambda_3| \geq \cdots \geq |\lambda_n|\)</span>. In <a href="#exr-4.60" class="quarto-xref">Exercise&nbsp;<span>C.58</span></a> we proved that the limit <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.63 (Convergence Rate of the Power Method)</strong></span> The proof that the power method will work hinges on the fact that <span class="math inline">\(|\lambda_1| &gt; |\lambda_2| \geq |\lambda_3| \geq \cdots \geq |\lambda_n|\)</span>. In <a href="#exr-4.60" class="quarto-xref">Exercise&nbsp;<span>C.58</span></a> we proved that the limit <span class="math display">\[\begin{equation}
 \lim_{k \to \infty} \frac{A^k \boldsymbol{x}}{\lambda_1^k}
 \end{equation}\]</span> converges to the dominant eigenvector, but how fast is the convergence? What does the speed of the convergence depend on?</p>
 <p>Take note that since we are assuming that the eigenvalues are ordered, the ratio <span class="math inline">\(\lambda_2 / \lambda_1\)</span> will be larger than <span class="math inline">\(\lambda_j / \lambda_1\)</span> for all <span class="math inline">\(j&gt;2\)</span>. Hence, the speed at which the power method converges depends mostly on the ratio <span class="math inline">\(\lambda_2 / \lambda_1\)</span>. Let us build a numerical experiment to see how sensitive the power method is to this ratio.</p>
@@ -1693,42 +1684,42 @@ A^k \boldsymbol{x} = \lambda_1^k \left( c_1 ??? + c_2 \left( \frac{???}{???} \ri
 <section id="algorithm-summaries" class="level2" data-number="C.9">
 <h2 data-number="C.9" class="anchored" data-anchor-id="algorithm-summaries"><span class="header-section-number">C.9</span> Algorithm Summaries</h2>
 <div id="exr-4.66" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.64</strong></span> 💬 Explain in clear language how to efficiently solve an upper-triangular system of linear equations.</p>
+<p><span class="theorem-title"><strong>Exercise C.64</strong></span> Explain in clear language how to efficiently solve an upper-triangular system of linear equations.</p>
 </div>
 <hr>
 <div id="exr-4.67" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.65</strong></span> 💬 Explain in clear language how to efficiently solve a lower-triangular system of linear equations.</p>
+<p><span class="theorem-title"><strong>Exercise C.65</strong></span> Explain in clear language how to efficiently solve a lower-triangular system of linear equations.</p>
 </div>
 <hr>
 <div id="exr-4.68" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.66</strong></span> 💬 Explain in clear language how to solve the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> using an <span class="math inline">\(LU\)</span> decomposition.</p>
+<p><span class="theorem-title"><strong>Exercise C.66</strong></span> Explain in clear language how to solve the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> using an <span class="math inline">\(LU\)</span> decomposition.</p>
 </div>
 <hr>
 <div id="exr-4.69" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.67</strong></span> 💬 Explain in clear language how to solve an overdetermined system of linear equations (more equations than unknowns) numerically.</p>
+<p><span class="theorem-title"><strong>Exercise C.67</strong></span> Explain in clear language how to solve an overdetermined system of linear equations (more equations than unknowns) numerically.</p>
 </div>
 <hr>
 <div id="exr-4.70" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.68</strong></span> 💬 Explain in clear language the algorithm for finding the columns of the <span class="math inline">\(Q\)</span> matrix in the <span class="math inline">\(QR\)</span> factorization. Give all of the mathematical details.</p>
+<p><span class="theorem-title"><strong>Exercise C.68</strong></span> Explain in clear language the algorithm for finding the columns of the <span class="math inline">\(Q\)</span> matrix in the <span class="math inline">\(QR\)</span> factorization. Give all of the mathematical details.</p>
 </div>
 <hr>
 <div id="exr-4.71" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.69</strong></span> 💬 Explain in clear language how to find the upper-triangular matrix <span class="math inline">\(R\)</span> in the <span class="math inline">\(QR\)</span> factorization. Give all of the mathematical details.</p>
+<p><span class="theorem-title"><strong>Exercise C.69</strong></span> Explain in clear language how to find the upper-triangular matrix <span class="math inline">\(R\)</span> in the <span class="math inline">\(QR\)</span> factorization. Give all of the mathematical details.</p>
 </div>
 <hr>
 <div id="exr-4.72" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.70</strong></span> 💬 Explain in clear language how to solve the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> using a <span class="math inline">\(QR\)</span> decomposition.</p>
+<p><span class="theorem-title"><strong>Exercise C.70</strong></span> Explain in clear language how to solve the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> using a <span class="math inline">\(QR\)</span> decomposition.</p>
 </div>
 <hr>
 <div id="exr-4.73" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.71</strong></span> 💬 Explain in clear language how the power method works to find the dominant eigenvalue and eigenvector of a square matrix. Give all of the mathematical details.</p>
+<p><span class="theorem-title"><strong>Exercise C.71</strong></span> Explain in clear language how the power method works to find the dominant eigenvalue and eigenvector of a square matrix. Give all of the mathematical details.</p>
 </div>
 <hr>
 </section>
 <section id="problems" class="level2" data-number="C.10">
 <h2 data-number="C.10" class="anchored" data-anchor-id="problems"><span class="header-section-number">C.10</span> Problems</h2>
 <div id="exr-4.74" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.72</strong></span> 💻 💬 As mentioned much earlier in this chapter, there is an <code>rref()</code> command in Python, but it is in the <code>sympy</code> library instead of the <code>numpy</code> library – it is implemented as a symbolic computation instead of a numerical computation. OK. So what? In this problem we want to compare the time to solve a system of equations <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> with each of the following techniques:</p>
+<p><span class="theorem-title"><strong>Exercise C.72</strong></span> As mentioned much earlier in this chapter, there is an <code>rref()</code> command in Python, but it is in the <code>sympy</code> library instead of the <code>numpy</code> library – it is implemented as a symbolic computation instead of a numerical computation. OK. So what? In this problem we want to compare the time to solve a system of equations <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> with each of the following techniques:</p>
 <ul>
 <li><p>row reduction of an augmented matrix <span class="math inline">\(\begin{pmatrix} A &amp; | &amp; b\end{pmatrix}\)</span> with <code>sympy</code>,</p></li>
 <li><p>our implementation of the <span class="math inline">\(LU\)</span> decomposition,</p></li>
@@ -1738,27 +1729,27 @@ A^k \boldsymbol{x} = \lambda_1^k \left( c_1 ??? + c_2 \left( \frac{???}{???} \ri
 <p>To time code in Python first import the <code>time</code> library. Then use <code>start = time.time()</code> at the start of your code and <code>stop = time.time()</code> and the end of your code. The difference between <code>stop</code> and <code>start</code> is the elapsed computation time.</p>
 <p>Make observations about how the algorithms perform for different sized matrices. You can use random matrices and vectors for <span class="math inline">\(A\)</span> and <span class="math inline">\(\boldsymbol{b}\)</span>. The end result should be a plot showing how the average computation time for each algorithm behaves as a function of the size of the coefficient matrix.</p>
 <p>The code below will compute the reduced row echelon form of a matrix (RREF). Implement the code so that you know how it works.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># in this problem it will be easiest to start with numpy matrices</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([[<span class="dv">3</span>],[<span class="dv">7</span>],[<span class="dv">3</span>]])</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>Augmented <span class="op">=</span> np.c_[A,b] <span class="co"># augment b onto the right hand side of A</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>Msymbolic <span class="op">=</span> sp.Matrix(Augmented)</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>MsymbolicRREF <span class="op">=</span> Msymbolic.rref()</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(MsymbolicRREF)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># in this problem it will be easiest to start with numpy matrices</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>], [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>], [<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">3</span>]])</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([[<span class="dv">3</span>],[<span class="dv">7</span>],[<span class="dv">3</span>]])</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>Augmented <span class="op">=</span> np.c_[A,b] <span class="co"># augment b onto the right hand side of A</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>Msymbolic <span class="op">=</span> sp.Matrix(Augmented)</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>MsymbolicRREF <span class="op">=</span> Msymbolic.rref()</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(MsymbolicRREF)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To time code you can use code like the following.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> time.time()</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co"># some code that you want to time</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>stop <span class="op">=</span>  time.time()</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>total_time <span class="op">=</span> stop <span class="op">-</span> start</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total computation time="</span>,total_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> time</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> time.time()</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># some code that you want to time</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>stop <span class="op">=</span>  time.time()</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>total_time <span class="op">=</span> stop <span class="op">-</span> start</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Total computation time="</span>,total_time)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-4.75" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.73</strong></span> 🖋 💻 Imagine that we have a 1 meter long thin metal rod that has been heated to 100<span class="math inline">\(^\circ\)</span> on the left-hand side and cooled to 0<span class="math inline">\(^\circ\)</span> on the right-hand side. We want to know the temperature every 10 cm from left to right on the rod.</p>
+<p><span class="theorem-title"><strong>Exercise C.73</strong></span> Imagine that we have a 1 meter long thin metal rod that has been heated to 100<span class="math inline">\(^\circ\)</span> on the left-hand side and cooled to 0<span class="math inline">\(^\circ\)</span> on the right-hand side. We want to know the temperature every 10 cm from left to right on the rod.</p>
 <ol type="1">
 <li><p>First we break the rod into equal 10cm increments as shown. See <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>C.2</span></a>. How many unknowns are there in this picture?</p></li>
 <li><p>The temperature at each point along the rod is the average of the temperatures at the adjacent points. For example, if we let <span class="math inline">\(T_1\)</span> be the temperature at point <span class="math inline">\(x_1\)</span> then <span class="math display">\[\begin{equation}
@@ -1779,7 +1770,7 @@ Figure&nbsp;C.2: A rod to be heated broken into 10 equal-length segments.
 </div>
 <hr>
 <div id="exr-4.76" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.74</strong></span> 💻 💬 Write code to solve the following systems of equations via both LU and QR decompositions. If the algorithm fails then be sure to explain exactly why.</p>
+<p><span class="theorem-title"><strong>Exercise C.74</strong></span> Write code to solve the following systems of equations via both LU and QR decompositions. If the algorithm fails then be sure to explain exactly why.</p>
 <ol type="1">
 <li><p><span class="math display">\[\begin{equation}
 \begin{array}{rl} x + 2y + 3z &amp;= 4 \\ 2x + 4y + 3z &amp;= 5 \\ x + y &amp;= 4 \end{array}
@@ -1794,21 +1785,21 @@ Figure&nbsp;C.2: A rod to be heated broken into 10 equal-length segments.
 </div>
 <hr>
 <div id="exr-4.77" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.75</strong></span> 🖋 💬 Give a specific example of a non-zero matrix which will NOT have an <span class="math inline">\(LU\)</span> decomposition. Give specific reasons why <span class="math inline">\(LU\)</span> will fail on your matrix.</p>
+<p><span class="theorem-title"><strong>Exercise C.75</strong></span> Give a specific example of a non-zero matrix which will NOT have an <span class="math inline">\(LU\)</span> decomposition. Give specific reasons why <span class="math inline">\(LU\)</span> will fail on your matrix.</p>
 </div>
 <hr>
 <div id="exr-4.78" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.76</strong></span> 🖋 💬 Give a specific example of a non-zero matrix which will NOT have an <span class="math inline">\(QR\)</span> decomposition. Give specific reasons why <span class="math inline">\(QR\)</span> will fail on your matrix.</p>
+<p><span class="theorem-title"><strong>Exercise C.76</strong></span> Give a specific example of a non-zero matrix which will NOT have an <span class="math inline">\(QR\)</span> decomposition. Give specific reasons why <span class="math inline">\(QR\)</span> will fail on your matrix.</p>
 </div>
 <hr>
 <div id="exr-4.79" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.77</strong></span> 🖋 💻 Have you ever wondered how scientific software computes a determinant? The formula that you learned for <a href="https://en.wikipedia.org/wiki/Determinant">calculating determinants by hand</a> is horribly cumbersome and computationally intractable for large matrices. This problem is meant to give you glimpse of what is <em>actually</em> going on under the hood.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
+<p><span class="theorem-title"><strong>Exercise C.77</strong></span> Have you ever wondered how scientific software computes a determinant? The formula that you learned for <a href="https://en.wikipedia.org/wiki/Determinant">calculating determinants by hand</a> is horribly cumbersome and computationally intractable for large matrices. This problem is meant to give you glimpse of what is <em>actually</em> going on under the hood.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
 <p>If <span class="math inline">\(A\)</span> has an <span class="math inline">\(LU\)</span> decomposition then <span class="math inline">\(A = LU\)</span>. Use properties that you know about determinants to come up with a simple way to find the determinant for matrices that have an <span class="math inline">\(LU\)</span> decomposition. Show all of your work in developing your formula.</p>
 <p>Once you have your formula for calculating <span class="math inline">\(\det(A)\)</span>, write a Python function that accepts a matrix, produces the <span class="math inline">\(LU\)</span> decomposition, and returns the determinant of <span class="math inline">\(A\)</span>. Check your work against Python’s <code>np.linalg.det()</code> function.</p>
 </div>
 <hr>
 <div id="exr-4.80" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.78</strong></span> 💻 💬 For this problem we are going to run a numerical experiment to see how the process of solving the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> using the <span class="math inline">\(LU\)</span> factorization performs on random coefficient matrices <span class="math inline">\(A\)</span> and random right-hand sides <span class="math inline">\(\boldsymbol{b}\)</span>. We will compare against Python’s algorithm for solving linear systems.</p>
+<p><span class="theorem-title"><strong>Exercise C.78</strong></span> For this problem we are going to run a numerical experiment to see how the process of solving the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> using the <span class="math inline">\(LU\)</span> factorization performs on random coefficient matrices <span class="math inline">\(A\)</span> and random right-hand sides <span class="math inline">\(\boldsymbol{b}\)</span>. We will compare against Python’s algorithm for solving linear systems.</p>
 <p>We will do the following:</p>
 <p>Create a loop that does the following:</p>
 <ol type="1">
@@ -1824,17 +1815,17 @@ Figure&nbsp;C.2: A rod to be heated broken into 10 equal-length segments.
 </div>
 <hr>
 <div id="exr-4.81" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.79</strong></span> 💻 💬 Repeat <a href="#exr-4.80" class="quarto-xref">Exercise&nbsp;<span>C.78</span></a> for the <span class="math inline">\(QR\)</span> decomposition. Your final plot should show both the behaviour of <span class="math inline">\(QR\)</span> and of <span class="math inline">\(LU\)</span> throughout the experiment. What do you notice?</p>
+<p><span class="theorem-title"><strong>Exercise C.79</strong></span> Repeat <a href="#exr-4.80" class="quarto-xref">Exercise&nbsp;<span>C.78</span></a> for the <span class="math inline">\(QR\)</span> decomposition. Your final plot should show both the behaviour of <span class="math inline">\(QR\)</span> and of <span class="math inline">\(LU\)</span> throughout the experiment. What do you notice?</p>
 </div>
 <hr>
 <div id="exr-4.82" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.80</strong></span> 🖋 💻 Find a least squares solution to the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> in two different ways with <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.80</strong></span> Find a least squares solution to the equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> in two different ways with <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 3 &amp; 5 \\ 4 &amp; -2 &amp; 6 \\ 4 &amp; 7 &amp; 8 \\ 3 &amp; 7 &amp; 19 \end{pmatrix} \quad \text{and} \quad \boldsymbol{b} = \begin{pmatrix} 5 \\ 2 \\ -2 \\ 8\end{pmatrix}.
 \end{equation}\]</span></p>
 </div>
 <hr>
 <div id="exr-4.83" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.81</strong></span> 🖋 💻 💬 Let <span class="math inline">\(A\)</span> be defined as <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.81</strong></span> Let <span class="math inline">\(A\)</span> be defined as <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 10^{-20} &amp; 1 \\ 1 &amp; 1 \end{pmatrix}
 \end{equation}\]</span> and let <span class="math inline">\(\boldsymbol{b}\)</span> be the vector <span class="math display">\[\begin{equation}
 \boldsymbol{b}=\begin{pmatrix} 2 \\ 3\end{pmatrix}.
@@ -1848,22 +1839,22 @@ Notice that <span class="math inline">\(A\)</span> has a tiny, but non-zero, val
 </div>
 <hr>
 <div id="exr-4.84" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.82 (Hilbert Matrices)</strong></span> 💻 💬 A Hilbert Matrix is a matrix of the form <span class="math inline">\(H_{ij} = 1 / (i+j+1)\)</span> where both <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> both start indexed at <span class="math inline">\(0\)</span>. For example, a <span class="math inline">\(4 \times 4\)</span> Hilbert Matrix is <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.82 (Hilbert Matrices)</strong></span> A Hilbert Matrix is a matrix of the form <span class="math inline">\(H_{ij} = 1 / (i+j+1)\)</span> where both <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> both start indexed at <span class="math inline">\(0\)</span>. For example, a <span class="math inline">\(4 \times 4\)</span> Hilbert Matrix is <span class="math display">\[\begin{equation}
 H = \begin{pmatrix} 1 &amp; \frac{1}{2} &amp; \frac{1}{3} &amp; \frac{1}{4} \\ \frac{1}{2} &amp; \frac{1}{3} &amp; \frac{1}{4} &amp; \frac{1}{5} \\ \frac{1}{3} &amp; \frac{1}{4} &amp; \frac{1}{5} &amp; \frac{1}{6} \\ \frac{1}{4} &amp; \frac{1}{5} &amp; \frac{1}{6} &amp; \frac{1}{7} \end{pmatrix}.
 \end{equation}\]</span> This type of matrix is often used to test numerical linear algebra algorithms since it is known to have some <em>odd</em> behaviours … which you will see in a moment.</p>
 <ol type="1">
 <li><p>Write code to build a <span class="math inline">\(n\times n\)</span> Hilbert Matrix and call this matrix <span class="math inline">\(H\)</span>. Test your code for various values of <span class="math inline">\(n\)</span> to be sure that it is building the correct matrices.</p></li>
-<li><p>Build a vector of ones called <span class="math inline">\(\boldsymbol{b}\)</span> with code <code>b = np.ones( (n,1) )</code>. We will use <span class="math inline">\(\boldsymbol{b}\)</span> as the right hand side of the system of equations <span class="math inline">\(H\boldsymbol{x} = \boldsymbol{b}\)</span>.</p></li>
+<li><p>Build a vector of ones called <span class="math inline">\(\boldsymbol{b}\)</span> with code <code>b = np.ones((n,1))</code>. We will use <span class="math inline">\(\boldsymbol{b}\)</span> as the right hand side of the system of equations <span class="math inline">\(H\boldsymbol{x} = \boldsymbol{b}\)</span>.</p></li>
 <li><p>Solve the system of equations <span class="math inline">\(H \boldsymbol{x} = \boldsymbol{b}\)</span> using any technique you like from this chapter.</p></li>
 <li><p>Now let us say that you change the first entry of <span class="math inline">\(\boldsymbol{b}\)</span> by just a little bit, say <span class="math inline">\(10^{-15}\)</span>. If we were to now solve the equation <span class="math inline">\(H \boldsymbol{x}_{new} = \boldsymbol{b}_{new}\)</span> what would you expect as compared to solving <span class="math inline">\(H \boldsymbol{x} = \boldsymbol{b}\)</span>.</p></li>
-<li><p>Now let us actually make the change suggested in part (d). Use the code <code>bnew = np.ones( (n,1) )</code> and then <code>bnew[0] = bnew[0] + 1e-15</code> to build a new <span class="math inline">\(\boldsymbol{b}\)</span> vector with this small change. Solve <span class="math inline">\(H\boldsymbol{x}=\boldsymbol{b}\)</span> and <span class="math inline">\(H\boldsymbol{x}_{new}=\boldsymbol{b}_{new}\)</span> and then compare the maximum absolute difference <code>np.max( np.abs( x - xnew ) )</code>. What do you notice? Make a plot with <span class="math inline">\(n\)</span> on the horizontal axis and the maximum absolute difference on the vertical axis. What does this plot tell you about the solution to the equation <span class="math inline">\(H \boldsymbol{x} = \boldsymbol{b}\)</span>?</p></li>
+<li><p>Now let us actually make the change suggested in part (d). Use the code <code>bnew = np.ones((n,1))</code> and then <code>bnew[0] = bnew[0] + 1e-15</code> to build a new <span class="math inline">\(\boldsymbol{b}\)</span> vector with this small change. Solve <span class="math inline">\(H\boldsymbol{x}=\boldsymbol{b}\)</span> and <span class="math inline">\(H\boldsymbol{x}_{new}=\boldsymbol{b}_{new}\)</span> and then compare the maximum absolute difference <code>np.max(np.abs(x - xnew))</code>. What do you notice? Make a plot with <span class="math inline">\(n\)</span> on the horizontal axis and the maximum absolute difference on the vertical axis. What does this plot tell you about the solution to the equation <span class="math inline">\(H \boldsymbol{x} = \boldsymbol{b}\)</span>?</p></li>
 <li><p>We know that <span class="math inline">\(H H^{-1}\)</span> should be the identity matrix. As we will see, however, Hilbert matrices are particularly poorly behaved! Write a loop over <span class="math inline">\(n\)</span> that (i) builds a Hilbert matrix of size <span class="math inline">\(n\)</span>, (ii) calculates <span class="math inline">\(H H^{-1}\)</span> (using <code>np.linalg.inv()</code> to compute the inverse directly), (iii) calculates the norm of the difference between the identity matrix (<code>np.identity(n)</code>) and your calculated identity matrix from part (ii). Finally. Build a plot that shows <span class="math inline">\(n\)</span> on the horizontal axis and the normed difference on the vertical axis. What do you see? What does this mean about the matrix inversion of the Hilbert matrix.</p></li>
 <li><p>There are cautionary tales hiding in this problem. Write a paragraph explaining what you can learn by playing with pathological matrices like the Hilbert Matrix.</p></li>
 </ol>
 </div>
 <hr>
 <div id="exr-4.85" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.83</strong></span> 💻 Now that you have <span class="math inline">\(QR\)</span> and <span class="math inline">\(LU\)</span> code we are going to use both of them! The problem is as follows:<br>
+<p><span class="theorem-title"><strong>Exercise C.83</strong></span> Now that you have <span class="math inline">\(QR\)</span> and <span class="math inline">\(LU\)</span> code we are going to use both of them! The problem is as follows:<br>
 We are going to find the polynomial of degree 4 that best fits the function <span class="math display">\[\begin{equation}
 y = \cos(4t) + 0.1 \varepsilon(t)
 \end{equation}\]</span> at 50 equally spaced points <span class="math inline">\(t\)</span> between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>. Here we are using <span class="math inline">\(\varepsilon(t)\)</span> as a function that outputs normally distributed random white noise. In Python you will build <span class="math inline">\(y\)</span> as <code>y = np.cos(4*t) + 0.1*np.random.randn(t.shape[0])</code></p>
@@ -1871,122 +1862,17 @@ y = \cos(4t) + 0.1 \varepsilon(t)
 </div>
 <hr>
 <div id="exr-4.86" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.84</strong></span> 💻 Find the largest eigenvalue and the associated eigenvector of the matrix <span class="math inline">\(A\)</span> WITHOUT using <code>np.linalg.eig()</code>. (Do not do this by hand either) <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.84</strong></span> Find the largest eigenvalue and the associated eigenvector of the matrix <span class="math inline">\(A\)</span> WITHOUT using <code>np.linalg.eig()</code>. (Do not do this by hand either) <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 5 &amp; 6 &amp; 7 &amp; 8 \\ 9 &amp; 0 &amp; 1 &amp; 2 \\ 3 &amp; 4 &amp; 5 &amp; 6 \end{pmatrix}
 \end{equation}\]</span></p>
 </div>
 <hr>
 <div id="exr-4.87" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.85</strong></span> 💻 💬 It is possible in a matrix that the eigenvalues <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> are equal but with the corresponding eigenvectors not equal. Before you experiment with matrices of this sort, write a conjecture about what will happen to the power method in this case (look back to our proof in <a href="#exr-4.60" class="quarto-xref">Exercise&nbsp;<span>C.58</span></a> of how the power method works). Now build several specific matrices where this is the case and see what happens to the power method.</p>
+<p><span class="theorem-title"><strong>Exercise C.85</strong></span> It is possible in a matrix that the eigenvalues <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> are equal but with the corresponding eigenvectors not equal. Before you experiment with matrices of this sort, write a conjecture about what will happen to the power method in this case (look back to our proof in <a href="#exr-4.60" class="quarto-xref">Exercise&nbsp;<span>C.58</span></a> of how the power method works). Now build several specific matrices where this is the case and see what happens to the power method.</p>
 </div>
 <hr>
 <div id="exr-4.88" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.86</strong></span> 🖋 💻 💬 Will the power method fail, slow down, or be unaffected if one (or more) of the non-dominant eigenvalues is zero? Give sufficient mathematical evidence or show several numerical experiments to support your answer.</p>
-</div>
-<hr>
-<div id="exr-4.89" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.87</strong></span> 💻 Find a cubic function that best fits the following data. you can download the data directly with the code below.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th><span class="math inline">\(x\)</span> Data</th>
-<th><span class="math inline">\(y\)</span> Data</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>0</td>
-<td>1.0220</td>
-</tr>
-<tr class="even">
-<td>0.0500</td>
-<td>1.0174</td>
-</tr>
-<tr class="odd">
-<td>0.1000</td>
-<td>1.0428</td>
-</tr>
-<tr class="even">
-<td>0.1500</td>
-<td>1.0690</td>
-</tr>
-<tr class="odd">
-<td>0.2000</td>
-<td>1.0505</td>
-</tr>
-<tr class="even">
-<td>0.2500</td>
-<td>1.0631</td>
-</tr>
-<tr class="odd">
-<td>0.3000</td>
-<td>1.0458</td>
-</tr>
-<tr class="even">
-<td>0.3500</td>
-<td>1.0513</td>
-</tr>
-<tr class="odd">
-<td>0.4000</td>
-<td>1.0199</td>
-</tr>
-<tr class="even">
-<td>0.4500</td>
-<td>1.0180</td>
-</tr>
-<tr class="odd">
-<td>0.5000</td>
-<td>1.0156</td>
-</tr>
-<tr class="even">
-<td>0.5500</td>
-<td>0.9817</td>
-</tr>
-<tr class="odd">
-<td>0.6000</td>
-<td>0.9652</td>
-</tr>
-<tr class="even">
-<td>0.6500</td>
-<td>0.9429</td>
-</tr>
-<tr class="odd">
-<td>0.7000</td>
-<td>0.9393</td>
-</tr>
-<tr class="even">
-<td>0.7500</td>
-<td>0.9266</td>
-</tr>
-<tr class="odd">
-<td>0.8000</td>
-<td>0.8959</td>
-</tr>
-<tr class="even">
-<td>0.8500</td>
-<td>0.9014</td>
-</tr>
-<tr class="odd">
-<td>0.9000</td>
-<td>0.8990</td>
-</tr>
-<tr class="even">
-<td>0.9500</td>
-<td>0.9038</td>
-</tr>
-<tr class="odd">
-<td>1.0000</td>
-<td>0.8989</td>
-</tr>
-</tbody>
-</table>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>URL1 <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/NumericalMethodsSullivan'</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>URL2 <span class="op">=</span> <span class="st">'/NumericalMethodsSullivan.github.io/master/data/'</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>URL <span class="op">=</span> URL1<span class="op">+</span>URL2</span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> np.array( pd.read_csv(URL<span class="op">+</span><span class="st">'Exercise4_89.csv'</span>) )</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Exercise4_89.csv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><span class="theorem-title"><strong>Exercise C.86</strong></span> Will the power method fail, slow down, or be unaffected if one (or more) of the non-dominant eigenvalues is zero? Give sufficient mathematical evidence or show several numerical experiments to support your answer.</p>
 </div>
 <hr>
 <div id="thm-4.6" class="theorem">
@@ -1994,7 +1880,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 5 &amp; 6 &amp; 7 &amp; 8 \\ 9 
 </div>
 <hr>
 <div id="exr-4.90" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.88 (The Deflation Method)</strong></span> 💻 For symmetric matrices we can build an extension to the power method in order to find the second most dominant eigen-pair for a matrix <span class="math inline">\(A\)</span>. <a href="#thm-4.6" class="quarto-xref">Theorem&nbsp;<span>C.5</span></a> suggests the following method for finding the second dominant eigen-pair for a symmetric matrix. This method is called the <strong>deflation method</strong>.</p>
+<p><span class="theorem-title"><strong>Exercise C.87 (The Deflation Method)</strong></span> For symmetric matrices we can build an extension to the power method in order to find the second most dominant eigen-pair for a matrix <span class="math inline">\(A\)</span>. <a href="#thm-4.6" class="quarto-xref">Theorem&nbsp;<span>C.5</span></a> suggests the following method for finding the second dominant eigen-pair for a symmetric matrix. This method is called the <strong>deflation method</strong>.</p>
 <ul>
 <li><p>Use the power method to find the dominant eigenvalue and eigenvector.</p></li>
 <li><p>Start with a random unit vector of the correct shape.</p></li>
@@ -2004,15 +1890,15 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 5 &amp; 6 &amp; 7 &amp; 8 \\ 9 
 <p>Note that the deflation method is really exactly the same as the power method with the exception that we orthogonalize at every step. Hence, when you write your code expect to only change a few lines from your power method.</p>
 <p>Write a function to find the second largest eigenvalue and eigenvector pair by putting the deflation method into practice. Test your code on a matrix <span class="math inline">\(A\)</span> and compare against Python’s <code>np.linalg.eig()</code> command. Your code needs to work on symmetric matrices of arbitrary size and you need to write test code that clearly shows the error between your calculated eigenvalue and Python’s eigenvalue as well as your calculated eigenvector and ’s eigenvector.</p>
 <p>To guarantee that you start with a symmetric matrix you can use the following code.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">40</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.random.randn(N,N)</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A = np.matrix(A) # No need for matrix class</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.transpose(A) <span class="op">@</span> A <span class="co"># why should this build a symmetric matrix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">40</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.random.randn(N,N)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># A = np.matrix(A) # No need for matrix class</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.transpose(A) <span class="op">@</span> A <span class="co"># why should this build a symmetric matrix</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-4.91" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.89</strong></span> 🖋 💻 💬 (This concept for this problem is modified from <span class="citation" data-cites="Meerschaert">(<a href="#ref-Meerschaert" role="doc-biblioref">Meerschaert 2013</a>)</span>). The data is taken from <a href="https://www.weather.gov/arx/mississippi_river">NOAA and the National Weather Service</a> with the specific values associated with La Crosse, WI.)</p>
+<p><span class="theorem-title"><strong>Exercise C.88</strong></span> (This concept for this problem is modified from <span class="citation" data-cites="Meerschaert">(<a href="#ref-Meerschaert" role="doc-biblioref">Meerschaert 2013</a>)</span>). The data is taken from <a href="https://www.weather.gov/arx/mississippi_river">NOAA and the National Weather Service</a> with the specific values associated with La Crosse, WI.)</p>
 <p>Floods in the Mississippi River Valleys of the upper Midwest have somewhat predictable day-to-day behaviour in that the flood stage today has high predictive power for the flood stage tomorrow. Assume that the flood stages are:</p>
 <ul>
 <li><p>Stage 0 (Normal): Average daily flow is below 90,000 <span class="math inline">\(ft^3/sec\)</span> (cubic feet per second = cfs). This is the <em>normal</em> river level.</p></li>
@@ -2097,11 +1983,11 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 5 &amp; 6 &amp; 7 &amp; 8 \\ 9 
 </div>
 <hr>
 <div id="exr-4.92" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.90</strong></span> 💻 The <span class="math inline">\(LU\)</span> factorization as we have built it in this chapter is not <em>smart</em> about the way that it uses the memory on your computer. In the <span class="math inline">\(LU\)</span> factorization the 1’s on the main diagonal do not actually need to be stored since we know that they will always be there. The zeros in the lower triangle of <span class="math inline">\(U\)</span> do not need to be stored either. If you store the upper triangle values in the <span class="math inline">\(U\)</span> matrix on top of the upper triangle of the <span class="math inline">\(L\)</span> matrix then we still store a full matrix for <span class="math inline">\(L\)</span> which contains both <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> simultaneously, but we do not have to store <span class="math inline">\(U\)</span> separately and hence save computer memory. The modifications to the existing code for an <span class="math inline">\(LU\)</span> solve is minimal – every time you call on an entry of the <span class="math inline">\(U\)</span> matrix it is stored in the upper triangle of <span class="math inline">\(L\)</span> instead. Write code to implement this new data storage idea and demonstrate your code on a few examples.</p>
+<p><span class="theorem-title"><strong>Exercise C.89</strong></span> The <span class="math inline">\(LU\)</span> factorization as we have built it in this chapter is not <em>smart</em> about the way that it uses the memory on your computer. In the <span class="math inline">\(LU\)</span> factorization the 1’s on the main diagonal do not actually need to be stored since we know that they will always be there. The zeros in the lower triangle of <span class="math inline">\(U\)</span> do not need to be stored either. If you store the upper triangle values in the <span class="math inline">\(U\)</span> matrix on top of the upper triangle of the <span class="math inline">\(L\)</span> matrix then we still store a full matrix for <span class="math inline">\(L\)</span> which contains both <span class="math inline">\(L\)</span> and <span class="math inline">\(U\)</span> simultaneously, but we do not have to store <span class="math inline">\(U\)</span> separately and hence save computer memory. The modifications to the existing code for an <span class="math inline">\(LU\)</span> solve is minimal – every time you call on an entry of the <span class="math inline">\(U\)</span> matrix it is stored in the upper triangle of <span class="math inline">\(L\)</span> instead. Write code to implement this new data storage idea and demonstrate your code on a few examples.</p>
 </div>
 <hr>
 <div id="exr-4.93" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.91</strong></span> 💻 💬 In the algorithm that we used to build the <span class="math inline">\(QR\)</span> factorization we built the <span class="math inline">\(R\)</span> matrix as <span class="math inline">\(R = Q^T A\)</span> The trouble with this step is that it fills in a lot of redundant zeros into the <span class="math inline">\(R\)</span> matrix – some of which may not be exactly zero. First explain why this will be the case. Then rewrite your <span class="math inline">\(QR\)</span> factorization code so that the top triangle of <span class="math inline">\(R\)</span> is filled with all of the projections (do this with a double <code>for</code> loop). Demonstrate that your code works on a few examples.</p>
+<p><span class="theorem-title"><strong>Exercise C.90</strong></span> In the algorithm that we used to build the <span class="math inline">\(QR\)</span> factorization we built the <span class="math inline">\(R\)</span> matrix as <span class="math inline">\(R = Q^T A\)</span> The trouble with this step is that it fills in a lot of redundant zeros into the <span class="math inline">\(R\)</span> matrix – some of which may not be exactly zero. First explain why this will be the case. Then rewrite your <span class="math inline">\(QR\)</span> factorization code so that the top triangle of <span class="math inline">\(R\)</span> is filled with all of the projections (do this with a double <code>for</code> loop). Demonstrate that your code works on a few examples.</p>
 </div>
 </section>
 <section id="projects" class="level2" data-number="C.11">
@@ -2205,7 +2091,7 @@ Note: We can assume that the eigenvalues are ordered such that <span class="math
 </div>
 <hr>
 <div id="exr-4.94" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.92</strong></span> 🖋 Prove the preceding theorem.</p>
+<p><span class="theorem-title"><strong>Exercise C.91</strong></span> Prove the preceding theorem.</p>
 </div>
 <hr>
 <div id="def-4.1" class="theorem definition">
@@ -2218,19 +2104,19 @@ Note: We can assume that the eigenvalues are ordered such that <span class="math
 </div>
 <hr>
 <div id="exr-4.95" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.93</strong></span> 🖋 Finish writing the hyperlink matrix <span class="math inline">\(H\)</span> from <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise C.92</strong></span> Finish writing the hyperlink matrix <span class="math inline">\(H\)</span> from <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>.</p>
 </div>
 <hr>
 <div id="exr-4.96" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.94</strong></span> 💻 Write code to implement the iterative process defined previously. Make a plot that shows how the rank evolves over the iterations.</p>
+<p><span class="theorem-title"><strong>Exercise C.93</strong></span> Write code to implement the iterative process defined previously. Make a plot that shows how the rank evolves over the iterations.</p>
 </div>
 <hr>
 <div id="exr-4.97" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.95</strong></span> 💬 What must be true about a collection of <span class="math inline">\(n\)</span> pages such that an <span class="math inline">\(n\times n\)</span> hyperlink matrix <span class="math inline">\(H\)</span> is a stochastic matrix.</p>
+<p><span class="theorem-title"><strong>Exercise C.94</strong></span> What must be true about a collection of <span class="math inline">\(n\)</span> pages such that an <span class="math inline">\(n\times n\)</span> hyperlink matrix <span class="math inline">\(H\)</span> is a stochastic matrix.</p>
 </div>
 <hr>
 <div id="exr-4.98" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.96</strong></span> 🖋 💬 The statement of the next theorem is incomplete, but the proof is given to you. Fill in the blank in the statement of the theorem and provide a few sentences supporting your answer.</p>
+<p><span class="theorem-title"><strong>Exercise C.95</strong></span> The statement of the next theorem is incomplete, but the proof is given to you. Fill in the blank in the statement of the theorem and provide a few sentences supporting your answer.</p>
 </div>
 <hr>
 <div id="thm-4.9" class="theorem">
@@ -2242,11 +2128,11 @@ Note: We can assume that the eigenvalues are ordered such that <span class="math
 </div>
 <hr>
 <div id="exr-4.99" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.97</strong></span> 💬 Discuss how <a href="#thm-4.9" class="quarto-xref">Theorem&nbsp;<span>C.8</span></a> greatly simplifies the PageRank iterative process described previously. In other words: there is no reason to iterate at all. Instead, just find … what?</p>
+<p><span class="theorem-title"><strong>Exercise C.96</strong></span> Discuss how <a href="#thm-4.9" class="quarto-xref">Theorem&nbsp;<span>C.8</span></a> greatly simplifies the PageRank iterative process described previously. In other words: there is no reason to iterate at all. Instead, just find … what?</p>
 </div>
 <hr>
 <div id="exr-4.100" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.98</strong></span> 🖋 💻 Now use the previous two problems to find the resulting PageRank vector from the web in <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>? Be sure to rank the pages in order of importance. Compare your answer to the one that you got in problem 2.</p>
+<p><span class="theorem-title"><strong>Exercise C.97</strong></span> Now use the previous two problems to find the resulting PageRank vector from the web in <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>? Be sure to rank the pages in order of importance. Compare your answer to the one that you got in problem 2.</p>
 </div>
 <hr>
 <div id="fig-4.4" class="quarto-float quarto-figure quarto-figure-left anchored">
@@ -2260,7 +2146,7 @@ Figure&nbsp;C.4: A second example web graph.
 </figure>
 </div>
 <div id="exr-4.101" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.99</strong></span> 🖋 💻 Consider the web in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>C.4</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise C.98</strong></span> Consider the web in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>C.4</span></a>.</p>
 <ol type="1">
 <li><p>Write the <span class="math inline">\(H\)</span> matrix and find the initial state <span class="math inline">\(\boldsymbol{x}_0\)</span>,</p></li>
 <li><p>Find steady state PageRank vector using the two different methods described: one using the iterative difference equation and the other using <a href="#thm-4.9" class="quarto-xref">Theorem&nbsp;<span>C.8</span></a> and the dominant eigenvector.</p></li>
@@ -2269,7 +2155,7 @@ Figure&nbsp;C.4: A second example web graph.
 </div>
 <hr>
 <div id="exr-4.102" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.100</strong></span> 💻 💬 One thing that we did not consider in this version of the Google Page Rank algorithm is the random behaviour of humans. One, admittedly slightly naive, modification that we can make to the present algorithm is to assume that the person surfing the web will randomly jump to any other page in the web at any time. For example, if someone is on page 1 in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>C.4</span></a> then they could randomly jump to any page 2 - 8. They also have links to pages 2, 3, and 7. That is a total of 10 possible next steps for the web surfer. There is a <span class="math inline">\(2/10\)</span> chance of heading to page 2. One of those is following the link from page 1 to page 2 and the other is a random jump to page 2 without following the link. Similarly, there is a <span class="math inline">\(2/10\)</span> chance of heading to page 3, <span class="math inline">\(2/10\)</span> chance of heading to page 7, and a <span class="math inline">\(1/10\)</span> chance of randomly heading to any other page.</p>
+<p><span class="theorem-title"><strong>Exercise C.99</strong></span> One thing that we did not consider in this version of the Google Page Rank algorithm is the random behaviour of humans. One, admittedly slightly naive, modification that we can make to the present algorithm is to assume that the person surfing the web will randomly jump to any other page in the web at any time. For example, if someone is on page 1 in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>C.4</span></a> then they could randomly jump to any page 2 - 8. They also have links to pages 2, 3, and 7. That is a total of 10 possible next steps for the web surfer. There is a <span class="math inline">\(2/10\)</span> chance of heading to page 2. One of those is following the link from page 1 to page 2 and the other is a random jump to page 2 without following the link. Similarly, there is a <span class="math inline">\(2/10\)</span> chance of heading to page 3, <span class="math inline">\(2/10\)</span> chance of heading to page 7, and a <span class="math inline">\(1/10\)</span> chance of randomly heading to any other page.</p>
 <p>Implement this new algorithm, called the <em>random surfer algorithm</em>, on the web in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>C.4</span></a>. Compare your ranking to the non-random surfer results from the previous problem.</p>
 </div>
 <hr>

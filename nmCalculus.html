@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -296,7 +296,7 @@ window.Quarto = {
   <li><a href="#sec-differentiation" id="toc-sec-differentiation" class="nav-link" data-scroll-target="#sec-differentiation"><span class="header-section-number">5.2</span> Differentiation with Finite Differences</a>
   <ul>
   <li><a href="#the-first-derivative" id="toc-the-first-derivative" class="nav-link" data-scroll-target="#the-first-derivative"><span class="header-section-number">5.2.1</span> The First Derivative</a></li>
-  <li><a href="#truncation-error" id="toc-truncation-error" class="nav-link" data-scroll-target="#truncation-error"><span class="header-section-number">5.2.2</span> Truncation error</a></li>
+  <li><a href="#truncation-error" id="toc-truncation-error" class="nav-link" data-scroll-target="#truncation-error"><span class="header-section-number">5.2.2</span> Truncation Error</a></li>
   <li><a href="#efficient-coding" id="toc-efficient-coding" class="nav-link" data-scroll-target="#efficient-coding"><span class="header-section-number">5.2.3</span> Efficient Coding</a></li>
   <li><a href="#a-better-first-derivative" id="toc-a-better-first-derivative" class="nav-link" data-scroll-target="#a-better-first-derivative"><span class="header-section-number">5.2.4</span> A Better First Derivative</a></li>
   <li><a href="#the-second-derivative" id="toc-the-second-derivative" class="nav-link" data-scroll-target="#the-second-derivative"><span class="header-section-number">5.2.5</span> The Second Derivative</a></li>
@@ -305,7 +305,7 @@ window.Quarto = {
 <div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/nmCalculus.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -362,7 +362,7 @@ P(a &lt; x &lt; b) = \int_a^b \frac{1}{\sqrt{2\pi}} e^{-x^2/2} dx.
 <p>What you have seen here are just a few examples of why you might need to use numerical calculus instead of the classical routines that you learned earlier in your mathematical career. Another typical need for numerical derivatives and integrals arises when we approximate the solutions to differential equations later in the module.</p>
 <p>Throughout this chapter we will make heavy use of Taylor’s Theorem to build approximations of derivatives and integrals. This has become a recurring scheme in this module: Taylor’s Theorem is your all-purpose approximation tool. It suggests the approximation methods and it allows you to understand the error that comes with the approximation.</p>
 </section>
-<section id="sec-differentiation" class="level2 page-columns page-full" data-number="5.2">
+<section id="sec-differentiation" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="sec-differentiation"><span class="header-section-number">5.2</span> Differentiation with Finite Differences</h2>
 <section id="the-first-derivative" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="the-first-derivative"><span class="header-section-number">5.2.1</span> The First Derivative</h3>
@@ -450,8 +450,8 @@ Figure&nbsp;5.2: The forward difference differentiation scheme for the first der
 <p>While this is the simplest and most obvious approximation for the first derivative there is a much more elegant technique, using Taylor series, for arriving at this approximation. Furthermore, the Taylor series technique gives us information about the approximation error and later will suggest an infinite family of other techniques.</p>
 <hr>
 </section>
-<section id="truncation-error" class="level3 page-columns page-full" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="truncation-error"><span class="header-section-number">5.2.2</span> Truncation error</h3>
+<section id="truncation-error" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="truncation-error"><span class="header-section-number">5.2.2</span> Truncation Error</h3>
 <div id="exr-3.10" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.8</strong></span> 🖋 From Taylor’s Theorem we know that for an infinitely differentiable function <span class="math inline">\(f(x)\)</span>, <span class="math display">\[\begin{equation}
 f(x) = f(x_0) + \frac{f'(x_0)}{1!} (x-x_0)^1 + \frac{f''(x_0)}{2!}(x-x_0)^2 + \frac{f^{(3)}(x_0)}{3!}(x-x_0)^3 + \cdots.
@@ -491,7 +491,7 @@ f'(x) = \frac{f(x+h) - f(x)}{h} + \mathcal{O}(h).
 \end{equation}\]</span> This is called the <strong>forward difference approximation</strong> of the first derivative.</p>
 </div>
 <hr>
-<div id="exr-3.13" class="theorem exercise page-columns page-full">
+<div id="exr-3.13" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.11</strong></span> 💻 💬 Consider the function <span class="math inline">\(f(x) = \sin(x) (1- x)\)</span>. The goal of this exercise is to make sense of the discussion of the “order” of the derivative approximation.</p>
 <ol type="a">
 <li><p>Find <span class="math inline">\(f'(x)\)</span> analytically.</p></li>
@@ -500,7 +500,7 @@ f'(x) = \frac{f(x+h) - f(x)}{h} + \mathcal{O}(h).
 f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 \end{equation}\]</span> We want to see how the error in the approximation behaves as <span class="math inline">\(h\)</span> is made smaller and smaller. The table below shows the approximation and the absolute error for <span class="math inline">\(h = 2^{-1}\)</span> and <span class="math inline">\(h = 2^{-2}\)</span>. It also shows the error reduction factor, which is the ratio of two successive absolute errors. Extend the table to include <span class="math inline">\(h = 2^{-3}\)</span> up to <span class="math inline">\(h = 2^{-10}\)</span>. Start with the code given below but use a loop to create the 10 rows.</p></li>
 </ol>
-<div id="15f69d98" class="cell column-page-right" data-execution_count="1">
+<div id="a3658d88" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup function and exact derivative</span></span>
@@ -538,7 +538,7 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 <ol start="4" type="a">
 <li>Use the following function to plot the absolute error as a function of <span class="math inline">\(h\)</span>.</li>
 </ol>
-<div id="9b36d787" class="cell column-page-right" data-execution_count="2">
+<div id="88f25cbd" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_forward_difference_errors(f, x, exact, H):</span>
@@ -571,7 +571,7 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(plt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here is an example of how to use the function:</p>
-<div id="71884969" class="cell" data-execution_count="3">
+<div id="89d8b742" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup function and exact derivative</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
@@ -594,10 +594,8 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 <li><p>💬 Discuss the pattern in how the absolute error changes as <span class="math inline">\(h\)</span> is changed? What does the log-log plot tell you? How does this agree with what the table tells you?</p></li>
 <li><p>There was nothing really special in part (c) about powers of 2. Modify your code to build similar tables and plots for the following sequences of <span class="math inline">\(h\)</span>: <span class="math display">\[\begin{equation}
 \begin{aligned} h &amp;= 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots \\ h &amp;= 5^{-1}, \, 5^{-2}, \, 5^{-3}, \, \ldots \\ h &amp;= 10^{-1}, \, 10^{-2}, \, 10^{-3}, \, \ldots. \\ \end{aligned}
-\end{equation}\]</span></p></li>
-</ol>
-<p>Do you see any anomalies that could be caused by rounding errors?</p>
-<ol start="7" type="a">
+\end{equation}\]</span></p>
+<p>Do you see any anomalies that could be caused by rounding errors?</p></li>
 <li><p>Create the table and the plot for several different choices of the function <span class="math inline">\(f\)</span> and the point <span class="math inline">\(x\)</span> at which you compute the derivative. Does the pattern you observe in part (e) continue to hold?</p></li>
 <li><p>💬 What does your answer to part (e) have to do with the approximation order of the numerical derivative method that you used?</p></li>
 </ol>
@@ -731,13 +729,41 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 </ol>
 </div>
 <hr>
+<div id="exr-max_err_plot" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.16</strong></span> 💻 You have seen in the previous exercise how the error is different at different <span class="math inline">\(x\)</span>. It might be interesting to look at the largest error over the entire interval for different step sizes.</p>
+<ol type="1">
+<li><p>Find the numerical first derivative with your <code>ForwardDiff</code> function on the interval [0,15] with a stepsize of <span class="math inline">\(h = 0.1\)</span>.</p></li>
+<li><p>Find the absolute difference between your numerical first derivative and the actual first derivative. This is point-by-point subtraction so you should end up with a vector containing the errors at each point, just as in the previous exercise. Again be careful to take into account that the numerical derivative is not available at the right end point.</p></li>
+<li><p>Find the maximum of your errors. If all is well, you should find that the maximum error is approximately 0.6731791497487658.</p></li>
+<li><p>Now we want to see how this maximum error changes as we change the number of points used. Build a function <code>plot_max_forward_difference_errors</code> that produces a log-log plot showing the value of <span class="math inline">\(h\)</span> on the horizontal axis and the maximum error on the vertical axis.</p></li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_max_forward_difference_errors(f, f_prime, a, b, H):</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot the maximum absolute error in the forward difference </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">    approximation for the first derivative of f on the interval [a,b]</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">        f (function): Function whose derivative we approximate</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">        f_prime (function): Exact derivative of f</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">        a (float): Left endpoint of interval</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">        b (float): Right endpoint of interval</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">        H (vector): Vector of step sizes h</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">        A plot with the stepsizes on the x axis and the </span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">        absolute error on the y axis</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You will need to write a loop that gets the error for many different values of <span class="math inline">\(h\)</span>. You can build on the code from you <code>plot_forward_difference_errors</code> function. You should find that the maximum errors again line up approximately on a straight line with a slope of 1.</p>
+</div>
+<hr>
 </section>
-<section id="a-better-first-derivative" class="level3 page-columns page-full" data-number="5.2.4">
+<section id="a-better-first-derivative" class="level3" data-number="5.2.4">
 <h3 data-number="5.2.4" class="anchored" data-anchor-id="a-better-first-derivative"><span class="header-section-number">5.2.4</span> A Better First Derivative</h3>
 <p>Next we will build a more accurate numerical first derivative scheme. The derivation technique is the same: play a little algebra game with the Taylor series and see if you can get the first derivative to simplify out. This time we will be hoping to get a second order method.</p>
 <hr>
 <div id="exr-3.20" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.16</strong></span> 🖋 Consider again the Taylor series for an infinitely differentiable function <span class="math inline">\(f(x)\)</span>: <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 5.17</strong></span> 🖋 Consider again the Taylor series for an infinitely differentiable function <span class="math inline">\(f(x)\)</span>: <span class="math display">\[\begin{equation}
 f(x) = f(x_0) + \frac{f'(x_0)}{1!} (x-x_0)^1 + \frac{f''(x_0)}{2!}(x-x_0)^2 + \frac{f^{(3)}(x_0)}{3!}(x-x_0)^3 + \cdots .
 \end{equation}\]</span></p>
 <ol type="1">
@@ -761,13 +787,13 @@ f'(x) = \underline{\hspace{2in}} + \mathcal{O}(h^2).
 </div>
 <hr>
 <div id="exr-3.21" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.17</strong></span> 🖋 💻 Let us return to the function <span class="math inline">\(f(x) = \sin(x)(1- x)\)</span> but this time we will approximate the first derivative at <span class="math inline">\(x=1\)</span> using the formula <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 5.18</strong></span> 💻 🎓 Let us return to the function <span class="math inline">\(f(x) = \sin(x)(1- x)\)</span> but this time we will approximate the first derivative at <span class="math inline">\(x=1\)</span> using the formula <span class="math display">\[\begin{equation}
 f'(1) \approx \frac{f(1+h) - f(1-h)}{2h}=:\delta f(1).
 \end{equation}\]</span> You should already have the first derivative and the exact answer from earlier exercises (if not, then go get them by hand again).</p>
 <ol type="a">
 <li>We want to see how the error in the approximation behaves as <span class="math inline">\(h\)</span> is made smaller and smaller. Adapt your code from <a href="#exr-3.13" class="quarto-xref">Exercise&nbsp;<span>5.11</span></a> to extend the table to include <span class="math inline">\(h = 2^{-3}\)</span> up to <span class="math inline">\(h = 2^{-10}\)</span>.</li>
 </ol>
-<div id="667e4fda" class="cell" data-execution_count="4">
+<div id="93f98baf" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>h                    | δf(1)              | |f'(1) - δf(1)|    | Error reduction factor
 ----------------------------------------------------------------------------------
@@ -776,21 +802,21 @@ f'(1) \approx \frac{f(1+h) - f(1-h)}{2h}=:\delta f(1).
 </div>
 </div>
 <ol start="2" type="a">
-<li><p>Adapt your code for the <code>plot_forward_difference_errors</code> function to create a <code>plot_central_difference_errors</code> function and use it to plot the errors for the sequences of <span class="math inline">\(h\)</span> in part (b).</p></li>
-<li><p>💬 Discuss the pattern in how the absolute error changes as <span class="math inline">\(h\)</span> is changed? What does the log-log plot tell you? How does this agree with what the table tells you? How does this compare to the error for the forward difference approximation?</p></li>
+<li><p>Adapt your code for the <code>plot_forward_difference_errors</code> function to create a <code>plot_central_difference_errors</code> function and use it to plot the errors for the sequences of <span class="math inline">\(h\)</span> in part (a).</p></li>
 <li><p>Build similar tables for the following sequences of <span class="math inline">\(h\)</span>: <span class="math display">\[\begin{equation}
 \begin{aligned} h &amp;= 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots \\ h &amp;= 5^{-1}, \, 5^{-2}, \, 5^{-3}, \, \ldots \\ h &amp;= 10^{-1}, \, 10^{-2}, \, 10^{-3}, \, \ldots . \end{aligned}
 \end{equation}\]</span></p></li>
-<li><p>💬 What does your answer to part (c) have to do with the approximation order of the numerical derivative method that you used?</p></li>
+<li><p>💬 Discuss the pattern in how the absolute error changes as <span class="math inline">\(h\)</span> is changed? What does the log-log plot tell you? How does this agree with what the table tells you? How does this compare to the error for the forward difference approximation?</p></li>
+<li><p>💬 What does your answer to part (d) have to do with the approximation order of the numerical derivative method that you used?</p></li>
 </ol>
 </div>
 <hr>
 <div id="exr-3.23" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.18</strong></span> 💻 Write a Python function <code>CentralDiff(f, a, b, N)</code> that takes a mathematical function <code>f</code>, the start and end values of an interval [<code>a</code>, <code>b</code>] and the number <code>N</code> of subintervals to use. It should return a second order numerical approximation to the first derivative on the interval. This should be a vector with <span class="math inline">\(N-1\)</span> entries (why?). You should try to write this code without using any loops. (Hint: This should really be a minor modification of your first order first derivative code.) Test the code on functions where you know the first derivative.</p>
+<p><span class="theorem-title"><strong>Exercise 5.19</strong></span> 💻 Write a Python function <code>CentralDiff(f, a, b, N)</code> that takes a mathematical function <code>f</code>, the start and end values of an interval [<code>a</code>, <code>b</code>] and the number <code>N</code> of subintervals to use. It should return a second order numerical approximation to the first derivative on the interval. This should be a vector with <span class="math inline">\(N-1\)</span> entries (why?). You should try to write this code without using any loops. (Hint: This should really be a minor modification of your first order first derivative code.) Test the code on functions where you know the first derivative.</p>
 </div>
 <hr>
-<div id="exr-3.25" class="theorem exercise page-columns page-full">
-<p><span class="theorem-title"><strong>Exercise 5.19</strong></span> 💻 💬 The plot shown in <a href="#fig-3.3" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> shows the maximum absolute error between the exact first derivative of a function <span class="math inline">\(f(x)\)</span> and a numerical first derivative approximation scheme. At this point we know two schemes: <span class="math display">\[\begin{equation}
+<div id="exr-3.25" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.20</strong></span> 💻 💬 The plot shown in <a href="#fig-3.3" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> shows the maximum absolute error between the exact first derivative of a function <span class="math inline">\(f(x)\)</span> and a numerical first derivative approximation scheme. At this point we know two schemes: <span class="math display">\[\begin{equation}
 f'(x) = \frac{f(x+h) - f(x)}{h} + \mathcal{O}(h)
 \end{equation}\]</span> and <span class="math display">\[\begin{equation}
 f'(x) = \frac{f(x+h) - f(x-h)}{2h} + \mathcal{O}(h^2).
@@ -799,59 +825,59 @@ f'(x) = \frac{f(x+h) - f(x-h)}{2h} + \mathcal{O}(h^2).
 <li><p>Which curve in the plot matches with which method. How do you know?</p></li>
 <li><p>Recreate the plot with a function of your choosing.</p></li>
 </ol>
-<div id="cell-fig-3.3" class="cell page-columns page-full" data-execution_count="5">
+<div id="cell-fig-3.3" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose a function f</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Give its derivative</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose interval</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">16</span> <span class="co"># Number of different step sizes to plot</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate vectors for errors</span></span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>fd_error <span class="op">=</span> np.zeros(m)</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>cd_error <span class="op">=</span> np.zeros(m)</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate vector for step sizes</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.zeros(m)</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over the different step sizes</span></span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(m):</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">2</span>) <span class="co"># Number of subintervals</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a, b, N<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> f(x)</span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> x[<span class="dv">1</span>]<span class="op">-</span>x[<span class="dv">0</span>] <span class="co"># step size</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the derivative and approximations</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    exact <span class="op">=</span> df(x)</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    forward_diff <span class="op">=</span> (y[<span class="dv">1</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">1</span>])<span class="op">/</span>h</span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    central_diff <span class="op">=</span> (y[<span class="dv">2</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">2</span>])<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>h)</span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># save the maximum of the errors for this step size</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    fd_error[n] <span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(forward_diff <span class="op">-</span> df(x[:<span class="op">-</span><span class="dv">1</span>])))</span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    cd_error[n] <span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(central_diff <span class="op">-</span> df(x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])))</span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    H[n] <span class="op">=</span> h</span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a loglog plot of the errors agains step size</span></span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>plt.loglog(H,fd_error,<span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Approximation Method A'</span>)</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>plt.loglog(H,cd_error,<span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Approximation Method B'</span>)</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Steps size h'</span>)</span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Maximum Absolute Error'</span>)</span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Comparing Two First Derivative Approximations'</span>)</span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose a function f</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Give its derivative</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose interval</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">16</span> <span class="co"># Number of different step sizes to plot</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate vectors for errors</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>fd_error <span class="op">=</span> np.zeros(m)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>cd_error <span class="op">=</span> np.zeros(m)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate vector for step sizes</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.zeros(m)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over the different step sizes</span></span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">2</span>) <span class="co"># Number of subintervals</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a, b, N<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> f(x)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> x[<span class="dv">1</span>]<span class="op">-</span>x[<span class="dv">0</span>] <span class="co"># step size</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the derivative and approximations</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>    exact <span class="op">=</span> df(x)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>    forward_diff <span class="op">=</span> (y[<span class="dv">1</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">1</span>])<span class="op">/</span>h</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>    central_diff <span class="op">=</span> (y[<span class="dv">2</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">2</span>])<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>h)</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># save the maximum of the errors for this step size</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>    fd_error[n] <span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(forward_diff <span class="op">-</span> df(x[:<span class="op">-</span><span class="dv">1</span>])))</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    cd_error[n] <span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(central_diff <span class="op">-</span> df(x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])))</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>    H[n] <span class="op">=</span> h</span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a loglog plot of the errors agains step size</span></span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>plt.loglog(H,fd_error,<span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Approximation Method A'</span>)</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>plt.loglog(H,cd_error,<span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Approximation Method B'</span>)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Steps size h'</span>)</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Maximum Absolute Error'</span>)</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Comparing Two First Derivative Approximations'</span>)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-display page-columns page-full">
-<div id="fig-3.3" class="quarto-float quarto-figure quarto-figure-left anchored page-columns page-full" alt="Maximum absolute error between the first derivative and two different approximations of the first derivative.">
-<figure class="quarto-float quarto-float-fig figure page-columns page-full">
-<div aria-describedby="fig-3.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca" class="page-columns page-full">
-<img src="nmCalculus_files/figure-html/fig-3.3-output-1.png" alt="Maximum absolute error between the first derivative and two different approximations of the first derivative." width="599" height="451" class="figure-img column-page-right">
+<div class="cell-output cell-output-display">
+<div id="fig-3.3" class="quarto-float quarto-figure quarto-figure-left anchored" alt="Maximum absolute error between the first derivative and two different approximations of the first derivative.">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-3.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="nmCalculus_files/figure-html/fig-3.3-output-1.png" alt="Maximum absolute error between the first derivative and two different approximations of the first derivative." width="599" height="451" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-3.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;5.3: Maximum absolute error between the first derivative and two different approximations of the first derivative.
@@ -871,7 +897,7 @@ Figure&nbsp;5.3: Maximum absolute error between the first derivative and two dif
 \end{equation}\]</span></p>
 <hr>
 <div id="exr-3.26" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.20</strong></span> 🖋 The goal of this exercise is to use the Taylor series for <span class="math inline">\(f(x+h)\)</span> and <span class="math inline">\(f(x-h)\)</span> to arrive at an approximation scheme for the second derivative <span class="math inline">\(f''(x)\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 5.21</strong></span> 🖋 The goal of this exercise is to use the Taylor series for <span class="math inline">\(f(x+h)\)</span> and <span class="math inline">\(f(x-h)\)</span> to arrive at an approximation scheme for the second derivative <span class="math inline">\(f''(x)\)</span>.</p>
 <ol type="1">
 <li><p>Add the Taylor series for <span class="math inline">\(f(x+h)\)</span> and <span class="math inline">\(f(x-h)\)</span> and combine all like terms. You should notice that several terms cancel. <span class="math display">\[\begin{equation}
 f(x+h) + f(x-h) = \underline{\hspace{3in}}.
@@ -884,7 +910,7 @@ f''(x) = \frac{?? - 2 \cdot ?? + ??}{h^2} + \underline{\hspace{1in}}.
 </div>
 <hr>
 <div id="exr-3.27" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.21</strong></span> 🖋 💬 Again consider the function <span class="math inline">\(f(x) = \sin(x)(1 - x)\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 5.22</strong></span> 🖋 💬 Again consider the function <span class="math inline">\(f(x) = \sin(x)(1 - x)\)</span>.</p>
 <ol type="1">
 <li><p>Calculate the derivative of this function and calculate the exact value of <span class="math inline">\(f''(1)\)</span>.</p></li>
 <li><p>If we calculate the second derivative with the central difference scheme that you built in the previous exercise using <span class="math inline">\(h = 0.5\)</span> then we get an absolute error of about 0.044466. Stop now and verify this error calculation.</p></li>
@@ -893,22 +919,26 @@ f''(x) = \frac{?? - 2 \cdot ?? + ??}{h^2} + \underline{\hspace{1in}}.
 </div>
 <hr>
 <div id="exr-3.28" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.22</strong></span> 💻 Write a Python function <code>SecondDiff(f, a, b, N)</code> that takes a mathematical function <code>f</code>, the start and end values of an interval [<code>a</code>, <code>b</code>] and the number <code>N</code> of subintervals to use. It should return a second order numerical approximation to the second derivative on the interval. This should be a vector with <span class="math inline">\(N-1\)</span> entries (why?). As before, you should write your code without using any loops.</p>
+<p><span class="theorem-title"><strong>Exercise 5.23</strong></span> 💻 Write a Python function <code>SecondDiff(f, a, b, N)</code> that takes a mathematical function <code>f</code>, the start and end values of an interval [<code>a</code>, <code>b</code>] and the number <code>N</code> of subintervals to use. It should return a second order numerical approximation to the second derivative on the interval. This should be a vector with <span class="math inline">\(N-1\)</span> entries (why?). As before, you should write your code without using any loops.</p>
 </div>
 <hr>
 <div id="exr-3.29" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.23</strong></span> 💻 💬 Test your second derivative code on the function <span class="math inline">\(f(x) = \sin(x) - x\sin(x)\)</span> by doing the following.</p>
+<p><span class="theorem-title"><strong>Exercise 5.25</strong></span> 💻 💬 Test your second derivative code on the function <span class="math inline">\(f(x) = \sin(x) (1-x)\)</span> by doing the following.</p>
+<div id="exr-max_err_plot_second" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 5.24</strong></span> 💻 🎓 You have seen in the previous exercise how the error is different at different <span class="math inline">\(x\)</span>. It might be interesting to look at the largest error over the entire interval for different step sizes.</p>
 <ol type="1">
-<li><p>Find the analytic second derivative by hand (you did this already in <a href="#exr-3.27" class="quarto-xref">Exercise&nbsp;<span>5.21</span></a>).</p></li>
-<li><p>Find the numerical second derivative with the code that you just wrote.</p></li>
-<li><p>Find the absolute difference between your numerical second derivative and the actual second derivative. This is point-by-point subtraction so you should end up with a vector of errors.</p></li>
-<li><p>Find the maximum of your errors.</p></li>
-<li><p>Now we want to see how the code works if you change the number of points used. Build a plot showing the value of <span class="math inline">\(h\)</span> on the horizontal axis and the maximum error on the vertical axis. You will need to write a loop that gets the error for many different values of <span class="math inline">\(h\)</span>. Finally, it is probably best to build this plot on a log-log scale.</p></li>
-<li><p>Discuss what you see? How do you see the fact that the numerical second derivative is second order accurate?</p></li>
+<li><p>Find the numerical second derivative with your <code>SecondDiff</code> function on the interval [0,15] with a stepsize of <span class="math inline">\(h = 0.1\)</span>.</p></li>
+<li><p>Find the absolute difference between your numerical second derivative and the actual second derivative. This is point-by-point subtraction so you should end up with a vector containing the errors at each interior point. Again be careful to take into account that the numerical second derivative is not available at the endpoints.</p></li>
+<li><p>🎓 Find the maximum of your errors.</p></li>
+<li><p>Now we want to see how this maximum error changes as we change the number of points used. Build a function <code>plot_max_second_difference_errors</code> that produces a log-log plot showing the value of <span class="math inline">\(h\)</span> on the horizontal axis and the maximum error on the vertical axis. You can simply adapt the code from you <code>plot_max_forward_difference_errors</code> function. You should find that the maximum errors again line up approximately on a straight line.</p></li>
+</ol>
+</div>
+<ol start="5" type="1">
+<li>💬 Discuss what you see? How do you see the fact that the numerical second derivative is second order accurate?</li>
 </ol>
 </div>
 <hr>
-<p>The table below summarizes the formulas that we have for derivatives thus far. The exercises at the end of this chapter contain several more derivative approximations. We will return to this idea when we study numerical differential equations in <span class="quarto-unresolved-ref">?sec-ode</span>.</p>
+<p>The table below summarizes the formulas that we have for derivatives thus far.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 13%">
@@ -933,17 +963,11 @@ f''(x) = \frac{?? - 2 \cdot ?? + ??}{h^2} + \underline{\hspace{1in}}.
 </tr>
 <tr class="even">
 <td><span class="math inline">\(1^{st}\)</span></td>
-<td><span class="math inline">\(f'(x) \approx \frac{f(x) - f(x-h)}{h}\)</span></td>
-<td><span class="math inline">\(\mathcal{O}(h)\)</span></td>
-<td>Backward Difference</td>
-</tr>
-<tr class="odd">
-<td><span class="math inline">\(1^{st}\)</span></td>
 <td><span class="math inline">\(f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}\)</span></td>
 <td><span class="math inline">\(\mathcal{O}(h^2)\)</span></td>
 <td>Central Difference</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><span class="math inline">\(2^{nd}\)</span></td>
 <td><span class="math inline">\(f''(x) \approx \frac{f(x+h) - 2f(x) + f(x-h)}{h^2}\)</span></td>
 <td><span class="math inline">\(\mathcal{O}(h^2)\)</span></td>
@@ -953,15 +977,15 @@ f''(x) = \frac{?? - 2 \cdot ?? + ??}{h^2} + \underline{\hspace{1in}}.
 </table>
 <hr>
 <div id="exr-3.30" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.24</strong></span> 🖋 Let <span class="math inline">\(f(x)\)</span> be a twice differentiable function. We are interested in the first and second derivative of the function <span class="math inline">\(f\)</span> at the point <span class="math inline">\(x = 1.74\)</span>. Use what you have learned in this section to answer the following questions. (For clarity, you can think of “<span class="math inline">\(f\)</span>” as a different function in each of the following questions …it does not really matter exactly what function <span class="math inline">\(f\)</span> is.)</p>
+<p><span class="theorem-title"><strong>Exercise 5.26</strong></span> 💬 Let <span class="math inline">\(f(x)\)</span> be a twice differentiable function. We are interested in the first and second derivative of the function <span class="math inline">\(f\)</span> at the point <span class="math inline">\(x = 1.74\)</span>. Use what you have learned in this section to answer the following questions. (For clarity, you can think of “<span class="math inline">\(f\)</span>” as a different function in each of the following questions …it does not really matter exactly what function <span class="math inline">\(f\)</span> is.)</p>
 <ol type="1">
 <li><p>Johnny used a numerical first derivative scheme with <span class="math inline">\(h = 0.1\)</span> to approximate <span class="math inline">\(f'(1.74)\)</span> and found an absolute error of 3.28. He then used <span class="math inline">\(h=0.01\)</span> and found an absolute error of 0.328. What was the order of the error in his first derivative scheme? How can you tell?</p></li>
 <li><p>Betty used a numerical first derivative scheme with <span class="math inline">\(h = 0.2\)</span> to approximate <span class="math inline">\(f'(1.74)\)</span> and found an absolute error of 4.32. She then used <span class="math inline">\(h=0.1\)</span> and found an absolute error of 1.08. What numerical first derivative scheme did she likely use?</p></li>
-<li><p>Harry wants to compute <span class="math inline">\(f''(1.74)\)</span> to within 1% using a central difference scheme. He tries <span class="math inline">\(h=0.25\)</span> and gets an absolute percentage error of 3.71%. What <span class="math inline">\(h\)</span> should he try next so that his absolute percentage error is close to 1%?</p></li>
+<li><p>Harry wants to compute <span class="math inline">\(f''(1.74)\)</span> to within 1% using a central difference scheme. He tries <span class="math inline">\(h=0.25\)</span> and gets an absolute percentage error of 3.71%. What <span class="math inline">\(h\)</span> could he try next so that his absolute percentage error is close to 1%?</p></li>
 </ol>
 </div>
 <div id="exr-3.30n" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.25</strong></span> 🖋 We said at the start of this section that the spacing of the steps do not have to be constant. Insteady of a constant step size <span class="math inline">\(h\)</span> we could have variable step sizes <span class="math inline">\(\Delta x_i:=x_{i+1}-x_i\)</span>. However, this complicates the expression for the second derivative. In this exercise you can check that you fully understood the derivation of the formula for the second derivative by repeating it for these variable step sizes. So you will need to start with the Taylor expansions of <span class="math inline">\(f(x_{i+1})=f(x_i+\Delta x_i)\)</span> and <span class="math inline">\(f(x_{i-1})=f(x_i-\Delta x_{i-1})\)</span> around <span class="math inline">\(x_i\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 5.27</strong></span> 🖋 We said at the start of this section that the spacing of the steps do not have to be constant. Insteady of a constant step size <span class="math inline">\(h\)</span> we could have variable step sizes <span class="math inline">\(\Delta x_i:=x_{i+1}-x_i\)</span>. However, this complicates the expression for the second derivative. In this exercise you can check that you fully understood the derivation of the formula for the second derivative by repeating it for these variable step sizes. So you will need to start with the Taylor expansions of <span class="math inline">\(f(x_{i+1})=f(x_i+\Delta x_i)\)</span> and <span class="math inline">\(f(x_{i-1})=f(x_i-\Delta x_{i-1})\)</span> around <span class="math inline">\(x_i\)</span>.</p>
 </div>
 <hr>
 

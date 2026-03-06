@@ -600,7 +600,7 @@ AB = \begin{pmatrix} 27 &amp; 30 &amp; 33 \\ 61 &amp; 68 &amp; 75 \\ 95 &amp; 10
 </div>
 <hr>
 <div id="exr-4.10" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.9</strong></span> The definition of matrix multiplication above contains the cryptic phrase <em>a moment’s reflection reveals that each entry in the matrix product is actually a dot product.</em> Let us go back to the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> defined in <a href="#exr-4.9" class="quarto-xref">Exercise&nbsp;<span>C.8</span></a> above and re-evaluate the matrix multiplication algorithm to make sure that you see each entry as the end result of a dot product.</p>
+<p><span class="theorem-title"><strong>Exercise C.9</strong></span> The definition of matrix multiplication above contains the cryptic phrase <em>a moment’s reflection reveals that each entry in the matrix product is actually a dot product.</em> Let us go back to the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> defined in <a href="#exr-4.9" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-4.9</span></a> above and re-evaluate the matrix multiplication algorithm to make sure that you see each entry as the end result of a dot product.</p>
 <p>We want to find the product of matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> using dot products. <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \\ 5 &amp; 6 \end{pmatrix} \qquad B = \begin{pmatrix} 7 &amp; 8 &amp; 9 \\ 10 &amp; 11 &amp; 12 \end{pmatrix}
 \end{equation}\]</span></p>
@@ -877,7 +877,7 @@ A = L_1^{-1} L_2^{-1} L_3^{-1} U.
 </div>
 <hr>
 <div id="exr-4.24" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.23</strong></span> Go to <a href="#exm-4.LU" class="quarto-xref">Example&nbsp;<span>C.7</span></a> and go through every iteration of every loop <strong>by hand</strong> starting with the matrix <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.23</strong></span> Go to <a href="#exm-4.LU" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-4.LU</span></a> and go through every iteration of every loop <strong>by hand</strong> starting with the matrix <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 \end{pmatrix}.
 \end{equation}\]</span> Give details of what happens at every step of the algorithm. I will get you started.</p>
 <ul>
@@ -980,7 +980,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 
 </div>
 <hr>
 <div id="exr-4.29" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.28</strong></span> Copy the code from <a href="#def-4.5" class="quarto-xref">Definition&nbsp;<span>C.4</span></a> into a Python function but in your code write a comment on every line stating what it is doing. Write a test script that creates a lower-triangular matrix of the correct form and a right-hand side <span class="math inline">\(\boldsymbol{b}\)</span> and solve for <span class="math inline">\(\boldsymbol{y}\)</span>. Test your code by giving it a large lower-triangular system.</p>
+<p><span class="theorem-title"><strong>Exercise C.28</strong></span> Copy the code from <a href="#def-4.5" class="quarto-xref">Definition&nbsp;<span class="quarto-unresolved-ref">def-4.5</span></a> into a Python function but in your code write a comment on every line stating what it is doing. Write a test script that creates a lower-triangular matrix of the correct form and a right-hand side <span class="math inline">\(\boldsymbol{b}\)</span> and solve for <span class="math inline">\(\boldsymbol{y}\)</span>. Test your code by giving it a large lower-triangular system.</p>
 </div>
 <hr>
 <p>Now that we have a method for solving lower-triangular systems, let us build a similar method for solving upper-triangular systems. The merging of lower and upper-triangular systems will play an important role in solving systems of equations.</p>
@@ -1013,7 +1013,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \\ 7 &amp; 8 &amp; 0 
 <p><span class="theorem-title"><strong>Exercise C.31</strong></span> Now we will work through the backward substitution algorithm to help fill in the blanks in the code. Consider the upper-triangular system <span class="math display">\[\begin{equation}
 \begin{pmatrix} 1 &amp; 2 &amp; 3 \\ 0 &amp; -3 &amp; -6 \\ 0 &amp; 0 &amp; -9 \end{pmatrix} \begin{pmatrix} x_0 \\ x_1 \\ x_2 \end{pmatrix} = \begin{pmatrix} 1 \\ -4 \\ 3\end{pmatrix}
 \end{equation}\]</span></p>
-<p>Work the code from <a href="#def-4.6" class="quarto-xref">Definition&nbsp;<span>C.5</span></a> to solve the system. Keep track of all of the indices as you work through the code. You may want to work this problem in conjunction with the previous two problems to unpack all of the parts of the <em>backward substitution</em> algorithm.</p>
+<p>Work the code from <a href="#def-4.6" class="quarto-xref">Definition&nbsp;<span class="quarto-unresolved-ref">def-4.6</span></a> to solve the system. Keep track of all of the indices as you work through the code. You may want to work this problem in conjunction with the previous two problems to unpack all of the parts of the <em>backward substitution</em> algorithm.</p>
 <p>I will get you started.</p>
 <ul>
 <li><p>In your backward substitution algorithm you should have started with the last row, therefore the outer loop starts at <code>n-1</code> and reads backward to 0. (Why are we starting at <code>n-1</code> and not <code>n</code>?)</p></li>
@@ -1052,7 +1052,7 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 </div>
 <hr>
 <div id="exr-4.33" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.32</strong></span> Copy the code from <a href="#def-4.6" class="quarto-xref">Definition&nbsp;<span>C.5</span></a> into a Python function but in your code write a comment on every line stating what it is doing. Write a test script that creates an upper-triangular matrix of the correct form and a right-hand side <span class="math inline">\(\boldsymbol{y}\)</span> and solve for <span class="math inline">\(\boldsymbol{x}\)</span>. Your code needs to work on systems of arbitrarily large size.</p>
+<p><span class="theorem-title"><strong>Exercise C.32</strong></span> Copy the code from <a href="#def-4.6" class="quarto-xref">Definition&nbsp;<span class="quarto-unresolved-ref">def-4.6</span></a> into a Python function but in your code write a comment on every line stating what it is doing. Write a test script that creates an upper-triangular matrix of the correct form and a right-hand side <span class="math inline">\(\boldsymbol{y}\)</span> and solve for <span class="math inline">\(\boldsymbol{x}\)</span>. Your code needs to work on systems of arbitrarily large size.</p>
 </div>
 <hr>
 </section>
@@ -1135,7 +1135,7 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 <p><span class="theorem-title"><strong>Theorem C.1 (Orthonomal Matrices)</strong></span> If <span class="math inline">\(A\)</span> is an orthonormal matrix where the columns are mutually orthogonal and every column is a unit vector, then <span class="math inline">\(A^T = A^{-1}\)</span> and to solve the system of equation <span class="math inline">\(A\boldsymbol{x} = \boldsymbol{b}\)</span> we simply need to multiply both sides of the equation by <span class="math inline">\(A^T\)</span>. Hence, the solution to <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> is just <span class="math inline">\(\boldsymbol{x} = A^T \boldsymbol{b}\)</span> in this special case.</p>
 </div>
 <hr>
-<p><a href="#thm-4.1" class="quarto-xref">Theorem&nbsp;<span>C.1</span></a> begs an obvious question: <em>Is there a way to turn any matrix</em> <span class="math inline">\(A\)</span> into an orthogonal matrix so that we can solve <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> in this same very efficient and fast way?</p>
+<p><a href="#thm-4.1" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.1</span></a> begs an obvious question: <em>Is there a way to turn any matrix</em> <span class="math inline">\(A\)</span> into an orthogonal matrix so that we can solve <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> in this same very efficient and fast way?</p>
 <p>The answer: Yes. Kind of.</p>
 <p>In essence, if we can factor our coefficient matrix into an orthonormal matrix and some other nicely formatted matrix (like a triangular matrix, perhaps) then the job of solving the linear system of equations comes down to matrix multiplication and a quick triangular solve – both of which are extremely fast!</p>
 <p>What we will study in this section is a new matrix factorization called the <span class="math inline">\(QR\)</span> factorization whose goal is to convert the matrix <span class="math inline">\(A\)</span> into a product of two matrices, <span class="math inline">\(Q\)</span> and <span class="math inline">\(R\)</span>, where <span class="math inline">\(Q\)</span> is orthonormal and <span class="math inline">\(R\)</span> is upper-triangular.</p>
@@ -1144,7 +1144,7 @@ x_1 = \frac{-4}{-3} - \frac{-6x_2}{-3}.
 <p><span class="theorem-title"><strong>Exercise C.38</strong></span> Let us say that we have a matrix <span class="math inline">\(A\)</span> and we know that it can be factored into <span class="math inline">\(A = QR\)</span> where <span class="math inline">\(Q\)</span> is an orthonormal matrix and <span class="math inline">\(R\)</span> is an upper-triangular matrix. How would we then leverage this factorization to solve the system of equation <span class="math inline">\(A \boldsymbol{x} = \boldsymbol{b}\)</span> for <span class="math inline">\(\boldsymbol{x}\)</span>?</p>
 </div>
 <hr>
-<p>Before proceeding to the algorithm for the <span class="math inline">\(QR\)</span> factorization let us pause for a moment and review scalar and vector projections from Linear Algebra. In <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>C.1</span></a> we see a graphical depiction of the vector <span class="math inline">\(\boldsymbol{u}\)</span> projected onto vector <span class="math inline">\(\boldsymbol{v}\)</span>. Notice that the projection is indeed the perpendicular projection as this is what seems natural geometrically.</p>
+<p>Before proceeding to the algorithm for the <span class="math inline">\(QR\)</span> factorization let us pause for a moment and review scalar and vector projections from Linear Algebra. In <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.1</span></a> we see a graphical depiction of the vector <span class="math inline">\(\boldsymbol{u}\)</span> projected onto vector <span class="math inline">\(\boldsymbol{v}\)</span>. Notice that the projection is indeed the perpendicular projection as this is what seems natural geometrically.</p>
 <p>The <strong>vector projection</strong> of <span class="math inline">\(\boldsymbol{u}\)</span> onto <span class="math inline">\(\boldsymbol{v}\)</span> is the vector <span class="math inline">\(c \boldsymbol{v}\)</span>. That is, the vector projection of <span class="math inline">\(\boldsymbol{u}\)</span> onto <span class="math inline">\(\boldsymbol{v}\)</span> is a scalar multiple of the vector <span class="math inline">\(\boldsymbol{v}\)</span>. The value of the scalar <span class="math inline">\(c\)</span> is called the <strong>scalar projection</strong> of <span class="math inline">\(\boldsymbol{u}\)</span> onto <span class="math inline">\(\boldsymbol{v}\)</span>.</p>
 <div id="fig-4.1" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1157,7 +1157,7 @@ Figure&nbsp;C.1: Projection of one vector onto another.
 </figure>
 </div>
 <p>Figure 4.1: Projection of one vector onto another.</p>
-<p>We can arrive at a formula for the scalar projection rather easily if we consider that the vector <span class="math inline">\(\boldsymbol{w}\)</span> in <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>C.1</span></a> must be perpendicular to <span class="math inline">\(c\boldsymbol{v}\)</span>. Hence <span class="math display">\[\begin{equation}
+<p>We can arrive at a formula for the scalar projection rather easily if we consider that the vector <span class="math inline">\(\boldsymbol{w}\)</span> in <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.1</span></a> must be perpendicular to <span class="math inline">\(c\boldsymbol{v}\)</span>. Hence <span class="math display">\[\begin{equation}
 \boldsymbol{w} \cdot \left( c\boldsymbol{v} \right) = 0.
 \end{equation}\]</span> From vector geometry we also know that <span class="math inline">\(\boldsymbol{w} = \boldsymbol{u}-c\boldsymbol{v}\)</span>. Therefore <span class="math display">\[\begin{equation}
 \left( \boldsymbol{u} - c\boldsymbol{v} \right) \cdot \left( c \boldsymbol{v} \right) = 0.
@@ -1175,7 +1175,7 @@ c = \frac{\boldsymbol{u} \cdot \boldsymbol{v}}{\|\boldsymbol{v} \|^2}
 c \boldsymbol{v} = \left( \frac{\boldsymbol{u} \cdot \boldsymbol{v}}{\|\boldsymbol{v} \|^2} \right) \boldsymbol{v}
 \end{equation}\]</span></p></li>
 </ul>
-<p>Another problem related to scalar and vector projections is to take a basis for the column space of a matrix and transform that basis into an orthogonal (or orthonormal) basis. Indeed, in <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span>C.1</span></a> if we have the matrix <span class="math display">\[\begin{equation}
+<p>Another problem related to scalar and vector projections is to take a basis for the column space of a matrix and transform that basis into an orthogonal (or orthonormal) basis. Indeed, in <a href="#fig-4.1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.1</span></a> if we have the matrix <span class="math display">\[\begin{equation}
 A = \begin{pmatrix} | &amp; | \\ \boldsymbol{u} &amp; \boldsymbol{v} \\ | &amp; | \end{pmatrix}
 \end{equation}\]</span> it should be clear from the picture that the columns of this matrix are not perpendicular. However, if we take the vector <span class="math inline">\(\boldsymbol{v}\)</span> and the vector <span class="math inline">\(\boldsymbol{w}\)</span> we do arrive at two orthogonal vector that form a basis for the same space. Moreover, if we normalize these vectors (by dividing by their respective lengths) then we can easily transform the original basis for the column space of <span class="math inline">\(A\)</span> into an orthonormal basis. This process is called the Gram-Schmidt process, and you have encountered it in your Linear Algebra module.</p>
 <p>Now we return to our goal of finding a way to factor a matrix <span class="math inline">\(A\)</span> into an orthonormal matrix <span class="math inline">\(Q\)</span> and an upper-triangular matrix <span class="math inline">\(R\)</span>. The algorithm that we are about to build depends greatly on the ideas of scalar and vector projections.</p>
@@ -1373,7 +1373,7 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </div>
 <hr>
 <div id="exr-4.51" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.49</strong></span> Fit a linear function to the following data. Solve for the slope and intercept using the technique outlined in <a href="#thm-4.3" class="quarto-xref">Theorem&nbsp;<span>C.3</span></a>. Make a plot of the points along with your best fit curve.</p>
+<p><span class="theorem-title"><strong>Exercise C.49</strong></span> Fit a linear function to the following data. Solve for the slope and intercept using the technique outlined in <a href="#thm-4.3" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.3</span></a>. Make a plot of the points along with your best fit curve.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1431,7 +1431,7 @@ R = \begin{pmatrix} \boldsymbol{a}_0 \cdot \boldsymbol{q}_0 &amp; \boldsymbol{a}
 </div>
 <hr>
 <div id="exr-4.52" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.50</strong></span> Fit a quadratic function to the following data using the technique outlined in <a href="#thm-4.3" class="quarto-xref">Theorem&nbsp;<span>C.3</span></a>. Make a plot of the points along with your best fit curve.</p>
+<p><span class="theorem-title"><strong>Exercise C.50</strong></span> Fit a quadratic function to the following data using the technique outlined in <a href="#thm-4.3" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.3</span></a>. Make a plot of the points along with your best fit curve.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -1641,7 +1641,7 @@ A^k \boldsymbol{x} = \lambda_1^k \left( c_1 ??? + c_2 \left( \frac{???}{???} \ri
 </div>
 <hr>
 <div id="exr-4.61" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.59</strong></span> Go through <a href="#thm-4.5" class="quarto-xref">Theorem&nbsp;<span>C.4</span></a> carefully and describe what we need to do in each step and why we are doing it. Then complete all of the missing pieces of the following Python function.</p>
+<p><span class="theorem-title"><strong>Exercise C.59</strong></span> Go through <a href="#thm-4.5" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.5</span></a> carefully and describe what we need to do in each step and why we are doing it. Then complete all of the missing pieces of the following Python function.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> myPower(A, tol <span class="op">=</span> <span class="fl">1e-8</span>):</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> A.shape[<span class="dv">0</span>]</span>
@@ -1673,7 +1673,7 @@ A^k \boldsymbol{x} = \lambda_1^k \left( c_1 ??? + c_2 \left( \frac{???}{???} \ri
 </div>
 <hr>
 <div id="exr-4.65" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.63 (Convergence Rate of the Power Method)</strong></span> The proof that the power method will work hinges on the fact that <span class="math inline">\(|\lambda_1| &gt; |\lambda_2| \geq |\lambda_3| \geq \cdots \geq |\lambda_n|\)</span>. In <a href="#exr-4.60" class="quarto-xref">Exercise&nbsp;<span>C.58</span></a> we proved that the limit <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise C.63 (Convergence Rate of the Power Method)</strong></span> The proof that the power method will work hinges on the fact that <span class="math inline">\(|\lambda_1| &gt; |\lambda_2| \geq |\lambda_3| \geq \cdots \geq |\lambda_n|\)</span>. In <a href="#exr-4.60" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-4.60</span></a> we proved that the limit <span class="math display">\[\begin{equation}
 \lim_{k \to \infty} \frac{A^k \boldsymbol{x}}{\lambda_1^k}
 \end{equation}\]</span> converges to the dominant eigenvector, but how fast is the convergence? What does the speed of the convergence depend on?</p>
 <p>Take note that since we are assuming that the eigenvalues are ordered, the ratio <span class="math inline">\(\lambda_2 / \lambda_1\)</span> will be larger than <span class="math inline">\(\lambda_j / \lambda_1\)</span> for all <span class="math inline">\(j&gt;2\)</span>. Hence, the speed at which the power method converges depends mostly on the ratio <span class="math inline">\(\lambda_2 / \lambda_1\)</span>. Let us build a numerical experiment to see how sensitive the power method is to this ratio.</p>
@@ -1751,7 +1751,7 @@ A^k \boldsymbol{x} = \lambda_1^k \left( c_1 ??? + c_2 \left( \frac{???}{???} \ri
 <div id="exr-4.75" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise C.73</strong></span> Imagine that we have a 1 meter long thin metal rod that has been heated to 100<span class="math inline">\(^\circ\)</span> on the left-hand side and cooled to 0<span class="math inline">\(^\circ\)</span> on the right-hand side. We want to know the temperature every 10 cm from left to right on the rod.</p>
 <ol type="1">
-<li><p>First we break the rod into equal 10cm increments as shown. See <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span>C.2</span></a>. How many unknowns are there in this picture?</p></li>
+<li><p>First we break the rod into equal 10cm increments as shown. See <a href="#fig-4.2" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.2</span></a>. How many unknowns are there in this picture?</p></li>
 <li><p>The temperature at each point along the rod is the average of the temperatures at the adjacent points. For example, if we let <span class="math inline">\(T_1\)</span> be the temperature at point <span class="math inline">\(x_1\)</span> then <span class="math display">\[\begin{equation}
 T_1 = \frac{T_0 + T_2}{2}.
 \end{equation}\]</span> Write a system of equations for each of the unknown temperatures.</p></li>
@@ -1815,7 +1815,7 @@ Figure&nbsp;C.2: A rod to be heated broken into 10 equal-length segments.
 </div>
 <hr>
 <div id="exr-4.81" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.79</strong></span> Repeat <a href="#exr-4.80" class="quarto-xref">Exercise&nbsp;<span>C.78</span></a> for the <span class="math inline">\(QR\)</span> decomposition. Your final plot should show both the behaviour of <span class="math inline">\(QR\)</span> and of <span class="math inline">\(LU\)</span> throughout the experiment. What do you notice?</p>
+<p><span class="theorem-title"><strong>Exercise C.79</strong></span> Repeat <a href="#exr-4.80" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-4.80</span></a> for the <span class="math inline">\(QR\)</span> decomposition. Your final plot should show both the behaviour of <span class="math inline">\(QR\)</span> and of <span class="math inline">\(LU\)</span> throughout the experiment. What do you notice?</p>
 </div>
 <hr>
 <div id="exr-4.82" class="theorem exercise">
@@ -1868,7 +1868,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 5 &amp; 6 &amp; 7 &amp; 8 \\ 9 
 </div>
 <hr>
 <div id="exr-4.87" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.85</strong></span> It is possible in a matrix that the eigenvalues <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> are equal but with the corresponding eigenvectors not equal. Before you experiment with matrices of this sort, write a conjecture about what will happen to the power method in this case (look back to our proof in <a href="#exr-4.60" class="quarto-xref">Exercise&nbsp;<span>C.58</span></a> of how the power method works). Now build several specific matrices where this is the case and see what happens to the power method.</p>
+<p><span class="theorem-title"><strong>Exercise C.85</strong></span> It is possible in a matrix that the eigenvalues <span class="math inline">\(\lambda_1\)</span> and <span class="math inline">\(\lambda_2\)</span> are equal but with the corresponding eigenvectors not equal. Before you experiment with matrices of this sort, write a conjecture about what will happen to the power method in this case (look back to our proof in <a href="#exr-4.60" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-4.60</span></a> of how the power method works). Now build several specific matrices where this is the case and see what happens to the power method.</p>
 </div>
 <hr>
 <div id="exr-4.88" class="theorem exercise">
@@ -1880,7 +1880,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 5 &amp; 6 &amp; 7 &amp; 8 \\ 9 
 </div>
 <hr>
 <div id="exr-4.90" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.87 (The Deflation Method)</strong></span> For symmetric matrices we can build an extension to the power method in order to find the second most dominant eigen-pair for a matrix <span class="math inline">\(A\)</span>. <a href="#thm-4.6" class="quarto-xref">Theorem&nbsp;<span>C.5</span></a> suggests the following method for finding the second dominant eigen-pair for a symmetric matrix. This method is called the <strong>deflation method</strong>.</p>
+<p><span class="theorem-title"><strong>Exercise C.87 (The Deflation Method)</strong></span> For symmetric matrices we can build an extension to the power method in order to find the second most dominant eigen-pair for a matrix <span class="math inline">\(A\)</span>. <a href="#thm-4.6" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.6</span></a> suggests the following method for finding the second dominant eigen-pair for a symmetric matrix. This method is called the <strong>deflation method</strong>.</p>
 <ul>
 <li><p>Use the power method to find the dominant eigenvalue and eigenvector.</p></li>
 <li><p>Start with a random unit vector of the correct shape.</p></li>
@@ -2005,7 +2005,7 @@ A = \begin{pmatrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 5 &amp; 6 &amp; 7 &amp; 8 \\ 9 
 <p>This section focuses on the Linear Algebra behind the Ranking Module developed by the founders of Google: Sergey Brin and Larry Page. Their algorithm is called the <em>Page Rank algorithm</em>, and you use it every single time you use Google’s search engine.</p>
 <p>In simple terms: <em>A webpage is important if it is pointed to by other important pages</em>.</p>
 <p>The Internet can be viewed as a directed graph (look up this term <a href="https://en.wikipedia.org/wiki/Directed_graph">here on Wikipedia</a>) where the nodes are the web pages and the edges are the hyperlinks between the pages. The hyperlinks into a page are called <em>in links</em>, and the ones pointing out of a page are called <em>out links</em>. In essence, a hyperlink from my page to yours is my endorsement of your page. Thus, a page with more recommendations must be more important than a page with a few links. However, the status of the recommendation is also important.</p>
-<p>Let us now translate this into mathematics. To help understand this we first consider the small web of six pages shown in <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a> (a graph of the router level of the internet can be found <a href="https://personalpages.manchester.ac.uk/staff/m.dodge/cybergeography/atlas/lumeta_large.jpg">here</a>). The links between the pages are shown by arrows. An arrow pointing into a node is an <em>in link</em> and an arrow pointing out of a node is an <em>out link</em>. In <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>, node 3 has three out links (to nodes 1, 2, and 5) and 1 in link (from node 1).</p>
+<p>Let us now translate this into mathematics. To help understand this we first consider the small web of six pages shown in <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.3</span></a> (a graph of the router level of the internet can be found <a href="https://personalpages.manchester.ac.uk/staff/m.dodge/cybergeography/atlas/lumeta_large.jpg">here</a>). The links between the pages are shown by arrows. An arrow pointing into a node is an <em>in link</em> and an arrow pointing out of a node is an <em>out link</em>. In <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.3</span></a>, node 3 has three out links (to nodes 1, 2, and 5) and 1 in link (from node 1).</p>
 <div id="fig-4.3" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-4.3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -2026,11 +2026,11 @@ H_{ij} = \left\{ \begin{array}{cl} \frac{1}{|P_j|}, &amp; \text{if there is a li
 </ul>
 <p>The Page Rank algorithm works as follows:</p>
 <ol type="1">
-<li><p>Initialize the page ranks to all be equal. This means that our initial assumption is that all pages are of equal rank. In the case of <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a> we would take <span class="math inline">\(\boldsymbol{x}_0\)</span> to be <span class="math display">\[\begin{equation}
+<li><p>Initialize the page ranks to all be equal. This means that our initial assumption is that all pages are of equal rank. In the case of <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.3</span></a> we would take <span class="math inline">\(\boldsymbol{x}_0\)</span> to be <span class="math display">\[\begin{equation}
 \boldsymbol{x}_0 = \begin{pmatrix} 1/6 \\ 1/6 \\ 1/6 \\ 1/6 \\ 1/6 \\ 1/6 \end{pmatrix}.
 \end{equation}\]</span></p></li>
 <li><p>Build the hyperlink matrix.<br>
-As an example we will consider node 3 in <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>. There are three out links from node 3 (to nodes 1, 2, and 5). Hence <span class="math inline">\(H_{13}=1/3\)</span>, <span class="math inline">\(H_{23} = 1/3\)</span>, and <span class="math inline">\(H_{53} = 1/3\)</span> and the partially complete hyperlink matrix is <span class="math display">\[\begin{equation}
+As an example we will consider node 3 in <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.3</span></a>. There are three out links from node 3 (to nodes 1, 2, and 5). Hence <span class="math inline">\(H_{13}=1/3\)</span>, <span class="math inline">\(H_{23} = 1/3\)</span>, and <span class="math inline">\(H_{53} = 1/3\)</span> and the partially complete hyperlink matrix is <span class="math display">\[\begin{equation}
 H = \begin{pmatrix} - &amp; - &amp; 1/3 &amp; - &amp; - &amp; - \\ - &amp; - &amp; 1/3 &amp; - &amp; - &amp; - \\ - &amp; - &amp; 0 &amp; - &amp; - &amp; - \\ - &amp; - &amp; 0 &amp; - &amp; - &amp; - \\ - &amp; - &amp; 1/3 &amp; - &amp; - &amp; - \\ - &amp; - &amp; 0 &amp; - &amp; - &amp; - \end{pmatrix}
 \end{equation}\]</span></p></li>
 <li><p>The difference equation <span class="math inline">\(\boldsymbol{x}_{n+1} = H \boldsymbol{x}_n\)</span> is used to iteratively refine the estimates of the page ranks. You can view the iterations as a person visiting a page and then following a link at random, then following a random link on the next page, and the next, and the next, etc. Hence we see that the iterations evolve exactly as expected for a difference equation.</p></li>
@@ -2104,7 +2104,7 @@ Note: We can assume that the eigenvalues are ordered such that <span class="math
 </div>
 <hr>
 <div id="exr-4.95" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.92</strong></span> Finish writing the hyperlink matrix <span class="math inline">\(H\)</span> from <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise C.92</strong></span> Finish writing the hyperlink matrix <span class="math inline">\(H\)</span> from <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.3</span></a>.</p>
 </div>
 <hr>
 <div id="exr-4.96" class="theorem exercise">
@@ -2124,15 +2124,15 @@ Note: We can assume that the eigenvalues are ordered such that <span class="math
 \boldsymbol{x}_{equilib} = \lim_{k \to\infty} A^k \boldsymbol{x}_0 = \underline{\hspace{1in}}.
 \end{equation}\]</span></p>
 <p><em>Proof:</em></p>
-<p>First note that <span class="math inline">\(A\)</span> is an <span class="math inline">\(n \times n\)</span> stochastic matrix so from <a href="#thm-4.8" class="quarto-xref">Theorem&nbsp;<span>C.7</span></a> we know that there are <span class="math inline">\(n\)</span> linearly independent eigenvectors. We can then substitute the eigenvalues from <a href="#thm-4.8" class="quarto-xref">Theorem&nbsp;<span>C.7</span></a> in <a href="#thm-4.7" class="quarto-xref">Theorem&nbsp;<span>C.6</span></a>. Noting that if <span class="math inline">\(0&lt;\lambda_j&lt;1\)</span> we have <span class="math inline">\(\lim_{k \to \infty} \lambda_j^k = 0\)</span> the result follows immediately.</p>
+<p>First note that <span class="math inline">\(A\)</span> is an <span class="math inline">\(n \times n\)</span> stochastic matrix so from <a href="#thm-4.8" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.8</span></a> we know that there are <span class="math inline">\(n\)</span> linearly independent eigenvectors. We can then substitute the eigenvalues from <a href="#thm-4.8" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.8</span></a> in <a href="#thm-4.7" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.7</span></a>. Noting that if <span class="math inline">\(0&lt;\lambda_j&lt;1\)</span> we have <span class="math inline">\(\lim_{k \to \infty} \lambda_j^k = 0\)</span> the result follows immediately.</p>
 </div>
 <hr>
 <div id="exr-4.99" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.96</strong></span> Discuss how <a href="#thm-4.9" class="quarto-xref">Theorem&nbsp;<span>C.8</span></a> greatly simplifies the PageRank iterative process described previously. In other words: there is no reason to iterate at all. Instead, just find … what?</p>
+<p><span class="theorem-title"><strong>Exercise C.96</strong></span> Discuss how <a href="#thm-4.9" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.9</span></a> greatly simplifies the PageRank iterative process described previously. In other words: there is no reason to iterate at all. Instead, just find … what?</p>
 </div>
 <hr>
 <div id="exr-4.100" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.97</strong></span> Now use the previous two problems to find the resulting PageRank vector from the web in <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span>C.3</span></a>? Be sure to rank the pages in order of importance. Compare your answer to the one that you got in problem 2.</p>
+<p><span class="theorem-title"><strong>Exercise C.97</strong></span> Now use the previous two problems to find the resulting PageRank vector from the web in <a href="#fig-4.3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.3</span></a>? Be sure to rank the pages in order of importance. Compare your answer to the one that you got in problem 2.</p>
 </div>
 <hr>
 <div id="fig-4.4" class="quarto-float quarto-figure quarto-figure-left anchored">
@@ -2146,17 +2146,17 @@ Figure&nbsp;C.4: A second example web graph.
 </figure>
 </div>
 <div id="exr-4.101" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.98</strong></span> Consider the web in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>C.4</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise C.98</strong></span> Consider the web in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.4</span></a>.</p>
 <ol type="1">
 <li><p>Write the <span class="math inline">\(H\)</span> matrix and find the initial state <span class="math inline">\(\boldsymbol{x}_0\)</span>,</p></li>
-<li><p>Find steady state PageRank vector using the two different methods described: one using the iterative difference equation and the other using <a href="#thm-4.9" class="quarto-xref">Theorem&nbsp;<span>C.8</span></a> and the dominant eigenvector.</p></li>
+<li><p>Find steady state PageRank vector using the two different methods described: one using the iterative difference equation and the other using <a href="#thm-4.9" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-4.9</span></a> and the dominant eigenvector.</p></li>
 <li><p>Rank the pages in order of importance.</p></li>
 </ol>
 </div>
 <hr>
 <div id="exr-4.102" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise C.99</strong></span> One thing that we did not consider in this version of the Google Page Rank algorithm is the random behaviour of humans. One, admittedly slightly naive, modification that we can make to the present algorithm is to assume that the person surfing the web will randomly jump to any other page in the web at any time. For example, if someone is on page 1 in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>C.4</span></a> then they could randomly jump to any page 2 - 8. They also have links to pages 2, 3, and 7. That is a total of 10 possible next steps for the web surfer. There is a <span class="math inline">\(2/10\)</span> chance of heading to page 2. One of those is following the link from page 1 to page 2 and the other is a random jump to page 2 without following the link. Similarly, there is a <span class="math inline">\(2/10\)</span> chance of heading to page 3, <span class="math inline">\(2/10\)</span> chance of heading to page 7, and a <span class="math inline">\(1/10\)</span> chance of randomly heading to any other page.</p>
-<p>Implement this new algorithm, called the <em>random surfer algorithm</em>, on the web in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span>C.4</span></a>. Compare your ranking to the non-random surfer results from the previous problem.</p>
+<p><span class="theorem-title"><strong>Exercise C.99</strong></span> One thing that we did not consider in this version of the Google Page Rank algorithm is the random behaviour of humans. One, admittedly slightly naive, modification that we can make to the present algorithm is to assume that the person surfing the web will randomly jump to any other page in the web at any time. For example, if someone is on page 1 in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.4</span></a> then they could randomly jump to any page 2 - 8. They also have links to pages 2, 3, and 7. That is a total of 10 possible next steps for the web surfer. There is a <span class="math inline">\(2/10\)</span> chance of heading to page 2. One of those is following the link from page 1 to page 2 and the other is a random jump to page 2 without following the link. Similarly, there is a <span class="math inline">\(2/10\)</span> chance of heading to page 3, <span class="math inline">\(2/10\)</span> chance of heading to page 7, and a <span class="math inline">\(1/10\)</span> chance of randomly heading to any other page.</p>
+<p>Implement this new algorithm, called the <em>random surfer algorithm</em>, on the web in <a href="#fig-4.4" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-4.4</span></a>. Compare your ranking to the non-random surfer results from the previous problem.</p>
 </div>
 <hr>
 </section>

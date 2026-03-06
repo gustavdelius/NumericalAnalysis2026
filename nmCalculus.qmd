@@ -771,7 +771,7 @@ f''(x) = \frac{?? - 2 \cdot ?? + ??}{h^2} + \underline{\hspace{1in}}.
 ::: {#exr-3.29}
 💻 💬 Test your second derivative code on the function $f(x) = \sin(x) (1-x)$ by doing the following.
 
-::: {#exr-max_err_plot}
+::: {#exr-max_err_plot_second}
 💻 🎓 You have seen in the previous exercise how the error is different at different $x$. It might be interesting to look at the largest error over the entire interval for different step sizes.
 
 1.  Find the numerical second derivative with your `SecondDiff` function on the interval [0,15] with a stepsize of $h = 0.1$.

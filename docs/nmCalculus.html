@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -492,17 +492,15 @@ f'(x) = \frac{f(x+h) - f(x)}{h} + \mathcal{O}(h).
 </div>
 <hr>
 <div id="exr-3.13" class="theorem exercise page-columns page-full">
-<p><span class="theorem-title"><strong>Exercise 5.11</strong></span> 💻 💬 🎓 Consider the function <span class="math inline">\(f(x) = \sin(x) (1- x)\)</span>. The goal of this exercise is to make sense of the discussion of the “order” of the derivative approximation.</p>
+<p><span class="theorem-title"><strong>Exercise 5.11</strong></span> 💻 💬 Consider the function <span class="math inline">\(f(x) = \sin(x) (1- x)\)</span>. The goal of this exercise is to make sense of the discussion of the “order” of the derivative approximation.</p>
 <ol type="a">
 <li><p>Find <span class="math inline">\(f'(x)\)</span> analytically.</p></li>
 <li><p>Use your answer to part (a) to verify that <span class="math inline">\(f'(1) = -\sin(1) \approx -0.8414709848\)</span>.</p></li>
-<li><p>To approximate the first derivative at <span class="math inline">\(x=1\)</span> numerically with the forward-difference approximation formula from <a href="#thm-3.1" class="quarto-xref">Theorem&nbsp;<span>5.1</span></a> we calculate <span class="math display">\[\begin{equation}
+<li><p>🎓 To approximate the first derivative at <span class="math inline">\(x=1\)</span> numerically with the forward-difference approximation formula from <a href="#thm-3.1" class="quarto-xref">Theorem&nbsp;<span>5.1</span></a> we calculate <span class="math display">\[\begin{equation}
 f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 \end{equation}\]</span> We want to see how the error in the approximation behaves as <span class="math inline">\(h\)</span> is made smaller and smaller. The table below shows the approximation and the absolute error for <span class="math inline">\(h = 2^{-1}\)</span> and <span class="math inline">\(h = 2^{-2}\)</span>. It also shows the error reduction factor, which is the ratio of two successive absolute errors. Extend the table to include <span class="math inline">\(h = 2^{-3}\)</span> up to <span class="math inline">\(h = 2^{-10}\)</span>. Start with the code given below but use a loop to create the 10 rows.</p></li>
 </ol>
-<div id="345356fc" class="cell column-page-right" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="15f69d98" class="cell column-page-right" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup function and exact derivative</span></span>
@@ -530,7 +528,6 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>error_prev <span class="op">=</span> error</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>error <span class="op">=</span> <span class="bu">abs</span>(exact <span class="op">-</span> delta_f(h))</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>h_str<span class="sc">:&lt;20}</span><span class="ss"> | </span><span class="sc">{</span>delta_f(h)<span class="sc">:&lt;18.15f}</span><span class="ss"> | </span><span class="sc">{</span>error<span class="sc">:&lt;18.15f}</span><span class="ss"> | </span><span class="sc">{</span>error_prev<span class="op">/</span>error<span class="sc">:&lt;18.15f}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
 <div class="cell-output cell-output-stdout">
 <pre><code>h                    | Δf(1)              | |f'(1) - Δf(1)|    | Error reduction factor
 ----------------------------------------------------------------------------------
@@ -539,44 +536,72 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 </div>
 </div>
 <ol start="4" type="a">
-<li><p>There was nothing really special in part (c) about powers of 2. Modify your code to build similar tables for the following sequences of <span class="math inline">\(h\)</span>: <span class="math display">\[\begin{equation}
-\begin{aligned} h &amp;= 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots \\ h &amp;= 5^{-1}, \, 5^{-2}, \, 5^{-3}, \, \ldots \\ h &amp;= 10^{-1}, \, 10^{-2}, \, 10^{-3}, \, \ldots \\ h &amp;= \pi^{-1}, \, \pi^{-2}, \, \pi^{-3}, \, \ldots. \\ \end{aligned}
+<li>Use the following function to plot the absolute error as a function of <span class="math inline">\(h\)</span>.</li>
+</ol>
+<div id="9b36d787" class="cell column-page-right" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_forward_difference_errors(f, x, exact, H):</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot the absolute error in the finite difference approximation</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">        f (function): Function whose derivative we approximate</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">        x (float): The point at which we want the derivative</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">        exact (float): The exact value of f'(x)</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">        H (vector): We will calculate the error at each of the</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">                    entries of this vector</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">        A plot with the stepsizes on the x axis and the </span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">        absolute error on the y axis</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create list of errors</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    AbsError <span class="op">=</span> [] <span class="co"># start off with a blank list of errors</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> h <span class="kw">in</span> H:</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        approx <span class="op">=</span> (f(x<span class="op">+</span>h) <span class="op">-</span> f(x))<span class="op">/</span>h</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        AbsError.append(<span class="bu">abs</span>(approx <span class="op">-</span> exact))</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make a loglog plot</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    plt.loglog(H, AbsError, <span class="st">'b*'</span>)</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"h"</span>)</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"Absolute Error"</span>)</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"Absolute Error vs. h"</span>)</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    plt.grid()</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(plt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Here is an example of how to use the function:</p>
+<div id="71884969" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup function and exact derivative</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>exact <span class="op">=</span> <span class="op">-</span>np.sin(x)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vector of step sizes</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> [<span class="dv">2</span><span class="op">**</span>(<span class="op">-</span>n) <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, <span class="dv">11</span>)]</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the absolute error</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plot_forward_difference_errors(f, x, exact, H)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="nmCalculus_files/figure-html/cell-4-output-1.png" width="599" height="451" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol start="5" type="a">
+<li><p>💬 Discuss the pattern in how the absolute error changes as <span class="math inline">\(h\)</span> is changed? What does the log-log plot tell you? How does this agree with what the table tells you?</p></li>
+<li><p>There was nothing really special in part (c) about powers of 2. Modify your code to build similar tables and plots for the following sequences of <span class="math inline">\(h\)</span>: <span class="math display">\[\begin{equation}
+\begin{aligned} h &amp;= 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots \\ h &amp;= 5^{-1}, \, 5^{-2}, \, 5^{-3}, \, \ldots \\ h &amp;= 10^{-1}, \, 10^{-2}, \, 10^{-3}, \, \ldots. \\ \end{aligned}
 \end{equation}\]</span></p></li>
-<li><p>Observation: Can you spot some pattern in how the absolute error changes as <span class="math inline">\(h\)</span> is changed?</p></li>
-<li><p>Use the following function to plot the absolute error as a function of <span class="math inline">\(h\)</span> for the different sequences of <span class="math inline">\(h\)</span> you tried in part (d).</p></li>
 </ol>
-<div id="c1eaeacb" class="cell column-page-right" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_forward_difference_errors(f, x,exact, H):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot the absolute error in the finite difference approximation</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">        f (function): Function whose derivative we approximate</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">        x (float): The point at which we want the derivative</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">        exact (float): The exact value of f'(x)</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">        H (vector): We will calculate the error at each of the</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">                    entries of this vector</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">        A plot with the stepsizes on the x axis and the </span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">        absolute error on the y axis</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create list of errors</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    AbsError <span class="op">=</span> [] <span class="co"># start off with a blank list of errors</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> h <span class="kw">in</span> H:</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        approx <span class="op">=</span> (f(x<span class="op">+</span>h) <span class="op">-</span> f(x))<span class="op">/</span>h</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>        AbsError.append(<span class="bu">abs</span>(approx <span class="op">-</span> exact))</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Make a plot</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    plt.loglog(H, AbsError, <span class="st">'b*'</span>) <span class="co"># Why are we making a loglog plot?</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    plt.grid()</span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(plt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</div>
+<p>Do you see any anomalies that could be caused by rounding errors?</p>
 <ol start="7" type="a">
-<li><p>Create the table and the plot for several different choices of the function <span class="math inline">\(f\)</span> and the point <span class="math inline">\(x\)</span> at which you compute the derivative. Does the pattern you observe in part (e) continue to hold? Do you see any anomalies that could be caused by rounding errors?</p></li>
-<li><p>What does your answer to part (e) have to do with the approximation order of the numerical derivative method that you used?</p></li>
+<li><p>Create the table and the plot for several different choices of the function <span class="math inline">\(f\)</span> and the point <span class="math inline">\(x\)</span> at which you compute the derivative. Does the pattern you observe in part (e) continue to hold?</p></li>
+<li><p>💬 What does your answer to part (e) have to do with the approximation order of the numerical derivative method that you used?</p></li>
 </ol>
+</div>
 <div id="exr-3.16" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.12</strong></span> 💬 Explain the phrase: <em>The forward difference approximation</em> <span class="math inline">\(f'(x) \approx \frac{f(x+h)-f(x)}{h}\)</span> <em>is first order.</em></p>
 </div>
@@ -587,7 +612,7 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 <p>Now that we have a handle on how the forward-difference approximation scheme for the first derivative works and how the error depends on the step size, let us build some code that will take in a function and output the approximate first derivative on an entire interval instead of just at a single point.</p>
 <hr>
 <div id="exr-3.17" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.13</strong></span> 💻 We want to build a Python function that accepts:</p>
+<p><span class="theorem-title"><strong>Exercise 5.13</strong></span> 💻 🎓 We want to build a Python function that accepts:</p>
 <ul>
 <li><p>a mathematical function,</p></li>
 <li><p>the bounds of an interval,</p></li>
@@ -596,51 +621,51 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 <p>The function will return the forward-difference approximation of the first derivative at every point in the interval except at the right-hand side. For example, we could send the function <span class="math inline">\(f(x) = \sin(x)\)</span>, the interval <span class="math inline">\([0,2\pi]\)</span>, and tell it to split the interval into 100 subintervals. We would then get back an approximate value of the derivative <span class="math inline">\(f'(x)\)</span> at all of the points except at <span class="math inline">\(x=2\pi\)</span>.</p>
 <ol type="1">
 <li><p>First of all, why can we not compute the forward-difference approximation of the derivative at the last point?</p></li>
-<li><p>Next, fill in the blanks in the partially complete code below. Every line needs to have a comment explaining exactly what it does.</p></li>
+<li><p>Next, fill in the blanks in the partially complete code below and update the comments to say what each line does.</p></li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ForwardDiff(f,a,b,N):</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a,b,N<span class="op">+</span><span class="dv">1</span>) <span class="co"># What does this line of code do? </span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># What's up with the N+1 in the previous line?</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>] <span class="co"># What does this line of code do?</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> [] <span class="co"># What does this line of code do?</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> np.arange(<span class="bu">len</span>(x)<span class="op">-</span><span class="dv">1</span>): <span class="co"># What does this line of code do?  </span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># What's up with the -1 in the definition of the loop?</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># </span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Now we want to build the approximation </span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (f(x+h) - f(x)) / h.</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Obviously "x+h" is just the next item in the list of </span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># x values so when we do f(x+h) mathematically we should </span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># write f( x[j+1] ) in Python (explain this).  </span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fill in the question marks below</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        df.append( (f( ??? ) <span class="op">-</span> f( ??? )) <span class="op">/</span> h )</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ForwardDiff(f,a,b,N):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a,b,N<span class="op">+</span><span class="dv">1</span>) <span class="co"># What does this line of code do? </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># What's up with the N+1 in the previous line?</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>] <span class="co"># What does this line of code do?</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> [] <span class="co"># What does this line of code do?</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> np.arange(<span class="bu">len</span>(x)<span class="op">-</span><span class="dv">1</span>): <span class="co"># What does this line of code do?  </span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># What's up with the -1 in the definition of the loop?</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Now we want to build the approximation </span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="co"># (f(x+h) - f(x)) / h.</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Obviously "x+h" is just the next item in the list of </span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="co"># x values so when we do f(x+h) mathematically we should </span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="co"># write f(x[j+1]) in Python (explain this).  </span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Fill in the question marks below</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        df.append((f(???) <span class="op">-</span> f(???)) <span class="op">/</span> h )</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
 <li>Now we want to call upon this function to build the first order approximation of the first derivative for some function. We will use the function <span class="math inline">\(f(x) = \sin(x)\)</span> on the interval <span class="math inline">\([0,2\pi]\)</span> with 100 sub intervals (since we know what the answer should be). Complete the code below to call upon your <code>ForwardDiff()</code> function and to plot <span class="math inline">\(f(x)\)</span>, <span class="math inline">\(f'(x)\)</span>, and the approximation of <span class="math inline">\(f'(x)\)</span>.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>exact_df <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> ???</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> ???</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span> <span class="co"># What is this?</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(a,b,N<span class="op">+</span><span class="dv">1</span>) </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># What does the previous line do?  </span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># What's up with the N+1?</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> ForwardDiff(f,a,b,N) <span class="co"># What does this line do?</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># In the next line we plot three curves: </span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) the function f(x)</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) the function f'(x)</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) the approximation of f'(x)</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># However, we do something funny with the x in the last plot. Why?</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>plt.plot(x,f(x),<span class="st">'b'</span>,x,exact_df(x),<span class="st">'r--'</span>,x[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>], df, <span class="st">'k-.'</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'f(x) = sin(x)'</span>,</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">'exact first deriv'</span>,</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">'approx first deriv'</span>])</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>exact_df <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> ???</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> ???</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span> <span class="co"># What is this?</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(a,b,N<span class="op">+</span><span class="dv">1</span>) </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># What does the previous line do?  </span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># What's up with the N+1?</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> ForwardDiff(f,a,b,N) <span class="co"># What does this line do?</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># In the next line we plot three curves: </span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) the function f(x)</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) the function f'(x)</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) the approximation of f'(x)</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co"># However, we do something funny with the x in the last plot. Why?</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>plt.plot(x,f(x),<span class="st">'b'</span>,x,exact_df(x),<span class="st">'r--'</span>,x[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>], df, <span class="st">'k-.'</span>)</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'f(x) = sin(x)'</span>,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">'exact first deriv'</span>,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">'approx first deriv'</span>])</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="4" type="1">
 <li><p>Implement your completed code and then test it in several ways:</p>
 <ol type="a">
@@ -663,41 +688,46 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 </ol></li>
 <li><p>Use the insight from part (1) to simplify your first order first derivative function to look like the code below.</p></li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ForwardDiff(f,a,b,N):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a,b,N<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> f(x)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> <span class="co"># your line of code goes here?  </span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ForwardDiff(f,a,b,N):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a,b,N<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>]</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> f(x)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> <span class="co"># your line of code goes here?  </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol start="3" type="1">
+<li>Test your new function by checking that the plots from the previous exercise still look the same.</li>
+</ol>
 </div>
 <div id="exr-3.19" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.15</strong></span> 💻 Write code that finds a first order approximation for the first derivative of <span class="math inline">\(f(x) = \sin(x) - x\sin(x)\)</span> on the interval <span class="math inline">\(x \in (0,15)\)</span>. Your script should output two plots (side-by-side).</p>
+<p><span class="theorem-title"><strong>Exercise 5.15</strong></span> 💻 Write code that finds a first order approximation for the first derivative of <span class="math inline">\(f(x) = \sin(x) (1 - x)\)</span> on the interval <span class="math inline">\(x \in (0,15)\)</span>. Your script should output two plots (side-by-side).</p>
 <ol type="a">
 <li>The left-hand plot should show the function in blue and the approximate first derivative as a red dashed curve. Sample code for this exercise is given below.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x) <span class="op">-</span> x<span class="op">*</span>np.sin(x)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">15</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="co"># make this an appropriately sized number of subintervals</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(a,b,N<span class="op">+</span><span class="dv">1</span>) <span class="co"># what does this line do?</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> f(x) <span class="co"># what does this line do?</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> ForwardDiff(f,a,b,N) <span class="co"># what does this line do?</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># what does this line do?</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(x,y,<span class="st">'b'</span>,x[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>],df,<span class="st">'r--'</span>) <span class="co"># what does this line do?</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">15</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="co"># make this an appropriately sized number of subintervals</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(a,b,N<span class="op">+</span><span class="dv">1</span>) <span class="co"># what does this line do?</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> f(x) <span class="co"># what does this line do?</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> ForwardDiff(f,a,b,N) <span class="co"># what does this line do?</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>) <span class="co"># what does this line do?</span></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(x,y,<span class="st">'b'</span>,x[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>],df,<span class="st">'r--'</span>) <span class="co"># what does this line do?</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].grid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="a">
 <li>The right-hand plot should show the absolute error between the exact derivative and the numerical derivative. You should use a logarithmic <span class="math inline">\(y\)</span> axis for this plot.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>exact <span class="op">=</span> <span class="kw">lambda</span> x: <span class="co"># write a function for the exact derivative</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># There is a lot going on the next line of code ... explain it.</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].semilogy(x[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>],<span class="bu">abs</span>(exact(x[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>]) <span class="op">-</span> df))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>exact <span class="op">=</span> <span class="kw">lambda</span> x: <span class="co"># write a function for the exact derivative</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># There is a lot going on the next line of code ... explain it.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].semilogy(x[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>],<span class="bu">abs</span>(exact(x[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>]) <span class="op">-</span> df))</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].grid()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>fig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="a">
-<li>Play with the number of sub intervals, <span class="math inline">\(N\)</span>, and demonstrate the fact that we are using a first order method to approximate the first derivative.</li>
+<li><p>💬 You should see a rather spiky plot on the right, where the drops to very low values at certain <span class="math inline">\(x\)</span> values. Can you explain why the forward difference approximation is so much more precise at these points? What is special about the shape of the original function at these points?</p></li>
+<li><p>Play with the number of sub intervals, <span class="math inline">\(N\)</span>, and demonstrate the fact that we are using a first order method to approximate the first derivative.</p></li>
 </ol>
 </div>
 <hr>
@@ -733,15 +763,25 @@ f'(x) = \underline{\hspace{2in}} + \mathcal{O}(h^2).
 <div id="exr-3.21" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.17</strong></span> 🖋 💻 Let us return to the function <span class="math inline">\(f(x) = \sin(x)(1- x)\)</span> but this time we will approximate the first derivative at <span class="math inline">\(x=1\)</span> using the formula <span class="math display">\[\begin{equation}
 f'(1) \approx \frac{f(1+h) - f(1-h)}{2h}=:\delta f(1).
-\end{equation}\]</span> You should already have the first derivative and the exact answer from <a href="#exr-3.13" class="quarto-xref">Exercise&nbsp;<span>5.11</span></a> (if not, then go get them by hand again).</p>
+\end{equation}\]</span> You should already have the first derivative and the exact answer from earlier exercises (if not, then go get them by hand again).</p>
 <ol type="a">
-<li><p>Adapt your code from <a href="#exr-3.13" class="quarto-xref">Exercise&nbsp;<span>5.11</span></a> to complete the following table</p></li>
-<li><p>Build similar tables for the following sequences of <span class="math inline">\(h\)</span>: <span class="math display">\[\begin{equation}
-\begin{aligned} h &amp;= 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots \\ h &amp;= 5^{-1}, \, 5^{-2}, \, 5^{-3}, \, \ldots \\ h &amp;= 10^{-1}, \, 10^{-2}, \, 10^{-3}, \, \ldots \\ h &amp;= \pi^{-1}, \, \pi^{-2}, \, \pi^{-3}, \, \ldots. \end{aligned}
-\end{equation}\]</span></p></li>
+<li>We want to see how the error in the approximation behaves as <span class="math inline">\(h\)</span> is made smaller and smaller. Adapt your code from <a href="#exr-3.13" class="quarto-xref">Exercise&nbsp;<span>5.11</span></a> to extend the table to include <span class="math inline">\(h = 2^{-3}\)</span> up to <span class="math inline">\(h = 2^{-10}\)</span>.</li>
+</ol>
+<div id="667e4fda" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-stdout">
+<pre><code>h                    | δf(1)              | |f'(1) - δf(1)|    | Error reduction factor
+----------------------------------------------------------------------------------
+2^-1 = 0.5           | -0.738460262604129 | 0.103010722203768  |
+2^-2 = 0.25          | -0.815311689689460 | 0.026159295118436  | 3.937824843421275 </code></pre>
+</div>
+</div>
+<ol start="2" type="a">
 <li><p>Adapt your code for the <code>plot_forward_difference_errors</code> function to create a <code>plot_central_difference_errors</code> function and use it to plot the errors for the sequences of <span class="math inline">\(h\)</span> in part (b).</p></li>
-<li><p>Observation: What do you notice about the error reduction factor as <span class="math inline">\(h\)</span> decreases? How does this compare to the error reduction factor for the forward difference approximation?</p></li>
-<li><p>What does your answer to part (c) have to do with the approximation order of the numerical derivative method that you used?</p></li>
+<li><p>💬 Discuss the pattern in how the absolute error changes as <span class="math inline">\(h\)</span> is changed? What does the log-log plot tell you? How does this agree with what the table tells you? How does this compare to the error for the forward difference approximation?</p></li>
+<li><p>Build similar tables for the following sequences of <span class="math inline">\(h\)</span>: <span class="math display">\[\begin{equation}
+\begin{aligned} h &amp;= 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots \\ h &amp;= 5^{-1}, \, 5^{-2}, \, 5^{-3}, \, \ldots \\ h &amp;= 10^{-1}, \, 10^{-2}, \, 10^{-3}, \, \ldots . \end{aligned}
+\end{equation}\]</span></p></li>
+<li><p>💬 What does your answer to part (c) have to do with the approximation order of the numerical derivative method that you used?</p></li>
 </ol>
 </div>
 <hr>
@@ -759,53 +799,53 @@ f'(x) = \frac{f(x+h) - f(x-h)}{2h} + \mathcal{O}(h^2).
 <li><p>Which curve in the plot matches with which method. How do you know?</p></li>
 <li><p>Recreate the plot with a function of your choosing.</p></li>
 </ol>
-<div id="cell-fig-3.3" class="cell page-columns page-full" data-execution_count="4">
+<div id="cell-fig-3.3" class="cell page-columns page-full" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose a function f</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Give its derivative</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose interval</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">16</span> <span class="co"># Number of different step sizes to plot</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate vectors for errors</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>fd_error <span class="op">=</span> np.zeros(m)</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>cd_error <span class="op">=</span> np.zeros(m)</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate vector for step sizes</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.zeros(m)</span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over the different step sizes</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(m):</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">2</span>) <span class="co"># Number of subintervals</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a, b, N<span class="op">+</span><span class="dv">1</span>)</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> f(x)</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> x[<span class="dv">1</span>]<span class="op">-</span>x[<span class="dv">0</span>] <span class="co"># step size</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the derivative and approximations</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>    exact <span class="op">=</span> df(x)</span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>    forward_diff <span class="op">=</span> (y[<span class="dv">1</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">1</span>])<span class="op">/</span>h</span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    central_diff <span class="op">=</span> (y[<span class="dv">2</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">2</span>])<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>h)</span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># save the maximum of the errors for this step size</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    fd_error[n] <span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(forward_diff <span class="op">-</span> df(x[:<span class="op">-</span><span class="dv">1</span>])))</span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    cd_error[n] <span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(central_diff <span class="op">-</span> df(x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])))</span>
-<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    H[n] <span class="op">=</span> h</span>
-<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a loglog plot of the errors agains step size</span></span>
-<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>plt.loglog(H,fd_error,<span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Approximation Method A'</span>)</span>
-<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>plt.loglog(H,cd_error,<span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Approximation Method B'</span>)</span>
-<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Steps size h'</span>)</span>
-<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Maximum Absolute Error'</span>)</span>
-<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Comparing Two First Derivative Approximations'</span>)</span>
-<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose a function f</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Give its derivative</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> <span class="kw">lambda</span> x: np.cos(x)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose interval</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>np.pi</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> <span class="dv">16</span> <span class="co"># Number of different step sizes to plot</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate vectors for errors</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>fd_error <span class="op">=</span> np.zeros(m)</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>cd_error <span class="op">=</span> np.zeros(m)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate vector for step sizes</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> np.zeros(m)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over the different step sizes</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="dv">2</span><span class="op">**</span>(n<span class="op">+</span><span class="dv">2</span>) <span class="co"># Number of subintervals</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a, b, N<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> f(x)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> x[<span class="dv">1</span>]<span class="op">-</span>x[<span class="dv">0</span>] <span class="co"># step size</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate the derivative and approximations</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    exact <span class="op">=</span> df(x)</span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    forward_diff <span class="op">=</span> (y[<span class="dv">1</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">1</span>])<span class="op">/</span>h</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    central_diff <span class="op">=</span> (y[<span class="dv">2</span>:]<span class="op">-</span>y[:<span class="op">-</span><span class="dv">2</span>])<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>h)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># save the maximum of the errors for this step size</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    fd_error[n] <span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(forward_diff <span class="op">-</span> df(x[:<span class="op">-</span><span class="dv">1</span>])))</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    cd_error[n] <span class="op">=</span> <span class="bu">max</span>(<span class="bu">abs</span>(central_diff <span class="op">-</span> df(x[<span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>])))</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>    H[n] <span class="op">=</span> h</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a loglog plot of the errors agains step size</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>plt.loglog(H,fd_error,<span class="st">'b-'</span>, label<span class="op">=</span><span class="st">'Approximation Method A'</span>)</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>plt.loglog(H,cd_error,<span class="st">'r-'</span>, label<span class="op">=</span><span class="st">'Approximation Method B'</span>)</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Steps size h'</span>)</span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Maximum Absolute Error'</span>)</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Comparing Two First Derivative Approximations'</span>)</span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display page-columns page-full">
 <div id="fig-3.3" class="quarto-float quarto-figure quarto-figure-left anchored page-columns page-full" alt="Maximum absolute error between the first derivative and two different approximations of the first derivative.">

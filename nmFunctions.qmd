@@ -109,19 +109,19 @@ plt.show()
 ::: {#exr-1.27}
 🖋 Let us extend the idea from the previous problem to much better approximations of the function $f(x) = e^x$.
 
-1.  Let us build a function $g_2(x)$ that matches $f(x)$ exactly at $x=0$, has exactly the same first derivative as $f(x)$ at $x=0$, AND has exactly the same second derivative as $f(x)$ at $x=0$. To do this we will use a quadratic function. For a quadratic approximation of a function we just take a slight extension to the point-slope form of a line and use the equation \begin{equation}
+1.  Let us build a function $g_2(x)$ that matches $f(x)$ exactly at $x=0$, has exactly the same first derivative as $f(x)$ at $x=0$, AND has exactly the same second derivative as $f(x)$ at $x=0$. To do this we will use a quadratic function. For a quadratic approximation of a function we just take a slight extension to the point-slope form of a line and use the equation $$
      g_2(x) = f(x_0) + f'(x_0) (x-x_0) + \frac{f''(x_0)}{2} (x-x_0)^2. 
-    \end{equation} In this case we are using $x_0 = 0$ so the quadratic approximation function looks like \begin{equation}
+    $$ In this case we are using $x_0 = 0$ so the quadratic approximation function looks like $$
      g_2(x) = f(0) + f'(0) x + \frac{f''(0)}{2} x^2. 
-    \end{equation}
+    $$
 
     1.  Find the quadratic approximation for $f(x) = e^x$.
 
     3. 💻 Add your new function to the plot you created in the previous problem.
 
-2.  Let us keep going!! Next we will do a cubic approximation. A cubic approximation takes the form \begin{equation}
+2.  Let us keep going!! Next we will do a cubic approximation. A cubic approximation takes the form $$
      g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}(x-x_0)^3 
-    \end{equation}
+    $$
 
     1.  Find the cubic approximation for $f(x) = e^x$.
 
@@ -188,16 +188,20 @@ What we have been exploring so far in this section is the **Taylor Series** of a
 
 ::: {#def-1.3}
 #### Taylor Series
-If $f(x)$ is an infinitely differentiable function at the point $x_0$ then \begin{equation}
+If $f(x)$ is an infinitely differentiable function at the point $x_0$ then 
+$$
  f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2}(x-x_0)^2 + \cdots \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \cdots 
-\end{equation} for any reasonably small interval around $x_0$. The infinite polynomial expansion is called the **Taylor Series** of the function $f(x)$. Taylor Series are named for the mathematician [Brook Taylor](https://en.wikipedia.org/wiki/Brook_Taylor).
+$$
+for any reasonably small interval around $x_0$. The infinite polynomial expansion is called the **Taylor Series** of the function $f(x)$. Taylor Series are named for the mathematician [Brook Taylor](https://en.wikipedia.org/wiki/Brook_Taylor).
 :::
 
 ------------------------------------------------------------------------
 
-The Taylor Series of a function is often written with summation notation as \begin{equation}
+The Taylor Series of a function is often written with summation notation as 
+$$
  f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k. 
-\end{equation} Do not let the notation scare you. In a Taylor Series you are just saying: *give me a function that*
+$$
+Do not let the notation scare you. In a Taylor Series you are just saying: *give me a function that*
 
 -   *matches* $f(x)$ at $x=x_0$ exactly,
 
@@ -217,9 +221,10 @@ Moreover, Taylor Series are built out of the easiest types of functions: polynom
 ------------------------------------------------------------------------
 
 ::: {#exr-1.32}
-🖋 Do all of the calculations to show that the Taylor Series centred at $x_0 = 0$ for the function $f(x) = \sin(x)$ is indeed \begin{equation}
+🖋 Do all of the calculations to show that the Taylor Series centred at $x_0 = 0$ for the function $f(x) = \sin(x)$ is indeed 
+$$
  \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots .
-\end{equation}
+$$
 :::
 
 ------------------------------------------------------------------------
@@ -231,9 +236,10 @@ Moreover, Taylor Series are built out of the easiest types of functions: polynom
 ------------------------------------------------------------------------
 
 ::: {#exr-1.34}
-🖋 Let us compute a Taylor Series that is not centred at $x_0 = 0$. For example, let us approximate the function $f(x) = \log (x)$ near $x_0 = 1$. Near the point $x_0 = 1$, the Taylor Series approximation will take the form \begin{equation}
+🖋 Let us compute a Taylor Series that is not centred at $x_0 = 0$. For example, let us approximate the function $f(x) = \log (x)$ near $x_0 = 1$. Near the point $x_0 = 1$, the Taylor Series approximation will take the form 
+$$
  f(x) = f\left( 1 \right) + f'\left( 1 \right)\left( x - 1 \right) + \frac{f''\left( 1 \right)}{2!}\left( x - 1 \right)^2 + \frac{f'''\left( 1 \right)}{3!}\left( x - 1 \right)^3 + \cdots 
-\end{equation}
+$$
 
 Write the first several terms of the Taylor Series for $f(x) = \log x$ centred at $x_0 = 1$ until you get a feel for the pattern.
 :::
@@ -303,11 +309,15 @@ plt.show()
 ------------------------------------------------------------------------
 
 ::: {#exm-1.4}
-Let us conclude this brief section by examining an interesting example. Consider the function \begin{equation}
+Let us conclude this brief section by examining an interesting example. Consider the function 
+$$
  f(x) = \frac{1}{1-x}. 
-\end{equation} If we build a Taylor Series centred at $x_0 = 0$ it is not too hard to show that we get \begin{equation}
+$$ 
+If we build a Taylor Series centred at $x_0 = 0$ it is not too hard to show that we get 
+$$
  f(x) = 1 + x + x^2 + x^3 + x^4 + x^5 + \cdots 
-\end{equation} (you should stop now and verify this!). However, if we plot the function $f(x)$ along with several successive approximations for $f(x)$ we find that beyond $x=1$ we do not get the correct behaviour of the function (see @fig-1.3). More specifically, we cannot get the Taylor Series to change behaviour across the vertical asymptote of the function at $x=1$. This example is meant to point out the fact that a Taylor Series will only ever make sense *near* the point at which you centre the expansion. For the function $f(x) = \frac{1}{1-x}$ centred at $x_0 = 0$ we can only get good approximations within the interval $x \in (-1,1)$ and no further.
+$$ 
+(you should stop now and verify this!). However, if we plot the function $f(x)$ along with several successive approximations for $f(x)$ we find that beyond $x=1$ we do not get the correct behaviour of the function (see @fig-1.3). More specifically, we cannot get the Taylor Series to change behaviour across the vertical asymptote of the function at $x=1$. This example is meant to point out the fact that a Taylor Series will only ever make sense *near* the point at which you centre the expansion. For the function $f(x) = \frac{1}{1-x}$ centred at $x_0 = 0$ we can only get good approximations within the interval $x \in (-1,1)$ and no further.
 
 ```{python}
 #| label: fig-1.3
@@ -371,18 +381,20 @@ The great thing about Taylor Series is that they allow for the representation of
 
 -   and everything that we just chopped off of the end is called the **remainder** for the finite sum.
 
-Let us be a bit more concrete about it. The Taylor Series for $f(x) = e^x$ centred at $x_0 = 0$ is \begin{equation}
+Let us be a bit more concrete about it. The Taylor Series for $f(x) = e^x$ centred at $x_0 = 0$ is 
+$$
  e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots. 
-\end{equation}
+$$
 
 When we truncate this series at order $n$, we separate it into an approximation and a remainder:
-\begin{equation}
+$$
 e^x = \underbrace{1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!}}_{\text{$n^{th}$ order approximation}} + \underbrace{\frac{x^{n+1}}{(n+1)!} + \frac{x^{n+2}}{(n+2)!} + \cdots}_{\text{remainder}}. 
-\end{equation}
+$$
 
-For small values of $x$ near $x_0 = 0$, the largest term in the remainder is $\frac{x^{n+1}}{(n+1)!}$, since higher powers of $x$ become progressively smaller. We use **Big-O notation** to express this: \begin{equation}
+For small values of $x$ near $x_0 = 0$, the largest term in the remainder is $\frac{x^{n+1}}{(n+1)!}$, since higher powers of $x$ become progressively smaller. We use **Big-O notation** to express this: 
+$$
 e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+1}), 
-\end{equation}
+$$
 where the notation $\mathcal{O}(x^{n+1})$ (read "Big-O of $x^{n+1}$") signifies that the error is bounded by $C|x|^{n+1}$ for some constant $C$ as $x \to 0$. This indicates that the error scales like $x^{n+1}$ for values of $x$ near the center $x_0=0$.
 
 For example:
@@ -488,9 +500,9 @@ for n in range(2,6):
 
 ::: {#exr-1.39}
 💻 To test your conjecture, examine the truncation error for the sine function near $x_0 = 0$. You know that the sine function has the Taylor Series centred at $x_0 = 0$ as 
-\begin{equation}
+$$
  f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots. 
-\end{equation}
+$$
 So there are only approximations of odd order. Use the truncated Taylor series to approximate $f(0.1)=\sin(0.1)$ and $f(0.2)=\sin(0.2)$ and use Python's values `np.sin(0.1)` and `np.sin(0.2)` to calculate the truncation errors $\epsilon_n(0.1)=|f(0.1)-f_n(0.1)|$ and $\epsilon_n(0.2)=|f(0.2)-f_n(0.2)|$.
 
 Complete the following table:
@@ -596,9 +608,9 @@ Let us start by building up the components of a neural network one piece at a ti
 
 ::: {#exr-1.41}
 🖋 Consider the simple function 
-\begin{equation}
+$$
 f(x) = \max(0, x).
-\end{equation}
+$$
 The function $g(x) = \max(0, x)$ is called the **Rectified Linear Unit** or **ReLU** for short.
 
 1. By hand, sketch the graph of this function for $x \in [-3, 3]$.
@@ -614,9 +626,9 @@ The ReLU function is an example of what is called an **activation function** in 
 🖋 Now let us make our neuron a bit more interesting by allowing it to have adjustable parameters.
 
 Consider the function
-\begin{equation}
+$$
 h(x) = \max(0, w x + b)
-\end{equation}
+$$
 where $w$ and $b$ are parameters that we can choose. These are called the **weight** and **bias** respectively.
 
 1. By hand, sketch the graph of $h(x)$ for $x \in [-3, 3]$ for each of the following parameter values:
@@ -640,9 +652,9 @@ where $w$ and $b$ are parameters that we can choose. These are called the **weig
 🖋 So far we have been working with a neuron that takes a single input $x$. In many applications, we want to work with functions of multiple variables. 
 
 Suppose we have two inputs $x_1$ and $x_2$, and we define a neuron as
-\begin{equation}
+$$
 h(x_1, x_2) = \max(0, w_1 x_1 + w_2 x_2 + b)
-\end{equation}
+$$
 where $w_1, w_2$ are weights and $b$ is a bias.
 
 1. What is the output of this neuron when $x_1 = 1, x_2 = 2$, using the parameters $w_1 = 1, w_2 = -1, b = 0$?
@@ -685,9 +697,9 @@ Consider the specific case where $w_1 = 1, b_1 = -1$ and $w_2 = -1, b_2 = 1$.
 
 ::: {#exr-1.45}
 🖋 Rather than just adding two ReLU neurons, consider the weighted combination:
-\begin{equation}
+$$
 f(x) = c_1 h_1(x) + c_2 h_2(x)
-\end{equation}
+$$
 where $c_1$ and $c_2$ are **output weights** that can be positive or negative.
 
 Let $h_1(x) = \max(0, x)$ and $h_2(x) = \max(0, x - 1)$. 
@@ -732,21 +744,21 @@ The structure is as follows:
 1. **Input**: We start with an input value $x$.
 
 2. **Hidden Layer**: We apply $n$ neurons to the input, creating $n$ hidden values:
-   \begin{equation}
+   $$
    h_i(x) = \max(0, w_i x + b_i) \quad \text{for } i = 1, 2, \ldots, n
-   \end{equation}
+   $$
    The parameters $w_i$ and $b_i$ are called the **weights** and **biases** of the hidden layer.
 
 3. **Output Layer**: We combine the hidden values using output weights:
-   \begin{equation}
+   $$
    f(x) = c_1 h_1(x) + c_2 h_2(x) + \cdots + c_n h_n(x) + c_0
-   \end{equation}
+   $$
    where $c_0, c_1, \ldots, c_n$ are the output layer parameters. 
 
 We can write this more compactly using summation notation:
-\begin{equation}
+$$
 f(x) = \sum_{i=1}^{n} c_i \max(0, w_i x + b_i) + c_0.
-\end{equation}
+$$
 
 ``` {python}
 #| echo: false
@@ -838,9 +850,9 @@ weights of the hidden layer neurons into a rescaling of the of the output weight
 the biases. This would not be true for more general activation functions.
 
 So we choose to set all hidden weights to $1$ and thus work with 
-\begin{equation}
+$$
 f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
-\end{equation}
+$$
 
 The following Python code implements such a neural network. Make sure you understand the code.
 
@@ -974,9 +986,9 @@ After your experimentation, the following result will no longer seem so surprisi
 A two-layer neural network with a sufficient number of neurons can approximate any continuous function on a bounded interval to arbitrary accuracy.
 
 More precisely: for any continuous function $f: [a,b] \to \mathbb{R}$ and any $\epsilon > 0$, there exists a two-layer neural network $f_{\text{nn}}$ such that
-\begin{equation}
+$$
 \max_{x \in [a,b]} |f(x) - f_{\text{nn}}(x)| < \epsilon.
-\end{equation}
+$$
 :::
 
 ------------------------------------------------------------------------
@@ -989,12 +1001,14 @@ More precisely: for any continuous function $f: [a,b] \to \mathbb{R}$ and any $\
 2. What are the advantages of Taylor series compared to neural networks?
 
 3. For each of the following functions, which approximation method (Taylor series or neural network) do you think would be more appropriate, and why?
+
    - $f(x) = e^x$ near $x = 0$
    - $f(x) = |x|$ near $x = 0$  
    - $f(x) = \sin(100x)$ on $[0, 2\pi]$
    - A function defined by experimental data points
 
 4. Neural networks are determined by their weights and biases. Taylor series are determined by the derivatives of the function at a point. Which do you think is easier to compute in practice, and why?
+
 :::
 
 ------------------------------------------------------------------------
@@ -1010,19 +1024,19 @@ For example, a three-layer network would look like:
 1. **Input**: $x$
 
 2. **First Hidden Layer**: 
-   \begin{equation}
+   $$
    h_i^{(1)}(x) = \max(0, w_i^{(1)} x + b_i^{(1)}) \quad \text{for } i = 1, \ldots, n_1
-   \end{equation}
+   $$
 
 3. **Second Hidden Layer**: Each neuron in this layer takes all outputs from the first hidden layer:
-   \begin{equation}
+   $$
    h_j^{(2)} = \max\left(0, \sum_{i=1}^{n_1} w_{ji}^{(2)} h_i^{(1)} + b_j^{(2)}\right) \quad \text{for } j = 1, \ldots, n_2
-   \end{equation}
+   $$
 
 4. **Output Layer**:
-   \begin{equation}
+   $$
    f(x) = \sum_{j=1}^{n_2} c_j h_j^{(2)} + c_0
-   \end{equation}
+   $$
 
 This is called a **deep neural network** because it has multiple hidden layers. The term "deep learning" comes from using such multi-layer architectures.
 
@@ -1111,14 +1125,14 @@ plt.tight_layout()
 Why are deep neural networks, with many layers, often more powerful than shallow networks with just one large hidden layer? In the following exercises, you will explore a classic example, the **sawtooth wave**, to discover a concrete answer. You'll build both a shallow and a deep network to represent the same function, and compare their efficiency as the complexity grows. Through this exploration, you'll see how deep networks can represent certain functions far more efficiently by exploiting their compositional structure.
 
 We'll work with a sawtooth function that has 2 triangular peaks on the interval $[0, 1]$:
-\begin{equation}
+$$
 f(x) = \begin{cases}
 4x & \text{if } 0 \leq x < 0.25 \\
 2 - 4x & \text{if } 0.25 \leq x < 0.5 \\
 4x - 2 & \text{if } 0.5 \leq x < 0.75 \\
 4 - 4x & \text{if } 0.75 \leq x \leq 1
 \end{cases}
-\end{equation}
+$$
 
 
 ```{python}
@@ -1159,7 +1173,7 @@ plt.show()
 ------------------------------------------------------------------------
 
 ::: {#exr-1.50}
-## Building a Shallow Network for the Sawtooth
+#### Building a Shallow Network for the Sawtooth
 
 You already know how to represent piecewise linear functions with a two-layer neural network. Each of the 5  "hinge points" (where the slope changes) requires a ReLU neuron.
 
@@ -1193,12 +1207,14 @@ plt.show()
 ------------------------------------------------------------------------
 
 ::: {#exr-1.51}
-## Building the Deep Network
+#### Building the Deep Network
 
 A deeper network takes a more elegant approach. Instead of directly creating all the peaks, it uses one layer to create a single peak and then another layer to duplicate this peak.
 
 The key insight is to create a single-peak function 
-$$g(x) = \begin{cases}2x&0\leq x<1/2\\2(1-x)&1/2\leq x\leq1\\0 & x\not\in [0,1]\end{cases}$$ 
+$$
+g(x) = \begin{cases}2x&0\leq x<1/2\\2(1-x)&1/2\leq x\leq1\\0 & x\not\in [0,1]\end{cases}
+$$ 
 that produces one triangular peak at $x = 0.5$ with height 1, returning to 0 at $z < 0$ and $z > 1$.
 ``` {python}
 #| echo: false
@@ -1218,6 +1234,7 @@ plt.ylabel('g(x)')
 plt.title('Single peak function')
 plt.show()
 ```
+
 Then, our 2-peak sawtooth is simply $f(x) = g(g(x))$.
 
 **a)** First, create a single-peak as a shallow network with three hidden neurons.
@@ -1264,7 +1281,7 @@ plt.show()
 ------------------------------------------------------------------------
 
 ::: {#exr-1.52}
-## Scaling Analysis: The Exponential Advantage
+#### Scaling Analysis: The Exponential Advantage
 
 Now let's compare how the two approaches scale as we increase the number of peaks. 
 
@@ -1330,9 +1347,9 @@ Find the Taylor Series for $f(x) = \frac{1}{\log(x)}$ centred at the point $x_0 
 In this problem we will use Taylor Series to build approximations for the irrational number $\pi$.
 
 a.  Write the Taylor series centred at $x_0=0$ for the function 
-    \begin{equation}
+    $$
      f(x) = \frac{1}{1+x}. 
-    \end{equation}
+    $$
 
 b.  Now we want to get the Taylor Series for the function $g(x) = \frac{1}{1+x^2}$. It would be quite time consuming to take all of the necessary derivatives to get this Taylor Series. Instead we will use our answer from part (a) of this problem to shortcut the whole process.
 
@@ -1341,9 +1358,9 @@ b.  Now we want to get the Taylor Series for the function $g(x) = \frac{1}{1+x^2
     2.  Make a few plots to verify that we indeed now have a Taylor Series for the function $g(x) = \frac{1}{1+x^2}$.
 
 c.  Recall from Calculus that 
-    \begin{equation}
+    $$
      \int \frac{1}{1+x^2} dx = \arctan(x). 
-    \end{equation} Hence, if we integrate each term of the Taylor Series that results from part (2) we should have a Taylor Series for $\arctan(x)$.^[There are many reasons why integrating an infinite series term by term should give you a moment of pause. For the sake of this problem we are doing this operation a little blindly, but in reality we should have verified that the infinite series actually converges uniformly.]
+    $$ Hence, if we integrate each term of the Taylor Series that results from part (2) we should have a Taylor Series for $\arctan(x)$.^[There are many reasons why integrating an infinite series term by term should give you a moment of pause. For the sake of this problem we are doing this operation a little blindly, but in reality we should have verified that the infinite series actually converges uniformly.]
 
 d.  Now recall the following from Calculus:
 
@@ -1359,15 +1376,15 @@ d.  Now recall the following from Calculus:
 ------------------------------------------------------------------------
 
 ::: {#exr-1.56}
-In this problem we will prove the famous formula \begin{equation}
+In this problem we will prove the famous formula $$
 e^{i\theta} = \cos(\theta) + i \sin(\theta).
-\end{equation} This is known as Euler's formula after the famous mathematician Leonard Euler. Show all of your work for the following tasks.
+$$ This is known as Euler's formula after the famous mathematician Leonard Euler. Show all of your work for the following tasks.
 
 1.  Write the Taylor series for the functions $e^x$, $\sin(x)$, and $\cos(x)$.
 
-2.  Replace $x$ with $i\theta$ in the Taylor expansion of $e^x$. Recall that $i = \sqrt{-1}$ so $i^2 = -1$, $i^3 = -i$, and $i^4 = 1$. Simplify all of the powers of $i\theta$ that arise in the Taylor expansion. I will get you started: \begin{equation}
+2.  Replace $x$ with $i\theta$ in the Taylor expansion of $e^x$. Recall that $i = \sqrt{-1}$ so $i^2 = -1$, $i^3 = -i$, and $i^4 = 1$. Simplify all of the powers of $i\theta$ that arise in the Taylor expansion. I will get you started: $$
     \begin{aligned} e^x &= 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots \\ e^{i\theta} &= 1 + (i\theta) + \frac{(i\theta)^2}{2!} + \frac{(i\theta)^3}{3!} + \frac{(i\theta)^4}{4!} + \frac{(i\theta)^5}{5!} + \cdots \\ &= 1 + i\theta + i^2 \frac{\theta^2}{2!} + i^3 \frac{\theta^3}{3!} + i^4 \frac{\theta^4}{4!} + i^5 \frac{\theta^5}{5!} + \cdots \\ &= \ldots \text{ keep simplifying ... } \ldots \end{aligned}
-    \end{equation}
+    $$
 
 3.  Gather all of the real terms and all of the imaginary terms together. Factor the $i$ out of the imaginary terms. What do you notice?
 
@@ -1378,23 +1395,23 @@ e^{i\theta} = \cos(\theta) + i \sin(\theta).
 
 ::: {#exr-1.57}
 In physics, the *relativistic energy* of an object is defined as 
-\begin{equation}
+$$
  E_{rel} = \gamma mc^2 
-\end{equation} 
+$$ 
 where 
-\begin{equation}
+$$
  \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}. 
-\end{equation} 
-In these equations, $m$ is the mass of the object, $c$ is the speed of light ($c \approx 3 \times 10^8$m/s), and $v$ is the velocity of the object. For an object of fixed mass (m) we can expand the Taylor Series centred at $v=0$ for $E_{rel}$ to get \begin{equation}
+$$ 
+In these equations, $m$ is the mass of the object, $c$ is the speed of light ($c \approx 3 \times 10^8$m/s), and $v$ is the velocity of the object. For an object of fixed mass (m) we can expand the Taylor Series centred at $v=0$ for $E_{rel}$ to get $$
  E_{rel} = mc^2 + \frac{1}{2} mv^2 + \frac{3}{8} \frac{mv^4}{c^2} + \frac{5}{16} \frac{mv^6}{c^4} + \cdots. 
-\end{equation}
+$$
 
 1.  What do we recover if we consider an object with zero velocity?
 
 2.  Why might it be completely reasonable to only use the quadratic approximation 
-    \begin{equation}
+    $$
      E_{rel} = mc^2 + \frac{1}{2} mv^2 
-    \end{equation} 
+    $$ 
     for the relativistic energy equation?^[This is something that people in physics and engineering do all the time -- there is some complicated nonlinear relationship that they wish to use, but the first few terms of the Taylor Series captures almost all of the behaviour since the higher-order terms are very very small.]
 
 3.  (some physics knowledge required) What do you notice about the second term in the Taylor Series approximation of the relativistic energy function?

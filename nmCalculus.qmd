@@ -31,13 +31,13 @@ Integration, on the other hand, is a more difficult situation. You may recall so
 
 ::: {#exr-3.3}
 💬 In statistics the function known as *the normal distribution* (the bell curve) is defined as 
-\begin{equation}
+$$
 N(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2/2}.
-\end{equation}
+$$
  One of the primary computations of introductory statistics is to find the area under a portion of this curve since this area gives the probability of some event 
-\begin{equation}
+$$
 P(a < x < b) = \int_a^b \frac{1}{\sqrt{2\pi}} e^{-x^2/2} dx.
-\end{equation}
+$$
  The trouble is that there is no known antiderivative of this function. Propose a method for approximating this area.
 :::
 
@@ -60,9 +60,9 @@ Throughout this chapter we will make heavy use of Taylor's Theorem to build appr
 
 ::: {#exr-3.6}
 💬 Recall from your first-semester Calculus class that the derivative of a function $f(x)$ is defined as 
-\begin{equation}
+$$
 f'(x) = \lim_{\Delta x \to 0} \frac{f(x+\Delta x) - f(x)}{\Delta x}.
-\end{equation}
+$$
  A Calculus student proposes that it would just be much easier if we dropped the limit and instead just always choose $\Delta x$ to be some small number, like $0.001$ or $10^{-6}$. Discuss the following questions:
 
 1.  When might the Calculus student's proposal actually work pretty well in place of calculating an actual derivative?
@@ -109,13 +109,13 @@ This distance $\Delta x$ between neighbouring points in the partition is often r
     c.  There are 6 total points that define the partition. They are $0, \underline{\hspace{0.25in}}, \underline{\hspace{0.25in}}, \underline{\hspace{0.25in}}, \underline{\hspace{0.25in}}, 7$.
 
 3.  More generally, if a closed interval $[a,b]$ contains $N$ equal sub intervals where 
-\begin{equation}
+$$
  [a,b] = \underbrace{[a,a+h] \cup [a+h, a+2h] \cup \cdots \cup [b-2h,b-h] \cup [b-h,b]}_{\text{$N$ total sub intervals}} 
-\end{equation}
+$$
  then the length of each sub interval, $h$, is given by the formula 
-\begin{equation}
+$$
  h = \frac{\underline{\hspace{0.25in}} - \underline{\hspace{0.25in}}}{\underline{\hspace{0.25in}}}. 
-\end{equation}
+$$
 
 :::
 
@@ -144,13 +144,13 @@ This distance $\Delta x$ between neighbouring points in the partition is often r
 ------------------------------------------------------------------------
 
 Now let us get back to the discussion of numerical differentiation. If we recall that the definition of the first derivative of a function is 
-\begin{equation}
+$$
  \begin{aligned} \frac{df(x)}{dx} = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}. \label{eqn:derivative_definition}\end{aligned}
-\end{equation}
+$$
  our first approximation for the first derivative is naturally 
-\begin{equation}
+$$
  \begin{aligned} \frac{df(x)}{dx} \approx \frac{f(x+h) - f(x)}{h}=:\Delta f(x). \label{eqn:derivative_first_approx}\end{aligned}
-\end{equation}
+$$
  In this approximation of the derivative we have simply removed the limit and instead approximated the derivative as the slope. It should be clear that this approximation is only good if the step size $h$ is *small*. In @fig-3.2 we see a graphical depiction of what we are doing to approximate the derivative. The slope of the tangent line ($\Delta y / \Delta x$) is what we are after, and a way to approximate it is to calculate the slope of the secant line formed by looking $h$ units forward from the point $x$.
 
 ![The forward difference differentiation scheme for the first derivative.](figures/Calculus/ForwardDifferenceDiagram.png){#fig-3.2 alt="The forward difference differentiation scheme for the first derivative."}
@@ -163,13 +163,13 @@ While this is the simplest and most obvious approximation for the first derivati
 
 ::: {#exr-3.10}
 🖋 From Taylor's Theorem we know that for an infinitely differentiable function $f(x)$, 
-\begin{equation}
+$$
 f(x) = f(x_0) + \frac{f'(x_0)}{1!} (x-x_0)^1 + \frac{f''(x_0)}{2!}(x-x_0)^2 + \frac{f^{(3)}(x_0)}{3!}(x-x_0)^3 + \cdots.
-\end{equation}
+$$
  What do we get if we replace every "$x$" in the Taylor Series with "$x+h$" and replace every "$x_0$" in the Taylor Series with "$x$?" In other words, in @fig-3.1 we want to centre the Taylor series at $x$ and evaluate the resulting series at the point $x+h$. 
-\begin{equation}
+$$
 f(x+h) = \underline{\hspace{3in}}
-\end{equation}
+$$
 
 
 :::
@@ -178,9 +178,9 @@ f(x+h) = \underline{\hspace{3in}}
 
 ::: {#exr-3.11}
 🖋 Solve the result from the previous exercise for $f'(x)$ to create an approximation for $f'(x)$ using $f(x+h)$, $f(x)$, and some higher order terms. (fill in the blanks and the question marks) 
-\begin{equation}
+$$
 f'(x) = \frac{f(x+h) - ???}{??} + \underline{\hspace{2in}}
-\end{equation}
+$$
 :::
 
 ------------------------------------------------------------------------
@@ -206,15 +206,15 @@ For sufficiently small step size $h$, the error that you make by truncating the 
 
 ::: {#def-3.2}
 (**Big O Notation**) We say that the error in a differentiation scheme is $\mathcal{O}(h)$ (read: "big O of $h$"), if and only if there is a positive constant $M$ such that 
-\begin{equation}
+$$
  |\text{Error}| \le M \cdot h
-\end{equation}
+$$
 when $h$ is sufficiently small. This is equivalent to saying that a differentiation method is "first order." 
 
 More generally, we say that the error in a differentiation scheme is $\mathcal{O}(h^k)$ (read: "big O of $h^k$") if and only if there is a positive constant $M$ such that 
-\begin{equation}
+$$
  |\text{Error}| \leq M \cdot h^k. 
-\end{equation}
+$$
 when $h$ is sufficiently small. This is equivalent to saying that a differentiation scheme is "$k^{th}$ order." 
 :::
 
@@ -222,9 +222,9 @@ when $h$ is sufficiently small. This is equivalent to saying that a differentiat
 
 ::: {#thm-3.1}
 The approximation you derived in @exr-3.11 gives a first order approximation of the first derivative: 
-\begin{equation}
+$$
  f'(x) = \frac{f(x+h) - f(x)}{h} + \mathcal{O}(h).
-\end{equation}
+$$
 This is called the **forward difference approximation** of the first derivative.
 
 :::
@@ -239,13 +239,12 @@ a.  Find $f'(x)$ analytically.
 b.  Use your answer to part (a) to verify that $f'(1) = -\sin(1) \approx -0.8414709848$.
 
 c.  🎓  To approximate the first derivative at $x=1$ numerically with the forward-difference approximation formula from @thm-3.1 we calculate 
-\begin{equation}
+$$
  f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
-\end{equation}
+$$
  We want to see how the error in the approximation behaves as $h$ is made smaller and smaller. The table below shows the approximation and the absolute error for $h = 2^{-1}$ and $h = 2^{-2}$. It also shows the error reduction factor, which is the ratio of two successive absolute errors. Extend the table to include $h = 2^{-3}$ up to $h = 2^{-10}$. Start with the code given below but use a loop to create the 10 rows.
 
 ```{python}
-#| column: page-right
 import numpy as np
     
 # Setup function and exact derivative
@@ -280,7 +279,6 @@ print(f"{h_str:<20} | {delta_f(h):<18.15f} | {error:<18.15f} | {error_prev/error
 d. Use the following function to plot the absolute error as a function of $h$.
 
 ```{python}
-#| column: page-right
 import matplotlib.pyplot as plt
 
 def plot_forward_difference_errors(f, x, exact, H):
@@ -331,9 +329,9 @@ plot_forward_difference_errors(f, x, exact, H)
 e. 💬 Discuss the pattern in how the absolute error changes as $h$ is changed? What does the log-log plot tell you? How does this agree with what the table tells you?
 
 f.  There was nothing really special in part (c) about powers of 2. Modify your code to build similar tables and plots for the following sequences of $h$: 
-\begin{equation}
+$$
 \begin{aligned} h &= 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots \\ h &= 5^{-1}, \, 5^{-2}, \, 5^{-3}, \, \ldots \\ h &= 10^{-1}, \, 10^{-2}, \, 10^{-3}, \, \ldots. \\ \end{aligned}
-\end{equation}
+$$
 
     Do you see any anomalies that could be caused by rounding errors?
 
@@ -540,39 +538,39 @@ Next we will build a more accurate numerical first derivative scheme. The deriva
 
 ::: {#exr-3.20}
 🖋 Consider again the Taylor series for an infinitely differentiable function $f(x)$: 
-\begin{equation}
+$$
  f(x) = f(x_0) + \frac{f'(x_0)}{1!} (x-x_0)^1 + \frac{f''(x_0)}{2!}(x-x_0)^2 + \frac{f^{(3)}(x_0)}{3!}(x-x_0)^3 + \cdots .
-\end{equation}
+$$
 
 
 1.  Replace the "$x$" in the Taylor Series with "$x+h$" and replace the "$x_0$" in the Taylor Series with "$x$" and simplify. 
-\begin{equation}
+$$
 f(x+h) = \underline{\hspace{3in}}.
-\end{equation}
+$$
 
 
 2.  Now replace the "$x$" in the Taylor Series with "$x-h$" and replace the "$x_0$" in the Taylor Series with "$x$" and simplify. 
-\begin{equation}
+$$
 f(x-h) = \underline{\hspace{3in}}.
-\end{equation}
+$$
 
 
 3.  Find the difference between $f(x+h)$ and $f(x-h)$ and simplify. Be very careful of your signs. 
-\begin{equation}
+$$
 f(x+h) - f(x-h) = \underline{\hspace{3in}}.
-\end{equation}
+$$
 
 
 4.  Solve for $f'(x)$ in your result from part (3). Fill in the question marks and blanks below once you have finished simplifying. 
-\begin{equation}
+$$
 f'(x) = \frac{??? - ???}{2h} + \underline{\hspace{3in}}.
-\end{equation}
+$$
 
 
 5.  Use your result from part (4) to verify that 
-\begin{equation}
+$$
 f'(x) = \underline{\hspace{2in}} + \mathcal{O}(h^2).
-\end{equation}
+$$
 
 
 6.  Draw a picture similar to @fig-3.2 showing what this scheme is doing graphically.
@@ -583,16 +581,15 @@ f'(x) = \underline{\hspace{2in}} + \mathcal{O}(h^2).
 
 ::: {#exr-3.21}
 💻 🎓 Let us return to the function $f(x) = \sin(x)(1- x)$ but this time we will approximate the first derivative at $x=1$ using the formula 
-\begin{equation}
+$$
 f'(1) \approx \frac{f(1+h) - f(1-h)}{2h}=:\delta f(1).
-\end{equation}
+$$
  You should already have the first derivative and the exact answer from earlier exercises (if not, then go get them by hand again).
 
 a. We want to see how the error in the approximation behaves as $h$ is made smaller and smaller. Adapt your code from @exr-3.13 to extend the table to include $h = 2^{-3}$ up to $h = 2^{-10}$. 
 
 ```{python}
 #| echo: false
-#| column: page-right
 import numpy as np
     
 # Setup function and exact derivative
@@ -626,9 +623,9 @@ print(f"{h_str:<20} | {delta_f(h):<18.15f} | {error:<18.15f} | {error_prev/error
 b. Adapt your code for the `plot_forward_difference_errors` function to create a `plot_central_difference_errors` function and use it to plot the errors for the sequences of $h$ in part (a).
 
 c.  Build similar tables for the following sequences of $h$: 
-\begin{equation}
+$$
 \begin{aligned} h &= 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots \\ h &= 5^{-1}, \, 5^{-2}, \, 5^{-3}, \, \ldots \\ h &= 10^{-1}, \, 10^{-2}, \, 10^{-3}, \, \ldots . \end{aligned}
-\end{equation}
+$$
 
 d. 💬 Discuss the pattern in how the absolute error changes as $h$ is changed? What does the log-log plot tell you? How does this agree with what the table tells you? How does this compare to the error for the forward difference approximation?
 
@@ -647,13 +644,13 @@ e.  💬 What does your answer to part (d) have to do with the approximation ord
 
 ::: {#exr-3.25}
 💻 💬 The plot shown in @fig-3.3 shows the maximum absolute error between the exact first derivative of a function $f(x)$ and a numerical first derivative approximation scheme. At this point we know two schemes: 
-\begin{equation}
+$$
  f'(x) = \frac{f(x+h) - f(x)}{h} + \mathcal{O}(h) 
-\end{equation}
+$$
  and 
-\begin{equation}
+$$
  f'(x) = \frac{f(x+h) - f(x-h)}{2h} + \mathcal{O}(h^2). 
-\end{equation}
+$$
 
 
 1.  Which curve in the plot matches with which method. How do you know?
@@ -664,7 +661,6 @@ e.  💬 What does your answer to part (d) have to do with the approximation ord
 #| label: fig-3.3
 #| fig-cap: Maximum absolute error between the first derivative and two different approximations of the first derivative.
 #| fig-alt: Maximum absolute error between the first derivative and two different approximations of the first derivative.
-#| column: page-right
 #| code-fold: true
 import numpy as np
 import matplotlib.pyplot as plt
@@ -721,9 +717,9 @@ plt.show()
 Now we will search for an approximation of the second derivative. Again, the game will be the same: experiment with the Taylor series and some algebra with an eye toward getting the second derivative to pop out cleanly. This time we will do the algebra in such a way that the first derivative cancels.
 
 From the previous exercises you already have Taylor expansions of the form $f(x+h)$ and $f(x-h)$. Let us summarize them here since you are going to need them for future computations. 
-\begin{equation}
+$$
  \begin{aligned} f(x+h) &= f(x) + \frac{f'(x)}{1!} h + \frac{f''(x)}{2!} h^2 + \frac{f^{(3)}(x)}{3!} h^3 + \cdots \\ f(x-h) &= f(x) - \frac{f'(x)}{1!} h + \frac{f''(x)}{2!} h^2 - \frac{f^{(3)}(x)}{3!} h^3 + \cdots. \end{aligned} 
-\end{equation}
+$$
 
 ------------------------------------------------------------------------
 
@@ -731,15 +727,15 @@ From the previous exercises you already have Taylor expansions of the form $f(x+
 🖋 The goal of this exercise is to use the Taylor series for $f(x+h)$ and $f(x-h)$ to arrive at an approximation scheme for the second derivative $f''(x)$.
 
 1.  Add the Taylor series for $f(x+h)$ and $f(x-h)$ and combine all like terms. You should notice that several terms cancel. 
-\begin{equation}
+$$
 f(x+h) + f(x-h) = \underline{\hspace{3in}}.
-\end{equation}
+$$
 
 
 2.  Solve your answer in part (1) for $f''(x)$. 
-\begin{equation}
+$$
 f''(x) = \frac{?? - 2 \cdot ?? + ??}{h^2} + \underline{\hspace{1in}}.
-\end{equation}
+$$
 
 
 3.  If we were to drop all of the terms after the fraction on the right-hand side of the previous result we would be introducing some error into the derivative computation. What does this tell us about the order of the error for the second derivative approximation scheme we just built?
@@ -817,3 +813,927 @@ The table below summarizes the formulas that we have for derivatives thus far.
 :::
 
 ------------------------------------------------------------------------
+
+## Integration {#sec-integration}
+
+Now that we understand how to calculate derivatives, we begin our work on the second principal computation of calculus: evaluating a definite integral. You will be able to transfer much of what you did in the previous section, where you investigated the errors in numerical differentiation, to the investigation of the errors in numerical integration.
+
+------------------------------------------------------------------------
+
+::: {#exr-3.31}
+💬 Remember that a single-variable definite integral can be interpreted as the signed area between the curve and the $x$ axis. Consider the shaded area of the region under the function plotted in @fig-3.4 between $x=0$ and $x=2$.
+
+1.  What rectangle with area 6 gives an upper bound for the area under the curve? Can you give a better upper bound?
+
+2.  Why must the area under the curve be greater than 3?
+
+3.  Is the area greater than 4? Why/Why not?
+
+4.  Work with your group to give an estimate of the area and provide an estimate for the amount of error that you are making.
+
+![A sample integration](figures/Calculus/InitialIntegral.png){#fig-3.4 alt="A sample integration"}
+
+:::
+
+------------------------------------------------------------------------
+
+In this section we will study three different techniques for approximating the value of a definite integral: Riemann sums, trapezoidal rule, Simpsons's rule.
+
+### Riemann Sums
+
+In this subsection we will build our first method for approximating definite integrals. Recall from Calculus that the definition of the Riemann integral is 
+$$
+\int_a^b f(x) dx = \lim_{\Delta x \to 0} \sum_{j=1}^N f(x_j) \Delta x,
+$$
+where $N$ is the number of sub intervals on the interval $[a,b]$ and $\Delta x$ is the width of the interval^[In this module we will give all subintervals the same length. This simplifies things but is not necessary.]. As with differentiation, we can remove the limit and have a decent approximation of the integral so long as $N$ is large (or equivalently, as long as $\Delta x$ is small). 
+$$
+\int_a^b f(x) dx \approx \sum_{j=1}^N f(x_j) \Delta x.
+$$
+You are likely familiar with this approximation of the integral from Calculus. The value of $x_j$ can be chosen anywhere within the sub interval and three common choices are to use the left-aligned, the right-aligned, and the midpoint-aligned endpoints. We see a depiction of the resulting approximations in @fig-3.5.
+
+![Left-aligned Riemann sum, midpoint-aligned Riemann sum, and right-aligned Riemann sum](figures/Calculus/ThreeRiemannSums.png){#fig-3.5 alt="Left-aligned Riemann sum, midpoint-aligned Riemann sum, and right-aligned Riemann sum"}
+
+Clearly, the more rectangles we choose the closer the sum of the areas of the rectangles will get to the integral.
+
+Assuming the boundaries of the $N$ subintervals are given by $x_0, x_1, \ldots, x_N$, these three choices define the following approximations:
+
+**Left Riemann sum:**
+$$
+\int_a^b f(x) dx \approx \sum_{j=0}^{N-1} f(x_{j}) \Delta x
+$$
+
+**Right Riemann sum:**
+$$
+\int_a^b f(x) dx \approx \sum_{j=0}^{N-1} f(x_{j+1}) \Delta x
+$$
+
+**Midpoint Riemann sum:**
+$$
+\int_a^b f(x) dx \approx \sum_{j=0}^{N-1} f\left(\frac{x_{j} + x_{j+1}}{2}\right) \Delta x
+$$
+
+
+
+------------------------------------------------------------------------
+
+::: {#exr-3.32}
+💻 🎓 Write a Python function `RiemannSum(f, a, b, N, method='left')` that approximates an integral with a Riemann sum. 
+Your Python function should accept a Python Function `f`, a lower bound `a`, an upper bound `b`, the number of subintervals `N`, and an optional input `method` that allows the user to designate whether they want 'left', 'right', or 'midpoint' rectangles. You should write your code without any loops. Test your code on several functions for which you know the integral.
+
+:::
+
+------------------------------------------------------------------------
+
+```{python}
+#| echo: false
+import numpy as np
+
+def RiemannSum(f, a, b, N, method='left'):
+    x = np.linspace(a, b, N+1)
+    dx = (b - a) / N
+    if method == 'left':
+        return np.sum(f(x[:-1])) * dx
+    elif method == 'right':
+        return np.sum(f(x[1:])) * dx
+    elif method == 'midpoint':
+        midpoints = (x[:-1] + x[1:]) / 2
+        return np.sum(f(midpoints)) * dx
+    else:
+        raise ValueError("Method must be 'left', 'right', or 'midpoint'")
+```
+
+::: {#exr-3.33}
+💻 Consider the function $f(x) = \sin(x)$. We know the antiderivative for this function, $F(x) = -\cos(x) + C$. In this question we are going to get a sense of the order of the error when doing Riemann Sum integration.
+
+a.  Find the exact value of 
+$$
+I=\int_0^{1} f(x) dx.
+$$
+
+b.  To approximate the integral numerically using the left Riemann sum we calculate 
+$$
+ I \approx \sum_{j=0}^{N-1} f(x_j) \Delta x =: A_{\text{left}}(\Delta x).
+$$
+ We want to see how the error in the approximation behaves as $\Delta x$ is made smaller and smaller. The table below shows the approximation and the absolute error for $\Delta x = 2^{-1}$ and $\Delta x = 2^{-2}$. It also shows the error reduction factor, which is the ratio of two successive absolute errors. Modify the code to build a similar table for the sequence
+$$
+\Delta x = 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots 
+$$
+
+```{python}
+import numpy as np
+    
+# Setup function and exact integral
+f = lambda x: np.sin(x)
+exact = -np.cos(1) + np.cos(0)
+    
+# Create table header
+hdr1 = "Δx"
+hdr2 = "A_left(Δx)"
+hdr3 = "|I - A_left(Δx)|"
+hdr4 = "Error reduction factor"
+print(f"{hdr1:<20} | {hdr2:<18} | {hdr3:<18} | {hdr4:<18}")
+print("-" * 82)
+
+for n in range(1,11):
+    dx = 2**(-n)
+    dx_str = f"2^-{n} = {dx:g}"
+    approx = RiemannSum(f, 0, 1, int(np.round(1/dx)), method='left')
+    error = abs(exact - approx)
+    if n == 1:
+        print(f"{dx_str:<20} | {approx:<18.15f} | {error:<18.15f} | ")
+    else:
+        print(f"{dx_str:<20} | {approx:<18.15f} | {error:<18.15f} | {error_prev/error:<18.15f}")
+    error_prev = error
+
+```
+
+
+
+c.  Formulate your conjecture for how the error depends on the stepsize.
+
+d.  Repeat part (b) to create the tables and answer the questions using the right Riemann sum and the midpoint Riemann sum instead of the left Riemann sum. What happens to the error reduction factor in each case? What do you conjecture is the order of the three Riemann sum methods? Compare your conjecture with the other members of your group.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.34}
+💻 💬 🎓 This exercise continues examining the absolute integration errors from the previous problem, this time with a plot.
+
+Use the following function to plot the absolute error as a function of $\Delta x$.
+
+```{python}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def plot_riemann_errors(f, a, b, exact, DX):
+    """
+    Plot the absolute error in the Riemann sum approximation
+
+    Parameters:
+        f (function): Function whose integral we approximate
+        a (float): Left endpoint of interval
+        b (float): Right endpoint of interval
+        exact (float): The exact value of the integral
+        DX (vector): We will calculate the error at each of the
+                     stepsizes in this vector
+    Returns:
+        A plot with the stepsizes on the x axis and the 
+        absolute error on the y axis
+    """
+
+    # Create lists of errors
+    error_left = []
+    error_right = []
+    error_midpoint = []
+    
+    for dx in DX:
+        N = int(np.round((b - a) / dx))
+        error_left.append(abs(RiemannSum(f, a, b, N, method='left') - exact))
+        error_right.append(abs(RiemannSum(f, a, b, N, method='right') - exact))
+        error_midpoint.append(abs(RiemannSum(f, a, b, N, method='midpoint') - exact))
+
+    # Make a loglog plot
+    plt.loglog(DX, error_left, 'b*', label='Left Sum', markersize=14)
+    plt.loglog(DX, error_right, 'ro', label='Right Sum')
+    plt.loglog(DX, error_midpoint, 'g+', label='Midpoint Sum')
+
+    plt.xlabel("Δx")
+    plt.ylabel("Absolute Error")
+    plt.title("Absolute Error vs. Δx")
+    plt.legend()
+    plt.grid(True)
+    return plt
+```
+
+Here is an example of how to use the function:
+
+```{python}
+# Setup function and exact integral again
+f = lambda x: np.sin(x)
+exact = -np.cos(1) + np.cos(0)
+
+# Create vector of step sizes
+DX = [2**(-n) for n in range(1, 11)]
+
+# Plot the absolute error
+plot_riemann_errors(f, 0, 1, exact, DX)
+```
+
+Discuss the pattern in how the absolute error changes as $\Delta x$ is changed. What does the log-log plot tell you? How does this agree with what the tables you created in the previous exercise told you? (Again notice the similarity between this exercise and @exr-3.25 where you created a similar plot for approximating a derivative.
+
+:::
+
+------------------------------------------------------------------------
+
+### Trapezoidal Rule
+
+Now let us turn our attention to some slightly better algorithms for calculating the value of a definite integral: The Trapezoidal Rule and Simpson's Rule. There are many others, but in practice these two are relatively easy to implement and have reasonably good error approximations. To motivate the idea of the trapezoidal rule consider @fig-3.6. It is plain to see that trapezoids will make better approximations than rectangles at least in this particular case. Another way to think about using trapezoids, however, is to see the top side of the trapezoid as a secant line connecting two points on the curve. As $\Delta x$ gets arbitrarily small, the secant lines become better and better approximations for tangent lines and are hence arbitrarily good approximations for the curve. For these reasons it seems like we should investigate how to systematically approximate definite integrals via trapezoids.
+
+![Motivation for using trapezoids to approximate a definite integral.](figures/Calculus/Trapezoidal1.png){#fig-3.6 alt="Motivation for using trapezoids to approximate a definite integral."}
+
+------------------------------------------------------------------------
+
+::: {#exr-3.37}
+🖋 🎓 Consider a single trapezoid approximating the area under a curve. From geometry we recall that the area of a trapezoid is 
+$$
+A = \frac{f(a) + f(b)}{2}\left( b - a \right).
+$$
+The function shown in the @fig-3.7 is $f(x) = \frac{1}{5} x^2 (5-x)$. Find the area of the shaded region as an approximation to 
+$$
+\int_1^4 \left( \frac{1}{5} x^2 (5-x) \right) dx.
+$$
+
+![A single trapezoid to approximate area under a curve.](figures/Calculus/Trapezoidal2.png){#fig-3.7 alt="A single trapezoid to approximate area under a curve."}
+
+Now use the same idea with $h = \Delta x = 1$  to approximate the area under the function using three trapezoids, as illustrated in the last panel of @fig-3.6.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.37b}
+#### Trapezoidal Rule
+Now generalise the idea from @exr-3.37 to divide the interval $[a,b]$ into $N$ subintervals with boundaries $\{x_0=a, x_1, x_2, \ldots, x_{N-1},x_N=b\}$. Fill in the missing bits in the equations below. The area of the trapezoid on the subinterval from $x_{j-1}$ to $x_j$ is
+$$
+A_j = \frac{1}{2} \left[ f(???) + f(???) \right]\left(??? - ??? \right).
+$$
+Then the approximation of the integral is
+$$
+\int_a^b f(x) dx \approx \sum_{???}^{???} A_j = A.
+$$
+This simplifies to 
+$$
+\int_a^b f(x) dx \approx \frac{1}{2} \left[ f(x_0) + f(x_N) \right] + \sum_{???}^{???} f(???).
+$$
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.39}
+💻 🎓 Write a Python function `Trapezoidal(f, a, b, N)` that approximates an integral with the trapezoidal method you derived in the previous exercise. 
+Your Python function should accept a Python Function `f`, a lower bound `a`, an upper bound `b` and the number of subintervals `N`. You should write your code without any loops. Test your code on several functions for which you know the integral. 
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.40}
+You have by now developed and repeatedly used ways to investigate how the errors for numerical integration and differentiation schemes depend on the stepsize. It is now up to you to do the same for the trapezoidal rule. The goal is to answer the question:
+
+> If I approximate the integral with a fixed $\Delta x$ and find an absolute error of $P$, then what will the absolute   error be using a width of $\Delta x / M$?
+
+You can either do this with a table as in @exr-3.33 or with a graph as in @exr-3.34. What is the order of the error for the trapezoidal rule?
+:::
+
+------------------------------------------------------------------------
+
+### Simpsons Rule
+
+The trapezoidal rule does a decent job approximating integrals, but ultimately you are using linear functions to approximate $f(x)$ and the accuracy may suffer if the step size is too large or the function too non-linear. You likely notice that the trapezoidal rule will give an exact answer if you were to integrate a linear or constant function. A potentially better approach would be to get an integral that evaluates quadratic functions exactly. We call this method Simpson's Rule after [Thomas Simpson (1710-1761)](https://en.wikipedia.org/wiki/Thomas_Simpson) who, by the way, was a basket weaver in his day job so he could pay the bills and keep doing math.
+
+Three points are needed to uniquely determine a quadratic function, where two points were enough to uniquely determine a linear function. So for Simpson's method we need to evaluate the function at three points (not two as for the trapezoidal rule). To approximate the integral a function $f(x)$ on the interval $[a,b]$ we will use the three points $(a,f(a))$, $(m,f(m))$, and $(b,f(b))$ where $m=\frac{a+b}{2}$ is the midpoint of the two boundary points.
+
+We want to find constants $A_1$, $A_2$, and $A_3$ in terms of $a$, $b$, $f(a)$, $f(b)$, and $f(m)$ such that 
+$$
+\int_a^b f(x) dx = A_1 f(a) + A_2 f(m) + A_3 f(b)
+$$
+ is exact for all constant, linear, and quadratic functions. This would guarantee that we have an exact integration method for all polynomials of order 2 or less but should serve as a decent approximation if the function is not quadratic.
+
+To make sure that the formula is exact for all constant, linear, and quadratic functions we can plug in $f(x)=1$, $f(x)=x$, and $f(x)=x^2$ into the equation and solve the resulting linear system of equations for $A_1$, $A_2$, and $A_3$.
+$$
+\begin{split}
+\int_a^b 1 dx = b-a &= A_1 + A_2 + A_3,\\
+\int_a^b x dx = \frac{b^2 - a^2}{2} &= A_1 a + A_2 \left( \frac{a+b}{2} \right) + A_3 b,\\
+\int_a^b x^2 dx = \frac{b^3 - a^3}{3} &= A_1 a^2 + A_2 \left( \frac{a+b}{2} \right)^2 + A_3 b^2,
+\end{split}
+$$
+is solved by
+$$
+A_1 = \frac{b-a}{6}, \quad A_2 = \frac{4(b-a)}{6}, \quad \text{and} \quad A_3 = \frac{b-a}{6}.
+$$
+
+
+------------------------------------------------------------------------
+
+::: {#exr-3.43}
+🖋 At this point we can see that an integral can be approximated as 
+$$
+\int_a^b f(x) dx \approx \left( \frac{b-a}{6} \right) \left( f(a) + 4f\left( \frac{a+b}{2} \right) + f(b) \right)
+$$
+ and the technique will give an exact answer for any polynomial of order 2 or below.
+
+Verify the previous sentence by integrating $f(x) = 1$, $f(x) = x$ and $f(x) = x^2$ by hand on the interval $[0,1]$ and using the approximation formula.
+
+:::
+
+------------------------------------------------------------------------
+
+To make the punchline of the previous exercises a bit more clear: Using the formula 
+$$
+\int_a^b f(x) dx \approx \left( \frac{b-a}{6} \right) \left( f(a) + 4 f(m) + f(b) \right)
+$$
+ is the same as fitting a parabola to the three points $(a,f(a))$, $(m,f(m))$, and $(b,f(b))$ and finding the area under the parabola exactly. That is exactly the step up from the trapezoidal rule and Riemann sums that we were after:
+
+-   Riemann sums approximate the function with constant functions,
+
+-   the trapezoidal rule uses linear functions, and
+
+-   now we have a method for approximating with parabolas.
+
+```{python}
+#| include: false
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(x):
+    return (1/5) * x**2 * (5 - x)
+
+x_plot = np.linspace(0.5, 4.5, 400)
+y_plot = f(x_plot)
+
+def setup_axes():
+    fig, ax = plt.subplots(figsize=(5, 4))
+    ax.plot(x_plot, y_plot, 'k-', linewidth=2)
+    ax.set_xlim(0.5, 4.5)
+    ax.set_ylim(0, 4.5)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.set_xlabel('x')
+    ax.set_ylabel('f(x)')
+    return fig, ax
+
+fig1, ax1 = setup_axes()
+
+# Single parabola over [1, 4]
+a, b = 1, 4
+m = (a + b) / 2
+
+x_pts1 = np.array([a, m, b])
+y_pts1 = f(x_pts1)
+poly1 = np.poly1d(np.polyfit(x_pts1, y_pts1, 2))
+
+x_fill1 = np.linspace(a, b, 100)
+y_fill1 = poly1(x_fill1)
+
+ax1.fill_between(x_fill1, 0, y_fill1, color='lightgray', alpha=0.5)
+ax1.plot(x_fill1, y_fill1, 'r--', linewidth=2)
+
+ax1.plot([a, a], [0, f(a)], 'k--')
+ax1.plot([b, b], [0, f(b)], 'k--')
+ax1.plot(x_pts1, y_pts1, 'ro') # Show the interpolating points
+
+ax1.set_title("Simpson's Rule (1 Subinterval)")
+fig1.tight_layout()
+plt.close(fig1)
+
+fig2, ax2 = setup_axes()
+
+# 3 Parabolas over [1, 4]
+subintervals = [(1, 2), (2, 3), (3, 4)]
+for sub_a, sub_b in subintervals:
+    sub_m = (sub_a + sub_b) / 2
+    x_pts = np.array([sub_a, sub_m, sub_b])
+    y_pts = f(x_pts)
+    poly = np.poly1d(np.polyfit(x_pts, y_pts, 2))
+    
+    x_fill = np.linspace(sub_a, sub_b, 100)
+    y_fill = poly(x_fill)
+    
+    ax2.fill_between(x_fill, 0, y_fill, color='lightgray', alpha=0.5, edgecolor='k')
+    ax2.plot(x_fill, y_fill, 'r--', linewidth=1.5)
+    
+    ax2.plot([sub_a, sub_a], [0, f(sub_a)], 'k-')
+    ax2.plot([sub_b, sub_b], [0, f(sub_b)], 'k-')
+    ax2.plot(x_pts, y_pts, 'ro', markersize=4)
+
+ax2.set_title("Simpson's Rule (3 Subintervals)")
+fig2.tight_layout()
+plt.close(fig2)
+```
+
+```{python}
+#| echo: false
+#| label: fig-simpson-1
+#| fig-cap: Simpson's rule approximation with a single parabola.
+#| fig-alt: Simpson's rule approximation with a single parabola.
+fig1
+```
+
+
+To improve upon this idea we now examine the problem of partitioning the interval $[a,b]$ into small pieces and running this process on each piece. This is called Simpson's Rule for integration.
+
+```{python}
+#| echo: false
+#| label: fig-simpson-3
+#| fig-cap: Simpson's rule approximation with three parabolas.
+#| fig-alt: Simpson's rule approximation with three parabolas.
+fig2
+```
+
+------------------------------------------------------------------------
+
+::: {#exr-3.43b}
+#### Simpson's Rule
+We divide the interval $[a,b]$ into $N$ subintervals with boundaries $\{x_0=a, x_1, x_2, \ldots, x_{N-1},x_N=b\}$. Fill in the missing bits in the equations below. We approximate the integral on the subinterval from $x_{j-1}$ to $x_j$ by
+$$
+A_j = \frac{??? - ???}{???} \left[ f(???) + ??? f(???)+f(???) \right].
+$$
+Then the approximation of the integral is
+$$
+\int_a^b f(x) dx \approx \sum_{???}^{???} A_j.
+$$
+This can be simplified to
+$$
+\int_a^b f(x) dx \approx \frac{1}{2} \left[ f(x_0) + f(x_N) \right] + \sum_{???}^{???} f(???).
+$$
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.45}
+💻 🎓 Write a Python function `Simpsons(f, a, b, N)` that approximates an integral with Simpson's rule that you derived in the previous exercise. 
+Your Python function should accept a Python Function `f`, a lower bound `a`, an upper bound `b` and the number of subintervals `N`. You should write your code without any loops. Test your code on several functions for which you know the integral. 
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.44}
+🎓 As in @exr-3.40, use your favourite method to determine how the absolute 
+error in Simpson's rule depends on the step size and hence determine the order of the error for Simpson's rule?
+
+:::
+
+------------------------------------------------------------------------
+
+
+::: {#exr-3.47}
+ Use the integration problem and exact answer 
+$$
+\int_0^{\pi/4} e^{3x} \sin(2x) dx = \frac{3}{13} e^{3\pi/4} + \frac{2}{13}
+$$
+ and produce a log-log error plot with $\Delta x$ on the horizontal axis and the absolute error on the vertical axis. Include one graph for each of our integration methods. Fully explain how the error rates show themselves in your plot.
+
+:::
+
+------------------------------------------------------------------------
+
+Thus far we have three numerical approximations for definite integrals: Riemann sums (with rectangles), the trapezoidal rule, and Simpsons's rule. There are MANY other approximations for integrals and we leave the further research to the curious reader.
+
+Further reading: Sections 4.3 to 4.9 of [@Burden_Faires].
+
+------------------------------------------------------------------------
+
+
+## Algorithm Summaries
+
+::: {#exr-3.87}
+🖋 Starting from Taylor series prove that 
+$$
+f'(x) \approx \frac{f(x+h) - f(x)}{h}
+$$
+ is a first-order approximation of the first derivative of $f(x)$. Clearly describe what "first-order approximation" means in this context.
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.88}
+🖋 Starting from Taylor series prove that 
+$$
+f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}
+$$
+ is a second-order approximation of the first derivative of $f(x)$. Clearly describe what "second-order approximation" means in this context.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.89}
+🖋 Starting from Taylor series prove that 
+$$
+f''(x) \approx \frac{f(x+h) - 2f(x) + f(x-h)}{h^2}
+$$
+ is a second-order approximation of the second derivative of $f(x)$. Clearly describe what "second-order approximation" means in this context.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.90}
+🖋 Explain how to approximate the value of a definite integral with Riemann sums. When will the Riemann sum approximation be exact? Distinguish between left, right and midpoint Riemann sums. State how the error of these approximations depends on the step size, i.e., give the order of the error for each of the three Riemann sums.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.91}
+🖋 Explain how to approximate the value of a definite integral with the trapezoidal rule. When will the trapezoidal rule approximation be exact? What is the order of the Trapezoidal rule? 
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.92}
+🖋 Explain how to approximate the value of a definite integral with Simpson's rule. Give the full mathematical details for where Simpson's rule comes from. When will the Simpson's rule approximation be exact? What is the order of Simpson's rule?
+
+:::
+
+------------------------------------------------------------------------
+
+## Truncation Errors {#sec-truncation}
+Many of the approximation methods in Numerical Analysis are based on Taylor series expansions and then dropping higher-order terms in the series. The error that is introduced by truncating a Taylor series in this way is called the truncation error. The material in this section will be covered by lectures. You will not need to have read this section before the assessment quiz for this week.
+
+Let us recall Taylor's formula for a function $f$ that is $p$ times differentiable on the interval between $x$ and $x_0$:
+$$
+\begin{split}
+f(x)=f(x_0)&+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots\\
+&+\frac{f^{(p-1)}(x_0)}{(p-1)!}(x-x_0)^{p-1}+\frac{f^{(p)}(\xi)}{p!}(x-x_0)^{p}
+\end{split}
+$$
+for some $\xi$ between $x$ and $x_0$. The error introduced by truncating the series after the $p$-th term is thus
+$$
+|R_p(x)|=\left|\frac{f^{(p)}(\xi)}{p!}(x-x_0)^{p}\right|.
+$$
+We had first discussed this in @sec-functions.
+
+### Truncation error in finite-difference formulae
+In the finite-difference formulae for derivatives that we discussed in @sec-differentiation, we approximated the derivative of a function $f$ at a point $x$ by a linear combination of function values at points close to $x$. For example, the forward difference formula for the first derivative is
+$$
+\begin{split}
+f'(x)&\approx \frac{f(x+h)-f(x)}{h}\\
+&=\frac{f(x)+hf'(x)+\frac{h^2}{2}f''(x)+\cdots-f(x)}{h}\\
+&=f'(x)+\frac{h}{2}f''(\xi).
+\end{split}
+$$
+for some $\xi$ between $x$ and $x+h$. We see that the truncation error is proportional to the stepsize $h$. We say that the trunction error is of order $h$ and that this forward-difference approximation is a first-order approximation. This means that in order to halve the size of the error we need to halve the stepsize.
+
+You can now do a similar analysis for the other finite-difference formulae that we discussed in @sec-differentiation.
+
+### Truncation error in numerical integration
+In numerical integration we approximate the integral of a function $f$ over an interval $[a,b]$ by splitting the interval into many subintervals. So we introduce a grid of points $x_j=x_0+jh$ for $j=0,\ldots,N$ with $x_0=a$ and $x_N=b$ and $h=(b-a)/N$ and write the integral as a sum
+$$
+\int_a^b f(x)dx=\sum_{j=1}^{N}\int_{x_{j-1}}^{x_{j}}f(x)dx.
+$$
+
+#### Right Riemann sum
+For the right Riemann sum we have
+$$
+I_j=\int_{x_{j-1}}^{x_{j}}f(x)dx\approx \int_{x_{j-1}}^{x_{j}}f(x_j)dx=f(x_j)h=A_j.
+$$
+The **local truncation error** is defined as the absolute error made in each subinterval, divided by the width of the subinterval:
+$$
+\tau_j=\frac{1}{h}|I_j-A_j|.
+$$
+For the right Riemann sum we have
+$$
+\begin{split}
+I_j-A_j&=\int_{x_{j-1}}^{x_{j}}\left(f(x)-f(x_j)\right)dx\\
+&=\int_{x_{j-1}}^{x_{j}}\left(f(x_j)+f'(\xi_j)(x-x_j)-f(x_j)\right)dx\\
+&=f'(\xi_j)\int_{x_{j-1}}^{x_{j}}(x-x_j)dx\\
+&=f'(\xi_j)\frac{h^2}{2}\\
+\end{split}
+$$
+for some $\xi_j$ between $x_{j-1}$ and $x_j$. So the local truncation error is
+$$
+\tau_j=\frac{1}{h}\left|f'(\xi_j)\frac{h^2}{2}\right|=\frac{h}{2}|f'(\xi_j)|.
+$$
+We see that the local truncation error is of order $h$ and that the right Riemann sum is a first-order approximation. The reason for dividing by $h$ in the definition of the local truncation error is that the power of $h$ in the local truncation error is the same as in the  **global truncation error** $\tau$ is obtained by summing over the errors from all subintervals. For the Riemann sum we have for some $\xi$ between $a$ and $b$ that
+$$
+\begin{split}
+\tau&=\left|\sum_{j=1}^{N}\frac{h^2}2f'(\xi_j)\right|
+\leq \left|\sum_{j=1}^{N}\frac{h^2}2f'(\xi)\right|\\
+&\leq \sum_{j=1}^{N}\left|\frac{h^2}2f'(\xi)\right|
+=N\frac{h^2}2|f'(\xi)|\\
+&=\frac{b-a}{2}h|f'(\xi_j)|.
+\end{split}
+$$
+
+#### Midpoint Riemann sum
+
+For the midpoint Riemann sum we approximate the function on each subinterval by the value of the function at the midpoint $m_j=(x_{j-1}+x_j)/2$. So we have
+$$
+I_j=\int_{x_{j-1}}^{x_{j}}f(x)dx\approx \int_{x_{j-1}}^{x_{j}}f(m_j)dx=f(m_j)h=A_j.
+$$
+For the error we expand $f(x)$ in a Taylor series around the midpoint $m_j$:
+$$
+\begin{split}
+I_j-A_j&=\int_{x_{j-1}}^{x_{j}}\left(f(x)-f(m_j)\right)dx\\
+&=\int_{x_{j-1}}^{x_{j}}\left(f(m_j)+f'(m_j)(x-m_j)+\frac{1}{2}f''(\xi_x)(x-m_j)^2-f(m_j)\right)dx\\
+&=f'(m_j)\int_{x_{j-1}}^{x_{j}}(x-m_j)dx+\frac{1}{2}f''(\xi_j)\int_{x_{j-1}}^{x_{j}}(x-m_j)^2dx\\
+\end{split}
+$$
+for some $\xi_j$ between $x_{j-1}$ and $x_j$. Since $\int_{x_{j-1}}^{x_{j}}(x-m_j)dx=0$ and $\int_{x_{j-1}}^{x_{j}}(x-m_j)^2dx=\frac{h^3}{12}$, we have
+$$
+I_j-A_j=\frac{1}{2}f''(\xi_j)\frac{h^3}{12}=f''(\xi_j)\frac{h^3}{24}.
+$$
+So the local truncation error is
+$$
+\tau_j=\frac{1}{h}\left|f''(\xi_j)\frac{h^3}{24}\right|=\frac{h^2}{24}|f''(\xi_j)|.
+$$
+We see that the local truncation error is of order $h^2$ and that the midpoint Riemann sum is a second-order approximation. 
+
+#### Trapezoidal rule
+
+For the trapezoidal rule we approximate the integral on each subinterval by the area of a trapezoid:
+$$
+A_j=\frac{h}{2}\left(f(x_{j-1})+f(x_j)\right).
+$$
+To find the truncation error we expand $f(x)$ in a Taylor series around the midpoint $m_j=(x_{j-1}+x_j)/2$. From our previous calculation for the midpoint Riemann sum, we know the exact value of the integral is given up to the second derivative term by:
+$$
+I_j = \int_{x_{j-1}}^{x_{j}}f(x)dx \approx f(m_j)h + f''(m_j)\frac{h^3}{24}.
+$$
+For the trapezoidal approximation $A_j$, we evaluate the Taylor series of $f(x)$ at the endpoints $x_{j-1}=m_j-h/2$ and $x_j=m_j+h/2$:
+$$
+\begin{split}
+A_j&\approx \frac{h}{2}\left[\left(f(m_j)-f'(m_j)\frac{h}{2}+\frac{1}{2}f''(m_j)\frac{h^2}{4}\right) + \left(f(m_j)+f'(m_j)\frac{h}{2}+\frac{1}{2}f''(m_j)\frac{h^2}{4}\right)\right]\\
+&= \frac{h}{2}\left[2f(m_j) + f''(m_j)\frac{h^2}{4}\right]\\
+&= f(m_j)h + f''(m_j)\frac{h^3}{8}.
+\end{split}
+$$
+Taking the difference gives the error for the subinterval:
+$$
+\begin{split}
+I_j-A_j &\approx \left(f(m_j)h + f''(m_j)\frac{h^3}{24}\right) - \left(f(m_j)h + f''(m_j)\frac{h^3}{8}\right)\\
+&= f''(m_j)h^3\left(\frac{1}{24} - \frac{3}{24}\right) = -f''(m_j)\frac{h^3}{12}.
+\end{split}
+$$
+More rigorously, one can show that the exact local error is
+$$
+I_j-A_j=-\frac{1}{12}f''(\xi_j)h^3
+$$
+for some $\xi_j$ between $x_{j-1}$ and $x_j$. So the local truncation error is
+$$
+\tau_j=\frac{1}{h}\left|-\frac{h^3}{12}f''(\xi_j)\right|=\frac{h^2}{12}|f''(\xi_j)|.
+$$
+We see that the local truncation error is of order $h^2$ and that the trapezoidal rule is a second-order approximation.
+
+
+#### Simpson's rule
+
+For Simpson's rule we approximate the integral on each subinterval $[x_{j-1}, x_{j}]$ of width $h$ using a parabola that passes through the endpoints and the midpoint $m_j=(x_{j-1}+x_j)/2$:
+$$
+A_j=\frac{h}{6}\left(f(x_{j-1})+4f(m_j)+f(x_j)\right).
+$$
+To find the truncation error we expand $f(x)$ in a Taylor series around the midpoint $m_j$. Because Simpson's rule matches polynomials up to order 2 exactly, the lower-order error terms will cancel out, so we must expand up to the fourth derivative:
+$$
+f(x) \approx f(m_j)+f'(m_j)(x-m_j)+\frac{1}{2}f''(m_j)(x-m_j)^2 + \frac{1}{6}f'''(m_j)(x-m_j)^3 + \frac{1}{24}f^{(4)}(m_j)(x-m_j)^4.
+$$
+Integrating this expansion over the subinterval gives the integral $I_j$. The odd powers of $(x-m_j)$ integrate to zero, leaving:
+$$
+I_j = \int_{x_{j-1}}^{x_{j}}f(x)dx \approx f(m_j)h + f''(m_j)\frac{h^3}{24} + f^{(4)}(m_j)\frac{h^5}{1920}.
+$$
+For the Simpson's approximation $A_j$, we evaluate the Taylor series of $f(x)$ at the endpoints $x_{j-1}=m_j-h/2$ and $x_j=m_j+h/2$:
+$$
+f(m_j \pm h/2) \approx f(m_j) \pm f'(m_j)\frac{h}{2} + f''(m_j)\frac{h^2}{8} \pm f'''(m_j)\frac{h^3}{48} + f^{(4)}(m_j)\frac{h^4}{384}.
+$$
+Adding these endpoint values gives:
+$$
+f(x_{j-1})+f(x_j) \approx 2f(m_j) + f''(m_j)\frac{h^2}{4} + f^{(4)}(m_j)\frac{h^4}{192}.
+$$
+Substituting this into our expression for $A_j$ yields:
+$$
+\begin{split}
+A_j &= \frac{h}{6} \left[ 4f(m_j) + (f(x_{j-1}) + f(x_j)) \right]\\
+&\approx \frac{h}{6}\left[4f(m_j) + 2f(m_j) + f''(m_j)\frac{h^2}{4} + f^{(4)}(m_j)\frac{h^4}{192}\right]\\
+&= f(m_j)h + f''(m_j)\frac{h^3}{24} + f^{(4)}(m_j)\frac{h^5}{1152}.
+\end{split}
+$$
+Taking the difference $I_j-A_j$, we see that the $f(m_j)$ and $f''(m_j)$ terms cancel out:
+$$
+\begin{split}
+I_j-A_j &\approx \left(f(m_j)h + f''(m_j)\frac{h^3}{24} + f^{(4)}(m_j)\frac{h^5}{1920}\right) - \left(f(m_j)h + f''(m_j)\frac{h^3}{24} + f^{(4)}(m_j)\frac{h^5}{1152}\right)\\
+&= f^{(4)}(m_j)h^5\left(\frac{1}{1920} - \frac{1}{1152}\right) = -f^{(4)}(m_j)\frac{h^5}{2880}.
+\end{split}
+$$
+More rigorously, one can show that the exact local error is
+$$
+I_j-A_j=-\frac{1}{2880}f^{(4)}(\xi_j)h^5
+$$
+for some $\xi_j$ between $x_{j-1}$ and $x_j$. So the local truncation error is
+$$
+\tau_j=\frac{1}{h}\left|-\frac{h^5}{2880}f^{(4)}(\xi_j)\right|=\frac{h^4}{2880}|f^{(4)}(\xi_j)|.
+$$
+We see that the local truncation error is of order $h^4$ and that Simpson's rule is a fourth-order approximation.
+
+
+## Exam-style question
+
+(a) Write down the forward difference formula and the central difference formula for the first derivative of $f(x)$ using a step size $h$. State the order of accuracy for each method. [3 marks]
+
+(b) By using the Taylor series expansion for $f(x+h)$ and $f(x-h)$ around the point $x$, derive the central difference formula and show that its truncation error is $\mathcal{O}(h^2)$. [3 marks]
+
+(c) Suppose you use the central difference scheme with a step size $h=0.2$ to approximate $f'(2)$ for some function $f$, and the absolute error in your approximation is $0.016$. If you reduce the step size to $h=0.05$, roughly what would you expect the new absolute error to be? Briefly justify your answer. [2 marks]
+
+(d) Draw a graph that illustrates how the trapezoidal rule approximates a definite integral. [3 marks]
+
+(e) What will the trapezoidal rule give as an approximation to the integral $\int_0^5 (5x+3) dx$ when using 5 subintervals? You may use any shortcuts you like to arrive at the answer. [3 marks]
+
+(f) State the order of accuracy of the trapezoidal rule and explain clearly what this means for how the approximation error changes when the number of subintervals is doubled. [3 marks]
+
+(g) The following incomplete Python code computes the approximation of an integral using the trapezoidal rule on the interval $[a, b]$ with $N$ subintervals. Provide the missing code indicated by `...`. Do not use loops. [3 marks]
+
+``` python
+import numpy as np
+
+def trapezoidal(f, a, b, N):
+    """
+    Approximate the integral of f(x) from a to b using the trapezoidal rule.
+    """
+    # Create vector of equally-spaced x values bounding the N subintervals
+    x = ...
+    
+    # Calculate width of subintervals
+    dx = ...
+    
+    # Create vector of approximate integrals for all subintervals
+    A = ...
+    
+    # Return the sum over the subintervals
+    return ...
+```
+
+
+------------------------------------------------------------------------
+
+
+## Problems
+
+::: {#exr-3.97}
+🖋 💬 For each of the following numerical differentiation formulas 
+ 
+(1) prove that the formula is true and 
+(2) find the order of the method. 
+
+To prove that each of the formulas is true you will need to write the Taylor series for all of the terms in the numerator on the right and then simplify to solve for the necessary derivative. The highest power of the remainder should reveal the order of the method. 
+
+1.  $f'(x) \approx \frac{\frac{1}{12} f(x-2h) - \frac{2}{3} f(x-h) + \frac{2}{3} f(x+h) - \frac{1}{12} f(x+2h)}{h}$
+
+2.  $f'(x) \approx \frac{-\frac{3}{2} f(x) + 2 f(x+h) - \frac{1}{2} f(x+2h)}{h}$
+
+3.  $f''(x) \approx \frac{-\frac{1}{12} f(x-2h) + \frac{4}{3} f(x-h) - \frac{5}{2} f(x) + \frac{4}{3} f(x+h) - \frac{1}{12} f(x+2h)}{h^2}$
+
+4.  $f'''(x) \approx \frac{-\frac{1}{2} f(x-2h) + f(x-h) - f(x+h) + \frac{1}{2} f(x+2h)}{h^3}$
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.98}
+💻 Write a function that accepts a list of $(x,y)$ ordered pairs from a spreadsheet and returns a list of $(x,y)$ ordered pairs for a first order approximation of the first derivative of the underlying function. Create a test spreadsheet file and a test script that have graphical output showing that your function is finding the correct derivative.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.99}
+💻 Write a function that accepts a list of $(x,y)$ ordered pairs from a spreadsheet or a `*.csv` file and returns a list of $(x,y)$ ordered pairs for a second order approximation of the second derivative of the underlying function. Create a test spreadsheet file and a test script that have graphical output showing that your function is finding the correct derivative.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.100}
+💻 Write a function that implements the trapezoidal rule on a list of $(x,y)$ order pairs representing the integrand function. The list of ordered pairs should be read from a spreadsheet file. Create a test spreadsheet file and a test script showing that your function is finding the correct integral.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.101}
+💻 💬 Use numerical integration to answer the question in each of the following scenarios
+
+1.  We measure the rate at which water is flowing out of a reservoir (in gallons per second) several times over the course of one hour. Estimate the total amount of water which left the reservoir during that hour.
+
+| **time (min)**      | **0** | **7** | **19** | **25** | **38** | **47** | **55** |
+|---------------------|-------|-------|--------|--------|--------|--------|--------|
+| flow rate (gal/sec) | 316   | 309   | 296    | 298    | 305    | 314    | 322    |
+
+You can download the data directly from the github repository for this course with the code below.
+
+``` python         
+import numpy as np
+import pandas as pd
+data = np.array(pd.read_csv('https://github.com/gustavdelius/NumericalAnalysis2025/raw/main/data/Calculus/waterflow.csv'))
+```
+
+2.  The department of transportation finds that the rate at which cars cross a bridge can be approximated by the function 
+$$
+f(t) = \frac{22.8 }{3.5 + 7(t-1.25)^4} ,
+$$
+ where $t=0$ at 4pm, and is measured in hours, and $f(t)$ is measured in cars per minute. Estimate the total number of cars that cross the bridge between 4 and 6pm. Make sure that your estimate has an error less than 5% and provide sufficient mathematical evidence of your error estimate.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.102}
+💻 💬 Consider the integrals 
+$$
+\int_{-2}^2 e^{-x^2/2} dx \quad \text{and} \quad \int_0^1 \cos(x^2) dx.
+$$
+ Neither of these integrals have closed-form solutions so a numerical method is necessary. Create a log-log plot that shows the errors for the integrals with different values of $h$ (log of $h$ on the $x$-axis and log of the absolute error on the $y$-axis). Write a complete interpretation of the log-log plot. To get the *exact* answer for these plots use Python's `scipy.integrate.quad` command. (What we are really doing here is comparing our algorithms to Python's `scipy.integrate.quad()` algorithm).
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.103}
+💻 💬 Go to [data.gov](https://www.data.gov/) or the [World Health Organization Data Repository](http://apps.who.int/gho/data/?theme=home) and find data sets for the following tasks.
+
+1.  Find a data set where the variables naturally lead to a meaningful derivative. Use appropriate code to evaluate and plot the derivative. If your data appears to be subject to significant noise then you may want to smooth the data first before doing the derivative. Write a few sentences explaining what the derivative means in the context of the data.
+
+2.  Find a data set where the variables naturally lead to a meaningful definite integral. Use appropriate code to evaluate the definite integral. If your data appears to be subject to significant noise then you might want to smooth the data first before doing the integral. Write a few sentences explaining what the integral means in the context of the data.
+
+In both of these tasks be very cautious of the units on the data sets and the units of your answer.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.104}
+💻 💬 Numerically integrate each of the functions over the interval $[-1,2]$ with an appropriate technique and verify mathematically that your numerical integral is correct to 10 decimal places. Then provide a plot of the function along with its numerical first derivative.
+
+1.  $f(x) = \frac{x}{1+x^4}$
+
+2.  $g(x) = (x-1)^3 (x-2)^2$
+
+3.  $h(x) = \sin\left(x^2\right)$
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.105}
+💻 💬 A bicyclist completes a race course in 90 seconds. The speed of the biker at each 10-second interval is determined using a radar gun and is given in the table in feet per second. How long is the race course?
+
+| **Time (sec)** | **0** | **10** | **20** | **30** | **40** | **50** | **60** | **70** | **80** | **90** |
+|----------------|-------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
+| Speed (ft/sec) | 34    | 32     | 29     | 33     | 37     | 40     | 41     | 36     | 38     | 39     |
+
+You can download the data with the following code.
+
+``` python         
+import numpy as np
+import pandas as pd
+data = np.array(pd.read_csv('https://github.com/gustavdelius/NumericalAnalysis2025/raw/main/data/Calculus/bikespeed.csv'))
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+## Projects
+
+In this section we propose several ideas for projects related to numerical Calculus. These projects are meant to be open ended, to encourage creative mathematics, to push your coding skills, and to require you to write and communicate your mathematics.
+
+### Galaxy Integration
+
+To analyse the light from stars and galaxies, scientists use a spectral grating (fancy prism) to split it up into the different frequencies (colours). We can then measure the intensity (brightness) of the light (in units of Watts per square meter) at each frequency (measured in Hertz), to get intensity per frequency (Watts per square meter per Hertz, W/(m$^2$ Hz)). Light from the dense opaque surface of a star produces a smooth rainbow, which produces a continuous curve when we plot intensity versus frequency. However, stars are also surrounded by thin gas which either emits or absorbs light at only a specific set of frequencies, called spectral lines. Every chemical element produces a specific set of lines (or peaks) at fixed frequencies, so by identifying the lines, we can tell what types of atoms and molecules a star is made of. If the gas is cool, then it will absorb light at these wavelengths, and if the gas is hot then it will emit light at these wavelengths. For galaxies, on the other hand, we expect mostly emission spectra: light emitted from the galaxy.
+
+For this project we will be analysing the galaxy "ngc 1275." The black hole at the centre of this galaxy is often referred to as the "Galactic Spaghetti Monster" since the magnetic field "sustains a mammoth network of spaghetti-like gas filaments around it." You can download the data file associated with this project with the following Python code.
+
+``` python         
+import numpy as np
+import pandas as pd
+ngc1275 = np.array(pd.read_csv('https://github.com/gustavdelius/NumericalAnalysis2025/raw/main/data/Calculus/ngc1275.csv'))
+```
+
+In the data you will see the spectral data measuring the light intensity from ncg 1275 at several different wavelengths (measured in Angstroms ). You will notice in this data set that there are several emission lines at various wavelengths. Of particular interest are the peaks near $3800$ Angstroms, $5100$ Angstroms, $6400$ Angstroms, and the two peaks around $6700$ Angstroms. The data set contains 1,727 data points at different wavelengths. Your first job will be to transform the wavelength data to frequency via the formula 
+$$
+\lambda = \frac{c}{f},
+$$
+ where $\lambda$ is the wavelength, $c$ is the speed of light, and $f$ is the frequency (measured in Hertz). Be sure to double check the units. Given the inverse relationship between frequency and wavelength you should see the emission lines flip to the other side of the plot (right-to-left or left-to-right).
+
+The strength of each emission line (in W/m$^2$) is defined as the relative intensity of each peak across the associated frequencies. Note that you are not interested in the intensity of the continuous spectrum -- just the peaks. That is to say that you are only interested in the area above the background curve and the background noise.
+
+Your primary task is to develop a process for analysing data sets like this so as to determine the strength of each emission lines. You must demonstrate your process on this particular data set, but your process must be generalizable to any similar data set. Your process must clearly determine the strength of peaks in data sets like this and you must apply your procedure to determine the strength of each of these four lines with an associated margin of error. Keep in mind that you will first want to first develop a method for removing the background noise. Finally, the double peak near $6700$ Angstroms needs to be handled with care: the strength of each emission line is only the integral over one peak, not two, so you will need to determine a way to separate these peaks.
+
+Finally, it would be cool, but is not necessary, to report on which chemicals correspond to the emission lines in the data. Remember that the galaxy is far away and hence there is a non-trivial red-shift to consider. This will take some research but if done properly will likely give a lot more merit to your paper.
+
+### Higher Order Integration
+
+Riemann sums can be used to approximate integrals and they do so by using piecewise constant functions to approximate the function. The trapezoidal rule uses piece wise linear functions to approximate the function and then the area of a trapezoid to approximate the area. We saw earlier that Simpson's rule uses piece wise parabolas to approximate the function. The process which we used to build Simpson's rule can be extended to any higher-order polynomial. Your job in this project is to build integration algorithms that use piece wise cubic functions, quartic functions, etc. For each you need to show all of the mathematics necessary to derive the algorithm, provide several test cases to show that the algorithm works, and produce a numerical experiment that shows the order of accuracy of the algorithm.
+
+### Dam Integration
+
+Go to the USGS water data repository:\
+<https://maps.waterdata.usgs.gov/mapper/index.html>.\
+Here you will find a map with information about water resources around the country.
+
+-   Zoom in to a dam of your choice (make sure that it is a dam).
+
+-   Click on the map tag then click "Access Data"
+
+-   From the drop down menu at the top select either "Daily Data" or "Current / Historical Data." If these options do not appear then choose a different dam.
+
+-   Change the dates so you have the past year's worth of information.
+
+-   Select "Tab-separated" under "Output format" and press Go. Be sure that the data you got has a flow rate (ft$^3$/sec).
+
+-   At this point you should have access to the entire data set. Copy it into a `csv` file and save it to your computer.
+
+For the data that you just downloaded you have three tasks: (1) plot the data in a reasonable way giving appropriate units, (2) find the total amount of water that has been discharged from the dam during the past calendar year, and (3) report any margin of error in your calculation based on the numerical method that you used in part (2).

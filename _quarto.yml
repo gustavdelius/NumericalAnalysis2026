@@ -50,6 +50,7 @@ book:
     - nmPython.qmd
     - ex_exam_solns.qmd
     - nmLinAlg.qmd
+    - nmAutoDiff.qmd
 
 bibliography: references.bib
 

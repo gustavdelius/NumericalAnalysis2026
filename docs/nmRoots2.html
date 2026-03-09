@@ -300,6 +300,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Linear Algebra</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nmAutoDiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Automatic Differentiation</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -366,7 +372,7 @@ window.Quarto = {
 <p>This week we will continue our study of root finding methods. We will start with Newton’s method, then move on to the secant method and finally discuss the theory behind the order of convergence of these methods.</p>
 <section id="sec-newtons_method" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="sec-newtons_method"><span class="header-section-number">4.1</span> Newton’s Method</h2>
-<p>In the Bisection Method (<a href="#sec-bisection" class="quarto-xref"><span class="quarto-unresolved-ref">sec-bisection</span></a>) we had used only the sign of the function at the guessed points. We will now investigate how we can use also the value and the slope (derivative) of the function to get a much improved method.</p>
+<p>In the Bisection Method (<a href="nmRoots1.html#sec-bisection" class="quarto-xref"><span>Section 3.2</span></a>) we had used only the sign of the function at the guessed points. We will now investigate how we can use also the value and the slope (derivative) of the function to get a much improved method.</p>
 <section id="intuition" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="intuition"><span class="header-section-number">4.1.1</span> Intuition</h3>
 <p>Root finding is really the process of finding the <span class="math inline">\(x\)</span>-intercept of the function. If the function is complicated (e.g.&nbsp;highly nonlinear or does not lend itself to traditional by-hand techniques) then we can approximate the <span class="math inline">\(x\)</span>-intercept by creating a Taylor Series approximation of the function at a nearby point and then finding the <span class="math inline">\(x\)</span>-intercept of that simpler Taylor Series. The simplest non-trivial Taylor Series is a linear function – a tangent line!</p>
@@ -385,7 +391,7 @@ y = f(x_0) + f'(x_0) \left( x - x_0 \right).
 <li><p>Find where the tangent line intersects the <span class="math inline">\(x\)</span> axis.</p></li>
 <li><p>Use this intersection as the new <span class="math inline">\(x\)</span> value and repeat.</p></li>
 </ul>
-<p>The first step has been shown for you in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2.8</span></a>. The tangent line to the function <span class="math inline">\(f(x)\)</span> at the point <span class="math inline">\((x_0, f(x_0))\)</span> is shown in red. The <span class="math inline">\(x\)</span>-intercept of the tangent line is the new <span class="math inline">\(x\)</span> value, <span class="math inline">\(x_1\)</span>. The process is then repeated with <span class="math inline">\(x_1\)</span> as the new <span class="math inline">\(x_0\)</span> and so on.</p>
+<p>The first step has been shown for you in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>. The tangent line to the function <span class="math inline">\(f(x)\)</span> at the point <span class="math inline">\((x_0, f(x_0))\)</span> is shown in red. The <span class="math inline">\(x\)</span>-intercept of the tangent line is the new <span class="math inline">\(x\)</span> value, <span class="math inline">\(x_1\)</span>. The process is then repeated with <span class="math inline">\(x_1\)</span> as the new <span class="math inline">\(x_0\)</span> and so on.</p>
 <div id="fig-2.8" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -396,14 +402,14 @@ Figure&nbsp;4.1: Using successive tangent line approximations to find the root o
 </figcaption>
 </figure>
 </div>
-<p>The graphical method illustrated in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2.8</span></a> was introduced by Sir Isaac Newton and is therefore known as Newton’s Method. Joseph Raphson then gave the algebraic formulation and popularised the method, which is therefore also known as the Newton-Raphson method.</p>
+<p>The graphical method illustrated in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> was introduced by Sir Isaac Newton and is therefore known as Newton’s Method. Joseph Raphson then gave the algebraic formulation and popularised the method, which is therefore also known as the Newton-Raphson method.</p>
 <hr>
 <div id="exr-2.34" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> 💬 If we had started not at <span class="math inline">\(x_0\)</span> in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2.8</span></a> but instead at the very end of the x-axis in that figure, what would have happened? Would this initial guess have worked to eventually approximate the root?</p>
+<p><span class="theorem-title"><strong>Exercise 4.2</strong></span> 💬 If we had started not at <span class="math inline">\(x_0\)</span> in <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span>4.1</span></a> but instead at the very end of the x-axis in that figure, what would have happened? Would this initial guess have worked to eventually approximate the root?</p>
 </div>
 <hr>
 <div id="exr-2.34b" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.3</strong></span> 🖋 💬 Sketch some other function <span class="math inline">\(f(x)\)</span> with a root and choose an initial point <span class="math inline">\(x_0\)</span> and graphically perform the Newton iteration a few times, similar to <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2.8</span></a>. Does the algorithm appear to converge to the root in your example? Do you think that this will generally take more or fewer steps than the Bisection Method?</p>
+<p><span class="theorem-title"><strong>Exercise 4.3</strong></span> 🖋 💬 Sketch some other function <span class="math inline">\(f(x)\)</span> with a root and choose an initial point <span class="math inline">\(x_0\)</span> and graphically perform the Newton iteration a few times, similar to <a href="#fig-2.8" class="quarto-xref">Figure&nbsp;<span>4.1</span></a>. Does the algorithm appear to converge to the root in your example? Do you think that this will generally take more or fewer steps than the Bisection Method?</p>
 </div>
 <hr>
 <div id="exr-2.35" class="theorem exercise">
@@ -411,7 +417,7 @@ Figure&nbsp;4.1: Using successive tangent line approximations to find the root o
 </div>
 <hr>
 <div id="exr-2.34c" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.5</strong></span> 🖋 Using your result from <a href="#exr-2.32" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-2.32</span></a>, write the formula for the <span class="math inline">\(x\)</span>-intercept of the tangent line to <span class="math inline">\(f(x)\)</span> at the point <span class="math inline">\((x_n, f(x_n))\)</span>. This is the formula for the next guess <span class="math inline">\(x_{n+1}\)</span> in Newton’s Method. Newton’s method is a fixed point iteration method of the form <span class="math inline">\(x_{n+1} = g(x_{n})\)</span> with <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 4.5</strong></span> 🖋 Using your result from <a href="#exr-2.32" class="quarto-xref">Exercise&nbsp;<span>4.1</span></a>, write the formula for the <span class="math inline">\(x\)</span>-intercept of the tangent line to <span class="math inline">\(f(x)\)</span> at the point <span class="math inline">\((x_n, f(x_n))\)</span>. This is the formula for the next guess <span class="math inline">\(x_{n+1}\)</span> in Newton’s Method. Newton’s method is a fixed point iteration method of the form <span class="math inline">\(x_{n+1} = g(x_{n})\)</span> with <span class="math display">\[
 g(x)= \dots.
 \]</span> Fill in the blank in the above formula.</p>
 </div>
@@ -504,7 +510,7 @@ g(x)= \dots.
 </div>
 <hr>
 <div id="exr-2.39" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.8</strong></span> 💻 🎓 Use your implementation from <a href="#exr-2.38" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-2.38</span></a> to approximate the root of the function <span class="math inline">\(f(x) = x^2 - 2\)</span> with an initial guess of <span class="math inline">\(x_0=1\)</span>. Use a tolerance of <span class="math inline">\(10^{-10}\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 4.8</strong></span> 💻 🎓 Use your implementation from <a href="#exr-2.38" class="quarto-xref">Exercise&nbsp;<span>4.7</span></a> to approximate the root of the function <span class="math inline">\(f(x) = x^2 - 2\)</span> with an initial guess of <span class="math inline">\(x_0=1\)</span>. Use a tolerance of <span class="math inline">\(10^{-10}\)</span>.</p>
 </div>
 <hr>
 </section>
@@ -519,7 +525,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
 </div>
 <hr>
 <div id="exr-2.42" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.10</strong></span> 🖋 An interesting failure can occur with Newton’s Method that you might not initially expect. Consider the function <span class="math inline">\(f(x) = x^3 - 2x + 2\)</span>. This function has a root near <span class="math inline">\(x=-1.77\)</span>. Fill in the table below with pen and paper. You really do not need a computer for this. Then draw the tangent lines into <a href="#fig-2.9" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2.9</span></a> for approximating the solution to <span class="math inline">\(f(x) = 0\)</span> with a starting point of <span class="math inline">\(x=0\)</span>.</p>
+<p><span class="theorem-title"><strong>Exercise 4.10</strong></span> 🖋 An interesting failure can occur with Newton’s Method that you might not initially expect. Consider the function <span class="math inline">\(f(x) = x^3 - 2x + 2\)</span>. This function has a root near <span class="math inline">\(x=-1.77\)</span>. Fill in the table below with pen and paper. You really do not need a computer for this. Then draw the tangent lines into <a href="#fig-2.9" class="quarto-xref">Figure&nbsp;<span>4.2</span></a> for approximating the solution to <span class="math inline">\(f(x) = 0\)</span> with a starting point of <span class="math inline">\(x=0\)</span>.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 13%">
@@ -688,15 +694,15 @@ Hint: You should have found the exact same thing in the numerical experiment in 
 <section id="rate-of-convergence" class="level3" data-number="4.1.4">
 <h3 data-number="4.1.4" class="anchored" data-anchor-id="rate-of-convergence"><span class="header-section-number">4.1.4</span> Rate of Convergence</h3>
 <p>In this section we will look at the convergence rate of Newton’s Method and we will show that we can greatly outperform the Bisection method.</p>
-<p>We saw in <a href="#exm-3.1b" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-3.1b</span></a> how we could empirically determine the rate of convergence of the bisection method by plotting the error in the new iterate on the <span class="math inline">\(y\)</span>-axis and the error in the old iterate on the <span class="math inline">\(x\)</span> axis of a log-log plot. Take a look at that example again and make sure you understand the code and the explanation of the plot. Then, to investigate the rate of convergence of Newton’s method you can do the same thing.</p>
+<p>We saw in <a href="nmRoots1.html#exm-3.1b" class="quarto-xref">Example&nbsp;<span>3.2</span></a> how we could empirically determine the rate of convergence of the bisection method by plotting the error in the new iterate on the <span class="math inline">\(y\)</span>-axis and the error in the old iterate on the <span class="math inline">\(x\)</span> axis of a log-log plot. Take a look at that example again and make sure you understand the code and the explanation of the plot. Then, to investigate the rate of convergence of Newton’s method you can do the same thing.</p>
 <div id="exr-newton_error_tracking" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.14</strong></span> 💻 🎓 Write a Python function <code>newton_with_error_tracking()</code> that returns a list of absolute errors between the iterates and the exact solution. You can start with your code from <code>newton()</code> from <a href="#exr-2.38" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-2.38</span></a> and add the collection of the errors in a list as in the <code>bisection_with_error_tracking()</code> function that we wrote in <a href="#exm-2.1" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-2.1</span></a>. Your new function should accept a Python function for <span class="math inline">\(f(x)\)</span>, a Python function for <span class="math inline">\(f'(x)\)</span>, the exact root, an initial guess, and an optional error tolerance.</p>
+<p><span class="theorem-title"><strong>Exercise 4.14</strong></span> 💻 🎓 Write a Python function <code>newton_with_error_tracking()</code> that returns a list of absolute errors between the iterates and the exact solution. You can start with your code from <code>newton()</code> from <a href="#exr-2.38" class="quarto-xref">Exercise&nbsp;<span>4.7</span></a> and add the collection of the errors in a list as in the <code>bisection_with_error_tracking()</code> function that we wrote in <a href="nmRoots1.html#exm-2.1" class="quarto-xref">Example&nbsp;<span>3.1</span></a>. Your new function should accept a Python function for <span class="math inline">\(f(x)\)</span>, a Python function for <span class="math inline">\(f'(x)\)</span>, the exact root, an initial guess, and an optional error tolerance.</p>
 <p>Then, use this function to list the error progression for Newton’s method for finding the root of <span class="math inline">\(f(x) = x^2 - 2\)</span> with the initial guess <span class="math inline">\(x_0 = 1\)</span> and tolerance <span class="math inline">\(10^{-10}\)</span>. You should find that the error goes down extremely quickly and that for the final iteration Python can no longer detect a difference between the new iterate and its own value for <span class="math inline">\(\sqrt{2}\)</span>.</p>
 </div>
 <div id="exr-2.45" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 4.15</strong></span> &nbsp;</p>
 <ol type="1">
-<li><p>💻 Plot the errors you calculated in <a href="#exr-newton_error_tracking" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-newton_error_tracking</span></a> using the <code>plot_error_progression()</code> function that we wrote in <a href="#exm-3.1b" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-3.1b</span></a>. Note that you will first need to remove the zeros from the error list, otherwise you will get an error. You can remind yourself of how to work with lists in <a href="#sec-lists" class="quarto-xref"><span class="quarto-unresolved-ref">sec-lists</span></a>.</p></li>
+<li><p>💻 Plot the errors you calculated in <a href="#exr-newton_error_tracking" class="quarto-xref">Exercise&nbsp;<span>4.14</span></a> using the <code>plot_error_progression()</code> function that we wrote in <a href="nmRoots1.html#exm-3.1b" class="quarto-xref">Example&nbsp;<span>3.2</span></a>. Note that you will first need to remove the zeros from the error list, otherwise you will get an error. You can remind yourself of how to work with lists in <a href="nmPython.html#sec-lists" class="quarto-xref"><span>Section A.2.2</span></a>.</p></li>
 <li><p>💬 Give a thorough explanation for how to interpret the plot that you just made.</p></li>
 </ol>
 </div>
@@ -712,7 +718,7 @@ Hint: You should have found the exact same thing in the numerical experiment in 
 <div id="exr-2.45b" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 4.17</strong></span> 💻 Reproduce plots like those in the previous example but for the function <span class="math display">\[
 f(x)=e^{x-3}+\sqrt{x+6}-4
-\]</span> that you used in <a href="#exr-2.20" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-2.20</span></a> with the initial guess <span class="math inline">\(x_0=1\)</span> and tolerance <span class="math inline">\(10^{-10}\)</span>. Again check that the plots have the expected shape. What is the approximate relationship between <span class="math inline">\(\epsilon_{n+1}\)</span> and <span class="math inline">\(\epsilon_n\)</span> in this case?</p>
+\]</span> that you used in <a href="nmRoots1.html#exr-2.20" class="quarto-xref">Exercise&nbsp;<span>3.15</span></a> with the initial guess <span class="math inline">\(x_0=1\)</span> and tolerance <span class="math inline">\(10^{-10}\)</span>. Again check that the plots have the expected shape. What is the approximate relationship between <span class="math inline">\(\epsilon_{n+1}\)</span> and <span class="math inline">\(\epsilon_n\)</span> in this case?</p>
 </div>
 <hr>
 </section>
@@ -759,12 +765,12 @@ x_{n+1} = x_n - \frac{f(x_n)\left( x_n - x_{n-1} \right)}{f(x_n) - f(x_{n-1})}.
 <p>Up to this point we have done analysis work on the Bisection Method and Newton’s Method. We have found that the methods are first order and second order respectively. We end this chapter by doing the same for the Secant Method.</p>
 <hr>
 <div id="exr-2.50" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.21</strong></span> 💻 Write a function <code>secant_with_error_tracking()</code> that returns a list of absolute errors between the iterates and the exact solution. You can start with your code from <code>secant()</code> from <a href="#exr-2.49" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-2.49</span></a> and add the collection of the errors in a list as in the <code>bisection_with_error_tracking()</code> function that we wrote in <a href="#exm-2.1" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-2.1</span></a>. Your new function should accept a Python function, the exact root, two starting points, and an optional error tolerance.</p>
-<p>Use this function to list the error progression for the secant method for finding the root of <span class="math inline">\(f(x) = x^2 - 2\)</span> with the starting points <span class="math inline">\(x_0 = 1\)</span> and <span class="math inline">\(x_1 = 3\)</span>. Use a tolerance of <span class="math inline">\(10^{-10}\)</span>. Use the <code>plot_error_progression()</code> function that we wrote in <a href="#exm-3.1b" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-3.1b</span></a> to plot the error progression.</p>
+<p><span class="theorem-title"><strong>Exercise 4.21</strong></span> 💻 Write a function <code>secant_with_error_tracking()</code> that returns a list of absolute errors between the iterates and the exact solution. You can start with your code from <code>secant()</code> from <a href="#exr-2.49" class="quarto-xref">Exercise&nbsp;<span>4.20</span></a> and add the collection of the errors in a list as in the <code>bisection_with_error_tracking()</code> function that we wrote in <a href="nmRoots1.html#exm-2.1" class="quarto-xref">Example&nbsp;<span>3.1</span></a>. Your new function should accept a Python function, the exact root, two starting points, and an optional error tolerance.</p>
+<p>Use this function to list the error progression for the secant method for finding the root of <span class="math inline">\(f(x) = x^2 - 2\)</span> with the starting points <span class="math inline">\(x_0 = 1\)</span> and <span class="math inline">\(x_1 = 3\)</span>. Use a tolerance of <span class="math inline">\(10^{-10}\)</span>. Use the <code>plot_error_progression()</code> function that we wrote in <a href="nmRoots1.html#exm-3.1b" class="quarto-xref">Example&nbsp;<span>3.2</span></a> to plot the error progression.</p>
 </div>
 <hr>
 <div id="exr-2.50b" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.22</strong></span> 💻 🎓 Using the <code>np.polyfit</code> function, extract the slope of the line that you had fit to the log-log plot of the error progression in <a href="#exr-2.50" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-2.50</span></a>. What does this slope tell you about how the error at each iteration is related to the error at the previous iteration?</p>
+<p><span class="theorem-title"><strong>Exercise 4.22</strong></span> 💻 🎓 Using the <code>np.polyfit</code> function, extract the slope of the line that you had fit to the log-log plot of the error progression in <a href="#exr-2.50" class="quarto-xref">Exercise&nbsp;<span>4.21</span></a>. What does this slope tell you about how the error at each iteration is related to the error at the previous iteration?</p>
 </div>
 <hr>
 <div id="exr-2.50c" class="theorem exercise">
@@ -856,7 +862,7 @@ g''(p)=\frac{f''(p)}{f'(p)}\neq 0 \qquad\text{if } f''(p)\neq 0.
 x_{n+1}=x_{n}- \frac{f(x_{n})(x_{n}-x_{n-1})}{f(x_{n})-f(x_{n-1})},
 \tag{4.12}\]</span></span> converges to <span class="math inline">\(p\)</span>. Let <span id="eq-nonlin41"><span class="math display">\[
 e_{n}=x_{n}-p,
-\tag{4.13}\]</span></span> so that <span class="math inline">\(E_n=\vert e_n\vert\)</span>, and we assume that <span class="math inline">\(E_n \ll 1\)</span>, which is definitely true for sufficiently large <span class="math inline">\(n\)</span> (since the sequence <span class="math inline">\(\{x_n\}\)</span> is converging to <span class="math inline">\(p\)</span>). Subtracting <span class="math inline">\(p\)</span> from both sides of <a href="#eq-secant1" class="quarto-xref">Eq.&nbsp;<span class="quarto-unresolved-ref">eq-secant1</span></a>, we obtain <span id="eq-secant2"><span class="math display">\[
+\tag{4.13}\]</span></span> so that <span class="math inline">\(E_n=\vert e_n\vert\)</span>, and we assume that <span class="math inline">\(E_n \ll 1\)</span>, which is definitely true for sufficiently large <span class="math inline">\(n\)</span> (since the sequence <span class="math inline">\(\{x_n\}\)</span> is converging to <span class="math inline">\(p\)</span>). Subtracting <span class="math inline">\(p\)</span> from both sides of <a href="#eq-secant1" class="quarto-xref">Eq.&nbsp;<span>4.12</span></a>, we obtain <span id="eq-secant2"><span class="math display">\[
 e_{n+1}=e_{n}- \frac{f(p+e_{n})(e_{n}-e_{n-1})}{f(p+e_{n})-f(p+e_{n-1})},
 \tag{4.14}\]</span></span> Expanding <span class="math inline">\(f(p+e_{n})\)</span> and <span class="math inline">\(f(p+e_{n-1})\)</span> in Taylor series about <span class="math inline">\(p\)</span> and taking into account that <span class="math inline">\(f(p)=0\)</span>, we find that <span id="eq-secant3"><span class="math display">\[
 \begin{split}
@@ -869,7 +875,7 @@ f(p+e_{n-1})&amp;=e_{n-1}f^{\prime}(p)+
 \end{split}
 \tag{4.15}\]</span></span> where <span id="eq-nonlin42"><span class="math display">\[
 Q=\frac{f^{\prime\prime}(p)}{2f^{\prime}(p)}.
-\tag{4.16}\]</span></span> Substitution of <a href="#eq-secant3" class="quarto-xref">Eq.&nbsp;<span class="quarto-unresolved-ref">eq-secant3</span></a> into <a href="#eq-secant2" class="quarto-xref">Eq.&nbsp;<span class="quarto-unresolved-ref">eq-secant2</span></a> yields <span id="eq-nonlin43"><span class="math display">\[
+\tag{4.16}\]</span></span> Substitution of <a href="#eq-secant3" class="quarto-xref">Eq.&nbsp;<span>4.15</span></a> into <a href="#eq-secant2" class="quarto-xref">Eq.&nbsp;<span>4.14</span></a> yields <span id="eq-nonlin43"><span class="math display">\[
 \begin{split}
 e_{n+1}&amp;=e_{n}- \frac{e_{n}(e_{n}-e_{n-1})f^{\prime}(p)(1+e_{n}Q)+\cdots}{f^{\prime}(p)
 \left[e_{n}-e_{n-1}+Q(e_{n}^2-e_{n-1}^2)+\cdots\right]} \\
@@ -888,10 +894,10 @@ e_{n+1} \approx Q e_{n}e_{n-1}.
 E_{n+1} \approx \vert Q\vert \, E_{n}E_{n-1}.
 \tag{4.21}\]</span></span> Now we assume that (for all sufficiently large <span class="math inline">\(n\)</span>) <span id="eq-bb8"><span class="math display">\[
 E_{n+1} \approx \lambda E_{n}^{\alpha},
-\tag{4.22}\]</span></span> where <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span> are positive constants. Substituting <a href="#eq-bb8" class="quarto-xref">Eq.&nbsp;<span class="quarto-unresolved-ref">eq-bb8</span></a> into <a href="#eq-bb7" class="quarto-xref">Eq.&nbsp;<span class="quarto-unresolved-ref">eq-bb7</span></a>, we find <span id="eq-nonlin47"><span class="math display">\[
+\tag{4.22}\]</span></span> where <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(\alpha\)</span> are positive constants. Substituting <a href="#eq-bb8" class="quarto-xref">Eq.&nbsp;<span>4.22</span></a> into <a href="#eq-bb7" class="quarto-xref">Eq.&nbsp;<span>4.21</span></a>, we find <span id="eq-nonlin47"><span class="math display">\[
 \lambda E_{n}^{\alpha} \approx \vert Q\vert E_{n}E_{n-1} \quad \text{  or } \quad
 \lambda E_{n}^{\alpha-1} \approx \vert Q\vert E_{n-1}.
-\tag{4.23}\]</span></span> Applying <a href="#eq-bb8" class="quarto-xref">Eq.&nbsp;<span class="quarto-unresolved-ref">eq-bb8</span></a> one more time (with <span class="math inline">\(n\)</span> replaced by <span class="math inline">\(n-1\)</span>), we obtain <span id="eq-nonlin48"><span class="math display">\[
+\tag{4.23}\]</span></span> Applying <a href="#eq-bb8" class="quarto-xref">Eq.&nbsp;<span>4.22</span></a> one more time (with <span class="math inline">\(n\)</span> replaced by <span class="math inline">\(n-1\)</span>), we obtain <span id="eq-nonlin48"><span class="math display">\[
 \lambda \left(\lambda E_{n-1}^{\alpha}\right)^{\alpha-1} \approx \vert Q\vert E_{n-1}
 \tag{4.24}\]</span></span> or, equivalently, <span id="eq-nonlin49"><span class="math display">\[
 \lambda^{\alpha} E_{n-1}^{\alpha(\alpha-1)} \approx \vert Q\vert E_{n-1}.
@@ -928,11 +934,11 @@ E_{n+1} \approx \lambda E_{n}^{\alpha},
 </div>
 <hr>
 <div id="exr-2.55" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.25</strong></span> How many iterations of the bisection method are necessary to approximate <span class="math inline">\(\sqrt{3}\)</span> to within <span class="math inline">\(10^{-3}\)</span>, <span class="math inline">\(10^{-4}\)</span>, …, <span class="math inline">\(10^{-15}\)</span> using the initial interval <span class="math inline">\([a,b]=[0,2]\)</span>? See <a href="#thm-2.2" class="quarto-xref">Theorem&nbsp;<span class="quarto-unresolved-ref">thm-2.2</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise 4.25</strong></span> How many iterations of the bisection method are necessary to approximate <span class="math inline">\(\sqrt{3}\)</span> to within <span class="math inline">\(10^{-3}\)</span>, <span class="math inline">\(10^{-4}\)</span>, …, <span class="math inline">\(10^{-15}\)</span> using the initial interval <span class="math inline">\([a,b]=[0,2]\)</span>? See <a href="nmRoots1.html#thm-2.2" class="quarto-xref">Theorem&nbsp;<span>3.2</span></a>.</p>
 </div>
 <hr>
 <div id="exr-2.56" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.26</strong></span> Refer back to <a href="#exm-2.1" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-2.1</span></a> and demonstrate that you get the same results for the order of convergence when solving the problem <span class="math inline">\(x^3 - 3 = 0\)</span>. Generate versions of all of the plots from that example and give thorough descriptions of what you learn from each plot.</p>
+<p><span class="theorem-title"><strong>Exercise 4.26</strong></span> Refer back to <a href="nmRoots1.html#exm-2.1" class="quarto-xref">Example&nbsp;<span>3.1</span></a> and demonstrate that you get the same results for the order of convergence when solving the problem <span class="math inline">\(x^3 - 3 = 0\)</span>. Generate versions of all of the plots from that example and give thorough descriptions of what you learn from each plot.</p>
 </div>
 <hr>
 <div id="exr-2.57" class="theorem exercise">
@@ -942,7 +948,7 @@ E_{n+1} \approx \lambda E_{n}^{\alpha},
 </div>
 <hr>
 <div id="exr-2.58" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.28</strong></span> In <a href="#fig-2.12" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2.12</span></a> you see six different log-log plots of the new error to the old error for different root finding techniques. What is the order of the approximate convergence rate for each of these methods?</p>
+<p><span class="theorem-title"><strong>Exercise 4.28</strong></span> In <a href="#fig-2.12" class="quarto-xref">Figure&nbsp;<span>4.6</span></a> you see six different log-log plots of the new error to the old error for different root finding techniques. What is the order of the approximate convergence rate for each of these methods?</p>
 <div id="fig-2.12" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1036,7 +1042,7 @@ Find the local extrema for the function <span class="math inline">\(f(x) = x^3(x
 <li><p>Colour the starting point according to the root that it converges to.</p></li>
 <li><p>Repeat this process for many many starting points so you get a coloured picture of the <span class="math inline">\(x\)</span> axis showing where the starting points converge to.</p></li>
 </ul>
-<p>The set of points that are all the same colour are called the <strong>basin of attraction</strong> for the root associated with that colour. In <a href="#fig-2.13" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-2.13</span></a> there is an image of a sample basin of attraction image.</p>
+<p>The set of points that are all the same colour are called the <strong>basin of attraction</strong> for the root associated with that colour. In <a href="#fig-2.13" class="quarto-xref">Figure&nbsp;<span>4.7</span></a> there is an image of a sample basin of attraction image.</p>
 <div id="fig-2.13" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -1078,7 +1084,7 @@ Burden, Richard L., and J. Douglas Faires. 2010. <em>Numerical <span>Analysis</s
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Strictly speaking, neglecting air resistance is a poor assumption since a cannon ball moves fast enough that friction with the air plays a non-negligible role. However, the assumption of no air resistance greatly simplifies the maths and makes this version of the problem more tractable. The second version of the artillery problem in <a href="#sec-ode" class="quarto-xref">Chapter&nbsp;<span class="quarto-unresolved-ref ref-noprefix">sec-ode</span></a> will look at the effects of air resistance on the cannon ball.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Strictly speaking, neglecting air resistance is a poor assumption since a cannon ball moves fast enough that friction with the air plays a non-negligible role. However, the assumption of no air resistance greatly simplifies the maths and makes this version of the problem more tractable. The second version of the artillery problem in <span class="quarto-unresolved-ref">?sec-ode</span> will look at the effects of air resistance on the cannon ball.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Hint: Symbolically work out the amount of time that it takes until the vertical position of the cannon ball reaches <span class="math inline">\(y_*\)</span>. Then substitute that time into the horizontal position, and set the horizontal position equation to <span class="math inline">\(x_*\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>

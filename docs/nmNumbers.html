@@ -298,6 +298,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Linear Algebra</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nmAutoDiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Automatic Differentiation</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -347,7 +353,7 @@ window.Quarto = {
 </blockquote>
 <p>Have you ever wondered how computers, which operate in a realm of zeros and ones, manage to perform mathematical calculations with real numbers? The secret lies in approximation.</p>
 <p>In this chapter and the next we will investigate the foundations that allow a computer to do mathematical calculations at all. How can it store real numbers? How can it calculate the values of mathematical functions? We will understand that the computer can do these things only approximately and will thus always make errors. Numerical Analysis is all about keeping these errors as small as possible while still being able to do efficient calculations.</p>
-<p>We will meet the two kinds of errors that a computer makes: <strong>rounding errors</strong> and <strong>truncation errors</strong>. Rounding errors arise from the way the computer needs to approximate real numbers by binary floating point numbers, which are the numbers it know how to add, subtract, multiply and divide. We’ll discuss this in this chapter. Truncation errors arise from the way the computer needs to reduce all calculations to a finite number of these four basic arithmetic operations. We will see that for the first time in <a href="#sec-functions" class="quarto-xref"><span class="quarto-unresolved-ref">sec-functions</span></a> when we discuss how computers approximate functions by power series and then have to truncate these at some finite order.</p>
+<p>We will meet the two kinds of errors that a computer makes: <strong>rounding errors</strong> and <strong>truncation errors</strong>. Rounding errors arise from the way the computer needs to approximate real numbers by binary floating point numbers, which are the numbers it know how to add, subtract, multiply and divide. We’ll discuss this in this chapter. Truncation errors arise from the way the computer needs to reduce all calculations to a finite number of these four basic arithmetic operations. We will see that for the first time in <a href="nmFunctions.html" class="quarto-xref"><span>Chapter 2</span></a> when we discuss how computers approximate functions by power series and then have to truncate these at some finite order.</p>
 <p>Let’s start with a striking example of how bad computers actually are at doing even simple calculations:</p>
 <div id="exr-1.1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.1</strong></span> 🖋 By hand (no computers!) compute the first few terms of the sequence</p>
@@ -370,7 +376,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in \left[0,\frac{1}{2}\righ
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># put the correct assigment here</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>(Even if you don’t know Python, you should be able to do this exercise after having read up to <a href="#sec-variables" class="quarto-xref"><span class="quarto-unresolved-ref">sec-variables</span></a> in the chapter on Essential Python.)</p>
+<p>(Even if you don’t know Python, you should be able to do this exercise after having read up to <a href="nmPython.html#sec-variables" class="quarto-xref"><span>Section A.2.1</span></a> in the chapter on Essential Python.)</p>
 <hr>
 <p>In the previous exercise it seems like the computer has failed you! What do you think happened on the computer and why did it give you a different answer? What, do you suppose, is the cautionary tale hiding behind the scenes with this problem?</p>
 <hr>
@@ -458,7 +464,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in \left[0,\frac{1}{2}\righ
 </div>
 <hr>
 <div id="exr-1.16" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.12</strong></span> 🖋 Convert the base <span class="math inline">\(10\)</span> fraction <span class="math inline">\(0.1\)</span> into binary. Use this to explain why the computer made errors when it calculated with this number in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-1.3</span></a>.</p>
+<p><span class="theorem-title"><strong>Exercise 1.12</strong></span> 🖋 Convert the base <span class="math inline">\(10\)</span> fraction <span class="math inline">\(0.1\)</span> into binary. Use this to explain why the computer made errors when it calculated with this number in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a>.</p>
 </div>
 <hr>
 </section>
@@ -494,7 +500,7 @@ x = -1.11101100101_2 \times 2^{6}.
 </ul>
 </div>
 <hr>
-<p>In the last part of the previous example we saw that the number <span class="math inline">\((0.1)_{10}\)</span> is actually a repeating decimal in base-2. This means that in order to completely represent the number <span class="math inline">\((0.1)_{10}\)</span> in base-2 we need infinitely many decimal places. Obviously that cannot happen since we are dealing with computers with finite memory. Each number can only be allocated a finite number of bits. Thus the number needs to be rounded to the nearest number that can be represented with that number of bits. That leads to an error called the <strong>rounding error</strong> (sometimes also called <em>roundoff error</em>). We’ll look into these in more detail in <a href="#sec-rounding_errors" class="quarto-xref"><span class="quarto-unresolved-ref">sec-rounding_errors</span></a> below.</p>
+<p>In the last part of the previous example we saw that the number <span class="math inline">\((0.1)_{10}\)</span> is actually a repeating decimal in base-2. This means that in order to completely represent the number <span class="math inline">\((0.1)_{10}\)</span> in base-2 we need infinitely many decimal places. Obviously that cannot happen since we are dealing with computers with finite memory. Each number can only be allocated a finite number of bits. Thus the number needs to be rounded to the nearest number that can be represented with that number of bits. That leads to an error called the <strong>rounding error</strong> (sometimes also called <em>roundoff error</em>). We’ll look into these in more detail in <a href="#sec-rounding_errors" class="quarto-xref"><span>Section 1.3</span></a> below.</p>
 <hr>
 <div id="def-1.2" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 1.2</strong></span> <strong>Machine precision</strong> is the gap between the number 1 and the next larger floating point number. Often it is represented by the symbol <span class="math inline">\(\epsilon\)</span>. To clarify: the number 1 can always be stored in a computer system exactly and if <span class="math inline">\(\epsilon\)</span> is machine precision for that computer then <span class="math inline">\(1+\epsilon\)</span> is the next largest number that can be stored with that machine.</p>
@@ -557,7 +563,7 @@ x = -1.11101100101_2 \times 2^{6}.
 <p><span class="theorem-title"><strong>Example 1.5</strong></span> If we want to store the number <span class="math inline">\(1.625 = 1.101_2\)</span> in a floating point number system where the mantissa has only 2 bits then we round to <span class="math inline">\(1.10_2 = 1.5_{10}\)</span> because <span class="math inline">\(1.101_2\)</span> is exactly halfway between <span class="math inline">\(1.100_2\)</span> and <span class="math inline">\(1.110_2\)</span> and the rounding rule is “round to nearest, ties to even”.</p>
 </div>
 <hr>
-<p>To dive a little deeper into what happened in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-1.3</span></a>, simplify the detailed analysis by working with only a 4 bit mantissa:</p>
+<p>To dive a little deeper into what happened in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a>, simplify the detailed analysis by working with only a 4 bit mantissa:</p>
 <div id="exr-1.21" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.18</strong></span> 🖋 Write down how the number <span class="math inline">\(1/10\)</span> is represented in a floating point number system where the mantissa has only 4 bits. Then calculate the first 10 terms of the sequence <span class="math display">\[\begin{equation}
 x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n - 1, &amp; x_n \in
@@ -578,7 +584,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n 
 </section>
 <section id="sec-loss_of_significant_digits" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="sec-loss_of_significant_digits"><span class="header-section-number">1.4</span> Loss of Significant Digits</h2>
-<p>As we have discussed, when representing real numbers by floating point numbers in the computer, rounding errors will usually occur. When doing a calculation with double-precision floating point numbers then the rounding error is only a tiny fraction of the actual number, so one might think that they really don’t matter. However, calculations usually involve a number of steps, and we saw in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-1.3</span></a> that the rounding errors can accumulate and become quite noticeable after a large number of steps.</p>
+<p>As we have discussed, when representing real numbers by floating point numbers in the computer, rounding errors will usually occur. When doing a calculation with double-precision floating point numbers then the rounding error is only a tiny fraction of the actual number, so one might think that they really don’t matter. However, calculations usually involve a number of steps, and we saw in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a> that the rounding errors can accumulate and become quite noticeable after a large number of steps.</p>
 <p>But the problem is even worse. If we are not careful, then the rounding errors can get magnified already after very few steps if we perform the steps in an unfortunate way. The following examples and exercises will illustrate this.</p>
 <hr>
 <div id="exm-r.0" class="theorem example">
@@ -612,7 +618,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n 
 <p><span class="theorem-title"><strong>Exercise 1.21</strong></span> 💻 Consider the trigonometric identity</p>
 <p><span class="math display">\[
 2\sin^2(x/2) = 1 - \cos(x).
-\]</span> It gives us two different methods to calculate the same quantity. Ask Python to evaluate both sides of the identity when <span class="math inline">\(x=0.0001\)</span>. Hint: as described in <a href="#sec-packages" class="quarto-xref"><span class="quarto-unresolved-ref">sec-packages</span></a>, use <code>import math</code> so that you can then use <code>math.cos()</code> and <code>math.sin()</code>. Also remember that exponentiation in Python is represented by <code>**</code>.</p>
+\]</span> It gives us two different methods to calculate the same quantity. Ask Python to evaluate both sides of the identity when <span class="math inline">\(x=0.0001\)</span>. Hint: as described in <a href="nmPython.html#sec-packages" class="quarto-xref"><span>Section A.2.8</span></a>, use <code>import math</code> so that you can then use <code>math.cos()</code> and <code>math.sin()</code>. Also remember that exponentiation in Python is represented by <code>**</code>.</p>
 <p>💬 What do you observe? If you want to calculate <span class="math inline">\(1 - \cos(x)\)</span> with the highest precision, which expression would you use? Discuss.</p>
 </div>
 <hr>
@@ -662,7 +668,7 @@ x = \frac{2c}{-b-\sqrt{b^2-4ac}}.
 </section>
 <section id="sec-approximation_problems" class="level2" data-number="1.6">
 <h2 data-number="1.6" class="anchored" data-anchor-id="sec-approximation_problems"><span class="header-section-number">1.6</span> Problems</h2>
-<p>These problem exercises will let you consolidate what you have learned so far and combine it with your Python coding skills, see <a href="#sec-python" class="quarto-xref"><span class="quarto-unresolved-ref">sec-python</span></a>.</p>
+<p>These problem exercises will let you consolidate what you have learned so far and combine it with your Python coding skills, see <a href="nmPython.html" class="quarto-xref"><span>Appendix A</span></a>.</p>
 <hr>
 <div id="exr-1.52" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.24</strong></span> (This problem is modified from <span class="citation" data-cites="Greenbaum">(<a href="#ref-Greenbaum" role="doc-biblioref">Greenbaum and Chartier 2012</a>)</span>)<br>

@@ -305,6 +305,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Linear Algebra</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nmAutoDiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Automatic Differentiation</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -402,7 +408,7 @@ window.Quarto = {
 </section>
 <section id="sec-python_basics" class="level2" data-number="A.2">
 <h2 data-number="A.2" class="anchored" data-anchor-id="sec-python_basics"><span class="header-section-number">A.2</span> Python Programming Basics</h2>
-<p>If you are already very practised in using Python then you can jump straight to <a href="#sec-python_exercises" class="quarto-xref"><span class="quarto-unresolved-ref">sec-python_exercises</span></a> with the coding exercises. But if you are new to Python or your Python skills are a bit rusty, then you will benefit from working through all the examples and exercises below, making sure you copy and paste all the code into your Colab notebook and run it there, and then critically evaluate and understand the output.</p>
+<p>If you are already very practised in using Python then you can jump straight to <a href="#sec-python_exercises" class="quarto-xref"><span>Section A.6</span></a> with the coding exercises. But if you are new to Python or your Python skills are a bit rusty, then you will benefit from working through all the examples and exercises below, making sure you copy and paste all the code into your Colab notebook and run it there, and then critically evaluate and understand the output.</p>
 <section id="sec-variables" class="level3" data-number="A.2.1">
 <h3 data-number="A.2.1" class="anchored" data-anchor-id="sec-variables"><span class="header-section-number">A.2.1</span> Variables</h3>
 <p>Variable names in Python can contain letters (lower case or capital), numbers 0-9, and some special characters such as the underscore. Variable names must start with a letter. There are a bunch of reserved words that you can not use for your variable names because they have a special meaning in the Python syntax. Python will let you know with a syntax error if you try to use a reserved word for a variable name.</p>
@@ -803,7 +809,7 @@ x_{n+1} = \frac{1}{2} x_n + \frac{1}{x_n}
 <span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="bu">abs</span>(x<span class="op">-</span>sqrt(<span class="dv">2</span>)) <span class="op">&gt;</span> <span class="dv">10</span><span class="op">**</span>(<span class="op">-</span><span class="dv">8</span>):</span>
 <span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> f(x)</span>
 <span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">:&lt;20}</span><span class="ss"> | </span><span class="sc">{</span>sqrt(<span class="dv">2</span>)<span class="sc">:&lt;20}</span><span class="ss"> | </span><span class="sc">{</span><span class="bu">abs</span>(x <span class="op">-</span> sqrt(<span class="dv">2</span>))<span class="sc">:&lt;20}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This example also shows how to format the output of a print statement so that it is nicely aligned in columns. The <code>:&lt;20</code> means that the string will be left-aligned and padded with spaces to a total width of 20 characters. The <code>f</code> before the string allows us to use curly braces <code>{}</code> to insert variables into the string. You will see an alternative way for displaying tabular data in <a href="#exm-A.50" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-A.50</span></a>.</p>
+<p>This example also shows how to format the output of a print statement so that it is nicely aligned in columns. The <code>:&lt;20</code> means that the string will be left-aligned and padded with spaces to a total width of 20 characters. The <code>f</code> before the string allows us to use curly braces <code>{}</code> to insert variables into the string. You will see an alternative way for displaying tabular data in <a href="#exm-A.50" class="quarto-xref">Example&nbsp;<span>A.48</span></a>.</p>
 </div>
 <hr>
 <div id="exr-A.13" class="theorem exercise">
@@ -835,11 +841,11 @@ x_{n+1} = \frac{1}{2} \left(x_n + \frac{S}{x_n} \right)
 <p>If we wanted the value <span class="math inline">\(f(2,4)\)</span> we would now write the code <code>f(2,4)</code>.</p>
 <hr>
 <div id="exr-A.14" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise A.10</strong></span> Go back to <a href="#exr-A.12" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-A.12</span></a> and repeat this exercise using a <code>lambda</code> function.</p>
+<p><span class="theorem-title"><strong>Exercise A.10</strong></span> Go back to <a href="#exr-A.12" class="quarto-xref">Exercise&nbsp;<span>A.8</span></a> and repeat this exercise using a <code>lambda</code> function.</p>
 </div>
 <hr>
 <div id="exr-A.15" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise A.11</strong></span> Go back to <a href="#exr-A.13" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-A.13</span></a> and repeat this exercise using a <code>lambda</code> function.</p>
+<p><span class="theorem-title"><strong>Exercise A.11</strong></span> Go back to <a href="#exr-A.13" class="quarto-xref">Exercise&nbsp;<span>A.9</span></a> and repeat this exercise using a <code>lambda</code> function.</p>
 </div>
 <hr>
 </section>
@@ -1043,7 +1049,7 @@ A = \begin{pmatrix} 1 &amp; 2 \\ 3 &amp; 4 \end{pmatrix}, \quad v = \begin{pmatr
 <div id="exm-A.38" class="theorem example">
 <p><span class="theorem-title"><strong>Example A.36 (Determinant)</strong></span> The determinant function is hiding under the <code>linalg</code> subpackage inside <code>numpy</code>. Therefore we need to call it as such.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb61"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>np.linalg.det(A)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>You notice an interesting numerical error here. You can do the determinant easily by hand and so know that it should be exactly <span class="math inline">\(-2\)</span>. We’ll discuss the source of these kinds of errors in <a href="#sec-approx" class="quarto-xref"><span class="quarto-unresolved-ref">sec-approx</span></a>.</p>
+<p>You notice an interesting numerical error here. You can do the determinant easily by hand and so know that it should be exactly <span class="math inline">\(-2\)</span>. We’ll discuss the source of these kinds of errors in <a href="nmNumbers.html" class="quarto-xref"><span>Chapter 1</span></a>.</p>
 </div>
 <hr>
 <div id="exm-A.37" class="theorem example">
@@ -1579,7 +1585,7 @@ Figure&nbsp;A.5: An example of using logarithmic scaling.
 </div>
 </div>
 </div>
-<p>This provides an alternative to how we created a tabular display with the <code>print()</code> function in <a href="#exm-A.20" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-A.20</span></a>.</p>
+<p>This provides an alternative to how we created a tabular display with the <code>print()</code> function in <a href="#exm-A.20" class="quarto-xref">Example&nbsp;<span>A.20</span></a>.</p>
 </div>
 </section>
 <section id="sec-python_exercises" class="level2" data-number="A.6">
@@ -1654,7 +1660,7 @@ The number 2520 is the smallest number that can be divided by each of the number
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Actually, it is still an open mathematical question whether every integer seed will converge to 1. The Collatz sequence has been checked for many millions of initial seeds and they all converge to 1, but there is no mathematical proof that it will always happen. You will check the conjecture numerically in <a href="#exr-1.50" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-1.50</span></a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Actually, it is still an open mathematical question whether every integer seed will converge to 1. The Collatz sequence has been checked for many millions of initial seeds and they all converge to 1, but there is no mathematical proof that it will always happen. You will check the conjecture numerically in <a href="#exr-1.50" class="quarto-xref">Exercise&nbsp;<span>A.25</span></a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>There is the <code>sympy</code> package if you want to do symbolic computations, but we will not use that in this module.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>

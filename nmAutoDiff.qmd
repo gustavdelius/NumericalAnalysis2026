@@ -154,7 +154,7 @@ This will become clearer in sections @sec-forward-ad and @sec-reverse-ad.
 
 ------------------------------------------------------------------------
 
-### Forward mode AD {#sec-forward-ad}
+## Forward mode AD {#sec-forward-ad}
 
 In forward mode automatic differentiation, we track both the values of variables and their derivatives with respect to the input variables. This allows us to build the derivatives as we compute the function value.
 
@@ -389,7 +389,7 @@ And to compute $\frac{\partial f}{\partial y}$, we initialize:
 
 ------------------------------------------------------------------------
 
-### Reverse mode AD {#sec-reverse-ad}
+## Reverse mode AD {#sec-reverse-ad}
 
 Now let's explore **reverse mode** automatic differentiation, which is more efficient for functions with many inputs and few outputs. Reverse mode AD first computes the function value and then propagates derivatives backward from the output to the inputs.
 
@@ -564,7 +564,9 @@ plt.show()
 
 a. $f(x, y) = e^{xy}$ at $(x, y) = (0, 1)$.
 
-b. $f(x, y, z) = x^2 + y^2 + z^2 + xy + yz + xz$ at $(x, y, z) = (1, 1, 1)$.
+b. 💻 $f(x)=xy^2\cos(xy^2)$ at $(x, y) = (\pi, 3)$.
+
+c. $f(x, y, z) = x^2 + y^2 + z^2 + xy + yz + xz$ at $(x, y, z) = (1, 1, 1)$.
 
 :::
 
@@ -604,13 +606,13 @@ Two things to note:
 
 ::: {#exr-3.37}
 
-💻 Use JAX to compute the derivatives of:
+Use JAX to compute the derivatives of:
 
 a. $f(x) = x^3 - 2x^2 + 4x - 7$
 
-b. $f(x) = sin(x) * exp(x)$
+b. $f(x) = \sin(x) \exp(x)$
 
-c. $f(x) = (x^2 + 1) / (2x - 3)$
+c. $f(x) = \frac{x^2 + 1}{2x - 3}$
 
 Check that you get the same results as in @exr-3.33.
 
@@ -641,9 +643,9 @@ print(f"∂g/∂y at (2,1) = {dg_dy(2.0, 1.0)}")
 
 💻 Use this approach to compute the partial derivatives of:
 
-a. $f(x, y) = x*exp(y+x) + y*sin(x*y)$
+a. $f(x, y) = x\exp(y+x) + y\sin(xy)$
 
-b. $f(x, y, z) = x^2*y + y*sin(z) + z*cos(x)$
+b. $f(x, y, z) = x^2y + y\sin(z) + z\cos(x)$
 
 :::
 

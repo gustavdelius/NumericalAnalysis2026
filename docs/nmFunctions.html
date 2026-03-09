@@ -282,6 +282,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Linear Algebra</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nmAutoDiff.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Automatic Differentiation</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -384,7 +390,7 @@ window.Quarto = {
 <li><p>What is <span class="math inline">\(f'(0)\)</span>?</p></li>
 <li><p>Use the point-slope form of a line to write the equation of the function <span class="math inline">\(g_1(x)\)</span> that goes through the point <span class="math inline">\((0,f(0))\)</span> and has slope <span class="math inline">\(f'(0)\)</span>. Recall from algebra that the point-slope form of a line is <span class="math inline">\(y = f(x_0) + m(x-x_0).\)</span> In this case we are taking <span class="math inline">\(x_0 = 0\)</span> so we are using the formula <span class="math inline">\(g_1(x) = f(0) + f'(0) (x-0)\)</span> to get the equation of the line.</p></li>
 </ol></li>
-<li><p>💻 Write Python code to build a plot like <a href="#fig-1.1" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-1.1</span></a>. This plot shows <span class="math inline">\(f(x) = e^x\)</span>, our first approximation <span class="math inline">\(g_0(x) = 1\)</span> and our second approximation <span class="math inline">\(g_1(x) = 1+x\)</span>. You may want to look at <a href="#exm-A.46" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-A.46</span></a> in the Python chapter for a refresher on how to build plots containing the graphs of several functions. If you need a hint on how to plot the function <span class="math inline">\(g_0(x)\)</span> since it is a constant function, take a look at the <code>np.ones_like()</code> function in <a href="#exm-A.42" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-A.42</span></a>.</p></li>
+<li><p>💻 Write Python code to build a plot like <a href="#fig-1.1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>. This plot shows <span class="math inline">\(f(x) = e^x\)</span>, our first approximation <span class="math inline">\(g_0(x) = 1\)</span> and our second approximation <span class="math inline">\(g_1(x) = 1+x\)</span>. You may want to look at <a href="nmPython.html#exm-A.46" class="quarto-xref">Example&nbsp;<span>A.43</span></a> in the Python chapter for a refresher on how to build plots containing the graphs of several functions. If you need a hint on how to plot the function <span class="math inline">\(g_0(x)\)</span> since it is a constant function, take a look at the <code>np.ones_like()</code> function in <a href="nmPython.html#exm-A.42" class="quarto-xref">Example&nbsp;<span>A.40</span></a>.</p></li>
 </ol>
 <div id="cell-fig-1.1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
@@ -404,18 +410,18 @@ Figure&nbsp;2.1: The first two polynomial approximations of the exponential func
 <div id="exr-1.27" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.5</strong></span> 🖋 Let us extend the idea from the previous problem to much better approximations of the function <span class="math inline">\(f(x) = e^x\)</span>.</p>
 <ol type="1">
-<li><p>Let us build a function <span class="math inline">\(g_2(x)\)</span> that matches <span class="math inline">\(f(x)\)</span> exactly at <span class="math inline">\(x=0\)</span>, has exactly the same first derivative as <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x=0\)</span>, AND has exactly the same second derivative as <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x=0\)</span>. To do this we will use a quadratic function. For a quadratic approximation of a function we just take a slight extension to the point-slope form of a line and use the equation <span class="math display">\[\begin{equation}
+<li><p>Let us build a function <span class="math inline">\(g_2(x)\)</span> that matches <span class="math inline">\(f(x)\)</span> exactly at <span class="math inline">\(x=0\)</span>, has exactly the same first derivative as <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x=0\)</span>, AND has exactly the same second derivative as <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x=0\)</span>. To do this we will use a quadratic function. For a quadratic approximation of a function we just take a slight extension to the point-slope form of a line and use the equation <span class="math display">\[
 g_2(x) = f(x_0) + f'(x_0) (x-x_0) + \frac{f''(x_0)}{2} (x-x_0)^2.
-\end{equation}\]</span> In this case we are using <span class="math inline">\(x_0 = 0\)</span> so the quadratic approximation function looks like <span class="math display">\[\begin{equation}
+\]</span> In this case we are using <span class="math inline">\(x_0 = 0\)</span> so the quadratic approximation function looks like <span class="math display">\[
 g_2(x) = f(0) + f'(0) x + \frac{f''(0)}{2} x^2.
-\end{equation}\]</span></p>
+\]</span></p>
 <ol type="1">
 <li><p>Find the quadratic approximation for <span class="math inline">\(f(x) = e^x\)</span>.</p></li>
 <li><p>💻 Add your new function to the plot you created in the previous problem.</p></li>
 </ol></li>
-<li><p>Let us keep going!! Next we will do a cubic approximation. A cubic approximation takes the form <span class="math display">\[\begin{equation}
+<li><p>Let us keep going!! Next we will do a cubic approximation. A cubic approximation takes the form <span class="math display">\[
 g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}(x-x_0)^3
-\end{equation}\]</span></p>
+\]</span></p>
 <ol type="1">
 <li><p>Find the cubic approximation for <span class="math inline">\(f(x) = e^x\)</span>.</p></li>
 <li><p>How do we know that this function matches the first, second, and third derivatives of <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x=0\)</span>? What’s the deal with the <span class="math inline">\(3!\)</span> on the cubic term?</p></li>
@@ -425,7 +431,7 @@ g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}
 </div>
 <hr>
 <div id="exr-1.29b" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> 💻 Write a function that takes the arguments <code>x</code> and <code>n</code> and returns the <code>n</code>th order Taylor series approximation of <span class="math inline">\(f(x) = e^x\)</span>. To remind yourself of how functions are defined in Python, you may want to look at <a href="#sec-python_functions" class="quarto-xref"><span class="quarto-unresolved-ref">sec-python_functions</span></a> in the Python chapter. You will also need a loop, see <a href="#sec-control_flow" class="quarto-xref"><span class="quarto-unresolved-ref">sec-control_flow</span></a>. Please start from the following skeleton and put your code where it says “TODO”.</p>
+<p><span class="theorem-title"><strong>Exercise 2.6</strong></span> 💻 Write a function that takes the arguments <code>x</code> and <code>n</code> and returns the <code>n</code>th order Taylor series approximation of <span class="math inline">\(f(x) = e^x\)</span>. To remind yourself of how functions are defined in Python, you may want to look at <a href="nmPython.html#sec-python_functions" class="quarto-xref"><span>Section A.2.6</span></a> in the Python chapter. You will also need a loop, see <a href="nmPython.html#sec-control_flow" class="quarto-xref"><span>Section A.2.5</span></a>. Please start from the following skeleton and put your code where it says “TODO”.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> exp_approx(x, n):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Computes the nth order Taylor series approximation of e^x at x=0.</span></span>
@@ -449,7 +455,7 @@ g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}
 </div>
 <hr>
 <div id="exr-1.30" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.7</strong></span> 🎓 💻 Use the function <code>exp_approx</code> that you have built in <a href="#exr-1.29b" class="quarto-xref">Exercise&nbsp;<span class="quarto-unresolved-ref">exr-1.29b</span></a> to approximate <span class="math inline">\(\frac{1}{e} = e^{-1}\)</span>. Check the accuracy of your answer using <code>np.exp(-1)</code> in Python.</p>
+<p><span class="theorem-title"><strong>Exercise 2.7</strong></span> 🎓 💻 Use the function <code>exp_approx</code> that you have built in <a href="#exr-1.29b" class="quarto-xref">Exercise&nbsp;<span>2.6</span></a> to approximate <span class="math inline">\(\frac{1}{e} = e^{-1}\)</span>. Check the accuracy of your answer using <code>np.exp(-1)</code> in Python.</p>
 </div>
 <hr>
 <div id="exr-1.29d" class="theorem exercise">
@@ -464,14 +470,14 @@ g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="taylor-series"><span class="header-section-number">2.1.2</span> Taylor Series</h3>
 <p>What we have been exploring so far in this section is the <strong>Taylor Series</strong> of a function.</p>
 <div id="def-1.3" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2.1 (Taylor Series)</strong></span> If <span class="math inline">\(f(x)\)</span> is an infinitely differentiable function at the point <span class="math inline">\(x_0\)</span> then <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Definition 2.1 (Taylor Series)</strong></span> If <span class="math inline">\(f(x)\)</span> is an infinitely differentiable function at the point <span class="math inline">\(x_0\)</span> then <span class="math display">\[
 f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2}(x-x_0)^2 + \cdots \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \cdots
-\end{equation}\]</span> for any reasonably small interval around <span class="math inline">\(x_0\)</span>. The infinite polynomial expansion is called the <strong>Taylor Series</strong> of the function <span class="math inline">\(f(x)\)</span>. Taylor Series are named for the mathematician <a href="https://en.wikipedia.org/wiki/Brook_Taylor">Brook Taylor</a>.</p>
+\]</span> for any reasonably small interval around <span class="math inline">\(x_0\)</span>. The infinite polynomial expansion is called the <strong>Taylor Series</strong> of the function <span class="math inline">\(f(x)\)</span>. Taylor Series are named for the mathematician <a href="https://en.wikipedia.org/wiki/Brook_Taylor">Brook Taylor</a>.</p>
 </div>
 <hr>
-<p>The Taylor Series of a function is often written with summation notation as <span class="math display">\[\begin{equation}
+<p>The Taylor Series of a function is often written with summation notation as <span class="math display">\[
 f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k.
-\end{equation}\]</span> Do not let the notation scare you. In a Taylor Series you are just saying: <em>give me a function that</em></p>
+\]</span> Do not let the notation scare you. In a Taylor Series you are just saying: <em>give me a function that</em></p>
 <ul>
 <li><p><em>matches</em> <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x=x_0\)</span> exactly,</p></li>
 <li><p><em>matches</em> <span class="math inline">\(f'(x)\)</span> at <span class="math inline">\(x=x_0\)</span> exactly,</p></li>
@@ -483,9 +489,9 @@ f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k.
 <p>Moreover, Taylor Series are built out of the easiest types of functions: polynomials. Computers are rather good at doing computations with addition, subtraction, multiplication, division, and integer exponents, so Taylor Series are a natural way to express functions in a computer. The down side is that we can only get true equality in the Taylor Series if we have infinitely many terms in the series. A computer cannot do infinitely many computations. So, in practice, we <strong>truncate</strong> Taylor Series after many terms and think of the new polynomial function as being <em>close enough</em> to the actual function so far as we do not stray too far from the anchor <span class="math inline">\(x_0\)</span>.</p>
 <hr>
 <div id="exr-1.32" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.9</strong></span> 🖋 Do all of the calculations to show that the Taylor Series centred at <span class="math inline">\(x_0 = 0\)</span> for the function <span class="math inline">\(f(x) = \sin(x)\)</span> is indeed <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 2.9</strong></span> 🖋 Do all of the calculations to show that the Taylor Series centred at <span class="math inline">\(x_0 = 0\)</span> for the function <span class="math inline">\(f(x) = \sin(x)\)</span> is indeed <span class="math display">\[
 \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots .
-\end{equation}\]</span></p>
+\]</span></p>
 </div>
 <hr>
 <div id="exr-1.33" class="theorem exercise">
@@ -493,9 +499,9 @@ f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k.
 </div>
 <hr>
 <div id="exr-1.34" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.11</strong></span> 🖋 Let us compute a Taylor Series that is not centred at <span class="math inline">\(x_0 = 0\)</span>. For example, let us approximate the function <span class="math inline">\(f(x) = \log (x)\)</span> near <span class="math inline">\(x_0 = 1\)</span>. Near the point <span class="math inline">\(x_0 = 1\)</span>, the Taylor Series approximation will take the form <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 2.11</strong></span> 🖋 Let us compute a Taylor Series that is not centred at <span class="math inline">\(x_0 = 0\)</span>. For example, let us approximate the function <span class="math inline">\(f(x) = \log (x)\)</span> near <span class="math inline">\(x_0 = 1\)</span>. Near the point <span class="math inline">\(x_0 = 1\)</span>, the Taylor Series approximation will take the form <span class="math display">\[
 f(x) = f\left( 1 \right) + f'\left( 1 \right)\left( x - 1 \right) + \frac{f''\left( 1 \right)}{2!}\left( x - 1 \right)^2 + \frac{f'''\left( 1 \right)}{3!}\left( x - 1 \right)^3 + \cdots
-\end{equation}\]</span></p>
+\]</span></p>
 <p>Write the first several terms of the Taylor Series for <span class="math inline">\(f(x) = \log x\)</span> centred at <span class="math inline">\(x_0 = 1\)</span> until you get a feel for the pattern.</p>
 </div>
 <hr>
@@ -518,11 +524,11 @@ Figure&nbsp;2.2: Taylor series approximation of the logarithm.
 </div>
 <hr>
 <div id="exm-1.4" class="theorem example">
-<p><span class="theorem-title"><strong>Example 2.1</strong></span> Let us conclude this brief section by examining an interesting example. Consider the function <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Example 2.1</strong></span> Let us conclude this brief section by examining an interesting example. Consider the function <span class="math display">\[
 f(x) = \frac{1}{1-x}.
-\end{equation}\]</span> If we build a Taylor Series centred at <span class="math inline">\(x_0 = 0\)</span> it is not too hard to show that we get <span class="math display">\[\begin{equation}
+\]</span> If we build a Taylor Series centred at <span class="math inline">\(x_0 = 0\)</span> it is not too hard to show that we get <span class="math display">\[
 f(x) = 1 + x + x^2 + x^3 + x^4 + x^5 + \cdots
-\end{equation}\]</span> (you should stop now and verify this!). However, if we plot the function <span class="math inline">\(f(x)\)</span> along with several successive approximations for <span class="math inline">\(f(x)\)</span> we find that beyond <span class="math inline">\(x=1\)</span> we do not get the correct behaviour of the function (see <a href="#fig-1.3" class="quarto-xref">Figure&nbsp;<span class="quarto-unresolved-ref">fig-1.3</span></a>). More specifically, we cannot get the Taylor Series to change behaviour across the vertical asymptote of the function at <span class="math inline">\(x=1\)</span>. This example is meant to point out the fact that a Taylor Series will only ever make sense <em>near</em> the point at which you centre the expansion. For the function <span class="math inline">\(f(x) = \frac{1}{1-x}\)</span> centred at <span class="math inline">\(x_0 = 0\)</span> we can only get good approximations within the interval <span class="math inline">\(x \in (-1,1)\)</span> and no further.</p>
+\]</span> (you should stop now and verify this!). However, if we plot the function <span class="math inline">\(f(x)\)</span> along with several successive approximations for <span class="math inline">\(f(x)\)</span> we find that beyond <span class="math inline">\(x=1\)</span> we do not get the correct behaviour of the function (see <a href="#fig-1.3" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>). More specifically, we cannot get the Taylor Series to change behaviour across the vertical asymptote of the function at <span class="math inline">\(x=1\)</span>. This example is meant to point out the fact that a Taylor Series will only ever make sense <em>near</em> the point at which you centre the expansion. For the function <span class="math inline">\(f(x) = \frac{1}{1-x}\)</span> centred at <span class="math inline">\(x_0 = 0\)</span> we can only get good approximations within the interval <span class="math inline">\(x \in (-1,1)\)</span> and no further.</p>
 <div id="cell-fig-1.3" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
@@ -587,15 +593,15 @@ Figure&nbsp;2.3: Several Taylor Series approximations of the function <span clas
 <li><p>Now <span class="math inline">\(f(x)\)</span> is approximated by some finite sum so long as you stay pretty close to <span class="math inline">\(x = x_0\)</span>,</p></li>
 <li><p>and everything that we just chopped off of the end is called the <strong>remainder</strong> for the finite sum.</p></li>
 </ul>
-<p>Let us be a bit more concrete about it. The Taylor Series for <span class="math inline">\(f(x) = e^x\)</span> centred at <span class="math inline">\(x_0 = 0\)</span> is <span class="math display">\[\begin{equation}
+<p>Let us be a bit more concrete about it. The Taylor Series for <span class="math inline">\(f(x) = e^x\)</span> centred at <span class="math inline">\(x_0 = 0\)</span> is <span class="math display">\[
 e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots.
-\end{equation}\]</span></p>
-<p>When we truncate this series at order <span class="math inline">\(n\)</span>, we separate it into an approximation and a remainder: <span class="math display">\[\begin{equation}
+\]</span></p>
+<p>When we truncate this series at order <span class="math inline">\(n\)</span>, we separate it into an approximation and a remainder: <span class="math display">\[
 e^x = \underbrace{1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!}}_{\text{$n^{th}$ order approximation}} + \underbrace{\frac{x^{n+1}}{(n+1)!} + \frac{x^{n+2}}{(n+2)!} + \cdots}_{\text{remainder}}.
-\end{equation}\]</span></p>
-<p>For small values of <span class="math inline">\(x\)</span> near <span class="math inline">\(x_0 = 0\)</span>, the largest term in the remainder is <span class="math inline">\(\frac{x^{n+1}}{(n+1)!}\)</span>, since higher powers of <span class="math inline">\(x\)</span> become progressively smaller. We use <strong>Big-O notation</strong> to express this: <span class="math display">\[\begin{equation}
+\]</span></p>
+<p>For small values of <span class="math inline">\(x\)</span> near <span class="math inline">\(x_0 = 0\)</span>, the largest term in the remainder is <span class="math inline">\(\frac{x^{n+1}}{(n+1)!}\)</span>, since higher powers of <span class="math inline">\(x\)</span> become progressively smaller. We use <strong>Big-O notation</strong> to express this: <span class="math display">\[
 e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+1}),
-\end{equation}\]</span> where the notation <span class="math inline">\(\mathcal{O}(x^{n+1})\)</span> (read “Big-O of <span class="math inline">\(x^{n+1}\)</span>”) signifies that the error is bounded by <span class="math inline">\(C|x|^{n+1}\)</span> for some constant <span class="math inline">\(C\)</span> as <span class="math inline">\(x \to 0\)</span>. This indicates that the error scales like <span class="math inline">\(x^{n+1}\)</span> for values of <span class="math inline">\(x\)</span> near the center <span class="math inline">\(x_0=0\)</span>.</p>
+\]</span> where the notation <span class="math inline">\(\mathcal{O}(x^{n+1})\)</span> (read “Big-O of <span class="math inline">\(x^{n+1}\)</span>”) signifies that the error is bounded by <span class="math inline">\(C|x|^{n+1}\)</span> for some constant <span class="math inline">\(C\)</span> as <span class="math inline">\(x \to 0\)</span>. This indicates that the error scales like <span class="math inline">\(x^{n+1}\)</span> for values of <span class="math inline">\(x\)</span> near the center <span class="math inline">\(x_0=0\)</span>.</p>
 <p>For example:</p>
 <ul>
 <li><span class="math inline">\(0^{th}\)</span> order: <span class="math inline">\(e^x \approx 1 + \mathcal{O}(x)\)</span></li>
@@ -607,7 +613,7 @@ e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+
 <div id="exr-1.38" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.13</strong></span> 🎓 💻 Now make the previous discussion a bit more concrete. You know the Taylor Series for <span class="math inline">\(f(x) = e^x\)</span> around <span class="math inline">\(x=0\)</span> quite well at this point so use it to approximate the values of <span class="math inline">\(f(0.1) = e^{0.1}\)</span> and <span class="math inline">\(f(0.2)=e^{0.2}\)</span> by truncating the Taylor series at different orders. Because <span class="math inline">\(x=0.1\)</span> and <span class="math inline">\(x=0.2\)</span> are pretty close to the centre of the Taylor Series <span class="math inline">\(x_0 = 0\)</span>, this sort of approximation is reasonable.</p>
 <p>Then compare your approximate values to Python’s values <span class="math inline">\(f(0.1)=e^{0.1} \approx\)</span> <code>np.exp(0.1)</code> <span class="math inline">\(=1.1051709180756477\)</span> and <span class="math inline">\(f(0.2)=e^{0.2} \approx\)</span> <code>np.exp(0.2)</code> <span class="math inline">\(=1.2214027581601699\)</span> to calculate the truncation errors <span class="math inline">\(\epsilon_n(0.1)=|f(0.1)-f_n(0.1)|\)</span> and <span class="math inline">\(\epsilon_n(0.2)=|f(0.2)-f_n(0.2)|\)</span>.</p>
-<p>Fill in the blanks in the table. If you like, you can copy and paste the code and extend it to fill in the missing rows. For a bit of explanation of the syntax of the print commands see <a href="#exm-A.20" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-A.20</span></a> but for more detailed information ask Gemini.</p>
+<p>Fill in the blanks in the table. If you like, you can copy and paste the code and extend it to fill in the missing rows. For a bit of explanation of the syntax of the print commands see <a href="nmPython.html#exm-A.20" class="quarto-xref">Example&nbsp;<span>A.20</span></a> but for more detailed information ask Gemini.</p>
 <div id="98afa816" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
@@ -673,9 +679,9 @@ e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+
 </div>
 <hr>
 <div id="exr-1.39" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.15</strong></span> 💻 To test your conjecture, examine the truncation error for the sine function near <span class="math inline">\(x_0 = 0\)</span>. You know that the sine function has the Taylor Series centred at <span class="math inline">\(x_0 = 0\)</span> as <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 2.15</strong></span> 💻 To test your conjecture, examine the truncation error for the sine function near <span class="math inline">\(x_0 = 0\)</span>. You know that the sine function has the Taylor Series centred at <span class="math inline">\(x_0 = 0\)</span> as <span class="math display">\[
 f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots.
-\end{equation}\]</span> So there are only approximations of odd order. Use the truncated Taylor series to approximate <span class="math inline">\(f(0.1)=\sin(0.1)\)</span> and <span class="math inline">\(f(0.2)=\sin(0.2)\)</span> and use Python’s values <code>np.sin(0.1)</code> and <code>np.sin(0.2)</code> to calculate the truncation errors <span class="math inline">\(\epsilon_n(0.1)=|f(0.1)-f_n(0.1)|\)</span> and <span class="math inline">\(\epsilon_n(0.2)=|f(0.2)-f_n(0.2)|\)</span>.</p>
+\]</span> So there are only approximations of odd order. Use the truncated Taylor series to approximate <span class="math inline">\(f(0.1)=\sin(0.1)\)</span> and <span class="math inline">\(f(0.2)=\sin(0.2)\)</span> and use Python’s values <code>np.sin(0.1)</code> and <code>np.sin(0.2)</code> to calculate the truncation errors <span class="math inline">\(\epsilon_n(0.1)=|f(0.1)-f_n(0.1)|\)</span> and <span class="math inline">\(\epsilon_n(0.2)=|f(0.2)-f_n(0.2)|\)</span>.</p>
 <p>Complete the following table:</p>
 <div id="2100e2ac" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
@@ -688,9 +694,9 @@ f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots.
 9        |                 |                 |                          </code></pre>
 </div>
 </div>
-<p>To learn how you can loop over only odd integers in Python, see <a href="#exm-A.7" class="quarto-xref">Example&nbsp;<span class="quarto-unresolved-ref">exm-A.7</span></a>.</p>
+<p>To learn how you can loop over only odd integers in Python, see <a href="nmPython.html#exm-A.7" class="quarto-xref">Example&nbsp;<span>A.7</span></a>.</p>
 <p>💬 Did these results force you to revise your conjecture of how <span class="math inline">\(\epsilon_n\)</span> changes as <span class="math inline">\(x\)</span> changes?</p>
-<p>The entry in the last row of the table will almost certainly not agree with your conjecture. That is okay! That discrepancy has a different explanation. Can you figure out what it is? Hint: Think about the discussion of machine precision in <a href="#sec-approx" class="quarto-xref"><span class="quarto-unresolved-ref">sec-approx</span></a>.</p>
+<p>The entry in the last row of the table will almost certainly not agree with your conjecture. That is okay! That discrepancy has a different explanation. Can you figure out what it is? Hint: Think about the discussion of machine precision in <a href="nmNumbers.html" class="quarto-xref"><span>Chapter 1</span></a>.</p>
 </div>
 <hr>
 <div id="exr-1.40" class="theorem exercise">
@@ -739,9 +745,9 @@ f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots.
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="sec-single-neuron"><span class="header-section-number">2.4.1</span> A Single Neuron</h3>
 <p>Let us start by building up the components of a neural network one piece at a time. The fundamental building block is called a <strong>neuron</strong>.</p>
 <div id="exr-1.41" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.18</strong></span> 🖋 Consider the simple function <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 2.18</strong></span> 🖋 Consider the simple function <span class="math display">\[
 f(x) = \max(0, x).
-\end{equation}\]</span> The function <span class="math inline">\(g(x) = \max(0, x)\)</span> is called the <strong>Rectified Linear Unit</strong> or <strong>ReLU</strong> for short.</p>
+\]</span> The function <span class="math inline">\(g(x) = \max(0, x)\)</span> is called the <strong>Rectified Linear Unit</strong> or <strong>ReLU</strong> for short.</p>
 <ol type="1">
 <li><p>By hand, sketch the graph of this function for <span class="math inline">\(x \in [-3, 3]\)</span>.</p></li>
 <li><p>What is the derivative of <span class="math inline">\(f(x)\)</span> for <span class="math inline">\(x &gt; 0\)</span>? What about for <span class="math inline">\(x &lt; 0\)</span>? What happens at <span class="math inline">\(x = 0\)</span>?</p></li>
@@ -751,9 +757,9 @@ f(x) = \max(0, x).
 <p>The ReLU function is an example of what is called an <strong>activation function</strong> in neural networks. The idea is that the neuron “activates” (produces a non-zero output) only when the input exceeds a certain threshold.</p>
 <div id="exr-1.42" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.19</strong></span> 🖋 Now let us make our neuron a bit more interesting by allowing it to have adjustable parameters.</p>
-<p>Consider the function <span class="math display">\[\begin{equation}
+<p>Consider the function <span class="math display">\[
 h(x) = \max(0, w x + b)
-\end{equation}\]</span> where <span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span> are parameters that we can choose. These are called the <strong>weight</strong> and <strong>bias</strong> respectively.</p>
+\]</span> where <span class="math inline">\(w\)</span> and <span class="math inline">\(b\)</span> are parameters that we can choose. These are called the <strong>weight</strong> and <strong>bias</strong> respectively.</p>
 <ol type="1">
 <li><p>By hand, sketch the graph of <span class="math inline">\(h(x)\)</span> for <span class="math inline">\(x \in [-3, 3]\)</span> for each of the following parameter values:</p>
 <ol type="i">
@@ -771,9 +777,9 @@ h(x) = \max(0, w x + b)
 <hr>
 <div id="exr-1.43" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.20</strong></span> 🖋 So far we have been working with a neuron that takes a single input <span class="math inline">\(x\)</span>. In many applications, we want to work with functions of multiple variables.</p>
-<p>Suppose we have two inputs <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, and we define a neuron as <span class="math display">\[\begin{equation}
+<p>Suppose we have two inputs <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, and we define a neuron as <span class="math display">\[
 h(x_1, x_2) = \max(0, w_1 x_1 + w_2 x_2 + b)
-\end{equation}\]</span> where <span class="math inline">\(w_1, w_2\)</span> are weights and <span class="math inline">\(b\)</span> is a bias.</p>
+\]</span> where <span class="math inline">\(w_1, w_2\)</span> are weights and <span class="math inline">\(b\)</span> is a bias.</p>
 <ol type="1">
 <li><p>What is the output of this neuron when <span class="math inline">\(x_1 = 1, x_2 = 2\)</span>, using the parameters <span class="math inline">\(w_1 = 1, w_2 = -1, b = 0\)</span>?</p></li>
 <li><p>The expression <span class="math inline">\(w_1 x_1 + w_2 x_2 + b = 0\)</span> defines a line in the <span class="math inline">\((x_1, x_2)\)</span> plane. For the parameters in part 1, sketch this line in the region <span class="math inline">\(x_1 \in [-2, 2], x_2 \in [-2, 2]\)</span>.</p></li>
@@ -801,9 +807,9 @@ h_2(x) &amp;= \max(0, w_2 x + b_2)
 </div>
 <hr>
 <div id="exr-1.45" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.22</strong></span> 🖋 Rather than just adding two ReLU neurons, consider the weighted combination: <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 2.22</strong></span> 🖋 Rather than just adding two ReLU neurons, consider the weighted combination: <span class="math display">\[
 f(x) = c_1 h_1(x) + c_2 h_2(x)
-\end{equation}\]</span> where <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are <strong>output weights</strong> that can be positive or negative.</p>
+\]</span> where <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are <strong>output weights</strong> that can be positive or negative.</p>
 <p>Let <span class="math inline">\(h_1(x) = \max(0, x)\)</span> and <span class="math inline">\(h_2(x) = \max(0, x - 1)\)</span>.</p>
 <ul>
 <li>What is <span class="math inline">\(f(x) = h_1(x) - 2h_2(x)\)</span> for <span class="math inline">\(x &lt; 0\)</span>?</li>
@@ -835,16 +841,16 @@ f(x) = c_1 h_1(x) + c_2 h_2(x)
 <p>The structure is as follows:</p>
 <ol type="1">
 <li><p><strong>Input</strong>: We start with an input value <span class="math inline">\(x\)</span>.</p></li>
-<li><p><strong>Hidden Layer</strong>: We apply <span class="math inline">\(n\)</span> neurons to the input, creating <span class="math inline">\(n\)</span> hidden values: <span class="math display">\[\begin{equation}
+<li><p><strong>Hidden Layer</strong>: We apply <span class="math inline">\(n\)</span> neurons to the input, creating <span class="math inline">\(n\)</span> hidden values: <span class="math display">\[
 h_i(x) = \max(0, w_i x + b_i) \quad \text{for } i = 1, 2, \ldots, n
-\end{equation}\]</span> The parameters <span class="math inline">\(w_i\)</span> and <span class="math inline">\(b_i\)</span> are called the <strong>weights</strong> and <strong>biases</strong> of the hidden layer.</p></li>
-<li><p><strong>Output Layer</strong>: We combine the hidden values using output weights: <span class="math display">\[\begin{equation}
+\]</span> The parameters <span class="math inline">\(w_i\)</span> and <span class="math inline">\(b_i\)</span> are called the <strong>weights</strong> and <strong>biases</strong> of the hidden layer.</p></li>
+<li><p><strong>Output Layer</strong>: We combine the hidden values using output weights: <span class="math display">\[
 f(x) = c_1 h_1(x) + c_2 h_2(x) + \cdots + c_n h_n(x) + c_0
-\end{equation}\]</span> where <span class="math inline">\(c_0, c_1, \ldots, c_n\)</span> are the output layer parameters.</p></li>
+\]</span> where <span class="math inline">\(c_0, c_1, \ldots, c_n\)</span> are the output layer parameters.</p></li>
 </ol>
-<p>We can write this more compactly using summation notation: <span class="math display">\[\begin{equation}
+<p>We can write this more compactly using summation notation: <span class="math display">\[
 f(x) = \sum_{i=1}^{n} c_i \max(0, w_i x + b_i) + c_0.
-\end{equation}\]</span></p>
+\]</span></p>
 <div id="a4d23953" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-display">
 <div>
@@ -864,9 +870,9 @@ f(x) = \sum_{i=1}^{n} c_i \max(0, w_i x + b_i) + c_0.
 </ul>
 <p>That gives us a total of <span class="math inline">\(3n + 1\)</span> parameters to work with.</p>
 <p>Note that, due to the simple linear nature of the ReLU activation function that we have chosen to use here, we can absorb the weights of the hidden layer neurons into a rescaling of the of the output weights and the biases. This would not be true for more general activation functions.</p>
-<p>So we choose to set all hidden weights to <span class="math inline">\(1\)</span> and thus work with <span class="math display">\[\begin{equation}
+<p>So we choose to set all hidden weights to <span class="math inline">\(1\)</span> and thus work with <span class="math display">\[
 f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
-\end{equation}\]</span></p>
+\]</span></p>
 <p>The following Python code implements such a neural network. Make sure you understand the code.</p>
 <div id="cbbf7e32" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -978,9 +984,9 @@ f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 <p>After your experimentation, the following result will no longer seem so surprising:</p>
 <div id="thm-1.1" class="theorem">
 <p><span class="theorem-title"><strong>Theorem 2.1 (Universal Approximation Theorem (informal version))</strong></span> A two-layer neural network with a sufficient number of neurons can approximate any continuous function on a bounded interval to arbitrary accuracy.</p>
-<p>More precisely: for any continuous function <span class="math inline">\(f: [a,b] \to \mathbb{R}\)</span> and any <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists a two-layer neural network <span class="math inline">\(f_{\text{nn}}\)</span> such that <span class="math display">\[\begin{equation}
+<p>More precisely: for any continuous function <span class="math inline">\(f: [a,b] \to \mathbb{R}\)</span> and any <span class="math inline">\(\epsilon &gt; 0\)</span>, there exists a two-layer neural network <span class="math inline">\(f_{\text{nn}}\)</span> such that <span class="math display">\[
 \max_{x \in [a,b]} |f(x) - f_{\text{nn}}(x)| &lt; \epsilon.
-\end{equation}\]</span></p>
+\]</span></p>
 </div>
 <hr>
 <div id="exr-1.52" class="theorem exercise">
@@ -1008,15 +1014,15 @@ f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 <p>For example, a three-layer network would look like:</p>
 <ol type="1">
 <li><p><strong>Input</strong>: <span class="math inline">\(x\)</span></p></li>
-<li><p><strong>First Hidden Layer</strong>: <span class="math display">\[\begin{equation}
+<li><p><strong>First Hidden Layer</strong>: <span class="math display">\[
 h_i^{(1)}(x) = \max(0, w_i^{(1)} x + b_i^{(1)}) \quad \text{for } i = 1, \ldots, n_1
-\end{equation}\]</span></p></li>
-<li><p><strong>Second Hidden Layer</strong>: Each neuron in this layer takes all outputs from the first hidden layer: <span class="math display">\[\begin{equation}
+\]</span></p></li>
+<li><p><strong>Second Hidden Layer</strong>: Each neuron in this layer takes all outputs from the first hidden layer: <span class="math display">\[
 h_j^{(2)} = \max\left(0, \sum_{i=1}^{n_1} w_{ji}^{(2)} h_i^{(1)} + b_j^{(2)}\right) \quad \text{for } j = 1, \ldots, n_2
-\end{equation}\]</span></p></li>
-<li><p><strong>Output Layer</strong>: <span class="math display">\[\begin{equation}
+\]</span></p></li>
+<li><p><strong>Output Layer</strong>: <span class="math display">\[
 f(x) = \sum_{j=1}^{n_2} c_j h_j^{(2)} + c_0
-\end{equation}\]</span></p></li>
+\]</span></p></li>
 </ol>
 <p>This is called a <strong>deep neural network</strong> because it has multiple hidden layers. The term “deep learning” comes from using such multi-layer architectures.</p>
 <div id="60a345c3" class="cell" data-execution_count="11">
@@ -1033,14 +1039,14 @@ f(x) = \sum_{j=1}^{n_2} c_j h_j^{(2)} + c_0
 <section id="why-depth-matters-the-sawtooth-example" class="level3" data-number="2.4.5">
 <h3 data-number="2.4.5" class="anchored" data-anchor-id="why-depth-matters-the-sawtooth-example"><span class="header-section-number">2.4.5</span> Why Depth Matters: The Sawtooth Example</h3>
 <p>Why are deep neural networks, with many layers, often more powerful than shallow networks with just one large hidden layer? In the following exercises, you will explore a classic example, the <strong>sawtooth wave</strong>, to discover a concrete answer. You’ll build both a shallow and a deep network to represent the same function, and compare their efficiency as the complexity grows. Through this exploration, you’ll see how deep networks can represent certain functions far more efficiently by exploiting their compositional structure.</p>
-<p>We’ll work with a sawtooth function that has 2 triangular peaks on the interval <span class="math inline">\([0, 1]\)</span>: <span class="math display">\[\begin{equation}
+<p>We’ll work with a sawtooth function that has 2 triangular peaks on the interval <span class="math inline">\([0, 1]\)</span>: <span class="math display">\[
 f(x) = \begin{cases}
 4x &amp; \text{if } 0 \leq x &lt; 0.25 \\
 2 - 4x &amp; \text{if } 0.25 \leq x &lt; 0.5 \\
 4x - 2 &amp; \text{if } 0.5 \leq x &lt; 0.75 \\
 4 - 4x &amp; \text{if } 0.75 \leq x \leq 1
 \end{cases}
-\end{equation}\]</span></p>
+\]</span></p>
 <div id="b8fb7414" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
@@ -1074,7 +1080,9 @@ f(x) = \begin{cases}
 <hr>
 <div id="exr-1.51" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.28 (Building the Deep Network)</strong></span> A deeper network takes a more elegant approach. Instead of directly creating all the peaks, it uses one layer to create a single peak and then another layer to duplicate this peak.</p>
-<p>The key insight is to create a single-peak function <span class="math display">\[g(x) = \begin{cases}2x&amp;0\leq x&lt;1/2\\2(1-x)&amp;1/2\leq x\leq1\\0 &amp; x\not\in [0,1]\end{cases}\]</span> that produces one triangular peak at <span class="math inline">\(x = 0.5\)</span> with height 1, returning to 0 at <span class="math inline">\(z &lt; 0\)</span> and <span class="math inline">\(z &gt; 1\)</span>.</p>
+<p>The key insight is to create a single-peak function <span class="math display">\[
+g(x) = \begin{cases}2x&amp;0\leq x&lt;1/2\\2(1-x)&amp;1/2\leq x\leq1\\0 &amp; x\not\in [0,1]\end{cases}
+\]</span> that produces one triangular peak at <span class="math inline">\(x = 0.5\)</span> with height 1, returning to 0 at <span class="math inline">\(z &lt; 0\)</span> and <span class="math inline">\(z &gt; 1\)</span>.</p>
 <div id="a6d215cc" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display">
 <div>
@@ -1210,17 +1218,17 @@ f(x) = \begin{cases}
 <div id="exr-1.55" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.31</strong></span> In this problem we will use Taylor Series to build approximations for the irrational number <span class="math inline">\(\pi\)</span>.</p>
 <ol type="a">
-<li><p>Write the Taylor series centred at <span class="math inline">\(x_0=0\)</span> for the function <span class="math display">\[\begin{equation}
+<li><p>Write the Taylor series centred at <span class="math inline">\(x_0=0\)</span> for the function <span class="math display">\[
 f(x) = \frac{1}{1+x}.
-\end{equation}\]</span></p></li>
+\]</span></p></li>
 <li><p>Now we want to get the Taylor Series for the function <span class="math inline">\(g(x) = \frac{1}{1+x^2}\)</span>. It would be quite time consuming to take all of the necessary derivatives to get this Taylor Series. Instead we will use our answer from part (a) of this problem to shortcut the whole process.</p>
 <ol type="1">
 <li><p>Substitute <span class="math inline">\(x^2\)</span> for every <span class="math inline">\(x\)</span> in the Taylor Series for <span class="math inline">\(f(x) = \frac{1}{1+x}\)</span>.</p></li>
 <li><p>Make a few plots to verify that we indeed now have a Taylor Series for the function <span class="math inline">\(g(x) = \frac{1}{1+x^2}\)</span>.</p></li>
 </ol></li>
-<li><p>Recall from Calculus that <span class="math display">\[\begin{equation}
+<li><p>Recall from Calculus that <span class="math display">\[
 \int \frac{1}{1+x^2} dx = \arctan(x).
-\end{equation}\]</span> Hence, if we integrate each term of the Taylor Series that results from part (2) we should have a Taylor Series for <span class="math inline">\(\arctan(x)\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
+\]</span> Hence, if we integrate each term of the Taylor Series that results from part (2) we should have a Taylor Series for <span class="math inline">\(\arctan(x)\)</span>.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p></li>
 <li><p>Now recall the following from Calculus:</p>
 <ul>
 <li><p><span class="math inline">\(\tan(\pi/4) = 1\)</span></p></li>
@@ -1232,32 +1240,32 @@ f(x) = \frac{1}{1+x}.
 </div>
 <hr>
 <div id="exr-1.56" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.32</strong></span> In this problem we will prove the famous formula <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 2.32</strong></span> In this problem we will prove the famous formula <span class="math display">\[
 e^{i\theta} = \cos(\theta) + i \sin(\theta).
-\end{equation}\]</span> This is known as Euler’s formula after the famous mathematician Leonard Euler. Show all of your work for the following tasks.</p>
+\]</span> This is known as Euler’s formula after the famous mathematician Leonard Euler. Show all of your work for the following tasks.</p>
 <ol type="1">
 <li><p>Write the Taylor series for the functions <span class="math inline">\(e^x\)</span>, <span class="math inline">\(\sin(x)\)</span>, and <span class="math inline">\(\cos(x)\)</span>.</p></li>
-<li><p>Replace <span class="math inline">\(x\)</span> with <span class="math inline">\(i\theta\)</span> in the Taylor expansion of <span class="math inline">\(e^x\)</span>. Recall that <span class="math inline">\(i = \sqrt{-1}\)</span> so <span class="math inline">\(i^2 = -1\)</span>, <span class="math inline">\(i^3 = -i\)</span>, and <span class="math inline">\(i^4 = 1\)</span>. Simplify all of the powers of <span class="math inline">\(i\theta\)</span> that arise in the Taylor expansion. I will get you started: <span class="math display">\[\begin{equation}
+<li><p>Replace <span class="math inline">\(x\)</span> with <span class="math inline">\(i\theta\)</span> in the Taylor expansion of <span class="math inline">\(e^x\)</span>. Recall that <span class="math inline">\(i = \sqrt{-1}\)</span> so <span class="math inline">\(i^2 = -1\)</span>, <span class="math inline">\(i^3 = -i\)</span>, and <span class="math inline">\(i^4 = 1\)</span>. Simplify all of the powers of <span class="math inline">\(i\theta\)</span> that arise in the Taylor expansion. I will get you started: <span class="math display">\[
 \begin{aligned} e^x &amp;= 1 + x + \frac{x^2}{2} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \cdots \\ e^{i\theta} &amp;= 1 + (i\theta) + \frac{(i\theta)^2}{2!} + \frac{(i\theta)^3}{3!} + \frac{(i\theta)^4}{4!} + \frac{(i\theta)^5}{5!} + \cdots \\ &amp;= 1 + i\theta + i^2 \frac{\theta^2}{2!} + i^3 \frac{\theta^3}{3!} + i^4 \frac{\theta^4}{4!} + i^5 \frac{\theta^5}{5!} + \cdots \\ &amp;= \ldots \text{ keep simplifying ... } \ldots \end{aligned}
-\end{equation}\]</span></p></li>
+\]</span></p></li>
 <li><p>Gather all of the real terms and all of the imaginary terms together. Factor the <span class="math inline">\(i\)</span> out of the imaginary terms. What do you notice?</p></li>
 <li><p>Use your result from part (3) to prove that <span class="math inline">\(e^{i\pi} + 1 = 0\)</span>.</p></li>
 </ol>
 </div>
 <hr>
 <div id="exr-1.57" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.33</strong></span> In physics, the <em>relativistic energy</em> of an object is defined as <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 2.33</strong></span> In physics, the <em>relativistic energy</em> of an object is defined as <span class="math display">\[
 E_{rel} = \gamma mc^2
-\end{equation}\]</span> where <span class="math display">\[\begin{equation}
+\]</span> where <span class="math display">\[
 \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}.
-\end{equation}\]</span> In these equations, <span class="math inline">\(m\)</span> is the mass of the object, <span class="math inline">\(c\)</span> is the speed of light (<span class="math inline">\(c \approx 3 \times 10^8\)</span>m/s), and <span class="math inline">\(v\)</span> is the velocity of the object. For an object of fixed mass (m) we can expand the Taylor Series centred at <span class="math inline">\(v=0\)</span> for <span class="math inline">\(E_{rel}\)</span> to get <span class="math display">\[\begin{equation}
+\]</span> In these equations, <span class="math inline">\(m\)</span> is the mass of the object, <span class="math inline">\(c\)</span> is the speed of light (<span class="math inline">\(c \approx 3 \times 10^8\)</span>m/s), and <span class="math inline">\(v\)</span> is the velocity of the object. For an object of fixed mass (m) we can expand the Taylor Series centred at <span class="math inline">\(v=0\)</span> for <span class="math inline">\(E_{rel}\)</span> to get <span class="math display">\[
 E_{rel} = mc^2 + \frac{1}{2} mv^2 + \frac{3}{8} \frac{mv^4}{c^2} + \frac{5}{16} \frac{mv^6}{c^4} + \cdots.
-\end{equation}\]</span></p>
+\]</span></p>
 <ol type="1">
 <li><p>What do we recover if we consider an object with zero velocity?</p></li>
-<li><p>Why might it be completely reasonable to only use the quadratic approximation <span class="math display">\[\begin{equation}
+<li><p>Why might it be completely reasonable to only use the quadratic approximation <span class="math display">\[
 E_{rel} = mc^2 + \frac{1}{2} mv^2
-\end{equation}\]</span> for the relativistic energy equation?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
+\]</span> for the relativistic energy equation?<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p></li>
 <li><p>(some physics knowledge required) What do you notice about the second term in the Taylor Series approximation of the relativistic energy function?</p></li>
 <li><p>Show all of the work to derive the Taylor Series centred at <span class="math inline">\(v = 0\)</span> given above.</p></li>
 </ol>

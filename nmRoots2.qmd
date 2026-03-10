@@ -37,7 +37,7 @@ The idea of approximating the function by its tangent line gives us an algorithm
 
 The first step has been shown for you in @fig-2.8. The tangent line to the function $f(x)$ at the point $(x_0, f(x_0))$ is shown in red. The $x$-intercept of the tangent line is the new $x$ value, $x_1$. The process is then repeated with $x_1$ as the new $x_0$ and so on.
 
-![Using successive tangent line approximations to find the root of a function](figures/Algebra/newton.png){#fig-2.8 alt="Using successive tangent line approximations to find the root of a function"}
+![Using successive tangent line approximations to find the root of a function](figures/Roots/newton.png){#fig-2.8 alt="Using successive tangent line approximations to find the root of a function"}
 
 The graphical method illustrated in @fig-2.8 was introduced by Sir Isaac Newton and is therefore known as Newton's Method.  Joseph Raphson then gave the algebraic formulation and popularised the method, which is therefore also known as the Newton-Raphson method.
 
@@ -164,7 +164,7 @@ $$
 | $4$      | $x_4 =$                                | $f(x_4) =$   | $f'(x_4) =$ |
 | $\vdots$ | $\vdots$                               | $\vdots$     | $\vdots$     |
 
-![An interesting Newton's Method failure when $f(x) = x^3 - 2x + 2$.](figures/Algebra/Newton02.png){#fig-2.9 alt="An interesting Newton's Method failure."}
+![An interesting Newton's Method failure when $f(x) = x^3 - 2x + 2$.](figures/Roots/Newton02.png){#fig-2.9 alt="An interesting Newton's Method failure."}
 
 :::
 
@@ -173,7 +173,7 @@ $$
 ::: {#exr-2.44}
 🖋 Repeat the previous exercise with the function $f(x) = x^3 - 5x$ with the starting point $x_0 = -1$. Again this is easy to do with pen and paper.
 
-![Another surprising Newton's Method failure when $f(x) = x^3 - 5x$.](figures/Algebra/Newton04.png){#fig-2.11 alt="Another surprising Newton's Method failure."}
+![Another surprising Newton's Method failure when $f(x) = x^3 - 5x$.](figures/Roots/Newton04.png){#fig-2.11 alt="Another surprising Newton's Method failure."}
 
 :::
 
@@ -197,7 +197,7 @@ $$
 | $4$      |                                       |                 |                 |
 | $\vdots$ | $\vdots$                            | $\vdots$      | $\vdots$      |
 
-![Another surprising Newton's Method failure when $f(x) = \sqrt[3]{x}$.](figures/Algebra/Newton03.png){#fig-2.10 alt="Another surprising Newton's Method failure."}
+![Another surprising Newton's Method failure when $f(x) = \sqrt[3]{x}$.](figures/Roots/Newton03.png){#fig-2.10 alt="Another surprising Newton's Method failure."}
 
 2.  Now let us look at the Newton iteration in a bit more detail. Since $f(x) = x^{1/3}$ and $f'(x) = \frac{1}{3} x^{-2/3}$ the Newton iteration can be simplified as 
 $$
@@ -282,7 +282,7 @@ $$
  
 The first, and most obvious, way to approximate the derivative is just to use the slope of a secant line instead of the slope of the tangent line in the Newton iteration. If we choose two starting points that are quite close to each other then the slope of the secant line through those points will be approximately the same as the slope of the tangent line.
 
-![Using successive secant line approximations to find the root of a function](figures/Algebra/secant.png){#fig-secant alt="Using successive secant line approximations to find the root of a function"}
+![Using successive secant line approximations to find the root of a function](figures/Roots/secant.png){#fig-secant alt="Using successive secant line approximations to find the root of a function"}
 
 ------------------------------------------------------------------------
 
@@ -617,7 +617,7 @@ $$
 ::: {#exr-2.58}
 In @fig-2.12 you see six different log-log plots of the new error to the old error for different root finding techniques. What is the order of the approximate convergence rate for each of these methods?
 
-![Six Error Plots](figures/Algebra/ErrorsExercise2.png){#fig-2.12 alt="Six Error Plots"}
+![Six Error Plots](figures/Roots/ErrorsExercise2.png){#fig-2.12 alt="Six Error Plots"}
 
 d.  In your own words, what does it mean for a root finding method to have a "first order convergence rate?" "Second order convergence rate?" etc.
 
@@ -745,7 +745,7 @@ A **basin of attraction** for a root is the set of $x$ values that converges to 
 
 The set of points that are all the same colour are called the **basin of attraction** for the root associated with that colour. In @fig-2.13 there is an image of a sample basin of attraction image.
 
-![A sample basin of attraction image for a cubic function.](figures/Algebra/ProjectBasin.png){#fig-2.13 alt="A sample basin of attraction image for a cubic function."}
+![A sample basin of attraction image for a cubic function.](figures/Roots/ProjectBasin.png){#fig-2.13 alt="A sample basin of attraction image for a cubic function."}
 
 
 1.  Create a basin on attraction image for the function $f(x) = (x-4)(x+1)$.

@@ -692,7 +692,7 @@ HTML(ani.to_jshtml())
 :::
 
 ::: {.content-visible unless-format="html"}
-![Fixed point iteration](figures/Algebra/fixed_point.pdf){#fig-fixed width="50`"}
+![Fixed point iteration](figures/Roots/fixed_point.pdf){#fig-fixed width="50`"}
 :::
 
 

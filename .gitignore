@@ -5,6 +5,7 @@
 *.Rproj
 
 /.quarto/
+/docs/
 
 # quarto book output
 /_book/

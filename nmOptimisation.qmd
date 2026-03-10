@@ -284,6 +284,54 @@ Also test your function to find the minimum of the function in @fig-opt-1
 
 ------------------------------------------------------------------------
 
+### Order of Convergence of Gradient Descent
+
+You will by now have observed in @exr-3.54 and @exr-3.54b that the error progression plots for gradient descent show a straight line with slope approximately equal to 1 in the log-log plot of $E_{n+1}$ against $E_n$. This means that gradient descent has **linear** convergence. In this section we consolidate your observations theoretically. As in @sec-roots2, this section is presented as a lecture rather than containing further explorations.
+
+Recall from @def-a that a convergent sequence $\{x_n\}$ has **order of convergence** $\alpha$ if there exists a constant $\lambda > 0$ such that
+$$
+\lim_{n\to\infty}\frac{E_{n+1}}{E_n^\alpha} = \lambda,
+$$
+where $E_n = |x_n - p|$ is the absolute error. Convergence with $\alpha = 1$ is called *linear* and requires $0 < \lambda < 1$; convergence with $\alpha = 2$ is called *quadratic*.
+
+The gradient descent iteration for minimising a function $f(x)$ is
+$$
+x_{n+1} = x_n - \alpha f'(x_n).
+$$
+This is a fixed-point iteration $x_{n+1} = g(x_n)$ with
+$$
+g(x) = x - \alpha f'(x).
+$$ {#eq-gd-fp}
+The fixed points of $g$ are the stationary points of $f$, i.e., the points $p$ where $f'(p) = 0$.
+
+We can now apply the theory of the order of convergence of fixed-point iteration from @sec-roots2. We compute
+$$
+g'(x) = 1 - \alpha f''(x) \quad \Rightarrow \quad g'(p) = 1 - \alpha f''(p).
+$$ {#eq-gd-gprime}
+If $p$ is a local minimum then $f''(p) > 0$. In general $g'(p) \neq 0$, so 
+it follows from @thm-a (with $m=1$, i.e., using @eq-nonlin35) that the gradient descent method produces a **linearly convergent** sequence with
+$$
+\lim_{n\to\infty}\frac{E_{n+1}}{E_n} = |1 - \alpha f''(p)|.
+$$ {#eq-gd-rate}
+For this to converge at all we need $|1 - \alpha f''(p)| < 1$, which requires $0 < \alpha < \frac{2}{f''(p)}$. This explains why the learning rate $\alpha$ must not be too large --- if it is, the method diverges.
+
+The convergence is fastest when $|1 - \alpha f''(p)|$ is as small as possible, ideally zero.
+This happens when $\alpha = \frac{1}{f''(p)}$, corresponding to the "optimal" learning rate. However, we usually do not know $f''(p)$ in advance (since we do not know $p$), so we cannot simply choose this optimal value.
+
+Notice that when $\alpha = \frac{1}{f''(p)}$ we have $g'(p) = 0$. In this case, the linear term vanishes and we can apply @thm-a to determine whether higher-order convergence is achieved. We compute
+$$
+g''(x) = -\alpha f'''(x) \quad \Rightarrow \quad g''(p) = -\alpha f'''(p).
+$$
+If $f'''(p) \neq 0$, then $g''(p) \neq 0$ and the convergence is quadratic. This mirrors the situation with Newton's method for root-finding, where $g'(p) = 0$ also leads to quadratic convergence.
+
+Note the interesting parallel: Newton's method applied to $f'(x) = 0$ gives the iteration
+$$
+x_{n+1} = x_n - \frac{f'(x_n)}{f''(x_n)},
+$$
+which is precisely gradient descent with the "learning rate" $\alpha = \frac{1}{f''(x_n)}$ adapted at each step. This explains why Newton's method for optimisation converges quadratically while gradient descent with a fixed learning rate only converges linearly.
+
+------------------------------------------------------------------------
+
 ::: {#exr-3.56b}
 💻 🎓 Try out your algorithms to find the minimum of the function 
 $$f(x) = (\sin(4x)+1)((x-5)^2-25)$$
@@ -415,6 +463,62 @@ with a starting point $(x_0,y_0)=(-1,1)$, a learning rate of $1$ and a tolerance
 You can use your gradient function from @exr-wgrad.
 
 Then find the minimum of the function $f$ with a starting point $(x_0,y_0)=(0,0)$, using the same learning rate of $1$ and tolerance of $10^{-6}$. 
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-gd-difficulties}
+💻 💬 The gradient descent method works well for some functions but struggles with others. In this exercise you will discover some of the difficulties by experimenting with your `gradient_descent` function from @exr-3.58.
+
+1. **Rosenbrock's banana function.** Try to minimise the function
+$$f(x,y) = (1-x)^2 + 100(y-x^2)^2$$
+with a starting point $(x_0,y_0) = (-1, 1)$. The global minimum is at $(1,1)$ where $f(1,1)=0$. Work out the gradient by hand (or use automatic differentiation) and try several different learning rates. You will find that small learning rates lead to extremely slow convergence and large learning rates lead to divergence. Can you find a learning rate that converges in a reasonable number of iterations? Make a contour plot of the function (using `plt.contour` or `plt.contourf`) and plot the path of the gradient descent iterates on top of it. Discuss with your group why gradient descent struggles with this function. The following code will help you get started.
+
+    ``` python
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # Rosenbrock function and its gradient
+    f = lambda x: (1 - x[0])**2 + 100 * (x[1] - x[0]**2)**2
+    df = lambda x: np.array([
+        -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2),
+        200 * (x[1] - x[0]**2)
+    ])
+
+    # Modify your gradient_descent function so that it returns 
+    # the list of all iterates, not just the final one.
+    # Then you can use it like this:
+    alpha = ???  # Try different values
+    path = gradient_descent(df, np.array([-1.0, 1.0]), alpha, 
+                            tol=1e-6, max_iter=100000)
+
+    # Contour plot with the path of the iterates
+    x = np.linspace(-2, 2, 300)
+    y = np.linspace(-1, 3, 300)
+    X, Y = np.meshgrid(x, y)
+    Z = (1 - X)**2 + 100 * (Y - X**2)**2
+    plt.figure(figsize=(8, 6))
+    plt.contourf(X, Y, Z, levels=np.logspace(-1, 3.5, 20), 
+                 cmap='viridis')
+    plt.colorbar(label='$f(x,y)$')
+    path = np.array(path)
+    plt.plot(path[:, 0], path[:, 1], 'r.-', markersize=3, 
+             linewidth=0.5)
+    plt.plot(1, 1, 'w*', markersize=12)  # mark the minimum
+    plt.xlabel('$x$')
+    plt.ylabel('$y$')
+    plt.title(f'Gradient descent on Rosenbrock (α = {alpha})')
+    plt.show()
+    ```
+
+
+2. **Saddle points.** Now try the function
+$$f(x,y) = x^2 - y^2$$
+with the starting point $(x_0,y_0) = (0.1, 0)$. This function has a saddle point at the origin. What happens? Now try the starting point $(0, 0.1)$. Discuss what the gradient descent method does at and near saddle points.
+
+3. **Ill-conditioned functions.** Consider the function
+$$f(x,y) = x^2 + 100\, y^2.$$
+This function has a clear minimum at the origin but is much steeper in the $y$ direction than in the $x$ direction. Try the starting point $(1,1)$ and experiment with different learning rates. Can you find a learning rate that gives fast convergence in both variables simultaneously? Try plotting the path of the iterates on a contour plot to see what is happening. Discuss why having very different curvatures along different directions makes gradient descent inefficient.
 :::
 
 ------------------------------------------------------------------------

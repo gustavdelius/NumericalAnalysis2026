@@ -32,7 +32,6 @@
 
 ## Chapter 6 Optimisation
 - [ ] Use golden ratio in golden section search
-- [ ] Add discussion of order of convergence.
 - [ ] Add exam question on least squares.
 
 ## Chapters 7 and 8 ODEs

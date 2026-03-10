@@ -51,6 +51,7 @@ book:
     - ex_exam_solns.qmd
     - nmLinAlg.qmd
     - nmAutoDiff.qmd
+    - nmPDE3.qmd
 
 bibliography: references.bib
 

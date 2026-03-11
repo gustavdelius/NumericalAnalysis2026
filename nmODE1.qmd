@@ -5,7 +5,9 @@
 
 The topic of this chapter is to find *approximate solutions* to *ordinary differential equations*.
 
+::: {.callout-caution}
 This chapter is still undergoing changes, to be released on Thursday of week 6.
+:::
 
 Let us briefly recall what an ordinary differential equation (ODE) is. A
 rather arbitrarily chosen example for an ODE (here, of second order) is

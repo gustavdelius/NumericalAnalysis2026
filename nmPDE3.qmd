@@ -1,6 +1,8 @@
 # PDE 3 {#sec-pde3}
 
+::: {.callout-caution}
 This appendix is still undergoing changes, to be released on Thursday of week 9.
+:::
 
 ## The 2D Wave Equation
 

@@ -3,7 +3,9 @@
 > *It is not enough to do your best; you must know what to do, and then do your best.*\
 > --[W. Edwards Deming](https://en.wikipedia.org/wiki/W._Edwards_Deming)
 
+::: {.callout-caution}
 This chapter is still undergoing changes, to be released on Thursday of week 5
+:::
 
 In applied mathematics we are often not interested in all solutions of a problem but in the optimal solution. Optimisation therefore permeates many areas of mathematics and science. In this section we will look at a few examples of optimisation problems and the numerical methods that can be used to solve them.
 

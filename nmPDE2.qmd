@@ -1,6 +1,8 @@
 # PDE 2 {#sec-pde2}
 
+::: {.callout-caution}
 This chapter is still undergoing changes, to be released on Thursday of week 9.
+:::
 
 ## Two-dimensional Heat Equation {#sec-heat2d}
 

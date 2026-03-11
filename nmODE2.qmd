@@ -1,6 +1,8 @@
 # ODE 2 {#sec-ode2}
 
+::: {.callout-caution}
 This chapter is still undergoing changes, to be released on Thursday of week 7.
+:::
 
 ## Searching for a better Method
 

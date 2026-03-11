@@ -100,7 +100,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -338,13 +338,13 @@ window.Quarto = {
   <li><a href="#sec-how_this_module_works" id="toc-sec-how_this_module_works" class="nav-link" data-scroll-target="#sec-how_this_module_works">How this module works</a></li>
   <li><a href="#sec-assessment" id="toc-sec-assessment" class="nav-link" data-scroll-target="#sec-assessment">Assessment</a></li>
   <li><a href="#sec-textbooks" id="toc-sec-textbooks" class="nav-link" data-scroll-target="#sec-textbooks">Textbooks</a></li>
-  <li><a href="#sec-your_jobs" id="toc-sec-your_jobs" class="nav-link" data-scroll-target="#sec-your_jobs">Your jobs</a></li>
+  <li><a href="#sec-your_jobs" id="toc-sec-your_jobs" class="nav-link" data-scroll-target="#sec-your_jobs">Your Jobs</a></li>
   <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
   <li><a href="#sec-colab" id="toc-sec-colab" class="nav-link" data-scroll-target="#sec-colab">Google Colab</a>
   <ul class="collapse">
-  <li><a href="#sec-AI" id="toc-sec-AI" class="nav-link" data-scroll-target="#sec-AI">The use of AI</a></li>
+  <li><a href="#sec-AI" id="toc-sec-AI" class="nav-link" data-scroll-target="#sec-AI">The Use of AI</a></li>
   </ul></li>
-  <li><a href="#about-you" id="toc-about-you" class="nav-link" data-scroll-target="#about-you">About you</a></li>
+  <li><a href="#about-you" id="toc-about-you" class="nav-link" data-scroll-target="#about-you">About You</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
@@ -415,7 +415,7 @@ window.Quarto = {
 <section id="sec-example_algebra" class="level3">
 <h3 class="anchored" data-anchor-id="sec-example_algebra">Example from Algebra</h3>
 <p>Solve the equation <span class="math display">\[\log(x) = \sin(x)\]</span> for <span class="math inline">\(x\)</span> in the interval <span class="math inline">\(x \in (0,\pi)\)</span>. Stop and try using all of the algebra that you ever learned to find <span class="math inline">\(x\)</span>. You will quickly realize that there are no by-hand techniques that can solve this problem! A numerical approximation, however, is not so hard to come by. The following graph shows that there is a solution to this equation somewhere between <span class="math inline">\(x=2\)</span> and <span class="math inline">\(x=2.5\)</span>.</p>
-<div id="cell-fig-lnsin" class="cell" data-execution_count="1">
+<div id="cell-fig-lnsin" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -448,7 +448,7 @@ Figure&nbsp;1: The graphs of the real functions <span class="math inline">\(\log
 <p><span class="math display">\[
     \int_0^\pi \sin(x^2) dx?
 \]</span></p>
-<div id="cell-fig-int_sin_x_squared" class="cell" data-execution_count="2">
+<div id="cell-fig-int_sin_x_squared" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -498,7 +498,7 @@ Figure&nbsp;2: Visual representation of the integral of <span class="math inline
 </div>
 </div>
 <p>Again, trying to use any of the possible techniques for using the Fundamental Theorem of Calculus, and hence finding an antiderivative, on the function <span class="math inline">\(\sin(x^2)\)</span> is completely hopeless. Substitution, integration by parts, and all of the other techniques that you know will all fail. Again, a numerical approximation is not so difficult and is very fast and gives the value</p>
-<div id="70064e63" class="cell" data-execution_count="3">
+<div id="7d15c03d" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use Simpson's rule to approximate the integral of sin(x^2) from 0 to pi</span></span>
@@ -516,7 +516,7 @@ Figure&nbsp;2: Visual representation of the integral of <span class="math inline
 <p>Say we needed to solve the differential equation</p>
 <p><span class="math display">\[\frac{dy}{dt} = \sin(y^2) + t.\]</span></p>
 <p>The nonlinear nature of the problem precludes us from using most of the typical techniques (e.g.&nbsp;separation of variables, undetermined coefficients, Laplace Transforms, etc). However, computational methods that result in a plot of an approximate solution can be made very quickly. Here is a plot of the solution up to time <span class="math inline">\(t=2.5\)</span> with initial condition <span class="math inline">\(y(0)=0.1\)</span>:</p>
-<div id="cell-fig-diffeq" class="cell" data-execution_count="4">
+<div id="cell-fig-diffeq" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -564,7 +564,7 @@ Figure&nbsp;3: Plot of numerical solution of <span class="math inline">\(dy/dt=\
 </div>
 </div>
 <p>This was an artificial example, but differential equations are central to modelling the real world in order to predict the future. They are the closest thing we have to a crystal ball. Here is a plot of a numerical solution of the SIR model of the evolution of an epidemic over time:</p>
-<div id="cell-fig-SIRintro" class="cell" data-execution_count="5">
+<div id="cell-fig-SIRintro" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -666,7 +666,7 @@ Figure&nbsp;4: Plot of a numerical solution of the SIR model
 <p>You may also want to look at textbooks for specific topics covered in this module, like for example <span class="citation" data-cites="Butcher">(<a href="#ref-Butcher" role="doc-biblioref">Butcher 2016</a>)</span> for methods for ordinary differential equations.</p>
 </section>
 <section id="sec-your_jobs" class="level2">
-<h2 class="anchored" data-anchor-id="sec-your_jobs">Your jobs</h2>
+<h2 class="anchored" data-anchor-id="sec-your_jobs">Your Jobs</h2>
 <p>You have the following jobs as a student in this module:</p>
 <ol type="1">
 <li><p><strong>Fight!</strong> You will have to fight hard to work through this material. The fight is exactly what we are after since it is ultimately what leads to innovative thinking.</p></li>
@@ -704,14 +704,14 @@ Figure&nbsp;4: Plot of a numerical solution of the SIR model
 </div>
 <hr>
 <section id="sec-AI" class="level3">
-<h3 class="anchored" data-anchor-id="sec-AI">The use of AI</h3>
+<h3 class="anchored" data-anchor-id="sec-AI">The Use of AI</h3>
 <p>You will have gathered from the previous exercise that in this module you are not only allowed to use AI, <strong>you are encouraged to use AI</strong>. However you have probably already discovered that you get more out of an AI if you are already familiar with the basic concepts of a subject. You will need to be able to understand and check any answer an AI gives you. If there is something in an AI answer that is not totally clear or not obviously correct, always ask the AI to explain the details of its answer and ask follow-on questions until everything is crystal-clear.</p>
 <p>During the 10 assessment quizzes you will not be allowed to use any AI. In particular you will be required to switch off the AI features in Google Colab. It is thus a good idea when working on practice exercises to also switch off the AI features to make sure you know what you are doing even when there is no AI assistance. To switch off the AI features you should tick the “Hide generative AI” checkbox on the “AI assistance” tab of the “Settings” page in Google Colab. <img src="figures/Introduction/switch_off_AI.png" class="img-fluid" alt="Setting to switch off AI"></p>
 <hr>
 </section>
 </section>
 <section id="about-you" class="level2">
-<h2 class="anchored" data-anchor-id="about-you">About you</h2>
+<h2 class="anchored" data-anchor-id="about-you">About You</h2>
 <div id="exr-intro-3" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 3</strong></span> 💻 I am interested to learn more about you to help me make this module work well for you. It would be helpful if you would answer the questionnaire at https://forms.gle/YHHExaAnVzcLtBcU7. Of course you are free to share as much or as little as you like.</p>
 </div>

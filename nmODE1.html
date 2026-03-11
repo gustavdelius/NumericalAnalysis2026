@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -309,7 +309,7 @@ window.Quarto = {
   <li><a href="#the-midpoint-method" id="toc-the-midpoint-method" class="nav-link" data-scroll-target="#the-midpoint-method"><span class="header-section-number">7.3</span> The Midpoint Method</a></li>
   <li><a href="#sec-instabilities" id="toc-sec-instabilities" class="nav-link" data-scroll-target="#sec-instabilities"><span class="header-section-number">7.4</span> Numerical Instabilities</a></li>
   <li><a href="#sec-alg-summaries-ode1" id="toc-sec-alg-summaries-ode1" class="nav-link" data-scroll-target="#sec-alg-summaries-ode1"><span class="header-section-number">7.5</span> Algorithm Summaries</a></li>
-  <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">7.6</span> Exam-style question</a></li>
+  <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">7.6</span> Exam-Style Question</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/nmODE1.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -579,7 +579,7 @@ x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 <section id="higher-order-equations-and-systems-of-equations" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="higher-order-equations-and-systems-of-equations"><span class="header-section-number">7.2</span> Higher-order equations and systems of equations</h2>
 <div id="exr-5.17" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.9 (Harmonic oscillator)</strong></span> 🖋 💻 If a mass is hanging from a spring then Newton’s second law, <span class="math inline">\(\sum F=ma\)</span>, gives us the differential equation <span class="math inline">\(mx'' = F_{restoring} + F_{damping}\)</span> where <span class="math inline">\(x\)</span> is the displacement of the mass from equilibrium, <span class="math inline">\(m\)</span> is the mass of the object hanging from the spring, <span class="math inline">\(F_{restoring}\)</span> is the force pulling the mass back to equilibrium, and <span class="math inline">\(F_{damping}\)</span> is the force due to friction or air resistance that slows the mass down.</p>
+<p><span class="theorem-title"><strong>Exercise 7.9 (Harmonic Oscillator)</strong></span> 🖋 💻 If a mass is hanging from a spring then Newton’s second law, <span class="math inline">\(\sum F=ma\)</span>, gives us the differential equation <span class="math inline">\(mx'' = F_{restoring} + F_{damping}\)</span> where <span class="math inline">\(x\)</span> is the displacement of the mass from equilibrium, <span class="math inline">\(m\)</span> is the mass of the object hanging from the spring, <span class="math inline">\(F_{restoring}\)</span> is the force pulling the mass back to equilibrium, and <span class="math inline">\(F_{damping}\)</span> is the force due to friction or air resistance that slows the mass down.</p>
 <ol type="1">
 <li><p>Which of the following is a good candidate for a restoring force in a spring? Defend your answer.</p>
 <ol type="a">
@@ -884,7 +884,7 @@ x(t) = \frac{1}{10} \left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 </tbody>
 </table>
 <p>When might you want to use Euler’s method instead of the midpoint method? When might you want to use the midpoint method instead of Euler’s method?</p>
-<div id="cell-fig-euler-midpoint" class="cell" data-execution_count="2">
+<div id="cell-fig-euler-midpoint" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div id="fig-euler-midpoint" class="quarto-float quarto-figure quarto-figure-left anchored" alt="Graphical depictions of two numerical methods. Euler (left) and Midpoint (right).">
 <figure class="quarto-float quarto-float-fig figure">
@@ -961,7 +961,7 @@ Figure&nbsp;7.5: Graphical depictions of two numerical methods: Euler (left) and
 <hr>
 </section>
 <section id="exam-style-question" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">7.6</span> Exam-style question</h2>
+<h2 data-number="7.6" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">7.6</span> Exam-Style Question</h2>
 <ol type="a">
 <li><p>Explain what is meant by <em>numerical instability</em> when solving an ordinary differential equation using an explicit finite-difference scheme. What happens to the numerical solution, and how can it be avoided? [3 marks]</p></li>
 <li><p>Consider the ordinary differential equation <span class="math inline">\(x' = -2x + t\)</span> with initial condition <span class="math inline">\(x(0) = 1\)</span>. Perform one step of Euler’s method with a step size of <span class="math inline">\(h=0.5\)</span> to find an approximation for <span class="math inline">\(x(0.5)\)</span>. [2 marks]</p></li>

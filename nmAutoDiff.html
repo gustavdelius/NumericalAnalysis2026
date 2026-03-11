@@ -78,7 +78,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -304,8 +304,8 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sec-forward-ad" id="toc-sec-forward-ad" class="nav-link active" data-scroll-target="#sec-forward-ad"><span class="header-section-number">D.1</span> Forward mode AD</a></li>
-  <li><a href="#sec-reverse-ad" id="toc-sec-reverse-ad" class="nav-link" data-scroll-target="#sec-reverse-ad"><span class="header-section-number">D.2</span> Reverse mode AD</a></li>
+  <li><a href="#sec-forward-ad" id="toc-sec-forward-ad" class="nav-link active" data-scroll-target="#sec-forward-ad"><span class="header-section-number">D.1</span> Forward Mode AD</a></li>
+  <li><a href="#sec-reverse-ad" id="toc-sec-reverse-ad" class="nav-link" data-scroll-target="#sec-reverse-ad"><span class="header-section-number">D.2</span> Reverse Mode AD</a></li>
   <li><a href="#algorithm-summaries" id="toc-algorithm-summaries" class="nav-link" data-scroll-target="#algorithm-summaries"><span class="header-section-number">D.3</span> Algorithm Summaries</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/nmAutoDiff.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -348,7 +348,7 @@ window.Quarto = {
 <hr>
 <div id="exm-3.31b" class="theorem example">
 <p><span class="theorem-title"><strong>Example D.1</strong></span> Consider the function <span class="math inline">\(f(x, y) = x^2y + \sin(xy)\)</span>. We can break this down into elementary operations and visualize it as a computation graph:</p>
-<div id="cell-fig-computation-graph" class="cell" data-execution_count="2">
+<div id="cell-fig-computation-graph" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div id="fig-computation-graph" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -401,7 +401,7 @@ Figure&nbsp;D.1: Computation graph for f(x,y) = x²y + sin(xy) at (x,y) = (2,1)
 </div>
 <hr>
 <section id="sec-forward-ad" class="level2" data-number="D.1">
-<h2 data-number="D.1" class="anchored" data-anchor-id="sec-forward-ad"><span class="header-section-number">D.1</span> Forward mode AD</h2>
+<h2 data-number="D.1" class="anchored" data-anchor-id="sec-forward-ad"><span class="header-section-number">D.1</span> Forward Mode AD</h2>
 <p>In forward mode automatic differentiation, we track both the values of variables and their derivatives with respect to the input variables. This allows us to build the derivatives as we compute the function value.</p>
 <div id="exm-3.32" class="theorem example">
 <p><span class="theorem-title"><strong>Example D.2</strong></span> Consider a simple function <span class="math inline">\(f(x) = x^2 \cdot \sin(x)\)</span>. We can compute both the value and the derivative at <span class="math inline">\(x = 2\)</span> as follows:</p>
@@ -425,7 +425,7 @@ Figure&nbsp;D.1: Computation graph for f(x,y) = x²y + sin(xy) at (x,y) = (2,1)
 </ol>
 <p>This is <strong>forward mode</strong> automatic differentiation.</p>
 <p>The figure below illustrates the computational graph for <span class="math inline">\(f(x) = x^2 \cdot \sin(x)\)</span> with forward mode AD. The blue values show the function evaluation, while the red values show the derivative calculation:</p>
-<div id="cell-fig-forward-ad" class="cell" data-execution_count="3">
+<div id="cell-fig-forward-ad" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -554,7 +554,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 </div>
 <hr>
 <p>Next let us teach Python how to do this.</p>
-<div id="265f7a97" class="cell" data-execution_count="4">
+<div id="909e8f5d" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic operations on dual numbers represented as tuples (value, derivative)</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dual_add(a, b):</span>
@@ -582,7 +582,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    exp_a <span class="op">=</span> np.exp(a[<span class="dv">0</span>])</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (exp_a, exp_a <span class="op">*</span> a[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="83d70f36" class="cell" data-execution_count="5">
+<div id="5730daf2" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">1</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> dual_power(x, <span class="dv">2</span>)</span>
@@ -593,7 +593,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 <pre><code>(np.float64(3.637189707302727), np.float64(1.9726023611141572))</code></pre>
 </div>
 </div>
-<div id="269685d9" class="cell" data-execution_count="6">
+<div id="b3651aa1" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">1</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> dual_multiply(dual_power(x, <span class="dv">2</span>), dual_sin(x))</span>
@@ -624,7 +624,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 <hr>
 </section>
 <section id="sec-reverse-ad" class="level2" data-number="D.2">
-<h2 data-number="D.2" class="anchored" data-anchor-id="sec-reverse-ad"><span class="header-section-number">D.2</span> Reverse mode AD</h2>
+<h2 data-number="D.2" class="anchored" data-anchor-id="sec-reverse-ad"><span class="header-section-number">D.2</span> Reverse Mode AD</h2>
 <p>Now let’s explore <strong>reverse mode</strong> automatic differentiation, which is more efficient for functions with many inputs and few outputs. Reverse mode AD first computes the function value and then propagates derivatives backward from the output to the inputs.</p>
 <p>For this exercise, we’ll introduce the concept of <strong>adjoints</strong> or <strong>accumulated gradients</strong>. The adjoint of a variable <span class="math inline">\(v\)</span> is denoted <span class="math inline">\(\overline{v}\)</span> and represents <span class="math inline">\(\frac{\partial f}{\partial v}\)</span> where <span class="math inline">\(f\)</span> is the final output.</p>
 <div id="exm-3.35" class="theorem example">
@@ -651,7 +651,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 <li><p>The final results are <span class="math inline">\(\frac{\partial f}{\partial x} = \overline{x} \approx 14.8806\)</span> and <span class="math inline">\(\frac{\partial f}{\partial y} = \overline{y} \approx 5.9204\)</span></p></li>
 </ol>
 <p><a href="#fig-reverse-ad" class="quarto-xref">Figure&nbsp;<span>D.3</span></a> illustrates the reverse mode AD computation graph for this example.</p>
-<div id="cell-fig-reverse-ad" class="cell" data-execution_count="7">
+<div id="cell-fig-reverse-ad" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>

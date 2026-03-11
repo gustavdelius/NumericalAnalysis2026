@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -342,16 +342,16 @@ window.Quarto = {
   <li><a href="#algorithm-summaries" id="toc-algorithm-summaries" class="nav-link" data-scroll-target="#algorithm-summaries"><span class="header-section-number">5.4</span> Algorithm Summaries</a></li>
   <li><a href="#sec-truncation" id="toc-sec-truncation" class="nav-link" data-scroll-target="#sec-truncation"><span class="header-section-number">5.5</span> Truncation Errors</a>
   <ul>
-  <li><a href="#truncation-error-in-finite-difference-formulae" id="toc-truncation-error-in-finite-difference-formulae" class="nav-link" data-scroll-target="#truncation-error-in-finite-difference-formulae"><span class="header-section-number">5.5.1</span> Truncation error in finite-difference formulae</a></li>
-  <li><a href="#truncation-error-in-numerical-integration" id="toc-truncation-error-in-numerical-integration" class="nav-link" data-scroll-target="#truncation-error-in-numerical-integration"><span class="header-section-number">5.5.2</span> Truncation error in numerical integration</a>
+  <li><a href="#truncation-error-in-finite-difference-formulae" id="toc-truncation-error-in-finite-difference-formulae" class="nav-link" data-scroll-target="#truncation-error-in-finite-difference-formulae"><span class="header-section-number">5.5.1</span> Truncation Error in Finite-Difference Formulae</a></li>
+  <li><a href="#truncation-error-in-numerical-integration" id="toc-truncation-error-in-numerical-integration" class="nav-link" data-scroll-target="#truncation-error-in-numerical-integration"><span class="header-section-number">5.5.2</span> Truncation Error in Numerical Integration</a>
   <ul class="collapse">
-  <li><a href="#right-riemann-sum" id="toc-right-riemann-sum" class="nav-link" data-scroll-target="#right-riemann-sum"><span class="header-section-number">5.5.2.1</span> Right Riemann sum</a></li>
-  <li><a href="#midpoint-riemann-sum" id="toc-midpoint-riemann-sum" class="nav-link" data-scroll-target="#midpoint-riemann-sum"><span class="header-section-number">5.5.2.2</span> Midpoint Riemann sum</a></li>
-  <li><a href="#trapezoidal-rule-2" id="toc-trapezoidal-rule-2" class="nav-link" data-scroll-target="#trapezoidal-rule-2"><span class="header-section-number">5.5.2.3</span> Trapezoidal rule</a></li>
-  <li><a href="#simpsons-rule-2" id="toc-simpsons-rule-2" class="nav-link" data-scroll-target="#simpsons-rule-2"><span class="header-section-number">5.5.2.4</span> Simpson’s rule</a></li>
+  <li><a href="#right-riemann-sum" id="toc-right-riemann-sum" class="nav-link" data-scroll-target="#right-riemann-sum"><span class="header-section-number">5.5.2.1</span> Right Riemann Sum</a></li>
+  <li><a href="#midpoint-riemann-sum" id="toc-midpoint-riemann-sum" class="nav-link" data-scroll-target="#midpoint-riemann-sum"><span class="header-section-number">5.5.2.2</span> Midpoint Riemann Sum</a></li>
+  <li><a href="#trapezoidal-rule-2" id="toc-trapezoidal-rule-2" class="nav-link" data-scroll-target="#trapezoidal-rule-2"><span class="header-section-number">5.5.2.3</span> Trapezoidal Rule</a></li>
+  <li><a href="#simpsons-rule-2" id="toc-simpsons-rule-2" class="nav-link" data-scroll-target="#simpsons-rule-2"><span class="header-section-number">5.5.2.4</span> Simpson’s Rule</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">5.6</span> Exam-style question</a></li>
+  <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">5.6</span> Exam-Style Question</a></li>
   <li><a href="#problems" id="toc-problems" class="nav-link" data-scroll-target="#problems"><span class="header-section-number">5.7</span> Problems</a></li>
   <li><a href="#projects" id="toc-projects" class="nav-link" data-scroll-target="#projects"><span class="header-section-number">5.8</span> Projects</a>
   <ul>
@@ -558,7 +558,7 @@ f'(x) = \frac{f(x+h) - f(x)}{h} + \mathcal{O}(h).
 f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 \]</span> We want to see how the error in the approximation behaves as <span class="math inline">\(h\)</span> is made smaller and smaller. The table below shows the approximation and the absolute error for <span class="math inline">\(h = 2^{-1}\)</span> and <span class="math inline">\(h = 2^{-2}\)</span>. It also shows the error reduction factor, which is the ratio of two successive absolute errors. Extend the table to include <span class="math inline">\(h = 2^{-3}\)</span> up to <span class="math inline">\(h = 2^{-10}\)</span>. Start with the code given below but use a loop to create the 10 rows.</p></li>
 </ol>
-<div id="5081bd30" class="cell" data-execution_count="1">
+<div id="d1c57e17" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup function and exact derivative</span></span>
@@ -596,7 +596,7 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 <ol start="4" type="a">
 <li>Use the following function to plot the absolute error as a function of <span class="math inline">\(h\)</span>.</li>
 </ol>
-<div id="4ba1208f" class="cell" data-execution_count="2">
+<div id="781a75c6" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_forward_difference_errors(f, x, exact, H):</span>
@@ -629,7 +629,7 @@ f'(1) \approx \frac{f(1+h) - f(1)}{h}=:\Delta f(1).
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(plt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here is an example of how to use the function:</p>
-<div id="9807697b" class="cell" data-execution_count="3">
+<div id="3b3876a5" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup function and exact derivative</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x) <span class="op">*</span> (<span class="dv">1</span> <span class="op">-</span> x)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
@@ -851,7 +851,7 @@ f'(1) \approx \frac{f(1+h) - f(1-h)}{2h}=:\delta f(1).
 <ol type="a">
 <li>We want to see how the error in the approximation behaves as <span class="math inline">\(h\)</span> is made smaller and smaller. Adapt your code from <a href="#exr-3.13" class="quarto-xref">Exercise&nbsp;<span>5.11</span></a> to extend the table to include <span class="math inline">\(h = 2^{-3}\)</span> up to <span class="math inline">\(h = 2^{-10}\)</span>.</li>
 </ol>
-<div id="a8dae045" class="cell" data-execution_count="4">
+<div id="861ca790" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>h                    | δf(1)              | |f'(1) - δf(1)|    | Error reduction factor
 ----------------------------------------------------------------------------------
@@ -883,7 +883,7 @@ f'(x) = \frac{f(x+h) - f(x-h)}{2h} + \mathcal{O}(h^2).
 <li><p>Which curve in the plot matches with which method. How do you know?</p></li>
 <li><p>Recreate the plot with a function of your choosing.</p></li>
 </ol>
-<div id="cell-fig-3.3" class="cell" data-execution_count="5">
+<div id="cell-fig-3.3" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -981,18 +981,17 @@ f''(x) = \frac{?? - 2 \cdot ?? + ??}{h^2} + \underline{\hspace{1in}}.
 </div>
 <hr>
 <div id="exr-3.29" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.25</strong></span> 💻 💬 Test your second derivative code on the function <span class="math inline">\(f(x) = \sin(x) (1-x)\)</span> by doing the following.</p>
+<p><span class="theorem-title"><strong>Exercise 5.24</strong></span> 💻 💬 Test your second derivative code on the function <span class="math inline">\(f(x) = \sin(x) (1-x)\)</span> to calculate the second derivative at <span class="math inline">\(x=1\)</span> and comparing it to the exact answer you determined in <a href="#exr-3.27" class="quarto-xref">Exercise&nbsp;<span>5.22</span></a>.</p>
+</div>
+<hr>
 <div id="exr-max_err_plot_second" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 5.24</strong></span> 💻 🎓 You have seen in the previous exercise how the error is different at different <span class="math inline">\(x\)</span>. It might be interesting to look at the largest error over the entire interval for different step sizes.</p>
+<p><span class="theorem-title"><strong>Exercise 5.25</strong></span> 💻 🎓 You have seen in the previous exercise how the error is different at different <span class="math inline">\(x\)</span>. It might be interesting to look at the largest error over the entire interval for different step sizes.</p>
 <ol type="1">
 <li><p>Find the numerical second derivative with your <code>SecondDiff</code> function on the interval [0,15] with a stepsize of <span class="math inline">\(h = 0.1\)</span>.</p></li>
 <li><p>Find the absolute difference between your numerical second derivative and the actual second derivative. This is point-by-point subtraction so you should end up with a vector containing the errors at each interior point. Again be careful to take into account that the numerical second derivative is not available at the endpoints.</p></li>
 <li><p>🎓 Find the maximum of your errors.</p></li>
 <li><p>Now we want to see how this maximum error changes as we change the number of points used. Build a function <code>plot_max_second_difference_errors</code> that produces a log-log plot showing the value of <span class="math inline">\(h\)</span> on the horizontal axis and the maximum error on the vertical axis. You can simply adapt the code from you <code>plot_max_forward_difference_errors</code> function. You should find that the maximum errors again line up approximately on a straight line.</p></li>
-</ol>
-</div>
-<ol start="5" type="1">
-<li>💬 Discuss what you see? How do you see the fact that the numerical second derivative is second order accurate?</li>
+<li><p>💬 Discuss what you see? How do you see the fact that the numerical second derivative is second order accurate?</p></li>
 </ol>
 </div>
 <hr>
@@ -1118,7 +1117,7 @@ I \approx \sum_{j=0}^{N-1} f(x_j) \Delta x =: A_{\text{left}}(\Delta x).
 \Delta x = 3^{-1}, \, 3^{-2}, \, 3^{-3}, \, \ldots
 \]</span></p></li>
 </ol>
-<div id="b181bb7a" class="cell" data-execution_count="7">
+<div id="92fbc113" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup function and exact integral</span></span>
@@ -1167,7 +1166,7 @@ I \approx \sum_{j=0}^{N-1} f(x_j) \Delta x =: A_{\text{left}}(\Delta x).
 <div id="exr-3.34" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 5.31</strong></span> 💻 💬 🎓 This exercise continues examining the absolute integration errors from the previous problem, this time with a plot.</p>
 <p>Use the following function to plot the absolute error as a function of <span class="math inline">\(\Delta x\)</span>.</p>
-<div id="9e639c68" class="cell" data-execution_count="8">
+<div id="550836b2" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1211,7 +1210,7 @@ I \approx \sum_{j=0}^{N-1} f(x_j) \Delta x =: A_{\text{left}}(\Delta x).
 <span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> plt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here is an example of how to use the function:</p>
-<div id="f5e7ba3e" class="cell" data-execution_count="9">
+<div id="c1ae0949" class="cell" data-execution_count="10">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup function and exact integral again</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: np.sin(x)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>exact <span class="op">=</span> <span class="op">-</span>np.cos(<span class="dv">1</span>) <span class="op">+</span> np.cos(<span class="dv">0</span>)</span>
@@ -1272,7 +1271,7 @@ A_j = \frac{1}{2} \left[ f(???) + f(???) \right]\left(??? - ??? \right).
 \]</span> Then the approximation of the integral is <span class="math display">\[
 \int_a^b f(x) dx \approx \sum_{???}^{???} A_j = A.
 \]</span> This simplifies to <span class="math display">\[
-\int_a^b f(x) dx \approx \frac{1}{2} \left[ f(x_0) + f(x_N) \right] + \sum_{???}^{???} f(???).
+\int_a^b f(x) dx \approx \frac{h}{2} \left[ f(x_0) + f(x_N) + 2\sum_{???}^{???} f(???)\right].
 \]</span></p>
 </div>
 <hr>
@@ -1321,7 +1320,7 @@ A_1 = \frac{b-a}{6}, \quad A_2 = \frac{4(b-a)}{6}, \quad \text{and} \quad A_3 = 
 <li><p>the trapezoidal rule uses linear functions, and</p></li>
 <li><p>now we have a method for approximating with parabolas.</p></li>
 </ul>
-<div id="cell-fig-simpson-1" class="cell" data-execution_count="11">
+<div id="cell-fig-simpson-1" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div id="fig-simpson-1" class="quarto-float quarto-figure quarto-figure-left anchored" alt="Simpson's rule approximation with a single parabola.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1336,7 +1335,7 @@ Figure&nbsp;5.8: Simpson’s rule approximation with a single parabola.
 </div>
 </div>
 <p>To improve upon this idea we now examine the problem of partitioning the interval <span class="math inline">\([a,b]\)</span> into small pieces and running this process on each piece. This is called Simpson’s Rule for integration.</p>
-<div id="cell-fig-simpson-3" class="cell" data-execution_count="12">
+<div id="cell-fig-simpson-3" class="cell" data-execution_count="13">
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div id="fig-simpson-3" class="quarto-float quarto-figure quarto-figure-left anchored" alt="Simpson's rule approximation with three parabolas.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1357,7 +1356,7 @@ A_j = \frac{??? - ???}{???} \left[ f(???) + ??? f(???)+f(???) \right].
 \]</span> Then the approximation of the integral is <span class="math display">\[
 \int_a^b f(x) dx \approx \sum_{???}^{???} A_j.
 \]</span> This can be simplified to <span class="math display">\[
-\int_a^b f(x) dx \approx \frac{1}{2} \left[ f(x_0) + f(x_N) \right] + \sum_{???}^{???} f(???).
+\int_a^b f(x) dx \approx \frac{h}{6} \left[ f(x_0) + f(x_N) + 2\sum_{???}^{???} f(x_j)+4\sum_{???}^{???} f(???)\right].
 \]</span></p>
 </div>
 <hr>
@@ -1425,7 +1424,7 @@ f(x)=f(x_0)&amp;+f'(x_0)(x-x_0)+\frac{f''(x_0)}{2!}(x-x_0)^2+\cdots\\
 |R_p(x)|=\left|\frac{f^{(p)}(\xi)}{p!}(x-x_0)^{p}\right|.
 \]</span> We had first discussed this in <a href="nmFunctions.html" class="quarto-xref"><span>Chapter 2</span></a>.</p>
 <section id="truncation-error-in-finite-difference-formulae" class="level3" data-number="5.5.1">
-<h3 data-number="5.5.1" class="anchored" data-anchor-id="truncation-error-in-finite-difference-formulae"><span class="header-section-number">5.5.1</span> Truncation error in finite-difference formulae</h3>
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="truncation-error-in-finite-difference-formulae"><span class="header-section-number">5.5.1</span> Truncation Error in Finite-Difference Formulae</h3>
 <p>In the finite-difference formulae for derivatives that we discussed in <a href="#sec-differentiation" class="quarto-xref"><span>Section 5.2</span></a>, we approximated the derivative of a function <span class="math inline">\(f\)</span> at a point <span class="math inline">\(x\)</span> by a linear combination of function values at points close to <span class="math inline">\(x\)</span>. For example, the forward difference formula for the first derivative is <span class="math display">\[
 \begin{split}
 f'(x)&amp;\approx \frac{f(x+h)-f(x)}{h}\\
@@ -1436,12 +1435,12 @@ f'(x)&amp;\approx \frac{f(x+h)-f(x)}{h}\\
 <p>You can now do a similar analysis for the other finite-difference formulae that we discussed in <a href="#sec-differentiation" class="quarto-xref"><span>Section 5.2</span></a>.</p>
 </section>
 <section id="truncation-error-in-numerical-integration" class="level3" data-number="5.5.2">
-<h3 data-number="5.5.2" class="anchored" data-anchor-id="truncation-error-in-numerical-integration"><span class="header-section-number">5.5.2</span> Truncation error in numerical integration</h3>
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="truncation-error-in-numerical-integration"><span class="header-section-number">5.5.2</span> Truncation Error in Numerical Integration</h3>
 <p>In numerical integration we approximate the integral of a function <span class="math inline">\(f\)</span> over an interval <span class="math inline">\([a,b]\)</span> by splitting the interval into many subintervals. So we introduce a grid of points <span class="math inline">\(x_j=x_0+jh\)</span> for <span class="math inline">\(j=0,\ldots,N\)</span> with <span class="math inline">\(x_0=a\)</span> and <span class="math inline">\(x_N=b\)</span> and <span class="math inline">\(h=(b-a)/N\)</span> and write the integral as a sum <span class="math display">\[
 \int_a^b f(x)dx=\sum_{j=1}^{N}\int_{x_{j-1}}^{x_{j}}f(x)dx.
 \]</span></p>
 <section id="right-riemann-sum" class="level4" data-number="5.5.2.1">
-<h4 data-number="5.5.2.1" class="anchored" data-anchor-id="right-riemann-sum"><span class="header-section-number">5.5.2.1</span> Right Riemann sum</h4>
+<h4 data-number="5.5.2.1" class="anchored" data-anchor-id="right-riemann-sum"><span class="header-section-number">5.5.2.1</span> Right Riemann Sum</h4>
 <p>For the right Riemann sum we have <span class="math display">\[
 I_j=\int_{x_{j-1}}^{x_{j}}f(x)dx\approx \int_{x_{j-1}}^{x_{j}}f(x_j)dx=f(x_j)h=A_j.
 \]</span> The <strong>local truncation error</strong> is defined as the absolute error made in each subinterval, divided by the width of the subinterval: <span class="math display">\[
@@ -1466,7 +1465,7 @@ I_j-A_j&amp;=\int_{x_{j-1}}^{x_{j}}\left(f(x)-f(x_j)\right)dx\\
 \]</span></p>
 </section>
 <section id="midpoint-riemann-sum" class="level4" data-number="5.5.2.2">
-<h4 data-number="5.5.2.2" class="anchored" data-anchor-id="midpoint-riemann-sum"><span class="header-section-number">5.5.2.2</span> Midpoint Riemann sum</h4>
+<h4 data-number="5.5.2.2" class="anchored" data-anchor-id="midpoint-riemann-sum"><span class="header-section-number">5.5.2.2</span> Midpoint Riemann Sum</h4>
 <p>For the midpoint Riemann sum we approximate the function on each subinterval by the value of the function at the midpoint <span class="math inline">\(m_j=(x_{j-1}+x_j)/2\)</span>. So we have <span class="math display">\[
 I_j=\int_{x_{j-1}}^{x_{j}}f(x)dx\approx \int_{x_{j-1}}^{x_{j}}f(m_j)dx=f(m_j)h=A_j.
 \]</span> For the error we expand <span class="math inline">\(f(x)\)</span> in a Taylor series around the midpoint <span class="math inline">\(m_j\)</span>: <span class="math display">\[
@@ -1482,7 +1481,7 @@ I_j-A_j=\frac{1}{2}f''(\xi_j)\frac{h^3}{12}=f''(\xi_j)\frac{h^3}{24}.
 \]</span> We see that the local truncation error is of order <span class="math inline">\(h^2\)</span> and that the midpoint Riemann sum is a second-order approximation.</p>
 </section>
 <section id="trapezoidal-rule-2" class="level4" data-number="5.5.2.3">
-<h4 data-number="5.5.2.3" class="anchored" data-anchor-id="trapezoidal-rule-2"><span class="header-section-number">5.5.2.3</span> Trapezoidal rule</h4>
+<h4 data-number="5.5.2.3" class="anchored" data-anchor-id="trapezoidal-rule-2"><span class="header-section-number">5.5.2.3</span> Trapezoidal Rule</h4>
 <p>For the trapezoidal rule we approximate the integral on each subinterval by the area of a trapezoid: <span class="math display">\[
 A_j=\frac{h}{2}\left(f(x_{j-1})+f(x_j)\right).
 \]</span> To find the truncation error we expand <span class="math inline">\(f(x)\)</span> in a Taylor series around the midpoint <span class="math inline">\(m_j=(x_{j-1}+x_j)/2\)</span>. From our previous calculation for the midpoint Riemann sum, we know the exact value of the integral is given up to the second derivative term by: <span class="math display">\[
@@ -1505,7 +1504,7 @@ I_j-A_j=-\frac{1}{12}f''(\xi_j)h^3
 \]</span> We see that the local truncation error is of order <span class="math inline">\(h^2\)</span> and that the trapezoidal rule is a second-order approximation.</p>
 </section>
 <section id="simpsons-rule-2" class="level4" data-number="5.5.2.4">
-<h4 data-number="5.5.2.4" class="anchored" data-anchor-id="simpsons-rule-2"><span class="header-section-number">5.5.2.4</span> Simpson’s rule</h4>
+<h4 data-number="5.5.2.4" class="anchored" data-anchor-id="simpsons-rule-2"><span class="header-section-number">5.5.2.4</span> Simpson’s Rule</h4>
 <p>For Simpson’s rule we approximate the integral on each subinterval <span class="math inline">\([x_{j-1}, x_{j}]\)</span> of width <span class="math inline">\(h\)</span> using a parabola that passes through the endpoints and the midpoint <span class="math inline">\(m_j=(x_{j-1}+x_j)/2\)</span>: <span class="math display">\[
 A_j=\frac{h}{6}\left(f(x_{j-1})+4f(m_j)+f(x_j)\right).
 \]</span> To find the truncation error we expand <span class="math inline">\(f(x)\)</span> in a Taylor series around the midpoint <span class="math inline">\(m_j\)</span>. Because Simpson’s rule matches polynomials up to order 2 exactly, the lower-order error terms will cancel out, so we must expand up to the fourth derivative: <span class="math display">\[
@@ -1536,7 +1535,7 @@ I_j-A_j=-\frac{1}{2880}f^{(4)}(\xi_j)h^5
 </section>
 </section>
 <section id="exam-style-question" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">5.6</span> Exam-style question</h2>
+<h2 data-number="5.6" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">5.6</span> Exam-Style Question</h2>
 <ol type="a">
 <li><p>Write down the forward difference formula and the central difference formula for the first derivative of <span class="math inline">\(f(x)\)</span> using a step size <span class="math inline">\(h\)</span>. State the order of accuracy for each method. [3 marks]</p></li>
 <li><p>By using the Taylor series expansion for <span class="math inline">\(f(x+h)\)</span> and <span class="math inline">\(f(x-h)\)</span> around the point <span class="math inline">\(x\)</span>, derive the central difference formula and show that its truncation error is <span class="math inline">\(\mathcal{O}(h^2)\)</span>. [3 marks]</p></li>

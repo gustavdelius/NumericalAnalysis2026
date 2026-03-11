@@ -72,28 +72,6 @@ This is called a *brute force* search. This method is not very efficient. If eva
 
 The advantage of this brute force method is that it is guaranteed to find the global minimum in the interval. Other, more efficient methods can get stuck in local minima. 
 
-
-------------------------------------------------------------------------
-
-The intuition behind more efficient numerical optimisation schemes is typically to visualize the function as representing a landscape on which you are trying to walk or jump to the highest or lowest point. You however can only sense your immediate neighbourhood and need to use that information to make decisions about where to jump or walk to next.
-
-------------------------------------------------------------------------
-
-::: {#exr-3.49}
-💬 If you were blind folded and standing on a hillside, could you find the top of the hill? (assume no trees and no cliffs ...this is not supposed to be dangerous) How would you do it? Explain your technique clearly.
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-3.50}
- If you were blind folded and standing on a crater on the moon could you find the lowest point? How would you do it? Remember that you can hop as far as you like ... because gravity ... but sometimes that's not a great thing because you could hop too far.
-:::
-
-------------------------------------------------------------------------
-
-![Intuition behind numerical optimisation (Visualised by Gemini)](figures/Optimisation/intuition.png){#fig-6.intuition alt="Intuition behind numerical optimisation" height=9cm}
-
-
 ## Single Variable Optimisation {#sec-1D-optimisation}
 
 The preceding thought exercises have given you intuition about finding extrema in a two-dimensional landscape. But first we will reduce back to one-dimensional optimisation problems before generalising to multiple dimensions in the next section.
@@ -184,6 +162,33 @@ from @fig-opt-1 to see if it can find the local minimum near $x \approx 1.14$.
 
 ------------------------------------------------------------------------
 
+The reason the method is called the golden section search is that by a clever choice of the interior point at each step the size of the interval is reduced by the golden ratio. This is the ratio that satisfies the equation
+\begin{equation}
+\frac{\text{longer subinterval}}{\text{shorter subinterval}} = \frac{\text{whole interval}}{\text{longer subinterval}} = \phi \approx 1.618
+\end{equation}
+So the golden section search converges a little slower than bisection where the interval is reduced by $2$ at each step. 
+
+------------------------------------------------------------------------
+
+Besides the slow convergence, the main shortcoming of the goldens section search method is that it works only for functions of a single argument.
+
+The intuition behind more efficient numerical optimisation schemes is typically to visualize the function as representing a landscape on which you are trying to walk or jump to the highest or lowest point. You however can only sense your immediate neighbourhood and need to use that information to make decisions about where to jump or walk to next.
+
+------------------------------------------------------------------------
+
+::: {#exr-3.49}
+💬 If you were blind-folded and standing on a hillside, could you find the top of the hill? (assume no trees and no cliffs ...this is not supposed to be dangerous) How would you do it? Explain your technique clearly.
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-3.50}
+ If you were blind folded and standing on a crater on the moon could you find the lowest point? How would you do it? Remember that you can hop as far as you like ... because gravity ... but sometimes that's not a great thing because you could hop too far.
+:::
+
+------------------------------------------------------------------------
+
+![Intuition behind numerical optimisation (Visualised by Gemini)](figures/Optimisation/intuition.png){#fig-6.intuition alt="Intuition behind numerical optimisation" height=9cm}
 
 ### Gradient Descent
 

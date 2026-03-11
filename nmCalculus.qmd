@@ -765,7 +765,10 @@ $$
 ------------------------------------------------------------------------
 
 ::: {#exr-3.29}
-💻 💬 Test your second derivative code on the function $f(x) = \sin(x) (1-x)$ by doing the following.
+💻 💬 Test your second derivative code on the function $f(x) = \sin(x) (1-x)$ to calculate the second derivative at $x=1$ and comparing it to the exact answer you determined in @exr-3.27.
+:::
+
+------------------------------------------------------------------------
 
 ::: {#exr-max_err_plot_second}
 💻 🎓 You have seen in the previous exercise how the error is different at different $x$. It might be interesting to look at the largest error over the entire interval for different step sizes.
@@ -777,7 +780,6 @@ $$
 3. 🎓 Find the maximum of your errors. 
 
 4.  Now we want to see how this maximum error changes as we change the number of points used. Build a function `plot_max_second_difference_errors` that produces a log-log plot showing the value of $h$ on the horizontal axis and the maximum error on the vertical axis. You can simply adapt the code from you `plot_max_forward_difference_errors` function. You should find that the maximum errors again line up approximately on a straight line.
-:::
 
 5. 💬  Discuss what you see? How do you see the fact that the numerical second derivative is second order accurate?
 
@@ -1064,7 +1066,7 @@ $$
 $$
 This simplifies to 
 $$
-\int_a^b f(x) dx \approx \frac{1}{2} \left[ f(x_0) + f(x_N) \right] + \sum_{???}^{???} f(???).
+\int_a^b f(x) dx \approx \frac{h}{2} \left[ f(x_0) + f(x_N) + 2\sum_{???}^{???} f(???)\right].
 $$
 
 :::
@@ -1247,7 +1249,7 @@ $$
 $$
 This can be simplified to
 $$
-\int_a^b f(x) dx \approx \frac{1}{2} \left[ f(x_0) + f(x_N) \right] + \sum_{???}^{???} f(???).
+\int_a^b f(x) dx \approx \frac{h}{6} \left[ f(x_0) + f(x_N) + 2\sum_{???}^{???} f(x_j)+4\sum_{???}^{???} f(???)\right].
 $$
 
 :::

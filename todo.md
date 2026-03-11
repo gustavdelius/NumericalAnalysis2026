@@ -5,10 +5,11 @@
 - [ ] Add an exam-style question to each chapter.
 - [ ] Set all assessment quizzes to allow corrections with a 30% penalty.
 - [ ] Add a pen icon to exercises to be done with pen and paper and a keyboard icon to those requiring coding.
-- [ ] Use docstrings consistently throughout the example code
+- [ ] Use docstrings consistently throughout the example code.
 - [ ] Be consistent about whether to append errors to a list or put them into a numpy vector.
-- [ ] Follow standard Python style conventions
+- [ ] Follow standard Python style conventions, in particular in function names.
 - [ ] Harmonise the presentation of Taylor's theorem throughout the notes.
+- [ ] Consider moving the Optimisation chapter before the Calculus chapter.
 
 ## Possible new material
 - [ ] The module page says I will be teaching " interpolation of data points using polynomials and splines"
@@ -23,15 +24,14 @@
 
 ## Chapter 2 Functions
 
-## Chapter 3 Roots1
-
-## Chapter 4 Roots2
+## Chapters 3 and 4 Roots
+- [ ] Make code for Newton more similar to that for general fixed point iteration.
 
 ## Chapter 5 Calculus
 - [ ] Take out Exercise 5.13 about writing the inefficient version of ForwardDiff and go straight to the vectorised case.
 
 ## Chapter 6 Optimisation
-- [ ] Use golden ratio in golden section search
+- [ ] Use gradient descent for regression
 - [ ] Add exam question on least squares.
 
 ## Chapters 7 and 8 ODEs

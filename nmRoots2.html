@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -159,11 +159,11 @@ window.Quarto = {
 
 <meta property="og:title" content="4&nbsp; Roots 2 – Numerical Analysis">
 <meta property="og:description" content="">
-<meta property="og:image" content="figures/Algebra/newton.png">
+<meta property="og:image" content="figures/Roots/newton.png">
 <meta property="og:site_name" content="Numerical Analysis">
 <meta name="twitter:title" content="4&nbsp; Roots 2 – Numerical Analysis">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="figures/Algebra/newton.png">
+<meta name="twitter:image" content="figures/Roots/newton.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -252,25 +252,25 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nmODE1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ODEs 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">ODE 1</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nmODE2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">ODEs 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">ODE 2</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nmPDE1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PDEs 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">PDE 1</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./nmPDE2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">PDEs 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">PDE 2</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -304,6 +304,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="./nmAutoDiff.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">D</span>&nbsp; <span class="chapter-title">Automatic Differentiation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./nmPDE3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">E</span>&nbsp; <span class="chapter-title">PDE 3</span></span></a>
   </div>
 </li>
       </ul>
@@ -395,7 +401,7 @@ y = f(x_0) + f'(x_0) \left( x - x_0 \right).
 <div id="fig-2.8" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/Algebra/newton.png" class="img-fluid figure-img">
+<img src="figures/Roots/newton.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.8-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.1: Using successive tangent line approximations to find the root of a function
@@ -583,7 +589,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
 <div id="fig-2.9" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/Algebra/Newton02.png" class="img-fluid figure-img">
+<img src="figures/Roots/Newton02.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.9-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.2: An interesting Newton’s Method failure when <span class="math inline">\(f(x) = x^3 - 2x + 2\)</span>.
@@ -597,7 +603,7 @@ Figure&nbsp;4.2: An interesting Newton’s Method failure when <span class="math
 <div id="fig-2.11" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/Algebra/Newton04.png" class="img-fluid figure-img">
+<img src="figures/Roots/Newton04.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.3: Another surprising Newton’s Method failure when <span class="math inline">\(f(x) = x^3 - 5x\)</span>.
@@ -670,7 +676,7 @@ f'(x) = \frac{1}{3} x^{-2/3} = \frac{1}{3x^{2/3}}.
 <div id="fig-2.10" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/Algebra/Newton03.png" class="img-fluid figure-img">
+<img src="figures/Roots/Newton03.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.4: Another surprising Newton’s Method failure when <span class="math inline">\(f(x) = \sqrt[3]{x}\)</span>.
@@ -735,7 +741,7 @@ x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}.
 <div id="fig-secant" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-secant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/Algebra/secant.png" class="img-fluid figure-img">
+<img src="figures/Roots/secant.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-secant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.5: Using successive secant line approximations to find the root of a function
@@ -952,7 +958,7 @@ E_{n+1} \approx \lambda E_{n}^{\alpha},
 <div id="fig-2.12" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/Algebra/ErrorsExercise2.png" class="img-fluid figure-img">
+<img src="figures/Roots/ErrorsExercise2.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.12-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.6: Six Error Plots
@@ -1046,7 +1052,7 @@ Find the local extrema for the function <span class="math inline">\(f(x) = x^3(x
 <div id="fig-2.13" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-2.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/Algebra/ProjectBasin.png" class="img-fluid figure-img">
+<img src="figures/Roots/ProjectBasin.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-2.13-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4.7: A sample basin of attraction image for a cubic function.
@@ -1084,7 +1090,7 @@ Burden, Richard L., and J. Douglas Faires. 2010. <em>Numerical <span>Analysis</s
 <section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
 <hr>
 <ol>
-<li id="fn1"><p>Strictly speaking, neglecting air resistance is a poor assumption since a cannon ball moves fast enough that friction with the air plays a non-negligible role. However, the assumption of no air resistance greatly simplifies the maths and makes this version of the problem more tractable. The second version of the artillery problem in <span class="quarto-unresolved-ref">?sec-ode</span> will look at the effects of air resistance on the cannon ball.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Strictly speaking, neglecting air resistance is a poor assumption since a cannon ball moves fast enough that friction with the air plays a non-negligible role. However, the assumption of no air resistance greatly simplifies the maths and makes this version of the problem more tractable. The second version of the artillery problem in <a href="nmODE1.html" class="quarto-xref">Chapter&nbsp;<span>7</span></a> will look at the effects of air resistance on the cannon ball.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Hint: Symbolically work out the amount of time that it takes until the vertical position of the cannon ball reaches <span class="math inline">\(y_*\)</span>. Then substitute that time into the horizontal position, and set the horizontal position equation to <span class="math inline">\(x_*\)</span><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>

@@ -603,7 +603,7 @@ $$
 
 ------------------------------------------------------------------------
 
-## Exam-style question
+## Exam-Style Question
 
 (a) Consider the 2D heat equation $u_t = D(u_{xx} + u_{yy})$. Let $U_{i,j}^n$ denote the numerical approximation to $u(t_n, x_i, y_j)$. Using a forward difference for the time derivative and centred differences for the spatial derivatives, derive the explicit finite difference formula for $U_{i,j}^{n+1}$. Assume $\Delta x = \Delta y = h$. [3 marks]
 

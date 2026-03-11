@@ -563,7 +563,7 @@ Further reading: Section 2.4 of [@Burden_Faires].
 
 ------------------------------------------------------------------------
 
-## Exam-style question
+## Exam-Style Question
 
 (a) Briefly explain how the Secant method modifies Newton's method. Give one advantage and one disadvantage of the Secant method compared to Newton's method. [3 marks]
 

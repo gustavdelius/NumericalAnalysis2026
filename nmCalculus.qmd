@@ -1360,7 +1360,7 @@ $$
 $$
 We had first discussed this in @sec-functions.
 
-### Truncation error in finite-difference formulae
+### Truncation Error in Finite-Difference Formulae
 In the finite-difference formulae for derivatives that we discussed in @sec-differentiation, we approximated the derivative of a function $f$ at a point $x$ by a linear combination of function values at points close to $x$. For example, the forward difference formula for the first derivative is
 $$
 \begin{split}
@@ -1373,13 +1373,13 @@ for some $\xi$ between $x$ and $x+h$. We see that the truncation error is propor
 
 You can now do a similar analysis for the other finite-difference formulae that we discussed in @sec-differentiation.
 
-### Truncation error in numerical integration
+### Truncation Error in Numerical Integration
 In numerical integration we approximate the integral of a function $f$ over an interval $[a,b]$ by splitting the interval into many subintervals. So we introduce a grid of points $x_j=x_0+jh$ for $j=0,\ldots,N$ with $x_0=a$ and $x_N=b$ and $h=(b-a)/N$ and write the integral as a sum
 $$
 \int_a^b f(x)dx=\sum_{j=1}^{N}\int_{x_{j-1}}^{x_{j}}f(x)dx.
 $$
 
-#### Right Riemann sum
+#### Right Riemann Sum
 For the right Riemann sum we have
 $$
 I_j=\int_{x_{j-1}}^{x_{j}}f(x)dx\approx \int_{x_{j-1}}^{x_{j}}f(x_j)dx=f(x_j)h=A_j.
@@ -1412,7 +1412,7 @@ $$
 \end{split}
 $$
 
-#### Midpoint Riemann sum
+#### Midpoint Riemann Sum
 
 For the midpoint Riemann sum we approximate the function on each subinterval by the value of the function at the midpoint $m_j=(x_{j-1}+x_j)/2$. So we have
 $$
@@ -1436,7 +1436,7 @@ $$
 $$
 We see that the local truncation error is of order $h^2$ and that the midpoint Riemann sum is a second-order approximation. 
 
-#### Trapezoidal rule
+#### Trapezoidal Rule
 
 For the trapezoidal rule we approximate the integral on each subinterval by the area of a trapezoid:
 $$
@@ -1472,7 +1472,7 @@ $$
 We see that the local truncation error is of order $h^2$ and that the trapezoidal rule is a second-order approximation.
 
 
-#### Simpson's rule
+#### Simpson's Rule
 
 For Simpson's rule we approximate the integral on each subinterval $[x_{j-1}, x_{j}]$ of width $h$ using a parabola that passes through the endpoints and the midpoint $m_j=(x_{j-1}+x_j)/2$:
 $$
@@ -1520,7 +1520,7 @@ $$
 We see that the local truncation error is of order $h^4$ and that Simpson's rule is a fourth-order approximation.
 
 
-## Exam-style question
+## Exam-Style Question
 
 (a) Write down the forward difference formula and the central difference formula for the first derivative of $f(x)$ using a step size $h$. State the order of accuracy for each method. [3 marks]
 

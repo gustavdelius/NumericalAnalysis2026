@@ -270,7 +270,7 @@ Euler's method is a first order method for approximating the solution to the dif
 ## Higher-order equations and systems of equations
 
 ::: {#exr-5.17}
-#### Harmonic oscillator
+#### Harmonic Oscillator
 
 🖋 💻 If a mass is hanging from a spring then Newton's second law, $\sum F=ma$, gives us the differential equation $mx'' = F_{restoring} + F_{damping}$ where $x$ is the displacement of the mass from equilibrium, $m$ is the mass of the object hanging from the spring, $F_{restoring}$ is the force pulling the mass back to equilibrium, and $F_{damping}$ is the force due to friction or air resistance that slows the mass down.
 
@@ -792,7 +792,7 @@ d.  Try the same experiment using your `midpoint1d` function. Does the midpoint 
 
 ------------------------------------------------------------------------
 
-## Exam-style question
+## Exam-Style Question
 
 (a) Explain what is meant by *numerical instability* when solving an ordinary differential equation using an explicit finite-difference scheme. What happens to the numerical solution, and how can it be avoided? [3 marks]
 

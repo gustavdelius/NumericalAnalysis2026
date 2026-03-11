@@ -924,7 +924,7 @@ Implement this algorithm in Python. Use it to approximate the fixed point of the
 
 ------------------------------------------------------------------------
 
-## Exam-style question
+## Exam-Style Question
 
 (a) What are the conditions on a function $f$ that guarantees that the bisection method on an interval $[a,b]$ converges to a root of $f$? [2 marks]
 

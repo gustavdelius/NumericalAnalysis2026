@@ -421,7 +421,7 @@ Use the forward difference formula for the $u_x$ term and the centred difference
 
 ------------------------------------------------------------------------
 
-## Exam-style question
+## Exam-Style question
 
 (a) Consider the 1D heat equation $u_t = D u_{xx}$. Using a forward difference approximation for the time derivative and a centred difference approximation for the second spatial derivative, derive the explicit finite difference scheme for $U_i^{n+1}$. Use step sizes $\Delta t$ and $\Delta x$, and let $U_i^n \approx u(t_n, x_i)$. [3 marks]
 

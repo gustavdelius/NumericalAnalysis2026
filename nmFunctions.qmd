@@ -57,7 +57,7 @@ In the next several problems you will unpack the polynomial approximations of $f
 
 ------------------------------------------------------------------------
 
-### Approximating the exponential function
+### Approximating the Exponential Function
 
 ::: {#exr-1.26}
 🖋 What is Euler's number $e$? You have been using this number often in Calculus and Differential Equations. Do you know the decimal approximation for this number? Moreover, is there a way that we could approximate something like $\sqrt{e} = e^{0.5}$ or $e^{-1}$ without actually having access to the full decimal expansion?
@@ -557,7 +557,7 @@ $$
 :::
 
 
-## Exam-style question
+## Exam-Style Question
 
 You know the Taylor Series expansion for $f(x) = \sin(x)$ centred at $x_0 = 0$:
     $$\sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots.$$

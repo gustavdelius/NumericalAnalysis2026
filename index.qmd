@@ -252,7 +252,7 @@ Another well known reference that researchers often turn to for solutions to spe
 
 You may also want to look at textbooks for specific topics covered in this module, like for example [@Butcher] for methods for ordinary differential equations.
 
-## Your jobs {#sec-your_jobs}
+## Your Jobs {#sec-your_jobs}
 
 You have the following jobs as a student in this module:
 
@@ -312,7 +312,7 @@ not have permission to edit the original. Follow the instructions in the noteboo
 
 ------------------------------------------------------------------------
 
-### The use of AI {#sec-AI}
+### The Use of AI {#sec-AI}
 
 You will have gathered from the previous exercise that in this module you are not only allowed to use AI, **you are encouraged to use AI**. However you have probably already discovered that you get more out of an AI if you are already familiar with the basic concepts of a subject. You will need to be able to understand and check any answer an AI gives you. If there is something in an AI answer that is not totally clear or not obviously correct, always ask the AI to explain the details of its answer and ask follow-on questions until everything is crystal-clear.
 
@@ -321,7 +321,7 @@ During the 10 assessment quizzes you will not be allowed to use any AI. In parti
 
 ------------------------------------------------------------------------
 
-## About you
+## About You
 
 ::: {#exr-intro-3}
 💻 I am interested to learn more about you to help me make this module work well for you. It would be helpful if you would answer the questionnaire at https://forms.gle/YHHExaAnVzcLtBcU7. Of course you are free to share as much or as little as you like.

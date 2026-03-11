@@ -154,7 +154,7 @@ This will become clearer in sections @sec-forward-ad and @sec-reverse-ad.
 
 ------------------------------------------------------------------------
 
-## Forward mode AD {#sec-forward-ad}
+## Forward Mode AD {#sec-forward-ad}
 
 In forward mode automatic differentiation, we track both the values of variables and their derivatives with respect to the input variables. This allows us to build the derivatives as we compute the function value.
 
@@ -389,7 +389,7 @@ And to compute $\frac{\partial f}{\partial y}$, we initialize:
 
 ------------------------------------------------------------------------
 
-## Reverse mode AD {#sec-reverse-ad}
+## Reverse Mode AD {#sec-reverse-ad}
 
 Now let's explore **reverse mode** automatic differentiation, which is more efficient for functions with many inputs and few outputs. Reverse mode AD first computes the function value and then propagates derivatives backward from the output to the inputs.
 

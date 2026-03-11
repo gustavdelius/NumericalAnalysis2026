@@ -447,7 +447,7 @@ Can you see why this expression will work better for the given parameter values?
 
 These exercises will give much material for in-class discussion. The aim is to make you sensitive to the issue of loss of significant figures and the fact that expressions that are mathematically equal are not always computationally equal. 
 
-## Exam-style question
+## Exam-Style Question
 
 Consider a hypothetical "8-bit Mini-Float" system based on the IEEE 754 standard. The 8 bits are allocated as follows:
 

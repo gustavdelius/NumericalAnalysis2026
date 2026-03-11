@@ -108,7 +108,7 @@ The idea now is to choose a new point between the two outer points, compare the 
 
 ::: {#exr-3.51b}
 
-💻 Complete the following function to implement this idea. You need to think about how to choose the new point and then how to choose the new triplet. 
+💻 Complete the following function to implement this method. If you have done the previous exercise you will have a good idea of what to do and this is mostly a coding task. So it would be alright to delegate this to just the group members who enjoy coding the most.
 
 ``` python
 def golden_section(f, a, b, c, tol = 1e-12):

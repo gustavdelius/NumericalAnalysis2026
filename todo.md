@@ -10,6 +10,8 @@
 - [ ] Follow standard Python style conventions, in particular in function names.
 - [ ] Harmonise the presentation of Taylor's theorem throughout the notes.
 - [ ] Consider moving the Optimisation chapter before the Calculus chapter.
+- [ ] Add import of matplotlib to all code blocks that use `plt`
+- [ ] In all iterative methods, write the function to return a list of all iterates, not just the last one.
 
 ## Possible new material
 - [ ] The module page says I will be teaching " interpolation of data points using polynomials and splines"
@@ -26,6 +28,8 @@
 
 ## Chapters 3 and 4 Roots
 - [ ] Make code for Newton more similar to that for general fixed point iteration.
+- [ ] In @exr-newton_error_tracking provide a docstring for the `newton_with_error_tracking` function and include a `max_iter` argument.
+- [ ] In `plot_error_progression()` also print out slope and intercept. That then simplifies point 3 in @exr-3.54} in the Optimisation chapter.
 
 ## Chapter 5 Calculus
 - [ ] Take out Exercise 5.13 about writing the inefficient version of ForwardDiff and go straight to the vectorised case.

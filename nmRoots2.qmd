@@ -324,7 +324,7 @@ Up to this point we have done analysis work on the Bisection Method and Newton's
 
 ::: {#exr-2.50}
 💻 Write a function `secant_with_error_tracking()` that returns a list of absolute errors between the iterates and the exact solution.
-You can start with your code from `secant()` from @exr-2.49 and add the collection of the errors in a list as in the `bisection_with_error_tracking()` function that we wrote in @exm-2.1.
+You can start with your code from `secant()` from @exr-2.49 and add the collection of the errors in a list as in the `bisection_with_error_tracking()` function from @exm-2.1.
 Your new function should accept a Python function, the exact root, two starting points, and an optional error tolerance.
 
 Use this function to list the error progression for the secant method for finding the root of $f(x) = x^2 - 2$ with the starting points $x_0 = 1$ and $x_1 = 3$. Use a tolerance of $10^{-10}$. Use the `plot_error_progression()` function that we wrote in @exm-3.1b to plot the error progression.
@@ -464,7 +464,7 @@ g''(p)=\frac{f''(p)}{f'(p)}\neq 0 \qquad\text{if } f''(p)\neq 0.
 $$  {#eq-nonlin41}
 If $f''(p)=0$, then $g''(p)=0$ and the order of convergence is at least 3.
 
-### Secant Method
+### Secant Method {#sec-secant_golden}
 The situation with the secant method is more complicated (since it cannot be reduced to the fixed point iteration) and requires a separate treatment.
 The result is that the secant method has order of convergence $\alpha=\frac{1+\sqrt{5}}{2}\approx 1.618$. 
 

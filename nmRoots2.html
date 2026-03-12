@@ -341,7 +341,7 @@ window.Quarto = {
   <li><a href="#definition" id="toc-definition" class="nav-link" data-scroll-target="#definition"><span class="header-section-number">4.3.1</span> Definition</a></li>
   <li><a href="#fixed-point-iteration" id="toc-fixed-point-iteration" class="nav-link" data-scroll-target="#fixed-point-iteration"><span class="header-section-number">4.3.2</span> Fixed Point Iteration</a></li>
   <li><a href="#newtons-method" id="toc-newtons-method" class="nav-link" data-scroll-target="#newtons-method"><span class="header-section-number">4.3.3</span> Newton’s Method</a></li>
-  <li><a href="#secant-method" id="toc-secant-method" class="nav-link" data-scroll-target="#secant-method"><span class="header-section-number">4.3.4</span> Secant Method</a></li>
+  <li><a href="#sec-secant_golden" id="toc-sec-secant_golden" class="nav-link" data-scroll-target="#sec-secant_golden"><span class="header-section-number">4.3.4</span> Secant Method</a></li>
   </ul></li>
   <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">4.4</span> Exam-Style Question</a></li>
   <li><a href="#sec-nonlinear-problems" id="toc-sec-nonlinear-problems" class="nav-link" data-scroll-target="#sec-nonlinear-problems"><span class="header-section-number">4.5</span> Problems</a></li>
@@ -771,7 +771,7 @@ x_{n+1} = x_n - \frac{f(x_n)\left( x_n - x_{n-1} \right)}{f(x_n) - f(x_{n-1})}.
 <p>Up to this point we have done analysis work on the Bisection Method and Newton’s Method. We have found that the methods are first order and second order respectively. We end this chapter by doing the same for the Secant Method.</p>
 <hr>
 <div id="exr-2.50" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 4.21</strong></span> 💻 Write a function <code>secant_with_error_tracking()</code> that returns a list of absolute errors between the iterates and the exact solution. You can start with your code from <code>secant()</code> from <a href="#exr-2.49" class="quarto-xref">Exercise&nbsp;<span>4.20</span></a> and add the collection of the errors in a list as in the <code>bisection_with_error_tracking()</code> function that we wrote in <a href="nmRoots1.html#exm-2.1" class="quarto-xref">Example&nbsp;<span>3.1</span></a>. Your new function should accept a Python function, the exact root, two starting points, and an optional error tolerance.</p>
+<p><span class="theorem-title"><strong>Exercise 4.21</strong></span> 💻 Write a function <code>secant_with_error_tracking()</code> that returns a list of absolute errors between the iterates and the exact solution. You can start with your code from <code>secant()</code> from <a href="#exr-2.49" class="quarto-xref">Exercise&nbsp;<span>4.20</span></a> and add the collection of the errors in a list as in the <code>bisection_with_error_tracking()</code> function from <a href="nmRoots1.html#exm-2.1" class="quarto-xref">Example&nbsp;<span>3.1</span></a>. Your new function should accept a Python function, the exact root, two starting points, and an optional error tolerance.</p>
 <p>Use this function to list the error progression for the secant method for finding the root of <span class="math inline">\(f(x) = x^2 - 2\)</span> with the starting points <span class="math inline">\(x_0 = 1\)</span> and <span class="math inline">\(x_1 = 3\)</span>. Use a tolerance of <span class="math inline">\(10^{-10}\)</span>. Use the <code>plot_error_progression()</code> function that we wrote in <a href="nmRoots1.html#exm-3.1b" class="quarto-xref">Example&nbsp;<span>3.2</span></a> to plot the error progression.</p>
 </div>
 <hr>
@@ -860,8 +860,8 @@ g''(x)=\frac{f'(x)f''(x)+f(x)f'''(x)}{f'(x)^2} - \frac{f(x)f''(x)^2}{f'(x)^3}
 g''(p)=\frac{f''(p)}{f'(p)}\neq 0 \qquad\text{if } f''(p)\neq 0.
 \tag{4.11}\]</span></span> If <span class="math inline">\(f''(p)=0\)</span>, then <span class="math inline">\(g''(p)=0\)</span> and the order of convergence is at least 3.</p>
 </section>
-<section id="secant-method" class="level3" data-number="4.3.4">
-<h3 data-number="4.3.4" class="anchored" data-anchor-id="secant-method"><span class="header-section-number">4.3.4</span> Secant Method</h3>
+<section id="sec-secant_golden" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="sec-secant_golden"><span class="header-section-number">4.3.4</span> Secant Method</h3>
 <p>The situation with the secant method is more complicated (since it cannot be reduced to the fixed point iteration) and requires a separate treatment. The result is that the secant method has order of convergence <span class="math inline">\(\alpha=\frac{1+\sqrt{5}}{2}\approx 1.618\)</span>.</p>
 <p>Note that <span class="math inline">\(\alpha\)</span> is known as the <em>golden ratio</em>. If you are intrigued to see the golden ratio appear in this context, you can find a proof below. If you are happy to just accept the miracle, you can skip the proof.</p>
 <p>Suppose that a sequence <span class="math inline">\(\{x_{n}\}\)</span>, generated by the secant method <span id="eq-secant1"><span class="math display">\[

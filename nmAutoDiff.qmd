@@ -1,4 +1,4 @@
-# Automatic Differentiation
+# Automatic Differentiation {#sec-autodiff}
 
 In @sec-calculus, we explored numerical differentiation through finite difference methods. These methods approximate derivatives by evaluating the function at different points and calculating differences. While straightforward to implement, they suffer from two main limitations:
 

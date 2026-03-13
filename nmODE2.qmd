@@ -497,7 +497,7 @@ The test equation that is always used for this purpose of studying the stability
 $$
 x'=\lambda x.
 $$
-The exact solution to this equation is $x(t)=x_(0)_0e^{\lambda t}$. So for negative $\lambda$ the solution decays, and for positive $\lambda$ the solution grows. The stability of a numerical method can be tested by applying it to this equation and comparing the numerical solution to the exact solution.
+The exact solution to this equation is $x(t)=x_(0)e^{\lambda t}$. So if the real part of $\lambda$ is negative the solution decays, and if the real part of $\lambda$ is positive the solution grows. The stability of a numerical method can be tested by applying it to this equation and comparing the numerical solution to the exact solution.
 
 ------------------------------------------------------------------------
 
@@ -539,7 +539,7 @@ x_{n+1}=Q(h\lambda)x_n
 $$
 the stability condition is that 
 $$|Q(h\lambda)|<1.$$
-Values of $h\lambda =: z$ for which $|Q(z)|<1$ form the *Region of absolute stability** of the method. This is a region in the complex plane, because while the stepsize $h$ is of course always real, in applications the transient term may be oscillatory, corresponding to a complex $\lambda$.
+Values of $h\lambda =: z$ for which $|Q(z)|<1$ form the **Region of absolute stability** of the method. This is a region in the complex plane, because while the stepsize $h$ is of course always real, in applications the transient term may be oscillatory, corresponding to a complex $\lambda$.
 
 ------------------------------------------------------------------------
 

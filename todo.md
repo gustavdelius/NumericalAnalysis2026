@@ -40,6 +40,7 @@
 
 ## Chapters 7 and 8 ODEs
 - [ ] Print out Figures 6.1 and 6.2 and bring them to session
+- [ ] Ask students to also draw the backward Euler method
 - [ ] Be careful when creating the vector of times in cases where the interval
       length is not an exact multiple of dt. Probably best to first determine
       an integer number of intervals and then create the vector of times with

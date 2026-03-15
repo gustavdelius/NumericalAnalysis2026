@@ -80,7 +80,9 @@ import matplotlib.pyplot as plt
 # *********
 
 def ode_test(f, x0, t0, tmax, dt):
-    t = np.arange(t0, tmax+dt, dt) # set up the times
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
+    t = np.linspace(t0, tmax, N+1) # set up the times
     x = np.zeros(len(t)) # set up the x
     x[0] = x0 # initial condition
     for n in range(len(t)-1):
@@ -253,6 +255,7 @@ The order of the error in the RK4 method is $\mathcal{O}(\Delta t^4)$.
 ------------------------------------------------------------------------
 
 <!---
+
 ::: {#exr-5.38}
 🖋 Jackson wants to solve the differential equation $x' = f(t,x)$ on the domain $t \in [0,1]$ so that the maximum absolute error is less than $10^{-8}$.
 
@@ -274,6 +277,7 @@ d.  Discuss the implications of what you found in parts (a) - (c) of this proble
 :::
 
 ------------------------------------------------------------------------
+
 --->
 
 ::: {#exr-5.40}
@@ -291,7 +295,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def rk41d(f, x0, t0, tmax, dt):
-    t = np.arange(t0, tmax+dt, dt)
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
+    t = np.linspace(t0, tmax, N+1)
     x = np.zeros(len(t))
     x[0] = x0
     for n in range(len(t)-1):
@@ -429,13 +435,15 @@ x
 ------------------------------------------------------------------------
 
 ::: {#exr-5.50}
-💻 🎓 Complete the function `backwardEuler1d()` below. How do you define the function `G` inside the `for` loop and what starting value do you use for the `fsolve()` command?
+💻 🎓 Complete the function `backwardeuler_1d()` below. How do you define the function `G` inside the `for` loop and what starting value do you use for the `fsolve()` command?
 
 ``` python         
 import numpy as np
 from scipy import optimize
-def backwardEuler1d(f, x0, t0, tmax,dt):
-    t = np.arange(t0, tmax + dt, dt)
+def backwardEuler_1d(f, x0, t0, tmax,dt):
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
+    t = np.linspace(t0, tmax, N+1)
     x = np.zeros(len(t))
     x[0] = x0
     for n in range(len(t)-1):
@@ -445,7 +453,7 @@ def backwardEuler1d(f, x0, t0, tmax,dt):
     return t, x
 ```
 
-Test your `backwardEuler1d()` function on several differential equations where you know the solution.
+Test your `backwardEuler_1d()` function on several differential equations where you know the solution.
 
 :::
 
@@ -655,17 +663,6 @@ The term $e^{-100t}$ decays very rapidly. We refer to such a term in the solutio
 
 ## Problems
 
-::: {#exr-5.68}
-🖋 💻 Consider the differential equation $x'' + x' + x = 0$ with initial conditions $x(0) = 0$ and $x'(0)=1$.
-
-1.  Solve this differential equation by hand using any appropriate technique. Show your work.
-
-2.  Write code to demonstrate the first order convergence rate of Euler's method, the second order convergence rate of the Midpoint method, and the fourth order convergence rate of the Runge-Kutta 4 method. Take note that this is a second order differential equation so you will need to start by converting it to a system of differential equations. Then take care that you are comparing the correct term from the numerical solution to your analytic solution in part (1).
-
-:::
-
-------------------------------------------------------------------------
-
 ::: {#exr-5.69}
 🖋 💻 Test the Euler, Midpoint, and Runge Kutta methods on the differential equation 
 \begin{equation}
@@ -677,88 +674,6 @@ x' = \lambda \left( x - \cos(t) \right) - \sin(t) \quad \text{with} \quad x(0) =
 
 ------------------------------------------------------------------------
 
-::: {#exr-5.70}
-💻 💬 Two versions of Python code for one dimensional Euler's method are given below. Compare and contrast the two implementations. What are the advantages / disadvantages to one over the other? Once you have made your pro/con list, devise an experiment to see which of the methods will actually perform faster when solving a differential equation with a very small $\Delta t$. (You may want to look up how to time the execution of code in Python.)
-
-``` python         
-def euler(f,x0,t0,tmax,dt):
-    t = [t0]
-    x = [x0]
-    steps = int(np.floor((tmax-t0)/dt))
-    for n in range(steps):
-        t.append(t[n] + dt)
-        x.append(x[n] + dt*f(t[n],x[n]))
-    return t, x
-```
-
-``` python         
-def euler(f,x0,t0,tmax,dt):
-    t = np.arange(t0,tmax+dt,dt)
-    x = np.zeros(len(t))
-    x[0] = x0
-    for n in range(len(t)-1):
-        x[n+1] = x[n] + dt*f(t[n],x[n])
-    return t, x
-```
-
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-5.71}
-💬 We wish to solve the boundary valued problem $x'' + 4x = \sin(t)$ with initial condition $x(0)=1$ and boundary condition $x(1)=2$ on the domain $t \in (0,1)$. Notice that you do not have the initial position and initial velocity as you normally would with a second order differential equation. Devise a method for finding a numerical solution to this problem.
-
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-5.72}
-💻 Write code to numerically solve the boundary valued differential equation 
-\begin{equation}
-x'' = \cos(t) x' + \sin(t) x \quad \text{with} \quad x(0) = 0 \quad \text{and} \quad x(1) = 1.
-\end{equation}
-
-
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-5.73}
-💻 In this model there are two characters, Romeo and Juliet, whose affection is quantified on the scale from $-5$ to $5$ described below:
-
--   $-5$: Hysterical Hatred
-
--   $-2.5$: Disgust
-
--   $0$: Indifference
-
--   $2.5$: Sweet Affection
-
--   $5$: Ecstatic Love
-
-The characters struggle with frustrated love due to the lack of reciprocity of their feelings. Mathematically,
-
--   Romeo: "My feelings for Juliet decrease in proportion to her love for me."
-
--   Juliet: "My love for Romeo grows in proportion to his love for me."
-
--   Juliet's emotional swings lead to many sleepless nights, which consequently dampens her emotions.
-
-This give rise to 
-\begin{equation}
-\left\{ \begin{array}{ll} \frac{dx}{dt} &= -\alpha y \\ \frac{dy}{dt} &= \beta x - \gamma y^2 \end{array} \right.
-\end{equation}
- where $x(t)$ is Romeo's love for Juliet and $y(t)$ is Juliet's love for Romeo at time $t$.
-
-Your tasks:
-
-1.  First implement this 2D system with $x(0) = 2$, $y(0)=0$, $\alpha=0.2$, $\beta=0.8$, and $\gamma=0.1$ for $t \in [0,60]$. What is the fate of this pair's love under these assumptions?
-
-2.  Write code that approximates the parameter $\gamma$ that will result in Juliet having a feeling of indifference at $t=30$. Your code should not need human supervision: you should be able to tell it that you are looking for *indifference* at $t=30$ and turn it loose to find an approximation for $\gamma$. Assume throughout this problem that $\alpha=0.2$, $\beta=0.8$, $x(0)=2$, and $y(0)=0$. Write a description for how your code works in your homework document.
-
-:::
-
-------------------------------------------------------------------------
 
 ::: {#exr-5.74}
 🖋 💻 In this problem we will look at the orbit of a celestial body around the sun. The body could be a satellite, comet, planet, or any other object whose mass is negligible compared to the mass of the sun. We assume that the motion takes place in a two dimensional plane so we can describe the path of the orbit with two coordinates, $x$ and $y$ with the point $(0,0)$ being used as the reference point for the sun. According to Newton's law of universal gravitation the system of differential equations that describes the motion is 
@@ -840,28 +755,7 @@ Note: It may be easiest to build this code from scratch instead of using one of 
 
 ------------------------------------------------------------------------
 
-::: {#exr-5.76}
-💬 💻 (This problem is modified from [@Meerschaert])
 
-One of the favourite foods of the blue whale is krill. Blue whales are baleen whales and feed almost exclusively on krill. These tiny shrimp-like creatures are devoured in massive amounts to provide the principal food source for the huge whales. In the absence of predators, in uncrowded conditions, the krill population density grows at a rate of 25% per year. The presence of 500 tons/acre of krill increases the blue whale population growth rate by 2% per year, and the presence of 150,000 blue whales decreases krill growth rate by 10% per year. The population of blue whales decreases at a rate of 5% per year in the absence of krill.
-
-These assumptions yield a pair of differential equations (a Lotka-Volterra model) that describe the population of the blue whales ($B$) and the krill population density ($K$) over time given by 
-\begin{equation}
-\begin{aligned} \frac{dB}{dt} &= -0.05B + \left( \frac{0.02}{500} \right) BK \\ \frac{dK}{dt} &= 0.25K - \left( \frac{0.10}{150000} \right) BK. \end{aligned}
-\end{equation}
-
-
-1.  What are the units of $\frac{dB}{dt}$ and $\frac{dK}{dt}$?
-
-2.  Explain what each of the four terms on the right-hand sides of the differential equations mean in the context of the problem. Include a reason for why each term is positive or negative.
-
-3.  Find a numerical solution to the differential equation model using $B(0) = 75,000$ whales and $K(0) = 150$ tons per acre.
-
-4.  Whaling is a huge concern in the oceans world wide. Implement a *harvesting* term into the whale differential equation, defend your mathematical choices and provide a thorough exploration of any parameters that are introduced.
-
-:::
-
-------------------------------------------------------------------------
 
 ::: {#exr-5.77}
 💻 (This problem is modified from [@Spindler])

@@ -43,13 +43,15 @@ In this chapter we will examine some of the more common ways to create approxima
 
 In this chapter we will often think of the argument of the function described by the ODE as time, but of course the methods are agnostic to the interpretation of the independent variable.
 
+We will first concentrate on first-order differential equations of the form $x' = f(x)$. The geometric interpretation of this is that we are looking for a function $x(t)$ whose slope at every $x$ is known to us, given by $f(x)$.
+
 ## Euler's Method
 
 ::: {#exr-5.9}
 🖋 Consider the differential equation $x' = -0.5x$ with the initial condition $x(0) = 6$.
 
 a.  Since we know that $x(0) = 6$ and we know that $x'(0) = -0.5 x(0)$ we can approximate the value of $x$ at some future time step. Let us go 1 unit forward in time. That is, approximate $x(1)$ knowing that $x(0) = 6$ and $x'(0) = -3$.\
-    Hint: We know a value, a slope, and the size of the step that we would like to move in the $t$ direction. 
+    Hint: We know a value, a slope, and the size of the step that we would like to move in the $t$ direction.
 \begin{equation}
 x(1) \approx \underline{\hspace{1in}}
 \end{equation}
@@ -62,9 +64,9 @@ b. Use your answer from part (a) for time $t=1$ to approximate the $x$ value at 
 | Approximation of $x(t)$ | 6     |       |       |       |       |
 | Exact value of $x(t)$   | 6     |       |       |       |       |
 
-c.  The "approximations of $x$" that you found in part (b) are a **numerical approximation** of the solution to the differential equation. You should notice that your numerical solution is pretty far off from the actual solution for most values of $t$. Why? What could be the sources of this error and how could we fix it? Once you have an idea of how to fix it, put your idea into action and devise some measurement of error to analyse your results.
+c.  The "approximations of $x$" that you found in part (b) are a **numerical approximation** of the solution to the differential equation. You should notice that your numerical solution is pretty far off from the actual solution for most values of $t$. Why? What could be the sources of this error and how could we fix it?
 
-d.  In @fig-5.1 you will see a slope field and the exact solution to the differential equation $x' = -0.5x$ with $x(0) = 6$. Mark your approximate solutions at times $t=1$, $t=2$, $\ldots$, $t=4$ on the plot and connect them with straight lines.
+d.  In @fig-5.1 you see a slope field and the exact solution to the differential equation $x' = -0.5x$ with $x(0) = 6$. Mark your approximate solutions at times $t=1$, $t=2$, $\ldots$, $t=4$ on the plot and connect them with straight lines.
 
     1.  Why are we using straight lines to connect the points?
 
@@ -105,15 +107,15 @@ The challenging part is making the approximation to the derivative(s). There are
 
 ::: {#def-5.4}
 #### Euler's Method
-Euler's Method is a technique for approximating the solution to the differential equation $x'(t) = f(t,x(t))$. Recall from @exr-3.11 that the first derivative of a function can be discretized as 
+Euler's Method is a technique for approximating the solution to the differential equation $x'(t) = f(t,x(t))$. Recall from @exr-3.11 that the first derivative of a function can be discretized as
 \begin{equation}
 x'(t) = \frac{x(t+h) - x(t)}{h} + \mathcal{O}(h)
 \end{equation}
- where $h = \Delta t$ is the step size (or the size of each partition in the domain), so the differential equation $x'(t) = f(t,x(t))$ becomes 
+ where $h = \Delta t$ is the step size (or the size of each partition in the domain), so the differential equation $x'(t) = f(t,x(t))$ becomes
 \begin{equation}
 \frac{x(t+h) - x(t)}{h} \approx f(t,x(t)).
 \end{equation}
- Rewriting as a difference equation, letting $x_{n+1} = x(t_n+h)$ and $x_n = x(t_n)$, we get 
+ Rewriting as a difference equation, letting $x_{n+1} = x(t_n+h)$ and $x_n = x(t_n)$, we get
 \begin{equation}
 x_{n+1} = x_n + h f(t_n,x_n)
 \end{equation}
@@ -147,14 +149,14 @@ A way to think about Euler's method is that at a given point, the slope is appro
 ::: {#exr-5.12}
 💻 🎓 Write code to implement Euler's method for initial value problems. Your function should accept as input a Python function $f(t,x)$, an initial condition, a start time, an end time, and the value of $h = \Delta t$. The output should be vectors for $t$ and $x$ that you can easily plot to show the numerical solution. The code below will get you started.
 
-``` python         
-def euler1d(f, x0, t0, tmax, dt):
+``` python
+def euler_1d(f, x0, t0, tmax, dt):
     """
     Solves a first-order ordinary differential equation using the Euler method.
 
     Parameters:
-        f    : function, the function defining the differential equation. It should 
-               take two arguments, the independent variable t and the dependent 
+        f    : function, the function defining the differential equation. It should
+               take two arguments, the independent variable t and the dependent
                variable x, and return the derivative of x with respect to t.
         x0   : float, the initial value of the dependent variable.
         t0   : float, the initial value of the independent variable.
@@ -166,12 +168,19 @@ def euler1d(f, x0, t0, tmax, dt):
             - t : vector of time values.
             - x : vector of solution values at each time value.
     """
-    # set up the grid with points from t0 to tmax with stepsize dt
-    t = np.arange(???, ???, ???)
+    # We need an integer number of steps so we round the number of steps
+    # and then adjust dt to match.
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
+
+    # Set up the time grid
+    t = np.linspace(t0, tmax, N+1)
     # set up an array for x that is the same size as t
     x = np.zeros(len(t))
+
     # fill in the initial condition
     x[0] = ???
+
     for n in range(???): # think about how far we should loop
         # advance the solution forward in time with Euler
         x[n+1] = ???
@@ -183,11 +192,11 @@ def euler1d(f, x0, t0, tmax, dt):
 ------------------------------------------------------------------------
 
 ::: {#exr-5.13}
-💻 Test your code from the previous exercise on a first order differential equation where you know an analytic solution. For example you could use the differential equation 
+💻 Test your code from the previous exercise on a first order differential equation where you know an analytic solution. For example you could use the differential equation
 \begin{equation}
 x' = -\frac{1}{3}x+\sin(t) \quad \text{where} \quad x(0) = 1.
 \end{equation}
-This has the analytic solution 
+This has the analytic solution
 \begin{equation}
 x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 \end{equation}
@@ -195,7 +204,7 @@ Make a plot of the approximate solution and the exact solution on the same plot
 for $t\in[0,10]$
 The partial code below should get you started.
 
-``` python         
+``` python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -205,7 +214,7 @@ x0 = ???   # initial condition
 t0 = ???   # initial time
 tmax = ??? # final time
 dt = ???   # time step (your choice, but make it small)
-t, x = euler1d(f, x0, t0, tmax, dt)
+t, x = euler_1d(f, x0, t0, tmax, dt)
 plt.plot(t, x, 'b-', label='Euler')
 
 # Define a function giving the analytic solution
@@ -236,7 +245,7 @@ errors = np.zeros_like(dt)
 # Loop over the different step sizes to calculate the errors
 for i in range(len(dt)):
     # Approximate the solution with Euler's method
-    t, x = euler1d(f, x0, t0, tmax, dt[i])
+    t, x = euler_1d(f, x0, t0, tmax, dt[i])
     errors[i] = ??? # Calculate maximum absolute error
 
 # Plot the errors with logarithmic axes
@@ -290,50 +299,50 @@ Euler's method is a first order method for approximating the solution to the dif
 
     c.  $F_{damping} = bx''$: The damping force is proportional to the acceleration of the mass.
 
-3.  Put your answers to parts (1) and (2) together and simplify to form a second-order differential equation for position: 
+3.  Put your answers to parts (1) and (2) together and simplify to form a second-order differential equation for position:
 \begin{equation}
  \underline{\hspace{0.25in}} x'' = \underline{\hspace{0.25in}} x' + \underline{\hspace{0.25in}} x
 \end{equation}
 
 
-4. 🎓 If we want to solve a second order differential equation numerically we need to convert it to first order differential equations (Euler's method is only designed to deal with first order differential equations, not second order). To do so we can introduce a new variable, $x_1$, such that $x_1 = x'$. For the sake of notational consistency we define $x_0 = x$. The result is a system of first-order differential equations. 
+4. 🎓 If we want to solve a second order differential equation numerically we need to convert it to first order differential equations (Euler's method is only designed to deal with first order differential equations, not second order). To do so we can introduce a new variable, $x_1$, such that $x_1 = x'$. For the sake of notational consistency we define $x_0 = x$. The result is a system of first-order differential equations.
 \begin{equation}
 \begin{aligned} x_0' &= x_1 \\ x_1' &= \underline{\hspace{2in}}\end{aligned}
 \end{equation}
 
 
-5.  The code and Euler's method algorithm that we have created thus far in this chapter are only designed to work with a single differential equation instead of a system, so we need to make some modifications. We can discretize the system of differential equations using Euler's method so that 
+5.  The code and Euler's method algorithm that we have created thus far in this chapter are only designed to work with a single differential equation instead of a system, so we need to make some modifications. We can discretize the system of differential equations using Euler's method so that
 \begin{equation}
- \boldsymbol{x}' = F(t,\boldsymbol{x}) 
+ \boldsymbol{x}' = F(t,\boldsymbol{x})
 \end{equation}
- where $F$ is a function that accepts a vector of inputs, plus time, and returns a vector of outputs. In the context of this particular problem, 
+ where $F$ is a function that accepts a vector of inputs, plus time, and returns a vector of outputs. In the context of this particular problem,
 \begin{equation}
- F(t,\boldsymbol{x}) = \begin{pmatrix} x_0' \\ x_1' \end{pmatrix} = \begin{pmatrix} x_1 \\ \underline{\hspace{1in}} \end{pmatrix} 
+ F(t,\boldsymbol{x}) = \begin{pmatrix} x_0' \\ x_1' \end{pmatrix} = \begin{pmatrix} x_1 \\ \underline{\hspace{1in}} \end{pmatrix}
 \end{equation}
 
 
-6.  We now need to discretize the derivatives in the system. As with 1D Euler's method, we will use a first-order approximation of the first derivative so that 
+6.  We now need to discretize the derivatives in the system. As with 1D Euler's method, we will use a first-order approximation of the first derivative so that
 \begin{equation}
- \frac{\boldsymbol{x}_{n+1} - \boldsymbol{x}_n }{h} = F(t_n,\boldsymbol{x}_n) + \mathcal{O}(h). 
+ \frac{\boldsymbol{x}_{n+1} - \boldsymbol{x}_n }{h} = F(t_n,\boldsymbol{x}_n) + \mathcal{O}(h).
 \end{equation}
- Rearranging and solving for $\boldsymbol{x}_{n+1}$ gives 
+ Rearranging and solving for $\boldsymbol{x}_{n+1}$ gives
 \begin{equation}
- \boldsymbol{x}_{n+1} = \underline{\hspace{0.5in}} + h F( \underline{\hspace{0.25in}} , \underline{\hspace{0.25in}}). 
+ \boldsymbol{x}_{n+1} = \underline{\hspace{0.5in}} + h F( \underline{\hspace{0.25in}} , \underline{\hspace{0.25in}}).
 \end{equation}
 
 
 8.  The following Python function will implement Euler's method. Complete the code.
 
-``` python         
+``` python
 def euler(F, x0, t0, tmax, dt):
     """
-    Solves a system of first-order ordinary differential equations 
+    Solves a system of first-order ordinary differential equations
     using the Euler method.
 
     Parameters:
-        F : function, the function defining the system of differential equations. 
-            It should take two arguments, the independent variable t and the 
-            dependent variable x (as a 1D numpy array), and return the 
+        F : function, the function defining the system of differential equations.
+            It should take two arguments, the independent variable t and the
+            dependent variable x (as a 1D numpy array), and return the
             derivative of x with respect to t (as a 1D numpy array).
         x0 : numpy vector, the initial values of the dependent variables.
         t0 : float, the initial value of the independent variable.
@@ -343,16 +352,20 @@ def euler(F, x0, t0, tmax, dt):
     Returns:
         tuple containing two numpy arrays:
             - t : vector of time values.
-            - x : array of solutions at each time value. Each column of x 
+            - x : array of solutions at each time value. Each column of x
                   corresponds to a different dependent variable.
     """
-    # set up the grid with points from t0 to tmax with stepsize dt
+    # We need an integer number of steps so we round the number of steps
+    # and then adjust dt to match.
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
+    # Set up the time grid
     t = ???
-    # set up array x with one row for each dependent variable and one column
+    # set up an array for x with one row for each dependent variable and one column
     # for each grid point
-    x = np.zeros((len(t), len(x0))) 
+    x = np.zeros((len(t), len(x0)))
     # store the initial condition in the first row of x
-    x[0, :] = x0 
+    x[0, :] = x0
     # loop over the different time steps
     for n in range(???):
         x[n+1, :] = x[???, ???] + dt * F(t[???], x[???, ???])
@@ -385,7 +398,7 @@ plt.ylabel('position and velocity')
 plt.show()
 ```
 
-10. Complete the following code to make a second plot, called a phase plot, that shows position versus velocity. In a phase plot, time is implicit (not one of the axes). 
+10. Complete the following code to make a second plot, called a phase plot, that shows position versus velocity. In a phase plot, time is implicit (not one of the axes).
 
 ``` python
 plt.plot(x[???, ???], x[???, ???])
@@ -402,7 +415,7 @@ plt.show()
 
 ::: {#exr-5.21}
 #### A Lotka-Volterra Predator-Prey Model
-🖋 💻 Let $x_0(t)$ denote the number of rabbits (prey) and $x_1(t)$ denote the number of foxes (predator) at time $t$. The relationship between the species can be modelled by the classic 1920's Lotka-Volterra Model: 
+🖋 💻 Let $x_0(t)$ denote the number of rabbits (prey) and $x_1(t)$ denote the number of foxes (predator) at time $t$. The relationship between the species can be modelled by the classic 1920's Lotka-Volterra Model:
 \begin{equation}
 \left\{ \begin{array}{ll} x_0' &= \alpha x_0 - \beta x_0 x_1 \\ x_1' &= \delta x_0 x_1 - \gamma x_1 \end{array} \right.
 \end{equation}
@@ -416,38 +429,12 @@ plt.show()
 
 4.  Create a phase plot. What does this plot tell you in context?
 
-5.  If you decrease the step size by a factor of 10, what do you see in the two plots? Why? 
+5.  If you decrease the step size by a factor of 10, what do you see in the two plots? Why?
 
 :::
 
 ------------------------------------------------------------------------
 
-::: {#exr-5.22}
-#### The SIR Model
-💻 A classic model for predicting the spread of a virus or a disease is the SIR Model. In these models, $S$ stands for the proportion of the population which is susceptible to the virus, $I$ is the proportion of the population that is currently infected with the virus, and $R$ is the proportion of the population that has recovered from the virus. The idea behind the model is that
-
--   Susceptible people become infected by having interaction with the infected people. Hence, the rate of change of the susceptible people is proportional to the number of interactions that can occur between the $S$ and the $I$ populations.\
-    
-\begin{equation}
- S' = -\beta SI.
-\end{equation}
-
--   The infected population gains people from the interactions with the susceptible people, but at the same time, infected people recover at a predictable rate. 
-\begin{equation}
- I' = \beta SI - \gamma I.
-\end{equation}
-
--   The people in the recovered class are then immune to the virus, so the recovered class $R$ only gains people from the recoveries from the $I$ class. 
-\begin{equation}
- R' = \gamma I.
-\end{equation}
-
-
-Find a numerical solution to the system of equations using your `euler()` function. Use the parameters $\beta = 0.0003$ and $\gamma = 0.1$ with initial conditions $S(0) = 999$, $I(0) = 1$, and $R(0) = 0$. Plot the solution against time. Explain all three curves in context.
-
-:::
-
-------------------------------------------------------------------------
 
 ## The Midpoint Method
 
@@ -503,15 +490,15 @@ d.  How does your approximation compare to the Euler approximation that you foun
 
 ::: {#def-5.5}
 #### The Midpoint Method
-The midpoint method is defined by first taking a half step with Euler's method to approximate a solution at time $t_{n+1/2}$ There is no grid point at 
-$t_{n+1/2}$ so we define this as 
+The midpoint method is defined by first taking a half step with Euler's method to approximate a solution at time $t_{n+1/2}$. There is no grid point at
+$t_{n+1/2}$ so we define this as
 $$
 t_{n+1/2} = (t_n + t_{n+1})/2.
 $$
-We then take a full step using the value of $f$ at $t_{n+1/2}$ and the approximate $x_{n+1/2}$. 
+We then take a full step using the value of $f$ at $t_{n+1/2}$ and the approximate $x_{n+1/2}$.
 $$
-\begin{split} 
-x_{n+1/2} &= x_n + \frac{h}{2} f(t_n,x_n) \\ x_{n+1} &= x_n + h f(t_{n+1/2},x_{n+1/2}) 
+\begin{split}
+x_{n+1/2} &= x_n + \frac{h}{2} f(t_n,x_n) \\ x_{n+1} &= x_n + h f(t_{n+1/2},x_{n+1/2})
 \end{split}
 $$
 
@@ -531,15 +518,15 @@ $$
 ::: {#exr-5.25}
 💻 Complete the code below to implement the midpoint method in one dimension.
 
-``` python         
-def midpoint1d(f, x0, t0, tmax, dt):
+``` python
+def midpoint_1d(f, x0, t0, tmax, dt):
     """
-    Solves a first-order ordinary differential equation using 
+    Solves a first-order ordinary differential equation using
     the midpoint method.
 
     Parameters:
-        f    : function, the function defining the differential equation. It should 
-               take two arguments, the independent variable t and the dependent 
+        f    : function, the function defining the differential equation. It should
+               take two arguments, the independent variable t and the dependent
                variable x, and return the derivative of x with respect to t.
         x0   : float, the initial value of the dependent variable.
         t0   : float, the initial value of the independent variable.
@@ -551,11 +538,13 @@ def midpoint1d(f, x0, t0, tmax, dt):
             - t : vector of time values.
             - x : vector of solution values at each time value.
     """
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
     t = ??? # build the times
     x = ??? # build an array for the x values
     x[0] = # save the initial condition
     # On the next line: be careful about how far you're looping
-    for n in range(???): 
+    for n in range(???):
         slope = ??? # get the slope at the current point
         x_halfstep = ??? # take a half step forward
         x[n+1] = ??? # take a full step forward
@@ -564,13 +553,13 @@ def midpoint1d(f, x0, t0, tmax, dt):
 
 Test your code on several differential equations where you know the solution (just to be sure that it is working).
 
-``` python         
+``` python
 f = lambda t, x: # your ODE right hand side goes here
 x0 = # initial condition
 t0 = 0
 tmax = # ending time (up to you)
 dt = # pick something small
-t, x = midpoint1d(???, ???, ???, ???, ???)
+t, x = midpoint_1d(???, ???, ???, ???, ???)
 plt.plot(???, ???, ???)
 x_exact = lambda t: # your exact solution goes here
 plt.plot(???, ???, ???)
@@ -584,9 +573,9 @@ plt.show()
 ------------------------------------------------------------------------
 
 ::: {#exr-5.26}
-💻 💬 The goal in building the midpoint method was to hopefully capture some of the upcoming curvature in the solution before we overshot it. Consider the differential equation $x' = -\frac{1}{3}x + \sin(t)$ with initial condition $x(0) = 1$ on the domain $t \in [0,10]$ as in @exr-5.13. First get a numerical solution with Euler's method using $\Delta t = 1$. Then get a numerical solution with the midpoint method using the same value for $\Delta t = 1$. Plot the two solutions on top of each other along with the exact solution 
+💻 💬 The goal in building the midpoint method was to hopefully capture some of the upcoming curvature in the solution before we overshot it. Consider the differential equation $x' = -\frac{1}{3}x + \sin(t)$ with initial condition $x(0) = 1$ on the domain $t \in [0,10]$ as in @exr-5.13. First get a numerical solution with Euler's method using $\Delta t = 1$. Then get a numerical solution with the midpoint method using the same value for $\Delta t = 1$. Plot the two solutions on top of each other along with the exact solution
 \begin{equation}
- x(t) = \frac{1}{10} \left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right). 
+ x(t) = \frac{1}{10} \left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 \end{equation}
 What do you observe?
 
@@ -602,7 +591,7 @@ What do you observe?
 ------------------------------------------------------------------------
 
 ::: {#exr-5.28}
-💬 We have studied two methods thus far: Euler's method and the Midpoint method. In @fig-5.4 we see a graphical depiction of how each method works on the differential equation $y' = y$ with $\Delta t = 1$ and $y(0) = 1$. The exact solution at $t=1$ is $y(1) = e^1 \approx 2.718$ and is shown in red in each figure. The methods can be summarized in the table below.
+💬 We have studied two methods thus far: Euler's method and the Midpoint method. In @fig-euler-midpoint we see a graphical depiction of how each method works on the differential equation $y' = y$ with $\Delta t = 1$ and $y(0) = 1$. The exact solution at $t=1$ is $y(1) = e^1 \approx 2.718$ and is shown in red in each figure. The methods can be summarized in the table below.
 
 Discuss what you observe as the pros and cons of each method based on the table and on the Figure.
 
@@ -644,10 +633,7 @@ y1_midpoint = y0 + h * f(x_mid, y_mid)
 y_exact = exact_solution(1)
 
 # Set up the plot
-fig, axs = plt.subplots(1, 2, figsize=(14, 7), sharey=True)
-
-# Global font settings
-plt.rcParams.update({'font.size': 18})
+fig, axs = plt.subplots(1, 2, figsize=(8,4), sharey=True)
 
 # ---------- Euler Method Plot ----------
 ax = axs[0]
@@ -661,16 +647,16 @@ ax.annotate("", xy=(x1, y1_euler), xytext=(x0, y0),
 ax.text(0.35, 1.2, r'slope=1', fontsize=20)
 
 # Exact solution
-x_vals = np.linspace(0, 1.1, 100)
+x_vals = np.linspace(0, 1.2, 100)
 ax.plot(x_vals, exact_solution(x_vals), 'r--', linewidth=2)
 ax.plot(1, y_exact, 'ro')
 ax.text(0.8, y_exact + 0.1, f"(1, {y_exact:.2f})", color='red', fontsize=18)
 
-ax.set_title("Euler", fontsize=22)
-ax.set_xlim(0, 1.1)
+ax.set_title("Euler", fontsize=18)
+ax.set_xlim(0, 1.2)
 ax.set_ylim(0.8, 3)
 ax.grid(True)
-ax.tick_params(labelsize=16)
+ax.tick_params(labelsize=14)
 
 # ---------- Midpoint Method Plot ----------
 ax = axs[1]
@@ -698,11 +684,11 @@ ax.plot(x_vals, exact_solution(x_vals), 'r--', linewidth=2)
 ax.plot(1, y_exact, 'ro')
 ax.text(0.8, y_exact + 0.1, f"(1, {y_exact:.2f})", color='red', fontsize=18)
 
-ax.set_title("Midpoint", fontsize=22)
-ax.set_xlim(0, 1.1)
+ax.set_title("Midpoint", fontsize=18)
+ax.set_xlim(0, 1.2)
 ax.set_ylim(0.8, 3)
 ax.grid(True)
-ax.tick_params(labelsize=16)
+ax.tick_params(labelsize=14)
 
 # Overall formatting
 for ax in axs:
@@ -712,8 +698,6 @@ for ax in axs:
 plt.tight_layout()
 plt.show()
 ```
-
-![Graphical depictions of two numerical methods: Euler (left) and Midpoint (right). The exact solution is shown in red.](figures/ODE/Midpoint.png){#fig-5.4 alt="Graphical depictions of two numerical methods: Euler (left) and Midpoint (right). The Euler method uses the slope $m$ at the starting point whereas the midpoint method uses the slope aThe exact solution is shown in red."}
 
 :::
 
@@ -745,13 +729,13 @@ b.  Now use Euler's method by hand to approximate $x(1)$, $x(2)$, and $x(3)$ usi
 ::: {#exr-5.41}
 💻 💬 The phenomenon you just discovered is called *numerical instability*. It occurs when the stepsize is too large, causing the numerical solution to oscillate or grow exponentially even when the exact solution decays.
 
-a.  Use your `euler1d` function to solve the same differential equation $x' = -3x$ with $x(0) = 1$ on the interval $t \in [0, 10]$. Run it for different values of the stepsize $\Delta t$, for example $\Delta t \in \{0.1, 0.5, 0.7, 1.0\}$.
+a.  Use your `euler_1d` function to solve the same differential equation $x' = -3x$ with $x(0) = 1$ on the interval $t \in [0, 10]$. Run it for different values of the stepsize $\Delta t$, for example $\Delta t \in \{0.1, 0.5, 0.7, 1.0\}$.
 
 b.  Plot the numerical solutions along with the exact solution $x(t) = e^{-3t}$ on the same graph. (You might want to limit the y-axis using `plt.ylim(-5, 5)` to see the details before it blows up completely.)
 
 c.  What is the limit on the stepsize $\Delta t$ before the numerical solution completely loses its mind and grows exponentially? (Experiment with `dt` between 0.5 and 0.7 to find the exact threshold).
 
-d.  Try the same experiment using your `midpoint1d` function. Does the midpoint method also suffer from numerical instability? If so, what is the critical stepsize for the midpoint method on this problem?
+d.  Try the same experiment using your `midpoint_1d` function. Does the midpoint method also suffer from numerical instability? If so, what is the critical stepsize for the midpoint method on this problem?
 :::
 
 ------------------------------------------------------------------------
@@ -779,7 +763,7 @@ d.  Try the same experiment using your `midpoint1d` function. Does the midpoint 
 ------------------------------------------------------------------------
 
 ::: {#exr-5.61}
-🖋 Consider the first-order differential equation $x' = f(t,x)$. What is the Midpoint method for approximating the solution to this differential equation? What is the order of accuracy of the Midpoint method? 
+🖋 Consider the first-order differential equation $x' = f(t,x)$. What is the Midpoint method for approximating the solution to this differential equation? What is the order of accuracy of the Midpoint method?
 
 :::
 
@@ -805,19 +789,151 @@ d.  Try the same experiment using your `midpoint1d` function. Does the midpoint 
 ``` python
 import numpy as np
 
-def midpoint1d(f, x0, t0, tmax, dt):
+def midpoint_1d(f, x0, t0, tmax, dt):
     """
     Solves a first-order ordinary differential equation using the midpoint method.
     """
-    t = np.arange(t0, tmax + dt, dt)
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
+    t = np.linspace(t0, tmax, N+1)
     x = np.zeros(len(t))
     x[0] = x0
-    
+
     for n in range(len(t) - 1):
         slope = ...
         x_halfstep = ...
         x[n+1] = ...
-        
+
     return t, x
 ```
 
+## Problems
+
+::: {#exr-5.22}
+#### The SIR Model
+💻 A classic model for predicting the spread of a virus or a disease is the SIR Model. In these models, $S$ stands for the proportion of the population which is susceptible to the virus, $I$ is the proportion of the population that is currently infected with the virus, and $R$ is the proportion of the population that has recovered from the virus. The idea behind the model is that
+
+-   Susceptible people become infected by having interaction with the infected people. Hence, the rate of change of the susceptible people is proportional to the number of interactions that can occur between the $S$ and the $I$ populations.\
+
+\begin{equation}
+ S' = -\beta SI.
+\end{equation}
+
+-   The infected population gains people from the interactions with the susceptible people, but at the same time, infected people recover at a predictable rate.
+\begin{equation}
+ I' = \beta SI - \gamma I.
+\end{equation}
+
+-   The people in the recovered class are then immune to the virus, so the recovered class $R$ only gains people from the recoveries from the $I$ class.
+\begin{equation}
+ R' = \gamma I.
+\end{equation}
+
+
+Find a numerical solution to the system of equations using your `euler()` function. Use the parameters $\beta = 0.0003$ and $\gamma = 0.1$ with initial conditions $S(0) = 999$, $I(0) = 1$, and $R(0) = 0$. Plot the solution against time. Explain all three curves in context.
+
+:::
+
+------------------------------------------------------------------------
+
+
+::: {#exr-5.68}
+🖋 💻 Consider the differential equation $x'' + x' + x = 0$ with initial conditions $x(0) = 0$ and $x'(0)=1$.
+
+1.  Solve this differential equation by hand using any appropriate technique. Show your work.
+
+2.  Write code to demonstrate the first order convergence rate of Euler's method and the second order convergence rate of the Midpoint method. Take note that this is a second order differential equation so you will need to start by converting it to a system of differential equations. Then take care that you are comparing the correct term from the numerical solution to your analytic solution in part (1).
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-5.70}
+💻 💬 Two versions of Python code for one dimensional Euler's method are given below. Compare and contrast the two implementations. What are the advantages / disadvantages to one over the other? Once you have made your pro/con list, devise an experiment to see which of the methods will actually perform faster when solving a differential equation with a very small $\Delta t$. (You may want to look up how to time the execution of code in Python.)
+
+``` python
+def euler(f,x0,t0,tmax,dt):
+    t = [t0]
+    x = [x0]
+    steps = int(np.floor((tmax-t0)/dt))
+    for n in range(steps):
+        t.append(t[n] + dt)
+        x.append(x[n] + dt*f(t[n],x[n]))
+    return t, x
+```
+
+``` python
+def euler(f,x0,t0,tmax,dt):
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
+    t = np.linspace(t0, tmax, N+1)
+    x = np.zeros(len(t))
+    x[0] = x0
+    for n in range(len(t)-1):
+        x[n+1] = x[n] + dt*f(t[n],x[n])
+    return t, x
+```
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-5.73}
+💻 In this model there are two characters, Romeo and Juliet, whose affection is quantified on the scale from $-5$ to $5$ described below:
+
+-   $-5$: Hysterical Hatred
+
+-   $-2.5$: Disgust
+
+-   $0$: Indifference
+
+-   $2.5$: Sweet Affection
+
+-   $5$: Ecstatic Love
+
+The characters struggle with frustrated love due to the lack of reciprocity of their feelings. Mathematically,
+
+-   Romeo: "My feelings for Juliet decrease in proportion to her love for me."
+
+-   Juliet: "My love for Romeo grows in proportion to his love for me."
+
+-   Juliet's emotional swings lead to many sleepless nights, which consequently dampens her emotions.
+
+This give rise to
+\begin{equation}
+\left\{ \begin{array}{ll} \frac{dx}{dt} &= -\alpha y \\ \frac{dy}{dt} &= \beta x - \gamma y^2 \end{array} \right.
+\end{equation}
+ where $x(t)$ is Romeo's love for Juliet and $y(t)$ is Juliet's love for Romeo at time $t$.
+
+Your tasks:
+
+1.  First implement this 2D system with $x(0) = 2$, $y(0)=0$, $\alpha=0.2$, $\beta=0.8$, and $\gamma=0.1$ for $t \in [0,60]$. What is the fate of this pair's love under these assumptions?
+
+2.  Write code that approximates the parameter $\gamma$ that will result in Juliet having a feeling of indifference at $t=30$. Your code should not need human supervision: you should be able to tell it that you are looking for *indifference* at $t=30$ and turn it loose to find an approximation for $\gamma$. Assume throughout this problem that $\alpha=0.2$, $\beta=0.8$, $x(0)=2$, and $y(0)=0$.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-5.76}
+💬 💻 (This problem is modified from [@Meerschaert])
+
+One of the favourite foods of the blue whale is krill. Blue whales are baleen whales and feed almost exclusively on krill. These tiny shrimp-like creatures are devoured in massive amounts to provide the principal food source for the huge whales. In the absence of predators, in uncrowded conditions, the krill population density grows at a rate of 25% per year. The presence of 500 tons/acre of krill increases the blue whale population growth rate by 2% per year, and the presence of 150,000 blue whales decreases krill growth rate by 10% per year. The population of blue whales decreases at a rate of 5% per year in the absence of krill.
+
+These assumptions yield a pair of differential equations (a Lotka-Volterra model) that describe the population of the blue whales ($B$) and the krill population density ($K$) over time given by
+\begin{equation}
+\begin{aligned} \frac{dB}{dt} &= -0.05B + \left( \frac{0.02}{500} \right) BK \\ \frac{dK}{dt} &= 0.25K - \left( \frac{0.10}{150000} \right) BK. \end{aligned}
+\end{equation}
+
+
+1.  What are the units of $\frac{dB}{dt}$ and $\frac{dK}{dt}$?
+
+2.  Explain what each of the four terms on the right-hand sides of the differential equations mean in the context of the problem. Include a reason for why each term is positive or negative.
+
+3.  Find a numerical solution to the differential equation model using $B(0) = 75,000$ whales and $K(0) = 150$ tons per acre.
+
+4.  Whaling is a huge concern in the oceans world wide. Implement a *harvesting* term into the whale differential equation, defend your mathematical choices and provide a thorough exploration of any parameters that are introduced.
+
+:::
+
+------------------------------------------------------------------------

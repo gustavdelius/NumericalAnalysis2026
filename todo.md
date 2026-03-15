@@ -33,6 +33,7 @@
 
 ## Chapter 5 Calculus
 - [ ] Take out Exercise 5.13 about writing the inefficient version of ForwardDiff and go straight to the vectorised case.
+- [ ] Students took a long time on the Differentiation section. Streamline.
 
 ## Chapter 6 Optimisation
 - [ ] Use gradient descent for regression
@@ -41,12 +42,13 @@
 ## Chapters 7 and 8 ODEs
 - [ ] Print out Figures 6.1 and 6.2 and bring them to session
 - [ ] Ask students to also draw the backward Euler method
+
+## Chapters 9 and 10 PDEs
+
 - [ ] Be careful when creating the vector of times in cases where the interval
       length is not an exact multiple of dt. Probably best to first determine
       an integer number of intervals and then create the vector of times with
       np.linspace and then determine an updated h = t[1] - t[0].
-
-## Chapters 9 and 10 PDEs
 - [ ] Clarify why instability shows up only after some time. Perhaps modify
       initial conditions so that instability is clear from the start. Currently
       it is difficult for students to determine the stability criterion in

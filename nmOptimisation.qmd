@@ -392,27 +392,29 @@ Now let us look at multi-variable optimisation.
 ::: {#exm-fxy}
 Here is a two-variable example: Find the minimum of the function
 $$f(x,y) = \sin(x)\exp\left(-\sqrt{x^2+y^2}\right)$$
-The following figure allows you to look at this function from all directions. Just drag it around with your mouse.
+
 ```{python}
 #| label: fig-opt-3
 #| fig-cap: Graph of the function $\sin(x)\exp\left(-\sqrt{x^2+y^2}\right)$.
 #| fig-alt: Graph of example function
 #| code-fold: true
 import numpy as np
-import plotly.graph_objects as go
+import matplotlib.pyplot as plt
 
 f = lambda x, y: np.sin(x)*np.exp(-np.sqrt(x**2+y**2))
 
-# Generating values for x and y
 x = np.linspace(-2, 2, 100)
 y = np.linspace(-1, 3, 100)
-
 X, Y = np.meshgrid(x, y)
 Z = f(X, Y)
 
-# Creating the plot
-fig = go.Figure(data=[go.Surface(z=Z, x=X, y=Y)])
-fig.update_layout(width=800, height=800)
+fig, ax = plt.subplots(subplot_kw={"projection": "3d"}, figsize=(6, 5))
+ax.plot_surface(X, Y, Z, cmap="viridis")
+ax.set_xlabel("x")
+ax.set_ylabel("y")
+ax.set_zlabel("f(x,y)")
+plt.tight_layout()
+plt.show()
 ```
 
 :::
@@ -495,7 +497,7 @@ $$
 💻 🎓 Write code to implement the gradient descent algorithm for a function $f(\boldsymbol{x})$.
 
 ```python
-def gradient_descent(df, x0, alpha, tol=1e-12, max_iter=10000):
+def gradient_descent(df, x0, alpha, tol=1e-12, max_iter=1000):
     """
     Finds an approximation of a local minimum of a multivariate function using 
     gradient descent.
@@ -531,57 +533,116 @@ You can use your gradient function from @exm-wgrad_python.
 ------------------------------------------------------------------------
 
 ::: {#exr-gd-difficulties}
-💻 💬 The gradient descent method works well for some functions but struggles with others. In this exercise you will discover some of the difficulties by experimenting with your `gradient_descent` function from @exr-3.58.
+💻 💬 The gradient descent method works well for some functions but struggles with others. In this exercise you will explore two functions that gradient descent struggles with.
 
-1. **Rosenbrock's banana function.** Try to minimise the function
-$$f(x,y) = (1-x)^2 + 100(y-x^2)^2$$
-with a starting point $(x_0,y_0) = (-1, 1)$. The global minimum is at $(1,1)$ where $f(1,1)=0$. Work out the gradient by hand (or use automatic differentiation) and try several different learning rates. You will find that small learning rates lead to extremely slow convergence and large learning rates lead to divergence. Can you find a learning rate that converges in a reasonable number of iterations? Make a contour plot of the function (using `plt.contour` or `plt.contourf`) and plot the path of the gradient descent iterates on top of it. Discuss with your group why gradient descent struggles with this function. The following code will help you get started.
+1. Modify your gradient_descent function from @exr-3.58 to create a new function `gradient_descent_path` that returns the list of all iterates, not just the final one. 
 
-    ``` python
-    import numpy as np
-    import matplotlib.pyplot as plt
+2. Consider the function $$f(x,y)=x^2+100y^2.$$ This function has a clear minimum at the origin but is much steeper in the $y$ direction than in the $x$ direction. Try the starting point $(x_0,y_0)=(1,1)$ and experiment with different learning rates. The code below will get you started. Can you find a learning rate that gives fast convergence in both variables simultaneously?
 
-    # Rosenbrock function and its gradient
-    f = lambda x: (1 - x[0])**2 + 100 * (x[1] - x[0]**2)**2
-    df = lambda x: np.array([
-        -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2),
-        200 * (x[1] - x[0]**2)
-    ])
+```{python}
+#| eval: false
+f = lambda x: x[0]**2 + 100 * x[1]**2
+df = lambda x: np.array([2 * x[0], 200 * x[1]])
 
-    # Modify your gradient_descent function so that it returns 
-    # the list of all iterates, not just the final one.
-    # Then you can use it like this:
-    alpha = ???  # Try different values
-    path = gradient_descent(df, np.array([-1.0, 1.0]), alpha, 
-                            tol=1e-6, max_iter=100000)
+alpha = 0.005  # Try different values
+path = gradient_descent_path(df, np.array([1.0, 1.0]), alpha, 
+                             tol=1e-6, max_iter=1000)
+len(path)
+```
 
-    # Contour plot with the path of the iterates
-    x = np.linspace(-2, 2, 300)
-    y = np.linspace(-1, 3, 300)
-    X, Y = np.meshgrid(x, y)
-    Z = (1 - X)**2 + 100 * (Y - X**2)**2
-    plt.figure(figsize=(8, 6))
-    plt.contourf(X, Y, Z, levels=np.logspace(-1, 3.5, 20), 
-                 cmap='viridis')
-    plt.colorbar(label='$f(x,y)$')
+
+3. Use the `plot_path()` function defined below to make a plot of the function and the path of the gradient descent iterates on top of it. Discuss with your group why gradient descent struggles with this function. Discuss why having very different curvatures along different directions makes gradient descent inefficient.
+
+```{python}
+#| eval: false
+import numpy as np
+import plotly.graph_objects as go
+
+def plot_path(func, path, x_range=(-2, 2), y_range=(-2, 2), grid_pts=100):
+    """
+    Plots an interactive 3D surface and overlays an optimization path.
+    Assumes 'func' takes a single numpy array of shape (2,) as its argument.
+    """
     path = np.array(path)
-    plt.plot(path[:, 0], path[:, 1], 'r.-', markersize=3, 
-             linewidth=0.5)
-    plt.plot(1, 1, 'w*', markersize=12)  # mark the minimum
-    plt.xlabel('$x$')
-    plt.ylabel('$y$')
-    plt.title(f'Gradient descent on Rosenbrock (α = {alpha})')
-    plt.show()
-    ```
 
+    # 1. Define the grid
+    x = np.linspace(x_range[0], x_range[1], grid_pts)
+    y = np.linspace(y_range[0], y_range[1], grid_pts)
+    X, Y = np.meshgrid(x, y)
 
-2. **Saddle points.** Now try the function
-$$f(x,y) = x^2 - y^2$$
-with the starting point $(x_0,y_0) = (0.1, 0)$. This function has a saddle point at the origin. What happens? Now try the starting point $(0, 0.1)$. Discuss what the gradient descent method does at and near saddle points.
+    # 2. Evaluate the function over the grid
+    # np.array([X, Y]) has shape (2, grid_pts, grid_pts).
+    # apply_along_axis with axis=0 feeds 1D arrays of size 2 into func.
+    Z = np.apply_along_axis(func, 0, np.array([X, Y]))
 
-3. **Ill-conditioned functions.** Consider the function
-$$f(x,y) = x^2 + 100\, y^2.$$
-This function has a clear minimum at the origin but is much steeper in the $y$ direction than in the $x$ direction. Try the starting point $(1,1)$ and experiment with different learning rates. Can you find a learning rate that gives fast convergence in both variables simultaneously? Try plotting the path of the iterates on a contour plot to see what is happening. Discuss why having very different curvatures along different directions makes gradient descent inefficient.
+    # 3. Calculate z-coordinates for the path
+    # path has shape (N, 2). axis=1 feeds 1D arrays of size 2 into func.
+    path_z = np.apply_along_axis(func, 1, path)
+
+    fig = go.Figure()
+
+    # Surface plot
+    fig.add_trace(go.Surface(
+        z=Z, x=x, y=y,
+        colorscale='Viridis',
+        opacity=0.8,
+        name='Surface'
+    ))
+
+    # Optimization path
+    fig.add_trace(go.Scatter3d(
+        x=path[:, 0], y=path[:, 1], z=path_z,
+        mode='lines+markers',
+        marker=dict(size=3, color='red'),
+        line=dict(color='red', width=3),
+        name='Iterates'
+    ))
+
+    # End point marker
+    fig.add_trace(go.Scatter3d(
+        x=[path[-1, 0]], y=[path[-1, 1]], z=[path_z[-1]],
+        mode='markers',
+        marker=dict(size=5, color='white',
+                    line=dict(color='black', width=1)),
+        name='End Point'
+    ))
+
+    fig.update_layout(
+        scene=dict(xaxis_title='x', yaxis_title='y', zaxis_title='f(x,y)'),
+        width=800, height=600,
+        margin=dict(l=0, r=0, b=0, t=30)
+    )
+
+    return fig
+
+alpha = 0.004  # Try different values
+path = gradient_descent(df, np.array([1.0, 1.0]), alpha, 
+                        tol=1e-6, max_iter=1000)
+print(len(path))
+plot_path(f, path)
+
+```
+
+3. In the previous example one could avoid the problem by simply rescaling the $y$ variable. However, for some functions this is not possible. Consider Rosenbrock's banana function:
+    $$f(x,y) = (1-x)^2 + 100(y-x^2)^2.$$
+    Choose a starting point $(x_0,y_0) = (-1, 1)$. The code below sets this up for you. The global minimum is at $(1,1)$ where $f(1,1)=0$. Try several different learning rates. You will find that small learning rates lead to extremely slow convergence and large learning rates lead to divergence. Can you find a learning rate that converges in a reasonable number of iterations? 
+
+```{python}
+#| eval: false
+# Rosenbrock function and its gradient
+f = lambda x: (1 - x[0])**2 + 100 * (x[1] - x[0]**2)**2
+df = lambda x: np.array([
+    -2 * (1 - x[0]) - 400 * x[0] * (x[1] - x[0]**2),
+    200 * (x[1] - x[0]**2)
+])
+
+alpha = 0.0002  # Try different values
+path = gradient_descent(df, np.array([-0.1, 4.0]), alpha, 
+                        tol=1e-6, max_iter=1000)
+print(len(path))
+plot_path(f, path, x_range=(-2, 2), y_range=(-2, 5))
+```
+
 :::
 
 ------------------------------------------------------------------------

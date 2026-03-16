@@ -98,7 +98,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6686436bd8a269d58a385b3c8f4f2f3a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a439ec2cc0f685a3af892e5cbc7e709d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -425,57 +425,59 @@ x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right)
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># *********</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ode_test(f, x0, t0, tmax, dt):</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.arange(t0, tmax<span class="op">+</span>dt, dt) <span class="co"># set up the times</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(<span class="bu">len</span>(t)) <span class="co"># set up the x</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> x0 <span class="co"># initial condition</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        m_n <span class="op">=</span> f(t[n], x[n])</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        x_n_plus_half <span class="op">=</span> x[n] <span class="op">+</span> dt<span class="op">/</span><span class="dv">2</span> <span class="op">*</span> m_n</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        m_n_plus_half <span class="op">=</span> f(t[n] <span class="op">+</span> dt<span class="op">/</span><span class="dv">2</span>, x_n_plus_half)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        x_n_plus_1 <span class="op">=</span> x[n] <span class="op">+</span> dt <span class="op">*</span> m_n_plus_half</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        m_n_plus_1 <span class="op">=</span> f(t[n] <span class="op">+</span> dt, x_n_plus_1)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        estimate_of_slope <span class="op">=</span> <span class="co"># This is where you get to play</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        x[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[n] <span class="op">+</span> dt <span class="op">*</span> estimate_of_slope</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, x</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> t, x: <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span><span class="fl">3.0</span>) <span class="op">*</span> x <span class="op">+</span> np.sin(t)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>exact <span class="op">=</span> <span class="kw">lambda</span> t: (<span class="dv">1</span><span class="op">/</span><span class="fl">10.0</span>)<span class="op">*</span>(<span class="dv">19</span><span class="op">*</span>np.exp(<span class="op">-</span>t<span class="op">/</span><span class="dv">3</span>) <span class="op">+</span> <span class="op">\</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">3</span><span class="op">*</span>np.sin(t) <span class="op">-</span> <span class="op">\</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">9</span><span class="op">*</span>np.cos(t))</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="dv">1</span> <span class="co"># initial condition</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> <span class="dv">0</span> <span class="co"># initial time</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>tmax <span class="op">=</span> <span class="dv">3</span> <span class="co"># max time</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co"># set up blank arrays to keep track of the maximum absolute errorrs</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>err_euler <span class="op">=</span> [] </span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>err_midpoint <span class="op">=</span> []</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>err_ode_test <span class="op">=</span> []</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Next give a list of Delta t values (what list did we give here)</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> <span class="fl">10.0</span><span class="op">**</span>(<span class="op">-</span>np.arange(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">1</span>)) </span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dt <span class="kw">in</span> H:</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build an euler approximation</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    t, xeuler <span class="op">=</span> euler(f, x0, t0, tmax,dt) </span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure the max abs error</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    err_euler.append(np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xeuler <span class="op">-</span> exact(t)))) </span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build a midpoint approximation</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    t, xmidpoint <span class="op">=</span> midpoint(f, x0, t0, tmax, dt) </span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure the max abs error</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    err_midpoint.append(np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xmidpoint <span class="op">-</span> exact(t)))) </span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build your new approximation</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    t, xtest <span class="op">=</span> ode_test(f, x0, t0, tmax, dt) </span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure the max abs error</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    err_ode_test.append(np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xtest <span class="op">-</span> exact(t)))) </span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, we make a loglog plot of the errors.  </span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep an eye on the slopes since they tell you the order of </span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># the error for the method.</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>plt.loglog(H, err_euler, <span class="st">'r*-'</span>,</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>           H, err_midpoint, <span class="st">'b*-'</span>,</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>           H, err_ode_test, <span class="st">'k*-'</span>)</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'euler'</span>, <span class="st">'midpoint'</span>, <span class="st">'test method'</span>])</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">round</span>((tmax <span class="op">-</span> t0)<span class="op">/</span>dt)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> (tmax <span class="op">-</span> t0)<span class="op">/</span>N</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.linspace(t0, tmax, N<span class="op">+</span><span class="dv">1</span>) <span class="co"># set up the times</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(<span class="bu">len</span>(t)) <span class="co"># set up the x</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> x0 <span class="co"># initial condition</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        m_n <span class="op">=</span> f(t[n], x[n])</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        x_n_plus_half <span class="op">=</span> x[n] <span class="op">+</span> dt<span class="op">/</span><span class="dv">2</span> <span class="op">*</span> m_n</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        m_n_plus_half <span class="op">=</span> f(t[n] <span class="op">+</span> dt<span class="op">/</span><span class="dv">2</span>, x_n_plus_half)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        x_n_plus_1 <span class="op">=</span> x[n] <span class="op">+</span> dt <span class="op">*</span> m_n_plus_half</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        m_n_plus_1 <span class="op">=</span> f(t[n] <span class="op">+</span> dt, x_n_plus_1)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        estimate_of_slope <span class="op">=</span> <span class="co"># This is where you get to play</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        x[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[n] <span class="op">+</span> dt <span class="op">*</span> estimate_of_slope</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, x</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> t, x: <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span><span class="fl">3.0</span>) <span class="op">*</span> x <span class="op">+</span> np.sin(t)</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>exact <span class="op">=</span> <span class="kw">lambda</span> t: (<span class="dv">1</span><span class="op">/</span><span class="fl">10.0</span>)<span class="op">*</span>(<span class="dv">19</span><span class="op">*</span>np.exp(<span class="op">-</span>t<span class="op">/</span><span class="dv">3</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">3</span><span class="op">*</span>np.sin(t) <span class="op">-</span> <span class="op">\</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                  <span class="dv">9</span><span class="op">*</span>np.cos(t))</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="dv">1</span> <span class="co"># initial condition</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> <span class="dv">0</span> <span class="co"># initial time</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>tmax <span class="op">=</span> <span class="dv">3</span> <span class="co"># max time</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># set up blank arrays to keep track of the maximum absolute errorrs</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>err_euler <span class="op">=</span> [] </span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>err_midpoint <span class="op">=</span> []</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>err_ode_test <span class="op">=</span> []</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Next give a list of Delta t values (what list did we give here)</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>H <span class="op">=</span> <span class="fl">10.0</span><span class="op">**</span>(<span class="op">-</span>np.arange(<span class="dv">1</span>, <span class="dv">7</span>, <span class="dv">1</span>)) </span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> dt <span class="kw">in</span> H:</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build an euler approximation</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    t, xeuler <span class="op">=</span> euler(f, x0, t0, tmax,dt) </span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure the max abs error</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    err_euler.append(np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xeuler <span class="op">-</span> exact(t)))) </span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build a midpoint approximation</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    t, xmidpoint <span class="op">=</span> midpoint(f, x0, t0, tmax, dt) </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure the max abs error</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    err_midpoint.append(np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xmidpoint <span class="op">-</span> exact(t)))) </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Build your new approximation</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    t, xtest <span class="op">=</span> ode_test(f, x0, t0, tmax, dt) </span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Measure the max abs error</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>    err_ode_test.append(np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xtest <span class="op">-</span> exact(t)))) </span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="co"># Finally, we make a loglog plot of the errors.  </span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep an eye on the slopes since they tell you the order of </span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co"># the error for the method.</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>plt.loglog(H, err_euler, <span class="st">'r*-'</span>,</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>           H, err_midpoint, <span class="st">'b*-'</span>,</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>           H, err_ode_test, <span class="st">'k*-'</span>)</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'euler'</span>, <span class="st">'midpoint'</span>, <span class="st">'test method'</span>])</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
 <div id="exr-5.33" class="theorem exercise">
@@ -724,6 +726,7 @@ x_{n+1} = x_n + h m = x_n + \frac{h}{6} \left( k_1 + 2 k_2 + 2 k_3 + k_4 \right)
 </div>
 <hr>
 <!---
+
 ::: {#exr-5.38}
 🖋 Jackson wants to solve the differential equation $x' = f(t,x)$ on the domain $t \in [0,1]$ so that the maximum absolute error is less than $10^{-8}$.
 
@@ -745,6 +748,7 @@ d.  Discuss the implications of what you found in parts (a) - (c) of this proble
 :::
 
 ------------------------------------------------------------------------
+
 --->
 <div id="exr-5.40" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 8.8</strong></span> 🖋 🎓 Let us step back for a second and just see what the RK4 method does from a nuts-and-bolts point of view. Consider the differential equation <span class="math inline">\(x' = x\)</span> with initial condition <span class="math inline">\(x(0) = 1\)</span>. The solution to this differential equation is clearly <span class="math inline">\(x(t) = e^t\)</span>. For the sake of simplicity, take <span class="math inline">\(\Delta t = 1\)</span> and perform 1 step of the RK4 method BY HAND to approximate the value <span class="math inline">\(x(1)\)</span>.</p>
@@ -756,12 +760,14 @@ d.  Discuss the implications of what you found in parts (a) - (c) of this proble
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rk41d(f, x0, t0, tmax, dt):</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.arange(t0, tmax<span class="op">+</span>dt, dt)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(<span class="bu">len</span>(t))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> x0</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># the interesting bits of the code go here</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">round</span>((tmax <span class="op">-</span> t0)<span class="op">/</span>dt)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> (tmax <span class="op">-</span> t0)<span class="op">/</span>N</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.linspace(t0, tmax, N<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(<span class="bu">len</span>(t))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> x0</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># the interesting bits of the code go here</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Test the problem on several differential equations where you know the solution.</p>
 </div>
 <hr>
@@ -887,7 +893,7 @@ x_{n+1} = x_n + h f(t_{n+1},x_{n+1}).
 \end{equation}\]</span> Notice that this is the same as solving the equation <span class="math display">\[\begin{equation}
 G(x_{n+1}):=x_{n+1} - hf(t_{n+1},x_{n+1}) - x_n = 0.
 \end{equation}\]</span> You know the values of <span class="math inline">\(h=\Delta t\)</span>, <span class="math inline">\(t_{n+1}\)</span> and <span class="math inline">\(x_n\)</span>, and you know the function <span class="math inline">\(f\)</span>, so, in a practical sense, you should use some sort of Newton’s method iteration to solve that equation – at each time step. More simply, we could call upon <code>scipy.optimize.fsolve()</code> to quickly implement a built in Python numerical root finding technique for us. For example, to find the root of the function <span class="math inline">\(G(x) = x^2/2 + x - 6\)</span> we could use the following code</p>
-<div id="448c38b3" class="cell" data-execution_count="1">
+<div id="5cf6548a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> optimize</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> <span class="kw">lambda</span> x: x<span class="op">**</span><span class="dv">2</span><span class="op">/</span><span class="dv">2</span> <span class="op">+</span> x <span class="op">-</span> <span class="dv">6</span></span>
@@ -900,19 +906,21 @@ G(x_{n+1}):=x_{n+1} - hf(t_{n+1},x_{n+1}) - x_n = 0.
 </div>
 <hr>
 <div id="exr-5.50" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.15</strong></span> 💻 🎓 Complete the function <code>backwardEuler1d()</code> below. How do you define the function <code>G</code> inside the <code>for</code> loop and what starting value do you use for the <code>fsolve()</code> command?</p>
+<p><span class="theorem-title"><strong>Exercise 8.15</strong></span> 💻 🎓 Complete the function <code>backwardeuler_1d()</code> below. How do you define the function <code>G</code> inside the <code>for</code> loop and what starting value do you use for the <code>fsolve()</code> command?</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> optimize</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> backwardEuler1d(f, x0, t0, tmax,dt):</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.arange(t0, tmax <span class="op">+</span> dt, dt)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(<span class="bu">len</span>(t))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> x0</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        G <span class="op">=</span> <span class="kw">lambda</span> X: ??? <span class="co"># define this function</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="co"># give an appropriate starting value for fsolve</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        x[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> optimize.fsolve(G, ???)[<span class="dv">0</span>] </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Test your <code>backwardEuler1d()</code> function on several differential equations where you know the solution.</p>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> backwardEuler_1d(f, x0, t0, tmax,dt):</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">round</span>((tmax <span class="op">-</span> t0)<span class="op">/</span>dt)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> (tmax <span class="op">-</span> t0)<span class="op">/</span>N</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.linspace(t0, tmax, N<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(<span class="bu">len</span>(t))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> x0</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        G <span class="op">=</span> <span class="kw">lambda</span> X: ??? <span class="co"># define this function</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="co"># give an appropriate starting value for fsolve</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        x[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> optimize.fsolve(G, ???)[<span class="dv">0</span>] </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Test your <code>backwardEuler_1d()</code> function on several differential equations where you know the solution.</p>
 </div>
 <hr>
 <div id="exr-5.52" class="theorem exercise">
@@ -943,7 +951,7 @@ x_{n+1} =\  ??? \ \cdot x_n.
 <p>To test the stability of a method we can apply it to a simple ODE with a known solution. We can then compare the numerical solution to the exact solution. If the numerical solution is stable, then it will converge to the exact solution as the step size goes to zero. If the numerical solution is unstable, then it will diverge from the exact solution as the step size goes to zero.</p>
 <p>The test equation that is always used for this purpose of studying the stability of a numerical method is the linear ODE <span class="math display">\[
 x'=\lambda x.
-\]</span> The exact solution to this equation is <span class="math inline">\(x(t)=x_(0)_0e^{\lambda t}\)</span>. So for negative <span class="math inline">\(\lambda\)</span> the solution decays, and for positive <span class="math inline">\(\lambda\)</span> the solution grows. The stability of a numerical method can be tested by applying it to this equation and comparing the numerical solution to the exact solution.</p>
+\]</span> The exact solution to this equation is <span class="math inline">\(x(t)=x_(0)e^{\lambda t}\)</span>. So if the real part of <span class="math inline">\(\lambda\)</span> is negative the solution decays, and if the real part of <span class="math inline">\(\lambda\)</span> is positive the solution grows. The stability of a numerical method can be tested by applying it to this equation and comparing the numerical solution to the exact solution.</p>
 <hr>
 <div id="exm-euler_stability" class="theorem example">
 <p><span class="theorem-title"><strong>Example 8.1 (Stability of Euler’s Method)</strong></span> Euler’s method uses the formula <span class="math inline">\(x_{n+1}=x_n+h f(t_n,x_n)\)</span>. Applying this to the test equation <span class="math inline">\(x'=\lambda x\)</span> gives <span class="math display">\[
@@ -966,7 +974,7 @@ h&lt;\frac{2}{|\lambda|}
 </div>
 <p>In general, for a method that, when applied to the test equation <span class="math inline">\(x'=\lambda x\)</span>, gives <span class="math display">\[
 x_{n+1}=Q(h\lambda)x_n
-\]</span> the stability condition is that <span class="math display">\[|Q(h\lambda)|&lt;1.\]</span> Values of <span class="math inline">\(h\lambda =: z\)</span> for which <span class="math inline">\(|Q(z)|&lt;1\)</span> form the *Region of absolute stability** of the method. This is a region in the complex plane, because while the stepsize <span class="math inline">\(h\)</span> is of course always real, in applications the transient term may be oscillatory, corresponding to a complex <span class="math inline">\(\lambda\)</span>.</p>
+\]</span> the stability condition is that <span class="math display">\[|Q(h\lambda)|&lt;1.\]</span> Values of <span class="math inline">\(h\lambda =: z\)</span> for which <span class="math inline">\(|Q(z)|&lt;1\)</span> form the <strong>Region of absolute stability</strong> of the method. This is a region in the complex plane, because while the stepsize <span class="math inline">\(h\)</span> is of course always real, in applications the transient term may be oscillatory, corresponding to a complex <span class="math inline">\(\lambda\)</span>.</p>
 <hr>
 <div id="exm-midpoint_stability" class="theorem example">
 <p><span class="theorem-title"><strong>Example 8.2 (Stability of the Midpoint Method)</strong></span> The midpoint method uses the formula <span class="math display">\[
@@ -1035,76 +1043,14 @@ x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t.
 </section>
 <section id="problems" class="level2" data-number="8.8">
 <h2 data-number="8.8" class="anchored" data-anchor-id="problems"><span class="header-section-number">8.8</span> Problems</h2>
-<div id="exr-5.68" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.23</strong></span> 🖋 💻 Consider the differential equation <span class="math inline">\(x'' + x' + x = 0\)</span> with initial conditions <span class="math inline">\(x(0) = 0\)</span> and <span class="math inline">\(x'(0)=1\)</span>.</p>
-<ol type="1">
-<li><p>Solve this differential equation by hand using any appropriate technique. Show your work.</p></li>
-<li><p>Write code to demonstrate the first order convergence rate of Euler’s method, the second order convergence rate of the Midpoint method, and the fourth order convergence rate of the Runge-Kutta 4 method. Take note that this is a second order differential equation so you will need to start by converting it to a system of differential equations. Then take care that you are comparing the correct term from the numerical solution to your analytic solution in part (1).</p></li>
-</ol>
-</div>
-<hr>
 <div id="exr-5.69" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.24</strong></span> 🖋 💻 Test the Euler, Midpoint, and Runge Kutta methods on the differential equation <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 8.23</strong></span> 🖋 💻 Test the Euler, Midpoint, and Runge Kutta methods on the differential equation <span class="math display">\[\begin{equation}
 x' = \lambda \left( x - \cos(t) \right) - \sin(t) \quad \text{with} \quad x(0) = 1.5.
 \end{equation}\]</span> Find the exact solution by hand using the method of undetermined coefficients and note that your exact solution will involve the parameter <span class="math inline">\(\lambda\)</span>. Produce log-log plots for the error between your numerical solution and the exact solution for <span class="math inline">\(\lambda = -1\)</span>, <span class="math inline">\(\lambda = -10\)</span>, <span class="math inline">\(\lambda = -10^2\)</span>, …, <span class="math inline">\(\lambda = -10^6\)</span>. In other words, create 7 plots (one for each <span class="math inline">\(\lambda\)</span>) showing how each of the 3 methods performs for that value of <span class="math inline">\(\lambda\)</span> at different values for <span class="math inline">\(\Delta t\)</span>.</p>
 </div>
 <hr>
-<div id="exr-5.70" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.25</strong></span> 💻 💬 Two versions of Python code for one dimensional Euler’s method are given below. Compare and contrast the two implementations. What are the advantages / disadvantages to one over the other? Once you have made your pro/con list, devise an experiment to see which of the methods will actually perform faster when solving a differential equation with a very small <span class="math inline">\(\Delta t\)</span>. (You may want to look up how to time the execution of code in Python.)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler(f,x0,t0,tmax,dt):</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> [t0]</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> [x0]</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    steps <span class="op">=</span> <span class="bu">int</span>(np.floor((tmax<span class="op">-</span>t0)<span class="op">/</span>dt))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(steps):</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        t.append(t[n] <span class="op">+</span> dt)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        x.append(x[n] <span class="op">+</span> dt<span class="op">*</span>f(t[n],x[n]))</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> euler(f,x0,t0,tmax,dt):</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.arange(t0,tmax<span class="op">+</span>dt,dt)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.zeros(<span class="bu">len</span>(t))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> x0</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>        x[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[n] <span class="op">+</span> dt<span class="op">*</span>f(t[n],x[n])</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> t, x</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<hr>
-<div id="exr-5.71" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.26</strong></span> 💬 We wish to solve the boundary valued problem <span class="math inline">\(x'' + 4x = \sin(t)\)</span> with initial condition <span class="math inline">\(x(0)=1\)</span> and boundary condition <span class="math inline">\(x(1)=2\)</span> on the domain <span class="math inline">\(t \in (0,1)\)</span>. Notice that you do not have the initial position and initial velocity as you normally would with a second order differential equation. Devise a method for finding a numerical solution to this problem.</p>
-</div>
-<hr>
-<div id="exr-5.72" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.27</strong></span> 💻 Write code to numerically solve the boundary valued differential equation <span class="math display">\[\begin{equation}
-x'' = \cos(t) x' + \sin(t) x \quad \text{with} \quad x(0) = 0 \quad \text{and} \quad x(1) = 1.
-\end{equation}\]</span></p>
-</div>
-<hr>
-<div id="exr-5.73" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.28</strong></span> 💻 In this model there are two characters, Romeo and Juliet, whose affection is quantified on the scale from <span class="math inline">\(-5\)</span> to <span class="math inline">\(5\)</span> described below:</p>
-<ul>
-<li><p><span class="math inline">\(-5\)</span>: Hysterical Hatred</p></li>
-<li><p><span class="math inline">\(-2.5\)</span>: Disgust</p></li>
-<li><p><span class="math inline">\(0\)</span>: Indifference</p></li>
-<li><p><span class="math inline">\(2.5\)</span>: Sweet Affection</p></li>
-<li><p><span class="math inline">\(5\)</span>: Ecstatic Love</p></li>
-</ul>
-<p>The characters struggle with frustrated love due to the lack of reciprocity of their feelings. Mathematically,</p>
-<ul>
-<li><p>Romeo: “My feelings for Juliet decrease in proportion to her love for me.”</p></li>
-<li><p>Juliet: “My love for Romeo grows in proportion to his love for me.”</p></li>
-<li><p>Juliet’s emotional swings lead to many sleepless nights, which consequently dampens her emotions.</p></li>
-</ul>
-<p>This give rise to <span class="math display">\[\begin{equation}
-\left\{ \begin{array}{ll} \frac{dx}{dt} &amp;= -\alpha y \\ \frac{dy}{dt} &amp;= \beta x - \gamma y^2 \end{array} \right.
-\end{equation}\]</span> where <span class="math inline">\(x(t)\)</span> is Romeo’s love for Juliet and <span class="math inline">\(y(t)\)</span> is Juliet’s love for Romeo at time <span class="math inline">\(t\)</span>.</p>
-<p>Your tasks:</p>
-<ol type="1">
-<li><p>First implement this 2D system with <span class="math inline">\(x(0) = 2\)</span>, <span class="math inline">\(y(0)=0\)</span>, <span class="math inline">\(\alpha=0.2\)</span>, <span class="math inline">\(\beta=0.8\)</span>, and <span class="math inline">\(\gamma=0.1\)</span> for <span class="math inline">\(t \in [0,60]\)</span>. What is the fate of this pair’s love under these assumptions?</p></li>
-<li><p>Write code that approximates the parameter <span class="math inline">\(\gamma\)</span> that will result in Juliet having a feeling of indifference at <span class="math inline">\(t=30\)</span>. Your code should not need human supervision: you should be able to tell it that you are looking for <em>indifference</em> at <span class="math inline">\(t=30\)</span> and turn it loose to find an approximation for <span class="math inline">\(\gamma\)</span>. Assume throughout this problem that <span class="math inline">\(\alpha=0.2\)</span>, <span class="math inline">\(\beta=0.8\)</span>, <span class="math inline">\(x(0)=2\)</span>, and <span class="math inline">\(y(0)=0\)</span>. Write a description for how your code works in your homework document.</p></li>
-</ol>
-</div>
-<hr>
 <div id="exr-5.74" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.29</strong></span> 🖋 💻 In this problem we will look at the orbit of a celestial body around the sun. The body could be a satellite, comet, planet, or any other object whose mass is negligible compared to the mass of the sun. We assume that the motion takes place in a two dimensional plane so we can describe the path of the orbit with two coordinates, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> with the point <span class="math inline">\((0,0)\)</span> being used as the reference point for the sun. According to Newton’s law of universal gravitation the system of differential equations that describes the motion is <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 8.24</strong></span> 🖋 💻 In this problem we will look at the orbit of a celestial body around the sun. The body could be a satellite, comet, planet, or any other object whose mass is negligible compared to the mass of the sun. We assume that the motion takes place in a two dimensional plane so we can describe the path of the orbit with two coordinates, <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> with the point <span class="math inline">\((0,0)\)</span> being used as the reference point for the sun. According to Newton’s law of universal gravitation the system of differential equations that describes the motion is <span class="math display">\[\begin{equation}
 x''(t) = \frac{-x}{\left( \sqrt{x^2 + y^2} \right)^3} \quad \text{and} \quad y''(t) = \frac{-y}{\left( \sqrt{x^2 + y^2} \right)^3}.
 \end{equation}\]</span></p>
 <ol type="1">
@@ -1117,7 +1063,7 @@ x''(t) = \frac{-x}{\left( \sqrt{x^2 + y^2} \right)^3} \quad \text{and} \quad y''
 </div>
 <hr>
 <div id="exr-5.75" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.30</strong></span> 💬 💻 In this problem we consider the pursuit and evasion problem where <span class="math inline">\(E(t)\)</span> is the vector for an evader (e.g.&nbsp;a rabbit or a bank robber) and <span class="math inline">\(P(t)\)</span> is the vector for a pursuer (e.g.&nbsp;a fox chasing the rabbit or the police chasing the bank robber) <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 8.25</strong></span> 💬 💻 In this problem we consider the pursuit and evasion problem where <span class="math inline">\(E(t)\)</span> is the vector for an evader (e.g.&nbsp;a rabbit or a bank robber) and <span class="math inline">\(P(t)\)</span> is the vector for a pursuer (e.g.&nbsp;a fox chasing the rabbit or the police chasing the bank robber) <span class="math display">\[\begin{equation}
 E(t) = \begin{pmatrix} x_e(t) \\ y_e(t) \end{pmatrix} \quad \text{and} \quad P(t) = \begin{pmatrix} x_p(t) \\ y_p(t) \end{pmatrix}.
 \end{equation}\]</span> Let us presume the following:</p>
 <dl>
@@ -1156,71 +1102,57 @@ E(t) = \begin{pmatrix} 5 + \cos(2\pi t) + 2\sin(4\pi t) \\ 4 + 3\cos(3 \pi t) \e
 <p>Note: It may be easiest to build this code from scratch instead of using one of our pre-written codes.</p>
 </div>
 <hr>
-<div id="exr-5.76" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.31</strong></span> 💬 💻 (This problem is modified from <span class="citation" data-cites="Meerschaert">(<a href="#ref-Meerschaert" role="doc-biblioref">Meerschaert 2013</a>)</span>)</p>
-<p>One of the favourite foods of the blue whale is krill. Blue whales are baleen whales and feed almost exclusively on krill. These tiny shrimp-like creatures are devoured in massive amounts to provide the principal food source for the huge whales. In the absence of predators, in uncrowded conditions, the krill population density grows at a rate of 25% per year. The presence of 500 tons/acre of krill increases the blue whale population growth rate by 2% per year, and the presence of 150,000 blue whales decreases krill growth rate by 10% per year. The population of blue whales decreases at a rate of 5% per year in the absence of krill.</p>
-<p>These assumptions yield a pair of differential equations (a Lotka-Volterra model) that describe the population of the blue whales (<span class="math inline">\(B\)</span>) and the krill population density (<span class="math inline">\(K\)</span>) over time given by <span class="math display">\[\begin{equation}
-\begin{aligned} \frac{dB}{dt} &amp;= -0.05B + \left( \frac{0.02}{500} \right) BK \\ \frac{dK}{dt} &amp;= 0.25K - \left( \frac{0.10}{150000} \right) BK. \end{aligned}
-\end{equation}\]</span></p>
-<ol type="1">
-<li><p>What are the units of <span class="math inline">\(\frac{dB}{dt}\)</span> and <span class="math inline">\(\frac{dK}{dt}\)</span>?</p></li>
-<li><p>Explain what each of the four terms on the right-hand sides of the differential equations mean in the context of the problem. Include a reason for why each term is positive or negative.</p></li>
-<li><p>Find a numerical solution to the differential equation model using <span class="math inline">\(B(0) = 75,000\)</span> whales and <span class="math inline">\(K(0) = 150\)</span> tons per acre.</p></li>
-<li><p>Whaling is a huge concern in the oceans world wide. Implement a <em>harvesting</em> term into the whale differential equation, defend your mathematical choices and provide a thorough exploration of any parameters that are introduced.</p></li>
-</ol>
-</div>
-<hr>
 <div id="exr-5.77" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.32</strong></span> 💻 (This problem is modified from <span class="citation" data-cites="Spindler">(<a href="#ref-Spindler" role="doc-biblioref">Spindler 2022</a>)</span>)</p>
+<p><span class="theorem-title"><strong>Exercise 8.26</strong></span> 💻 (This problem is modified from <span class="citation" data-cites="Spindler">(<a href="#ref-Spindler" role="doc-biblioref">Spindler 2022</a>)</span>)</p>
 <p>You just received a new long-range helicopter drone for your birthday! After a little practice, you try a long-range test of it by having it carry a small package to your home. A friend volunteers to take it 5 miles east of your home with the goal of flying directly back to your home. So you program and guide the drone to always head directly toward home at a speed of 6 miles per hour. However, a wind is blowing from the south at a steady 4 miles per hour. The drone, though, always attempts to head directly home. We will assume the drone always flies at the same height. What is the drone’s flight path? Does it get the package to your home? What happens if the speeds are different? What if the initial distance is different? How much time does the drone’s battery have to last to get home? When you make plots of your solution they must be animated.</p>
 </div>
 <hr>
 <div id="exr-5.78" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.33</strong></span> 🖋 💻 A trebuchet catapult throws a cow vertically into the air. The differential equation describing its acceleration is <span class="math display">\[\begin{equation}
+<p><span class="theorem-title"><strong>Exercise 8.27</strong></span> 🖋 💻 A trebuchet catapult throws a cow vertically into the air. The differential equation describing its acceleration is <span class="math display">\[\begin{equation}
 \frac{d^2x}{dt^2} = -g - c \frac{dx}{dt} \left| \frac{dx}{dt} \right|
 \end{equation}\]</span> where <span class="math inline">\(g \approx 9.8\)</span> m/s<span class="math inline">\(^2\)</span> and <span class="math inline">\(c \approx 0.02\)</span> m<span class="math inline">\(^{-1}\)</span> for a typical cow. If the cow is launched at an initial upward velocity of 30 m/s, how high will it go, and when will it crash back into the ground? Hint: Change this second order differential equation into a system of first order differential equations.</p>
 </div>
 <hr>
 <div id="exr-5.79" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.34 (Scipy ODEINT)</strong></span> 💻 It should come as no surprise that the <code>scipy</code> library has some built-in tools to solve differential equations numerically. One such tool is <code>scipy.integrate.odeint()</code>. The code below shows how to use the <code>.odeint()</code> tool to solve the differential equation <span class="math inline">\(x' = -\frac{1}{3}x + \sin(t)\)</span> with <span class="math inline">\(x(0) =1\)</span>. Take note that the <code>.odeint()</code> function expects a Python function (or <code>lambda</code> function), an initial condition, and an array of times.</p>
+<p><span class="theorem-title"><strong>Exercise 8.28 (Scipy ODEINT)</strong></span> 💻 It should come as no surprise that the <code>scipy</code> library has some built-in tools to solve differential equations numerically. One such tool is <code>scipy.integrate.odeint()</code>. The code below shows how to use the <code>.odeint()</code> tool to solve the differential equation <span class="math inline">\(x' = -\frac{1}{3}x + \sin(t)\)</span> with <span class="math inline">\(x(0) =1\)</span>. Take note that the <code>.odeint()</code> function expects a Python function (or <code>lambda</code> function), an initial condition, and an array of times.</p>
 <p>Make careful note of the following:</p>
 <ul>
 <li><p>The function <code>scipy.integrate.odeint()</code> expects the function <span class="math inline">\(f\)</span> to have the arguments in the order <span class="math inline">\(x\)</span> (or <span class="math inline">\(y\)</span>) then <span class="math inline">\(t\)</span>. In other words, they expect you to define <span class="math inline">\(f\)</span> as <span class="math inline">\(f = f(x,t)\)</span>. This is opposite from our convention in this chapter where we have defined <span class="math inline">\(f\)</span> as <span class="math inline">\(f = f(t,x)\)</span>.</p></li>
 <li><p>The output of <code>scipy.integrate.odeint()</code> is an array. This is designed so that <code>.odeint()</code> can handle systems of ODEs as well as scalar ODEs. In the code below notice that we plot <code>x[:,0]</code> instead of just <code>x</code>. This is overkill in the case of a scalar ODE, but in a system of ODEs this will be important.</p></li>
 <li><p>You have to specify the array of time for the <code>scipy.integrate.odeint()</code> function. It is typically easiest to use <code>np.linspace()</code> to build the array of times.</p></li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.integrate</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x, t: <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span><span class="fl">3.0</span>)<span class="op">*</span>x <span class="op">+</span> np.sin(t)</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> scipy.integrate.odeint(f,x0,t)</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>plt.plot(t,x[:,<span class="dv">0</span>],<span class="st">'b--'</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.integrate</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x, t: <span class="op">-</span>(<span class="dv">1</span><span class="op">/</span><span class="fl">3.0</span>)<span class="op">*</span>x <span class="op">+</span> np.sin(t)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>,<span class="dv">5</span>,<span class="dv">1000</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> scipy.integrate.odeint(f,x0,t)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.plot(t,x[:,<span class="dv">0</span>],<span class="st">'b--'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Now let us consider the system of ODEs <span class="math display">\[\begin{equation}
 \begin{aligned} x' &amp;= y \\ y' &amp;= -by - c \sin(x). \end{aligned}
 \end{equation}\]</span> In this ODE <span class="math inline">\(x(t)\)</span> is the angle from equilibrium of a pendulum, and <span class="math inline">\(y(t)\)</span> is the angular velocity of the pendulum. To solve this ODE with <code>scipy.integrate.odeint()</code> using the parameters <span class="math inline">\(b=0.25\)</span> and <span class="math inline">\(c=5\)</span> and the initial conditions <span class="math inline">\(x(0) = \pi-0.1\)</span> and <span class="math inline">\(y(0) = 0\)</span> we can use the code below. (The idea to use this ODE was taken from the <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html">documentation page for <code>scipy.integrate.odeint()</code></a>.)</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.integrate</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> <span class="kw">lambda</span> x, t, b, c: [x[<span class="dv">1</span>], <span class="op">-</span>b<span class="op">*</span>x[<span class="dv">1</span>] <span class="op">-</span> c<span class="op">*</span>np.sin(x[<span class="dv">0</span>])]</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> [np.pi <span class="op">-</span> <span class="fl">0.1</span>, <span class="dv">0</span>]</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0.25</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> scipy.integrate.odeint(F, x0, t, args<span class="op">=</span>(b, c))</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.plot(t, x[:,<span class="dv">0</span>], <span class="st">'b'</span>, t, x[:,<span class="dv">1</span>], <span class="st">'r'</span>)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.integrate</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> <span class="kw">lambda</span> x, t, b, c: [x[<span class="dv">1</span>], <span class="op">-</span>b<span class="op">*</span>x[<span class="dv">1</span>] <span class="op">-</span> c<span class="op">*</span>np.sin(x[<span class="dv">0</span>])]</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> [np.pi <span class="op">-</span> <span class="fl">0.1</span>, <span class="dv">0</span>]</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">1000</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">0.25</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> scipy.integrate.odeint(F, x0, t, args<span class="op">=</span>(b, c))</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.plot(t, x[:,<span class="dv">0</span>], <span class="st">'b'</span>, t, x[:,<span class="dv">1</span>], <span class="st">'r'</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Your Tasks:</strong></p>
 <ol type="1">
 <li><p>First implement the two blocks of Python code given above. Be sure to understand what each line of code is doing. Fully comment your code, and then try the code with several different initial conditions.</p></li>
 <li><p>For the pendulum system be sure to describe what your initial conditions mean in the physical setup.</p></li>
 <li><p>Use <code>scipy.integrate.odeint()</code> to solve a non-trivial scalar ODE of your choosing. Clearly show your ODE and give plots of your solutions with several different initial conditions.</p></li>
 <li><p>Build a numerical experiment to determine the relationship between your choice of <span class="math inline">\(\Delta t\)</span> and the absolute maximum error between the solution from <code>.odeint()</code> and a known analytic solution to a scalar ODE. Support your work with appropriate plots and discussion.</p></li>
-<li><p>Solve the system of differential equations from <a href="#exr-5.74" class="quarto-xref">Exercise&nbsp;<span>8.29</span></a> using <code>scipy.integrate.odeint()</code>. Show appropriate plots of your solution.</p></li>
+<li><p>Solve the system of differential equations from <a href="#exr-5.74" class="quarto-xref">Exercise&nbsp;<span>8.24</span></a> using <code>scipy.integrate.odeint()</code>. Show appropriate plots of your solution.</p></li>
 </ol>
 </div>
 </section>
@@ -1310,9 +1242,6 @@ s_x(t) = \int_0^t v_x(\tau) d\tau \quad \text{and} \quad s_z(t) = \int_0^t v_z(\
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Meerschaert" class="csl-entry" role="listitem">
-Meerschaert, Mark. 2013. <em>Mathematical <span>Modeling</span></em>. 4th edition. Amsterdam ; Boston: Academic Press.
-</div>
 <div id="ref-Spindler" class="csl-entry" role="listitem">
 Spindler, Richard. 2022. <span>“6-023-DroneHeadingHome-ModelingScenario.”</span> <a href="https://doi.org/doi:/10.25334/F80X-6R33">https://doi.org/doi:/10.25334/F80X-6R33</a>.
 </div>

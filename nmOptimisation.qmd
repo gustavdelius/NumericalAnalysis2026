@@ -29,7 +29,7 @@ Let us start with solving optimisation problems where the quantity to be optimis
 
     -   determine the critical point that gives the maximum volume.
 
-    Check that your answer is $20/3$.
+    Check that your answer is $10/3$.
 
 ![Folds to make a cardboard box](figures/Optimisation/CardboardBox.png){#fig-3.8 alt="Folds to make a cardboard box" height=6cm}
 :::
@@ -490,7 +490,7 @@ $$
 
 3.  Repeat the iterative process in step 2 until two successive points are *close enough* to each other, in the sense that their Euclidean distance is smaller than a given tolerance `tol`.
 $$
-|\boldsymbol{x}_{n+1}-\boldsymbol{x}_{n+1}|=\sqrt{\sum_{i=0}^{k-1}(x_{n+1,i}-x_{n,i})^2} < \text{tol}
+|\boldsymbol{x}_{n+1}-\boldsymbol{x}_{n}|=\sqrt{\sum_{i=0}^{k-1}(x_{n+1,i}-x_{n,i})^2} < \text{tol}
 $$
 
 ::: {#exr-3.58}

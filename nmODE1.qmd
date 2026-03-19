@@ -5,10 +5,6 @@
 
 The topic of this chapter is to find *approximate solutions* to *ordinary differential equations*.
 
-::: {.callout-caution}
-This chapter is still undergoing changes, to be released on Thursday of week 6.
-:::
-
 Let us briefly recall what an ordinary differential equation (ODE) is. A
 rather arbitrarily chosen example for an ODE (here, of second order) is
 $$
@@ -262,7 +258,7 @@ plt.grid()
 ------------------------------------------------------------------------
 
 ::: {#exr-5.15}
-💬 Shelby solved a first order ODE $x' = f(t,x)$ using Euler's method with a step size of $dt = 0.1$ on a domain $t \in [0,3]$. To test her code she used a differential equation where she new the exact analytic solution and she found the maximum absolute error on the interval to be $0.15$. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using Euler's method and a step size of $dt = 0.01$. What would be your best estimate of Jackson's maximum absolute error?
+🖋 💬 🎓 Shelby solved a first order ODE $x' = f(t,x)$ using Euler's method with a step size of $dt = 0.1$ on a domain $t \in [0,3]$. To test her code she used a differential equation where she new the exact analytic solution and she found the maximum absolute error on the interval to be $0.15$. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using Euler's method and a step size of $dt = 0.01$. What would be your best estimate of Jackson's maximum absolute error?
 
 :::
 
@@ -415,7 +411,7 @@ plt.show()
 
 ::: {#exr-5.21}
 #### A Lotka-Volterra Predator-Prey Model
-🖋 💻 Let $x_0(t)$ denote the number of rabbits (prey) and $x_1(t)$ denote the number of foxes (predator) at time $t$. The relationship between the species can be modelled by the classic 1920's Lotka-Volterra Model:
+🖋 💻 🎓 Let $x_0(t)$ denote the number of rabbits (prey) and $x_1(t)$ denote the number of foxes (predator) at time $t$. The relationship between the species can be modelled by the classic 1920's Lotka-Volterra Model: 
 \begin{equation}
 \left\{ \begin{array}{ll} x_0' &= \alpha x_0 - \beta x_0 x_1 \\ x_1' &= \delta x_0 x_1 - \gamma x_1 \end{array} \right.
 \end{equation}
@@ -568,12 +564,13 @@ plt.grid()
 plt.show()
 ```
 
+🎓 Also apply your method to the question in the feedback quiz.
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-5.26}
-💻 💬 The goal in building the midpoint method was to hopefully capture some of the upcoming curvature in the solution before we overshot it. Consider the differential equation $x' = -\frac{1}{3}x + \sin(t)$ with initial condition $x(0) = 1$ on the domain $t \in [0,10]$ as in @exr-5.13. First get a numerical solution with Euler's method using $\Delta t = 1$. Then get a numerical solution with the midpoint method using the same value for $\Delta t = 1$. Plot the two solutions on top of each other along with the exact solution
+💻 💬 🎓 The goal in building the midpoint method was to hopefully capture some of the upcoming curvature in the solution before we overshot it. Consider the differential equation $x' = -\frac{1}{3}x + \sin(t)$ with initial condition $x(0) = 1$ on the domain $t \in [0,10]$ as in @exr-5.13. First get a numerical solution with Euler's method using $\Delta t = 1$. Then get a numerical solution with the midpoint method using the same value for $\Delta t = 1$. Plot the two solutions on top of each other along with the exact solution 
 \begin{equation}
  x(t) = \frac{1}{10} \left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 \end{equation}
@@ -585,6 +582,9 @@ What do you observe?
 
 ::: {#exr-5.27}
 💻 🎓 Repeat @exr-5.14 with the midpoint method. Compare your results to what you found with Euler's method.
+Then use what you have discovered to answer the following, similar to @exr-5.15:
+
+Shelby solved a first order ODE $x' = f(t,x)$ using the midpoint method with a step size of $dt = 0.1$ on a domain $t \in [0,3]$. To test her code she used a differential equation where she new the exact analytic solution and she found the maximum absolute error on the interval to be $0.15$. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using the midpoint method and a step size of $dt = 0.01$. What would be your best estimate of Jackson's maximum absolute error?
 
 :::
 

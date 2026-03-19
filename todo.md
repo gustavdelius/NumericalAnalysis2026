@@ -34,6 +34,7 @@
 ## Chapter 5 Calculus
 - [ ] Take out Exercise 5.13 about writing the inefficient version of ForwardDiff and go straight to the vectorised case.
 - [ ] Students took a long time on the Differentiation section. Streamline.
+- [ ] In the feedback question testing the Simpson method, detect if they used 50 intervals instead of 100, which would happen if they used AI to write the function for them.
 
 ## Chapter 6 Optimisation
 - [ ] Use gradient descent for regression

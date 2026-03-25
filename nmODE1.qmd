@@ -281,19 +281,19 @@ Euler's method is a first order method for approximating the solution to the dif
 
 1.  Which of the following is a good candidate for a restoring force in a spring? Defend your answer.
 
-    a.  $F_{restoring} = kx$: The restoring force is proportional to the displacement away from equilibrium.
+    a.  $F_{restoring} = -kx$: The restoring force is proportional to the displacement away from equilibrium.
 
-    b.  $F_{restoring} = kx'$: The restoring force is proportional to the velocity of the mass.
+    b.  $F_{restoring} = -kx'$: The restoring force is proportional to the velocity of the mass.
 
-    c.  $F_{restoring} = kx''$: The restoring force is proportional to the acceleration of the mass.
+    c.  $F_{restoring} = -kx''$: The restoring force is proportional to the acceleration of the mass.
 
 2.  Which of the following is a good candidate for a damping force in a spring? Defend your answer.
 
-    a.  $F_{damping} = bx$: The damping force is proportional to the displacement away from equilibrium.
+    a.  $F_{damping} = -bx$: The damping force is proportional to the displacement away from equilibrium.
 
-    b.  $F_{damping} = bx'$: The damping force is proportional to the velocity of the mass.
+    b.  $F_{damping} = -bx'$: The damping force is proportional to the velocity of the mass.
 
-    c.  $F_{damping} = bx''$: The damping force is proportional to the acceleration of the mass.
+    c.  $F_{damping} = -bx''$: The damping force is proportional to the acceleration of the mass.
 
 3.  Put your answers to parts (1) and (2) together and simplify to form a second-order differential equation for position:
 \begin{equation}

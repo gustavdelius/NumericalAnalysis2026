@@ -42,6 +42,9 @@
 
 ## Chapters 7 and 8 ODEs
 - [ ] Print out Figures 6.1 and 6.2 and bring them to session
+- [ ] Remove first three parts of Exercise 7.9 and give the second-order equation directly. Update the labels on the corresponding feedback quiz questions.
+- [ ] Change the ODE example in Exercise 7.9 part to make it agree with the one in the feedback quiz.
+- [ ] Wrap the plotting code in Exercise 7.9 into functions.
 - [ ] Ask students to also draw the backward Euler method
 
 ## Chapters 9 and 10 PDEs

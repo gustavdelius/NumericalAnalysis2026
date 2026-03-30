@@ -1,9 +1,5 @@
 # ODE 2 {#sec-ode2}
 
-::: {.callout-caution}
-This chapter is still undergoing changes, to be released on Thursday of week 7.
-:::
-
 ## Searching for a Better Method
 
 OK. Ready for some experimentation? We are going to build a few experiments that eventually lead us to a very powerful method for finding numerical solutions to first order differential equations than the midpoint method. It is up to you to decide how much time to spend on experimentation in this section. If you are pressed for time, you can skip forward to @sec-rk4.
@@ -42,7 +38,7 @@ OK. Ready for some experimentation? We are going to build a few experiments that
 ------------------------------------------------------------------------
 
 ::: {#exr-5.32}
-💻 💬 One of the troubles with the midpoint method is that it does not actually use the information at the point $(t_n,x_n)$. Moreover, it does not leverage a slope at the next time step $t_{n+1}$. Let us see what happens when we try a solution technique that combined the ideas of Euler and Midpoint as follows:
+💻 💬 The midpoint method only uses the slope at the midpoint. Perhaps one can find a better method by taking some combination of the slopes at the start point, the midpoint and the end point as follows:
 
 -   The slope at the point $(t_n,x_n)$ can be called $m_n$ and we find it by evaluating $f(t_n,x_n)$.
 
@@ -50,20 +46,13 @@ OK. Ready for some experimentation? We are going to build a few experiments that
 
 -   We can now take a full step using slope $m_{n+1/2}$ to get the point $x_{n+1}$ and the slope there is $m_{n+1} = f(t_{n+1}, x_{n+1})$.
 
--   Now we have three estimates of the slope that we can use to actually propagate forward from $(t_n,x_n)$:
-
-    -   We could just use $m_n$. This is Euler's method.
-
-    -   We could just use $m_{n+1/2}$. This is the midpoint method.
-
-    -   We could use $m_{n+1}$. Would this approach be any good?
-
-    -   We could use the average of the three slopes.
-
-    -   We could use a weighted average of the three slopes where some preference is given to some slopes over the others. Something like 
+-   Now we have three estimates of the slope and could take a weighted average of them:
     $$
-    \text{estimate of slope} = \frac{m_n + 2m_{n+1/2} + m_{n+1}}{4} 
+    \text{estimate of slope} = \frac{c_n m_n + c_{n+1/2} m_{n+1/2} + c_{n+1} m_{n+1}}{c_n + c_{n+1/2} + c_{n+1}} 
     $$
+
+    where $c_n$, $c_{n+1/2}$ and $c_{n+1}$ are constants that you get to choose. We will then take a step forwards using this estimate of the slope:
+    
 
 In the code below you will find a function called `ode_test()` that you can use as a starting point to test out the last three ideas. After the function you will see several lines of code that test your method against the differential equation $x'(t) = -\frac{1}{3}x + \sin(t)$ with $x(0) = 1$. The plots that come out are our typical error plots with the step size on the horizontal axis and our maximum absolute error between the numerical solution and the exact solution on the vertical axis. Recall that the exact solution to this differential equation is 
 \begin{equation}
@@ -135,6 +124,19 @@ plt.grid()
 plt.legend(['euler', 'midpoint', 'test method'])
 plt.show()
 ```
+Collaborate within your group to extend the table below.
+
+
+|     | $c_n$ | $c_{n+1/2}$ | $c_{n+1}$ | **Order of Error**          | **Name**        |
+|-----|---------|---------------|---------|-----------------------------|-----------------|
+| 1   | 1       | 0             | 0       | $\mathcal{O}(\Delta t)$   | Euler's Method |
+| 2   | 0       | 1             | 0       | $\mathcal{O}(\Delta t^2)$ | Midpoint Method |
+|3    | 1/2     | 1/2           | 0       |                             |                 |
+|4    | 1/6     | 2/3           | 1/6     |                             |                 |
+|5    | 1/4     | 1/2           | 1/4     |                             |                 |
+|6    |         |                 |         |                             |                 |
+|7    |         |                 |         |                             |                 |
+|8    |         |                 |         |                             |                 |
 
 Does it appear that we can improve upon the order of the error (the slope in the log-log plot) using any of these methods?
 
@@ -163,20 +165,11 @@ Then calculate a new estimat $m_{n+1}^*$ of the slope at the end of the step usi
 
 2.  Modify the code from above to include this fourth slope.
 
-3.  Experiment with several ideas about how to best combine the four slopes: $m_n$, $m_{n+1/2}$, $m_{n+1/2}^*$, and $m_{n+1}^*$.
-
-    -   Should we just take an average of the four slopes?
-
-    -   Should we give one or more of the slopes preferential treatment and do some sort of weighted average?
-
-    -   Should we do something else entirely?
-
-Remember that we are looking to improve the slope in the log-log plot since that indicates an improvement in the order of the error (the accuracy) of the method.
-
-Experiment with many different linear combinations
+3.  Experiment with several ideas about how to best combine the four slopes: $m_n$, $m_{n+1/2}$, $m_{n+1/2}^*$, and $m_{n+1}^*$. Experiment with many different linear combinations
 $$
-\text{estimate of slope} = c_n m_n + c_{n+1/2} m_{n+1/2} + c_{n+1/2}^* m_{n+1/2}^* + c_{n+1} m_{n+1}
+\text{estimate of slope} = c_n m_n + c_{n+1/2} m_{n+1/2} + c_{n+1/2}^* m_{n+1/2}^* + c_{n+1}^* m_{n+1}^*.
 $$
+
 Work with your group to fill in the following summary table of all of the methods that you devised. If you generated linear combinations that are not listed below then just add them to the list (we have only listed the most common ones here).
 
 |     | $c_n$ | $c_{n+1/2}$ | $c_{n+1/2}^*$ | $c_{n+1}^*$ | **Order of Error**          | **Name**        |
@@ -191,11 +184,9 @@ Work with your group to fill in the following summary table of all of the method
 | 8   | 1/5     | 2/5           | 1/5             | 1/5     |                             |                 |
 | 9   | 1/5     | 1/5           | 2/5             | 1/5     |                             |                 |
 | 10  | 1/6     | 2/6           | 2/6             | 1/6     |                             |                 |
-| 11  | 1/6     | 3/6           | 1/6             | 1/6     |                             |                 |
-| 12  | 1/6     | 1/6           | 3/6             | 1/6     |                             |                 |
-| 13  | 1/8     | 3/8           | 3/8             | 1/8     |                             |                 |
-| 14  |         |               |                 |         |                             |                 |
-| 15  |         |               |                 |         |                             |                 |
+| 11  | 1/8     | 3/8           | 3/8             | 1/8     |                             |                 |
+| 12  |         |               |                 |         |                             |                 |
+| 13  |         |               |                 |         |                             |                 |
 
 Many of the resulting numerical ODE methods likely had the same order of accuracy (again, the order of the method is the slope in the error plot), but some may have been much better or much worse. State which linear combination of slopes seems to have been the best, draw a picture of what this method does to numerically approximate the next slope for a numerical solution to an ODE, and clearly state what the order of the error means about this method.
 
@@ -258,7 +249,7 @@ d.  Discuss the implications of what you found in parts (a) - (c) of this proble
 --->
 
 ::: {#exr-5.40}
-🖋 🎓 Let us step back for a second and just see what the RK4 method does from a nuts-and-bolts point of view. Consider the differential equation $x' = x$ with initial condition $x(0) = 1$. The solution to this differential equation is clearly $x(t) = e^t$. For the sake of simplicity, take $\Delta t = 1$ and perform 1 step of the RK4 method BY HAND to approximate the value $x(1)$.
+🖋 🎓 Let us step back for a second and just see what the RK4 method does from a nuts-and-bolts point of view. Consider the differential equation $x' = x$ with initial condition $x(0) = 1$. The solution to this differential equation is clearly $x(t) = e^t$. Take $\Delta t = h$ and perform 1 step of the RK4 method BY HAND to approximate the value $x(h)$. You should find that $x(h)$ is given by a polynomial in $h$. 💬 Does that polynomial look familiar? Is this consistent with the fact that the RK4 method is a 4th order method?
 
 :::
 
@@ -271,7 +262,7 @@ d.  Discuss the implications of what you found in parts (a) - (c) of this proble
 import numpy as np
 import matplotlib.pyplot as plt
 
-def rk41d(f, x0, t0, tmax, dt):
+def rk4_1d(f, x0, t0, tmax, dt):
     N = round((tmax - t0)/dt)
     dt = (tmax - t0)/N
     t = np.linspace(t0, tmax, N+1)
@@ -365,7 +356,7 @@ x_{n+1} = x_n - \frac{1}{2} x_{n+1}.
 
 ------------------------------------------------------------------------
 
-::: {#exr-5.49}
+::: {#exm-5.49}
 🖋 The previous problem could potentially lead you to believe that the backward Euler method will always result in some other nice difference equation after some algebraic rearranging. That is not true! Let us consider a slightly more complicated differential equation and see what happens 
 \begin{equation}
 x' = -\frac{1}{2} x^2 \quad \text{with} \quad x(0) = 0.
@@ -378,13 +369,11 @@ x_{n+1} = x_n + h f(t_{n+1},x_{n+1}).
 \end{equation}
  Let us take $h=1$ for simplicity (we will make it smaller later). What is the backward Euler formula for this particular differential equation?
 
-2.  You should notice that your backward Euler formula is now a quadratic function in $x_{n+1}$. That is to say, if you are given a value of $x_n$ then you need to solve a quadratic polynomial equation to get $x_{n+1}$. Let us be more explicit:\
-    We know that $x(0) = 6$ so in our numerical solutions, $x_0 = 6$. In order to get $x_1$ we consider the equation 
-    $$x_1 = x_0 - \frac{1}{2} x_1^2.$$ Rearranging we see that we need to solve $$\frac{1}{2}x_1^2 + x_1 - 6 = 0$$ in order to get $x_1$. Doing so gives us $x_1 = \sqrt{13} - 1 \approx 2.606$.
+2.  You should notice that your backward Euler formula is now a quadratic function in $x_{n+1}$. That is to say, if you are given a value of $x_n$ then you need to solve a quadratic polynomial equation to get $x_{n+1}$. 
 
-3.  Go two steps further with the backward Euler method on this problem. Then take the same number of steps with regular (forward) Euler's method.
+3.  Let us take $x_0 = 6$ and $h=1$. What is the value of $x_1$ using the backward Euler method? 
 
-4.  Work out the analytic solution for this differential equation (using separation of variables perhaps). Then compare the values that you found in parts (2) and (3) of this problem to values of the analytic solution and values that you would find from the regular (forward) Euler approximation. What do you notice?
+Did you get $x_1=\sqrt{13}-1$? 
 
 :::
 
@@ -579,17 +568,90 @@ This is almost the entire complex plane, except for the circle of radius 1 aroun
 
 ## Stiff Equations {#sec-stiff}
 
-A differential equation is called "stiff" if the exact solution has a term that decays very rapidly. This is a problem for numerical methods because the step size must be very small to capture the rapid decay. The step size must be small for the entire solution, not just the rapidly decaying part. This can make the solution very slow to compute. 
+A differential equation is called "stiff" if the exact solution has a term that decays very rapidly. This is a problem for numerical methods because the step size must be very small to capture the rapid decay. The step size must be small for the entire solution, not just the rapidly decaying part. This can make the solution very slow to compute.
 
 An example of such a rapidly decaying term would be a term of the form $e^{-\gamma t}$ with $\gamma$ large. As an example consider the ODE
 $$
-x'=-10x+\sin t.
+x'=-100x+\sin t.
 $$
 This is similar to equations we solved in @exr-5.13, just with a larger negative coefficient in front of $x$. The solution to this equation is
 $$
 x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t.
 $$
 The term $e^{-100t}$ decays very rapidly. We refer to such a term in the solution as a "transient" because it becomes irrelevant after a short time. In spite of the fact that this term is irrelevant, it forces us to take a very small step size in order to avoid an instability if we are using an explicit method. Thus for a stiff equation  it is advisable to use an implicit method instead.
+
+The ratio $\gamma_{\max}/\gamma_{\min}$ of the fastest-decaying rate to the slowest-decaying rate is called the **stiffness ratio**. For our 1D example the stiffness ratio is simply 100 (the decay rate of the transient compared to the decay rate of... well, there is only one rate). The stability condition for the forward Euler method applied to $x'=\lambda x$ requires $h < 2/|\lambda|$, so a large $\lambda$ forces a tiny step size even if the interesting dynamics are slow.
+
+------------------------------------------------------------------------
+
+::: {#exr-5.55}
+🖋 🎓 Verify by substitution that
+$$
+x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t
+$$
+is indeed the general solution to $x'=-100x+\sin t$. (Recall how we found the particular solution to $x'=-\frac{1}{3}x+\sin t$ in @exr-5.13.) Then:
+
+a. What value of $C$ gives the solution satisfying the initial condition $x(0)=0$?
+b. The transient $e^{-100t}$ has decayed to less than $1\%$ of its initial value by time $t^*$. Find $t^*$.
+c. For $t>t^*$ the solution is well-approximated by $\frac{100}{10001}\sin t-\frac{1}{10001}\cos t$. Roughly how large is this "steady-state" amplitude?
+d. The stability condition for the forward Euler method applied to $x'=\lambda x$ is $h<2/|\lambda|$. What is the maximum step size that forward Euler can use on this equation and still be stable?
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-5.56}
+💻 💬 Investigate the stiffness of $x'=-100x+\sin t$ with $x(0)=0$ numerically.
+
+a. Solve the equation using forward Euler with step sizes $h=0.1$, $h=0.01$, and $h=0.001$. Plot all three numerical solutions together with the exact solution on the interval $t\in[0,1]$. What do you observe?
+b. Repeat with the backward Euler method using the same step sizes. What do you observe?
+c. Repeat with the RK4 method. What is the largest step size for which RK4 remains stable on this problem? (Hint: the stability region of RK4 extends to roughly $|z|\lesssim 2.8$ along the negative real axis.) Compare with what you found for forward Euler.
+d. 💬 Explain in your own words why an implicit method is preferable for stiff equations.
+:::
+
+------------------------------------------------------------------------
+
+Stiffness also arises naturally in systems of differential equations. In a system, different components of the solution can decay at very different rates. If one component decays on a timescale of $1/\gamma_{\text{fast}}$ while another decays on a timescale of $1/\gamma_{\text{slow}}$, an explicit method must use a step size dictated by $\gamma_{\text{fast}}$, even if we only care about the slow component.
+
+A simple example comes from the overdamped spring. Consider the second-order ODE
+$$
+x''+(\gamma+1)x'+\gamma x=0,
+$$
+which describes a spring-mass system with damping. Writing $u=x$ and $v=x'$ converts this to the first-order system
+$$
+\begin{pmatrix}u\\v\end{pmatrix}' = \begin{pmatrix}0&1\\-\gamma&-(\gamma+1)\end{pmatrix}\begin{pmatrix}u\\v\end{pmatrix}.
+$$
+The characteristic equation of the matrix is $\lambda^2+(\gamma+1)\lambda+\gamma=(\lambda+1)(\lambda+\gamma)=0$, so the eigenvalues are $\lambda_1=-1$ and $\lambda_2=-\gamma$. The general solution is
+$$
+x(t)=C_1e^{-t}+C_2e^{-\gamma t}.
+$$
+For large $\gamma$ the term $e^{-\gamma t}$ is a rapidly decaying transient and the stiffness ratio is $\gamma/1=\gamma$. An explicit method must take $h<2/\gamma$ to remain stable, even though the long-term behaviour of $x$ is governed by the much slower rate $e^{-t}$.
+
+------------------------------------------------------------------------
+
+::: {#exr-5.57}
+🖋 🎓 Consider the system
+$$
+\begin{pmatrix}u\\v\end{pmatrix}' = \begin{pmatrix}0&1\\-\gamma&-(\gamma+1)\end{pmatrix}\begin{pmatrix}u\\v\end{pmatrix}, \quad \begin{pmatrix}u(0)\\v(0)\end{pmatrix}=\begin{pmatrix}1\\0\end{pmatrix}.
+$$
+
+a. Write out the two scalar differential equations that make up this system.
+b. Verify that $x(t)=C_1 e^{-t}+C_2 e^{-\gamma t}$ is the general solution to $x''+(\gamma+1)x'+\gamma x=0$ by substitution.
+c. Use the initial conditions $u(0)=1$ and $v(0)=x'(0)=0$ to find $C_1$ and $C_2$.
+d. For $\gamma=100$, how small must the step size $h$ be for the forward Euler method to be stable? How does this compare to the timescale on which the solution $u(t)=x(t)$ actually changes significantly?
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-5.58}
+💻 Solve the stiff system from @exr-5.57 numerically with $\gamma=100$ on the interval $t\in[0,5]$.
+
+a. Using the result of @exr-5.57c, write down the exact solution $x(t)$ for these initial conditions and plot it.
+b. Solve the system with the forward Euler method and step sizes $h=0.1$, $h=0.01$, and $h=0.001$. At which step size does forward Euler first produce a stable solution?
+c. Solve the system with the backward Euler method using the same step sizes. Does backward Euler remain stable even for $h=0.1$?
+d. 💬 By what factor can backward Euler take larger steps than forward Euler and still be stable? How does this factor relate to $\gamma$?
+:::
+
+------------------------------------------------------------------------
 
 ## Algorithm Summaries
 

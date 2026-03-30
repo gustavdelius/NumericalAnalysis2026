@@ -6,7 +6,7 @@
 - [ ] Set all assessment quizzes to allow corrections with a 30% penalty.
 - [ ] Add a pen icon to exercises to be done with pen and paper and a keyboard icon to those requiring coding.
 - [ ] Use docstrings consistently throughout the example code.
-- [ ] Be consistent about whether to append errors to a list or put them into a numpy vector.
+- [ ] Be consistent about whether to append errors to a list or put them into a numpy vector. I prefer vector.
 - [ ] Follow standard Python style conventions, in particular in function names.
 - [ ] Harmonise the presentation of Taylor's theorem throughout the notes.
 - [ ] Consider moving the Optimisation chapter before the Calculus chapter.

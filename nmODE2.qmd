@@ -6,9 +6,7 @@ This chapter is still undergoing changes, to be released on Thursday of week 7.
 
 ## Searching for a Better Method
 
-OK. Ready for some experimentation? We are going to build a few experiments that eventually lead us to a very powerful method for finding numerical solutions to first order differential equations than the midpoint method. 
-
-This section is optional. If you feel pressed for time, then you can skip forward to @sec-alg-summaries-ode1.
+OK. Ready for some experimentation? We are going to build a few experiments that eventually lead us to a very powerful method for finding numerical solutions to first order differential equations than the midpoint method. It is up to you to decide how much time to spend on experimentation in this section. If you are pressed for time, you can skip forward to @sec-rk4.
 
 ::: {#exr-5.31}
 🖋 Let us talk about the Midpoint Method for a moment. The geometric idea of the midpoint method is outlined in the bullets below. Draw a picture along with the bullets.
@@ -62,7 +60,10 @@ This section is optional. If you feel pressed for time, then you can skip forwar
 
     -   We could use the average of the three slopes.
 
-    -   We could use a weighted average of the three slopes where some preference is given to some slopes over the others.
+    -   We could use a weighted average of the three slopes where some preference is given to some slopes over the others. Something like 
+    $$
+    \text{estimate of slope} = \frac{m_n + 2m_{n+1/2} + m_{n+1}}{4} 
+    $$
 
 In the code below you will find a function called `ode_test()` that you can use as a starting point to test out the last three ideas. After the function you will see several lines of code that test your method against the differential equation $x'(t) = -\frac{1}{3}x + \sin(t)$ with $x(0) = 1$. The plots that come out are our typical error plots with the step size on the horizontal axis and our maximum absolute error between the numerical solution and the exact solution on the vertical axis. Recall that the exact solution to this differential equation is 
 \begin{equation}
@@ -104,47 +105,38 @@ exact = lambda t: (1/10.0)*(19*np.exp(-t/3) + \
 x0 = 1 # initial condition
 t0 = 0 # initial time
 tmax = 3 # max time
-# set up blank arrays to keep track of the maximum absolute errorrs
-err_euler = [] 
-err_midpoint = []
-err_ode_test = []
 # Next give a list of Delta t values (what list did we give here)
-H = 10.0**(-np.arange(1, 7, 1)) 
-for dt in H:
+dt = 10.0**(-np.arange(1, 5, 1))
+# set up blank vectors to keep track of the maximum absolute errorrs
+err_euler = np.zeros(len(dt))
+err_midpoint = np.zeros(len(dt))
+err_ode_test = np.zeros(len(dt))
+for n in range(len(dt)):
     # Build an euler approximation
-    t, xeuler = euler(f, x0, t0, tmax,dt) 
+    t, xeuler = euler_1d(f, x0, t0, tmax, dt    [n]) 
     # Measure the max abs error
-    err_euler.append(np.max(np.abs(xeuler - exact(t)))) 
+    err_euler[n] = np.max(np.abs(xeuler - exact(t))) 
     # Build a midpoint approximation
-    t, xmidpoint = midpoint(f, x0, t0, tmax, dt) 
+    t, xmidpoint = midpoint_1d(f, x0, t0, tmax, dt[n]) 
     # Measure the max abs error
-    err_midpoint.append(np.max(np.abs(xmidpoint - exact(t)))) 
+    err_midpoint[n] = np.max(np.abs(xmidpoint - exact(t))) 
     # Build your new approximation
-    t, xtest = ode_test(f, x0, t0, tmax, dt) 
+    t, xtest = ode_test(f, x0, t0, tmax, dt[n]) 
     # Measure the max abs error
-    err_ode_test.append(np.max(np.abs(xtest - exact(t)))) 
+    err_ode_test[n] = np.max(np.abs(xtest - exact(t))) 
 
 # Finally, we make a loglog plot of the errors.  
 # Keep an eye on the slopes since they tell you the order of 
 # the error for the method.
-plt.loglog(H, err_euler, 'r*-',
-           H, err_midpoint, 'b*-',
-           H, err_ode_test, 'k*-')
+plt.loglog(dt, err_euler, 'r*-',
+           dt, err_midpoint, 'b*-',
+           dt, err_ode_test, 'k*-')
 plt.grid()
 plt.legend(['euler', 'midpoint', 'test method'])
 plt.show()
 ```
 
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-5.33}
-💬 In the previous exercise you should have found that an average of the three slopes did just a *little bit* better than the midpoint method but the order of the error (the slope in the log-log plot) stayed about the same. You should have also found that the weighted average 
-\begin{equation}
- \text{estimate of slope} = \frac{m_n + 2m_{n+1/2} + m_{n+1}}{4} 
-\end{equation}
- did just a little bit better than just a plain average. Why might this be? (If you have not tried this weighted average then go back and try it.) Do other weighted averages of this sort work better or worse? Does it appear that we can improve upon the order of the error (the slope in the log-log plot) using any of these methods?
+Does it appear that we can improve upon the order of the error (the slope in the log-log plot) using any of these methods?
 
 :::
 
@@ -181,49 +173,34 @@ Then calculate a new estimat $m_{n+1}^*$ of the slope at the end of the step usi
 
 Remember that we are looking to improve the slope in the log-log plot since that indicates an improvement in the order of the error (the accuracy) of the method.
 
-:::
+Experiment with many different linear combinations
+$$
+\text{estimate of slope} = c_n m_n + c_{n+1/2} m_{n+1/2} + c_{n+1/2}^* m_{n+1/2}^* + c_{n+1} m_{n+1}
+$$
+Work with your group to fill in the following summary table of all of the methods that you devised. If you generated linear combinations that are not listed below then just add them to the list (we have only listed the most common ones here).
 
-------------------------------------------------------------------------
-
-::: {#exr-5.35}
-💬 In the previous exercise you no doubt experimented with many different linear combinations of $m_n$, $m_{n+1/2}$, $m_{n+1/2}^*$, and $m_{n+1}^*$. Many of the resulting numerical ODE methods likely had the same order of accuracy (again, the order of the method is the slope in the error plot), but some may have been much better or much worse. Work with your team to fill in the following summary table of all of the methods that you devised. If you generated linear combinations that are not listed below then just add them to the list (we have only listed the most common ones here).
-
-|     | $m_n$ | $m_{n+1/2}$ | $m_{n+1/2}^*$ | $m_{n+1}^*$ | **Order of Error**          | **Name**        |
+|     | $c_n$ | $c_{n+1/2}$ | $c_{n+1/2}^*$ | $c_{n+1}^*$ | **Order of Error**          | **Name**        |
 |-----|---------|---------------|-----------------|---------|-----------------------------|-----------------|
 | 1   | 1       | 0             | 0               | 0       | $\mathcal{O}(\Delta t)$   | Euler's Method |
 | 2   | 0       | 1             | 0               | 0       | $\mathcal{O}(\Delta t^2)$ | Midpoint Method |
 | 3   | 1/2     | 1/2           | 0               | 0       |                             |                 |
-| 4   | 1/3     | 1/3           | 0               | 1/3     |                             |                 |
-| 5   | 1/4     | 2/4           | 0               | 1/4     |                             |                 |
-| 6   | 0       | 0             | 1               | 0       |                             |                 |
-| 7   | 0       | 1/2           | 1/2             | 0       |                             |                 |
-| 8   | 1/3     | 1/3           | 1/3             | 0       |                             |                 |
-| 9   | 1/4     | 1/4           | 1/4             | 1/4     |                             |                 |
-| 10  | 1/5     | 2/5           | 1/5             | 1/5     |                             |                 |
-| 11  | 1/5     | 1/5           | 2/5             | 1/5     |                             |                 |
-| 12  | 1/6     | 2/6           | 2/6             | 1/6     |                             |                 |
-| 13  | 1/6     | 3/6           | 1/6             | 1/6     |                             |                 |
-| 14  | 1/6     | 1/6           | 3/6             | 1/6     |                             |                 |
-| 15  | 1/7     | 2/7           | 3/7             | 1/7     |                             |                 |
-| 16  | 1/8     | 3/8           | 3/8             | 1/8     |                             |                 |
-| 17  |         |               |                 |         |                             |                 |
-| 18  |         |               |                 |         |                             |                 |
+| 4   | 1/4     | 2/4           | 0               | 1/4     |                             |                 |
+| 5   | 0       | 0             | 1               | 0       |                             |                 |
+| 6   | 0       | 1/2           | 1/2             | 0       |                             |                 |
+| 7   | 1/4     | 1/4           | 1/4             | 1/4     |                             |                 |
+| 8   | 1/5     | 2/5           | 1/5             | 1/5     |                             |                 |
+| 9   | 1/5     | 1/5           | 2/5             | 1/5     |                             |                 |
+| 10  | 1/6     | 2/6           | 2/6             | 1/6     |                             |                 |
+| 11  | 1/6     | 3/6           | 1/6             | 1/6     |                             |                 |
+| 12  | 1/6     | 1/6           | 3/6             | 1/6     |                             |                 |
+| 13  | 1/8     | 3/8           | 3/8             | 1/8     |                             |                 |
+| 14  |         |               |                 |         |                             |                 |
+| 15  |         |               |                 |         |                             |                 |
+
+Many of the resulting numerical ODE methods likely had the same order of accuracy (again, the order of the method is the slope in the error plot), but some may have been much better or much worse. State which linear combination of slopes seems to have been the best, draw a picture of what this method does to numerically approximate the next slope for a numerical solution to an ODE, and clearly state what the order of the error means about this method.
 
 :::
 
-------------------------------------------------------------------------
-
-::: {#exr-5.36}
-🖋 💬 In the previous exercise you should have found at least one of the many methods to be far superior to the others. State which linear combination of slopes seems to have done the trick, draw a picture of what this method does to numerically approximate the next slope for a numerical solution to an ODE, and clearly state what the order of the error means about this method.
-
-:::
-
-You probably discovered that the best method approximates the slope at the point $t_n$ by using the weighted sum
-\begin{equation}
- \text{estimated slope } = \frac{m_n + 2 m_{n+1/2} + 2 m_{n+1/2}^* + m_{n+1}^*}{6}. 
-\end{equation}
-If you have not already done so, you should try this method out in the code from @exr-5.34 and see how it compares to the other methods that you have tried. You should find that the slope in the log-log error plot for this method is $4$, which means this is a fourth-order method. That is a huge improvement over the midpoint method. This method is called the Runge-Kutta 4 method and is one of the most commonly used method for solving ordinary differential equations. We
-present this method in different notation in @def-5.3. Please make sure you see why that theorem defines the same method that you have just discovered.
 
 ## Runge-Kutta Method {#sec-rk4}
 

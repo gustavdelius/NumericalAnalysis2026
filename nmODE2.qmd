@@ -578,9 +578,7 @@ This is similar to equations we solved in @exr-5.13, just with a larger negative
 $$
 x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t.
 $$
-The term $e^{-100t}$ decays very rapidly. We refer to such a term in the solution as a "transient" because it becomes irrelevant after a short time. In spite of the fact that this term is irrelevant, it forces us to take a very small step size in order to avoid an instability if we are using an explicit method. Thus for a stiff equation  it is advisable to use an implicit method instead.
-
-The ratio $\gamma_{\max}/\gamma_{\min}$ of the fastest-decaying rate to the slowest-decaying rate is called the **stiffness ratio**. For our 1D example the stiffness ratio is simply 100 (the decay rate of the transient compared to the decay rate of... well, there is only one rate). The stability condition for the forward Euler method applied to $x'=\lambda x$ requires $h < 2/|\lambda|$, so a large $\lambda$ forces a tiny step size even if the interesting dynamics are slow.
+The term $e^{-100t}$ decays very rapidly. We refer to such a term in the solution as a "transient" because it becomes irrelevant after a short time. In spite of the fact that this transient term is irrelevant, it forces us to take a very small step size in order to avoid an instability if we are using an explicit method. Thus for a stiff equation  it is advisable to use an implicit method instead.
 
 ------------------------------------------------------------------------
 
@@ -592,9 +590,9 @@ $$
 is indeed the general solution to $x'=-100x+\sin t$. (Recall how we found the particular solution to $x'=-\frac{1}{3}x+\sin t$ in @exr-5.13.) Then:
 
 a. What value of $C$ gives the solution satisfying the initial condition $x(0)=0$?
-b. The transient $e^{-100t}$ has decayed to less than $1\%$ of its initial value by time $t^*$. Find $t^*$.
-c. For $t>t^*$ the solution is well-approximated by $\frac{100}{10001}\sin t-\frac{1}{10001}\cos t$. Roughly how large is this "steady-state" amplitude?
-d. The stability condition for the forward Euler method applied to $x'=\lambda x$ is $h<2/|\lambda|$. What is the maximum step size that forward Euler can use on this equation and still be stable?
+b. The transient $Ce^{-100t}$ has decayed to $5\%$ of its initial value by time $t^*$. Find the approximate value of $t^*$. You can use that $e^{-3}\approx 0.05$.
+c. For $t>t^*$ the solution is well-approximated by the oscillatory function $\frac{100}{10001}\sin t-\frac{1}{10001}\cos t$. How large is the amplitude (the largest value) of this oscillation?
+d. What is the maximum step size that forward Euler can use on this equation and still be stable?
 :::
 
 ------------------------------------------------------------------------
@@ -612,6 +610,9 @@ d. 💬 Explain in your own words why an implicit method is preferable for stiff
 
 Stiffness also arises naturally in systems of differential equations. In a system, different components of the solution can decay at very different rates. If one component decays on a timescale of $1/\gamma_{\text{fast}}$ while another decays on a timescale of $1/\gamma_{\text{slow}}$, an explicit method must use a step size dictated by $\gamma_{\text{fast}}$, even if we only care about the slow component.
 
+The ratio $\gamma_{\text{fast}}/\gamma_{\text{slow}}$ of the fastest-decaying rate to the slowest-decaying rate is called the **stiffness ratio**. It describes how much smaller the step size must be for an explicit method to remain stable compared to the step size required for an implicit method.
+
+::: {#exm-5.57}
 A simple example comes from the overdamped spring. Consider the second-order ODE
 $$
 x''+(\gamma+1)x'+\gamma x=0,
@@ -625,30 +626,33 @@ $$
 x(t)=C_1e^{-t}+C_2e^{-\gamma t}.
 $$
 For large $\gamma$ the term $e^{-\gamma t}$ is a rapidly decaying transient and the stiffness ratio is $\gamma/1=\gamma$. An explicit method must take $h<2/\gamma$ to remain stable, even though the long-term behaviour of $x$ is governed by the much slower rate $e^{-t}$.
+:::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-5.57}
-🖋 🎓 Consider the system
+🖋 🎓 Consider the system from @exm-5.57 with initial conditions $u(0)=1$ and $v(0)=x'(0)=0$:
 $$
 \begin{pmatrix}u\\v\end{pmatrix}' = \begin{pmatrix}0&1\\-\gamma&-(\gamma+1)\end{pmatrix}\begin{pmatrix}u\\v\end{pmatrix}, \quad \begin{pmatrix}u(0)\\v(0)\end{pmatrix}=\begin{pmatrix}1\\0\end{pmatrix}.
 $$
 
-a. Write out the two scalar differential equations that make up this system.
-b. Verify that $x(t)=C_1 e^{-t}+C_2 e^{-\gamma t}$ is the general solution to $x''+(\gamma+1)x'+\gamma x=0$ by substitution.
-c. Use the initial conditions $u(0)=1$ and $v(0)=x'(0)=0$ to find $C_1$ and $C_2$.
-d. For $\gamma=100$, how small must the step size $h$ be for the forward Euler method to be stable? How does this compare to the timescale on which the solution $u(t)=x(t)$ actually changes significantly?
+a. Use the initial conditions $u(0)=1$ and $v(0)=x'(0)=0$ to find $C_1$ and $C_2$.
+
+b. Write down the exact solution $x(t)$ for these initial conditions and plot it.
+
+c. For $\gamma=100$, how small must the step size $h$ be for the forward Euler method to be stable? How does this compare to the timescale on which the solution $u(t)=x(t)$ actually changes significantly?
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-5.58}
-💻 Solve the stiff system from @exr-5.57 numerically with $\gamma=100$ on the interval $t\in[0,5]$.
+💻 Solve the stiff system from @exm-5.57 numerically with $\gamma=100$ on the interval $t\in[0,5]$.
 
-a. Using the result of @exr-5.57c, write down the exact solution $x(t)$ for these initial conditions and plot it.
-b. Solve the system with the forward Euler method and step sizes $h=0.1$, $h=0.01$, and $h=0.001$. At which step size does forward Euler first produce a stable solution?
-c. Solve the system with the backward Euler method using the same step sizes. Does backward Euler remain stable even for $h=0.1$?
-d. 💬 By what factor can backward Euler take larger steps than forward Euler and still be stable? How does this factor relate to $\gamma$?
+a. Solve the system with the forward Euler method and step sizes $h=0.1$, $h=0.01$, and $h=0.001$. At which step size does forward Euler first produce a stable solution?
+
+b. Solve the system with the backward Euler method using the same step sizes. Does backward Euler remain stable even for $h=0.1$?
+
+c. 💬 By what factor can backward Euler take larger steps than forward Euler and still be stable? How does this factor relate to $\gamma$?
 :::
 
 ------------------------------------------------------------------------

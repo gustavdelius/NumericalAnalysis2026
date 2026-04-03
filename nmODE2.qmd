@@ -10,27 +10,27 @@ OK. Ready for some experimentation? We are going to build a few experiments that
 -   You are sitting at the point $(t_n,x_n)$.
 
 -   The slope of the solution curve to the ODE where you are standing is 
-\begin{equation}
+$$
  \text{slope at the point $(t_n,x_n)$ is: } m_n = f(t_n,x_n) 
-\end{equation}
+$$
 
 
 -   You take a half a step forward using the slope where you are standing. The new point, denoted $x_{n+1/2}$, is given by 
-\begin{equation}
+$$
  \text{location a half step forward is: } x_{n+1/2} = x_n + \frac{\Delta t}{2} m_n. 
-\end{equation}
+$$
 
 
 -   Now you are standing at $(t_n + \frac{\Delta t}{2} , x_{n+1/2})$ so there is a new slope here given by 
-\begin{equation}
+$$
  \text{slope after a half of an Euler step is: } m_{n+1/2} = f(t_n+\Delta t/2,x_{n+1/2}). 
-\end{equation}
+$$
 
 
 -   Go back to the point $(t_n,x_n)$ and step a full step forward using slope $m_{n+1/2}$. Hence the new approximation is 
-\begin{equation}
+$$
  x_{n+1} = x_n + \Delta t \cdot m_{n+1/2} 
-\end{equation}
+$$
 
 
 :::
@@ -55,9 +55,9 @@ OK. Ready for some experimentation? We are going to build a few experiments that
     
 
 In the code below you will find a function called `ode_test()` that you can use as a starting point to test out the last three ideas. After the function you will see several lines of code that test your method against the differential equation $x'(t) = -\frac{1}{3}x + \sin(t)$ with $x(0) = 1$. The plots that come out are our typical error plots with the step size on the horizontal axis and our maximum absolute error between the numerical solution and the exact solution on the vertical axis. Recall that the exact solution to this differential equation is 
-\begin{equation}
+$$
  x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right) 
-\end{equation}
+$$
 
 
 ``` python         
@@ -146,20 +146,20 @@ Does it appear that we can improve upon the order of the error (the slope in the
 
 ::: {#exr-5.34}
 🖋 💻 OK. Let us make one more modification. What if we built a fourth slope that resulted from stepping a half step forward using $m_{n+1/2}$? We will call this $m_{n+1/2}^*$ since it is a new estimate of $m_{n+1/2}$. 
-\begin{equation}
+$$
  x_{n+1/2}^* = x_n + \frac{\Delta t}{2} m_{n+1/2} 
-\end{equation}
+$$
  
-\begin{equation}
+$$
  m_{n+1/2}^* = f(t_n + \Delta t/2, x_{n+1/2}^*) 
-\end{equation}
+$$
 Then calculate a new estimat $m_{n+1}^*$ of the slope at the end of the step using this new slope:
-\begin{equation}
+$$
  x_{n+1}^* = x_n + \Delta t\, m_{n+1/2}^*
-\end{equation}
-\begin{equation}
+$$
+$$
  m_{n+1}^* = f(t_n + \Delta t, x_{n+1}^*) 
-\end{equation}
+$$
 
 1.  Draw a picture showing where this slope was calculated.
 
@@ -198,17 +198,17 @@ Many of the resulting numerical ODE methods likely had the same order of accurac
 ::: {#def-5.3}
 #### The Runge-Kutta 4 Method
 The Runge-Kutta 4 (RK4) method for approximating the solution to the differential equation $x' = f(t,x)$ approximates the slope $m$ at the point $t_n$ by using the following calculations:
-\begin{equation}
+$$
 \begin{aligned} k_1 &= f(t_n, x_n) \\ 
 k_2 &= f(t_n + \frac{h}{2}, x_n + \frac{h}{2} k_1) \\ 
 k_3 &= f(t_n + \frac{h}{2}, x_n + \frac{h}{2} k_2) \\ 
 k_4 &= f(t_n + h, x_n + h k_3) \\ 
 m &= \frac{1}{6} \left( k_1 + 2 k_2 + 2 k_3 + k_4 \right) \end{aligned}
-\end{equation}
+$$
 It then uses that slope to advance by one time step:
-\begin{equation}
+$$
 x_{n+1} = x_n + h m = x_n + \frac{h}{6} \left( k_1 + 2 k_2 + 2 k_3 + k_4 \right).
-\end{equation}
+$$
 The order of the error in the RK4 method is $\mathcal{O}(\Delta t^4)$.
 :::
 
@@ -304,15 +304,15 @@ We have now built up a variety of numerical ODE solvers. All of the solvers that
 We want to solve $x' = f(t,x)$ so:
 
 -   Approximate the derivative by looking forward in time(!) 
-\begin{equation}
+$$
 \frac{x_{n+1} - x_n}{h} \approx f(t_{n+1}, x_{n+1})
-\end{equation}
+$$
 
 
 -   Rearrange to get the difference equation 
-\begin{equation}
+$$
 x_{n+1} = x_n + h f(t_{n+1},x_{n+1}).
-\end{equation}
+$$
 
 
 -   We will always know the value of $t_{n+1}$ and we will always know the value of $x_n$, but we do not know the value of $x_{n+1}$. In fact, that is exactly what we want. The major trouble is that $x_{n+1}$ shows up on both sides of the equation. Can you think of a way to solve for it? ...you have code that does this step!!!
@@ -326,13 +326,13 @@ x_{n+1} = x_n + h f(t_{n+1},x_{n+1}).
 ::: {#exr-5.48}
 🖋 Let us take a few steps through the backward Euler method on a problem that we know well: $x' = -0.5x$ with $x(0) = 6$.\
 Let us take $h=1$ for simplicity, so the backward Euler iteration scheme for this particular differential equation is 
-\begin{equation}
+$$
 x_{n+1} = x_n - \frac{1}{2} x_{n+1}.
-\end{equation}
+$$
  Notice that $x_{n+1}$ shows up on both sides of the equation. A little bit of rearranging gives 
-\begin{equation}
+$$
 \frac{3}{2} x_{n+1} = x_n \quad \implies \quad x_{n+1} = \frac{2}{3} x_n.
-\end{equation}
+$$
 
 
 1.  Complete the following table.
@@ -358,15 +358,15 @@ x_{n+1} = x_n - \frac{1}{2} x_{n+1}.
 
 ::: {#exm-5.49}
 🖋 The previous problem could potentially lead you to believe that the backward Euler method will always result in some other nice difference equation after some algebraic rearranging. That is not true! Let us consider a slightly more complicated differential equation and see what happens 
-\begin{equation}
+$$
 x' = -\frac{1}{2} x^2 \quad \text{with} \quad x(0) = 0.
-\end{equation}
+$$
 
 
 1.  Recall that the backward Euler approximation is 
-\begin{equation}
+$$
 x_{n+1} = x_n + h f(t_{n+1},x_{n+1}).
-\end{equation}
+$$
  Let us take $h=1$ for simplicity (we will make it smaller later). What is the backward Euler formula for this particular differential equation?
 
 2.  You should notice that your backward Euler formula is now a quadratic function in $x_{n+1}$. That is to say, if you are given a value of $x_n$ then you need to solve a quadratic polynomial equation to get $x_{n+1}$. 
@@ -380,58 +380,65 @@ Did you get $x_1=\sqrt{13}-1$?
 ------------------------------------------------------------------------
 
 The complications with the backward Euler's method are that you have a nonlinear equation to solve at every time step 
-\begin{equation}
+$$
 x_{n+1} = x_n + h f(t_{n+1},x_{n+1}).
-\end{equation}
+$$
  Notice that this is the same as solving the equation 
-\begin{equation}
+$$
 G(x_{n+1}):=x_{n+1} - hf(t_{n+1},x_{n+1}) - x_n = 0.
-\end{equation}
- You know the values of $h=\Delta t$, $t_{n+1}$ and $x_n$, and you know the function $f$, so, in a practical sense, you should use some sort of Newton's method iteration to solve that equation -- at each time step. More simply, we could call upon `scipy.optimize.fsolve()` to quickly implement a built in Python numerical root finding technique for us. For
- example, to find the root of the function $G(x) = x^2/2 + x - 6$ we could use the following code
-```{python}
-import numpy as np
-from scipy import optimize
-G = lambda x: x**2/2 + x - 6
-x0 = 6 # initial guess
-x = optimize.fsolve(G, x0)[0]
-x
-```
+$$
+ You know the values of $h=\Delta t$, $t_{n+1}$ and $x_n$, and you know the function $f$, so, in a practical sense, you should use some sort of numerical method to solve that equation -- at each time step. Given that we do not know the derivative of $G$, we can not use Newton's method. So our next best option is to use the secan method. You can use your code from @exr-2.49 for the function `secant_1d()`.
 
 ------------------------------------------------------------------------
 
 ::: {#exr-5.50}
-💻 🎓 Complete the function `backwardeuler_1d()` below. How do you define the function `G` inside the `for` loop and what starting value do you use for the `fsolve()` command?
+💻 🎓 Complete the function `backward_euler_1d()` below. How do you define the function `G` inside the `for` loop and what starting values do you use for the secant method?
 
 ``` python         
 import numpy as np
 from scipy import optimize
-def backwardEuler_1d(f, x0, t0, tmax,dt):
+def backward_euler_1d(f, x0, t0, tmax,dt):
     N = round((tmax - t0)/dt)
     dt = (tmax - t0)/N
     t = np.linspace(t0, tmax, N+1)
     x = np.zeros(len(t))
     x[0] = x0
     for n in range(len(t)-1):
-        G = lambda X: ??? # define this function
-        # give an appropriate starting value for fsolve
-        x[n+1] = optimize.fsolve(G, ???)[0] 
+        G = lambda y: ??? # define this function
+        # give appropriate starting values for the secant method
+        x[n+1] = secant_1d(G, ???)
     return t, x
 ```
 
-Test your `backwardEuler_1d()` function on several differential equations where you know the solution.
+Test your `backward_euler_1d()` function on several differential equations where you know the solution.
 
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-5.52}
-💻 🎓 Write a script that outputs a log-log plot with the step size on the horizontal axis and the error in the numerical method on the vertical axis. Plot the errors for Euler, Midpoint, Runge Kutta, and Backward Euler measured against a differential equation with a known analytic solution. Use this plot to conjecture the convergence rates of the four methods. You can use the differential equation $x' = -\frac{1}{3} x + \sin(t)$ with $x(0) = 1$ like we have for many of our past algorithm since we know that the solution is 
-\begin{equation}
- x(t) = \frac{1}{10}\left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
-\end{equation}
+💻 🎓 You can test your `backward_euler_1d()` function on the differential equation 
+$$x' = -\frac{1}{3} x + \sin(t)\qquad\text{ with }x(0) = 1$$
+like we have for many of our past algorithm since we know that the solution is 
+$$x(t) = \frac{1}{10}\left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right)$$
 
-From the plot, what is the order of the error on the Backward Euler method?
+The following plot lets you compare the backward Euler method to the forward Euler method and the exact solution. You just need to first define the `euler_1d()` function (which you have done in @exr-5.12) and the `backward_euler_1d()` function (which you have just completed in @exr-5.50).
+
+```python
+import matplotlib.pyplot as plt
+f = lambda t, x: -x/3+np.sin(t)
+x_exact = lambda t: (19*np.exp(-t/3)+3*np.sin(t)-9*np.cos(t)) / 10
+x0 = 1
+t0 = 0
+tmax = 4
+dt = 0.1
+t, x_euler = euler_1d(f,x0,t0,tmax,dt)
+t, x_backward = backward_euler_1d(f,x0,t0,tmax,dt)
+plt.plot(t, x_euler, 'g-.', label = "Euler")
+plt.plot(t, x_backward, 'b--', label = "Backwards")
+plt.plot(t, x_exact(t), 'r-', label = "Exact")
+plt.legend()
+```
 
 :::
 
@@ -590,8 +597,9 @@ $$
 is indeed the general solution to $x'=-100x+\sin t$. (Recall how we found the particular solution to $x'=-\frac{1}{3}x+\sin t$ in @exr-5.13.) Then:
 
 a. What value of $C$ gives the solution satisfying the initial condition $x(0)=0$?
+
 b. The transient $Ce^{-100t}$ has decayed to $5\%$ of its initial value by time $t^*$. Find the approximate value of $t^*$. You can use that $e^{-3}\approx 0.05$.
-c. For $t>t^*$ the solution is well-approximated by the oscillatory function $\frac{100}{10001}\sin t-\frac{1}{10001}\cos t$. How large is the amplitude (the largest value) of this oscillation?
+
 d. What is the maximum step size that forward Euler can use on this equation and still be stable?
 :::
 
@@ -648,9 +656,28 @@ c. For $\gamma=100$, how small must the step size $h$ be for the forward Euler m
 ::: {#exr-5.58}
 💻 Solve the stiff system from @exm-5.57 numerically with $\gamma=100$ on the interval $t\in[0,5]$.
 
-a. Solve the system with the forward Euler method and step sizes $h=0.1$, $h=0.01$, and $h=0.001$. At which step size does forward Euler first produce a stable solution?
+a. Solve the system with the forward Euler method and step sizes $h=0.1$, $h=0.01$, and $h=0.001$. You can use your code from @exr-5.17. At which step size does forward Euler first produce a stable solution?
 
-b. Solve the system with the backward Euler method using the same step sizes. Does backward Euler remain stable even for $h=0.1$?
+b. Solve the system with the backward Euler method using the same step sizes. Does backward Euler remain stable even for $h=0.1$?You can use the following function for the higher-dimensional backward Euler method:
+
+```python
+import numpy as np
+from scipy import optimize
+
+def backward_euler(F,x0,t0,tmax,dt):
+    N = round((tmax - t0)/dt)
+    dt = (tmax - t0)/N
+    t = np.linspace(t0, tmax, N+1)
+    x = np.zeros((len(t), len(x0)))
+    x[0,:] = x0
+    for n in range(len(t)-1):
+        # G takes a vector y and returns a vector
+        G = lambda y: y - dt*F(t[n+1],y) - x[n,:]
+        # fsolve with initial guess as the previous time step's vector
+        x[n+1,:] = optimize.fsolve(G, x[n,:])
+    return t, x
+```
+
 
 c. 💬 By what factor can backward Euler take larger steps than forward Euler and still be stable? How does this factor relate to $\gamma$?
 :::
@@ -658,9 +685,6 @@ c. 💬 By what factor can backward Euler take larger steps than forward Euler a
 ------------------------------------------------------------------------
 
 ## Algorithm Summaries
-
-
-------------------------------------------------------------------------
 
 ::: {#exr-5.63}
 🖋 Consider the first-order differential equation $x' = f(t,x)$. What is the Runge Kutta 4 method for approximating the solution to this differential equation? What is the order of accuracy of the Runge Kutta 4 method?
@@ -677,7 +701,7 @@ c. 💬 By what factor can backward Euler take larger steps than forward Euler a
 ------------------------------------------------------------------------
 
 ::: {#exr-5.65}
-🖋 Consider the first-order differential equation $x' = f(t,x)$. What is the Backward Euler method for approximating the solution to this differential equation? What is the order of accuracy of the Backward Euler method?
+🖋 Consider the first-order differential equation $x' = f(t,x)$. What is the Backward Euler method for approximating the solution to this differential equation? What is the order of accuracy of the backward Euler method? What is the region of absolute stability for the backward Euler method?
 
 :::
 
@@ -694,11 +718,11 @@ c. 💬 By what factor can backward Euler take larger steps than forward Euler a
 
 (a) Explain geometrically the difference between the explicit (forward) Euler method and the implicit backward Euler method. What is the fundamental property of backward Euler that makes it more suited for stiff equations? [3 marks]
 
-(b) Consider forming a system of first-order differential equations from the second-order autonomous differential equation for a nonlinear pendulum:
-    $$\frac{d^2 \theta}{dt^2} + \frac{g}{L}\sin(\theta) = 0 ,$$ 
-    where $g$ and $L$ are constants. By introducing a new variable $\omega = \frac{d\theta}{dt}$, write down the corresponding system of two first-order differential equations. [2 marks]
+(b) Show that the backward Euler method is unconditionally stable for the linear differential equation $x' = -\lambda x$ where $\lambda > 0$.
 
-(c) What is the order of accuracy for the Runge-Kutta 4 (RK4) method? Assuming you are using RK4 to approximate the solution to $x'=f(t,x)$, how many evaluations of the function $f(t,x)$ are required at each time step? [2 marks]
+(c) Show that the backward Euler method has a local truncation error of order $O(h)$.
+
+(d) State, but don't derive, the order of accuracy for the Runge-Kutta 4 (RK4) method? Assuming you are using RK4 to approximate the solution to $x'=f(t,x)$, how many evaluations of the function $f(t,x)$ are required at each time step? [2 marks]
 
 
 
@@ -708,10 +732,11 @@ c. 💬 By what factor can backward Euler take larger steps than forward Euler a
 
 ::: {#exr-5.69}
 🖋 💻 Test the Euler, Midpoint, and Runge Kutta methods on the differential equation 
-\begin{equation}
+$$
 x' = \lambda \left( x - \cos(t) \right) - \sin(t) \quad \text{with} \quad x(0) = 1.5.
-\end{equation}
- Find the exact solution by hand using the method of undetermined coefficients and note that your exact solution will involve the parameter $\lambda$. Produce log-log plots for the error between your numerical solution and the exact solution for $\lambda = -1$, $\lambda = -10$, $\lambda = -10^2$, ..., $\lambda = -10^6$. In other words, create 7 plots (one for each $\lambda$) showing how each of the 3 methods performs for that value of $\lambda$ at different values for $\Delta t$.
+$$
+
+Find the exact solution by hand using the method of undetermined coefficients and note that your exact solution will involve the parameter $\lambda$. Produce log-log plots for the error between your numerical solution and the exact solution for $\lambda = -1$, $\lambda = -10$, $\lambda = -10^2$, ..., $\lambda = -10^6$. In other words, create 7 plots (one for each $\lambda$) showing how each of the 3 methods performs for that value of $\lambda$ at different values for $\Delta t$.
 
 :::
 
@@ -720,15 +745,15 @@ x' = \lambda \left( x - \cos(t) \right) - \sin(t) \quad \text{with} \quad x(0) =
 
 ::: {#exr-5.74}
 🖋 💻 In this problem we will look at the orbit of a celestial body around the sun. The body could be a satellite, comet, planet, or any other object whose mass is negligible compared to the mass of the sun. We assume that the motion takes place in a two dimensional plane so we can describe the path of the orbit with two coordinates, $x$ and $y$ with the point $(0,0)$ being used as the reference point for the sun. According to Newton's law of universal gravitation the system of differential equations that describes the motion is 
-\begin{equation}
+$$
 x''(t) = \frac{-x}{\left( \sqrt{x^2 + y^2} \right)^3} \quad \text{and} \quad y''(t) = \frac{-y}{\left( \sqrt{x^2 + y^2} \right)^3}.
-\end{equation}
+$$
 
 
 1.  Define the two velocity functions $v_x(t) = x'(t)$ and $v_y(t) = y'(t)$. Using these functions we can now write the system of two second-order differential equations as a system of four first-order equations 
-\begin{equation}
+$$
 \begin{aligned} x' &= \underline{\hspace{2in}} \\ v_x ' &= \underline{\hspace{2in}} \\ y' &= \underline{\hspace{2in}} \\ v_y' &= \underline{\hspace{2in}} \end{aligned}
-\end{equation}
+$$
 
 
 2.  Solve the system of equations from part (a) using an appropriate solver. Start with $x(0) = 4$, $y(0) = 0$, the initial $x$ velocity as $0$, and the initial $y$ velocity as $0.5$. Create several plots showing how the dynamics of the system change for various values of the initial $y$ velocity in the interval $t \in (0,100)$.
@@ -741,9 +766,9 @@ x''(t) = \frac{-x}{\left( \sqrt{x^2 + y^2} \right)^3} \quad \text{and} \quad y''
 
 ::: {#exr-5.75}
 💬 💻 In this problem we consider the pursuit and evasion problem where $E(t)$ is the vector for an evader (e.g. a rabbit or a bank robber) and $P(t)$ is the vector for a pursuer (e.g. a fox chasing the rabbit or the police chasing the bank robber) 
-\begin{equation}
+$$
 E(t) = \begin{pmatrix} x_e(t) \\ y_e(t) \end{pmatrix} \quad \text{and} \quad P(t) = \begin{pmatrix} x_p(t) \\ y_p(t) \end{pmatrix}.
-\end{equation}
+$$
  Let us presume the following:
 
 **Assumption 1:**
@@ -759,33 +784,33 @@ E(t) = \begin{pmatrix} x_e(t) \\ y_e(t) \end{pmatrix} \quad \text{and} \quad P(t
 :   the pursuer's speed is directly proportional to the evader's speed.
 
 From the third assumption we have 
-\begin{equation}
+$$
 \| P'(t) \| = k \| E'(t) \|
-\end{equation}
+$$
  and from the second assumption we have 
-\begin{equation}
+$$
  \frac{P'(t)}{\|P'(t)\|} = \frac{E(t) - P(t)}{\| E(t) - P(t)\|}. 
-\end{equation}
+$$
  Solving for $P'(t)$ the differential equation that we need to solve becomes 
-\begin{equation}
+$$
  P'(t) = k \| E'(t) \| \frac{E(t) - P(t)}{\| E(t) - P(t)\|}. 
-\end{equation}
+$$
  Your Tasks:
 
-1.  Explain assumption #2 mathematically.
+1.  Explain assumption 2 mathematically.
 
-2.  Explain assumption #3 physically. Why is this assumption necessary mathematically?
+2.  Explain assumption 3 physically. Why is this assumption necessary mathematically?
 
 3.  Write code to find the path of the pursuer if the evader has the parametrised path 
-\begin{equation}
+$$
 E(t) = \begin{pmatrix} 0 \\ 5t \end{pmatrix} \quad \text{for} \quad t \ge 0
-\end{equation}
+$$
  and the pursuer initially starts at the point $P(0) = \begin{pmatrix} 2\\3\end{pmatrix}$. Write your code so that it stops when the pursuer is within 0.1 units of the evader. Run your code for several values of $k$. The resulting plot should be animated.
 
 4.  Modify your code from part (c) to find the path of the pursuer if the evader has the parametrised path 
-\begin{equation}
+$$
 E(t) = \begin{pmatrix} 5 + \cos(2\pi t) + 2\sin(4\pi t) \\ 4 + 3\cos(3 \pi t) \end{pmatrix} \quad \text{for} \quad t \ge 0
-\end{equation}
+$$
  and the pursuer initially starts at the point $P(0) = \begin{pmatrix} 0 \\ 50 \end{pmatrix}$. Write your code so that it stops when the pursuer is within 0.1 units of the evader. Run your code for several values of $k$. The resulting plot should be animated.
 
 5.  Create your own smooth path for the evader that is *challenging* for the pursuer to catch. Write your code so that it stops when the pursuer is within 0.1 units of the evader. Run your code for several values of $k$.
@@ -811,9 +836,9 @@ You just received a new long-range helicopter drone for your birthday! After a l
 
 ::: {#exr-5.78}
 🖋 💻 A trebuchet catapult throws a cow vertically into the air. The differential equation describing its acceleration is 
-\begin{equation}
+$$
 \frac{d^2x}{dt^2} = -g - c \frac{dx}{dt} \left| \frac{dx}{dt} \right|
-\end{equation}
+$$
  where $g \approx 9.8$ m/s$^2$ and $c \approx 0.02$ m$^{-1}$ for a typical cow. If the cow is launched at an initial upward velocity of 30 m/s, how high will it go, and when will it crash back into the ground? Hint: Change this second order differential equation into a system of first order differential equations.
 
 :::
@@ -846,9 +871,9 @@ plt.show()
 ```
 
 Now let us consider the system of ODEs 
-\begin{equation}
+$$
 \begin{aligned} x' &= y \\ y' &= -by - c \sin(x). \end{aligned}
-\end{equation}
+$$
  In this ODE $x(t)$ is the angle from equilibrium of a pendulum, and $y(t)$ is the angular velocity of the pendulum. To solve this ODE with `scipy.integrate.odeint()` using the parameters $b=0.25$ and $c=5$ and the initial conditions $x(0) = \pi-0.1$ and $y(0) = 0$ we can use the code below. (The idea to use this ODE was taken from the [documentation page for `scipy.integrate.odeint()`](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.odeint.html).)
 
 ``` python         
@@ -879,124 +904,3 @@ plt.show()
 5.  Solve the system of differential equations from @exr-5.74 using `scipy.integrate.odeint()`. Show appropriate plots of your solution.
 :::
 
-## Projects
-
-In this section we propose several ideas for projects related to numerical ordinary differential equations. These projects are meant to be open ended, to encourage creative mathematics, to push your coding skills, and to require you to write and communicate your mathematics.
-
-### The COVID-19 Pandemic
-
-In the paper [*Modeling the COVID-19 epidemic and implementation of population-wide interventions in Italy*, by G. Giordana et al.](https://www.nature.com/articles/s41591-020-0883-7), the authors propose a robust extension to the SIR model, which they call the "*SIDARTHE*" model, to model the spread of the COVID-19 virus in Italy. The acronym stands for
-
--   $S=$ proportion of the population which is Susceptible.
-
--   $I=$ proportion of the population which is presently Infected. Asymptomatic, infected, and undetected.
-
--   $D=$ proportion of the population which has been Diagnosed. Asymptomatic, infected, and detected.
-
--   $A=$ proportion of the population which is Ailing. Symptomatic, infected, and undetected.
-
--   $R=$ proportion of the population which is Recognized. Symptomatic, infected, and detected.
-
--   $T=$ proportion of the population which is Threatened. Acutely symptomatic, infected, and detected.
-
--   $H=$ proportion of the population which is Healed.
-
--   $E=$ proportion of the population which is Extinct.
-
-In the Methods section of the paper (in the paragraph that begins with "*In particular, ...*") the authors propose initial conditions and values for all of the parameters in the model. Using these values create a numerical solution to the system of differential equations and verify that the basic reproduction number for the model is $R_0 = 2.38$ as the authors say. In the subsequent paragraphs the authors propose ways to modify the parameters to account for social distancing, stay at home orders, and other such measures. Reproduce the authors' results from these paragraphs and fully explain all of your work. Provide sufficient plots to show the dynamics of the situation.
-
-### Pain Management
-
-When a patient undergoing surgery is asked about their pain the doctors often ask patients to rate their pain on a subjective 0 to 10 scale with 0 meaning no pain and 10 meaning excruciating pain. After surgery the unmitigated pain level in a typical patient will be quite high and as such doctors typically treat with narcotics. A mathematical model (inspired by [THIS article](https://sinews.siam.org/Details-Page/data-driven-chronic-pain-management-using-hybrid-mathematical-methods) and [THIS paper](https://arxiv.org/pdf/1706.02366.pdf)) of a patient's subjective pain level as treated pharmaceutically by three drugs is given as: 
-\begin{equation}
-\begin{aligned} \frac{dP}{dt} &= - \left( k_0 + k_1 D_1 + k_2 D_2 +k_3 D_3\right)P + k_0 u \\ \frac{dD_1}{dt} &= -k_{D_1} D_1 + \sum_{j=1}^{N_1} \delta (t-\tau_{1,j}) \\ \frac{dD_2}{dt} &= -k_{D_2} D_2 + \sum_{j=1}^{N_2} \delta (t-\tau_{2,j}) \\ \frac{dD_3}{dt} &= -k_{D_3} D_3 + \sum_{j=1}^{N_3} \delta (t-\tau_{3,j}) \end{aligned}
-\end{equation}
- where
-
--   $P$ is a patient's subjective pain level on a 0 to 10 scale,
-
--   $D_i$ is the amount of the $i^{th}$ drug in the patient's bloodstream,
-
-    -   $D_1$ is a long-acting opioid
-
-    -   $D_2$ is a short-acting opioid
-
-    -   $D_3$ is a non-opioid
-
--   $k_0$ is the relaxation rate to baseline pain without drugs,
-
--   $k_i$ is the impact of the $i^{th}$ drug on the relaxation rate,
-
--   $u$ is the patient's baseline (unmitigated) pain,
-
--   $k_{D_i}$ is the elimination rate of the $i^{th}$ drug from the bloodstream,
-
--   $N_i$ is the total number of the $i^{th}$ drug doses taken, and
-
--   $\tau_{i,j}$ are the time times the patient takes the $i^{th}$ drug.
-
--   $\delta()$ is the Dirac delta function.
-
-Implement this model with parameters $u=8.01$, $k_0 = \log(2)/2$, $k_1 = 0.319$, $k_2 = 0.184$, $k_3 = 0.201$, $k_{D_1} = \log(0.5)/(-10)$, $k_{D_2} = \log(0.5)/(-4)$, and $k_{D_3} = \log(0.5)/(-4)$. Take the initial pain level to be $P(0) = 3$ with no drugs on board. Assume that the patient begins dosing the long-acting opioid at hour 2 and takes 1 dose periodically every 24 hours. Assume that the patient begins dosing the short-acting opioid at hour 0 and takes 1 dose periodically every 12 hours. Finally assume that the patient takes 1 dose of the non-opioid drug every 48 hours starts at hour 24. Of particular interest are how the pain level evolves over the first week out of surgery and how the drug concentrations evolve over this time.
-
-Other questions:
-
--   What does this medication schedule do to the patient's pain level?
-
--   What happens to the patient's pain level if he/she forgets the non-opioid drug?
-
--   What happens to the patient's pain level if he/she has a bad reaction to opioids and only takes the non-opioid drug?
-
--   What happens to the dynamics of the system if the patient's pain starts at 9/10?
-
--   In reality, the unmitigated pain $u$ will decrease in time. Propose a differential equation model for the unmitigated pain that will have a stable equilibrium at 3 and has a value of 5 on day 5. Add this fifth differential equation to the pain model and examine what happens to the patient's pain over the first week. In this model, what happens after the first week if the narcotics are ceased?
-
-### The H1N1 Virus
-
-The H1N1 virus, also known as the "bird flu," is a particularly virulent bug but thankfully is also very predicable. Once a person is infected they are infectious for 9 days. Assume that a closed population of $N = 1500$ people (like a small college campus) starts with exactly 1 infected person and hence the remainder of the population is considered susceptible to the virus. Furthermore, once a person is recovered they have an immunity that typically lasts longer than the outbreak. Mathematically we can model an H1N1 outbreak of this kind using 11 compartments: susceptible people ($S$), 9 groups of infected people ($I_j$ for $j=1, 2, \cdots, 9$), and recovered people ($R$). Write and numerically solve a system of 11 differential equations modelling the H1N1 outbreak assuming that susceptible people become infected at a rate proportional to the product of the number of susceptible people and the total number of infected people. You may assume that the initial infected person is on the first day of their infection and determine and unknown parameters using the fact that 1 week after the infection starts there are 10 total people infected.
-
-### The Artillery Problem
-
-The goal of artillery is to fire a shell (e.g. a cannon ball) so that it lands on a specific target. If we ignore the effects of air resistance the differential equations describing its acceleration are very simple: 
-\begin{equation}
-\frac{dv_x}{dt} = 0 \quad \text{and} \quad \frac{dv_z}{dt} = -g 
-\end{equation}
- where $v_x$ and $v_z$ are the velocities in the $x$ and $z$ directions respectively and $g$ is the acceleration due to gravity ($g = 9.8$ m/s$^2$). We can use these equations to *easily* show that the resulting trajectory is parabolic. Once we know this we can easily calculate the initial speed $v_0$ and angle $\theta_0$ above the horizontal necessary for the shell to reach the target. We will undoubtedly find that the maximum range will always result from an angle of $\theta_0 = 45^\circ$.
-
-The effects of air resistance are significant when the shell must travel a large distance or when the speed is large. If we modify the equations to include a simple model of air resistance the governing equations become 
-\begin{equation}
-\frac{dv_x}{dt} = -c v_x \sqrt{ v_x^2 + v_z^2} \quad \text{and} \quad \frac{dv_z}{dt} = -g - cv_z \sqrt{ v_x^2 + v_z^2}
-\end{equation}
- where the constant $c$ depends on the shape and density of the shell and the density of air. For this project assume that $c = 10^{-3} m^{-1}$. To calculate the components of the position vector recall that since the derivative of position, $s(t)$, is velocity we have 
-\begin{equation}
-s_x(t) = \int_0^t v_x(\tau) d\tau \quad \text{and} \quad s_z(t) = \int_0^t v_z(\tau) d\tau.
-\end{equation}
-
-
-Now, imagine that you are living 200 years ago, acting as a consultant to an artillery officer who will be going into battle (perhaps against Napoleon -- he was known for hiring mathematicians to help his war efforts). Although computers have not yet been invented, given a few hours or a few days to work, a person living in this time could project trajectories using numerical methods (yes, numerical solutions to differential equations were well known back then too). Using this, you can try various initial speeds $v_0$ and angles $\theta_0$ until you find a pair that reach any target. However, the artillery officer needs a faster and simpler method. He can do maths, but performing hundreds or thousands of numerical calculations on the battlefield is simply not practical. Suppose that our artillery piece will be firing at a target that is a distance $\Delta x$ away, and that $\Delta x$ is approximately half a mile away -- not exactly half a mile, but in that general neighbourhood.
-
-1.  Develop a method for estimating $v_0$ and $\theta_0$ with reasonable accuracy given the exact range to the target, $\Delta x$. Your method needs to be simple enough to use in real time on a historic (Napoleon-era) battle field without the aid of a computer. (Be sure to persuade me that your numerical solution is accurate enough.)
-
-2.  Discuss the sensitivity in your solutions to variations in the constant $c$.
-
-3.  Extend this problem to make it more realistic. A few possible extensions are listed below but please do not restrict yourselves just to this list and do not think that you need to do everything on the list.
-
-    -   You could consider the effects of targets at different altitudes $\Delta z$.
-
-    -   You could consider moving targets.
-
-    -   You could consider headwinds and/or tailwinds.
-
-    -   You could consider winds coming from an angle outside the $xz$-plane.
-
-    -   You could consider shooting the cannon from a boat with the target on shore (the waves could be interesting!).
-
-    -   ...You could consider any other physical situation which I have not listed here, but you have to do some amount of extension from the *basics*.
-
-The final product of this project will be:
-
--   a **technical paper** describing your method to a mathematically sophisticated audience, and
-
--   a **field manual** instructing the artillery officer how to use your method.
-
-You can put both products in one paper. Just use a section header to start the field manual.

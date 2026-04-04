@@ -1247,7 +1247,7 @@ Before proceeding to the algorithm for the $QR$ factorization let us pause for a
 
 The **vector projection** of $\boldsymbol{u}$ onto $\boldsymbol{v}$ is the vector $c \boldsymbol{v}$. That is, the vector projection of $\boldsymbol{u}$ onto $\boldsymbol{v}$ is a scalar multiple of the vector $\boldsymbol{v}$. The value of the scalar $c$ is called the **scalar projection** of $\boldsymbol{u}$ onto $\boldsymbol{v}$.
 
-![Projection of one vector onto another.](https://numericalmethodssullivan.github.io/images/Ch04Projection.png){#fig-4.1 alt="Projection of one vector onto another."}
+![Projection of one vector onto another.](figures/LinAlg/Ch04Projection.png){#fig-4.1 alt="Projection of one vector onto another."}
 
 Figure 4.1: Projection of one vector onto another.
 
@@ -2032,7 +2032,7 @@ T_1 = \frac{T_0 + T_2}{2}.
 
 3.  Solve the system for the temperature at each unknown node using either $LU$ or $QR$ decomposition.
 
-![A rod to be heated broken into 10 equal-length segments.](https://numericalmethodssullivan.github.io/images/Ch04_HeatedRod.png){#fig-4.2 alt="A rod to be heated broken into 10 equal-length segments."}
+![A rod to be heated broken into 10 equal-length segments.](figures/LinAlg/Ch04_HeatedRod.png){#fig-4.2 alt="A rod to be heated broken into 10 equal-length segments."}
 
 :::
 
@@ -2338,7 +2338,7 @@ The Internet can be viewed as a directed graph (look up this term [here on Wikip
 
 Let us now translate this into mathematics. To help understand this we first consider the small web of six pages shown in @fig-4.3 (a graph of the router level of the internet can be found [here](https://personalpages.manchester.ac.uk/staff/m.dodge/cybergeography/atlas/lumeta_large.jpg)). The links between the pages are shown by arrows. An arrow pointing into a node is an *in link* and an arrow pointing out of a node is an *out link*. In @fig-4.3, node 3 has three out links (to nodes 1, 2, and 5) and 1 in link (from node 1).
 
-![Example web graph.](https://numericalmethodssullivan.github.io/images/Ch04_GoogleGraph1.png){#fig-4.3 alt="Example web graph."}
+![Example web graph.](figures/LinAlg/Ch04_GoogleGraph1.png){#fig-4.3 alt="Example web graph."}
 
 We will first define some notation in the Page Rank algorithm:
 
@@ -2480,7 +2480,7 @@ Now use the previous two problems to find the resulting PageRank vector from the
 
 ------------------------------------------------------------------------
 
-![A second example web graph.](https://numericalmethodssullivan.github.io/images/Ch04_GoogleGraph2.png){#fig-4.4 alt="A second example web graph."}
+![A second example web graph.](figures/LinAlg/Ch04_GoogleGraph2.png){#fig-4.4 alt="A second example web graph."}
 
 ::: {#exr-4.101}
 Consider the web in @fig-4.4.

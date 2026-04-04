@@ -784,7 +784,11 @@ d.  Try the same experiment using your `midpoint_1d` function. Does the midpoint
 
 (c) Now perform one step of the Midpoint method with a step size of $h=0.5$ to find an approximation for $x(0.5)$ for the same initial value problem. [3 marks]
 
-(d) The following incomplete Python code computes the numerical solution to the differential equation $x'=f(t,x)$ using the Midpoint method. Provide the missing code indicated by `...`. [3 marks]
+(d) Consider forming a system of first-order differential equations from the second-order autonomous differential equation for a nonlinear pendulum:
+    $$\frac{d^2 \theta}{dt^2} + \frac{g}{L}\sin(\theta) = 0 ,$$ 
+    where $g$ and $L$ are constants. By introducing a new variable $\omega = \frac{d\theta}{dt}$, write down the corresponding system of two first-order differential equations. [2 marks]
+
+(e) The following incomplete Python code computes the numerical solution to the differential equation $x'=f(t,x)$ using the Midpoint method. Provide the missing code indicated by `...`. [3 marks]
 
 ``` python
 import numpy as np

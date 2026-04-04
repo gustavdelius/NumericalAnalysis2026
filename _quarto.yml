@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: docs
+  post-render: ./render_chapter_pdfs.sh
   preview:
     browser: true
     port: 3706
@@ -34,6 +35,10 @@ book:
       - icon: mortarboard-fill
         href: https://maths.york.ac.uk/moodle/course/view.php?id=2727
         text: Moodle quizzes
+      - icon: text-paragraph
+        menu:
+          - text: "Toggle Dyslexic Font"
+            id: "font-toggle"
   chapters:
     - index.qmd
     - nmNumbers.qmd
@@ -57,15 +62,23 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: cosmo
+      dark: darkly
+    css: fonts.css
+    include-after-body: toggle-font.html
     link-external-newwindow: true
     toc-depth: 4
+    filters:
+      - chapter-pdf.lua
   pdf:
     documentclass: scrbook
     papersize: a4
     toc: true
     number-sections: true
     fig-align: left
+    filters:
+      - chapter-pdf.lua
     execute:
       echo: false
 

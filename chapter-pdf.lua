@@ -13,20 +13,4 @@ function Pandoc(doc)
     return doc
   end
 
-  if quarto.doc.is_format("pdf") then
-    local chapter_num = doc.meta["chapter-number"]
-    if chapter_num then
-      local n = tonumber(pandoc.utils.stringify(chapter_num))
-      if n then
-        local latex
-        if doc.meta["is-appendix"] then
-          latex = "\\appendix\\setcounter{chapter}{" .. (n - 1) .. "}"
-        else
-          latex = "\\setcounter{chapter}{" .. (n - 1) .. "}"
-        end
-        table.insert(doc.blocks, 1, pandoc.RawBlock("latex", latex))
-      end
-    end
-    return doc
-  end
 end

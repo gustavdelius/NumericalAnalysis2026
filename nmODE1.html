@@ -162,6 +162,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="fonts.css">
 <meta property="og:title" content="7&nbsp; ODE 1 – Numerical Analysis">
 <meta property="og:description" content="">
 <meta property="og:image" content="figures/ODE/EulerSlope1.png">
@@ -1140,6 +1141,7 @@ Figure&nbsp;7.4: Graphical depictions of two numerical methods. Euler (left) and
 <li><p>Explain what is meant by <em>numerical instability</em> when solving an ordinary differential equation using an explicit finite-difference scheme. What happens to the numerical solution, and how can it be avoided? [3 marks]</p></li>
 <li><p>Consider the ordinary differential equation <span class="math inline">\(x' = -2x + t\)</span> with initial condition <span class="math inline">\(x(0) = 1\)</span>. Perform one step of Euler’s method with a step size of <span class="math inline">\(h=0.5\)</span> to find an approximation for <span class="math inline">\(x(0.5)\)</span>. [2 marks]</p></li>
 <li><p>Now perform one step of the Midpoint method with a step size of <span class="math inline">\(h=0.5\)</span> to find an approximation for <span class="math inline">\(x(0.5)\)</span> for the same initial value problem. [3 marks]</p></li>
+<li><p>Consider forming a system of first-order differential equations from the second-order autonomous differential equation for a nonlinear pendulum: <span class="math display">\[\frac{d^2 \theta}{dt^2} + \frac{g}{L}\sin(\theta) = 0 ,\]</span> where <span class="math inline">\(g\)</span> and <span class="math inline">\(L\)</span> are constants. By introducing a new variable <span class="math inline">\(\omega = \frac{d\theta}{dt}\)</span>, write down the corresponding system of two first-order differential equations. [2 marks]</p></li>
 <li><p>The following incomplete Python code computes the numerical solution to the differential equation <span class="math inline">\(x'=f(t,x)\)</span> using the Midpoint method. Provide the missing code indicated by <code>...</code>. [3 marks]</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -1261,6 +1263,28 @@ Meerschaert, Mark. 2013. <em>Mathematical <span>Modeling</span></em>. 4th editio
 </section>
 
 </main> <!-- /main -->
+<script>
+(function() {
+  if (localStorage.getItem("alt-font") === "1") {
+    document.documentElement.classList.add("alt-font");
+  }
+})();
+
+document.addEventListener("DOMContentLoaded", function() {
+  if (localStorage.getItem("alt-font") === "1") {
+    document.body.classList.add("alt-font");
+  }
+
+  var fontToggleButton = document.getElementById("font-toggle");
+  if (fontToggleButton) {
+    fontToggleButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      var active = document.body.classList.toggle("alt-font");
+      localStorage.setItem("alt-font", active ? "1" : "0");
+    });
+  }
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

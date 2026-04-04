@@ -162,6 +162,7 @@ window.Quarto = {
 };
 </script>
 
+<link rel="stylesheet" href="fonts.css">
 <meta property="og:title" content="Appendix C — Linear Algebra – Numerical Analysis">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="Numerical Analysis">
@@ -2426,6 +2427,28 @@ Meerschaert, Mark. 2013. <em>Mathematical <span>Modeling</span></em>. 4th editio
 </section>
 
 </main> <!-- /main -->
+<script>
+(function() {
+  if (localStorage.getItem("alt-font") === "1") {
+    document.documentElement.classList.add("alt-font");
+  }
+})();
+
+document.addEventListener("DOMContentLoaded", function() {
+  if (localStorage.getItem("alt-font") === "1") {
+    document.body.classList.add("alt-font");
+  }
+
+  var fontToggleButton = document.getElementById("font-toggle");
+  if (fontToggleButton) {
+    fontToggleButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      var active = document.body.classList.toggle("alt-font");
+      localStorage.setItem("alt-font", active ? "1" : "0");
+    });
+  }
+});
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

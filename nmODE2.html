@@ -1092,7 +1092,7 @@ G(x_{n+1}):=x_{n+1} - hf(t_{n+1},x_{n+1}) - x_n = 0.
 </div>
 <hr>
 <div id="exr-5.52" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.12</strong></span> 💻 🎓 You can test your <code>backward_euler_1d()</code> function on the differential equation <span class="math display">\[x' = -\frac{1}{3} x + \sin(t)\qquad\text{ with }x(0) = 1\]</span> like we have for many of our past algorithm since we know that the solution is <span class="math display">\[x(t) = \frac{1}{10}\left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right)\]</span></p>
+<p><span class="theorem-title"><strong>Exercise 8.12</strong></span> 💻 You can test your <code>backward_euler_1d()</code> function on the differential equation <span class="math display">\[x' = -\frac{1}{3} x + \sin(t)\qquad\text{ with }x(0) = 1\]</span> like we have for many of our past algorithm since we know that the solution is <span class="math display">\[x(t) = \frac{1}{10}\left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right)\]</span></p>
 <p>The following plot lets you compare the backward Euler method to the forward Euler method and the exact solution. You just need to first define the <code>euler_1d()</code> function (which you have done in <a href="nmODE1.html#exr-5.12" class="quarto-xref">Exercise&nbsp;<span>7.5</span></a>) and the <code>backward_euler_1d()</code> function (which you have just completed in <a href="#exr-5.50" class="quarto-xref">Exercise&nbsp;<span>8.11</span></a>).</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> t, x: <span class="op">-</span>x<span class="op">/</span><span class="dv">3</span><span class="op">+</span>np.sin(t)</span>
@@ -1192,7 +1192,7 @@ x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t.
 \]</span> The term <span class="math inline">\(e^{-100t}\)</span> decays very rapidly. We refer to such a term in the solution as a “transient” because it becomes irrelevant after a short time. In spite of the fact that this transient term is irrelevant, it forces us to take a very small step size in order to avoid an instability if we are using an explicit method. Thus for a stiff equation it is advisable to use an implicit method instead.</p>
 <hr>
 <div id="exr-5.55" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.15</strong></span> 🖋 🎓 Verify by substitution that <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 8.15</strong></span> 🖋 Verify by substitution that <span class="math display">\[
 x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t
 \]</span> is indeed the general solution to <span class="math inline">\(x'=-100x+\sin t\)</span>. (Recall how we found the particular solution to <span class="math inline">\(x'=-\frac{1}{3}x+\sin t\)</span> in <a href="nmODE1.html#exr-5.13" class="quarto-xref">Exercise&nbsp;<span>7.6</span></a>.) Then:</p>
 <ol type="a">
@@ -1225,7 +1225,7 @@ x(t)=C_1e^{-t}+C_2e^{-\gamma t}.
 </div>
 <hr>
 <div id="exr-5.57" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.17</strong></span> 🖋 🎓 Consider the system from <a href="#exm-5.57" class="quarto-xref">Example&nbsp;<span>8.5</span></a> with initial conditions <span class="math inline">\(u(0)=1\)</span> and <span class="math inline">\(v(0)=x'(0)=0\)</span>: <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 8.17</strong></span> 🖋 Consider the system from <a href="#exm-5.57" class="quarto-xref">Example&nbsp;<span>8.5</span></a> with initial conditions <span class="math inline">\(u(0)=1\)</span> and <span class="math inline">\(v(0)=x'(0)=0\)</span>: <span class="math display">\[
 \begin{pmatrix}u\\v\end{pmatrix}' = \begin{pmatrix}0&amp;1\\-\gamma&amp;-(\gamma+1)\end{pmatrix}\begin{pmatrix}u\\v\end{pmatrix}, \quad \begin{pmatrix}u(0)\\v(0)\end{pmatrix}=\begin{pmatrix}1\\0\end{pmatrix}.
 \]</span></p>
 <ol type="a">
@@ -1417,12 +1417,23 @@ Spindler, Richard. 2022. <em>6-023-DroneHeadingHome-ModelingScenario</em>. <a hr
 
 </main> <!-- /main -->
 <script>
+(function() {
+  if (localStorage.getItem("alt-font") === "1") {
+    document.documentElement.classList.add("alt-font");
+  }
+})();
+
 document.addEventListener("DOMContentLoaded", function() {
+  if (localStorage.getItem("alt-font") === "1") {
+    document.body.classList.add("alt-font");
+  }
+
   var fontToggleButton = document.getElementById("font-toggle");
   if (fontToggleButton) {
     fontToggleButton.addEventListener("click", function(e) {
       e.preventDefault();
-      document.body.classList.toggle("alt-font");
+      var active = document.body.classList.toggle("alt-font");
+      localStorage.setItem("alt-font", active ? "1" : "0");
     });
   }
 });

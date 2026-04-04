@@ -776,6 +776,102 @@ d.  Try the same experiment using your `midpoint_1d` function. Does the midpoint
 
 ------------------------------------------------------------------------
 
+## Truncation Errors {#sec-truncation-ode}
+
+Many of the approximation methods in Numerical Analysis are based on Taylor series expansions and then dropping higher-order terms in the series. The error that is introduced by truncating a Taylor series in this way is called the truncation error. We have seem that in @sec-truncation.
+
+The material in this section will be covered by lectures. You will not need to have read this section before the assessment quiz for this week.
+
+We recall from @sec-truncation Taylor's formula: for a function $x$ that is $p$ times differentiable,
+$$
+x(t+h) = x(t) + h x'(t) + \frac{h^2}{2!}x''(t) + \cdots + \frac{h^{p-1}}{(p-1)!}x^{(p-1)}(t) + \frac{h^p}{p!}x^{(p)}(\xi)
+$$
+for some $\xi$ between $t$ and $t+h$.
+
+Her we consider the initial-value problem $x'(t) = f(t, x(t))$ with exact solution $x(t)$. The **local truncation error** at step $n$ is defined as the error made in a single step starting from the exact solution, divided by the step size $h$:
+$$
+\tau_n = \frac{1}{h}\left|x(t_{n+1}) - x_{n+1}\right|,
+$$
+where $x_{n+1}$ is the value produced by the numerical method when started from the exact value $x(t_n)$.
+
+### Truncation Error in Euler's Method
+
+Euler's method produces the update
+$$
+x_{n+1} = x_n + h f(t_n, x_n).
+$$
+Starting from the exact solution value $x(t_n)$, the method gives
+$$
+x_{n+1} = x(t_n) + h f(t_n, x(t_n)) = x(t_n) + h x'(t_n).
+$$
+We compare this to the exact value at the next grid point by expanding $x(t_{n+1}) = x(t_n + h)$ in a Taylor series around $t_n$:
+$$
+x(t_{n+1}) = x(t_n) + h x'(t_n) + \frac{h^2}{2} x''(\xi_n)
+$$
+for some $\xi_n$ between $t_n$ and $t_{n+1}$. The local error in one step is therefore
+$$
+x(t_{n+1}) - x_{n+1} = \frac{h^2}{2} x''(\xi_n),
+$$
+so the local truncation error is
+$$
+\tau_n = \frac{1}{h}\left|\frac{h^2}{2} x''(\xi_n)\right| = \frac{h}{2}|x''(\xi_n)|.
+$$
+We see that the local truncation error is of order $h$ and that Euler's method is a **first-order** approximation. This means that halving the step size halves the error.
+
+The **global truncation error** is obtained by summing the local errors over all $N = (b-a)/h$ steps. For some $\xi$ between $a$ and $b$,
+$$
+\tau = \left|\sum_{n=0}^{N-1} \frac{h^2}{2} x''(\xi_n)\right| \leq N \frac{h^2}{2}\max_{t\in[a,b]}|x''(t)| = \frac{b-a}{2}\, h \max_{t\in[a,b]}|x''(t)|.
+$$
+The global truncation error is also of order $h$, confirming that Euler's method is a first-order method.
+
+### Truncation Error in the Midpoint Method
+
+The midpoint method produces the update in two stages:
+$$
+\begin{split}
+x_{n+1/2} &= x_n + \frac{h}{2} f(t_n, x_n),\\
+x_{n+1} &= x_n + h\, f\!\left(t_n + \tfrac{h}{2},\, x_{n+1/2}\right).
+\end{split}
+$$
+Starting from the exact value $x(t_n)$, the half-step gives
+$$
+x_{n+1/2} = x(t_n) + \frac{h}{2} x'(t_n).
+$$
+We now expand $f$ at the half-step point using a Taylor series in two variables. Since $f_t + f_x x' = x''$ (differentiating $x' = f(t,x(t))$ with respect to $t$), we have
+$$
+\begin{split}
+f\!\left(t_n + \tfrac{h}{2},\, x_{n+1/2}\right)
+&= f\!\left(t_n + \tfrac{h}{2},\, x(t_n) + \tfrac{h}{2} x'(t_n)\right)\\
+&= f(t_n, x(t_n)) + \frac{h}{2} f_t(t_n, x(t_n)) + \frac{h}{2} x'(t_n)\, f_x(t_n, x(t_n)) + \mathcal{O}(h^2)\\
+&= x'(t_n) + \frac{h}{2} x''(t_n) + \mathcal{O}(h^2).
+\end{split}
+$$
+Substituting into the full-step update gives
+$$
+x_{n+1} = x(t_n) + h\left(x'(t_n) + \frac{h}{2} x''(t_n)\right) + \mathcal{O}(h^3)
+= x(t_n) + h x'(t_n) + \frac{h^2}{2} x''(t_n) + \mathcal{O}(h^3).
+$$
+We compare this to the Taylor expansion of the exact solution:
+$$
+x(t_{n+1}) = x(t_n) + h x'(t_n) + \frac{h^2}{2} x''(t_n) + \frac{h^3}{6} x'''(\xi_n)
+$$
+for some $\xi_n$ between $t_n$ and $t_{n+1}$. The local error in one step is
+$$
+x(t_{n+1}) - x_{n+1} = \frac{h^3}{6} x'''(\xi_n),
+$$
+so the local truncation error is
+$$
+\tau_n = \frac{1}{h}\left|\frac{h^3}{6} x'''(\xi_n)\right| = \frac{h^2}{6}|x'''(\xi_n)|.
+$$
+We see that the local truncation error is of order $h^2$ and that the midpoint method is a **second-order** approximation. This means that halving the step size reduces the error by a factor of four.
+
+The **global truncation error** is obtained by summing over all $N = (b-a)/h$ steps:
+$$
+\tau \leq N\, \frac{h^3}{6}\max_{t\in[a,b]}|x'''(t)| = \frac{b-a}{6}\, h^2 \max_{t\in[a,b]}|x'''(t)|,
+$$
+which is of order $h^2$, confirming that the midpoint method is a second-order method.
+
+
 ## Exam-Style Question
 
 (a) Explain what is meant by *numerical instability* when solving an ordinary differential equation using an explicit finite-difference scheme. What happens to the numerical solution, and how can it be avoided? [3 marks]
@@ -810,6 +906,7 @@ def midpoint_1d(f, x0, t0, tmax, dt):
 
     return t, x
 ```
+
 
 ## Problems
 

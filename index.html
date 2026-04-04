@@ -365,17 +365,7 @@ window.Quarto = {
         <div class="sidebar-tools-main tools-wide">
     <a href="https://vle.york.ac.uk/ultra/courses/_115112_1/outline" title="VLE" class="quarto-navigation-tool px-1" aria-label="VLE"><i class="bi bi-house-door-fill"></i></a>
     <a href="https://maths.york.ac.uk/moodle/course/view.php?id=2727" title="Moodle quizzes" class="quarto-navigation-tool px-1" aria-label="Moodle quizzes"><i class="bi bi-mortarboard-fill"></i></a>
-    <div class="dropdown">
-      <a href="" title="" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label=""><i class="bi bi-text-paragraph"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="">
-            Toggle Dyslexic Font
-            </a>
-          </li>
-      </ul>
-    </div>
-    <a href="https://github.com/gustavdelius/NumericalAnalysis2026/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./#toggle-dyslexic-font" title="Toggle Dyslexic Font" class="quarto-navigation-tool px-1" aria-label="Toggle Dyslexic Font"><i class="bi bi-text-paragraph"></i></a>
     <a href="./Numerical-Analysis.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -527,7 +517,7 @@ window.Quarto = {
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -933,14 +923,14 @@ Press, William H., Saul A. Teukolsky, William T. Vetterling, and Brian P. Flanne
 
 document.addEventListener("DOMContentLoaded", function() {
   if (localStorage.getItem("alt-font") === "1") {
-    document.body.classList.add("alt-font");
+    document.documentElement.classList.add("alt-font");
   }
 
-  var fontToggleButton = document.getElementById("font-toggle");
+  var fontToggleButton = document.querySelector('a.quarto-navigation-tool[aria-label="Toggle Dyslexic Font"]');
   if (fontToggleButton) {
     fontToggleButton.addEventListener("click", function(e) {
       e.preventDefault();
-      var active = document.body.classList.toggle("alt-font");
+      var active = document.documentElement.classList.toggle("alt-font");
       localStorage.setItem("alt-font", active ? "1" : "0");
     });
   }
@@ -1378,4 +1368,4 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/gustavdelius/NumericalAnalysis2026/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div></div></footer></body></html>
+</body></html>

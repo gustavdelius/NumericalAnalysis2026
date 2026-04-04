@@ -36,9 +36,8 @@ book:
         href: https://maths.york.ac.uk/moodle/course/view.php?id=2727
         text: Moodle quizzes
       - icon: text-paragraph
-        menu:
-          - text: "Toggle Dyslexic Font"
-            id: "font-toggle"
+        text: "Toggle Dyslexic Font"
+        href: "#toggle-dyslexic-font"
   chapters:
     - index.qmd
     - nmNumbers.qmd

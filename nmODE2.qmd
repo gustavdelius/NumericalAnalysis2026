@@ -37,35 +37,56 @@ $$
 
 ------------------------------------------------------------------------
 
-::: {#exr-5.32}
-💻 💬 The midpoint method only uses the slope at the midpoint. Perhaps one can find a better method by taking some combination of the slopes at the start point, the midpoint and the end point as follows:
+::: {#exr-5.34}
+🖋 💻 💬 The midpoint method only uses the slope at the midpoint. Perhaps one can find a better method by taking some combination of slopes calculated at different points. Here we will build four slopes:
 
--   The slope at the point $(t_n,x_n)$ can be called $m_n$ and we find it by evaluating $f(t_n,x_n)$.
+-   $m_n = f(t_n, x_n)$: the slope at the start of the step.
 
--   The slope at the point $(t_{n+1/2}, x_{n+1/2})$ can be called $m_{n+1/2}$ and we find it by evaluating $f(t_{n+1/2}, x_{n+1/2})$.
-
--   We can now take a full step using slope $m_{n+1/2}$ to get the point $x_{n+1}$ and the slope there is $m_{n+1} = f(t_{n+1}, x_{n+1})$.
-
--   Now we have three estimates of the slope and could take a weighted average of them:
-    $$
-    \text{estimate of slope} = \frac{c_n m_n + c_{n+1/2} m_{n+1/2} + c_{n+1} m_{n+1}}{c_n + c_{n+1/2} + c_{n+1}} 
-    $$
-
-    where $c_n$, $c_{n+1/2}$ and $c_{n+1}$ are constants that you get to choose. We will then take a step forwards using this estimate of the slope:
-    
-
-In the code below you will find a function called `ode_test()` that you can use as a starting point to test out the last three ideas. After the function you will see several lines of code that test your method against the differential equation $x'(t) = -\frac{1}{3}x + \sin(t)$ with $x(0) = 1$. The plots that come out are our typical error plots with the step size on the horizontal axis and our maximum absolute error between the numerical solution and the exact solution on the vertical axis. Recall that the exact solution to this differential equation is 
+-   A half-step forward using $m_n$ gives $x_{n+1/2} = x_n + \frac{\Delta t}{2} m_n$, and we evaluate the slope there:
 $$
- x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right) 
+ m_{n+1/2} = f\!\left(t_n + \tfrac{\Delta t}{2},\, x_{n+1/2}\right).
 $$
 
+-   A half-step forward using $m_{n+1/2}$ gives a second estimate of the midpoint,
+$$
+ x_{n+1/2}^* = x_n + \tfrac{\Delta t}{2}\, m_{n+1/2},
+$$
+and we evaluate the slope there:
+$$
+ m_{n+1/2}^* = f\!\left(t_n + \tfrac{\Delta t}{2},\, x_{n+1/2}^*\right).
+$$
 
-``` python         
+-   A full step forward using $m_{n+1/2}^*$ gives an estimate of the endpoint,
+$$
+ x_{n+1}^* = x_n + \Delta t\, m_{n+1/2}^*,
+$$
+and we evaluate the slope there:
+$$
+ m_{n+1}^* = f\!\left(t_n + \Delta t,\, x_{n+1}^*\right).
+$$
+
+1.  Draw a picture showing all four points where slopes are calculated.
+
+2.  Experiment with different ways to combine these four slopes as a linear combination
+$$
+\text{estimate of slope} = c_n m_n + c_{n+1/2} m_{n+1/2} + c_{n+1/2}^* m_{n+1/2}^* + c_{n+1}^* m_{n+1}^*,
+$$
+and then advance with
+$$x_{n+1} = x_n + \Delta t \cdot \text{estimate of slope}.$$
+
+    The code below implements all four slope calculations and compares your method against Euler and midpoint on the differential equation $x'(t) = -\frac{1}{3}x + \sin(t)$ with $x(0) = 1$, whose exact solution is
+$$
+ x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
+$$
+
+    The plots show the maximum absolute error vs. step size on a log-log scale; the slope in that plot gives the order of the method.
+
+``` python
 import numpy as np
 import matplotlib.pyplot as plt
 
 # *********
-# You should copy your 1d euler and midpoint functions here. 
+# You should copy your 1d euler and midpoint functions here.
 # We will be comparing to these two existing methods.
 # *********
 
@@ -73,14 +94,16 @@ def ode_test(f, x0, t0, tmax, dt):
     N = round((tmax - t0)/dt)
     dt = (tmax - t0)/N
     t = np.linspace(t0, tmax, N+1) # set up the times
-    x = np.zeros(len(t)) # set up the x
-    x[0] = x0 # initial condition
+    x = np.zeros(len(t))            # set up the x
+    x[0] = x0                       # initial condition
     for n in range(len(t)-1):
         m_n = f(t[n], x[n])
         x_n_plus_half = x[n] + dt/2 * m_n
         m_n_plus_half = f(t[n] + dt/2, x_n_plus_half)
-        x_n_plus_1 = x[n] + dt * m_n_plus_half
-        m_n_plus_1 = f(t[n] + dt, x_n_plus_1)
+        x_n_plus_half_star = x[n] + dt/2 * m_n_plus_half
+        m_n_plus_half_star = f(t[n] + dt/2, x_n_plus_half_star)
+        x_n_plus_1_star = x[n] + dt * m_n_plus_half_star
+        m_n_plus_1_star = f(t[n] + dt, x_n_plus_1_star)
         estimate_of_slope = # This is where you get to play
         x[n+1] = x[n] + dt * estimate_of_slope
     return t, x
@@ -91,32 +114,21 @@ exact = lambda t: (1/10.0)*(19*np.exp(-t/3) + \
                   3*np.sin(t) - \
                   9*np.cos(t))
 
-x0 = 1 # initial condition
-t0 = 0 # initial time
-tmax = 3 # max time
-# Next give a list of Delta t values (what list did we give here)
+x0 = 1    # initial condition
+t0 = 0    # initial time
+tmax = 3  # max time
 dt = 10.0**(-np.arange(1, 5, 1))
-# set up blank vectors to keep track of the maximum absolute errorrs
 err_euler = np.zeros(len(dt))
 err_midpoint = np.zeros(len(dt))
 err_ode_test = np.zeros(len(dt))
 for n in range(len(dt)):
-    # Build an euler approximation
-    t, xeuler = euler_1d(f, x0, t0, tmax, dt    [n]) 
-    # Measure the max abs error
-    err_euler[n] = np.max(np.abs(xeuler - exact(t))) 
-    # Build a midpoint approximation
-    t, xmidpoint = midpoint_1d(f, x0, t0, tmax, dt[n]) 
-    # Measure the max abs error
-    err_midpoint[n] = np.max(np.abs(xmidpoint - exact(t))) 
-    # Build your new approximation
-    t, xtest = ode_test(f, x0, t0, tmax, dt[n]) 
-    # Measure the max abs error
-    err_ode_test[n] = np.max(np.abs(xtest - exact(t))) 
+    t, xeuler = euler_1d(f, x0, t0, tmax, dt[n])
+    err_euler[n] = np.max(np.abs(xeuler - exact(t)))
+    t, xmidpoint = midpoint_1d(f, x0, t0, tmax, dt[n])
+    err_midpoint[n] = np.max(np.abs(xmidpoint - exact(t)))
+    t, xtest = ode_test(f, x0, t0, tmax, dt[n])
+    err_ode_test[n] = np.max(np.abs(xtest - exact(t)))
 
-# Finally, we make a loglog plot of the errors.  
-# Keep an eye on the slopes since they tell you the order of 
-# the error for the method.
 plt.loglog(dt, err_euler, 'r*-',
            dt, err_midpoint, 'b*-',
            dt, err_ode_test, 'k*-')
@@ -124,53 +136,8 @@ plt.grid()
 plt.legend(['euler', 'midpoint', 'test method'])
 plt.show()
 ```
-Collaborate within your group to extend the table below.
 
-
-|     | $c_n$ | $c_{n+1/2}$ | $c_{n+1}$ | **Order of Error**          | **Name**        |
-|-----|---------|---------------|---------|-----------------------------|-----------------|
-| 1   | 1       | 0             | 0       | $\mathcal{O}(\Delta t)$   | Euler's Method |
-| 2   | 0       | 1             | 0       | $\mathcal{O}(\Delta t^2)$ | Midpoint Method |
-|3    | 1/2     | 1/2           | 0       |                             |                 |
-|4    | 1/6     | 2/3           | 1/6     |                             |                 |
-|5    | 1/4     | 1/2           | 1/4     |                             |                 |
-|6    |         |                 |         |                             |                 |
-|7    |         |                 |         |                             |                 |
-|8    |         |                 |         |                             |                 |
-
-Does it appear that we can improve upon the order of the error (the slope in the log-log plot) using any of these methods?
-
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-5.34}
-🖋 💻 OK. Let us make one more modification. What if we built a fourth slope that resulted from stepping a half step forward using $m_{n+1/2}$? We will call this $m_{n+1/2}^*$ since it is a new estimate of $m_{n+1/2}$. 
-$$
- x_{n+1/2}^* = x_n + \frac{\Delta t}{2} m_{n+1/2} 
-$$
- 
-$$
- m_{n+1/2}^* = f(t_n + \Delta t/2, x_{n+1/2}^*) 
-$$
-Then calculate a new estimat $m_{n+1}^*$ of the slope at the end of the step using this new slope:
-$$
- x_{n+1}^* = x_n + \Delta t\, m_{n+1/2}^*
-$$
-$$
- m_{n+1}^* = f(t_n + \Delta t, x_{n+1}^*) 
-$$
-
-1.  Draw a picture showing where this slope was calculated.
-
-2.  Modify the code from above to include this fourth slope.
-
-3.  Experiment with several ideas about how to best combine the four slopes: $m_n$, $m_{n+1/2}$, $m_{n+1/2}^*$, and $m_{n+1}^*$. Experiment with many different linear combinations
-$$
-\text{estimate of slope} = c_n m_n + c_{n+1/2} m_{n+1/2} + c_{n+1/2}^* m_{n+1/2}^* + c_{n+1}^* m_{n+1}^*.
-$$
-
-Work with your group to fill in the following summary table of all of the methods that you devised. If you generated linear combinations that are not listed below then just add them to the list (we have only listed the most common ones here).
+3.  Work with your group to fill in the following summary table. If you tried combinations not listed below, add them.
 
 |     | $c_n$ | $c_{n+1/2}$ | $c_{n+1/2}^*$ | $c_{n+1}^*$ | **Order of Error**          | **Name**        |
 |-----|---------|---------------|-----------------|---------|-----------------------------|-----------------|
@@ -188,7 +155,7 @@ Work with your group to fill in the following summary table of all of the method
 | 12  |         |               |                 |         |                             |                 |
 | 13  |         |               |                 |         |                             |                 |
 
-Many of the resulting numerical ODE methods likely had the same order of accuracy (again, the order of the method is the slope in the error plot), but some may have been much better or much worse. State which linear combination of slopes seems to have been the best, draw a picture of what this method does to numerically approximate the next slope for a numerical solution to an ODE, and clearly state what the order of the error means about this method.
+Many of the resulting numerical ODE methods likely had the same order of accuracy, but some may have been much better or much worse. State which linear combination of slopes seems to have been the best, draw a picture of what this method does, and clearly state what the order of the error means about this method.
 
 :::
 

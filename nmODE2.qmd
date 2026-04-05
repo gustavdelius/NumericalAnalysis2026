@@ -90,7 +90,7 @@ import matplotlib.pyplot as plt
 # We will be comparing to these two existing methods.
 # *********
 
-def ode_test(f, x0, t0, tmax, dt):
+def ode_new_method(f, x0, t0, tmax, dt):
     N = round((tmax - t0)/dt)
     dt = (tmax - t0)/N
     t = np.linspace(t0, tmax, N+1) # set up the times
@@ -117,23 +117,23 @@ exact = lambda t: (1/10.0)*(19*np.exp(-t/3) + \
 x0 = 1    # initial condition
 t0 = 0    # initial time
 tmax = 3  # max time
-dt = 10.0**(-np.arange(1, 5, 1))
+dt = 2.0**(-np.arange(1, 8, 1))
 err_euler = np.zeros(len(dt))
 err_midpoint = np.zeros(len(dt))
-err_ode_test = np.zeros(len(dt))
+err_ode_new_method = np.zeros(len(dt))
 for n in range(len(dt)):
     t, xeuler = euler_1d(f, x0, t0, tmax, dt[n])
     err_euler[n] = np.max(np.abs(xeuler - exact(t)))
     t, xmidpoint = midpoint_1d(f, x0, t0, tmax, dt[n])
     err_midpoint[n] = np.max(np.abs(xmidpoint - exact(t)))
-    t, xtest = ode_test(f, x0, t0, tmax, dt[n])
-    err_ode_test[n] = np.max(np.abs(xtest - exact(t)))
+    t, xtest = ode_new_method(f, x0, t0, tmax, dt[n])
+    err_ode_new_method[n] = np.max(np.abs(xtest - exact(t)))
 
 plt.loglog(dt, err_euler, 'r*-',
            dt, err_midpoint, 'b*-',
-           dt, err_ode_test, 'k*-')
+           dt, err_ode_new_method, 'k*-')
 plt.grid()
-plt.legend(['euler', 'midpoint', 'test method'])
+plt.legend(['euler', 'midpoint', 'new method'])
 plt.show()
 ```
 
@@ -254,7 +254,7 @@ Test the problem on several differential equations where you know the solution.
 
 ::: {#exr-rk4h}       
 #### RK4 in Several Dimensions
-💻 🎓 Modify your Runge-Kutta 4 code to work for any number of dimensions.  You may want to start from your `euler()` and `midpoint()` functions that already do this.  you will only need to make minor modifications from there.  Then test your new generalized RK4 method on all of the same problems which you used to test your `euler()` and `midpoint()` functions.
+💻 🎓 Modify your Runge-Kutta 4 code to work for any number of dimensions.  You may want to start from your `euler()` and `midpoint()` functions that already do this.  You will only need to make minor modifications from there.  Then test your new generalized RK4 method on all of the same problems which you used to test your `euler()` and `midpoint()` functions.
 :::
 
 ------------------------------------------------------------------------
@@ -262,7 +262,7 @@ Test the problem on several differential equations where you know the solution.
 
 ## The Backwards Euler Method
 
-We have now built up a variety of numerical ODE solvers. All of the solvers that we have built thus far are called **explicit** numerical differential equation solvers since they try to advance the solution explicitly forward in time. Wouldn't it be nice if we could literally just say, *what slope is going to work best in the future time steps ... let us use that*? Seems like an unrealistic hope, but that is exactly what the last method covered in this section does.
+We have now built up a variety of numerical ODE solvers. All of the solvers that we have built thus far are called **explicit** numerical differential equation solvers since they try to advance the solution explicitly forward in time. Wouldn't it be nice if we could literally just say, *what slope is going to work best in the future time steps ... let us use that*? Seems like an unrealistic hope, but let's see.
 
 ------------------------------------------------------------------------
 

@@ -475,6 +475,8 @@ The value of a number in this system is given by: $x = (-1)^s \times (1.m)_2 \ti
 
 
 
+::: {.content-visible when-format="html"}
+
 ## Problems {#sec-approximation_problems}
 
 These problem exercises will let you consolidate what you have learned so far and combine it with your Python coding skills, see @sec-python.
@@ -545,4 +547,6 @@ accounts = np.floor(100*accounts)/100;
 2.  Now go to Python and evaluate the expression `9^5`. Convert Python's answer to a binary representation (again using four bits).
 
 3.  Make a conjecture: How do we go from the binary representations of $a$ and $b$ to the binary representation for Python's `a^b` for numbers $a$ and $b$? Test and verify your conjecture on several different examples and then write a few sentences explaining what the caret operator does in Python.
+:::
+
 :::

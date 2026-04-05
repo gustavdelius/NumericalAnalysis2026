@@ -1333,6 +1333,7 @@ plt.show()
 
 ------------------------------------------------------------------------
 
+::: {.content-visible when-format="html"}
 
 ## Problems {#sec-functions_problems}
 
@@ -1417,4 +1418,6 @@ $$
 3.  (some physics knowledge required) What do you notice about the second term in the Taylor Series approximation of the relativistic energy function?
 
 4.  Show all of the work to derive the Taylor Series centred at $v = 0$ given above.
+:::
+
 :::

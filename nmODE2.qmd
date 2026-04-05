@@ -728,6 +728,8 @@ c. 💬 By what factor can backward Euler take larger steps than forward Euler a
 
 ------------------------------------------------------------------------
 
+::: {.content-visible when-format="html"}
+
 ## Problems
 
 ::: {#exr-5.69}
@@ -904,3 +906,5 @@ plt.show()
 5.  Solve the system of differential equations from @exr-5.74 using `scipy.integrate.odeint()`. Show appropriate plots of your solution.
 :::
 
+
+:::

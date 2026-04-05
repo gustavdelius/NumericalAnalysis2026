@@ -579,6 +579,7 @@ Further reading: Section 2.4 of [@Burden_Faires].
 
 ------------------------------------------------------------------------
 
+::: {.content-visible when-format="html"}
 
 ## Problems {#sec-nonlinear-problems}
 
@@ -773,3 +774,5 @@ An artillery officer wishes to fire his cannon on an enemy brigade. He wants to 
 Use the given information to write a nonlinear equation^[Hint: Symbolically work out the amount of time that it takes until the vertical position of the cannon ball reaches $y_*$. Then substitute that time into the horizontal position, and set the horizontal position equation to $x_*$] that relates $x_*$, $y_*$, $v_0$, $g$, and $\theta$. We know that $g = 9.8m/s^2$ is constant and we will assume that the initial velocity can be adjusted between $v_0 = 100m/s$ and $v_0 = 150m/s$ in increments of $10m/s$. If we then are given a fixed value of $x_*$ and $y_*$ the only variable left to find in your equation is $\theta$. A numerical root-finding technique can then be applied to your equation to approximate the angle. Create several look up tables for the artillery officer so they can be given $v_0$, $x_*$, and $y_*$ and then use your tables to look up the angle at which to set the cannon. Be sure to indicate when a target is out of range.
 
 Write a brief technical report detailing your methods. Support your work with appropriate mathematics and plots. Include your tables at the end of your report.
+
+:::

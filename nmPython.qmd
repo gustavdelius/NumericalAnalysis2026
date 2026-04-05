@@ -1567,6 +1567,8 @@ This provides an alternative to how we created a tabular display with the `print
 :::
 
 
+::: {.content-visible when-format="html"}
+
 ## Problems {#sec-python_exercises}
 
 These problem exercises here are meant for you to practice and improve your coding skills. 
@@ -1653,3 +1655,5 @@ Write code to determine which starting number, under one million, produces the l
 :::
 
 **Footnotes**
+
+:::

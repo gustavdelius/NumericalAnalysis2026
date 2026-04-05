@@ -486,6 +486,8 @@ $$
 
 ------------------------------------------------------------------------
 
+::: {.content-visible when-format="html"}
+
 ## Problems
 
 ::: {#exr-6.85}
@@ -683,3 +685,5 @@ Your Tasks:
 3.  Use a numerical model to find the optimal thickness of an adobe wall. Be sure to fully describe your criteria for optimality, the initial and boundary conditions used, and any other simplifying assumptions needed for your model.
 
 
+
+:::

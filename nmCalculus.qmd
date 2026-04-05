@@ -1561,6 +1561,7 @@ def trapezoidal(f, a, b, N):
 
 ------------------------------------------------------------------------
 
+::: {.content-visible when-format="html"}
 
 ## Problems
 
@@ -1739,3 +1740,5 @@ Here you will find a map with information about water resources around the count
 -   At this point you should have access to the entire data set. Copy it into a `csv` file and save it to your computer.
 
 For the data that you just downloaded you have three tasks: (1) plot the data in a reasonable way giving appropriate units, (2) find the total amount of water that has been discharged from the dam during the past calendar year, and (3) report any margin of error in your calculation based on the numerical method that you used in part (2).
+
+:::

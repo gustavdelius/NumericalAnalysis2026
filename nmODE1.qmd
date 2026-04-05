@@ -908,6 +908,8 @@ def midpoint_1d(f, x0, t0, tmax, dt):
 ```
 
 
+::: {.content-visible when-format="html"}
+
 ## Problems
 
 ::: {#exr-5.22}
@@ -1038,3 +1040,5 @@ These assumptions yield a pair of differential equations (a Lotka-Volterra model
 :::
 
 ------------------------------------------------------------------------
+
+:::

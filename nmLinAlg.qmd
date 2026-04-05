@@ -1972,6 +1972,8 @@ Explain in clear language how the power method works to find the dominant eigenv
 
 ------------------------------------------------------------------------
 
+::: {.content-visible when-format="html"}
+
 ## Problems
 
 ::: {#exr-4.74}
@@ -2590,3 +2592,5 @@ Considering the system of equations $A\boldsymbol{x} = \boldsymbol{b}$ we get
 You need to do this project without the help of your old buddy Google. All code must be originally yours or be modified from code that we built in class. You can ask Google how Python works with matrices and the like, but searching directly for the algorithms (which are actually well-known, well-studied, and named algorithms) is not allowed.
 
 Finally, solving systems of equations with the `|np.linalg.solve()` command can only be done to verify or check your answer(s).
+
+:::

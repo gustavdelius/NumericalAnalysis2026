@@ -493,7 +493,7 @@ window.Quarto = {
   <ul>
   <li><a href="#searching-for-a-better-method" id="toc-searching-for-a-better-method" class="nav-link active" data-scroll-target="#searching-for-a-better-method"><span class="header-section-number">8.1</span> Searching for a Better Method</a></li>
   <li><a href="#sec-rk4" id="toc-sec-rk4" class="nav-link" data-scroll-target="#sec-rk4"><span class="header-section-number">8.2</span> Runge-Kutta Method</a></li>
-  <li><a href="#the-backwards-euler-method" id="toc-the-backwards-euler-method" class="nav-link" data-scroll-target="#the-backwards-euler-method"><span class="header-section-number">8.3</span> The Backwards Euler Method</a></li>
+  <li><a href="#the-backward-euler-method" id="toc-the-backward-euler-method" class="nav-link" data-scroll-target="#the-backward-euler-method"><span class="header-section-number">8.3</span> The Backward Euler Method</a></li>
   <li><a href="#sec-instability" id="toc-sec-instability" class="nav-link" data-scroll-target="#sec-instability"><span class="header-section-number">8.4</span> Numerical Instabilities</a></li>
   <li><a href="#sec-stiff" id="toc-sec-stiff" class="nav-link" data-scroll-target="#sec-stiff"><span class="header-section-number">8.5</span> Stiff Equations</a></li>
   <li><a href="#algorithm-summaries" id="toc-algorithm-summaries" class="nav-link" data-scroll-target="#algorithm-summaries"><span class="header-section-number">8.6</span> Algorithm Summaries</a></li>
@@ -528,7 +528,7 @@ window.Quarto = {
 <div style="margin-top: -10px; margin-bottom: 20px;"><a href="nmODE2.pdf" class="btn btn-sm btn-outline-primary" title="Download Chapter PDF"><i class="bi bi-file-earmark-pdf"></i> Download Chapter PDF</a></div>
 <section id="searching-for-a-better-method" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="searching-for-a-better-method"><span class="header-section-number">8.1</span> Searching for a Better Method</h2>
-<p>OK. Ready for some experimentation? We are going to build a few experiments that eventually lead us to a very powerful method for finding numerical solutions to first order differential equations than the midpoint method. It is up to you to decide how much time to spend on experimentation in this section. If you are pressed for time, you can skip forward to <a href="#sec-rk4" class="quarto-xref"><span>Section 8.2</span></a>.</p>
+<p>OK. Ready for some experimentation? We are going to build a few experiments that eventually lead us to a more powerful method for finding numerical solutions to first order differential equations than the midpoint method. It is up to you to decide how much time to spend on experimentation in this section. If you are pressed for time, you can skip forward to <a href="#sec-rk4" class="quarto-xref"><span>Section 8.2</span></a>.</p>
 <div id="exr-5.31" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 8.1</strong></span> 🖋 Let us talk about the Midpoint Method for a moment. The geometric idea of the midpoint method is outlined in the bullets below. Draw a picture along with the bullets.</p>
 <ul>
@@ -584,7 +584,7 @@ x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># We will be comparing to these two existing methods.</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># *********</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ode_test(f, x0, t0, tmax, dt):</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ode_new_method(f, x0, t0, tmax, dt):</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    N <span class="op">=</span> <span class="bu">round</span>((tmax <span class="op">-</span> t0)<span class="op">/</span>dt)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> (tmax <span class="op">-</span> t0)<span class="op">/</span>N</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> np.linspace(t0, tmax, N<span class="op">+</span><span class="dv">1</span>) <span class="co"># set up the times</span></span>
@@ -611,23 +611,23 @@ x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>x0 <span class="op">=</span> <span class="dv">1</span>    <span class="co"># initial condition</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>t0 <span class="op">=</span> <span class="dv">0</span>    <span class="co"># initial time</span></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>tmax <span class="op">=</span> <span class="dv">3</span>  <span class="co"># max time</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="fl">10.0</span><span class="op">**</span>(<span class="op">-</span>np.arange(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">1</span>))</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="fl">2.0</span><span class="op">**</span>(<span class="op">-</span>np.arange(<span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">1</span>))</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>err_euler <span class="op">=</span> np.zeros(<span class="bu">len</span>(dt))</span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>err_midpoint <span class="op">=</span> np.zeros(<span class="bu">len</span>(dt))</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>err_ode_test <span class="op">=</span> np.zeros(<span class="bu">len</span>(dt))</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>err_ode_new_method <span class="op">=</span> np.zeros(<span class="bu">len</span>(dt))</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(dt)):</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    t, xeuler <span class="op">=</span> euler_1d(f, x0, t0, tmax, dt[n])</span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    err_euler[n] <span class="op">=</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xeuler <span class="op">-</span> exact(t)))</span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    t, xmidpoint <span class="op">=</span> midpoint_1d(f, x0, t0, tmax, dt[n])</span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>    err_midpoint[n] <span class="op">=</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xmidpoint <span class="op">-</span> exact(t)))</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    t, xtest <span class="op">=</span> ode_test(f, x0, t0, tmax, dt[n])</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    err_ode_test[n] <span class="op">=</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xtest <span class="op">-</span> exact(t)))</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    t, xtest <span class="op">=</span> ode_new_method(f, x0, t0, tmax, dt[n])</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>    err_ode_new_method[n] <span class="op">=</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(xtest <span class="op">-</span> exact(t)))</span>
 <span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>plt.loglog(dt, err_euler, <span class="st">'r*-'</span>,</span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>           dt, err_midpoint, <span class="st">'b*-'</span>,</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>           dt, err_ode_test, <span class="st">'k*-'</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>           dt, err_ode_new_method, <span class="st">'k*-'</span>)</span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'euler'</span>, <span class="st">'midpoint'</span>, <span class="st">'test method'</span>])</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'euler'</span>, <span class="st">'midpoint'</span>, <span class="st">'new method'</span>])</span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
 <li>Work with your group to fill in the following summary table. If you tried combinations not listed below, add them.</li>
@@ -845,13 +845,13 @@ d.  Discuss the implications of what you found in parts (a) - (c) of this proble
 </div>
 <hr>
 <div id="exr-rk4h" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.7 (RK4 in Several Dimensions)</strong></span> 💻 🎓 Modify your Runge-Kutta 4 code to work for any number of dimensions. You may want to start from your <code>euler()</code> and <code>midpoint()</code> functions that already do this. you will only need to make minor modifications from there. Then test your new generalized RK4 method on all of the same problems which you used to test your <code>euler()</code> and <code>midpoint()</code> functions.</p>
+<p><span class="theorem-title"><strong>Exercise 8.7 (RK4 in Several Dimensions)</strong></span> 💻 🎓 Modify your Runge-Kutta 4 code to work for any number of dimensions. You may want to start from your <code>euler()</code> and <code>midpoint()</code> functions that already do this. You will only need to make minor modifications from there. Then test your new generalized RK4 method on all of the same problems which you used to test your <code>euler()</code> and <code>midpoint()</code> functions.</p>
 </div>
 <hr>
 </section>
-<section id="the-backwards-euler-method" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="the-backwards-euler-method"><span class="header-section-number">8.3</span> The Backwards Euler Method</h2>
-<p>We have now built up a variety of numerical ODE solvers. All of the solvers that we have built thus far are called <strong>explicit</strong> numerical differential equation solvers since they try to advance the solution explicitly forward in time. Wouldn’t it be nice if we could literally just say, <em>what slope is going to work best in the future time steps … let us use that</em>? Seems like an unrealistic hope, but that is exactly what the last method covered in this section does.</p>
+<section id="the-backward-euler-method" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="the-backward-euler-method"><span class="header-section-number">8.3</span> The Backward Euler Method</h2>
+<p>We have now built up a variety of numerical ODE solvers. All of the solvers that we have built thus far are called <strong>explicit</strong> numerical differential equation solvers since they try to advance the solution explicitly forward in time. Wouldn’t it be nice if we could literally just say, <em>what slope is going to work best in the future time steps … let us use that</em>? Seems like an unrealistic hope, but let’s see.</p>
 <hr>
 <div id="def-5.6" class="theorem definition">
 <p><span class="theorem-title"><strong>Definition 8.2 (Backward Euler Method)</strong></span> We want to solve <span class="math inline">\(x' = f(t,x)\)</span> so:</p>
@@ -939,12 +939,12 @@ x_{n+1} = x_n - \frac{1}{2} x_{n+1}.
 </div>
 <hr>
 <div id="exr-5.48b" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.9</strong></span> 🖋 🎓 By hand, apply the backwards Euler method with stepsize <span class="math inline">\(h=1/2\)</span> to the differential equation <span class="math inline">\(x'=xt\)</span> with initial condition <span class="math inline">\(x(0)=1\)</span> to obtain an approximation for <span class="math inline">\(x(1/2)\)</span>. Do your calculations in terms of fractions.</p>
+<p><span class="theorem-title"><strong>Exercise 8.9</strong></span> 🖋 🎓 By hand, apply the backward Euler method with stepsize <span class="math inline">\(h=1/2\)</span> to the differential equation <span class="math inline">\(x'=xt\)</span> with initial condition <span class="math inline">\(x(0)=1\)</span> to obtain an approximation for <span class="math inline">\(x(1/2)\)</span>. Do your calculations in terms of fractions.</p>
 </div>
 <hr>
 <div id="exm-5.49" class="theorem example">
 <p><span class="theorem-title"><strong>Example 8.1</strong></span> 🖋 The previous problem could potentially lead you to believe that the backward Euler method will always result in some other nice difference equation after some algebraic rearranging. That is not true! Let us consider a slightly more complicated differential equation and see what happens <span class="math display">\[
-x' = -\frac{1}{2} x^2 \quad \text{with} \quad x(0) = 0.
+x' = -\frac{1}{2} x^2.
 \]</span></p>
 <ol type="1">
 <li><p>Recall that the backward Euler approximation is <span class="math display">\[
@@ -953,14 +953,14 @@ x_{n+1} = x_n + h f(t_{n+1},x_{n+1}).
 <li><p>You should notice that your backward Euler formula is now a quadratic function in <span class="math inline">\(x_{n+1}\)</span>. That is to say, if you are given a value of <span class="math inline">\(x_n\)</span> then you need to solve a quadratic polynomial equation to get <span class="math inline">\(x_{n+1}\)</span>.</p></li>
 <li><p>Let us take <span class="math inline">\(x_0 = 6\)</span> and <span class="math inline">\(h=1\)</span>. What is the value of <span class="math inline">\(x_1\)</span> using the backward Euler method?</p></li>
 </ol>
-<p>Did you get <span class="math inline">\(x_1=\sqrt{13}-1\)</span>?</p>
+<p>Did you get <span class="math inline">\(x_1=\sqrt{13}-1\)</span>? (The quadratic has a second root <span class="math inline">\(-\sqrt{13}-1\)</span>, which we discard because <span class="math inline">\(x_0&gt;0\)</span> and we expect <span class="math inline">\(x_1&gt;0\)</span>.)</p>
 </div>
 <hr>
-<p>The complications with the backward Euler’s method are that you have a nonlinear equation to solve at every time step <span class="math display">\[
+<p>The complication with the backward Euler method is that you have a nonlinear equation to solve at every time step <span class="math display">\[
 x_{n+1} = x_n + h f(t_{n+1},x_{n+1}).
 \]</span> Notice that this is the same as solving the equation <span class="math display">\[
 G(x_{n+1}):=x_{n+1} - hf(t_{n+1},x_{n+1}) - x_n = 0.
-\]</span> You know the values of <span class="math inline">\(h=\Delta t\)</span>, <span class="math inline">\(t_{n+1}\)</span> and <span class="math inline">\(x_n\)</span>, and you know the function <span class="math inline">\(f\)</span>, so, in a practical sense, you should use some sort of numerical method to solve that equation – at each time step. Given that we do not know the derivative of <span class="math inline">\(G\)</span>, we can not use Newton’s method. So our next best option is to use the secan method. You can use your code from <a href="nmRoots2.html#exr-2.49" class="quarto-xref">Exercise&nbsp;<span>4.20</span></a> for the function <code>secant_1d()</code>.</p>
+\]</span> You know the values of <span class="math inline">\(h=\Delta t\)</span>, <span class="math inline">\(t_{n+1}\)</span> and <span class="math inline">\(x_n\)</span>, and you know the function <span class="math inline">\(f\)</span>, so, in a practical sense, you should use some sort of numerical method to solve that equation – at each time step. Since <span class="math inline">\(G'(x_{n+1}) = 1 - h\,\partial f/\partial x\)</span>, applying Newton’s method would require computing the partial derivative of <span class="math inline">\(f\)</span> with respect to <span class="math inline">\(x\)</span>, which is not always available or convenient. So our next best option is to use the secant method. You can use your code from <a href="nmRoots2.html#exr-2.49" class="quarto-xref">Exercise&nbsp;<span>4.20</span></a> for the function <code>secant_1d()</code>.</p>
 <hr>
 <div id="exr-5.50" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 8.10</strong></span> 💻 🎓 Complete the function <code>backward_euler_1d()</code> below. How do you define the function <code>G</code> inside the <code>for</code> loop and what starting values do you use for the secant method?</p>
@@ -1015,11 +1015,12 @@ x_{n+1} =\  ??? \ \cdot x_n.
 </div>
 <hr>
 <p>Because the observations you made in the previous two exercises are so important, I lectured about them. Here are the lecture notes:</p>
-<p>The stability of a numerical method is the property that the numerical solution does not diverge from the exact solution as the step size goes to zero. In other words, if we take smaller and smaller steps, the numerical solution should converge to the exact solution. If the numerical solution diverges from the exact solution as the step size goes to zero, then we say that the method is unstable.</p>
-<p>To test the stability of a method we can apply it to a simple ODE with a known solution. We can then compare the numerical solution to the exact solution. If the numerical solution is stable, then it will converge to the exact solution as the step size goes to zero. If the numerical solution is unstable, then it will diverge from the exact solution as the step size goes to zero.</p>
-<p>The test equation that is always used for this purpose of studying the stability of a numerical method is the linear ODE <span class="math display">\[
+<p>The stability of a numerical method is the property that the numerical solution behaves qualitatively like the exact solution for a given step size. In particular, if the exact solution decays to zero, the numerical solution should also decay to zero rather than grow without bound. If the numerical solution grows when the exact solution decays, we say the method is <strong>unstable</strong> for that step size.</p>
+<p>This is a different concern from convergence (which asks whether the numerical solution approaches the exact solution as <span class="math inline">\(h \to 0\)</span>). Stability asks: for a fixed step size <span class="math inline">\(h\)</span>, does the numerical method respect the qualitative behaviour of the exact solution? A method can be unstable for large <span class="math inline">\(h\)</span> even when it is perfectly accurate for small <span class="math inline">\(h\)</span>, so choosing the step size carefully is essential.</p>
+<p>The test equation that is always used for studying the stability of a numerical method is the linear ODE <span class="math display">\[
 x'=\lambda x.
-\]</span> The exact solution to this equation is <span class="math inline">\(x(t)=x_(0)e^{\lambda t}\)</span>. So if the real part of <span class="math inline">\(\lambda\)</span> is negative the solution decays, and if the real part of <span class="math inline">\(\lambda\)</span> is positive the solution grows. The stability of a numerical method can be tested by applying it to this equation and comparing the numerical solution to the exact solution.</p>
+\]</span></p>
+<p>The exact solution to this equation is <span class="math inline">\(x(t)=x_0 e^{\lambda t}\)</span>. So if the real part of <span class="math inline">\(\lambda\)</span> is negative the solution decays, and if the real part of <span class="math inline">\(\lambda\)</span> is positive the solution grows. Applying a numerical method to this equation produces a recurrence of the form <span class="math inline">\(x_{n+1} = Q(h\lambda)\, x_n\)</span> for some <strong>amplification factor</strong> <span class="math inline">\(Q(h\lambda)\)</span>, so <span class="math inline">\(x_n = Q(h\lambda)^n\, x_0\)</span>. Setting <span class="math inline">\(z = h\lambda\)</span>, the numerical solution decays to zero if and only if <span class="math inline">\(|Q(z)| &lt; 1\)</span>. The set of all <span class="math inline">\(z \in \mathbb{C}\)</span> for which <span class="math inline">\(|Q(z)| &lt; 1\)</span> is called the <strong>region of absolute stability</strong> of the method. Since we want the numerical solution to decay whenever the exact solution does, i.e.&nbsp;whenever <span class="math inline">\(\text{Re}(\lambda) &lt; 0\)</span> (equivalently <span class="math inline">\(\text{Re}(z) &lt; 0\)</span>), we want the region of absolute stability to cover as much of the left half-plane as possible. Note that <span class="math inline">\(\lambda\)</span> may be complex, corresponding to oscillatory decaying solutions.</p>
 <hr>
 <div id="exm-euler_stability" class="theorem example">
 <p><span class="theorem-title"><strong>Example 8.2 (Stability of Euler’s Method)</strong></span> Euler’s method uses the formula <span class="math inline">\(x_{n+1}=x_n+h f(t_n,x_n)\)</span>. Applying this to the test equation <span class="math inline">\(x'=\lambda x\)</span> gives <span class="math display">\[
@@ -1040,9 +1041,7 @@ E_n:=|x_n-x(t_n)|=|x_0(1+h\lambda)^n-x_0e^{\lambda t_n}|.
 h&lt;\frac{2}{|\lambda|}
 \]</span></p>
 </div>
-<p>In general, for a method that, when applied to the test equation <span class="math inline">\(x'=\lambda x\)</span>, gives <span class="math display">\[
-x_{n+1}=Q(h\lambda)x_n
-\]</span> the stability condition is that <span class="math display">\[|Q(h\lambda)|&lt;1.\]</span> Values of <span class="math inline">\(h\lambda =: z\)</span> for which <span class="math inline">\(|Q(z)|&lt;1\)</span> form the <strong>Region of absolute stability</strong> of the method. This is a region in the complex plane, because while the stepsize <span class="math inline">\(h\)</span> is of course always real, in applications the transient term may be oscillatory, corresponding to a complex <span class="math inline">\(\lambda\)</span>.</p>
+<p>So the amplification factor for Euler’s method is <span class="math inline">\(Q(z) = 1 + z\)</span>, and its region of absolute stability is the disk <span class="math inline">\(|1 + z| &lt; 1\)</span>, centred at <span class="math inline">\(z = -1\)</span> with radius <span class="math inline">\(1\)</span>. For real negative <span class="math inline">\(\lambda\)</span> this recovers the step-size constraint <span class="math inline">\(h &lt; 2/|\lambda|\)</span> derived above.</p>
 <hr>
 <div id="exm-midpoint_stability" class="theorem example">
 <p><span class="theorem-title"><strong>Example 8.3 (Stability of the Midpoint Method)</strong></span> The midpoint method uses the formula <span class="math display">\[
@@ -1051,7 +1050,7 @@ x_{n+1}=x_n+hf(t_n+\frac{h}{2},x_n+\frac{h}{2}f(t_n,x_n)).
 x_{n+1}=x_n+h\lambda \left(x_n+\frac{h}{2}\lambda x_n\right)
 =x_n\left(1+h\lambda+\frac{(h\lambda)^2}{2}\right).
 \]</span></p>
-<p>The region of absolute stability is the set of <span class="math inline">\(z\in\mathbb{C}\)</span> for which <span class="math display">\[
+<p>So the amplification factor is <span class="math inline">\(Q(z) = 1 + z + \tfrac{z^2}{2}\)</span>, and the region of absolute stability is the set of <span class="math inline">\(z\in\mathbb{C}\)</span> for which <span class="math display">\[
 \left|1+z+\frac{z^2}{2}\right|&lt;1.
 \]</span></p>
 </div>
@@ -1068,13 +1067,13 @@ x_{n+1}=\frac{x_n}{1-h\lambda}.
 \left|\frac{1}{1-z}\right|&lt;1,
 \]</span> or, equivalently, <span class="math display">\[
 |z-1|&gt;1.
-\]</span> This is almost the entire complex plane, except for the circle of radius 1 around the point <span class="math inline">\(z=1\)</span>. In particular it contains the entire left half plane, so stiff equations do not require any particular choice of step size for the backward Euler method to be stable. We therefore say that the backward Euler method is unconditionally stable.</p>
+\]</span> This is almost the entire complex plane, except for the disk of radius 1 centred at <span class="math inline">\(z=1\)</span>. In particular it contains the entire left half-plane, so no upper bound on the step size is needed for stability, even when <span class="math inline">\(|\lambda|\)</span> is very large (as arises in stiff equations, discussed in <a href="#sec-stiff" class="quarto-xref"><span>Section 8.5</span></a>). We therefore say that the backward Euler method is <strong>unconditionally stable</strong>.</p>
 </div>
 </section>
 <section id="sec-stiff" class="level2" data-number="8.5">
 <h2 data-number="8.5" class="anchored" data-anchor-id="sec-stiff"><span class="header-section-number">8.5</span> Stiff Equations</h2>
-<p>A differential equation is called “stiff” if the exact solution has a term that decays very rapidly. This is a problem for numerical methods because the step size must be very small to capture the rapid decay. The step size must be small for the entire solution, not just the rapidly decaying part. This can make the solution very slow to compute.</p>
-<p>An example of such a rapidly decaying term would be a term of the form <span class="math inline">\(e^{-\gamma t}\)</span> with <span class="math inline">\(\gamma\)</span> large. As an example consider the ODE <span class="math display">\[
+<p>A differential equation is called <strong>stiff</strong> if the exact solution contains a rapidly decaying transient term. This is a problem for explicit numerical methods because the stability condition forces the step size to be very small — small enough to track the transient — even after the transient has disappeared and the remaining solution varies slowly. The step-size restriction therefore persists for the entire computation, making it very slow.</p>
+<p>An example of such a rapidly decaying term would be a term of the form <span class="math inline">\(e^{-\gamma t}\)</span> with <span class="math inline">\(\gamma \gg 1\)</span>. As an example consider the ODE <span class="math display">\[
 x'=-100x+\sin t.
 \]</span> This is similar to equations we solved in <a href="nmODE1.html#exr-5.13" class="quarto-xref">Exercise&nbsp;<span>7.6</span></a>, just with a larger negative coefficient in front of <span class="math inline">\(x\)</span>. The solution to this equation is <span class="math display">\[
 x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t.
@@ -1096,7 +1095,7 @@ x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t
 <ol type="a">
 <li>Solve the equation using forward Euler with step sizes <span class="math inline">\(h=0.1\)</span>, <span class="math inline">\(h=0.01\)</span>, and <span class="math inline">\(h=0.001\)</span>. Plot all three numerical solutions together with the exact solution on the interval <span class="math inline">\(t\in[0,1]\)</span>. What do you observe?</li>
 <li>Repeat with the backward Euler method using the same step sizes. What do you observe?</li>
-<li>Repeat with the RK4 method. What is the largest step size for which RK4 remains stable on this problem? (Hint: the stability region of RK4 extends to roughly <span class="math inline">\(|z|\lesssim 2.8\)</span> along the negative real axis.) Compare with what you found for forward Euler.</li>
+<li>Repeat with the RK4 method. What is the largest step size for which RK4 remains stable on this problem? (Hint: the stability region of RK4 reaches approximately <span class="math inline">\(z\approx -2.8\)</span> along the negative real axis.) Compare with what you found for forward Euler.</li>
 <li>💬 Explain in your own words why an implicit method is preferable for stiff equations.</li>
 </ol>
 </div>
@@ -1128,7 +1127,7 @@ x(t)=C_1e^{-t}+C_2e^{-\gamma t}.
 <p><span class="theorem-title"><strong>Exercise 8.17</strong></span> 💻 Solve the stiff system from <a href="#exm-5.57" class="quarto-xref">Example&nbsp;<span>8.5</span></a> numerically with <span class="math inline">\(\gamma=100\)</span> on the interval <span class="math inline">\(t\in[0,5]\)</span>.</p>
 <ol type="a">
 <li><p>Solve the system with the forward Euler method and step sizes <span class="math inline">\(h=0.1\)</span>, <span class="math inline">\(h=0.01\)</span>, and <span class="math inline">\(h=0.001\)</span>. You can use your code from <a href="nmODE1.html#exr-5.17" class="quarto-xref">Exercise&nbsp;<span>7.9</span></a>. At which step size does forward Euler first produce a stable solution?</p></li>
-<li><p>Solve the system with the backward Euler method using the same step sizes. Does backward Euler remain stable even for <span class="math inline">\(h=0.1\)</span>?You can use the following function for the higher-dimensional backward Euler method:</p></li>
+<li><p>Solve the system with the backward Euler method using the same step sizes. Does backward Euler remain stable even for <span class="math inline">\(h=0.1\)</span>? You can use the following function for the higher-dimensional backward Euler method:</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy <span class="im">import</span> optimize</span>
@@ -1148,6 +1147,19 @@ x(t)=C_1e^{-t}+C_2e^{-\gamma t}.
 <ol start="3" type="a">
 <li>💬 By what factor can backward Euler take larger steps than forward Euler and still be stable? How does this factor relate to <span class="math inline">\(\gamma\)</span>?</li>
 </ol>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that while Backward Euler is stable for large <span class="math inline">\(h\)</span>, it is still only a first-order method. Large steps might be stable but could be very inaccurate!</p>
+</div>
 </div>
 <hr>
 </section>
@@ -1174,9 +1186,9 @@ x(t)=C_1e^{-t}+C_2e^{-\gamma t}.
 <h2 data-number="8.7" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">8.7</span> Exam-Style Question</h2>
 <ol type="a">
 <li><p>Explain geometrically the difference between the explicit (forward) Euler method and the implicit backward Euler method. What is the fundamental property of backward Euler that makes it more suited for stiff equations? [3 marks]</p></li>
-<li><p>Show that the backward Euler method is unconditionally stable for the linear differential equation <span class="math inline">\(x' = -\lambda x\)</span> where <span class="math inline">\(\lambda &gt; 0\)</span>.</p></li>
+<li><p>Show that the backward Euler method is unconditionally stable for the linear test equation <span class="math inline">\(x' = \lambda x\)</span> where <span class="math inline">\(\text{Re}(\lambda) &lt; 0\)</span>.</p></li>
 <li><p>Show that the backward Euler method has a local truncation error of order <span class="math inline">\(O(h)\)</span>.</p></li>
-<li><p>State, but don’t derive, the order of accuracy for the Runge-Kutta 4 (RK4) method? Assuming you are using RK4 to approximate the solution to <span class="math inline">\(x'=f(t,x)\)</span>, how many evaluations of the function <span class="math inline">\(f(t,x)\)</span> are required at each time step? [2 marks]</p></li>
+<li><p>State, but don’t derive, the order of accuracy for the Runge-Kutta 4 (RK4) method. How many evaluations of the function <span class="math inline">\(f(t,x)\)</span> are required at each time step? [2 marks]</p></li>
 </ol>
 <hr>
 </section>

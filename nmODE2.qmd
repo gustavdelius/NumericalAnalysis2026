@@ -437,15 +437,16 @@ Again you would like this to go towards $0$ as $n$ goes to infinity.  What condi
 
 Because the observations you made in the previous two exercises are so important, I lectured about them. Here are the lecture notes: 
 
-The stability of a numerical method is the property that the numerical solution does not diverge from the exact solution as the step size goes to zero. In other words, if we take smaller and smaller steps, the numerical solution should converge to the exact solution. If the numerical solution diverges from the exact solution as the step size goes to zero, then we say that the method is unstable.
+The stability of a numerical method is the property that the numerical solution behaves qualitatively like the exact solution for a given step size. In particular, if the exact solution decays to zero, the numerical solution should also decay to zero rather than grow without bound. If the numerical solution grows when the exact solution decays, we say the method is **unstable** for that step size.
 
-To test the stability of a method we can apply it to a simple ODE with a known solution. We can then compare the numerical solution to the exact solution. If the numerical solution is stable, then it will converge to the exact solution as the step size goes to zero. If the numerical solution is unstable, then it will diverge from the exact solution as the step size goes to zero.
+This is a different concern from convergence (which asks whether the numerical solution approaches the exact solution as $h \to 0$). Stability asks: for a fixed step size $h$, does the numerical method respect the qualitative behaviour of the exact solution? A method can be unstable for large $h$ even when it is perfectly accurate for small $h$, so choosing the step size carefully is essential.
 
-The test equation that is always used for this purpose of studying the stability of a numerical method is the linear ODE
+The test equation that is always used for studying the stability of a numerical method is the linear ODE
 $$
 x'=\lambda x.
 $$
-The exact solution to this equation is $x(t)=x_(0)e^{\lambda t}$. So if the real part of $\lambda$ is negative the solution decays, and if the real part of $\lambda$ is positive the solution grows. The stability of a numerical method can be tested by applying it to this equation and comparing the numerical solution to the exact solution.
+
+The exact solution to this equation is $x(t)=x_0 e^{\lambda t}$. So if the real part of $\lambda$ is negative the solution decays, and if the real part of $\lambda$ is positive the solution grows. Applying a numerical method to this equation produces a recurrence of the form $x_{n+1} = Q(h\lambda)\, x_n$ for some **amplification factor** $Q(h\lambda)$, so $x_n = Q(h\lambda)^n\, x_0$. Setting $z = h\lambda$, the numerical solution decays to zero if and only if $|Q(z)| < 1$. The set of all $z \in \mathbb{C}$ for which $|Q(z)| < 1$ is called the **region of absolute stability** of the method. Since we want the numerical solution to decay whenever the exact solution does, i.e.\ whenever $\text{Re}(\lambda) < 0$ (equivalently $\text{Re}(z) < 0$), we want the region of absolute stability to cover as much of the left half-plane as possible. Note that $\lambda$ may be complex, corresponding to oscillatory decaying solutions.
 
 ------------------------------------------------------------------------
 
@@ -481,13 +482,7 @@ h<\frac{2}{|\lambda|}
 $$
 :::
 
-In general, for a method that, when applied to the test equation $x'=\lambda x$, gives
-$$
-x_{n+1}=Q(h\lambda)x_n
-$$
-the stability condition is that 
-$$|Q(h\lambda)|<1.$$
-Values of $h\lambda =: z$ for which $|Q(z)|<1$ form the **Region of absolute stability** of the method. This is a region in the complex plane, because while the stepsize $h$ is of course always real, in applications the transient term may be oscillatory, corresponding to a complex $\lambda$.
+So the amplification factor for Euler's method is $Q(z) = 1 + z$, and its region of absolute stability is the disk $|1 + z| < 1$, centred at $z = -1$ with radius $1$. For real negative $\lambda$ this recovers the step-size constraint $h < 2/|\lambda|$ derived above.
 
 ------------------------------------------------------------------------
 
@@ -504,7 +499,7 @@ x_{n+1}=x_n+h\lambda \left(x_n+\frac{h}{2}\lambda x_n\right)
 =x_n\left(1+h\lambda+\frac{(h\lambda)^2}{2}\right).
 $$
 
-The region of absolute stability is the set of $z\in\mathbb{C}$ for which
+So the amplification factor is $Q(z) = 1 + z + \tfrac{z^2}{2}$, and the region of absolute stability is the set of $z\in\mathbb{C}$ for which
 $$
 \left|1+z+\frac{z^2}{2}\right|<1.
 $$
@@ -537,7 +532,7 @@ or, equivalently,
 $$
 |z-1|>1.
 $$
-This is almost the entire complex plane, except for the circle of radius 1 around the point $z=1$. In particular it contains the entire left half plane, so stiff equations do not require any particular choice of step size for the backward Euler method to be stable. We therefore say that the backward Euler method is unconditionally stable.
+This is almost the entire complex plane, except for the disk of radius 1 centred at $z=1$. In particular it contains the entire left half-plane, so no upper bound on the step size is needed for stability, even when $|\lambda|$ is very large (as arises in stiff equations, discussed in @sec-stiff). We therefore say that the backward Euler method is **unconditionally stable**.
 :::
 
 ## Stiff Equations {#sec-stiff}

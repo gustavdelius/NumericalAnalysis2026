@@ -3,55 +3,10 @@
 > *When you open the toolkit of differential equations you see the hammers and saws of engineering and physics for the past two centuries and for the foreseeable future.*\
 > --[Benoit Mandelbrot](https://en.wikipedia.org/wiki/Benoit_Mandelbrot)
 
-::: {.callout-caution}
-This chapter is still undergoing changes, to be released on Thursday of week 8.
-:::
 
 ## Intro to PDEs
 
-Partial differential equations (PDEs) are differential equations involving the partial derivatives of an unknown multivariable function. In most of this chapter we will examine two classical problems from physics: heat transport phenomena and wave phenomena. Do not think, however, that just because we are focusing on these two primary examples that this is the extent of the utility of PDEs. Basically, every scientific field has been impacted by (or has directly impacted) the study of PDEs. Any phenomenon that can be modelled via the change in multiple continuous variables (not restricted to space and time) is likely governed by a PDE model. Some common phenomena that are modelled by PDEs are:
-
--   heat transport
-
-    -   The heat equation models heat energy (temperature) diffusing through a metal rod or a solid body
-
--   diffusion of a concentrated substance
-
-    -   The diffusion equation is a PDE model for the diffusion of smells, contaminants, or the motion of a solute
-
--   wave propagation
-
-    -   The wave equation is a PDE that can be used to model the standing waves on a guitar string, the waves on lake, or sound waves traveling through the air
-
--   travelling waves
-
-    -   The traveling wave equation is a PDE that can be used to model pulses of light propagating through a fiber optic cable or regions of high density traffic moving along a highway.
-
--   quantum mechanics
-
-    -   The wave functions of quantum mechanics are described by a PDE called the Schrodinger Equation.
-
--   electro-magnetism
-
-    -   Maxwell's Equations are a system of PDEs describing the relationships between electricity and magnetism.
-
--   fluid flow
-
-    -   The Navier-Stokes equations are a system of PDEs that model fluids in three dimensions -- including turbulent flow.
-
-    -   Darcy's Law and Richard's equation are PDE models for the motion of fluids moving through saturated and unsaturated soils.
-
--   stress and strain in structures
-
-    -   The Linear Elasticity equation is a PDE that models the stresses in a solid body (like a bridge or a building) under load.
-
--   spatial patterns
-
-    -   Solutions to the Helmholtz equation are known for exhibiting *Turing patterns* which are patterns like leopard spots or zebra stripes.
-
--   ... and many more ...
-
-In many cases we are interested in solving PDEs in terms of our usual three spatial dimensions along with an extra dimension for time. Often we do not have to work with all three spatial dimensions (like if the domain is much larger in one or two directions versus the others) or in some cases (like in linear elasticity) we do not need to worry about time.
+Partial differential equations (PDEs) are differential equations involving the partial derivatives of an unknown multivariable function. In most of this chapter and the next we will examine two classical problems from physics: heat transport phenomena and wave phenomena. Do not think, however, that just because we are focusing on these two primary examples that this is the extent of the utility of PDEs. Basically, every scientific field has been impacted by (or has directly impacted) the study of PDEs. Any phenomenon that can be modelled via the change in multiple continuous variables (not restricted to space and time) is likely governed by a PDE model. 
 
 There is a wealth of wonderful theory for finding analytic solutions to many special classes of PDEs. However, most PDEs simply do not lend themselves to analytic solutions that we can write down in terms of the regular mathematical operations of sums, products, powers, roots, trigonometric functions, logarithms, etc. For these PDEs we must turn to numerical methods to approximate the solution.
 
@@ -68,9 +23,9 @@ $$
 $$
 where $u(t,x)$ is the temperature of the material at time $t$ and position $x$ and $D$ is the diffusion coefficient. The heat equation is a simple model for heat diffusion but also describes diffusion in general, like the diffusion of a solute in a solvent or of plants in a field or, .... well, you get the idea.
 
-In the remainder of this section we will use a technique called **the finite difference method** to build numerical approximations to solutions of the heat equation in 1D, 2D, and 3D. You of course know that the heat equation is easy to solve analytically, given that it is a linear homogeneous PDE with constant coefficients. However, the finite difference method is a powerful tool for solving similar PDEs that do not have simple analytic solutions. The advantage of using the heat equation as a test case for the finite difference method is that we can easily verify the accuracy of our numerical solutions by comparing them to the known analytic solutions.
+You of course know that the heat equation is easy to solve analytically, given that it is a linear homogeneous PDE with constant coefficients. However, the finite difference method is a powerful tool for solving similar PDEs that do not have simple analytic solutions. The advantage of using the heat equation as a test case for the finite difference method is that we can easily verify the accuracy of our numerical solutions by comparing them to the known analytic solutions.
 
-### In One Spatial Dimensions {#sec-heat1d}
+### In One Spatial Dimension {#sec-heat1d}
 
 For the sake of simplicity we will start by considering the heat equation in 1 spatial dimension:
 $$
@@ -89,7 +44,7 @@ Then we want to build a numerical approximation to the function $u(t,x)$ at thes
 
 First we need to introduce some notation for the numerical solution. As you will see in a moment, there is a lot to keep track of in numerical PDEs so careful indexing and well-chosen notation is essential. Let $U_i^n$ be the approximation of the solution to $u(t,x)$ at the point $t=t_n=t_0+n\,\Delta t$ and $x=x_i=x_0+i\,\Delta x$ (since we have two variables we need two indices). For example, $U_4^1$ is the value of the approximation at time $t_1$ and at the spatial point $x_4$.
 
-Next we need to approximate both derivatives $u_t$ and $u_{xx}$ in the PDE using methods that we have used before. Now would be a good time to go back to [Chapter -@sec-differentiation] and refresh your memory for how we build approximations of derivatives.
+Next we need to approximate both derivatives $u_t$ and $u_{xx}$ in the PDE using methods that we have used before. Now would be a good time to go back to [@sec-differentiation] and refresh your memory for how we build approximations of derivatives.
 
 (a)  Use the forward-difference formula to approximate the time derivative $u_t$ at the point $t=t_n$ and $x=x_i$.
 $$
@@ -120,13 +75,13 @@ $$
  \text{Numerical Error} = \mathcal{O}(\Delta t^{???}) + \mathcal{O}(\Delta x^{???}). 
 $$
 
-(f)  Explain what the result from part (e) means in plain English?
+(f)  Explain what the result from part (e) means in plain English.
 
 :::
 
 ------------------------------------------------------------------------
 
-There are many different finite difference schemes due to the fact that there are many different ways to approximate derivatives (See [Chapter -@sec-differentiation]). One convenient way to keep track of which information you are using and what you are calculating in a finite difference scheme is to use a **finite difference stencil image**. @fig-6.8 shows the finite difference stencil for the approximation to the heat equation that you built in the previous exercise. In this figure we are showing that the function values $U_{i-1}^n$, $U_i^n$, and $U_{i+1}^n$ at the points $x_{i-1}$, $x_i$, and $x_{i+1}$ at time step $t_n$ are used to calculate $U_i^{n+1}$. We will build similar stencil diagrams for other finite difference schemes throughout this chapter.
+There are many different finite difference schemes due to the fact that there are many different ways to approximate derivatives (See [@sec-differentiation]). One convenient way to keep track of which information you are using and what you are calculating in a finite difference scheme is to use a **finite difference stencil image**. @fig-6.8 shows the finite difference stencil for the approximation to the heat equation that you built in the previous exercise. In this figure we are showing that the function values $U_{i-1}^n$, $U_i^n$, and $U_{i+1}^n$ at the points $x_{i-1}$, $x_i$, and $x_{i+1}$ at time step $t_n$ are used to calculate $U_i^{n+1}$. We will build similar stencil diagrams for other finite difference schemes throughout this chapter.
 
 ![The forward difference stencil for the 1D heat equation.](figures/PDE/HeatStencil.png){#fig-6.8 alt="The forward difference stencil for the 1D heat equation."}
 
@@ -138,7 +93,6 @@ $$
 u_t = 0.1u_{xx}
 $$
 on the domain $0 < x < 1$ and $0 < t < 1$ with the initial condition
- with 
 $$
 u(0,x) = \sin(2 \pi x)
 $$
@@ -168,7 +122,7 @@ from ipywidgets import interactive
 # Calculate the step size `dx`.
 
 # Specify the diffusion coefficient
-D = 0.01
+D = 0.1
 # The coefficient "a" appears in the forward difference scheme.
 a = D*dt / dx**2
 
@@ -202,12 +156,13 @@ def plot_solution_1d(t, x, U):
     Args:
         t: A vector of time values.
         x: A vector of spatial values.
-        U: A 2D array approximating the solution u(x,t) at each grid point.
+        U: A 2D array approximating the solution u(t,x) at each grid point.
     """
     fig = go.Figure(data=[go.Surface(z=U, x=x, y=t)])
     fig.update_layout(
         width=800, height=600,
         scene=dict(
+            xaxis_title='x',
             yaxis_title='t',
             zaxis_title='u'
         )
@@ -226,7 +181,7 @@ def animate_solution_1d(t, x, U):
     Args:
         t: A vector of time values.
         x: A vector of spatial values.
-        U: A 2D array approximating the solution u(x,t) at each grid point.
+        U: A 2D array approximating the solution u(t,x) at each grid point.
     """
     fig, ax = plt.subplots()
     plt.close()
@@ -269,7 +224,7 @@ def heat1d(u_0, D=0.1, t_0=0, t_max=1, N_t=100, x_left=0, x_right=1, N_x=20):
 
     Args:
         u_0: A function giving the initial condition u(0,x).
-        D: The diffusion coefficient. Defaults to 1.
+        D: The diffusion coefficient. Defaults to 0.1.
         t_0: The initial time. Defaults to 0.
         t_max: The maximum time. Defaults to 1.
         N_t: The number of time steps. Defaults to 100.
@@ -288,7 +243,7 @@ def heat1d(u_0, D=0.1, t_0=0, t_max=1, N_t=100, x_left=0, x_right=1, N_x=20):
 
 Use your function to solve the heat equation with diffusion coefficient $D=0.1$ and the following initial and boundary conditions:
 $$
- u(0,x) = \sin(2 \pi x), \, u(t,0) = 0, \, \text{and} \, u(t,1)
+ u(0,x) = \sin(2 \pi x), \, u(t,0) = 0, \, \text{and} \, u(t,1) = 0.
 $$
 Use  stepsizes $\Delta t=0.01$ and $\Delta x=0.01$ to determine an approximate value for $u(0.2,0.25)$.
 
@@ -297,7 +252,7 @@ Use  stepsizes $\Delta t=0.01$ and $\Delta x=0.01$ to determine an approximate v
 ------------------------------------------------------------------------
 
 ::: {#exr-6.31a}
-💻 💬 Now run the solution method from the previous exercise with the same diffusion coefficient $D=0.1$, the same step sizes $\Delta t=0.01$ and $\Delta x=0.01$, and the same initial and boundary conditions but run it for a longer time $t=0.5$ and plot the solution on the domain $t\in[0,0.5]$ and $x\in[0,1]$. Do you believe what you see? What is happening to the solution?
+💻 💬 Now run your `heat1d` function from @exr-heat1d with the same diffusion coefficient $D=0.1$, the same step sizes $\Delta t=0.01$ and $\Delta x=0.01$, and the same initial and boundary conditions but run it for a longer time $t=0.5$ and plot the solution on the domain $t\in[0,0.5]$ and $x\in[0,1]$. Do you believe what you see? What is happening to the solution?
 :::
 
 ------------------------------------------------------------------------
@@ -387,7 +342,7 @@ can be adapted to work for other parabolic PDEs.
 
 For example, the heat equation can be modified to include a reaction term. The reaction-diffusion equation is a PDE that models the diffusion of a substance in space and time with a reaction term that describes the rate of change of the substance due to some reaction. While it has its origin in chemistry, it shows up in many other fields as well, for example in ecology and epidemiology.
 
-::: {#exr-6.34}
+::: {#exr-6.35}
 #### Fisher-KPP Equation
 💻 🎓 Modify your 1D heat equation code to calculate an approximate solution of the Fisher-KPP equation 
 $$
@@ -418,6 +373,110 @@ $$
 Use the forward difference formula for the $u_x$ term and the centred difference formula for the $u_{xx}$ term. Use the initial condition $u(0,x) = \sin(\pi x)$, Dirichlet boundary conditions $u(t,0) = 0$ and $u(t,1) = 0$, and $t\in[0,1]$. Use $20$ spatial steps and $100$ time steps. Make a plot and an animation of the solution.
 
 :::
+## Stability {#sec-stability-heat}
+
+While exploring the explicit finite-difference method for solving the 1d heat equation $u_t=Du_{xx}$ we encountered the stability condition
+$$
+a=\frac{D\Delta t}{(\Delta x)^2}\leq \frac{1}{2}.
+$$
+We now want to understand where this condition comes from.
+
+We start by setting up the notation for solving the heat equation  using the explicit finite-difference method. We discretise the spatial variable $x$ into $N$ intervals with grid points $x_0,\ldots,x_N$ with stepsize $\Delta x=(x_N-x_0)/N$. We discretise the time variable $t$ into $M$ intervals with grid points $t_0,\ldots,t_M$ with stepsize $\Delta t=(t_M-t_0)/M$. We denote the approximation of $u(t_n,x_i)$ by $U_i^n$. The initial condition sets $U_i^0=u(t_0,x_i)$.
+We work with homogeneous Dirichlet boundary conditions, so $U_0^n=U_N^n=0$ for all $n$.
+
+The approximations at the remaining points is then calculated by the formula
+$$
+U_i^{n+1}=U_i^n+a(U_{i+1}^n-2U_i^n+U_{i-1}^n)
+$$
+for $i=1,\ldots,N-1$. You derived this in @sec-heat1d using the finite-difference formulae for the derivatives from @sec-differentiation.
+We rewrite this in matrix notation:
+$$
+\begin{pmatrix}U_1^{n+1}\\\vdots\\U_{N-1}^{n+1}\end{pmatrix}=\begin{pmatrix}1-2a&a&&\\
+a&1-2a&a&&\\
+&\ddots&\ddots&\ddots&\\
+&&a&1-2a\end{pmatrix}\begin{pmatrix}U_1^{n}\\\vdots\\U_{N-1}^{n}\end{pmatrix}.
+$$
+The matrix is tridiagonal, with $1-2a$ on the diagonal and $a$ on the two off-diagonals. We denote the matrix by $A$ and the two vectors by $\mathbf{U}_{n+1}$ and $\mathbf{U}_{n}$ respectively. So we have the formula
+$$
+\mathbf{U}_{n+1}=A\mathbf{U}_n.
+$$
+The solution at time $t_n$ is then given by
+$$
+\mathbf{U}_n=A^n\mathbf{U}_0.
+$$
+
+We want to understand how errors evolve over time. If errors grow exponentially over time then we call the method unstable and the method is not useful. 
+
+Let us assume that at some step, for convenience let us choose step $0$, an error $\mathbf{\epsilon}$ is introduced:
+$$
+\tilde{\mathbf{U}}_0=\mathbf{U}_0+\mathbf{\epsilon}.
+$$
+Then after $n$ steps we have
+$$
+\tilde{\mathbf{U}}_n=A^n\tilde{\mathbf{U}}_0=A^n(\mathbf{U}_0+\mathbf{\epsilon})=A^n\mathbf{U}_0+A^n\mathbf{\epsilon}=\mathbf{U}_n+A^n\mathbf{\epsilon}.
+$$
+So the error at time $t_n$ is
+$$
+\mathbf{\epsilon}_n=A^n\mathbf{\epsilon}.
+$$
+To see if the error grows exponentially over time, we expand the initial error in terms of the eigenvectors of the matrix $A$:
+$$
+\mathbf{\epsilon}=\sum_i\epsilon_i\mathbf{v}_i,
+$$
+where
+$$
+A\mathbf{v}_i=\lambda_i\mathbf{v}_i
+$$
+and the sum is over all eigenvectors $\mathbf{v}_i$ of $A$. Then
+$$
+\mathbf{\epsilon}_n=\sum_i\epsilon_i\lambda_i^n\mathbf{v}_i.
+$$
+This shows that if all eigenvalues have absolute value less than 1, then the method is stable. If at least one eigenvalue has absolute value greater than 1, then the corresponding component of the error will grow exponentially with time and the method is unstable.
+
+There is a nice method to determine the eigenvalues of the matrix $A$, using Fourier analysis. We will not discuss this in this module and instead just give the result and then look at a simple example. The result (which you do not need to remember) is that the eigenvalues of the matrix $A$ are given by
+$$
+\lambda_k=1-4a\left(\sin\left(\frac{k\pi}{2N}\right)\right)^2
+$$
+for $k=1,\ldots,N-1$. For stability we need $|\lambda_k|<1$ for all $k$, i.e.,
+$$
+0\leq a\left(\sin\left(\frac{k\pi}{2N}\right)\right)^2<\frac12
+$$
+for all $k$. The most stringent condition is that coming from $k=N-1$, so the stability condition is
+$$
+a\leq \frac{1}{2}\left(\sin\left(\frac{(N-1)\pi}{2N}\right)\right)^{-2}.
+$$ 
+
+In the limit $N\to\infty$ this gives the condition $a\leq 1/2$.
+
+::: {#exm-heat_stability}
+Consider the heat equation on the spatial domain $x\in[0,1]$ and divide this into three subintervals, so that our spatial grid consists of $x_0=0,x_1=1/3,x_2=2/3$ and $x_3=1$. The matrix $A$ is then
+$$
+A=\begin{pmatrix}1-2a&a&\\
+a&1-2a
+\end{pmatrix}.
+$$
+The characteristic polynomial is
+$$
+\begin{split}
+\det(A-\lambda I)&=\begin{vmatrix}1-2a-\lambda&a\\
+a&1-2a-\lambda
+\end{vmatrix}\\
+&=(1-2a-\lambda)^2-a^2\\
+&=\lambda^2-2(1-2a)\lambda+(1-2a)^2-a^2.
+\end{split}
+$$
+The roots of this polynomial are
+$$
+\lambda_\pm=1-2a\pm a.
+$$
+We need both of these to have a magnitude less than 1 for the method to be stable. This gives us an upper bound on the allowed $a$. The eigenvalue whose magnitude will increase above $1$ first as $a$ increases is $\lambda_-=1-3a$, which equals $-1$ when $a=2/3$ (meaning the error in that mode alternates sign every time step). So the stability condition is $a < 2/3$. 
+
+:::
+
+---
+
+In this chapter we have developed the **explicit forward difference scheme** for the 1D heat equation, seen how to handle Dirichlet and Neumann boundary conditions, and explored variations such as reaction-diffusion and advection-diffusion equations. We have also seen that the scheme is only stable when $a = D\frac{\Delta t}{\Delta x^2} \leq \frac{1}{2}$, which places a severe constraint on the time step when the spatial resolution is fine. In the next chapter we will overcome this limitation by introducing **implicit schemes** such as the backward difference scheme and the Crank-Nicolson scheme, which are unconditionally stable and allow much larger time steps.
+
 
 ------------------------------------------------------------------------
 
@@ -459,4 +518,3 @@ def solve_heat1d(u_0, D, tmax, dt, xmax, dx):
         
     return t, x, U
 ```
-

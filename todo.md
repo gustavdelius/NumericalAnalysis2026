@@ -43,9 +43,12 @@
 ## Chapters 7 and 8 ODEs
 - [ ] Print out Figures 6.1 and 6.2 and bring them to session
 - [ ] Remove first three parts of Exercise 7.9 and give the second-order equation directly. Update the labels on the corresponding feedback quiz questions.
+- [ ] Change the name of the variables from x1, x2 to u and v, which is what we'll use in Example 8.5.
 - [ ] Change the ODE example in Exercise 7.9 part to make it agree with the one in the feedback quiz.
 - [ ] Wrap the plotting code in Exercise 7.9 into functions.
 - [ ] Ask students to also draw the backward Euler method
+- [ ] Make more interesting choices for stepsizes in Exercise 8.15 closer to the stability limit of 0.02. 0.01, 0.02, 0.03 for example.
+- [ ] 
 
 ## Chapters 9 and 10 PDEs
 

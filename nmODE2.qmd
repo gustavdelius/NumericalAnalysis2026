@@ -183,7 +183,7 @@ The order of the error in the RK4 method is $\mathcal{O}(\Delta t^4)$.
 
 ::: {#exr-5.37}
 
-💬 🎓 Of course there is a price to pay for the improvement provided by the RK4 method over our earlier methods. How many evaluations of the function $f(t,x)$ do we need to make at every time step of the RK4 method? Compare the Euler method and the midpoint method. 
+💬 🎓 Of course there is a price to pay for the improvement provided by the RK4 method over our earlier methods. How many evaluations of the function $f(t,x)$ do we need to make at every time step of the RK4 method? Compare this to the Euler method and the midpoint method. 
 
 :::
 
@@ -591,14 +591,13 @@ d. 💬 Explain in your own words why an implicit method is preferable for stiff
 
 Stiffness also arises naturally in systems of differential equations. In a system, different components of the solution can decay at very different rates. If one component decays on a timescale of $1/\gamma_{\text{fast}}$ while another decays on a timescale of $1/\gamma_{\text{slow}}$, an explicit method must use a step size dictated by $\gamma_{\text{fast}}$, even if we only care about the slow component.
 
-The ratio $\gamma_{\text{fast}}/\gamma_{\text{slow}}$ of the fastest-decaying rate to the slowest-decaying rate is called the **stiffness ratio**. It describes how much smaller the step size must be for an explicit method to remain stable compared to the step size required for an implicit method.
 
 ::: {#exm-5.57}
 A simple example comes from the overdamped spring. Consider the second-order ODE
 $$
 x''+(\gamma+1)x'+\gamma x=0,
 $$
-which describes a spring-mass system with damping. Writing $u=x$ and $v=x'$ converts this to the first-order system
+which describes a spring-mass system with damping. This is the system from @exr-5.17 with $m=1, b=\gamma+1$ and $k=\gamma$. Writing $u=x$ and $v=x'$ converts this to the first-order system
 $$
 \begin{pmatrix}u\\v\end{pmatrix}' = \begin{pmatrix}0&1\\-\gamma&-(\gamma+1)\end{pmatrix}\begin{pmatrix}u\\v\end{pmatrix}.
 $$

@@ -661,7 +661,7 @@ x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 <td>0</td>
 <td>0</td>
 <td><span class="math inline">\(\mathcal{O}(\Delta t)\)</span></td>
-<td>Euler’s Method</td>
+<td>Euler method</td>
 </tr>
 <tr class="even">
 <td>2</td>
@@ -791,7 +791,7 @@ x_{n+1} = x_n + h m = x_n + \frac{h}{6} \left( k_1 + 2 k_2 + 2 k_3 + k_4 \right)
 </div>
 <hr>
 <div id="exr-5.37" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.3</strong></span> 💬 🎓 Of course there is a price to pay for the improvement provided by the RK4 method over our earlier methods. How many evaluations of the function <span class="math inline">\(f(t,x)\)</span> do we need to make at every time step of the RK4 method? Compare this Euler’s method and the midpoint method.</p>
+<p><span class="theorem-title"><strong>Exercise 8.3</strong></span> 💬 🎓 Of course there is a price to pay for the improvement provided by the RK4 method over our earlier methods. How many evaluations of the function <span class="math inline">\(f(t,x)\)</span> do we need to make at every time step of the RK4 method? Compare this to the Euler method and the midpoint method.</p>
 </div>
 <hr>
 <!---
@@ -799,7 +799,7 @@ x_{n+1} = x_n + h m = x_n + \frac{h}{6} \left( k_1 + 2 k_2 + 2 k_3 + k_4 \right)
 ::: {#exr-5.38}
 🖋 Jackson wants to solve the differential equation $x' = f(t,x)$ on the domain $t \in [0,1]$ so that the maximum absolute error is less than $10^{-8}$.
 
-a.  What value of $\Delta t$ would Jackson need if he were using Euler's method? How many function evaluations would Jackson's Euler algorithm end up doing in order to achieve his desired level of accuracy.
+a.  What value of $\Delta t$ would Jackson need if he were using the Euler method? How many function evaluations would Jackson's Euler algorithm end up doing in order to achieve his desired level of accuracy.
 
 b.  What value of $\Delta t$ would Jackson need if he were using the midpoint method? How many function evaluations would Jackson's midpoint algorithm end up doing in order to achieve his desired level of accuracy.
 
@@ -1002,32 +1002,36 @@ G(x_{n+1}):=x_{n+1} - hf(t_{n+1},x_{n+1}) - x_n = 0.
 <section id="sec-instability" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="sec-instability"><span class="header-section-number">8.4</span> Numerical Instabilities</h2>
 <div id="exr-5.54" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.12</strong></span> 💻 💬 It may not be obvious at the outset, but the Backward Euler method will actually behave better than our regular Euler’s method in some sense. Let us take a look. Consider, for example, the really simple linear differential equation <span class="math inline">\(x' = -10x\)</span> with <span class="math inline">\(x(0) = 1\)</span> on the interval <span class="math inline">\(t \in [0,2]\)</span>. The analytic solution is <span class="math inline">\(x(t) = e^{-10t}\)</span>. Write Python code that plots the analytic solution, the Euler approximation, and the Backward Euler approximation on top of each other. Use a time step that is larger than you normally would (such as <span class="math inline">\(\Delta t = 0.25\)</span> or <span class="math inline">\(\Delta t = 0.5\)</span> or larger). What do you notice? Why do you think this is happening?</p>
+<p><span class="theorem-title"><strong>Exercise 8.12</strong></span> 💻 💬 It may not be obvious at the outset, but the Backward Euler method will actually behave better than the (forward) Euler method in some sense. Let us take a look. Consider, for example, the really simple linear differential equation <span class="math inline">\(x' = -10x\)</span> with <span class="math inline">\(x(0) = 1\)</span> on the interval <span class="math inline">\(t \in [0,2]\)</span>. The analytic solution is <span class="math inline">\(x(t) = e^{-10t}\)</span>. Write Python code that plots the analytic solution, the Euler approximation, and the Backward Euler approximation on top of each other. Use a time step that is larger than you normally would (such as <span class="math inline">\(\Delta t = 0.25\)</span> or <span class="math inline">\(\Delta t = 0.5\)</span> or larger). What do you notice? Why do you think this is happening?</p>
 </div>
 <hr>
 <div id="exr-5.54b" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 8.13</strong></span> 🖋 🎓 Consider the linear differential equation <span class="math inline">\(x' = -cx\)</span> with <span class="math inline">\(c&gt;0\)</span> a constant. If you solve this with the forward Euler’s method with a step size <span class="math inline">\(h\)</span>, then each step can be written in the form <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 8.13</strong></span> 🖋 🎓 Consider the linear differential equation <span class="math inline">\(x' = -cx\)</span> with <span class="math inline">\(c&gt;0\)</span> a constant. If you solve this with the forward Euler method with a step size <span class="math inline">\(h\)</span>, then each step can be written in the form <span class="math display">\[
 x_{n+1} =\  ??? \ \cdot x_n.
-\]</span> Because the exact solution to this differential equation <span class="math inline">\(x(t) = e^{-ct}\)</span> goes towards <span class="math inline">\(0\)</span> as <span class="math inline">\(t\)</span> goes to infinity, Euler’s method should also go towards <span class="math inline">\(0\)</span> as <span class="math inline">\(n\)</span> goes to infinity. What is the condition on the <span class="math inline">\(???\)</span> in the equation above that ensures that in Euler’s method <span class="math inline">\(x_n\)</span> will go towards <span class="math inline">\(0\)</span> as <span class="math inline">\(n\)</span> goes to infinity? What condition does this impose on the step size <span class="math inline">\(h\)</span>?</p>
+\]</span> Because the exact solution to this differential equation <span class="math inline">\(x(t) = e^{-ct}\)</span> goes towards <span class="math inline">\(0\)</span> as <span class="math inline">\(t\)</span> goes to infinity, the Euler method should also go towards <span class="math inline">\(0\)</span> as <span class="math inline">\(n\)</span> goes to infinity. What is the condition on the <span class="math inline">\(???\)</span> in the equation above that ensures that the Euler method has <span class="math inline">\(x_n\)</span> going towards <span class="math inline">\(0\)</span> as <span class="math inline">\(n\)</span> goes to infinity? What condition does this impose on the step size <span class="math inline">\(h\)</span>?</p>
 <p>If you now solve this same ODE with the same step size with the backward Euler method, you can solve the equation for <span class="math inline">\(x_{n+1}\)</span> exactly to find that <span class="math display">\[
 x_{n+1} =\  ??? \ \cdot x_n.
 \]</span> Again you would like this to go towards <span class="math inline">\(0\)</span> as <span class="math inline">\(n\)</span> goes to infinity. What condition does this impose on the step size <span class="math inline">\(h\)</span> now?</p>
 </div>
 <hr>
 <p>Because the observations you made in the previous two exercises are so important, I lectured about them. Here are the lecture notes:</p>
-<p>The stability of a numerical method is the property that the numerical solution behaves qualitatively like the exact solution for a given step size. In particular, if the exact solution decays to zero, the numerical solution should also decay to zero rather than grow without bound. If the numerical solution grows when the exact solution decays, we say the method is <strong>unstable</strong> for that step size.</p>
+<p>The stability of a numerical method is the property that, for a given step size, the numerical solution behaves qualitatively like the exact solution. In particular, if the exact solution decays to zero, the numerical solution should also decay to zero rather than grow without bound. If the numerical solution grows when the exact solution decays, we say the method is <strong>unstable</strong> for that step size.</p>
 <p>This is a different concern from convergence (which asks whether the numerical solution approaches the exact solution as <span class="math inline">\(h \to 0\)</span>). Stability asks: for a fixed step size <span class="math inline">\(h\)</span>, does the numerical method respect the qualitative behaviour of the exact solution? A method can be unstable for large <span class="math inline">\(h\)</span> even when it is perfectly accurate for small <span class="math inline">\(h\)</span>, so choosing the step size carefully is essential.</p>
 <p>The test equation that is always used for studying the stability of a numerical method is the linear ODE <span class="math display">\[
 x'=\lambda x.
 \]</span></p>
-<p>The exact solution to this equation is <span class="math inline">\(x(t)=x_0 e^{\lambda t}\)</span>. So if the real part of <span class="math inline">\(\lambda\)</span> is negative the solution decays, and if the real part of <span class="math inline">\(\lambda\)</span> is positive the solution grows. Applying a numerical method to this equation produces a recurrence of the form <span class="math inline">\(x_{n+1} = Q(h\lambda)\, x_n\)</span> for some <strong>amplification factor</strong> <span class="math inline">\(Q(h\lambda)\)</span>, so <span class="math inline">\(x_n = Q(h\lambda)^n\, x_0\)</span>. Setting <span class="math inline">\(z = h\lambda\)</span>, the numerical solution decays to zero if and only if <span class="math inline">\(|Q(z)| &lt; 1\)</span>. The set of all <span class="math inline">\(z \in \mathbb{C}\)</span> for which <span class="math inline">\(|Q(z)| &lt; 1\)</span> is called the <strong>region of absolute stability</strong> of the method. Since we want the numerical solution to decay whenever the exact solution does, i.e.&nbsp;whenever <span class="math inline">\(\text{Re}(\lambda) &lt; 0\)</span> (equivalently <span class="math inline">\(\text{Re}(z) &lt; 0\)</span>), we want the region of absolute stability to cover as much of the left half-plane as possible. Note that <span class="math inline">\(\lambda\)</span> may be complex, corresponding to oscillatory decaying solutions.</p>
+<p>The exact solution to this equation is <span class="math inline">\(x(t)=x_0 e^{\lambda t}\)</span>. So if the real part of <span class="math inline">\(\lambda\)</span> is negative the solution decays, and if the real part of <span class="math inline">\(\lambda\)</span> is positive the solution grows.</p>
+<p>As we will see, applying a numerical method to this equation produces a recurrence of the form <span class="math display">\[x_{n+1} = Q(h\lambda)\, x_n\]</span></p>
+<p>for some <strong>amplification factor</strong> <span class="math inline">\(Q(h\lambda)\)</span>, so <span class="math display">\[x_n = Q(h\lambda)^n\, x_0.\]</span></p>
+<p>Setting <span class="math inline">\(z = h\lambda\)</span>, the numerical solution decays to zero if and only if <span class="math inline">\(|Q(z)| &lt; 1\)</span>. The set of all <span class="math inline">\(z \in \mathbb{C}\)</span> for which <span class="math inline">\(|Q(z)| &lt; 1\)</span> is called the <strong>region of absolute stability</strong> of the method.</p>
+<p>Since we want the numerical solution to decay whenever the exact solution does, i.e.&nbsp;whenever <span class="math inline">\(\text{Re}(\lambda) &lt; 0\)</span> (equivalently <span class="math inline">\(\text{Re}(z) &lt; 0\)</span>), we want the region of absolute stability to cover as much of the left half-plane as possible. Note that <span class="math inline">\(\lambda\)</span> may be complex, corresponding to oscillatory decaying solutions.</p>
 <hr>
 <div id="exm-euler_stability" class="theorem example">
-<p><span class="theorem-title"><strong>Example 8.2 (Stability of Euler’s Method)</strong></span> Euler’s method uses the formula <span class="math inline">\(x_{n+1}=x_n+h f(t_n,x_n)\)</span>. Applying this to the test equation <span class="math inline">\(x'=\lambda x\)</span> gives <span class="math display">\[
+<p><span class="theorem-title"><strong>Example 8.2 (Stability of the Euler Method)</strong></span> The Euler method uses the formula <span class="math inline">\(x_{n+1}=x_n+h f(t_n,x_n)\)</span>. Applying this to the test equation <span class="math inline">\(x'=\lambda x\)</span> gives <span class="math display">\[
 x_{n+1}=x_n+h\lambda x_n=(1+h\lambda)x_n.
 \]</span> So <span class="math display">\[
 x_{n+1}=(1+h\lambda)x_n=(1+h\lambda)^2x_{n-1}=\cdots=(1+h\lambda)^{n+1}x_0.
-\]</span> Because we know the exact solution, we can calculate the absolute error that Euler’s method produces: <span class="math display">\[
+\]</span> Because we know the exact solution, we can calculate the absolute error that the Euler method produces: <span class="math display">\[
 E_n:=|x_n-x(t_n)|=|x_0(1+h\lambda)^n-x_0e^{\lambda t_n}|.
 \]</span> In the case where <span class="math inline">\(\lambda&lt;0\)</span> we have that the exact solution decays to zero as <span class="math inline">\(n\to\infty\)</span>. So the error will be determined by the behaviour of the first term: <span class="math display">\[
 \begin{split}
@@ -1037,11 +1041,11 @@ E_n:=|x_n-x(t_n)|=|x_0(1+h\lambda)^n-x_0e^{\lambda t_n}|.
 \infty&amp;\text{if }|1+h\lambda|&gt;1.
 \end{cases}
 \end{split}
-\]</span> The error grows exponentially unless <span class="math inline">\(|1+h\lambda|&lt;1\)</span>. This is the stability condition for Euler’s method. It requires us to choose a step size <span class="math display">\[
+\]</span> The error grows exponentially unless <span class="math inline">\(|1+h\lambda|&lt;1\)</span>. This is the stability condition for the Euler method. It requires us to choose a step size <span class="math display">\[
 h&lt;\frac{2}{|\lambda|}
 \]</span></p>
 </div>
-<p>So the amplification factor for Euler’s method is <span class="math inline">\(Q(z) = 1 + z\)</span>, and its region of absolute stability is the disk <span class="math inline">\(|1 + z| &lt; 1\)</span>, centred at <span class="math inline">\(z = -1\)</span> with radius <span class="math inline">\(1\)</span>. For real negative <span class="math inline">\(\lambda\)</span> this recovers the step-size constraint <span class="math inline">\(h &lt; 2/|\lambda|\)</span> derived above.</p>
+<p>So the amplification factor for the Euler method is <span class="math inline">\(Q(z) = 1 + z\)</span>, and its region of absolute stability is the disk <span class="math inline">\(|1 + z| &lt; 1\)</span>, centred at <span class="math inline">\(z = -1\)</span> with radius <span class="math inline">\(1\)</span>. For real negative <span class="math inline">\(\lambda\)</span> this recovers the step-size constraint <span class="math inline">\(h &lt; 2/|\lambda|\)</span> derived above.</p>
 <hr>
 <div id="exm-midpoint_stability" class="theorem example">
 <p><span class="theorem-title"><strong>Example 8.3 (Stability of the Midpoint Method)</strong></span> The midpoint method uses the formula <span class="math display">\[
@@ -1101,11 +1105,10 @@ x(t)=Ce^{-100t}+\frac{100}{10001}\sin t-\frac{1}{10001}\cos t
 </div>
 <hr>
 <p>Stiffness also arises naturally in systems of differential equations. In a system, different components of the solution can decay at very different rates. If one component decays on a timescale of <span class="math inline">\(1/\gamma_{\text{fast}}\)</span> while another decays on a timescale of <span class="math inline">\(1/\gamma_{\text{slow}}\)</span>, an explicit method must use a step size dictated by <span class="math inline">\(\gamma_{\text{fast}}\)</span>, even if we only care about the slow component.</p>
-<p>The ratio <span class="math inline">\(\gamma_{\text{fast}}/\gamma_{\text{slow}}\)</span> of the fastest-decaying rate to the slowest-decaying rate is called the <strong>stiffness ratio</strong>. It describes how much smaller the step size must be for an explicit method to remain stable compared to the step size required for an implicit method.</p>
 <div id="exm-5.57" class="theorem example">
 <p><span class="theorem-title"><strong>Example 8.5</strong></span> A simple example comes from the overdamped spring. Consider the second-order ODE <span class="math display">\[
 x''+(\gamma+1)x'+\gamma x=0,
-\]</span> which describes a spring-mass system with damping. Writing <span class="math inline">\(u=x\)</span> and <span class="math inline">\(v=x'\)</span> converts this to the first-order system <span class="math display">\[
+\]</span> which describes a spring-mass system with damping. This is the system from <a href="nmODE1.html#exr-5.17" class="quarto-xref">Exercise&nbsp;<span>7.9</span></a> with <span class="math inline">\(m=1, b=\gamma+1\)</span> and <span class="math inline">\(k=\gamma\)</span>. Writing <span class="math inline">\(u=x\)</span> and <span class="math inline">\(v=x'\)</span> converts this to the first-order system <span class="math display">\[
 \begin{pmatrix}u\\v\end{pmatrix}' = \begin{pmatrix}0&amp;1\\-\gamma&amp;-(\gamma+1)\end{pmatrix}\begin{pmatrix}u\\v\end{pmatrix}.
 \]</span> The characteristic equation of the matrix is <span class="math inline">\(\lambda^2+(\gamma+1)\lambda+\gamma=(\lambda+1)(\lambda+\gamma)=0\)</span>, so the eigenvalues are <span class="math inline">\(\lambda_1=-1\)</span> and <span class="math inline">\(\lambda_2=-\gamma\)</span>. The general solution is <span class="math display">\[
 x(t)=C_1e^{-t}+C_2e^{-\gamma t}.

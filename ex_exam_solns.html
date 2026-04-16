@@ -146,10 +146,12 @@ window.Quarto = {
 <link rel="stylesheet" href="fonts.css">
 <meta property="og:title" content="Appendix B — Exam solutions – Numerical Analysis">
 <meta property="og:description" content="">
+<meta property="og:image" content="figures/PDE/HeatStencil2D.png">
 <meta property="og:site_name" content="Numerical Analysis">
 <meta name="twitter:title" content="Appendix B — Exam solutions – Numerical Analysis">
 <meta name="twitter:description" content="">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="figures/PDE/HeatStencil2D.png">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -476,6 +478,12 @@ window.Quarto = {
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">B.2</span> Functions</a></li>
   <li><a href="#roots-1" id="toc-roots-1" class="nav-link" data-scroll-target="#roots-1"><span class="header-section-number">B.3</span> Roots 1</a></li>
   <li><a href="#roots-2" id="toc-roots-2" class="nav-link" data-scroll-target="#roots-2"><span class="header-section-number">B.4</span> Roots 2</a></li>
+  <li><a href="#calculus" id="toc-calculus" class="nav-link" data-scroll-target="#calculus"><span class="header-section-number">B.5</span> Calculus</a></li>
+  <li><a href="#optimisation" id="toc-optimisation" class="nav-link" data-scroll-target="#optimisation"><span class="header-section-number">B.6</span> Optimisation</a></li>
+  <li><a href="#ode-1" id="toc-ode-1" class="nav-link" data-scroll-target="#ode-1"><span class="header-section-number">B.7</span> ODE 1</a></li>
+  <li><a href="#ode-2" id="toc-ode-2" class="nav-link" data-scroll-target="#ode-2"><span class="header-section-number">B.8</span> ODE 2</a></li>
+  <li><a href="#pde-1" id="toc-pde-1" class="nav-link" data-scroll-target="#pde-1"><span class="header-section-number">B.9</span> PDE 1</a></li>
+  <li><a href="#pde-2" id="toc-pde-2" class="nav-link" data-scroll-target="#pde-2"><span class="header-section-number">B.10</span> PDE 2</a></li>
   </ul>
 </nav>
     </div>
@@ -697,6 +705,213 @@ window.Quarto = {
 <li>Evaluate <span class="math inline">\(g'(x)\)</span> at <span class="math inline">\(p\)</span>: since <span class="math inline">\(p\)</span> is a root, <span class="math inline">\(f(p) = 0\)</span>. Since it is a simple root, <span class="math inline">\(f'(p) \neq 0\)</span>. Thus, <span class="math inline">\(g'(p) = \frac{f(p)f''(p)}{[f'(p)]^2} = \frac{0 \cdot f''(p)}{[f'(p)]^2} = 0\)</span>.</li>
 <li>According to the theorem on the order of convergence for fixed-point iterations, if <span class="math inline">\(g(p) = p\)</span> and <span class="math inline">\(g'(p) = 0\)</span>, but <span class="math inline">\(g''(p) \neq 0\)</span> (which is generally true unless <span class="math inline">\(f''(p)=0\)</span>), the sequence has an order of convergence of <span class="math inline">\(m=2\)</span> (quadratic convergence).</li>
 </ul>
+</section>
+<section id="calculus" class="level2" data-number="B.5">
+<h2 data-number="B.5" class="anchored" data-anchor-id="calculus"><span class="header-section-number">B.5</span> Calculus</h2>
+<p><strong>(a) Difference Formulas and Accuracies</strong></p>
+<ul>
+<li><strong>Forward difference:</strong> <span class="math inline">\(f'(x) \approx \frac{f(x+h) - f(x)}{h}\)</span>. Order of accuracy: <span class="math inline">\(\mathcal{O}(h)\)</span> (first order).</li>
+<li><strong>Central difference:</strong> <span class="math inline">\(f'(x) \approx \frac{f(x+h) - f(x-h)}{2h}\)</span>. Order of accuracy: <span class="math inline">\(\mathcal{O}(h^2)\)</span> (second order).</li>
+</ul>
+<p><strong>(b) Derivation of Central Difference</strong></p>
+<ul>
+<li>Taylor series:
+<ul>
+<li><span class="math inline">\(f(x+h) = f(x) + hf'(x) + \frac{h^2}{2}f''(x) + \frac{h^3}{6}f'''(x) + \mathcal{O}(h^4)\)</span></li>
+<li><span class="math inline">\(f(x-h) = f(x) - hf'(x) + \frac{h^2}{2}f''(x) - \frac{h^3}{6}f'''(x) + \mathcal{O}(h^4)\)</span></li>
+</ul></li>
+<li>Subtracting the second equation from the first: <span class="math inline">\(f(x+h) - f(x-h) = 2hf'(x) + \frac{2h^3}{6}f'''(x) + \mathcal{O}(h^5)\)</span></li>
+<li>Solving for <span class="math inline">\(f'(x)\)</span>: <span class="math inline">\(2hf'(x) = f(x+h) - f(x-h) - \frac{h^3}{3}f'''(x) + \mathcal{O}(h^5)\)</span> <span class="math inline">\(f'(x) = \frac{f(x+h) - f(x-h)}{2h} - \frac{h^2}{6}f'''(x) + \mathcal{O}(h^4)\)</span></li>
+<li>Since the leading error term is proportional to <span class="math inline">\(h^2\)</span>, the truncation error is <span class="math inline">\(\mathcal{O}(h^2)\)</span>.</li>
+</ul>
+<p><strong>(c) Error Reduction for Central Difference</strong></p>
+<ul>
+<li>The central difference scheme is <span class="math inline">\(\mathcal{O}(h^2)\)</span>, meaning the error is proportional to <span class="math inline">\(h^2\)</span>.</li>
+<li>Reducing the step size from <span class="math inline">\(h=0.2\)</span> to <span class="math inline">\(h=0.05\)</span> means we are dividing the step size by a factor of 4.</li>
+<li>Because the error scales quadratically, the new error should be reduced by a factor of <span class="math inline">\(4^2 = 16\)</span>.</li>
+<li>Therefore, the expected new absolute error is approximately <span class="math inline">\(0.016 / 16 = 0.001\)</span>.</li>
+</ul>
+<p><strong>(d) Trapezoidal Rule Graph</strong></p>
+<ul>
+<li>A sketch should show the curve <span class="math inline">\(y=f(x)\)</span> over an interval, partitioned into subintervals, with straight line segments connecting the function values <span class="math inline">\((x_i, f(x_i))\)</span> and <span class="math inline">\((x_{i+1}, f(x_{i+1}))\)</span>, forming trapezoids whose combined areas approximate the precise area under the curve.</li>
+</ul>
+<p><strong>(e) Trapezoidal Rule Value</strong></p>
+<ul>
+<li>The function <span class="math inline">\(f(x) = 5x+3\)</span> is a linear function. The trapezoidal rule approximates the area under a curve using straight line segments. For a linear function, the tops of the trapezoids perfectly match the graph of the function.</li>
+<li>Therefore, the trapezoidal rule evaluates the integral <em>exactly</em>, independently of the number of subintervals.</li>
+<li>The exact integral is <span class="math inline">\(\int_0^5 (5x+3) dx = \left[\frac{5}{2}x^2 + 3x\right]_0^5 = \frac{5}{2}(25) + 3(5) = 62.5 + 15 = 77.5\)</span>.</li>
+<li>(Alternatively, using a geometric argument: treat the entire interval <span class="math inline">\([0,5]\)</span> as a single trapezoid with vertices at <span class="math inline">\((0,f(0))\)</span> and <span class="math inline">\((5,f(5))\)</span>, giving <span class="math inline">\(\frac{f(0)+f(5)}{2} \times 5 = \frac{3 + 28}{2} \times 5 = 15.5 \times 5 = 77.5\)</span>. This works because for a linear function the composite trapezoidal rule with any number of subintervals gives the same exact answer.).</li>
+</ul>
+<p><strong>(f) Order of Accuracy of Trapezoidal Rule</strong></p>
+<ul>
+<li>The order of accuracy for the global trapezoidal rule is <span class="math inline">\(\mathcal{O}(h^2)\)</span> (second order).</li>
+<li>This means that the approximation error is proportional to the square of the step size <span class="math inline">\(h\)</span>. Doubling the number of subintervals halves the step size (<span class="math inline">\(h \to h/2\)</span>), so the approximation error will decrease by a factor of <span class="math inline">\(2^2 = 4\)</span> (it will become one-quarter of its previous value).</li>
+</ul>
+<p><strong>(g) Trapezoidal Python Code</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(a, b, N<span class="op">+</span><span class="dv">1</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    dx <span class="op">=</span> x[<span class="dv">1</span>] <span class="op">-</span> x[<span class="dv">0</span>]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    A <span class="op">=</span> (f(x[:<span class="op">-</span><span class="dv">1</span>]) <span class="op">+</span> f(x[<span class="dv">1</span>:])) <span class="op">/</span> <span class="dv">2</span> <span class="op">*</span> dx</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.<span class="bu">sum</span>(A)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="optimisation" class="level2" data-number="B.6">
+<h2 data-number="B.6" class="anchored" data-anchor-id="optimisation"><span class="header-section-number">B.6</span> Optimisation</h2>
+<p><strong>(a) Golden Section Search</strong></p>
+<ul>
+<li><strong>Logic:</strong> The Golden Section Search is a bracketing method that iteratively narrows down an interval known to contain a local minimum. It selects a new test point within the current bracket and, based on the function values, replaces one of the bracketing endpoints to create a smaller interval that is still guaranteed to bracket the minimum.</li>
+<li><strong>Condition:</strong> For the triplet <span class="math inline">\((a, c, b)\)</span> with <span class="math inline">\(a &lt; c &lt; b\)</span> to bracket a minimum, the function value at the interior point <span class="math inline">\(c\)</span> must be strictly less than the function values at the endpoints <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> (i.e.&nbsp;<span class="math inline">\(f(c) &lt; f(a)\)</span> and <span class="math inline">\(f(c) &lt; f(b)\)</span>).</li>
+</ul>
+<p><strong>(b) Gradient Descent <span class="math inline">\(\alpha\)</span> Parameter</strong></p>
+<ul>
+<li><strong>Role:</strong> The parameter <span class="math inline">\(\alpha\)</span> (learning rate) controls the size of the steps taken in the direction of the negative gradient.</li>
+<li><strong>Too large:</strong> If <span class="math inline">\(\alpha\)</span> is too large, the algorithm acts unstably and may repeatedly step past the minimum point, overshooting and potentially diverging from the minimum.</li>
+<li><strong>Too small:</strong> If <span class="math inline">\(\alpha\)</span> is too small, the algorithm will confidently move toward the minimum but will require many iterations to arrive, leading to an extremely slow convergence process.</li>
+</ul>
+<p><strong>(c) Multivariable Gradient Descent</strong></p>
+<ul>
+<li><strong>Iteration formula:</strong> <span class="math inline">\(\boldsymbol{x}_{n+1} = \boldsymbol{x}_n - \alpha \nabla f(\boldsymbol{x}_n)\)</span>.</li>
+<li><strong>Geometric rationale:</strong> The gradient vector <span class="math inline">\(\nabla f(\boldsymbol{x})\)</span> points in the direction of the steepest <em>ascent</em> of the function at the point <span class="math inline">\(\boldsymbol{x}\)</span>. Therefore, the negative gradient <span class="math inline">\(-\nabla f(\boldsymbol{x})\)</span> points directly <em>downhill</em> in the direction of steepest <em>descent</em>. Moving a small distance in this direction represents the optimal path to decrease the function’s value to find a local minimum.</li>
+</ul>
+<p><strong>(d) Gradient Descent Code</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        grad <span class="op">=</span> df(x)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> x <span class="op">-</span> alpha <span class="op">*</span> grad</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ode-1" class="level2" data-number="B.7">
+<h2 data-number="B.7" class="anchored" data-anchor-id="ode-1"><span class="header-section-number">B.7</span> ODE 1</h2>
+<p><strong>(a) Numerical Instability</strong></p>
+<ul>
+<li><strong>Definition:</strong> Numerical instability occurs when the errors in the numerical approximation grow exponentially as the computation proceeds.</li>
+<li><strong>Result:</strong> The numerical solution diverges rapidly from the exact solution, yielding meaningless results.</li>
+<li><strong>Avoidance:</strong> It can typically be avoided by choosing a step size <span class="math inline">\(h\)</span> (or <span class="math inline">\(\Delta t\)</span>) that is smaller than some critical threshold value, or by using an implicit method instead.</li>
+</ul>
+<p><strong>(b) Euler’s Method</strong></p>
+<ul>
+<li>Differential equation: <span class="math inline">\(x' = -2x + t\)</span>, <span class="math inline">\(x(0) = 1\)</span>, <span class="math inline">\(h=0.5\)</span>.</li>
+<li>Formula: <span class="math inline">\(x_1 = x_0 + h f(t_0, x_0)\)</span>.</li>
+<li><span class="math inline">\(t_0 = 0\)</span>, <span class="math inline">\(x_0 = 1\)</span>.</li>
+<li><span class="math inline">\(f(0, 1) = -2(1) + 0 = -2\)</span>.</li>
+<li><span class="math inline">\(x_1 = 1 + 0.5(-2) = 1 - 1 = 0\)</span>.</li>
+</ul>
+<p><strong>(c) Midpoint Method</strong></p>
+<ul>
+<li><span class="math inline">\(m_0 = f(t_0, x_0) = -2\)</span>.</li>
+<li><span class="math inline">\(t_{1/2} = t_0 + h/2 = 0 + 0.25 = 0.25\)</span>.</li>
+<li><span class="math inline">\(x_{1/2} = x_0 + (h/2) m_0 = 1 + 0.25(-2) = 0.5\)</span>.</li>
+<li><span class="math inline">\(m_{1/2} = f(t_{1/2}, x_{1/2}) = -2(0.5) + 0.25 = -0.75\)</span>.</li>
+<li><span class="math inline">\(x_1 = x_0 + h m_{1/2} = 1 + 0.5(-0.75) = 1 - 0.375 = 0.625\)</span>.</li>
+</ul>
+<p><strong>(d) System of First-Order ODEs</strong></p>
+<ul>
+<li>Let <span class="math inline">\(\theta = \theta\)</span> and <span class="math inline">\(\omega = d\theta/dt\)</span>. Then:</li>
+<li><span class="math inline">\(\dfrac{d\theta}{dt} = \omega\)</span></li>
+<li><span class="math inline">\(\dfrac{d\omega}{dt} = -\dfrac{g}{L}\sin(\theta)\)</span></li>
+</ul>
+<p><strong>(e) Midpoint Method Python Code</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>        slope <span class="op">=</span> f(t[n], x[n])</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>        x_halfstep <span class="op">=</span> x[n] <span class="op">+</span> (dt <span class="op">/</span> <span class="dv">2</span>) <span class="op">*</span> slope</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        x[n<span class="op">+</span><span class="dv">1</span>] <span class="op">=</span> x[n] <span class="op">+</span> dt <span class="op">*</span> f(t[n] <span class="op">+</span> dt <span class="op">/</span> <span class="dv">2</span>, x_halfstep)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="ode-2" class="level2" data-number="B.8">
+<h2 data-number="B.8" class="anchored" data-anchor-id="ode-2"><span class="header-section-number">B.8</span> ODE 2</h2>
+<p><strong>(a) Explicit vs Implicit Euler</strong></p>
+<ul>
+<li><strong>Geometric Difference:</strong> The explicit (forward) Euler method estimates the next spatial/temporal point by using the derivative evaluated at the <em>current</em> known point <span class="math inline">\((t_n, x_n)\)</span>. The implicit (backward) Euler method, conversely, evaluates the derivative at the <em>unknown future</em> point <span class="math inline">\((t_{n+1}, x_{n+1})\)</span>.</li>
+<li><strong>Stiff Equations:</strong> Backward Euler is unconditionally stable for stable linear equations (its region of absolute stability is the entire left half-plane). Thus it avoids numerical instability when simulating stiff equations where transients would otherwise force explicit methods to use impractically small step sizes.</li>
+</ul>
+<p><strong>(b) Unconditional Stability of Backward Euler</strong></p>
+<p>Apply the backward Euler method to <span class="math inline">\(x' = \lambda x\)</span>: <span class="math display">\[x_{n+1} = x_n + h\lambda x_{n+1}.\]</span> Solving for <span class="math inline">\(x_{n+1}\)</span>: <span class="math display">\[x_{n+1}(1 - h\lambda) = x_n \implies x_{n+1} = \frac{1}{1 - h\lambda}\, x_n.\]</span> The amplification factor is <span class="math inline">\(R = \frac{1}{1 - h\lambda}\)</span>. For <span class="math inline">\(\text{Re}(\lambda) &lt; 0\)</span> and any <span class="math inline">\(h &gt; 0\)</span>, writing <span class="math inline">\(\lambda = a + bi\)</span> with <span class="math inline">\(a &lt; 0\)</span>: <span class="math display">\[|1 - h\lambda|^2 = (1 - ha)^2 + (hb)^2 &gt; 1,\]</span> since <span class="math inline">\(1 - ha &gt; 1\)</span> (as <span class="math inline">\(a &lt; 0\)</span>). Therefore <span class="math inline">\(|R| &lt; 1\)</span> for all <span class="math inline">\(h &gt; 0\)</span>, so <span class="math inline">\(|x_n| \to 0\)</span> as <span class="math inline">\(n \to \infty\)</span>, and the method is unconditionally stable.</p>
+<p><strong>(c) Local Truncation Error of Backward Euler</strong></p>
+<p>The local truncation error is defined as the residual when the exact solution is substituted into the numerical scheme: <span class="math display">\[\tau_n = \frac{x(t_{n+1}) - x(t_n)}{h} - f\!\left(t_{n+1},\, x(t_{n+1})\right).\]</span> Taylor-expanding <span class="math inline">\(x(t_{n+1})\)</span> about <span class="math inline">\(t_n\)</span>: <span class="math display">\[x(t_{n+1}) = x(t_n) + h\,x'(t_n) + \frac{h^2}{2}x''(t_n) + \mathcal{O}(h^3),\]</span> so <span class="math display">\[\frac{x(t_{n+1}) - x(t_n)}{h} = x'(t_n) + \frac{h}{2}x''(t_n) + \mathcal{O}(h^2).\]</span> Since <span class="math inline">\(f(t_{n+1}, x(t_{n+1})) = x'(t_{n+1})\)</span>, Taylor-expanding <span class="math inline">\(x'\)</span> gives: <span class="math display">\[x'(t_{n+1}) = x'(t_n) + h\,x''(t_n) + \mathcal{O}(h^2).\]</span> Substituting: <span class="math display">\[\tau_n = x'(t_n) + \frac{h}{2}x''(t_n) - x'(t_n) - h\,x''(t_n) + \mathcal{O}(h^2) = -\frac{h}{2}x''(t_n) + \mathcal{O}(h^2) = \mathcal{O}(h).\]</span></p>
+<p><strong>(d) Runge-Kutta 4</strong></p>
+<ul>
+<li><strong>Order of Accuracy:</strong> <span class="math inline">\(\mathcal{O}(h^4)\)</span> (Fourth order).</li>
+<li><strong>Function Evaluations:</strong> 4 evaluations of <span class="math inline">\(f(t,x)\)</span> are required at each time step.</li>
+</ul>
+</section>
+<section id="pde-1" class="level2" data-number="B.9">
+<h2 data-number="B.9" class="anchored" data-anchor-id="pde-1"><span class="header-section-number">B.9</span> PDE 1</h2>
+<p><strong>(a) Finite Difference Scheme for 1D Heat Equation</strong></p>
+<ul>
+<li>Forward difference in time: <span class="math inline">\(u_t \approx \frac{U_i^{n+1} - U_i^n}{\Delta t}\)</span>.</li>
+<li>Centred difference in space: <span class="math inline">\(u_{xx} \approx \frac{U_{i+1}^n - 2U_i^n + U_{i-1}^n}{\Delta x^2}\)</span>.</li>
+<li>Substitute into equation: <span class="math inline">\(\frac{U_i^{n+1} - U_i^n}{\Delta t} = D \frac{U_{i+1}^n - 2U_i^n + U_{i-1}^n}{\Delta x^2}\)</span>.</li>
+<li>Solve for <span class="math inline">\(U_i^{n+1}\)</span>: <span class="math inline">\(U_i^{n+1} = U_i^n + D \frac{\Delta t}{\Delta x^2}\left(U_{i+1}^n - 2U_i^n + U_{i-1}^n\right)\)</span>.</li>
+</ul>
+<p><strong>(b) Truncation Errors and Overall Order</strong></p>
+<ul>
+<li>Truncation error for <span class="math inline">\(u_t\)</span> approximation is <span class="math inline">\(\mathcal{O}(\Delta t)\)</span>.</li>
+<li>Truncation error for <span class="math inline">\(u_{xx}\)</span> approximation is <span class="math inline">\(\mathcal{O}(\Delta x^2)\)</span>.</li>
+<li>Overall order of the numerical scheme is <span class="math inline">\(\mathcal{O}(\Delta t) + \mathcal{O}(\Delta x^2)\)</span>.</li>
+</ul>
+<p><strong>(c) Stability Condition</strong></p>
+<ul>
+<li>For the explicit forward difference scheme to be stable, we require <span class="math inline">\(a = D\frac{\Delta t}{\Delta x^2} \le \frac{1}{2}\)</span>.</li>
+</ul>
+<p><strong>(d) Neumann Boundary Condition</strong></p>
+<ul>
+<li><span class="math inline">\(u_x(t,0) \approx \frac{U_1^n - U_0^n}{\Delta x} = 0\)</span>.</li>
+<li>Therefore, <span class="math inline">\(U_0^n = U_1^n\)</span>.</li>
+</ul>
+<p><strong>(e) Python implementation</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> D <span class="op">*</span> dt <span class="op">/</span> (dx<span class="op">**</span><span class="dv">2</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        U[n<span class="op">+</span><span class="dv">1</span>, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> U[n, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> a <span class="op">*</span> (U[n, <span class="dv">2</span>:] <span class="op">-</span> <span class="dv">2</span><span class="op">*</span>U[n, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> U[n, :<span class="op">-</span><span class="dv">2</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>(f) Matrix notation and stability</strong></p>
+<ul>
+<li><p><strong>i)</strong> For <span class="math inline">\(N=4\)</span> there are <span class="math inline">\(N-1=3\)</span> interior grid points. The matrix <span class="math inline">\(A\)</span> is <span class="math inline">\(3\times 3\)</span>: <span class="math display">\[A = \begin{pmatrix}1-2a &amp; a &amp; 0 \\ a &amp; 1-2a &amp; a \\ 0 &amp; a &amp; 1-2a\end{pmatrix}.\]</span> It is tridiagonal, with <span class="math inline">\(1-2a\)</span> on the main diagonal and <span class="math inline">\(a\)</span> on the two off-diagonals.</p></li>
+<li><p><strong>ii)</strong> Applying the recurrence <span class="math inline">\(\mathbf{U}_{n+1}=A\mathbf{U}_n\)</span> repeatedly gives <span class="math display">\[\mathbf{U}_n = A^n\mathbf{U}_0.\]</span></p></li>
+<li><p><strong>iii)</strong> After <span class="math inline">\(n\)</span> steps the computed vector satisfies <span class="math display">\[\tilde{\mathbf{U}}_n = A^n\tilde{\mathbf{U}}_0 = A^n(\mathbf{U}_0+\boldsymbol{\epsilon}) = A^n\mathbf{U}_0 + A^n\boldsymbol{\epsilon} = \mathbf{U}_n + A^n\boldsymbol{\epsilon}.\]</span> Hence the error at step <span class="math inline">\(n\)</span> is <span class="math inline">\(\boldsymbol{\epsilon}_n = \tilde{\mathbf{U}}_n - \mathbf{U}_n = A^n\boldsymbol{\epsilon}\)</span>.</p></li>
+<li><p><strong>iv)</strong> Expanding <span class="math inline">\(\boldsymbol{\epsilon}\)</span> in the eigenbasis <span class="math inline">\(\{{\mathbf{v}_k}\}\)</span> of <span class="math inline">\(A\)</span> (with eigenvalues <span class="math inline">\(\lambda_k\)</span>) gives <span class="math display">\[\boldsymbol{\epsilon}_n = A^n\boldsymbol{\epsilon} = \sum_k \epsilon_k \lambda_k^n \mathbf{v}_k.\]</span> The <span class="math inline">\(k\)</span>-th component of the error is multiplied by <span class="math inline">\(\lambda_k^n\)</span> at each step. For stability we therefore require <span class="math inline">\(|\lambda_k| \le 1\)</span> for all <span class="math inline">\(k\)</span>; if any <span class="math inline">\(|\lambda_k|&gt;1\)</span> that component grows without bound and the method is unstable.</p></li>
+</ul>
+</section>
+<section id="pde-2" class="level2" data-number="B.10">
+<h2 data-number="B.10" class="anchored" data-anchor-id="pde-2"><span class="header-section-number">B.10</span> PDE 2</h2>
+<p><strong>(a) Finite Difference Formula for 2D Heat Equation</strong></p>
+<ul>
+<li>Forward difference in time: <span class="math inline">\(\frac{U_{i,j}^{n+1} - U_{i,j}^n}{\Delta t}\)</span>.</li>
+<li>Centred differences in space: <span class="math inline">\(\frac{U_{i+1,j}^n - 2U_{i,j}^n + U_{i-1,j}^n}{h^2}\)</span> and <span class="math inline">\(\frac{U_{i,j+1}^n - 2U_{i,j}^n + U_{i,j-1}^n}{h^2}\)</span>.</li>
+<li>Substitute and isolate <span class="math inline">\(U_{i,j}^{n+1}\)</span>: <span class="math display">\[U_{i,j}^{n+1} = U_{i,j}^n + D\frac{\Delta t}{h^2} \left( U_{i+1,j}^n + U_{i-1,j}^n - 4U_{i,j}^n + U_{i,j+1}^n + U_{i,j-1}^n \right)\]</span></li>
+</ul>
+<p><strong>(b) Finite Difference Stencil</strong></p>
+<ul>
+<li><p>The stencil comprises five points at the current time step <span class="math inline">\(n\)</span> representing a spatial cross: the central node <span class="math inline">\((i,j)\)</span> and its four immediate neighbours in cardinal directions. These five points are used to compute the value for the single node <span class="math inline">\((i,j)\)</span> at the next time step <span class="math inline">\((n+1)\)</span>.</p>
+<pre class="text"><code>Time n+1:                  (i,j)
+                             ^
+                             |
+Time n:                  (i,j+1)
+                             |
+             (i-1,j) ----  (i,j)  ---- (i+1,j)
+                             |
+                         (i,j-1)</code></pre>
+<div class="quarto-figure quarto-figure-left">
+<figure class="figure">
+<p><img src="figures/PDE/HeatStencil2D.png" class="img-fluid figure-img"></p>
+<figcaption>The finite difference stencil for the 2D heat equation.</figcaption>
+</figure>
+</div></li>
+</ul>
+<p><strong>(c) Stability Condition</strong></p>
+<ul>
+<li><span class="math inline">\(a = D \frac{\Delta t}{h^2} \le \frac{1}{4}\)</span>.</li>
+</ul>
+<p><strong>(d) Finite Difference Scheme for 1D Wave Equation</strong></p>
+<ul>
+<li>Using centred differences in time and space: <span class="math display">\[\frac{U_i^{n+1} - 2U_i^n + U_i^{n-1}}{\Delta t^2} = c^2 \frac{U_{i+1}^n - 2U_i^n + U_{i-1}^n}{\Delta x^2}\]</span></li>
+<li>Rearranging: <span class="math display">\[U_i^{n+1} = 2U_i^n - U_i^{n-1} + c^2\frac{\Delta t^2}{\Delta x^2} \left( U_{i+1}^n - 2U_i^n + U_{i-1}^n \right)\]</span></li>
+<li>Initial data required: Because the scheme requires data from two previous time steps, both the initial position <span class="math inline">\(u(0,x)\)</span> (for <span class="math inline">\(U_i^0\)</span>) and the initial velocity <span class="math inline">\(u_t(0,x)\)</span> (used to estimate <span class="math inline">\(U_i^1\)</span>) are required.</li>
+</ul>
+<p><strong>(e) Python Code</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> D <span class="op">*</span> dt <span class="op">/</span> dx<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    U[<span class="dv">0</span>, :, :] <span class="op">=</span> u_0(X, Y)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>            U[n, <span class="dv">2</span>:, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            U[n, :<span class="op">-</span><span class="dv">2</span>, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">-</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>            <span class="dv">4</span> <span class="op">*</span> U[n, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>            U[n, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>, <span class="dv">2</span>:] <span class="op">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>            U[n, <span class="dv">1</span>:<span class="op">-</span><span class="dv">1</span>, :<span class="op">-</span><span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 
 </section>

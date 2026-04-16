@@ -145,7 +145,28 @@ for n in range(len(t)-1):
     U[n+1,1:-1] = U[n,?:?] + a*( U[n,?:] - 2*U[n,?:?] + U[n,:?])
 ```
 
--   It remains to visualise the solutions. You can either make a plot or an animation to illustrate the time evolution of $u$. For each of these there a various Python packages you could use. Below is a function `plot_solution_1d()` using plotly to make a plot and a function `animate_solution_1d()` using matplotlib to make an animated 2D plot. You can use either of these or you can use your own plotting code.
+-   We can now make a plot of the solution at the final time step to see what the solution looks like at $t=1$.
+
+``` python
+plt.plot(x, U[?,?])
+plt.xlabel("x")
+plt.ylabel("u")
+plt.grid()
+```
+
+-   Let us also calculate an approximate value for $u(0.2,0.25)$ by finding the indices in the `t` and `x` vectors that correspond to $t=0.2$ and $x=0.25$ and then looking up the value in the $U$ array at those indices.
+
+``` python
+U[?,?]
+```
+
+:::
+
+
+------------------------------------------------------------------------
+
+::: {#exr-6.30_plot}
+💻  Now visualise the whole solutions over the entire time range. You can either make a plot or an animation to illustrate the time evolution of $u$. For each of these there a various Python packages you could use. Below is a function `plot_solution_1d()` using plotly to make a plot and a function `animate_solution_1d()` using matplotlib to make an animated 2D plot. You can use either of these or you can use your own plotting code.
 
 ``` python 
 import plotly.graph_objects as go
@@ -212,7 +233,7 @@ def animate_solution_1d(t, x, U):
 ------------------------------------------------------------------------
 
 ::: {#exr-heat1d}
-💻 🎓 Now wrap up your code for solving the one-dimensional heat equation as a function so that you can easily call it with different parameters.
+💻 Now wrap up your code for solving the one-dimensional heat equation as a function so that you can easily call it with different parameters.
 
 ``` python
 def heat1d(u_0, D=0.1, t_0=0, t_max=1, N_t=100, x_left=0, x_right=1, N_x=20):
@@ -241,18 +262,14 @@ def heat1d(u_0, D=0.1, t_0=0, t_max=1, N_t=100, x_left=0, x_right=1, N_x=20):
     # Your code goes here
 ```
 
-Use your function to solve the heat equation with diffusion coefficient $D=0.1$ and the following initial and boundary conditions:
-$$
- u(0,x) = \sin(2 \pi x), \, u(t,0) = 0, \, \text{and} \, u(t,1) = 0.
-$$
-Use  stepsizes $\Delta t=0.01$ and $\Delta x=0.01$ to determine an approximate value for $u(0.2,0.25)$.
+Check that your function works by using it to calculate the same solution as in @exr-6.30 and plotting the solution with `plot_solution_1d()` or `animate_solution_1d()`.
 
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-6.31a}
-💻 💬 Now run your `heat1d` function from @exr-heat1d with the same diffusion coefficient $D=0.1$, the same step sizes $\Delta t=0.01$ and $\Delta x=0.01$, and the same initial and boundary conditions but run it for a longer time $t=0.5$ and plot the solution on the domain $t\in[0,0.5]$ and $x\in[0,1]$. Do you believe what you see? What is happening to the solution?
+💻 💬 Now run your `heat1d` function from @exr-heat1d with the same diffusion coefficient $D=0.1$, the same number `N_t = 100` of time steps and the same initial and boundary conditions but double the number of spatial steps to `N_x=40`. Plot the solution on the domain $t\in[0,1]$ and $x\in[0,1]$. Do you believe what you see? What is happening to the solution?
 :::
 
 ------------------------------------------------------------------------
@@ -262,7 +279,7 @@ Use  stepsizes $\Delta t=0.01$ and $\Delta x=0.01$ to determine an approximate v
 
 *If* $a = D\frac{\Delta t}{\Delta x^2} < \underline{\hspace{0.5in}}$ then the forward difference solution for the 1D heat equation is stable. Otherwise it is unstable.
 
-Hint: the threshold is a simple fraction. If you think you have found a value for $a$ at which the method is stable, run the simulation for longer (while keeping the same $\Delta t$) to check that it is really stable. Close to the threshold the errors grow more slowly (albeit still exponentially).
+Hint: the threshold is a simple fraction. If you think you have found a value for $a$ at which the method is stable, run the simulation for longer (by increasing both `t_max` and `N_t` to keep the same $\Delta t$) to check that it is really stable. Close to the threshold the errors grow more slowly (albeit still exponentially).
 
 :::
 
@@ -309,7 +326,7 @@ In any initial and boundary value problem such as the heat equation, the boundar
 
 ::: {#exr-6.34}
 #### Time-dependent Dirichlet Boundary Condition
-💻 Modify your 1D heat equation code to plot an approximate solution of the diffusion equation $u_t = 0.5 u_{xx}$ with $x \in (0,1)$, $u(0,x) = \sin(2\pi x)$, $u(t,0) = 0$ and $u(t,1) = \sin(5\pi t)$.
+💻 Modify your 1D heat equation code to plot and to animate an approximate solution of the diffusion equation $u_t = 0.5 u_{xx}$ with $x \in (0,1)$, $u(0,x) = \sin(2\pi x)$, $u(t,0) = 0$ and $u(t,1) = \sin(5\pi t)$. See if everyone in your group gets the same plot and animation.
 
 :::
 
@@ -317,28 +334,26 @@ In any initial and boundary value problem such as the heat equation, the boundar
 
 ::: {#exr-6.33}
 #### Neumann Boundary Condition
-🖋 💻 🎓 Consider the 1D heat equation $u_t = u_{xx}$ with boundary conditions $u_x(t,0)=0$ and $u(t,1)=0$ with initial condition $u(0,x) = \cos(\pi x/2)$. Notice that the initial condition satisfies both boundary conditions: $\frac{d}{dx}(\cos(\pi \cdot x/2))\Big|_{x=0} = 0$ and $\cos(\pi \cdot 1/2)=0$. As the heat profile evolves in time the Neumann boundary condition $u_x(t,0)=0$ says that the slope of the solution needs to be fixed at 0 at the left-hand boundary.
+🖋 💻 🎓 Consider the 1D heat equation $u_t = u_{xx}$ with boundary conditions $u_x(t,0)=0$ and $u(t,1)=0$ with initial condition $u(0,x) = \cos(\pi x/2)$. So at $x=0$ we are imposing a Neumann boundary condition and at $x=1$ we are imposing a Dirichlet boundary condition. Check that the initial condition satisfies these boundary conditions. As the heat profile evolves in time the Neumann boundary condition $u_x(t,0)=0$ says that the slope of the solution needs to be fixed at 0 at the left-hand boundary.
 
-(a)  Draw several images of what the solution to the PDE should look like as time evolves. Be sure that all boundary conditions are satisfied and that your solution appears to solve the heat equation.
-
-(b)  The Neumann boundary condition $u_x(t,0) = 0$ can be approximated with the first order approximation 
+(a)  The Neumann boundary condition $u_x(t,0) = 0$ can be approximated with the first order approximation 
 $$
  u_x(t_n,0) \approx \frac{U_1^n - U_0^n}{\Delta x} \text{ for all } n.
 $$
  If we set this approximation to 0 (since $u_x(t,0)=0$) and solve for $U_0^n$ we get an additional constraint at every time step of the numerical solution to the heat equation:
  $$ U_0^n = ??? \text{ for all } n.$$
 
-(c)  Modify your 1D heat equation code to implement this Neumann boundary condition, plot the numerical solution and verify visually that the Neumann boundary is satisfied.
+(b)  Modify your 1D heat equation code to implement this Neumann boundary condition, plot the numerical solution and verify visually that the Neumann boundary is satisfied.
 
 :::
 
 ------------------------------------------------------------------------
 
-### Variations on the Heat Equation {#sec-heatvar}
+## Other Parabolic PDEs {#sec-heatvar}
 The heat equation is a parabolic PDE and the forward-difference method that we have developed
 can be adapted to work for other parabolic PDEs. 
 
-#### Reaction-Diffusion Equations {#sec-rde}
+### Reaction-Diffusion Equations {#sec-rde}
 
 For example, the heat equation can be modified to include a reaction term. The reaction-diffusion equation is a PDE that models the diffusion of a substance in space and time with a reaction term that describes the rate of change of the substance due to some reaction. While it has its origin in chemistry, it shows up in many other fields as well, for example in ecology and epidemiology.
 
@@ -361,7 +376,7 @@ Use `animate_solution_1d()` to visualize the solution. How does the solution cha
 
 ------------------------------------------------------------------------
 
-#### Advective-Diffusion Equations {#sec-advect}
+### Advective-Diffusion Equations {#sec-advect}
 
 The diffusion term usually arises from random spatial motion of particles. However, in some cases the particles are advected by a flow field. In this case we need to add an advection term to the diffusion equation. The advection-diffusion equation is a PDE that models the diffusion of a substance in space and time with an advection term that describes the rate of change of the substance due to some flow field.
 

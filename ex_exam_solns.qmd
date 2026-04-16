@@ -199,8 +199,8 @@ def sin_taylor(x, n):
 *   Subtracting the second equation from the first:
     $f(x+h) - f(x-h) = 2hf'(x) + \frac{2h^3}{6}f'''(x) + \mathcal{O}(h^5)$
 *   Solving for $f'(x)$:
-    $2hf'(x) = f(x+h) - f(x-h) - \frac{h^3}{3}f'''(x) - \mathcal{O}(h^5)$
-    $f'(x) = \frac{f(x+h) - f(x-h)}{2h} - \frac{h^2}{6}f'''(x) - \mathcal{O}(h^4)$
+    $2hf'(x) = f(x+h) - f(x-h) - \frac{h^3}{3}f'''(x) + \mathcal{O}(h^5)$
+    $f'(x) = \frac{f(x+h) - f(x-h)}{2h} - \frac{h^2}{6}f'''(x) + \mathcal{O}(h^4)$
 *   Since the leading error term is proportional to $h^2$, the truncation error is $\mathcal{O}(h^2)$.
 
 **(c) Error Reduction for Central Difference**
@@ -219,7 +219,7 @@ def sin_taylor(x, n):
 *   The function $f(x) = 5x+3$ is a linear function. The trapezoidal rule approximates the area under a curve using straight line segments. For a linear function, the tops of the trapezoids perfectly match the graph of the function.
 *   Therefore, the trapezoidal rule evaluates the integral *exactly*, independently of the number of subintervals.
 *   The exact integral is $\int_0^5 (5x+3) dx = \left[\frac{5}{2}x^2 + 3x\right]_0^5 = \frac{5}{2}(25) + 3(5) = 62.5 + 15 = 77.5$.
-*   (Alternatively, using the area of a single trapezoid or a geometric argument directly: $\frac{f(0)+f(5)}{2} \times 5 = \frac{3 + 28}{2} \times 5 = 15.5 \times 5 = 77.5$).
+*   (Alternatively, using a geometric argument: treat the entire interval $[0,5]$ as a single trapezoid with vertices at $(0,f(0))$ and $(5,f(5))$, giving $\frac{f(0)+f(5)}{2} \times 5 = \frac{3 + 28}{2} \times 5 = 15.5 \times 5 = 77.5$. This works because for a linear function the composite trapezoidal rule with any number of subintervals gives the same exact answer.).
 
 **(f) Order of Accuracy of Trapezoidal Rule**
 
@@ -260,7 +260,7 @@ def sin_taylor(x, n):
 
 ``` python
         grad = df(x)
-        x = x - learning_rate * grad
+        x = x - alpha * grad
 ```
 
 ## ODE 1
@@ -287,7 +287,13 @@ def sin_taylor(x, n):
 *   $m_{1/2} = f(t_{1/2}, x_{1/2}) = -2(0.5) + 0.25 = -0.75$.
 *   $x_1 = x_0 + h m_{1/2} = 1 + 0.5(-0.75) = 1 - 0.375 = 0.625$.
 
-**(d) Midpoint Method Python Code**
+**(d) System of First-Order ODEs**
+
+*   Let $\theta = \theta$ and $\omega = d\theta/dt$. Then:
+*   $\dfrac{d\theta}{dt} = \omega$
+*   $\dfrac{d\omega}{dt} = -\dfrac{g}{L}\sin(\theta)$
+
+**(e) Midpoint Method Python Code**
 
 ``` python
         slope = f(t[n], x[n])
@@ -302,27 +308,33 @@ def sin_taylor(x, n):
 *   **Geometric Difference:** The explicit (forward) Euler method estimates the next spatial/temporal point by using the derivative evaluated at the *current* known point $(t_n, x_n)$. The implicit (backward) Euler method, conversely, evaluates the derivative at the *unknown future* point $(t_{n+1}, x_{n+1})$.
 *   **Stiff Equations:** Backward Euler is unconditionally stable for stable linear equations (its region of absolute stability is the entire left half-plane). Thus it avoids numerical instability when simulating stiff equations where transients would otherwise force explicit methods to use impractically small step sizes.
 
-**(b) System of First-Order ODEs**
+**(b) Unconditional Stability of Backward Euler**
 
-*   Let $\theta = \theta$ and $\omega = d\theta/dt$. Then:
-*   $\frac{d\theta}{dt} = \omega$
-*   $\frac{d\omega}{dt} = -\frac{g}{L}\sin(\theta)$
+Apply the backward Euler method to $x' = \lambda x$:
+$$x_{n+1} = x_n + h\lambda x_{n+1}.$$
+Solving for $x_{n+1}$:
+$$x_{n+1}(1 - h\lambda) = x_n \implies x_{n+1} = \frac{1}{1 - h\lambda}\, x_n.$$
+The amplification factor is $R = \frac{1}{1 - h\lambda}$. For $\text{Re}(\lambda) < 0$ and any $h > 0$, writing $\lambda = a + bi$ with $a < 0$:
+$$|1 - h\lambda|^2 = (1 - ha)^2 + (hb)^2 > 1,$$
+since $1 - ha > 1$ (as $a < 0$). Therefore $|R| < 1$ for all $h > 0$, so $|x_n| \to 0$ as $n \to \infty$, and the method is unconditionally stable.
 
-**(c) Runge-Kutta 4**
+**(c) Local Truncation Error of Backward Euler**
+
+The local truncation error is defined as the residual when the exact solution is substituted into the numerical scheme:
+$$\tau_n = \frac{x(t_{n+1}) - x(t_n)}{h} - f\!\left(t_{n+1},\, x(t_{n+1})\right).$$
+Taylor-expanding $x(t_{n+1})$ about $t_n$:
+$$x(t_{n+1}) = x(t_n) + h\,x'(t_n) + \frac{h^2}{2}x''(t_n) + \mathcal{O}(h^3),$$
+so
+$$\frac{x(t_{n+1}) - x(t_n)}{h} = x'(t_n) + \frac{h}{2}x''(t_n) + \mathcal{O}(h^2).$$
+Since $f(t_{n+1}, x(t_{n+1})) = x'(t_{n+1})$, Taylor-expanding $x'$ gives:
+$$x'(t_{n+1}) = x'(t_n) + h\,x''(t_n) + \mathcal{O}(h^2).$$
+Substituting:
+$$\tau_n = x'(t_n) + \frac{h}{2}x''(t_n) - x'(t_n) - h\,x''(t_n) + \mathcal{O}(h^2) = -\frac{h}{2}x''(t_n) + \mathcal{O}(h^2) = \mathcal{O}(h).$$
+
+**(d) Runge-Kutta 4**
 
 *   **Order of Accuracy:** $\mathcal{O}(h^4)$ (Fourth order).
 *   **Function Evaluations:** 4 evaluations of $f(t,x)$ are required at each time step.
-
-**(d) Python Code for `odeint`**
-
-``` python
-# F should be a function of (x, t, g, L) where x is an array [theta, omega]
-F = lambda x, t, g, L: [ x[1], -(g/L)*np.sin(x[0]) ]
-
-x = scipy.integrate.odeint(F, x0, t, args=(g, L))
-
-plt.plot(t, x[:, 0])
-```
 
 ## PDE 1
 
@@ -386,6 +398,19 @@ plt.plot(t, x[:, 0])
 
 *   The stencil comprises five points at the current time step $n$ representing a spatial cross: the central node $(i,j)$ and its four immediate neighbours in cardinal directions. These five points are used to compute the value for the single node $(i,j)$ at the next time step $(n+1)$. 
 
+    ```text
+    Time n+1:                  (i,j)
+                                 ^
+                                 |
+    Time n:                  (i,j+1)
+                                 |
+                 (i-1,j) ----  (i,j)  ---- (i+1,j)
+                                 |
+                             (i,j-1)
+    ```
+    
+    ![The finite difference stencil for the 2D heat equation.](figures/PDE/HeatStencil2D.png)
+
 **(c) Stability Condition**
 
 *   $a = D \frac{\Delta t}{h^2} \le \frac{1}{4}$.
@@ -402,13 +427,12 @@ plt.plot(t, x[:, 0])
 
 ``` python
     a = D * dt / dx**2
-    
+
     U[0, :, :] = u_0(X, Y)
 
-            U[n, 2:, 1:-1] + 
-            U[n, :-2, 1:-1] - 
-            4 * U[n, 1:-1, 1:-1] + 
-            U[n, 1:-1, 2:] + 
+            U[n, 2:, 1:-1] +
+            U[n, :-2, 1:-1] -
+            4 * U[n, 1:-1, 1:-1] +
+            U[n, 1:-1, 2:] +
             U[n, 1:-1, :-2]
 ```
-

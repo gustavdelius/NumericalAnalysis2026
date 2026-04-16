@@ -495,7 +495,7 @@ In this chapter we have developed the **explicit forward difference scheme** for
 
 ------------------------------------------------------------------------
 
-## Exam-Style question
+## Exam-Style Question
 
 (a) Consider the 1D heat equation $u_t = D u_{xx}$. Using a forward difference approximation for the time derivative and a centred difference approximation for the second spatial derivative, derive the explicit finite difference scheme for $U_i^{n+1}$. Use step sizes $\Delta t$ and $\Delta x$, and let $U_i^n \approx u(t_n, x_i)$. [3 marks]
 
@@ -517,19 +517,30 @@ def solve_heat1d(u_0, D, tmax, dt, xmax, dx):
     """
     t = np.arange(0, tmax + dt, dt)
     x = np.arange(0, xmax + dx, dx)
-    
+
     a = ...
-    
+
     U = np.zeros((len(t), len(x)))
-    
+
     # Apply initial condition
     U[0, :] = u_0(x)
-    
+
     # Boundary conditions are naturally 0 from np.zeros
-    
+
     for n in range(len(t) - 1):
         # Update interior spatial points
         U[n+1, 1:-1] = ...
-        
+
     return t, x, U
 ```
+
+(f) The explicit finite difference scheme from part (a) can be written in matrix form as $\mathbf{U}_{n+1} = A\mathbf{U}_n$, where $\mathbf{U}_n = (U_1^n, \ldots, U_{N-1}^n)^T$ is the vector of interior grid values at time step $n$ and $A$ is a $(N-1)\times(N-1)$ matrix.
+
+    (i) Write down the matrix $A$ explicitly for the case $N=4$ (i.e., three interior grid points), expressing all entries in terms of $a = D\Delta t / (\Delta x)^2$. [2 marks]
+
+    (ii) Using the matrix form, write down an expression for $\mathbf{U}_n$ in terms of $A$, $n$, and the initial vector $\mathbf{U}_0$. [1 mark]
+
+    (iii) Suppose that at time step $0$ an error $\boldsymbol{\epsilon}$ is introduced, so that the computed vector is $\tilde{\mathbf{U}}_0 = \mathbf{U}_0 + \boldsymbol{\epsilon}$. Show that the error at time step $n$ is $\boldsymbol{\epsilon}_n = A^n\boldsymbol{\epsilon}$. [2 marks]
+
+    (iv) Explain why and how the stability condition can be expressed in terms of the eigenvalues of $A$. [2 marks]
+

@@ -48,7 +48,7 @@
 - [ ] Wrap the plotting code in Exercise 7.9 into functions.
 - [ ] Ask students to also draw the backward Euler method
 - [ ] Make more interesting choices for stepsizes in Exercise 8.15 closer to the stability limit of 0.02. 0.01, 0.02, 0.03 for example.
-- [ ] 
+- [ ] Make the discussion of the error in the stability discussion more similar to the discussion for PDEs
 
 ## Chapters 9 and 10 PDEs
 

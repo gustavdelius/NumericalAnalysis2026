@@ -423,7 +423,7 @@ def bisection_with_error_tracking(f, x_exact, a, b, tol):
     Implements the bisection method and tracks absolute error at each iteration.
     
     Parameters:
-        f (callable): Function for which to find the root
+        f (function): Function for which to find the root
         x_exact (float): The exact root of the function
         a (float): Left endpoint of initial interval
         b (float): Right endpoint of initial interval 
@@ -514,6 +514,7 @@ def plot_log_errors(errors):
 
     # Determine slope and intercept of the best-fit straight line
     slope, intercept = np.polyfit(iterations, log_errors, deg=1)
+    print(f"slope = {slope}, intercept = {intercept}.")
     best_fit_line = slope * iterations + intercept
     # Plot the best-fit line
     plt.plot(iterations, best_fit_line, label='Best Fit Line', color='red')
@@ -908,18 +909,45 @@ In pseudocode the fixed point iteration algorithm is then implemented as follows
 $$
 \begin{array}{ll}
 \ 1: \ \textbf{function} \ FixedPoint(g,x_0,tol, N) &\sharp \ function \ g, \ start \ point \ x_0,\\
-\ 2: \ \quad x \gets x_0; \ n \gets 0               &\sharp \ tolerance \ tol,\\
+\ 2: \ \quad x \gets x_0;                           &\sharp \ tolerance \ tol,\\
 \ 3: \ \quad \textbf{for} \ i \gets 1 \ \textbf{to}\ N                         &\sharp \ max. \ num. \ of \ iterations \ N \\
-\ 4: \ \quad\quad y \gets x; \ x \gets g(x)  & \\
-\ 5: \ \quad\quad \textbf{if} \ |y-x| < tol \ \textbf{then}  &\sharp \ Desired \ tolerance \ reached  \\
-\ 6: \ \quad\quad\quad \textbf{return} \ x  & \\
+\ 4: \ \quad\quad x_{new} \ \gets g(x)  & \\
+\ 5: \ \quad\quad \textbf{if} \ |x_{new}-x| < tol \ \textbf{then}  &\sharp \ Desired \ tolerance \ reached  \\
+\ 6: \ \quad\quad\quad \textbf{return} \ x_{new}  & \\
 \ 7: \ \quad\quad \textbf{end \ if}  &  \\
+\ 7: \ \quad\quad x \gets x_{new}  & \\
 \ 8: \ \quad \textbf{end for}  & \\
 \ 9: \ \quad \textbf{exception}(Iteration \ has \ not \ converged) & \\
 10: \ \textbf{end function} &
 \end{array}
 $$
-Implement this algorithm in Python. Use it to approximate the fixed point of the function $g(x)=\cos(x)$ with start value $x_0=2$ and tolerance $tol=10^{-8}$.
+
+The following is an outline of a Python function to implement the fixed point iteration algorithm with "???" indicating where you need to fill in the code. You may want to disable Gemini in your Colab notebook before pasting the code snippet below to avoid Gemini trying to fill in the "???" for you.
+
+``` python
+def fixed_point_iteration(g, x0, tol, N):
+    """
+    Implements the fixed point iteration algorithm.
+    
+    Parameters:
+        g (function): The function for which to find the fixed point
+        x0 (float): The initial guess for the fixed point
+        tol (float): The tolerance for convergence
+        N (int): The maximum number of iterations
+        
+    Returns:
+        float: The estimated fixed point if convergence is achieved within N iterations
+    """
+    x = x0
+    for i in range(1, ???):
+        x_new = ???
+        if ???:
+            return ???
+        ???
+    raise Exception("Iteration has not converged")
+```
+
+Fill in the missing parts of the code. Use the function to approximate the fixed point of the function $g(x)=\cos(x)$ with start value $x_0=2$ and tolerance $tol=10^{-8}$.
 :::
 
 ------------------------------------------------------------------------

@@ -19,7 +19,7 @@
 - [ ] Add Monte Carlo integration
 
 ## Chapter 1 Essential Python
-- [ ] Check whether all info about colab is still up-to-date.
+- [ ] Check whether all info about Colab and Gemini is still up-to-date.
 - [ ] Introduce docstrings in the first colab notebook.
 
 ## Chapter 1 Numbers
@@ -27,14 +27,10 @@
 ## Chapter 2 Functions
 
 ## Chapters 3 and 4 Roots
-- [ ] Make code for Newton more similar to that for general fixed point iteration.
-- [ ] In @exr-newton_error_tracking provide a docstring for the `newton_with_error_tracking` function and include a `max_iter` argument.
-- [ ] In `plot_error_progression()` also print out slope and intercept. That then simplifies point 3 in @exr-3.54} in the Optimisation chapter.
 
 ## Chapter 5 Calculus
 - [ ] Take out Exercise 5.13 about writing the inefficient version of ForwardDiff and go straight to the vectorised case.
 - [ ] Students took a long time on the Differentiation section. Streamline.
-- [ ] In the feedback question testing the Simpson method, detect if they used 50 intervals instead of 100, which would happen if they used AI to write the function for them.
 
 ## Chapter 6 Optimisation
 - [ ] Use gradient descent for regression
@@ -60,6 +56,7 @@
       initial conditions so that instability is clear from the start. Currently
       it is difficult for students to determine the stability criterion in
       Exercise 9.5
+- [ ] For observing instability, recommend looking at the plot of the final time step.
 - [ ] Fix the second question in the 2nd PDE feedback quiz
 - [ ] Use central difference approximation for advection term
 - [ ] Include more interesting examples

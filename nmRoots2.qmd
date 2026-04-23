@@ -90,10 +90,10 @@ Fill in the blank in the above formula.
 ### Implementation
 
 ::: {#exr-2.38}
-💻 The following is an outline of a Python function called `newton()` for Newton's method. The function needs to accept a Python function for $f(x)$, a Python function for $f'(x)$, an initial guess, and an optional error tolerance. Write the code.
+💻 The following is an outline of a Python function called `newton()` for Newton's method. Complete the function definition by copying your code from your `fixed_point_iteration()` function and modifying it to implement Newton's method.
 
 ```python
-def newton(f, fprime, x0, tol=1e-10):
+def newton(f, fprime, x0, tol=1e-10, N=30):
     """
     Find root of f(x) using Newton's Method.
     
@@ -102,25 +102,13 @@ def newton(f, fprime, x0, tol=1e-10):
         fprime (function): Derivative of f
         x0 (float): Initial guess for the root
         tol (float, optional): Error tolerance. Defaults to 1e-10
+        N (int, optional): Maximum number of iterations. Defaults to 30.
         
     Returns:
-        float: Approximate root of f(x)
-        or error message if method fails
+        float: Approximate root of f(x) if convergence is achieved within N iterations
     """
     
-    # Set x equal to initial guess x0
-    
-    # Loop for maximum of 30 iterations:
-
-    #   1. Calculate next Newton iteration:
-    #      x_new = x - f(x)/f'(x)
-    
-    #   2. Check if within tolerance:
-    #      If |x_new - x| < tol, return x_new as root
-    #      If not, update x = x_new
-    
-    # 3. If loop completes without finding root,
-    #    return message that method did not converge
+    # Copy your code from your `fixed_point_iteration()` function and modify it to implement Newton's method.
 ```
 
 :::
@@ -228,7 +216,7 @@ We saw in @exm-3.1b how we could empirically determine the rate of convergence o
 ::: {#exr-newton_error_tracking}
 💻 🎓 Write a Python function `newton_with_error_tracking()` that returns a list of absolute errors between the iterates and the exact solution.
 You can start with your code from `newton()` from @exr-2.38 and add the collection of the errors in a list as in the `bisection_with_error_tracking()` function that we wrote in @exm-2.1.
-Your new function should accept a Python function for $f(x)$, a Python function for $f'(x)$, the exact root, an initial guess, and an optional error tolerance.
+Your new function should accept a Python function for $f(x)$, a Python function for $f'(x)$, the exact root, an initial guess, an optional error tolerance and an optional maximum number of iterations.
 
 Then, use this function to list the error progression for Newton's method for finding the root of $f(x) = x^2 - 2$ with the initial guess $x_0 = 1$ and tolerance $10^{-10}$. You should find that the error goes down extremely quickly and that for the final iteration Python can no longer detect a difference between the new iterate and its own value for $\sqrt{2}$.
 :::

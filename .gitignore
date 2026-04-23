@@ -30,3 +30,6 @@ tmp.gif
 
 
 **/*.quarto_ipynb
+.positai
+.codex
+.claude

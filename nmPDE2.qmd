@@ -225,8 +225,9 @@ It is actually possible to beat the stability criteria given in the previous exe
 
 ------------------------------------------------------------------------
 
+### Backward Difference Method
+
 ::: {#exr-6.43}
-#### Backward Difference Scheme
 🖋 💻 🎓 For the 1D heat equation $u_t = D u_{xx}$ we have been finding the numerical solution using the explicit finite difference scheme 
 $$
 \frac{U_i^{n+1} - U_i^n}{\Delta t} = D \frac{U_{i+1}^{n} - 2U_i^{n} + U_{i-1}^{n}}{\Delta x^2}
@@ -341,8 +342,36 @@ for n in range(len(t)-1):
 
 ------------------------------------------------------------------------
 
+### Stability of the Backward Difference Method
+
+The backward difference scheme can be written in matrix form. Rearranging so that all terms at time step $n+1$ are on the left gives
+$$
+B\mathbf{U}_{n+1} = \mathbf{U}_n,
+$$
+where $B$ is the $(N_x-1)\times(N_x-1)$ tridiagonal matrix with $1+2a$ on the diagonal and $-a$ on the two off-diagonals:
+$$
+B = \begin{pmatrix}1+2a&-a&&\\
+-a&1+2a&-a&&\\
+&\ddots&\ddots&\ddots&\\
+&&-a&1+2a\end{pmatrix}.
+$$
+Solving for $\mathbf{U}_{n+1}$ gives
+$$
+\mathbf{U}_{n+1} = B^{-1}\mathbf{U}_n,
+$$
+so after $n$ steps, $\mathbf{U}_n = (B^{-1})^n\mathbf{U}_0$. Exactly as in the analysis of the forward difference method in @sec-stability-heat, if an error $\mathbf{\epsilon}$ is introduced at some step it evolves to $\mathbf{\epsilon}^{(n)} = (B^{-1})^n\mathbf{\epsilon}$. For stability we need all eigenvalues of $B^{-1}$ to have absolute value at most 1, which is equivalent to requiring all eigenvalues of $B$ to have absolute value at least 1.
+
+Using the same Fourier analysis as for the forward difference method, the matrix $B$ shares the same eigenvectors as the forward difference matrix $A$, and its eigenvalues are
+$$
+\mu_k = 1 + 4a\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2, \quad k = 1,\ldots,N_x-1.
+$$
+Since $a > 0$ and $\sin^2(\cdot) \geq 0$, we have $\mu_k \geq 1$ for all $k$ and all $a > 0$. Therefore $|1/\mu_k| \leq 1$ for every $k$, and the backward difference method is **unconditionally stable**: no restriction on the ratio $a = D\Delta t/(\Delta x)^2$ is needed to keep the numerical solution bounded.
+
+------------------------------------------------------------------------
+
+### The Crank-Nicolson Method
+
 ::: {#exr-6.44}
-#### The Crank-Nicolson Method
 🖋 🎓 We conclude this section with one more implicit scheme: the **Crank-Nicolson Method**. In this method we take the average of the forward and backward difference schemes: 
 $$
 \frac{U_i^{n+1} - U_i^n}{\Delta t} = \frac{1}{2} \left[D \left( \frac{U_{i-1}^n - 2U_i^n + U_{i+1}^n}{\Delta x^2}\right) +D \left(\frac{U_{i-1}^{n+1} - 2U_i^{n+1} + U_{i+1}^{n+1}}{\Delta x^2} \right) \right].

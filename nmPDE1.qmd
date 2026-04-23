@@ -166,7 +166,7 @@ U[?,?]
 ------------------------------------------------------------------------
 
 ::: {#exr-6.30_plot}
-💻  Now visualise the whole solutions over the entire time range. You can either make a plot or an animation to illustrate the time evolution of $u$. For each of these there a various Python packages you could use. Below is a function `plot_solution_1d()` using plotly to make a plot and a function `animate_solution_1d()` using matplotlib to make an animated 2D plot. You can use either of these or you can use your own plotting code.
+💻  Now visualise the whole solutions over the entire time range. You can either make a plot or an animation to illustrate the time evolution of $u$. For each of these there are various Python packages you could use. Below is a function `plot_solution_1d()` using plotly to make a plot and a function `animate_solution_1d()` using matplotlib to make an animated 2D plot. You can use either of these or you can use your own plotting code.
 
 ``` python 
 import plotly.graph_objects as go
@@ -322,7 +322,7 @@ plot_solution_1d(t, x, u_exact)
 
 ### Different Boundary Conditions {#sec-neumann}
 
-In any initial and boundary value problem such as the heat equation, the boundary are often of Dirichlet or Neumann type. In Dirichlet boundary conditions the values of the solution at the boundary are specified. In contrast, Neumann boundary conditions specify the flux at the boundary instead of the value of the solution. 
+In any initial and boundary value problem such as the heat equation, the boundary conditions are often of Dirichlet or Neumann type. In Dirichlet boundary conditions the values of the solution at the boundary are specified. In contrast, Neumann boundary conditions specify the flux at the boundary instead of the value of the solution. 
 
 ::: {#exr-6.34}
 #### Time-dependent Dirichlet Boundary Condition
@@ -432,7 +432,7 @@ $$
 $$
 So the error at time $t_n$ is
 $$
-\mathbf{\epsilon}^{(n)}n=A^n\mathbf{\epsilon}.
+\mathbf{\epsilon}^{(n)}=A^n\mathbf{\epsilon}.
 $$
 To see if the error grows exponentially over time, we expand the initial error in terms of the eigenvectors of the matrix $A$:
 $$
@@ -452,9 +452,9 @@ There is a nice method to determine the eigenvalues of the matrix $A$, using Fou
 $$
 \lambda_k=1-4a\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2
 $$
-for $k=1,\ldots,N_x-1$. For stability we need $|\lambda_k|<1$ for all $k$, i.e.,
+for $k=1,\ldots,N_x-1$. For stability we need $|\lambda_k|\leq 1$ for all $k$, i.e.,
 $$
-0\leq a\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2<\frac12
+0\leq a\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2\leq\frac12
 $$
 for all $k$. The most stringent condition is that coming from $k=N_x-1$, so the stability condition is
 $$
@@ -484,7 +484,7 @@ The roots of this polynomial are
 $$
 \lambda_\pm=1-2a\pm a.
 $$
-We need both of these to have a magnitude less than 1 for the method to be stable. This gives us an upper bound on the allowed $a$. The eigenvalue whose magnitude will increase above $1$ first as $a$ increases is $\lambda_-=1-3a$, which equals $-1$ when $a=2/3$ (meaning the error in that mode alternates sign every time step). So the stability condition is $a < 2/3$. 
+We need both of these to have a magnitude less than 1 for the method to be stable. This gives us an upper bound on the allowed $a$. The eigenvalue whose magnitude will increase above $1$ first as $a$ increases is $\lambda_-=1-3a$, which equals $-1$ when $a=2/3$ (meaning the error in that mode alternates sign every time step). So the stability condition is $a \leq 2/3$.
 
 :::
 

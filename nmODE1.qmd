@@ -39,7 +39,7 @@ In this chapter we will examine some of the more common ways to create approxima
 
 In this chapter we will often think of the argument of the function described by the ODE as time, but of course the methods are agnostic to the interpretation of the independent variable.
 
-We will first concentrate on first-order differential equations of the form $x' = f(x)$. The geometric interpretation of this is that we are looking for a function $x(t)$ whose slope at every $x$ is known to us, given by $f(x)$.
+We will first concentrate on first-order differential equations of the form $x' = f(t,x)$. The geometric interpretation of this is that we are looking for a function $x(t)$ whose slope at every point $(t,x)$ is known to us, given by $f(t,x)$.
 
 ## Euler's Method
 
@@ -251,14 +251,14 @@ plt.ylabel('Maximum error')
 plt.grid()
 ```
 
-3.  What does the plot tell you? In general, if you were to divide your value of $\Delta t$ by 10, how much approximately does that reduce the error?
+What does the plot tell you? In general, if you were to divide your value of $\Delta t$ by 10, how much approximately does that reduce the error?
 
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-5.15}
-🖋 💬 🎓 Shelby solved a first order ODE $x' = f(t,x)$ using Euler's method with a step size of $dt = 0.1$ on a domain $t \in [0,3]$. To test her code she used a differential equation where she new the exact analytic solution and she found the maximum absolute error on the interval to be $0.15$. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using Euler's method and a step size of $dt = 0.01$. What would be your best estimate of Jackson's maximum absolute error?
+🖋 💬 🎓 Shelby solved a first order ODE $x' = f(t,x)$ using Euler's method with a step size of $dt = 0.1$ on a domain $t \in [0,3]$. To test her code she used a differential equation where she knew the exact analytic solution and she found the maximum absolute error on the interval to be $0.15$. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using Euler's method and a step size of $dt = 0.01$. What would be your best estimate of Jackson's maximum absolute error?
 
 :::
 
@@ -327,7 +327,7 @@ Euler's method is a first order method for approximating the solution to the dif
 \end{equation}
 
 
-8.  The following Python function will implement Euler's method. Complete the code.
+7.  The following Python function will implement Euler's method. Complete the code.
 
 ``` python
 def euler(F, x0, t0, tmax, dt):
@@ -368,7 +368,7 @@ def euler(F, x0, t0, tmax, dt):
     return t, x
 ```
 
-8. To use the `euler()` function to solve the system of equations from part (4), complete the following code. Use a mass of $m=2$kg, a damping force of $b=40$kg/s, and a spring constant of $k=128$N/m. Consider an initial position of $x=0$ (equilibrium) and an initial velocity of $x_1 = 0.6$m/s.
+8.  To use the `euler()` function to solve the system of equations from part (4), complete the following code. Use a mass of $m=2$kg, a damping force of $b=40$kg/s, and a spring constant of $k=128$N/m. Consider an initial position of $x=0$ (equilibrium) and an initial velocity of $x_1 = 0.6$m/s.
 
 ``` python
 m = 2
@@ -415,7 +415,7 @@ plt.show()
 \begin{equation}
 \left\{ \begin{array}{ll} x_0' &= \alpha x_0 - \beta x_0 x_1 \\ x_1' &= \delta x_0 x_1 - \gamma x_1 \end{array} \right.
 \end{equation}
- where $\alpha, \beta, \gamma,$ and $\delta$ are positive constants. For this problems take $\alpha =1$, $\beta \approx 0.1$, $\gamma =1$, and $\delta =0.1$.
+ where $\alpha, \beta, \gamma,$ and $\delta$ are positive constants. For this problems take $\alpha =1$, $\beta = 0.1$, $\gamma =1$, and $\delta =0.1$.
 
 1.  First rewrite the system of ODEs in the form $\boldsymbol{x}' = F(t,\boldsymbol{x})$ so you can use your `euler()` code.
 
@@ -538,7 +538,7 @@ def midpoint_1d(f, x0, t0, tmax, dt):
     dt = (tmax - t0)/N
     t = ??? # build the times
     x = ??? # build an array for the x values
-    x[0] = # save the initial condition
+    x[0] = ???  # save the initial condition
     # On the next line: be careful about how far you're looping
     for n in range(???):
         slope = ??? # get the slope at the current point
@@ -584,7 +584,7 @@ What do you observe?
 💻 🎓 Repeat @exr-5.14 with the midpoint method. Compare your results to what you found with Euler's method.
 Then use what you have discovered to answer the following, similar to @exr-5.15:
 
-Shelby solved a first order ODE $x' = f(t,x)$ using the midpoint method with a step size of $dt = 0.1$ on a domain $t \in [0,3]$. To test her code she used a differential equation where she new the exact analytic solution and she found the maximum absolute error on the interval to be $0.15$. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using the midpoint method and a step size of $dt = 0.01$. What would be your best estimate of Jackson's maximum absolute error?
+Shelby solved a first order ODE $x' = f(t,x)$ using the midpoint method with a step size of $dt = 0.1$ on a domain $t \in [0,3]$. To test her code she used a differential equation where she knew the exact analytic solution and she found the maximum absolute error on the interval to be $0.15$. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using the midpoint method and a step size of $dt = 0.01$. What would be your best estimate of Jackson's maximum absolute error?
 
 :::
 
@@ -613,44 +613,44 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Define the exact solution and derivative
-f = lambda x, y: y
-exact_solution = lambda x: np.exp(x)
+f = lambda t, x: x
+exact_solution = lambda t: np.exp(t)
 
 # Initial condition
-x0, y0 = 0, 1
+t0, x0 = 0, 1
 h = 1  # step size
 
 # Euler method
-x1 = x0 + h
-y1_euler = y0 + h * f(x0, y0)
+t1 = t0 + h
+x1_euler = x0 + h * f(t0, x0)
 
 # Midpoint method
-x_mid = x0 + h/2
-y_mid = y0 + h/2 * f(x0, y0)
-y1_midpoint = y0 + h * f(x_mid, y_mid)
+t_mid = t0 + h/2
+x_mid = x0 + h/2 * f(t0, x0)
+x1_midpoint = x0 + h * f(t_mid, x_mid)
 
-# Exact solution at x=1
-y_exact = exact_solution(1)
+# Exact solution at t=1
+x_exact = exact_solution(1)
 
 # Set up the plot
 fig, axs = plt.subplots(1, 2, figsize=(8,4), sharey=True)
 
 # ---------- Euler Method Plot ----------
 ax = axs[0]
-ax.plot([x0, x1], [y0, y1_euler], 'b-', label="Euler step", linewidth=2)
-ax.plot(x1, y1_euler, 'bo')
-ax.text(x1 - 0.1, y1_euler + 0.1, f"({x1}, {y1_euler:.1f})", color='blue', fontsize=18)
+ax.plot([t0, t1], [x0, x1_euler], 'b-', label="Euler step", linewidth=2)
+ax.plot(t1, x1_euler, 'bo')
+ax.text(t1 - 0.1, x1_euler + 0.1, f"({t1}, {x1_euler:.1f})", color='blue', fontsize=18)
 
 # Slope arrow
-ax.annotate("", xy=(x1, y1_euler), xytext=(x0, y0),
+ax.annotate("", xy=(t1, x1_euler), xytext=(t0, x0),
             arrowprops=dict(arrowstyle='->', color='blue', lw=2))
 ax.text(0.35, 1.2, r'slope=1', fontsize=20)
 
 # Exact solution
-x_vals = np.linspace(0, 1.2, 100)
-ax.plot(x_vals, exact_solution(x_vals), 'r--', linewidth=2)
-ax.plot(1, y_exact, 'ro')
-ax.text(0.8, y_exact + 0.1, f"(1, {y_exact:.2f})", color='red', fontsize=18)
+t_vals = np.linspace(0, 1.2, 100)
+ax.plot(t_vals, exact_solution(t_vals), 'r--', linewidth=2)
+ax.plot(1, x_exact, 'ro')
+ax.text(0.8, x_exact + 0.1, f"(1, {x_exact:.2f})", color='red', fontsize=18)
 
 ax.set_title("Euler", fontsize=18)
 ax.set_xlim(0, 1.2)
@@ -660,29 +660,29 @@ ax.tick_params(labelsize=14)
 
 # ---------- Midpoint Method Plot ----------
 ax = axs[1]
-ax.plot([x0, x1], [y0, y1_midpoint], 'g-', label="Midpoint step", linewidth=2)
-ax.plot(x1, y1_midpoint, 'go')
-ax.text(x1 - 0.06, y1_midpoint - 0.2, f"({x1}, {y1_midpoint:.1f})", color='green', fontsize=18)
+ax.plot([t0, t1], [x0, x1_midpoint], 'g-', label="Midpoint step", linewidth=2)
+ax.plot(t1, x1_midpoint, 'go')
+ax.text(t1 - 0.06, x1_midpoint - 0.2, f"({t1}, {x1_midpoint:.1f})", color='green', fontsize=18)
 
 # Midpoint estimation
-ax.plot(x_mid, y_mid, 'bo')
-ax.text(x_mid, y_mid + 0.1, f"({x_mid:.1f}, {y_mid:.1f})", color='blue', fontsize=18)
+ax.plot(t_mid, x_mid, 'bo')
+ax.text(t_mid, x_mid + 0.1, f"({t_mid:.1f}, {x_mid:.1f})", color='blue', fontsize=18)
 ax.text(0.5, 1.4, r'slope=1.5', fontsize=20)
 
 # Add arrow to midpoint
-ax.annotate("", xy=(x_mid, y_mid), xytext=(x0, y0),
+ax.annotate("", xy=(t_mid, x_mid), xytext=(t0, x0),
             arrowprops=dict(arrowstyle='->', color='blue', lw=2))
 
 # Add short slope line at midpoint
-slope = f(x_mid, y_mid)
-dx = 0.2
-dy = slope * dx
-ax.plot([x_mid - dx/2, x_mid + dx/2], [y_mid - dy/2, y_mid + dy/2], 'g-', linewidth=2)
+slope = f(t_mid, x_mid)
+dt = 0.2
+dx = slope * dt
+ax.plot([t_mid - dt/2, t_mid + dt/2], [x_mid - dx/2, x_mid + dx/2], 'g-', linewidth=2)
 
 # Exact solution
-ax.plot(x_vals, exact_solution(x_vals), 'r--', linewidth=2)
-ax.plot(1, y_exact, 'ro')
-ax.text(0.8, y_exact + 0.1, f"(1, {y_exact:.2f})", color='red', fontsize=18)
+ax.plot(t_vals, exact_solution(t_vals), 'r--', linewidth=2)
+ax.plot(1, x_exact, 'ro')
+ax.text(0.8, x_exact + 0.1, f"(1, {x_exact:.2f})", color='red', fontsize=18)
 
 ax.set_title("Midpoint", fontsize=18)
 ax.set_xlim(0, 1.2)
@@ -788,7 +788,7 @@ x(t+h) = x(t) + h x'(t) + \frac{h^2}{2!}x''(t) + \cdots + \frac{h^{p-1}}{(p-1)!}
 $$
 for some $\xi$ between $t$ and $t+h$.
 
-Her we consider the initial-value problem $x'(t) = f(t, x(t))$ with exact solution $x(t)$. The **local truncation error** at step $n$ is defined as the error made in a single step starting from the exact solution, divided by the step size $h$:
+Here we consider the initial-value problem $x'(t) = f(t, x(t))$ with exact solution $x(t)$. The **local truncation error** at step $n$ is defined as the error made in a single step starting from the exact solution, divided by the step size $h$:
 $$
 \tau_n = \frac{1}{h}\left|x(t_{n+1}) - x_{n+1}\right|,
 $$

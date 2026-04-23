@@ -1,7 +1,93 @@
 # PDE 3 {#sec-pde3}
 
-::: {.callout-caution}
-This appendix is still undergoing changes, to be released on Thursday of week 9.
+## The Wave Equation
+
+The problems that we have dealt with thus far all model natural diffusion processes: heat transport, molecular diffusion, etc. Another interesting physical phenomenon is that of wave propagation. The 1D *wave equation* is 
+$$
+u_{tt} = c^2 u_{xx}
+$$
+where $c$ is a parameter modelling the stiffness of the medium the wave is travelling through. With homogeneous Dirichlet boundary conditions we can think of this as the behaviour of a guitar string after it has been plucked. If the boundaries are in motion then the model might be of someone wiggling a taut string from one end.
+
+------------------------------------------------------------------------
+
+::: {#exr-6.46}
+🖋 💻 Let us write code to numerically solve the 1D wave equation. As before, we use the notation $U_i^n$ to represent the approximate solution $u(t,x)$ at the point $t=t_n$ and $x=x_i$.
+
+1.  Give a reasonable discretization of the second derivative in time: 
+$$
+ u_{tt}(t_{n}, x_i) \approx \underline{\hspace{1in}}. 
+$$
+
+
+2.  Give a reasonable discretization of the second derivative in space: 
+$$
+ u_{xx}(t_n, x_i) \approx \underline{\hspace{1in}}. 
+$$
+
+
+3.  Put your answers to parts 1 and 2 together with the wave equation to get 
+$$
+ \frac{??? - ??? + ???}{\Delta t^2} = c^2 \frac{??? - ??? + ???}{\Delta x^2}. 
+$$
+
+
+4.  Solve the equation from part 3 for $U_i^{n+1}$. The resulting difference equation is the finite difference scheme for the 1D wave equation.
+
+5.  You should notice that the finite difference scheme for the wave equation references two different times: $U_i^n$ and $U_i^{n-1}$. Based on this observation, what information do we need in order to actually start our numerical solution?
+
+6.  Consider the wave equation $u_{tt} = 2 u_{xx}$ in $x \in (0,1)$ with $u(0,x) = 4x(1-x)$, $u_t(0,x) = 0$, and $u(t,0) = u(t,1) = 0$. Use the finite difference scheme that you built in this problem to approximate the solution to this PDE.
+
+:::
+
+------------------------------------------------------------------------
+
+@fig-6.11 shows the finite difference stencil for the 1D wave equation. Notice that we need two prior time steps in order to advance to the new time step. This means that in order to start the finite difference scheme for the wave equation we need to have information about time $t_0$ and also time $t_1$. We get this information by using the two initial conditions $u(0,x)$ and $u_t(0,x)$.
+
+![The finite difference stencil for the 1D wave equation.](figures/PDE/WaveStencil.png){#fig-6.11 alt="The finite difference stencil for the 1D wave equation."}
+
+------------------------------------------------------------------------
+
+::: {#exr-6.47}
+💻 💬 The ratio $c^2\Delta t^2 / \Delta x^2$ shows up explicitly in the finite difference scheme for the 1D wave equation. Just like in the heat equation, this parameter controls when the finite difference solution will be stable. Experiment with your finite difference solution and conjecture a value of $a = c^2 \Delta t^2 / \Delta x^2$ which divides the regions of stability versus instability. Your answer should be in the form:
+
+*If* $a = c^2\Delta t^2 / \Delta x^2 < \underline{\hspace{0.5in}}$ then the finite difference scheme for the 1D wave equation will be stable. Otherwise it will be unstable.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-6.48}
+💻 Show several plots demonstrating what occurs to the finite difference solution of the wave equation when the parameters are in the unstable region and right on the edge of the unstable region.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-6.49}
+💬 What is the expected error in the finite difference scheme for the 1D wave equation? What does this mean in plain English?
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-6.50}
+💻 💬 Use your finite difference code to solve the 1D wave equation 
+$$
+ u_{tt} = c^2 u_{xx} 
+$$
+ with boundary conditions $u(t,0) = u(t,1) = 0$, initial condition $u(0,x) = 4x(1-x)$, and zero initial velocity. Experiment with different values of $c^2$. What does the parameter $c$ do to the wave? Give a physical interpretation of $c$.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-6.51}
+💻 💬 Solve the 1D wave equation 
+$$
+ u_{tt} = u_{xx} 
+$$
+ with Dirichlet boundary conditions $u(t,0) = 0.4 \sin(\pi t)$ and $u(t,1) = 0$ along with initial condition $u(0,x) = 0$ and zero initial velocity. This time the left-hand boundary is being controlled externally and the string starts off at equilibrium. Give a physical situation where this sort of setup might arise. Then modify your solution so that both sides of the string are being wiggled at different frequencies.
+
 :::
 
 ## The 2D Wave Equation
@@ -36,14 +122,14 @@ $$
 💻 Solve the 2D wave equation on the unit square with $u$ starting at rest and being driven by a wave coming in from one boundary.
 :::
 
-## The Travelling Wave Equation
+## The Transport Equation
 
 Now we turn our attention to a new PDE: the transport equation 
 $$
  u_t + v u_x = 0. 
 $$
 
- In this equation $u(t,x)$ is the height of a wave at time $t$ and spatial location $x$. The parameter $v$ is the velocity of the wave. Imagine this as sending a single solitary wave pulsing down a taught rope or as sending a single pulse of light down a fibre optic cable.
+In this equation $u(t,x)$ is the density of some conserved quantity at time $t$ and spatial location $x$. The parameter $v$ is the velocity at which the quantity is transported. 
 
 
 ------------------------------------------------------------------------
@@ -115,18 +201,18 @@ anim
 
 ------------------------------------------------------------------------
 
-Thus the travelling wave equation $u_t + vu_x = 0$ has a very nice analytic solution which we can always find. Therefore there is no need to ever find a numerical solution -- we can just write down the analytic solution if we are given the initial condition. As it turns out though, the numerical solutions exhibit some very interesting behaviour.
+Thus the transport equation $u_t + vu_x = 0$ has a very nice analytic solution which we can always find. Therefore there is no need to ever find a numerical solution -- we can just write down the analytic solution if we are given the initial condition. As it turns out though, the numerical solutions exhibit some very interesting behaviour.
 
 ------------------------------------------------------------------------
 
 ::: {#exr-6.58}
-🖋 💻 Consider the travelling wave equation $u_t + vu_x = 0$ with initial condition $u(0,x) = f(x)$ for some given function $f$ and boundary condition $u(t,0) = 0$. To build a numerical solution we will again adopt the notation $U_i^n$ for the approximation to $u(t,x)$ at the point $t=t_n$ and $x=x_i$.
+🖋 💻 Consider the transport equation $u_t + vu_x = 0$ with initial condition $u(0,x) = f(x)$ for some given function $f$ and boundary condition $u(t,0) = 0$. To build a numerical solution we will again adopt the notation $U_i^n$ for the approximation to $u(t,x)$ at the point $t=t_n$ and $x=x_i$.
 
 (a)  Write an approximation of $u_t$ using $U_i^{n+1}$ and $U_i^n$.
 
 (b)  Write an approximation of $u_x$ using $U_{i+1}^n$ and $U_i^n$.
 
-(c)  Substitute your answers from parts (a) and (b) into the travelling wave equation and solve for $U_i^{n+1}$. This is our first finite difference scheme for the travelling wave equation.
+(c)  Substitute your answers from parts (a) and (b) into the transport equation and solve for $U_i^{n+1}$. This is our first finite difference scheme for the transport equation.
 
 (d)  Write Python code to get the finite difference approximation of the solution to the PDE. Plot your finite difference solution on top of the analytic solution for $f(x) = e^{-(x-4)^2}$. What do you notice? Can you stabilize this method by changing the values of $\Delta t$ and $\Delta x$ like with did with the heat and wave equations?
 
@@ -134,7 +220,7 @@ Thus the travelling wave equation $u_t + vu_x = 0$ has a very nice analytic solu
 
 ------------------------------------------------------------------------
 
-The finite difference scheme that you built in the previous exercise is called the downwind scheme for the travelling wave equation. @fig-6.12 shows the finite difference stencil for this scheme. We call this scheme "downwind" since we expect the wave to travel from left to right and we can think of a fictitious wind blowing the solution from left to right. Notice that we are using information from "downwind" of the point at the new time step.
+The finite difference scheme that you built in the previous exercise is called the downwind scheme for the transport equation. @fig-6.12 shows the finite difference stencil for this scheme. We call this scheme "downwind" since we expect the wave to travel from left to right and we can think of a fictitious wind blowing the solution from left to right. Notice that we are using information from "downwind" of the point at the new time step.
 
 ![The finite difference stencil for the 1D downwind scheme on the traveling wave equation.](figures/PDE/DownwindStencil.png){#fig-6.12 alt="The finite difference stencil for the 1D downwind scheme on the traveling wave equation."}
 
@@ -148,11 +234,11 @@ The finite difference scheme that you built in the previous exercise is called t
 ------------------------------------------------------------------------
 
 ::: {#exr-6.60}
-💻 One of the troubles with the finite difference scheme that we have built for the travelling wave equation is that we are using the information at our present spatial location and the next spatial location to the right to propagate the solution forward in time. The trouble here is that the wave is moving from left to right, so the interesting information about the next time step's solution is actually coming from the left, not the right. We call this "looking upwind" since you can think of a fictitious *wind* blowing from left to right, and we need to look "upwind" to see what is coming at us. If we write the spatial derivative as 
+💻 One of the troubles with the finite difference scheme that we have built for the transport equation is that we are using the information at our present spatial location and the next spatial location to the right to propagate the solution forward in time. The trouble here is that the wave is moving from left to right, so the interesting information about the next time step's solution is actually coming from the left, not the right. We call this "looking upwind" since you can think of a fictitious *wind* blowing from left to right, and we need to look "upwind" to see what is coming at us. If we write the spatial derivative as 
 $$
  u_x \approx \frac{U_i^n - U_{i-1}^n}{\Delta x} 
 $$
- we still have a first-order approximation of the derivative but we are now looking left instead of right for our spatial derivative. Make this modification in your finite difference code for the travelling wave equation (call it the "upwind method"). Approximate the solution to the same PDE as we worked with in the previous exercises. What do you notice now?
+ we still have a first-order approximation of the derivative but we are now looking left instead of right for our spatial derivative. Make this modification in your finite difference code for the transport equation (call it the "upwind method"). Approximate the solution to the same PDE as we worked with in the previous exercises. What do you notice now?
 
 :::
 
@@ -167,16 +253,16 @@ $$
 ::: {#exr-6.61}
 💬 Complete the following sentences:
 
-1.  In the downwind finite difference scheme for the travelling wave equation, the approximate solution moves at the correct speed, but ...
+1.  In the downwind finite difference scheme for the transport equation, the approximate solution moves at the correct speed, but ...
 
-2.  In the upwind finite difference scheme for the travelling wave equation, the approximate solution moves at the correct speed, but ...
+2.  In the upwind finite difference scheme for the transport equation, the approximate solution moves at the correct speed, but ...
 
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-6.62}
-🖋 💻 💬 Neither the downwind nor the upwind solutions for the travelling wave equation are satisfactory. They completely miss the interesting dynamics of the analytic solution to the PDE. Some ideas for stabilizing the finite difference solution for the travelling wave equation are as follows. Implement each of these ideas and discuss pros and cons of each. Also draw a finite difference stencil for each of these methods.
+🖋 💻 💬 Neither the downwind nor the upwind solutions for the transport equation are satisfactory. They completely miss the interesting dynamics of the analytic solution to the PDE. Some ideas for stabilizing the finite difference solution for the transport equation are as follows. Implement each of these ideas and discuss pros and cons of each. Also draw a finite difference stencil for each of these methods.
 
 1.  Perhaps one of the issues is that we are using first-order methods to approximate $u_t$ and $u_x$. What if we used a second-order approximation for these first derivatives 
 $$
@@ -466,14 +552,14 @@ $$
 ------------------------------------------------------------------------
 
 ::: {#exr-6.82}
-💬 Show the full mathematical details for building a downwind finite difference scheme for the travelling wave equation. Discuss the primary disadvantages of the downwind scheme.
+💬 Show the full mathematical details for building a downwind finite difference scheme for the transport equation. Discuss the primary disadvantages of the downwind scheme.
 
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-6.83}
-💬 Show the full mathematical details for building an upwind finite difference scheme for the travelling wave equation. Discuss the primary disadvantages of the upwind scheme.
+💬 Show the full mathematical details for building an upwind finite difference scheme for the transport equation. Discuss the primary disadvantages of the upwind scheme.
 
 :::
 

@@ -58,7 +58,7 @@ The finite difference stencil for the 2D heat equation is a bit more complicated
 ------------------------------------------------------------------------
 
 ::: {#exr-6.36}
-💻 Now we need to implement the finite difference scheme that you developed in the previous problem. As a model problem, consider the 2D heat equation $u_t = D(u_{xx} + u_{yy})$ on the domain $(x,y) \in [0,1] \times [0,1]$ with the initial condition $u(0,x,y) = \sin(\pi x)\sin(\pi y)$, Dirichlet boundary conditions $u(t,x,0) = u(t,x,1)=u(t,0,y)=u(t,1,y)=0$, and $D=1$. Fill in the holes in the following code chunks.
+💻 🎓 Now we need to implement the finite difference scheme that you developed in the previous problem. As a model problem, consider the 2D heat equation $u_t = D(u_{xx} + u_{yy})$ on the domain $(x,y) \in [0,1] \times [0,1]$ with the initial condition $u(0,x,y) = \sin(\pi x)\sin(\pi y)$, Dirichlet boundary conditions $u(t,x,0) = u(t,x,1)=u(t,0,y)=u(t,1,y)=0$, and $D=1$. Fill in the holes in the following code chunks.
 
 -   First we import the proper libraries and set up the domains for $x$, $y$, and $t$.
 ``` python         
@@ -161,29 +161,27 @@ def animate_solution_2d(t, x, y, U):
 ------------------------------------------------------------------------
 
 ::: {#exr-6.37}
-💻 🎓 Time to do some experimentation with your new 2D heat equation code! Numerically solve the 2D heat equation with different boundary conditions (both Dirichlet and Neumann). Be prepared to present your solutions.
+💻 Time to do some experimentation with your new 2D heat equation code! Numerically solve the 2D heat equation with different boundary conditions (both Dirichlet and Neumann).
 
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-6.2db}
-💻 In order for the forward difference solution to the 2D heat equation on a square domain to be stable we need $D \Delta t / \Delta x^2 < \underline{\hspace{0.5in}}$.
+💻 🎓 In order for the forward difference solution to the 2D heat equation on a square domain to be stable we need $D \Delta t / \Delta x^2 < \underline{\hspace{0.5in}}$.
 
-Experiment with several parameters to empirically determine the bound.
+Experiment with several parameters to empirically determine the bound. It is again a simple fraction that you should be able to guess.
 
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-6.38}
-💻 Now solve the 2D heat equation on a rectangular domain. You will need to make some modifications to your code since it is unlikely that assuming that $\Delta x = \Delta y$ is a good assumption any longer. Again, be prepared to present your solutions.
+💻 Now solve the 2D heat equation on a rectangular domain. You will need to make some modifications to your code since it is unlikely that assuming that $\Delta x = \Delta y$ is a good assumption any longer.
 :::
 
 
 ------------------------------------------------------------------------
-
-## Implicit Methods {#sec-heat_stability}
 
 Let us summarize the stability criteria for the forward difference solutions to the heat equation.
 
@@ -201,21 +199,17 @@ Let us summarize the stability criteria for the forward difference solutions to 
 
 ::: {#exr-6.40}
 #### Hedgehog Errors
-💻 💬 Solve the 2D heat equation on the unit square with homogeneous Dirichlet boundary conditions with the following parameters:
+💻 💬 Solve the 2D heat equation on the unit square with homogeneous Dirichlet boundary conditions with the following parameters: diffusion coefficient $D=1$, step sizes $\Delta x = \Delta y = 0.05$ and $\Delta t = 0.001$ and
+initial condition $u(0,x,y) = \sin(\pi x) \sin(\pi y)$.
 
--   A diffusion coefficient of $D=1$;
-
--   A partition of 21 points in both the $x$ and $y$ direction;
-
--   301 points between 0 and 0.25 for time;
-
--   An initial condition of $u(0,x,y) = \sin(\pi x) \sin(\pi y)$.
-
-What happens near time step number 70?
+Make a 3D plot of the solution at the final time step. Describe what you observe.
 
 :::
 
 ------------------------------------------------------------------------
+
+
+## Implicit Methods {#sec-heat_stability}
 
 It is actually possible to beat the stability criteria given in the previous exercises! What follows are two implicit methods that use a forward-looking scheme to help completely avoid unstable solutions. The primary advantage to these schemes is that we will not need to pay as close attention to the ratio of the time step to the square of the spatial step. Instead, we can take time and spatial steps that are appropriate for the application we have in mind.
 
@@ -224,7 +218,7 @@ It is actually possible to beat the stability criteria given in the previous exe
 ### Backward Difference Method
 
 ::: {#exr-6.43}
-🖋 💻 🎓 For the 1D heat equation $u_t = D u_{xx}$ we have been finding the numerical solution using the explicit finite difference scheme 
+🖋 💻 For the 1D heat equation $u_t = D u_{xx}$ we have been finding the numerical solution using the explicit finite difference scheme 
 $$
 \frac{U_i^{n+1} - U_i^n}{\Delta t} = D \frac{U_{i+1}^{n} - 2U_i^{n} + U_{i-1}^{n}}{\Delta x^2}
 $$
@@ -268,7 +262,7 @@ $$
 $$
 
 
-3.  At this point the structure of the coefficient matrix on the left and the vector sum on the right should be clear (even for more spatial points). It is time for us to start writing some code. we will start with the basic setup of the problem.
+3.  At this point the structure of the coefficient matrix on the left and the vector sum on the right should be clear (even for more spatial points). It is time for us to start writing some code. We will start with the basic setup of the problem.
 
 ``` python         
 import numpy as np
@@ -338,6 +332,21 @@ for n in range(len(t)-1):
 
 ------------------------------------------------------------------------
 
+::: {#exr-backward1}
+💻 🎓 Solve the equation $u_t=0.2 u_{xx}$ with boundary conditions $u(t,0)=u(t,1)=0$ and initial condition $u(0,x)=\sin(\pi x)$ using the backward difference scheme with stepsizes $\Delta x=0.05$ and $\Delta t=0.5$ to determine an approximation of $u(1,0.6)$.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-backward2}
+
+💻 🎓 Solve the equation $u_t=0.5 u_{xx}$ with boundary conditions $u(t,0)=t, u(t,2)=4-t$ and initial condition $u(0,x)=x^2$ using the backward difference scheme with stepsizes $\Delta x=0.1$ and $\Delta t=0.4$ to determine an approximation of $u(4,1)$.
+
+:::
+
+------------------------------------------------------------------------
+
 ### Stability of the Backward Difference Method
 
 The backward difference scheme can be written in matrix form. Rearranging so that all terms at time step $n+1$ are on the left gives
@@ -368,7 +377,7 @@ Since $a > 0$ and $\sin^2(\cdot) \geq 0$, we have $\mu_k \geq 1$ for all $k$ and
 ### The Crank-Nicolson Method
 
 ::: {#exr-6.44}
-🖋 🎓 We conclude this section with one more implicit scheme: the **Crank-Nicolson Method**. In this method we take the average of the forward and backward difference schemes: 
+🖋 We conclude this section with one more implicit scheme: the **Crank-Nicolson Method**. In this method we take the average of the forward and backward difference schemes: 
 $$
 \frac{U_i^{n+1} - U_i^n}{\Delta t} = \frac{1}{2} \left[D \left( \frac{U_{i-1}^n - 2U_i^n + U_{i+1}^n}{\Delta x^2}\right) +D \left(\frac{U_{i-1}^{n+1} - 2U_i^{n+1} + U_{i+1}^{n+1}}{\Delta x^2} \right) \right].
 $$
@@ -413,11 +422,25 @@ $$
 7. 💻 Finally. Write code to solve the 1D Heat Equation implementing the Crank Nicolson method described in this problem. The setup of your code should be largely the same as for the implicit method from @exr-6.43. You will need to construct the matrices $A$ and $B$ as well as the vector $D$. Then your time stepping loop will contain the code from part 6 of this problem.
 
 :::
+------------------------------------------------------------------------
+
+::: {#exr-CN1}
+💻 🎓 Solve the equation $u_t=0.2 u_{xx}$ with boundary conditions $u(t,0)=u(t,1)=0$ and initial condition $u(0,x)=\sin(\pi x)$ using the Crank-Nicolson scheme with stepsizes $\Delta x=0.05$ and $\Delta t=0.5$ to determine an approximation of $u(1,0.6)$.
+
+:::
+
+------------------------------------------------------------------------
+
+::: {#exr-CN2}
+
+💻 🎓 Solve the equation $u_t=0.5 u_{xx}$ with boundary conditions $u(t,0)=t, u(t,2)=4-t$ and initial condition $u(0,x)=x^2$ using the Crank-Nicolson scheme with stepsizes $\Delta x=0.1$ and $\Delta t=0.4$ to determine an approximation of $u(4,1)$.
+
+:::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-6.45}
-🖋 To graphically show the Crank Nicolson method we can again use a finite difference stencil to show where the information is coming from and where it is going to. In @fig-6.10 notice that there are three points at the new time step that are used to calculate the value of $U_i^{n+1}$ at the new time step. Sketch a similar image for the original implicit scheme from @exr-6.43
+🖋 To graphically represent the Crank Nicolson method we can again use a finite difference stencil to show where the information is coming from and where it is going to. In @fig-6.10 notice that there are three points at the new time step that are used to calculate the value of $U_i^{n+1}$ at the new time step. Sketch a similar image for the original implicit scheme from @exr-6.43
 
 ![The finite difference stencil for the Crank Nicolson method.](figures/PDE/HeatStencilCrankNicolson.png){#fig-6.10 alt="The finite difference stencil for the Crank Nicolson method."}
 :::
@@ -453,97 +476,6 @@ $\pm C\Delta t$ terms and leaves an error of order $O(\Delta t^2)$; in combinati
  for the forward and backward difference methods.
 
 
-
-## The Wave Equation
-
-
-The problems that we have dealt with thus far all model natural diffusion processes: heat transport, molecular diffusion, etc. Another interesting physical phenomenon is that of wave propagation. The 1D *wave equation* is 
-$$
-u_{tt} = c^2 u_{xx}
-$$
-where $c$ is a parameter modelling the stiffness of the medium the wave is travelling through. With homogeneous Dirichlet boundary conditions we can think of this as the behaviour of a guitar string after it has been plucked. If the boundaries are in motion then the model might be of someone wiggling a taut string from one end.
-
-------------------------------------------------------------------------
-
-::: {#exr-6.46}
-🖋 💻 Let us write code to numerically solve the 1D wave equation. As before, we use the notation $U_i^n$ to represent the approximate solution $u(t,x)$ at the point $t=t_n$ and $x=x_i$.
-
-1.  Give a reasonable discretization of the second derivative in time: 
-$$
- u_{tt}(t_{n}, x_i) \approx \underline{\hspace{1in}}. 
-$$
-
-
-2.  Give a reasonable discretization of the second derivative in space: 
-$$
- u_{xx}(t_n, x_i) \approx \underline{\hspace{1in}}. 
-$$
-
-
-3.  Put your answers to parts 1 and 2 together with the wave equation to get 
-$$
- \frac{??? - ??? + ???}{\Delta t^2} = c^2 \frac{??? - ??? + ???}{\Delta x^2}. 
-$$
-
-
-4.  Solve the equation from part 3 for $U_i^{n+1}$. The resulting difference equation is the finite difference scheme for the 1D wave equation.
-
-5.  You should notice that the finite difference scheme for the wave equation references two different times: $U_i^n$ and $U_i^{n-1}$. Based on this observation, what information do we need in order to actually start our numerical solution?
-
-6.  Consider the wave equation $u_{tt} = 2 u_{xx}$ in $x \in (0,1)$ with $u(0,x) = 4x(1-x)$, $u_t(0,x) = 0$, and $u(t,0) = u(t,1) = 0$. Use the finite difference scheme that you built in this problem to approximate the solution to this PDE.
-
-:::
-
-------------------------------------------------------------------------
-
-@fig-6.11 shows the finite difference stencil for the 1D wave equation. Notice that we need two prior time steps in order to advance to the new time step. This means that in order to start the finite difference scheme for the wave equation we need to have information about time $t_0$ and also time $t_1$. We get this information by using the two initial conditions $u(0,x)$ and $u_t(0,x)$.
-
-![The finite difference stencil for the 1D wave equation.](figures/PDE/WaveStencil.png){#fig-6.11 alt="The finite difference stencil for the 1D wave equation."}
-
-------------------------------------------------------------------------
-
-::: {#exr-6.47}
-💻 💬 The ratio $c^2\Delta t^2 / \Delta x^2$ shows up explicitly in the finite difference scheme for the 1D wave equation. Just like in the heat equation, this parameter controls when the finite difference solution will be stable. Experiment with your finite difference solution and conjecture a value of $a = c^2 \Delta t^2 / \Delta x^2$ which divides the regions of stability versus instability. Your answer should be in the form:
-
-*If* $a = c^2\Delta t^2 / \Delta x^2 < \underline{\hspace{0.5in}}$ then the finite difference scheme for the 1D wave equation will be stable. Otherwise it will be unstable.
-
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-6.48}
-💻 Show several plots demonstrating what occurs to the finite difference solution of the wave equation when the parameters are in the unstable region and right on the edge of the unstable region.
-
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-6.49}
-💬 What is the expected error in the finite difference scheme for the 1D wave equation? What does this mean in plain English?
-
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-6.50}
-💻 💬 Use your finite difference code to solve the 1D wave equation 
-$$
- u_{tt} = c^2 u_{xx} 
-$$
- with boundary conditions $u(t,0) = u(t,1) = 0$, initial condition $u(0,x) = 4x(1-x)$, and zero initial velocity. Experiment with different values of $c^2$. What does the parameter $c$ do to the wave? Give a physical interpretation of $c$.
-
-:::
-
-------------------------------------------------------------------------
-
-::: {#exr-6.51}
-💻 💬 Solve the 1D wave equation 
-$$
- u_{tt} = u_{xx} 
-$$
- with Dirichlet boundary conditions $u(t,0) = 0.4 \sin(\pi t)$ and $u(t,1) = 0$ along with initial condition $u(0,x) = 0$ and zero initial velocity. This time the left-hand boundary is being controlled externally and the string starts off at equilibrium. Give a physical situation where this sort of setup might arise. Then modify your solution so that both sides of the string are being wiggled at different frequencies.
-
-:::
 
 ------------------------------------------------------------------------
 

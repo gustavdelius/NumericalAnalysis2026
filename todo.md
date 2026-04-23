@@ -52,12 +52,8 @@
       length is not an exact multiple of dt. Probably best to first determine
       an integer number of intervals and then create the vector of times with
       np.linspace and then determine an updated h = t[1] - t[0].
-- [ ] Clarify why instability shows up only after some time. Perhaps modify
-      initial conditions so that instability is clear from the start. Currently
-      it is difficult for students to determine the stability criterion in
-      Exercise 9.5
+- [ ] In Exercise 9.5 ask for a plot of the final time step instead of a plot over the entire time range.
 - [ ] For observing instability, recommend looking at the plot of the final time step.
-- [ ] Fix the second question in the 2nd PDE feedback quiz
 - [ ] Use central difference approximation for advection term
 - [ ] Include more interesting examples
 

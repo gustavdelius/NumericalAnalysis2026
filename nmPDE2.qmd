@@ -1,9 +1,5 @@
 # PDE 2 {#sec-pde2}
 
-::: {.callout-caution}
-This chapter is still undergoing changes, to be released on Thursday of week 9.
-:::
-
 ## Two-dimensional Heat Equation {#sec-heat2d}
 
 Now we transition to the two dimensional heat equation. Instead of thinking of this as heating a long metal rod we can think of heating a thin plate of metal (like a flat cookie sheet). The heat equation models the propagation of the heat energy throughout the 2D surface. In two spatial dimensions the heat equation is 
@@ -324,7 +320,7 @@ plt.show()
 for n in range(len(t)-1):
   b1 = U[n,???] 
   # b1 is a vector of U at step n for the inner spatial nodes
-  b2 = np.zeros(length(b1)) # set up the second right-hand vector
+  b2 = np.zeros(len(b1)) # set up the second right-hand vector
   b2[0] = ???*BCleft(t[n+1]) # fill in the correct first entry
   b2[-1] = ???*BCright(t[n+1]) # fill in the correct last entry
   b = b1 + b2 # The vector "b" is the right side of the equation
@@ -402,15 +398,15 @@ $$
 $$
 
 
-5.  Now for the wonderful part! The entire system of equations from part (a) can be written as 
+5.  Now for the wonderful part! The entire system of equations from part (a) can be written as
 $$
-A \mathcal{U}^{n+1} = B \mathcal{U}^n + D.
+A \mathcal{U}^{n+1} = B \mathcal{U}^n + \mathbf{d}.
 $$
- What are the matrices $A$ and $B$ and what are the vectors $\mathcal{U}^{n+1}$, $\mathcal{U}^n$, and $D$?
+ What are the matrices $A$ and $B$ and what are the vectors $\mathcal{U}^{n+1}$, $\mathcal{U}^n$, and $\mathbf{d}$?
 
-6.  To solve for $\mathcal{U}^{n+1}$ at each time step we simply need to do a linear solve: 
+6.  To solve for $\mathcal{U}^{n+1}$ at each time step we simply need to do a linear solve:
 $$
-\mathcal{U}^{n+1} = A^{-1} \left( B \mathcal{U}^n + D \right).
+\mathcal{U}^{n+1} = A^{-1} \left( B \mathcal{U}^n + \mathbf{d} \right).
 $$
  Of course, we will never do a matrix inverse on a computer. Instead we can lean on tools such as `np.linalg.solve()` to do the linear solve for us.
 
@@ -426,12 +422,35 @@ $$
 ![The finite difference stencil for the Crank Nicolson method.](figures/PDE/HeatStencilCrankNicolson.png){#fig-6.10 alt="The finite difference stencil for the Crank Nicolson method."}
 :::
 
-It turns out that the error terms for the forward and backward difference methods have the form 
-$C\Delta t+O(\Delta t^2)$ and 
-$C\Delta t+O(\Delta t^2)$. Taking the average cancels the 
+------------------------------------------------------------------------
+
+### Stability of the Crank-Nicolson Method
+
+Ignoring the boundary terms (which are fixed and do not grow), the Crank-Nicolson scheme for homogeneous Dirichlet conditions reads
+$$
+A\mathbf{U}_{n+1} = B\mathbf{U}_n,
+$$
+where, using $r = D\Delta t/(2\Delta x^2)$, the matrices $A$ and $B$ are both tridiagonal:
+$$
+A = \begin{pmatrix}1+2r&-r&&\\-r&1+2r&-r&&\\&\ddots&\ddots&\ddots\\&&-r&1+2r\end{pmatrix}, \qquad
+B = \begin{pmatrix}1-2r&r&&\\r&1-2r&r&&\\&\ddots&\ddots&\ddots\\&&r&1-2r\end{pmatrix}.
+$$
+The update formula is $\mathbf{U}_{n+1} = A^{-1}B\,\mathbf{U}_n$, so the amplification matrix is $A^{-1}B$. Using the same Fourier analysis as in @sec-stability-heat, $A$ and $B$ share the same eigenvectors, with eigenvalues
+$$
+\mu_k^A = 1 + 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2, \qquad \mu_k^B = 1 - 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2,
+$$
+for $k=1,\ldots,N_x-1$. The eigenvalues of the amplification matrix $A^{-1}B$ are therefore
+$$
+g_k = \frac{\mu_k^B}{\mu_k^A} = \frac{1 - 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}{1 + 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}.
+$$
+Setting $s = 4r\sin^2(k\pi/(2N_x)) \geq 0$, we have $g_k = (1-s)/(1+s)$. Since $|1-s| \leq 1+s$ for all $s \geq 0$, we conclude $|g_k| \leq 1$ for every $k$ and every $r > 0$. Hence the Crank-Nicolson method is **unconditionally stable**, with no restriction on $\Delta t/(\Delta x)^2$.
+
+It turns out that the error terms for the forward and backward difference methods have the form
+$C\Delta t+O(\Delta t^2)$ and
+$-C\Delta t+O(\Delta t^2)$. Taking the average cancels the
 $\pm C\Delta t$ terms and leaves an error of order $O(\Delta t^2)$; in combination with the space variable, we have an error of order $O(\Delta t^2)+O(\Delta x^2)$
  for the whole method, as compared with $O(\Delta t)+O(\Delta x^2)$
- for the forward and backward difference methods. Like the backward difference method, the Crank-Nicolson method is absolutely stable.
+ for the forward and backward difference methods.
 
 
 
@@ -442,7 +461,7 @@ The problems that we have dealt with thus far all model natural diffusion proces
 $$
 u_{tt} = c^2 u_{xx}
 $$
-where $c$ is a parameter modelling the stiffness of the medium the wave is travelling through. With homogeneous Dirichlet boundary conditions we can think of this as the behaviour of a guitar string after it has been plucked. If the boundaries are in motion then the model might be of someone wiggling a taught string from one end.
+where $c$ is a parameter modelling the stiffness of the medium the wave is travelling through. With homogeneous Dirichlet boundary conditions we can think of this as the behaviour of a guitar string after it has been plucked. If the boundaries are in motion then the model might be of someone wiggling a taut string from one end.
 
 ------------------------------------------------------------------------
 
@@ -461,7 +480,7 @@ $$
 $$
 
 
-3.  Put your answers to parts (a) and (b) together with the wave equation to get 
+3.  Put your answers to parts 1 and 2 together with the wave equation to get 
 $$
  \frac{??? - ??? + ???}{\Delta t^2} = c^2 \frac{??? - ??? + ???}{\Delta x^2}. 
 $$
@@ -469,7 +488,7 @@ $$
 
 4.  Solve the equation from part 3 for $U_i^{n+1}$. The resulting difference equation is the finite difference scheme for the 1D wave equation.
 
-5.  You should notice that the finite difference scheme for the wave equation references two different times: $U_i^n$ and $U_i^{n-1}$. Based on this observation, what information do we need to in order to actually start our numerical solution?
+5.  You should notice that the finite difference scheme for the wave equation references two different times: $U_i^n$ and $U_i^{n-1}$. Based on this observation, what information do we need in order to actually start our numerical solution?
 
 6.  Consider the wave equation $u_{tt} = 2 u_{xx}$ in $x \in (0,1)$ with $u(0,x) = 4x(1-x)$, $u_t(0,x) = 0$, and $u(t,0) = u(t,1) = 0$. Use the finite difference scheme that you built in this problem to approximate the solution to this PDE.
 

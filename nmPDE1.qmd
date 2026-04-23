@@ -88,7 +88,7 @@ There are many different finite difference schemes due to the fact that there ar
 ------------------------------------------------------------------------
 
 ::: {#exr-6.30}
-💻 Now we want to implement your answer to part (d) of the previous exercise to approximate the solution to the following problem: Solve
+💻 🎓 Now we want to implement your answer to part (d) of the previous exercise to approximate the solution to the following problem:
 $$
 u_t = 0.1u_{xx}
 $$
@@ -286,7 +286,7 @@ Hint: the threshold is a simple fraction. If you think you have found a value fo
 ------------------------------------------------------------------------
 
 ::: {#exr-6.32}
-🖋 💻 Consider the one dimensional heat equation with diffusion coefficient $D=1$: 
+🖋 💻 🎓 Consider the one dimensional heat equation with diffusion coefficient $D=1$: 
 $$
  u_t = u_{xx}. 
 $$
@@ -338,10 +338,10 @@ In any initial and boundary value problem such as the heat equation, the boundar
 
 (a)  The Neumann boundary condition $u_x(t,0) = 0$ can be approximated with the first order approximation 
 $$
- u_x(t_n,0) \approx \frac{U_1^n - U_0^n}{\Delta x} \text{ for all } n.
+ u_x(t_n,0) \approx \frac{U_1^n - U_0^n}{\Delta x} \text{ for all } n>0.
 $$
  If we set this approximation to 0 (since $u_x(t,0)=0$) and solve for $U_0^n$ we get an additional constraint at every time step of the numerical solution to the heat equation:
- $$ U_0^n = ??? \text{ for all } n.$$
+ $$ U_0^n = ??? \text{ for all } n>0.$$
 
 (b)  Modify your 1D heat equation code to implement this Neumann boundary condition, plot the numerical solution and verify visually that the Neumann boundary is satisfied.
 

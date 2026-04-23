@@ -19,7 +19,7 @@ $$
 
 3.  Write code to implement the finite difference scheme from part 2 on the domain $(x,y) \in (0,1)\times (0,1)$ with homogeneous Dirichlet boundary conditions, initial condition $u(0,x,y) = \sin(2\pi (x-0.5))\sin(2\pi(y-0.5))$, and zero initial velocity.
 
-4.  Draw the finite difference stencil for the 2D heat equation.
+4.  Draw the finite difference stencil for the 2D wave equation.
 
 :::
 
@@ -158,9 +158,9 @@ $$
 
 ------------------------------------------------------------------------
 
-@fig-6.13 shows the finite difference stencil for the upwind scheme. We call this scheme "up" since we expect the wave to travel from left to right and we can think of a fictitious wind blowing the solution from left to right. Notice that we are using information from "upwind" of the point at the new time step.
+@fig-6.13 shows the finite difference stencil for the upwind scheme. We call this scheme "upwind" since we expect the wave to travel from left to right and we can think of a fictitious wind blowing the solution from left to right. Notice that we are using information from "upwind" of the point at the new time step.
 
-![The finite difference stencil for the 1D downwind scheme on the traveling wave equation.](figures/PDE/UpwindStencil.png){#fig-6.13 alt="The finite difference stencil for the 1D upwind scheme on the traveling wave equation."}
+![The finite difference stencil for the 1D upwind scheme on the traveling wave equation.](figures/PDE/UpwindStencil.png){#fig-6.13 alt="The finite difference stencil for the 1D upwind scheme on the traveling wave equation."}
 
 ------------------------------------------------------------------------
 
@@ -298,7 +298,7 @@ $$
 $$
  Thus we have 6 linear equations: 
 $$
-\begin{aligned} U_0 &= 1 \quad \text{(left boundary condition)}\\ \frac{U_2 - 2U_1 + U_0}{\Delta x^2} &= 0 \\ \frac{U_3 - 2U_2 + U_1}{\Delta x^2} &= 0 \\ \frac{U_4 - 2U_3 + U_2}{\Delta x^2} &= 0 \\ \frac{U_5 - 2U_4 + U_3}{\Delta x^2} &= 0 \\ U_5 &= 0 \quad \text{(right boundary condition).} \end{aligned}
+\begin{aligned} U_0 &= 0 \quad \text{(left boundary condition)}\\ \frac{U_2 - 2U_1 + U_0}{\Delta x^2} &= 0 \\ \frac{U_3 - 2U_2 + U_1}{\Delta x^2} &= 0 \\ \frac{U_4 - 2U_3 + U_2}{\Delta x^2} &= 0 \\ \frac{U_5 - 2U_4 + U_3}{\Delta x^2} &= 0 \\ U_5 &= 1 \quad \text{(right boundary condition).} \end{aligned}
 $$
  Notice that there are really only four unknowns since the boundary conditions dictate two of the temperature values. Rearrange this system of equations into a matrix equation and solve for the unknowns $U_1$, $U_2$, $U_3$, and $U_4$. Your coefficient matrix should be $4 \times 4$.
 
@@ -374,7 +374,7 @@ We are going to start with a $6 \times 6$ grid of points and explicitly write do
 
 (a)  Start by discretizing the 2D Poisson equation $u_{xx} + u_{yy} = f(x,y)$. For simplicity we assume that $\Delta x = \Delta y$ so that we can combine like terms from the $x$ derivative and the $y$ derivative. Fill in the missing coefficients and indices below. 
 $$
-U_{i+1,j} + U_{i,j-1} - (\underline{\hspace{0.2in}}) U_{\underline{\hspace{0.2in}},\underline{\hspace{0.2in}}} + U_{\underline{\hspace{0.2in}},\underline{\hspace{0.2in}}} + U_{\underline{\hspace{0.2in}},\underline{\hspace{0.2in}}} = \Delta x^2 f(x_i,y_i)
+U_{i+1,j} + U_{i,j-1} - (\underline{\hspace{0.2in}}) U_{\underline{\hspace{0.2in}},\underline{\hspace{0.2in}}} + U_{\underline{\hspace{0.2in}},\underline{\hspace{0.2in}}} + U_{\underline{\hspace{0.2in}},\underline{\hspace{0.2in}}} = \Delta x^2 f(x_i,y_j)
 $$
 
 
@@ -406,11 +406,11 @@ $$
 
 (e)  The right-hand side of the matrix equation resulting the your system of equations from part (b) is 
 $$
-\boldsymbol{b} = \Delta x^2 \begin{pmatrix} f(x_1,y_1) \\ f(x_1,y_2) \\ f(x_1,y_3) \\ f(x_1,y_4) \\ f(x_2,y_1) \\ f(x_2,y_2) \\ \vdots \\ \\ f(x_4,y_y) \end{pmatrix}.
+\boldsymbol{b} = \Delta x^2 \begin{pmatrix} f(x_1,y_1) \\ f(x_1,y_2) \\ f(x_1,y_3) \\ f(x_1,y_4) \\ f(x_2,y_1) \\ f(x_2,y_2) \\ \vdots \\ \\ f(x_4,y_4) \end{pmatrix}.
 $$
  Notice the structure of this vector. Why is it structured this way? Why is it useful to notice this?
 
-(f)  Write Python code to solve the problem at hand. Recall that $f(x,y) = -20\exp\left(-\frac{-(x-0.5)^2+(y-0.5)^2}{0.05}\right)$. Show a contour plot of your solution. This will take a little work changing the indices back from $k$ to $i$ and $j$. Think carefully about how you want to code this before you put fingers to keyboard. You might want to use the `np.block()` command to build the coefficient matrix efficiently or you can use loops with carefully chosen indices.
+(f)  Write Python code to solve the problem at hand. Recall that $f(x,y) = -20\exp\left(-\frac{(x-0.5)^2+(y-0.5)^2}{0.05}\right)$. Show a contour plot of your solution. This will take a little work changing the indices back from $k$ to $i$ and $j$. Think carefully about how you want to code this before you put fingers to keyboard. You might want to use the `np.block()` command to build the coefficient matrix efficiently or you can use loops with carefully chosen indices.
 
 (g)  (Challenge) Generalize your code to solve the Poisson equation with a much smaller value of $\Delta x = \Delta y$.
 

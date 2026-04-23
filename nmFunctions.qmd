@@ -7,17 +7,17 @@ How does a computer *understand* a function like $f(x) = e^x$ or $f(x) = \sin(x)
 
 ## Polynomial Approximations {#sec-polynomial_approximations}
 
-A class of functions that computers are very good at working with are polynomial functions. This is because to evaluate a polynomial function at any point we only need to addition and multiplication operations. In this section we will explore how we can use polynomial functions to approximate other functions.
+A class of functions that computers are very good at working with are polynomial functions. This is because to evaluate a polynomial function at any point we only need addition and multiplication operations. In this section we will explore how we can use polynomial functions to approximate other functions.
 
 ::: {#exr-1.22}
 💬 In this exercise you are going to make a bit of a wish list for all of the things that a computer will do when approximating a function. We are going to complete the following sentence:\
 *If we are going to approximate* a smooth function $f(x)$ near the point $x=x_0$ with a simpler function $g(x)$ then ...
 
-(I will get us started with the first two things that seems natural to wish for. The rest of the wish list is for you to complete.)
+(I will get us started with the first two things that seem natural to wish for. The rest of the wish list is for you to complete.)
 
 -   the functions $f(x)$ and $g(x)$ should agree at $x=x_0$. In other words, $f(x_0) = g(x_0)$
 
--   the function $g(x)$ should only involve addition, subtraction, multiplication, division, and integer exponents since computer are very good at those sorts of operations.
+-   the function $g(x)$ should only involve addition, subtraction, multiplication, division, and integer exponents since computers are very good at those sorts of operations.
 
 -   if $f(x)$ is increasing / decreasing near $x=x_0$ then $g(x)$ ...
 
@@ -64,7 +64,7 @@ In the next several problems you will unpack the polynomial approximations of $f
 
 For all of the questions below let us work with the function $f(x) = e^x$.
 
-1.  The function $g_0(x) = 1$ matches $f(x) = e^x$ exactly at the point $x=0$ since $f(0) = e^0 = 1$. Furthermore if $x$ is very very close to $0$ then the functions $f(x)$ and $g_0(x)$ are really close to each other. Hence we could say that $g_0(x) = 1$ is an approximation of the function $f(x) = e^x$ for values of $x$ very very close to $x=0$. Admittedly, though, it is probably pretty clear that this is a horrible approximation for any $x$ just a little bit away from $x=0$.
+1.  The function $g_0(x) = 1$ matches $f(x) = e^x$ exactly at the point $x=0$ since $f(0) = e^0 = 1$. Furthermore if $x$ is very close to $0$ then the functions $f(x)$ and $g_0(x)$ are really close to each other. Hence we could say that $g_0(x) = 1$ is an approximation of the function $f(x) = e^x$ for values of $x$ very close to $x=0$. Admittedly, though, it is probably pretty clear that this is a horrible approximation for any $x$ just a little bit away from $x=0$.
 
 2.  Let us get a better approximation. What if we insist that our approximation $g_1(x)$ matches $f(x) = e^x$ exactly at $x=0$ and ALSO has exactly the same first derivative as $f(x)$ at $x=0$.
 
@@ -90,7 +90,7 @@ f = np.exp(x)
 g0 = np.ones_like(x)
 g1 = 1 + x
 
-# plot each of the functions 
+# plot each of the functions
 # (notice that they will be on the same axes)
 plt.plot(x, f, 'r-', label=r"$f(x)=e^x$")
 plt.plot(x, g0, 'k--', label=r"constant")
@@ -110,17 +110,17 @@ plt.show()
 🖋 Let us extend the idea from the previous problem to much better approximations of the function $f(x) = e^x$.
 
 1.  Let us build a function $g_2(x)$ that matches $f(x)$ exactly at $x=0$, has exactly the same first derivative as $f(x)$ at $x=0$, AND has exactly the same second derivative as $f(x)$ at $x=0$. To do this we will use a quadratic function. For a quadratic approximation of a function we just take a slight extension to the point-slope form of a line and use the equation $$
-     g_2(x) = f(x_0) + f'(x_0) (x-x_0) + \frac{f''(x_0)}{2} (x-x_0)^2. 
+     g_2(x) = f(x_0) + f'(x_0) (x-x_0) + \frac{f''(x_0)}{2} (x-x_0)^2.
     $$ In this case we are using $x_0 = 0$ so the quadratic approximation function looks like $$
-     g_2(x) = f(0) + f'(0) x + \frac{f''(0)}{2} x^2. 
+     g_2(x) = f(0) + f'(0) x + \frac{f''(0)}{2} x^2.
     $$
 
     1.  Find the quadratic approximation for $f(x) = e^x$.
 
-    3. 💻 Add your new function to the plot you created in the previous problem.
+    2. 💻 Add your new function to the plot you created in the previous problem.
 
 2.  Let us keep going!! Next we will do a cubic approximation. A cubic approximation takes the form $$
-     g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}(x-x_0)^3 
+     g_3(x) = f(x_0) + f'(x_0) (x-x_0) + \frac{f''(x_0)}{2}(x-x_0)^2 + \frac{f'''(x_0)}{3!}(x-x_0)^3
     $$
 
     1.  Find the cubic approximation for $f(x) = e^x$.
@@ -155,7 +155,8 @@ def exp_approx(x, n):
     approximation = 1.0
     # Add higher-order terms
     for i in range(1, n + 1):
-        approximation += # TODO: calculate the i'th term of the Taylor series
+        term = ...  # TODO: calculate the ith term of the Taylor series
+        approximation += term
     return approximation
 ```
 Make sure you perfectly understand the code. Use the AI to explain everything to you in detail. You can select parts of the code and ask the AI questions like "Why do we need to use `range(1, n + 1)`?" and "What does `approximation +=` do?"
@@ -188,18 +189,18 @@ What we have been exploring so far in this section is the **Taylor Series** of a
 
 ::: {#def-1.3}
 #### Taylor Series
-If $f(x)$ is an infinitely differentiable function at the point $x_0$ then 
+If $f(x)$ is analytic at the point $x_0$, then
 $$
- f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2}(x-x_0)^2 + \cdots \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \cdots 
+ f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2}(x-x_0)^2 + \cdots \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \cdots
 $$
-for any reasonably small interval around $x_0$. The infinite polynomial expansion is called the **Taylor Series** of the function $f(x)$. Taylor Series are named for the mathematician [Brook Taylor](https://en.wikipedia.org/wiki/Brook_Taylor).
+on some interval around $x_0$. The infinite polynomial expansion is called the **Taylor Series** of the function $f(x)$. Taylor Series are named for the mathematician [Brook Taylor](https://en.wikipedia.org/wiki/Brook_Taylor).
 :::
 
 ------------------------------------------------------------------------
 
-The Taylor Series of a function is often written with summation notation as 
+The Taylor Series of a function is often written with summation notation as
 $$
- f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k. 
+ f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k.
 $$
 Do not let the notation scare you. In a Taylor Series you are just saying: *give me a function that*
 
@@ -215,13 +216,13 @@ Do not let the notation scare you. In a Taylor Series you are just saying: *give
 
 (Take a moment and make sure that the summation notation makes sense to you.)
 
-Moreover, Taylor Series are built out of the easiest types of functions: polynomials. Computers are rather good at doing computations with addition, subtraction, multiplication, division, and integer exponents, so Taylor Series are a natural way to express functions in a computer. The down side is that we can only get true equality in the Taylor Series if we have infinitely many terms in the series. A computer cannot do infinitely many computations. So, in practice, we **truncate** Taylor Series after many terms and think of the new polynomial function as being *close enough* to the actual function so far as we do not stray too far from the anchor $x_0$.
+Moreover, Taylor Series are built out of the easiest types of functions: polynomials. Computers are rather good at doing computations with addition, subtraction, multiplication, division, and integer exponents, so Taylor Series are a natural way to express functions in a computer. The downside is that we can only get true equality in the Taylor Series if we have infinitely many terms in the series. A computer cannot do infinitely many computations. So, in practice, we **truncate** Taylor Series after many terms and think of the new polynomial function as being *close enough* to the actual function so long as we do not stray too far from the anchor $x_0$.
 
 
 ------------------------------------------------------------------------
 
 ::: {#exr-1.32}
-🖋 Do all of the calculations to show that the Taylor Series centred at $x_0 = 0$ for the function $f(x) = \sin(x)$ is indeed 
+🖋 Do all of the calculations to show that the Taylor Series centred at $x_0 = 0$ for the function $f(x) = \sin(x)$ is indeed
 $$
  \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots .
 $$
@@ -230,15 +231,15 @@ $$
 ------------------------------------------------------------------------
 
 ::: {#exr-1.33}
-💻 Write a Pyton function `sin_approx(x, n)` that computes the $n$th order Taylor Series approximation of $\sin(x)$ centred at $x_0 = 0$. Test your function by comparing its output to `np.sin(x)` for a few values of $x$ and $n$. Use it to make a plot of the first three approximations for $x$ in the range $[-\pi, \pi]$ similar to the plots you made for approximations of $e^x$ above.
+💻 Write a Python function `sin_approx(x, n)` that computes the $n$th order Taylor Series approximation of $\sin(x)$ centred at $x_0 = 0$. Test your function by comparing its output to `np.sin(x)` for a few values of $x$ and $n$. Use it to make a plot of the first three approximations for $x$ in the range $[-\pi, \pi]$ similar to the plots you made for approximations of $e^x$ above.
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#exr-1.34}
-🖋 Let us compute a Taylor Series that is not centred at $x_0 = 0$. For example, let us approximate the function $f(x) = \log (x)$ near $x_0 = 1$. Near the point $x_0 = 1$, the Taylor Series approximation will take the form 
+🖋 Let us compute a Taylor Series that is not centred at $x_0 = 0$. For example, let us approximate the function $f(x) = \log (x)$ near $x_0 = 1$. Near the point $x_0 = 1$, the Taylor Series approximation will take the form
 $$
- f(x) = f\left( 1 \right) + f'\left( 1 \right)\left( x - 1 \right) + \frac{f''\left( 1 \right)}{2!}\left( x - 1 \right)^2 + \frac{f'''\left( 1 \right)}{3!}\left( x - 1 \right)^3 + \cdots 
+ f(x) = f\left( 1 \right) + f'\left( 1 \right)\left( x - 1 \right) + \frac{f''\left( 1 \right)}{2!}\left( x - 1 \right)^2 + \frac{f'''\left( 1 \right)}{3!}\left( x - 1 \right)^3 + \cdots
 $$
 
 Write the first several terms of the Taylor Series for $f(x) = \log x$ centred at $x_0 = 1$ until you get a feel for the pattern.
@@ -247,7 +248,7 @@ Write the first several terms of the Taylor Series for $f(x) = \log x$ centred a
 ------------------------------------------------------------------------
 
 ::: {#exr-1.34b}
-💻 Write a Pyton function `log_approx(x, n)` that computes the $n$th order Taylor Series approximation of $\log(x)$ centred at $x_0 = 1$. Use it to build the plot below showing the approximations. 
+💻 Write a Python function `log_approx(x, n)` that computes the $n$th order Taylor Series approximation of $\log(x)$ centred at $x_0 = 1$. Use it to build the plot below showing the approximations.
 
 ```{python}
 #| label: fig-1.2
@@ -259,18 +260,18 @@ import matplotlib.pyplot as plt
 
 def log_approx(x, n):
     """
-    Computes the nth order Taylor series approximation of e^x at x=0.
+    Computes the nth order Taylor series approximation of log(x) at x=1.
 
     Parameters:
     x (float): The value at which to evaluate the approximation.
     n (int): The order of the Taylor series expansion.
 
     Returns:
-    float: The nth order Taylor approximation of e^x.
+    float: The nth order Taylor approximation of log(x).
     """
-    if n < 1:
-        raise ValueError("n must be at least 1")
-    # Start with 1st-order approximation
+    if n < 0:
+        raise ValueError("n must be at least 0")
+    # Start with the zero-order approximation
     one_minus_x = 1.0 - x
     approximation = 0
     power = 1
@@ -290,7 +291,7 @@ g4 = log_approx(x,4)
 
 # plot each of the functions
 # (notice that they will be on the same axes)
-plt.plot(x, f, 'r-', label=r"$f(x)=e^x$") # Red solid
+plt.plot(x, f, 'r-', label=r"$f(x)=\log(x)$") # Red solid
 plt.plot(x, g1, 'g:', label=r"linear")   # Green dotted
 plt.plot(x, g2, 'm-.', label=r"quadratic") # Magenta dash-dot
 plt.plot(x, g3, 'c:', label=r"cubic")   # Cyan dotted
@@ -309,14 +310,14 @@ plt.show()
 ------------------------------------------------------------------------
 
 ::: {#exm-1.4}
-Let us conclude this brief section by examining an interesting example. Consider the function 
+Let us conclude this brief section by examining an interesting example. Consider the function
 $$
- f(x) = \frac{1}{1-x}. 
-$$ 
-If we build a Taylor Series centred at $x_0 = 0$ it is not too hard to show that we get 
+ f(x) = \frac{1}{1-x}.
 $$
- f(x) = 1 + x + x^2 + x^3 + x^4 + x^5 + \cdots 
-$$ 
+If we build a Taylor Series centred at $x_0 = 0$ it is not too hard to show that we get
+$$
+ f(x) = 1 + x + x^2 + x^3 + x^4 + x^5 + \cdots
+$$
 (you should stop now and verify this!). However, if we plot the function $f(x)$ along with several successive approximations for $f(x)$ we find that beyond $x=1$ we do not get the correct behaviour of the function (see @fig-1.3). More specifically, we cannot get the Taylor Series to change behaviour across the vertical asymptote of the function at $x=1$. This example is meant to point out the fact that a Taylor Series will only ever make sense *near* the point at which you centre the expansion. For the function $f(x) = \frac{1}{1-x}$ centred at $x_0 = 0$ we can only get good approximations within the interval $x \in (-1,1)$ and no further.
 
 ```{python}
@@ -335,7 +336,7 @@ y2 = 1 + x
 y3 = 1 + x + x**2
 y4 = 1 + x + x**2 + x**3 + x**4 + x**5 + x**6 + x**7 + x**8
 
-# plot each of the functions 
+# plot each of the functions
 plt.plot(x, y0, 'r-', label=r"$f(x)=1/(1-x)$")
 plt.plot(x, y1, 'c-', label=r"constant")
 plt.plot(x, y2, 'g:', label=r"linear")
@@ -369,7 +370,7 @@ Of course you learned all this and more in your first-year Calculus but I hope i
 
 ## Truncation Error {#sec-truncation_error}
 
-The great thing about Taylor Series is that they allow for the representation of potentially very complicated functions as polynomials -- and polynomials are easily dealt with on a computer since they involve only addition, subtraction, multiplication, division, and integer powers. The down side is that the order of the polynomial is infinite. Hence, every time we use a Taylor series on a computer, what we are actually going to be using is a **Truncated Taylor Series** where we only take a finite number of terms. The idea here is simple in principle:
+The great thing about Taylor Series is that they allow for the representation of potentially very complicated functions as polynomials, and polynomials are easily dealt with on a computer since they involve only addition, subtraction, multiplication, division, and integer powers. The downside is that the order of the polynomial is infinite. Hence, every time we use a Taylor series on a computer, what we are actually going to be using is a **Truncated Taylor Series** where we only take a finite number of terms. The idea here is simple in principle:
 
 -   If a function $f(x)$ has a Taylor Series representation it can be written as an infinite sum.
 
@@ -381,19 +382,19 @@ The great thing about Taylor Series is that they allow for the representation of
 
 -   and everything that we just chopped off of the end is called the **remainder** for the finite sum.
 
-Let us be a bit more concrete about it. The Taylor Series for $f(x) = e^x$ centred at $x_0 = 0$ is 
+Let us be a bit more concrete about it. The Taylor Series for $f(x) = e^x$ centred at $x_0 = 0$ is
 $$
- e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots. 
+ e^x = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \cdots.
 $$
 
 When we truncate this series at order $n$, we separate it into an approximation and a remainder:
 $$
-e^x = \underbrace{1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!}}_{\text{$n^{th}$ order approximation}} + \underbrace{\frac{x^{n+1}}{(n+1)!} + \frac{x^{n+2}}{(n+2)!} + \cdots}_{\text{remainder}}. 
+e^x = \underbrace{1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!}}_{\text{$n^{th}$ order approximation}} + \underbrace{\frac{x^{n+1}}{(n+1)!} + \frac{x^{n+2}}{(n+2)!} + \cdots}_{\text{remainder}}.
 $$
 
-For small values of $x$ near $x_0 = 0$, the largest term in the remainder is $\frac{x^{n+1}}{(n+1)!}$, since higher powers of $x$ become progressively smaller. We use **Big-O notation** to express this: 
+For small values of $x$ near $x_0 = 0$, the largest term in the remainder is $\frac{x^{n+1}}{(n+1)!}$, since higher powers of $x$ become progressively smaller. We use **Big-O notation** to express this:
 $$
-e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+1}), 
+e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+1}),
 $$
 where the notation $\mathcal{O}(x^{n+1})$ (read "Big-O of $x^{n+1}$") signifies that the error is bounded by $C|x|^{n+1}$ for some constant $C$ as $x \to 0$. This indicates that the error scales like $x^{n+1}$ for values of $x$ near the center $x_0=0$.
 
@@ -412,7 +413,7 @@ Keep in mind that this sort of analysis is only good for values of $x$ that are 
 
 Then compare your approximate values to Python's values $f(0.1)=e^{0.1} \approx$ `np.exp(0.1)` $=1.1051709180756477$ and $f(0.2)=e^{0.2} \approx$ `np.exp(0.2)` $=1.2214027581601699$ to calculate the truncation errors $\epsilon_n(0.1)=|f(0.1)-f_n(0.1)|$ and $\epsilon_n(0.2)=|f(0.2)-f_n(0.2)|$.
 
-Fill in the blanks in the table. If you like, you can copy and paste the 
+Fill in the blanks in the table. If you like, you can copy and paste the
 code and extend it to fill in the missing rows. For a bit of explanation of the syntax of the print commands see @exm-A.20 but for more detailed information ask Gemini.
 
 ```{python}
@@ -499,9 +500,9 @@ for n in range(2,6):
 ------------------------------------------------------------------------
 
 ::: {#exr-1.39}
-💻 To test your conjecture, examine the truncation error for the sine function near $x_0 = 0$. You know that the sine function has the Taylor Series centred at $x_0 = 0$ as 
+💻 To test your conjecture, examine the truncation error for the sine function near $x_0 = 0$. You know that the sine function has the Taylor Series centred at $x_0 = 0$ as
 $$
- f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots. 
+ f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots.
 $$
 So there are only approximations of odd order. Use the truncated Taylor series to approximate $f(0.1)=\sin(0.1)$ and $f(0.2)=\sin(0.2)$ and use Python's values `np.sin(0.1)` and `np.sin(0.2)` to calculate the truncation errors $\epsilon_n(0.1)=|f(0.1)-f_n(0.1)|$ and $\epsilon_n(0.2)=|f(0.2)-f_n(0.2)|$.
 
@@ -552,8 +553,8 @@ $$
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.40}
-💬 🖋 Write down your groups's observations about how the truncation error changes as $x$ changes. Explain this in terms of the form of the remainder of the truncated Taylor series.
+::: {#exr-log-truncation-observations}
+💬 🖋 Write down your group's observations about how the truncation error changes as $x$ changes. Explain this in terms of the form of the remainder of the truncated Taylor series.
 :::
 
 
@@ -567,7 +568,7 @@ You know the Taylor Series expansion for $f(x) = \sin(x)$ centred at $x_0 = 0$:
 (b) Complete the Python code to calculate the Taylor expansion for $f(x) = \sin(x)$ centred at $x_0 = 0$ up to order $n$. [4 marks]
 
 
-``` python
+```python
 
 def sin_taylor(x, n):
     """
@@ -576,11 +577,11 @@ def sin_taylor(x, n):
     ....
     for i in range(...):
         ....
-    
+
     return result
 ```
 
-(c) i) If we only keep terms up to $x^3$ in this Taylor Series expansion, what is the 
+(c) i) If we only keep terms up to $x^3$ in this Taylor Series expansion, what is the
 largest integer $n$ so that the truncation error is $O(x^n)$? [2 marks]
 
     ii) If we use the same approximation to calculate $\sin(0.05)$ instead of $\sin(0.1)$, by what factor do we expect the truncation error to decrease? [2 marks]
@@ -604,10 +605,10 @@ Similar to how a polynomial $p(x)$ is determined by giving the coefficients in f
 
 ### A Single Neuron {#sec-single-neuron}
 
-Let us start by building up the components of a neural network one piece at a time. The fundamental building block is called a **neuron**. 
+Let us start by building up the components of a neural network one piece at a time. The fundamental building block is called a **neuron**.
 
 ::: {#exr-1.41}
-🖋 Consider the simple function 
+🖋 Consider the simple function
 $$
 f(x) = \max(0, x).
 $$
@@ -622,7 +623,7 @@ The function $g(x) = \max(0, x)$ is called the **Rectified Linear Unit** or **Re
 
 The ReLU function is an example of what is called an **activation function** in neural networks. The idea is that the neuron "activates" (produces a non-zero output) only when the input exceeds a certain threshold.
 
-::: {#exr-1.42}
+::: {#exr-nn-param-relu}
 🖋 Now let us make our neuron a bit more interesting by allowing it to have adjustable parameters.
 
 Consider the function
@@ -648,8 +649,8 @@ where $w$ and $b$ are parameters that we can choose. These are called the **weig
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.43}
-🖋 So far we have been working with a neuron that takes a single input $x$. In many applications, we want to work with functions of multiple variables. 
+::: {#exr-nn-two-inputs}
+🖋 So far we have been working with a neuron that takes a single input $x$. In many applications, we want to work with functions of multiple variables.
 
 Suppose we have two inputs $x_1$ and $x_2$, and we define a neuron as
 $$
@@ -672,7 +673,7 @@ Shade that area in your sketch from part 2.
 
 A single neuron can detect when the input crosses a particular threshold. But to approximate more complex functions, we need to combine multiple neurons together. Let us explore this idea.
 
-::: {#exr-1.44}
+::: {#exr-nn-two-neurons}
 🖋 Suppose we have two neurons, both taking the same input $x$, but with different weights and biases:
 \begin{align}
 h_1(x) &= \max(0, w_1 x + b_1) \\
@@ -695,26 +696,26 @@ Consider the specific case where $w_1 = 1, b_1 = -1$ and $w_2 = -1, b_2 = 1$.
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.45}
+::: {#exr-nn-weighted-relu}
 🖋 Rather than just adding two ReLU neurons, consider the weighted combination:
 $$
 f(x) = c_1 h_1(x) + c_2 h_2(x)
 $$
 where $c_1$ and $c_2$ are **output weights** that can be positive or negative.
 
-Let $h_1(x) = \max(0, x)$ and $h_2(x) = \max(0, x - 1)$. 
-   
+Let $h_1(x) = \max(0, x)$ and $h_2(x) = \max(0, x - 1)$.
+
 - What is $f(x) = h_1(x) - 2h_2(x)$ for $x < 0$?
 - What is $f(x) = h_1(x) - 2h_2(x)$ for $0 \leq x < 1$?
 - What is $f(x) = h_1(x) - 2h_2(x)$ for $x \geq 1$?
-   
-By hand, sketch the graph of this function. 
+
+By hand, sketch the graph of this function.
 
 :::
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.45}
+::: {#exr-nn-triangular-bump}
 🖋 In the previous exercise you created a function with a triangular bump
 but the function continued decreasing to negative values beyond $x=2$. Now
 see if you can find a way to combine three ReLU neurons to
@@ -723,7 +724,7 @@ create a triangular bump function that:
 - is zero for $x < 0$ and $x > 2$
 - equals $x$ for $0 \leq x \leq 1$
 - equals $2-x$ for $1 < x \leq 2$
-   
+
 1. Write down the weights $w_1, b_1, w_2, b_2, w_3, b_3$ and output weights $c_1, c_2$ and $c_3$ that produce the desired function. Hint: You need $h_3$ to "cancel out" the negative values after $x=2$.
 
 2. Sketch the graph of your function to verify that it works.
@@ -753,14 +754,14 @@ The structure is as follows:
    $$
    f(x) = c_1 h_1(x) + c_2 h_2(x) + \cdots + c_n h_n(x) + c_0
    $$
-   where $c_0, c_1, \ldots, c_n$ are the output layer parameters. 
+   where $c_0, c_1, \ldots, c_n$ are the output layer parameters.
 
 We can write this more compactly using summation notation:
 $$
 f(x) = \sum_{i=1}^{n} c_i \max(0, w_i x + b_i) + c_0.
 $$
 
-``` {python}
+```{python}
 #| echo: false
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -768,31 +769,31 @@ import numpy as np
 
 fig, ax = plt.subplots(figsize=(8, 4))
 ax.axis('off')
-    
+
 # Coordinates
 input_x = 0.1
 hidden_x = 0.5
 output_x = 0.9
-    
+
 input_y = 0.5
 hidden_ys = [0.2, 0.5, 0.8]
 output_y = 0.5
-    
+
 radius = 0.05
-    
+
 # Draw Nodes
-    
+
 # Input
 circle = patches.Circle((input_x, input_y), radius, facecolor='white', edgecolor='black', zorder=10)
 ax.add_patch(circle)
 ax.text(input_x, input_y, "$x$", ha='center', va='center', fontsize=12, zorder=11)
-    
+
 # Hidden
 for i, y in enumerate(hidden_ys):
     circle = patches.Circle((hidden_x, y), radius, facecolor='white', edgecolor='black', zorder=10)
     ax.add_patch(circle)
     ax.text(hidden_x, y, f"$h_{i+1}$", ha='center', va='center', fontsize=12, zorder=11)
-        
+
     # Connection from Input
     ax.annotate("", xy=(hidden_x - radius, y), xytext=(input_x + radius, input_y),
                 arrowprops=dict(arrowstyle="->", color="black", shrinkA=0, shrinkB=0))
@@ -800,7 +801,7 @@ for i, y in enumerate(hidden_ys):
     mid_x = (input_x + hidden_x) / 2
     mid_y = (input_y + y) / 2
     ax.text(mid_x, mid_y + 0.05 if y > input_y else mid_y - 0.05, f"$w_{i+1}$", ha='center', fontsize=10)
-        
+
     # Bias
     ax.annotate("", xy=(hidden_x, y + radius), xytext=(hidden_x, y + radius + 0.1),
                 arrowprops=dict(arrowstyle="->", color="blue", shrinkA=0, shrinkB=0))
@@ -810,7 +811,7 @@ for i, y in enumerate(hidden_ys):
 circle = patches.Circle((output_x, output_y), radius, facecolor='white', edgecolor='black', zorder=10)
 ax.add_patch(circle)
 ax.text(output_x, output_y, "$f(x)$", ha='center', va='center', fontsize=12, zorder=11)
-    
+
 # Connections from Hidden to Output
 for i, y in enumerate(hidden_ys):
     ax.annotate("", xy=(output_x - radius, output_y), xytext=(hidden_x + radius, y),
@@ -824,7 +825,7 @@ for i, y in enumerate(hidden_ys):
 ax.annotate("", xy=(output_x, output_y + radius), xytext=(output_x, output_y + radius + 0.15),
             arrowprops=dict(arrowstyle="->", color="blue", shrinkA=0, shrinkB=0))
 ax.text(output_x, output_y + radius + 0.16, "$c_0$", ha='center', va='bottom', color="blue", fontsize=10)
-    
+
 # Labels
 ax.text(input_x, 0.05, "Input", ha='center', fontsize=12, fontweight='bold')
 ax.text(hidden_x, 0.05, "Hidden Layer", ha='center', fontsize=12, fontweight='bold')
@@ -838,41 +839,36 @@ plt.tight_layout()
 This function $f(x)$ is determined by the parameters:
 
 - Hidden layer weights: $w_1, w_2, \ldots, w_n$
-- Hidden layer biases: $b_1, b_2, \ldots, b_n$  
+- Hidden layer biases: $b_1, b_2, \ldots, b_n$
 - Output weights: $c_1, c_2, \ldots, c_n$
 - Output bias: $c_0$
 
-That gives us a total of $3n + 1$ parameters to work with. 
+That gives us a total of $3n + 1$ parameters to work with.
 
-Note that, due to the simple linear nature of the
-ReLU activation function that we have chosen to use here, we can absorb the
-weights of the hidden layer neurons into a rescaling of the of the output weights and
-the biases. This would not be true for more general activation functions.
-
-So we choose to set all hidden weights to $1$ and thus work with 
+For the one-dimensional piecewise linear examples below, it is enough to use hidden neurons with weight $1$. The biases place the knots, and the output weights change the slopes from one interval to the next. Thus we choose to work with
 $$
 f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 $$
 
 The following Python code implements such a neural network. Make sure you understand the code.
 
-``` {python}
+```{python}
 import numpy as np
 
 def two_layer_network(x, biases, output_weights, output_bias=0):
     """
     Evaluates a two-layer neural network approximation.
-    
+
     Parameters:
-    x (float): The value at which to evaluate the network.
+    x (float or array): The value or values at which to evaluate the network.
     biases (list or array): Biases for hidden layer
         These determine the knot points: x_i = -b_i
     output_weights (list or array) : Weights for output layer
     output_bias (float): Bias for output layer (default: 0)
-    
+
     Returns:
     --------
-    float: The output of the neural network.
+    float or array: The output of the neural network.
     """
     f_nn = output_bias * np.ones_like(x)  # bias term
     for i in range(len(biases)):
@@ -884,7 +880,7 @@ def two_layer_network(x, biases, output_weights, output_bias=0):
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.47}
+::: {#exr-nn-flexibility}
 💬 Explain in your own words why a two-layer neural network is flexible enough to approximate many different functions. How do the output weights control the shape of the approximation?
 
 How is this similar to polynomial approximation? How is it different?
@@ -893,21 +889,21 @@ How is this similar to polynomial approximation? How is it different?
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.49}
+::: {#exr-nn-sine}
 💻 In this exercise we will approximate a smooth function with a neural network using a simple but powerful idea: we can create a piecewise linear approximation by using a sum of ReLU neurons, each of which activates at a new point. Each ReLU neuron that activates at a new point changes the slope of our piecewise linear approximation.
 
 Consider approximating $f(x) = \sin(x)$ on the interval $[0, \pi]$ using a two-layer neural network. We'll place ReLU neurons at several "knot points" along the curve, and each neuron will adjust the slope.
 
-1. Understanding slope changes: Suppose we use knot points at $x_1 = -b_1 = 0, x_2 = -b_2 = \pi/2$. 
-   
+1. Understanding slope changes: Suppose we use knot points at $x_1 = -b_1 = 0, x_2 = -b_2 = \pi/2$.
+
    - For $x \in [0, \pi/2)$: What is the slope of $f_{nn}(x)$? (Hint: which neurons are active?)
    - For $x \in [\pi/2, \pi)$: What is the slope?
-   
+
    Explain how the output weight $c_2$ controls the change in slope at $x = \pi/2$.
-   
-   - Suggest a choice for the output weights $c_0, c_1, c_2$ that you think will give some kind of crude approximation of $\sin(x)$ on the interval $[0,\pi]$. Use the Python function `plot_neural_network` provided below to make a plot of your approximation.
-   
-2.   Use the Python function `plot_neural_network` with 4 knot points at $x = 0, \pi/4, \pi/2, 3\pi/4$. Try to find output weights that create a good approximation. 
+
+   - Suggest a choice for the output bias $c_0$ and output weights $c_1, c_2$ that you think will give some kind of crude approximation of $\sin(x)$ on the interval $[0,\pi]$. Use the Python function `plot_neural_network` provided below to make a plot of your approximation.
+
+2.   Use the Python function `plot_neural_network` with 4 knot points at $x = 0, \pi/4, \pi/2, 3\pi/4$. Try to find output weights that create a good approximation.
 
 3. Calculate the maximum approximation error and discuss how it could be improved.
 
@@ -915,15 +911,15 @@ Consider approximating $f(x) = \sin(x)$ on the interval $[0, \pi]$ using a two-l
 
 **Python helper function:**
 
-``` {python}
+```{python}
 import numpy as np
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
 
 def plot_neural_network(biases, output_weights, output_bias=0,
                         x_range=(0, np.pi), target_func=np.sin):
     """
     Plot a two-layer neural network approximation.
-    
+
     Parameters:
     biases (list or array): Biases for hidden layer
         These determine the knot points: x_i = -b_i
@@ -933,36 +929,36 @@ def plot_neural_network(biases, output_weights, output_bias=0,
         (x_min, x_max) for plotting (default: (0, np.pi))
     target_func : function
         The target function to approximate (default: np.sin)
-    
+
     Returns:
     float: Maximum absolute error
     """
     x = np.linspace(x_range[0], x_range[1], 500)
-    
+
     # Compute neural network output
     f_nn = two_layer_network(x, biases, output_weights, output_bias)
-    
+
     # Compute target
     f_target = target_func(x)
-    
+
     # Plot
     plt.figure(figsize=(10, 6))
     plt.plot(x, f_target, 'r-', linewidth=2, label='Target function')
     plt.plot(x, f_nn, 'b--', linewidth=2, label='Neural network')
-    
+
     # Mark knot points
     knots = [-b for b in biases]
     for knot in knots:
         if x_range[0] <= knot <= x_range[1]:
             plt.axvline(knot, color='gray', linestyle=':', alpha=0.5)
-    
+
     plt.grid(True, alpha=0.3)
     plt.legend()
     plt.xlabel('x')
     plt.ylabel('y')
     plt.title('Neural Network Approximation')
     plt.show()
-    
+
     # Calculate and return error
     error = np.max(np.abs(f_target - f_nn))
     print(f"Maximum error: {error:.4f}")
@@ -993,7 +989,7 @@ $$
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.52}
+::: {#exr-nn-reflection}
 💬 Reflect on what you have learned about neural networks and compare them to Taylor series:
 
 1. What are the advantages of using neural networks for function approximation compared to Taylor series?
@@ -1003,7 +999,7 @@ $$
 3. For each of the following functions, which approximation method (Taylor series or neural network) do you think would be more appropriate, and why?
 
    - $f(x) = e^x$ near $x = 0$
-   - $f(x) = |x|$ near $x = 0$  
+   - $f(x) = |x|$ near $x = 0$
    - $f(x) = \sin(100x)$ on $[0, 2\pi]$
    - A function defined by experimental data points
 
@@ -1023,7 +1019,7 @@ For example, a three-layer network would look like:
 
 1. **Input**: $x$
 
-2. **First Hidden Layer**: 
+2. **First Hidden Layer**:
    $$
    h_i^{(1)}(x) = \max(0, w_i^{(1)} x + b_i^{(1)}) \quad \text{for } i = 1, \ldots, n_1
    $$
@@ -1040,7 +1036,7 @@ For example, a three-layer network would look like:
 
 This is called a **deep neural network** because it has multiple hidden layers. The term "deep learning" comes from using such multi-layer architectures.
 
-``` {python}
+```{python}
 #| echo: false
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
@@ -1073,11 +1069,11 @@ for i, y in enumerate(h_ys):
     circle = patches.Circle((h1_x, y), radius, facecolor='white', edgecolor='black', zorder=10)
     ax.add_patch(circle)
     ax.text(h1_x, y, f"$h_{{{i+1}}}^{(1)}$", ha='center', va='center', fontsize=10, zorder=11)
-    
+
     # Input -> H1 connections
     ax.annotate("", xy=(h1_x - radius, y), xytext=(input_x + radius, input_y),
                 arrowprops=dict(arrowstyle="->", color="black"))
-    
+
     # Bias H1
     ax.annotate("", xy=(h1_x, y + radius), xytext=(h1_x, y + radius + 0.1),
                 arrowprops=dict(arrowstyle="->", color="blue"))
@@ -1172,7 +1168,7 @@ plt.show()
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.50}
+::: {#exr-sawtooth-shallow}
 #### Building a Shallow Network for the Sawtooth
 
 You already know how to represent piecewise linear functions with a two-layer neural network. Each of the 5  "hinge points" (where the slope changes) requires a ReLU neuron.
@@ -1180,11 +1176,11 @@ You already know how to represent piecewise linear functions with a two-layer ne
 **a)** For each hinge point at position $x_i$, you need a ReLU neuron with bias $b_i = -x_i$.
 
 **b)**  What are
-the output weights with which you need to combinae these neurons? 
+the output weights with which you need to combine these neurons?
 
 Use this to complete the code below and use the plot to check that the resulting function has the desired form.
 
-``` python
+```python
 def shallow_2_peak_network(x):
     biases = [.....]
     output_weights = [.....]
@@ -1206,17 +1202,17 @@ plt.show()
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.51}
+::: {#exr-sawtooth-deep}
 #### Building the Deep Network
 
 A deeper network takes a more elegant approach. Instead of directly creating all the peaks, it uses one layer to create a single peak and then another layer to duplicate this peak.
 
-The key insight is to create a single-peak function 
+The key insight is to create a single-peak function
 $$
 g(x) = \begin{cases}2x&0\leq x<1/2\\2(1-x)&1/2\leq x\leq1\\0 & x\not\in [0,1]\end{cases}
-$$ 
-that produces one triangular peak at $x = 0.5$ with height 1, returning to 0 at $z < 0$ and $z > 1$.
-``` {python}
+$$
+that produces one triangular peak at $x = 0.5$ with height 1, returning to 0 at $x < 0$ and $x > 1$.
+```{python}
 #| echo: false
 def g(x):
     """ Single triangular peak """
@@ -1238,7 +1234,7 @@ plt.show()
 Then, our 2-peak sawtooth is simply $f(x) = g(g(x))$.
 
 **a)** First, create a single-peak as a shallow network with three hidden neurons.
-``` python
+```python
 def g(x):
     """ Single triangular peak """
     biases = [.....]
@@ -1248,7 +1244,7 @@ def g(x):
 # Plot
 plt.figure(figsize=(10, 6))
 x = np.linspace(-0.1,1.1,500)
-plt.plot(x, g(x), 'r-', lw=3))
+plt.plot(x, g(x), 'r-', lw=3)
 plt.grid()
 plt.xlabel('x')
 plt.ylabel('g(x)')
@@ -1280,10 +1276,10 @@ plt.show()
 
 ------------------------------------------------------------------------
 
-::: {#exr-1.52}
+::: {#exr-sawtooth-scaling}
 #### Scaling Analysis: The Exponential Advantage
 
-Now let's compare how the two approaches scale as we increase the number of peaks. 
+Now let's compare how the two approaches scale as we increase the number of peaks.
 
 **a)** 🖋 Complete this table by implementing both shallow and deep networks for different numbers of peaks:
 
@@ -1301,7 +1297,7 @@ Now let's compare how the two approaches scale as we increase the number of peak
 
 **c)** 💻 Visualize the scaling behavior. Plot the number of neurons (y-axis) versus the number of peaks (x-axis) for both approaches:
 
-``` python
+```python
 # TODO: Create arrays for different numbers of peaks
 peaks = [2, 4, 8, 16, 32, 64]
 shallow_neurons = [...]  # Fill in based on your formula
@@ -1347,9 +1343,9 @@ Find the Taylor Series for $f(x) = \frac{1}{\log(x)}$ centred at the point $x_0 
 ::: {#exr-1.55}
 In this problem we will use Taylor Series to build approximations for the irrational number $\pi$.
 
-a.  Write the Taylor series centred at $x_0=0$ for the function 
+a.  Write the Taylor series centred at $x_0=0$ for the function
     $$
-     f(x) = \frac{1}{1+x}. 
+     f(x) = \frac{1}{1+x}.
     $$
 
 b.  Now we want to get the Taylor Series for the function $g(x) = \frac{1}{1+x^2}$. It would be quite time consuming to take all of the necessary derivatives to get this Taylor Series. Instead we will use our answer from part (a) of this problem to shortcut the whole process.
@@ -1358,9 +1354,9 @@ b.  Now we want to get the Taylor Series for the function $g(x) = \frac{1}{1+x^2
 
     2.  Make a few plots to verify that we indeed now have a Taylor Series for the function $g(x) = \frac{1}{1+x^2}$.
 
-c.  Recall from Calculus that 
+c.  Recall from Calculus that
     $$
-     \int \frac{1}{1+x^2} dx = \arctan(x). 
+     \int \frac{1}{1+x^2} dx = \arctan(x).
     $$ Hence, if we integrate each term of the Taylor Series that results from part (2) we should have a Taylor Series for $\arctan(x)$.^[There are many reasons why integrating an infinite series term by term should give you a moment of pause. For the sake of this problem we are doing this operation a little blindly, but in reality we should have verified that the infinite series actually converges uniformly.]
 
 d.  Now recall the following from Calculus:
@@ -1395,25 +1391,25 @@ $$ This is known as Euler's formula after the famous mathematician Leonard Euler
 ------------------------------------------------------------------------
 
 ::: {#exr-1.57}
-In physics, the *relativistic energy* of an object is defined as 
+In physics, the *relativistic energy* of an object is defined as
 $$
- E_{rel} = \gamma mc^2 
-$$ 
-where 
+ E_{rel} = \gamma mc^2
 $$
- \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}. 
-$$ 
-In these equations, $m$ is the mass of the object, $c$ is the speed of light ($c \approx 3 \times 10^8$m/s), and $v$ is the velocity of the object. For an object of fixed mass (m) we can expand the Taylor Series centred at $v=0$ for $E_{rel}$ to get $$
- E_{rel} = mc^2 + \frac{1}{2} mv^2 + \frac{3}{8} \frac{mv^4}{c^2} + \frac{5}{16} \frac{mv^6}{c^4} + \cdots. 
+where
+$$
+ \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}.
+$$
+In these equations, $m$ is the mass of the object, $c$ is the speed of light ($c \approx 3 \times 10^8$ m/s), and $v$ is the velocity of the object. For an object of fixed mass (m) we can expand the Taylor Series centred at $v=0$ for $E_{rel}$ to get $$
+ E_{rel} = mc^2 + \frac{1}{2} mv^2 + \frac{3}{8} \frac{mv^4}{c^2} + \frac{5}{16} \frac{mv^6}{c^4} + \cdots.
 $$
 
 1.  What do we recover if we consider an object with zero velocity?
 
-2.  Why might it be completely reasonable to only use the quadratic approximation 
+2.  Why might it be completely reasonable to only use the quadratic approximation
     $$
-     E_{rel} = mc^2 + \frac{1}{2} mv^2 
-    $$ 
-    for the relativistic energy equation?^[This is something that people in physics and engineering do all the time -- there is some complicated nonlinear relationship that they wish to use, but the first few terms of the Taylor Series captures almost all of the behaviour since the higher-order terms are very very small.]
+     E_{rel} = mc^2 + \frac{1}{2} mv^2
+    $$
+    for the relativistic energy equation?^[This is something that people in physics and engineering do all the time -- there is some complicated nonlinear relationship that they wish to use, but the first few terms of the Taylor Series capture almost all of the behaviour since the higher-order terms are very small.]
 
 3.  (some physics knowledge required) What do you notice about the second term in the Taylor Series approximation of the relativistic energy function?
 

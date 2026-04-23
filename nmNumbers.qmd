@@ -7,7 +7,7 @@ Have you ever wondered how computers, which operate in a realm of zeros and ones
 
 In this chapter and the next we will investigate the foundations that allow a computer to do mathematical calculations at all. How can it store real numbers? How can it calculate the values of mathematical functions? We will understand that the computer can do these things only approximately and will thus always make errors. Numerical Analysis is all about keeping these errors as small as possible while still being able to do efficient calculations.
 
-We will meet the two kinds of errors that a computer makes: **rounding errors** and **truncation errors**. Rounding errors arise from the way the computer needs to approximate real numbers by binary floating point numbers, which are the numbers it know how to add, subtract, multiply and divide. We'll discuss this in this chapter. Truncation errors arise from the way the computer needs to reduce all calculations to a finite number of these four basic arithmetic operations. We will see that for the first time in @sec-functions when we discuss how computers approximate functions by power series and then have to truncate these at some finite order.
+We will meet the two kinds of errors that a computer makes: **rounding errors** and **truncation errors**. Rounding errors arise from the way the computer needs to approximate real numbers by binary floating-point numbers, which are the numbers it knows how to add, subtract, multiply and divide. We'll discuss this in this chapter. Truncation errors arise from the way the computer needs to reduce all calculations to a finite number of these four basic arithmetic operations. We will see this for the first time in @sec-functions when we discuss how computers approximate functions by power series and then have to truncate these at some finite order.
 
 Let's start with a striking example of how bad computers actually are at doing even simple calculations:
 
@@ -37,7 +37,7 @@ for n in range(50):
     if x< 0.5:
         # put the correct assignment here
     else:
-        # put the correct assigment here
+        # put the correct assignment here
     print(x)
 ```
 :::
@@ -89,7 +89,7 @@ $$101,101_2 = 32 + 0 + 8 + 4 + 0 + 1 = 45_{10}.$$
 
 2.  $10,101_2$
 
-3.  $1,111,111,111_2$ 
+3.  $1,111,111,111_2$
 
 For the last one you can save yourself some work by noticing that $1,111,111,111_2 = 10,000,000,000_2 - 1$. This is a generally useful trick that will help you again in some later exercises.
 :::
@@ -109,7 +109,7 @@ For the last one you can save yourself some work by noticing that $1,111,111,111
 ------------------------------------------------------------------------
 
 ::: {#exr-1.9}
-🖋 By hand, using the methods you developed above, convert the following numbers from base 10 to base 2 or visa versa. 
+🖋 By hand, using the methods you developed above, convert the following numbers from base 10 to base 2 or vice versa.
 
 -   Write $12_{10}$ in binary
 
@@ -132,14 +132,14 @@ The 🎓 icons indicate that you should enter your answers into the feedback qui
 
 ------------------------------------------------------------------------
 
-Next we will work with fractions and decimals. 
+Next we will work with fractions and decimals.
 
 ::: {#exm-1.b}
 Let us take the base $10$ number $5.341_{10}$ and expand it out to get
 
 $$5.341_{10} = 5 + \frac{3}{10} + \frac{4}{100} + \frac{1}{1000} = 5 \times 10^0 + 3 \times 10^{-1} + 4 \times 10^{-2} + 1 \times 10^{-3}.$$
 
-The position to the right of the decimal point is the negative power of 10 for the given position. 
+The position to the right of the decimal point gives the negative power of 10 for that digit.
 
 :::
 
@@ -180,7 +180,7 @@ Explain to each other in the group why each step gives the binary digit that it 
 ------------------------------------------------------------------------
 
 ::: {#exr-1.16}
-🖋 Convert the base $10$ fraction $0.1$ into binary. Use this to explain why the computer made errors when it calculated with this number in @exr-1.3. 
+🖋 Convert the base $10$ fraction $0.1$ into binary. Use this to explain why the computer made errors when it calculated with this number in @exr-1.3.
 :::
 
 ------------------------------------------------------------------------
@@ -198,18 +198,18 @@ $$x = -123.15625_{10} = -1111011.00101_2$$
 
 (you should check this).
 
-If a computer needs to store this number then first they put in the binary version of scientific notation. In this case this will be
+If a computer needs to store this number, it first puts it in the binary version of scientific notation. In this case this will be
 
 $$
 x = -1.11101100101_2 \times 2^{6}.
 $$
-This is the **floating point representation** of the number. 
+This is the **floating-point representation** of the number.
 :::
 
 ------------------------------------------------------------------------
 
 ::: {#def-1.0}
-For any non-zero base-2 number $x$ the **floating point representation** is given by
+For any non-zero base-2 number $x$ the **floating-point representation** is given by
 
 $$x = (-1)^{s} \times (1+ m) \times 2^E$$
 
@@ -230,14 +230,14 @@ What are the mantissa, sign bit, and unbiased exponent for the numbers $7_{10}, 
 
 -   For the number $7_{10}=111_2 = 1.11 \times 2^2$ we have $s=0, m=0.11$ and $E=2$.
 
--   For the number $-7_{10}=111_2 = -1.11 \times 2^2$ we have $s=1, m=0.11$ and $E=2$.
+-   For the number $-7_{10}=-111_2 = -1.11 \times 2^2$ we have $s=1, m=0.11$ and $E=2$.
 
 -   For the number $\frac{1}{10} = 0.000110011001100\cdots = 1.100110011\cdots \times 2^{-4}$ we have $s=0, m=0.100110011\cdots$, and $E = -4$.
 :::
 
 ------------------------------------------------------------------------
 
-In the last part of the previous example we saw that the number $(0.1)_{10}$ is actually a repeating decimal in base-2. This means that in order to completely represent the number $(0.1)_{10}$ in base-2 we need infinitely many decimal places. Obviously that cannot happen since we are dealing with computers with finite memory. Each number can only be allocated a finite number of bits. Thus the number needs to be rounded to the nearest number that can be represented with that number of bits. That leads to an error called the **rounding error** (sometimes also called *roundoff error*). We'll look into these in more detail in @sec-rounding_errors below.
+In the last part of the previous example we saw that the number $(0.1)_{10}$ is actually a repeating decimal in base-2. This means that in order to completely represent the number $(0.1)_{10}$ in base-2 we need infinitely many decimal places. Obviously that cannot happen since we are dealing with computers with finite memory. Each number can only be allocated a finite number of bits. Thus the number needs to be rounded to the nearest number that can be represented with that number of bits. That leads to an error called the **rounding error** (sometimes also called *round-off error*). We'll look into these in more detail in @sec-rounding_errors below.
 
 
 
@@ -245,7 +245,7 @@ In the last part of the previous example we saw that the number $(0.1)_{10}$ is 
 
 ::: {#def-1.2}
 
-**Machine precision** is the gap between the number 1 and the next larger floating point number. Often it is represented by the symbol $\epsilon$. To clarify: the number 1 can always be stored in a computer system exactly and if $\epsilon$ is machine precision for that computer then $1+\epsilon$ is the next largest number that can be stored with that machine.
+**Machine precision** is the gap between the number 1 and the next larger floating-point number. Often it is represented by the symbol $\epsilon$. To clarify: the number 1 can always be stored in a computer system exactly and if $\epsilon$ is machine precision for that computer then $1+\epsilon$ is the next largest number that can be stored with that machine.
 :::
 
 ------------------------------------------------------------------------
@@ -257,15 +257,15 @@ For all practical purposes the computer cannot tell the difference between two n
 
 $$s \, e_1\, e_2 \, b_1 \, b_2 \, b_3$$
 
-The first bit is for the sign ($0=+$ and $1=-$). The next two bits, $e_1$ and $e_2$ are for the biased exponent, and we will assume in this example that the bias is $B=1$. The three bits on the right represent the significand of the number. Hence, every number in this number system takes the form
+The first bit is for the sign ($0=+$ and $1=-$). The next two bits, $e_1$ and $e_2$, are for the biased exponent, and we will assume in this example that the bias is $B=1$. The three bits on the right represent the fractional part of the significand. Hence, every number in this number system takes the form
 
 $$
-(-1)^s \times (1+ 0.b_1b_2b_3) \times 2^{e_1e_2-1}
+(-1)^s \times (1.b_1b_2b_3)_2 \times 2^{(e_1e_2)_2-1}
 $$
 
 -   What is the smallest positive number that can be represented in this form?
 
--   What is the largest positive number that can be represented in this form? 
+-   What is the largest positive number that can be represented in this form?
 
 -   What is the machine precision in this number system?
 :::
@@ -291,7 +291,7 @@ According to the IEEE 754 standard:
 ------------------------------------------------------------------------
 
 ::: {#exr-1.20}
-🖋 What is machine precision for the single and double precision standard?
+🖋 What is machine precision for the single- and double-precision standards?
 :::
 
 ------------------------------------------------------------------------
@@ -303,12 +303,12 @@ According to the IEEE 754 standard:
 ------------------------------------------------------------------------
 
 ::: {#exr-1.20c}
-🖋 Computers contain hardware that can perform the basic operations of addition, subtraction, multiplication, and division on floating point numbers. To get a feel for what goes on under the hood, figure out how to add the numbers $x = 1.010_2 \times 2^3$ and $y = 1.110_2 \times 2^1$. How do you deal with the different exponents? What do you do so that the result is in the correct floating point format?
+🖋 Computers contain hardware that can perform the basic operations of addition, subtraction, multiplication, and division on floating-point numbers. To get a feel for what goes on under the hood, figure out how to add the numbers $x = 1.010_2 \times 2^3$ and $y = 1.110_2 \times 2^1$. How do you deal with the different exponents? What do you do so that the result is in the correct floating-point format?
 :::
 
 ------------------------------------------------------------------------
 
-Much more can be said about floating point numbers such as how we store infinity, how we store NaN, and how we store 0. The [Wikipedia page for floating point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) might be of interest for the curious reader. It is beyond the scope of this module to go into all of those details here.
+Much more can be said about floating-point numbers, such as how we store infinity, how we store NaN, and how we store 0. The [Wikipedia page for floating-point arithmetic](https://en.wikipedia.org/wiki/Floating-point_arithmetic) might be of interest for the curious reader. It is beyond the scope of this module to go into all of those details here.
 
 The biggest takeaway points from this section and the previous are:
 
@@ -323,24 +323,24 @@ The biggest takeaway points from this section and the previous are:
 
 ## Rounding Errors {#sec-rounding_errors}
 
-When the binary representation of a real number has too many binary digits to be represented faithfully by a floating point number, we need to round it to the nearest floating point number that can be represented. That introduces rounding errors. We have seen above that the gap between two consecutive floating point numbers grows in proportion to the number. This means that the relative error of rounding is bounded by $\epsilon/2$ where $\epsilon$ is the machine precision. 
+When the binary representation of a real number has too many binary digits to be represented faithfully by a floating-point number, we need to round it to the nearest floating-point number that can be represented. That introduces rounding errors. We have seen above that the gap between two consecutive floating-point numbers grows in proportion to the number. This means that the relative error of rounding is bounded by $\epsilon/2$ where $\epsilon$ is the machine precision.
 
 The rounding rule that is used is "**round to nearest, ties to even**", which means that if the number is exactly halfway between two numbers that can be represented then we round the mantissa to an even binary number, i.e., to a mantissa that ends in 0.
 
 ::: {#exm-1.3b}
-If we want to store the number $1.625 = 1.101_2$ in a floating point number system where the mantissa has only 2 bits then we round to $1.10_2 = 1.5_{10}$ because $1.101_2$ is exactly halfway between $1.100_2$ and $1.110_2$ and the rounding rule is "round to nearest, ties to even".
+If we want to store the number $1.625 = 1.101_2$ in a floating-point number system where the mantissa has only 2 bits then we round to $1.10_2 = 1.5_{10}$ because $1.101_2$ is exactly halfway between $1.100_2$ and $1.110_2$ and the rounding rule is "round to nearest, ties to even".
 :::
 
 ------------------------------------------------------------------------
 
-To dive a little deeper into what happened in @exr-1.3, simplify the detailed analysis by working with only a 4 bit mantissa:
+To dive a little deeper into what happened in @exr-1.3, simplify the detailed analysis by working with only a 4-bit mantissa:
 
 ::: {#exr-1.21}
 
-🖋 Write down how the number $1/10$ is represented in a floating point number system where the mantissa has only 4 bits. Then calculate the first 10 terms of the sequence 
+🖋 Write down how the number $1/10$ is represented in a floating-point number system where the mantissa has only 4 bits. Then calculate the first 10 terms of the sequence
 \begin{equation}
-x_{n+1} = \left\{ \begin{array}{ll} 2x_n, & x_n \in [0,\frac{1}{2}] \\ 2x_n - 1, & x_n \in
-        (\frac{1}{2},1] \end{array} \right. \quad \text{with} \quad x_0 = \frac{1}{10}
+x_{n+1} = \left\{ \begin{array}{ll} 2x_n, & x_n \in [0,\frac{1}{2}) \\ 2x_n - 1, & x_n \in
+        [\frac{1}{2},1] \end{array} \right. \quad \text{with} \quad x_0 = \frac{1}{10}
 \end{equation}
 using this number system.
 
@@ -350,7 +350,7 @@ using this number system.
 
 ::: {#exr-1.51}
 (This problem is modified from [@Greenbaum])\
-💻 Sometimes floating point arithmetic does not work like we would expect (and hope) as compared to exact mathematics. In each of the following problems we have a mathematical problem that the computer gets wrong. Explain why the computer is getting these wrong.
+💻 Sometimes floating-point arithmetic does not work like we would expect (and hope) as compared to exact mathematics. In each of the following problems we have a mathematical problem that the computer gets wrong. Explain why the computer is getting these wrong.
 
 1.  Mathematically we know that $\sqrt{5}^2$ should just give us $5$ back. In Python type `np.sqrt(5)**2 == 5`. What do you get and why do you get it?
 
@@ -358,13 +358,13 @@ using this number system.
 
 3.  Mathematically we know that $e^{\log(3)}$ should just give us 3 back. In Python type `np.exp(np.log(3)) == 3`. What do you get and why do you get it?
 
-4.  Create your own example of where Python gets something incorrect because of floating point arithmetic.
+4.  Create your own example of where Python gets something incorrect because of floating-point arithmetic.
 :::
 
 
 ## Loss of Significant Digits {#sec-loss_of_significant_digits}
 
-As we have discussed, when representing real numbers by floating point numbers in the computer, rounding errors will usually occur. When doing a calculation with double-precision floating point numbers then the rounding error is only a tiny fraction of the actual number, so one might think that they really don't matter. However, calculations usually involve a number of steps, and we saw in @exr-1.3 that the rounding errors can accumulate and become quite noticeable after a large number of steps. 
+As we have discussed, when representing real numbers by floating-point numbers in the computer, rounding errors will usually occur. When doing a calculation with double-precision floating-point numbers then the rounding error is only a tiny fraction of the actual number, so one might think that they really don't matter. However, calculations usually involve a number of steps, and we saw in @exr-1.3 that the rounding errors can accumulate and become quite noticeable after a large number of steps.
 
 But the problem is even worse. If we are not careful, then the rounding errors can get magnified already after very few steps if we perform the steps in an unfortunate way. The following examples and exercises will illustrate this.
 
@@ -384,7 +384,7 @@ However, let us evaluate this in Python:
 10**10 + 0.123456789 - 10**10
 ```
 Only the first six digits after the decimal point were preserved, the other digits were replaced by something seemingly random. The reason should be clear. The computer makes a rounding error when it tries to store the $10000000000.123456789$.
-This is known as the loss of significant digits. It occurs whenever you subtract two almost equal numbers from each other. 
+This is known as the loss of significant digits. It can occur whenever you subtract two nearly equal numbers from each other.
 :::
 
 ------------------------------------------------------------------------
@@ -445,7 +445,7 @@ Can you see why this expression will work better for the given parameter values?
 
 ------------------------------------------------------------------------
 
-These exercises will give much material for in-class discussion. The aim is to make you sensitive to the issue of loss of significant figures and the fact that expressions that are mathematically equal are not always computationally equal. 
+These exercises will give much material for in-class discussion. The aim is to make you sensitive to the issue of loss of significant digits and the fact that expressions that are mathematically equal are not always computationally equal.
 
 ## Exam-Style Question
 
@@ -457,13 +457,13 @@ Consider a hypothetical "8-bit Mini-Float" system based on the IEEE 754 standard
 
 The value of a number in this system is given by: $x = (-1)^s \times (1.m)_2 \times 2^{e-3}$.
 
-(a) How is the **machine precision** $\epsilon$ defined. Give its value for this floating-point system. How is machine precision related to rounding errors? [3 marks]
+(a) How is the **machine precision** $\epsilon$ defined? Give its value for this floating-point system. How is machine precision related to rounding errors? [3 marks]
 
 (b) Convert the decimal number **13.5** into this 8-bit floating-point representation. Write your final answer as an 8-bit binary pattern (e.g., `0 101 1010`). [4 marks]
 
 (c) Using this specific floating-point system, perform the addition of the number **13.5** (from part b) and **0.25**.
 
-    - Write 0.25 in this floating point system.
+    - Write 0.25 in this floating-point system.
     - Perform the addition simulating the hardware: align exponents, add significands.
     - Apply the rounding rule ("Round to Nearest, Ties to Even") to determine the final stored bits.
     - What is the final decimal value stored by the system, and what is the absolute error compared to the exact mathematical sum? [4 marks]
@@ -508,7 +508,7 @@ accounts = 100 + (100000-100) * np.random.rand(50000,1);
 accounts = np.floor(100*accounts)/100;
 ```
 
-2.  By hand (no computer) write the mathematical steps necessary to increase the accounts by (5/365)% per day, truncate the accounts to the nearest penny, and add the truncated amount into an account titled "illegal."
+2.  By hand (no computer) write the mathematical steps necessary to increase the accounts by (5/365)% per day, truncate the accounts to pennies, and add the truncated amount into an account titled "illegal."
 
 3.  Write code to complete your plan from part 2.
 
@@ -519,9 +519,9 @@ accounts = np.floor(100*accounts)/100;
 
 ::: {#exr-1.53}
 (This problem is modified from [@Greenbaum])\
-🖋 In the 1991 Gulf War, the Patriot missile defence system failed due to rounding error. The troubles stemmed from a computer that performed the tracking calculations with an internal clock whose integer values in tenths of a second were converted to seconds by multiplying by a 24-bit binary approximation to $\frac{1}{10}$: 
+🖋 In the 1991 Gulf War, the Patriot missile defence system failed due to rounding error. The trouble stemmed from a computer that performed the tracking calculations with an internal clock whose integer values in tenths of a second were converted to seconds by multiplying by a 24-bit binary approximation to $\frac{1}{10}$:
 \begin{equation}
-0.1_{10} \approx 0.00011001100110011001100_2. 
+0.1_{10} \approx 0.00011001100110011001100_2.
 \end{equation}
 
 1.  Convert the binary number above to a fraction by hand.
@@ -539,7 +539,7 @@ accounts = np.floor(100*accounts)/100;
 #### The Python Caret Operator
 🖋 💻 Now that you're used to using Python to do some basic computations you are probably comfortable with the fact that the caret, `^`, does NOT do exponentiation like it does in many other programming languages. But what does the caret operator do? That's what we explore here.
 
-1.  Consider the numbers $9$ and $5$. Write these numbers in binary representation. We are going to use four bits to represent each number (it is OK if the first bit happens to be zero). 
+1.  Consider the numbers $9$ and $5$. Write these numbers in binary representation. We are going to use four bits to represent each number (it is okay if the first bit happens to be zero).
 \begin{equation}
     \begin{aligned} 9 &=& \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \\ 5 &=& \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \end{aligned}
     \end{equation}

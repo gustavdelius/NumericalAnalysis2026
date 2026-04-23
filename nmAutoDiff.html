@@ -520,7 +520,7 @@ window.Quarto = {
 <hr>
 <div id="exm-3.31b" class="theorem example">
 <p><span class="theorem-title"><strong>Example D.1</strong></span> Consider the function <span class="math inline">\(f(x, y) = x^2y + \sin(xy)\)</span>. We can break this down into elementary operations and visualize it as a computation graph:</p>
-<div id="cell-fig-computation-graph" class="cell" data-execution_count="2">
+<div id="cell-fig-computation-graph" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div id="fig-computation-graph" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -597,7 +597,7 @@ Figure&nbsp;D.1: Computation graph for f(x,y) = x²y + sin(xy) at (x,y) = (2,1)
 </ol>
 <p>This is <strong>forward mode</strong> automatic differentiation.</p>
 <p>The figure below illustrates the computational graph for <span class="math inline">\(f(x) = x^2 \cdot \sin(x)\)</span> with forward mode AD. The blue values show the function evaluation, while the red values show the derivative calculation:</p>
-<div id="cell-fig-forward-ad" class="cell" data-execution_count="3">
+<div id="cell-fig-forward-ad" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -726,7 +726,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 </div>
 <hr>
 <p>Next let us teach Python how to do this.</p>
-<div id="265f7a97" class="cell" data-execution_count="4">
+<div id="99beeb6c" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic operations on dual numbers represented as tuples (value, derivative)</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> dual_add(a, b):</span>
@@ -754,7 +754,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    exp_a <span class="op">=</span> np.exp(a[<span class="dv">0</span>])</span>
 <span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (exp_a, exp_a <span class="op">*</span> a[<span class="dv">1</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div id="83d70f36" class="cell" data-execution_count="5">
+<div id="5383799a" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">1</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> dual_power(x, <span class="dv">2</span>)</span>
@@ -765,7 +765,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 <pre><code>(np.float64(3.637189707302727), np.float64(1.9726023611141572))</code></pre>
 </div>
 </div>
-<div id="269685d9" class="cell" data-execution_count="6">
+<div id="6d695097" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> (<span class="dv">2</span>, <span class="dv">1</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> dual_multiply(dual_power(x, <span class="dv">2</span>), dual_sin(x))</span>
@@ -823,7 +823,7 @@ Figure&nbsp;D.2: Forward mode automatic differentiation for f(x) = x² · sin(x)
 <li><p>The final results are <span class="math inline">\(\frac{\partial f}{\partial x} = \overline{x} \approx 14.8806\)</span> and <span class="math inline">\(\frac{\partial f}{\partial y} = \overline{y} \approx 5.9204\)</span></p></li>
 </ol>
 <p><a href="#fig-reverse-ad" class="quarto-xref">Figure&nbsp;<span>D.3</span></a> illustrates the reverse mode AD computation graph for this example.</p>
-<div id="cell-fig-reverse-ad" class="cell" data-execution_count="7">
+<div id="cell-fig-reverse-ad" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>

@@ -575,7 +575,7 @@ Figure&nbsp;9.1: The forward difference stencil for the 1D heat equation.
 </div>
 <hr>
 <div id="exr-6.30" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.2</strong></span> 💻 Now we want to implement your answer to part (d) of the previous exercise to approximate the solution to the following problem: Solve <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 9.2</strong></span> 💻 🎓 Now we want to implement your answer to part (d) of the previous exercise to approximate the solution to the following problem: <span class="math display">\[
 u_t = 0.1u_{xx}
 \]</span> on the domain <span class="math inline">\(0 &lt; x &lt; 1\)</span> and <span class="math inline">\(0 &lt; t &lt; 1\)</span> with the initial condition <span class="math display">\[
 u(0,x) = \sin(2 \pi x)
@@ -632,7 +632,7 @@ u(t,0) = 0, \, \text{and} \, u(t,1) = 0.
 </div>
 <hr>
 <div id="exr-6.30_plot" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.3</strong></span> 💻 Now visualise the whole solutions over the entire time range. You can either make a plot or an animation to illustrate the time evolution of <span class="math inline">\(u\)</span>. For each of these there a various Python packages you could use. Below is a function <code>plot_solution_1d()</code> using plotly to make a plot and a function <code>animate_solution_1d()</code> using matplotlib to make an animated 2D plot. You can use either of these or you can use your own plotting code.</p>
+<p><span class="theorem-title"><strong>Exercise 9.3</strong></span> 💻 Now visualise the whole solutions over the entire time range. You can either make a plot or an animation to illustrate the time evolution of <span class="math inline">\(u\)</span>. For each of these there are various Python packages you could use. Below is a function <code>plot_solution_1d()</code> using plotly to make a plot and a function <code>animate_solution_1d()</code> using matplotlib to make an animated 2D plot. You can use either of these or you can use your own plotting code.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_solution_1d(t, x, U):</span>
@@ -729,7 +729,7 @@ u(t,0) = 0, \, \text{and} \, u(t,1) = 0.
 </div>
 <hr>
 <div id="exr-6.32" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 9.7</strong></span> 🖋 💻 Consider the one dimensional heat equation with diffusion coefficient <span class="math inline">\(D=1\)</span>: <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 9.7</strong></span> 🖋 💻 🎓 Consider the one dimensional heat equation with diffusion coefficient <span class="math inline">\(D=1\)</span>: <span class="math display">\[
 u_t = u_{xx}.
 \]</span> We want to solve this equation on the domain <span class="math inline">\(x \in [0,1]\)</span> and <span class="math inline">\(t\in [0,0.1]\)</span> subject to the initial condition <span class="math inline">\(u(0,x) = \sin(\pi x)\)</span> and the boundary conditions <span class="math inline">\(u(t,0)=u(t,1) = 0\)</span>.</p>
 <ol type="a">
@@ -754,7 +754,7 @@ u_t = u_{xx}.
 </section>
 <section id="sec-neumann" class="level3" data-number="9.2.2">
 <h3 data-number="9.2.2" class="anchored" data-anchor-id="sec-neumann"><span class="header-section-number">9.2.2</span> Different Boundary Conditions</h3>
-<p>In any initial and boundary value problem such as the heat equation, the boundary are often of Dirichlet or Neumann type. In Dirichlet boundary conditions the values of the solution at the boundary are specified. In contrast, Neumann boundary conditions specify the flux at the boundary instead of the value of the solution.</p>
+<p>In any initial and boundary value problem such as the heat equation, the boundary conditions are often of Dirichlet or Neumann type. In Dirichlet boundary conditions the values of the solution at the boundary are specified. In contrast, Neumann boundary conditions specify the flux at the boundary instead of the value of the solution.</p>
 <div id="exr-6.34" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 9.9 (Time-dependent Dirichlet Boundary Condition)</strong></span> 💻 Modify your 1D heat equation code to plot and to animate an approximate solution of the diffusion equation <span class="math inline">\(u_t = 0.5 u_{xx}\)</span> with <span class="math inline">\(x \in (0,1)\)</span>, <span class="math inline">\(u(0,x) = \sin(2\pi x)\)</span>, <span class="math inline">\(u(t,0) = 0\)</span> and <span class="math inline">\(u(t,1) = \sin(5\pi t)\)</span>. See if everyone in your group gets the same plot and animation.</p>
 </div>
@@ -763,8 +763,8 @@ u_t = u_{xx}.
 <p><span class="theorem-title"><strong>Exercise 9.10 (Neumann Boundary Condition)</strong></span> 🖋 💻 🎓 Consider the 1D heat equation <span class="math inline">\(u_t = u_{xx}\)</span> with boundary conditions <span class="math inline">\(u_x(t,0)=0\)</span> and <span class="math inline">\(u(t,1)=0\)</span> with initial condition <span class="math inline">\(u(0,x) = \cos(\pi x/2)\)</span>. So at <span class="math inline">\(x=0\)</span> we are imposing a Neumann boundary condition and at <span class="math inline">\(x=1\)</span> we are imposing a Dirichlet boundary condition. Check that the initial condition satisfies these boundary conditions. As the heat profile evolves in time the Neumann boundary condition <span class="math inline">\(u_x(t,0)=0\)</span> says that the slope of the solution needs to be fixed at 0 at the left-hand boundary.</p>
 <ol type="a">
 <li><p>The Neumann boundary condition <span class="math inline">\(u_x(t,0) = 0\)</span> can be approximated with the first order approximation <span class="math display">\[
-u_x(t_n,0) \approx \frac{U_1^n - U_0^n}{\Delta x} \text{ for all } n.
-\]</span> If we set this approximation to 0 (since <span class="math inline">\(u_x(t,0)=0\)</span>) and solve for <span class="math inline">\(U_0^n\)</span> we get an additional constraint at every time step of the numerical solution to the heat equation: <span class="math display">\[ U_0^n = ??? \text{ for all } n.\]</span></p></li>
+u_x(t_n,0) \approx \frac{U_1^n - U_0^n}{\Delta x} \text{ for all } n&gt;0.
+\]</span> If we set this approximation to 0 (since <span class="math inline">\(u_x(t,0)=0\)</span>) and solve for <span class="math inline">\(U_0^n\)</span> we get an additional constraint at every time step of the numerical solution to the heat equation: <span class="math display">\[ U_0^n = ??? \text{ for all } n&gt;0.\]</span></p></li>
 <li><p>Modify your 1D heat equation code to implement this Neumann boundary condition, plot the numerical solution and verify visually that the Neumann boundary is satisfied.</p></li>
 </ol>
 </div>
@@ -822,7 +822,7 @@ a&amp;1-2a&amp;a&amp;&amp;\\
 \]</span> Then after <span class="math inline">\(n\)</span> steps we have <span class="math display">\[
 \tilde{\mathbf{U}}_n=A^n\tilde{\mathbf{U}}_0=A^n(\mathbf{U}_0+\mathbf{\epsilon})=A^n\mathbf{U}_0+A^n\mathbf{\epsilon}=\mathbf{U}_n+A^n\mathbf{\epsilon}.
 \]</span> So the error at time <span class="math inline">\(t_n\)</span> is <span class="math display">\[
-\mathbf{\epsilon}^{(n)}n=A^n\mathbf{\epsilon}.
+\mathbf{\epsilon}^{(n)}=A^n\mathbf{\epsilon}.
 \]</span> To see if the error grows exponentially over time, we expand the initial error in terms of the eigenvectors of the matrix <span class="math inline">\(A\)</span>: <span class="math display">\[
 \mathbf{\epsilon}=\sum_i\epsilon_i\mathbf{v}_i,
 \]</span> where <span class="math display">\[
@@ -832,8 +832,8 @@ A\mathbf{v}_i=\lambda_i\mathbf{v}_i
 \]</span> This shows that if all eigenvalues have absolute value less than 1, then the method is stable. If at least one eigenvalue has absolute value greater than 1, then the corresponding component of the error will grow exponentially with time and the method is unstable.</p>
 <p>There is a nice method to determine the eigenvalues of the matrix <span class="math inline">\(A\)</span>, using Fourier analysis. We will not discuss this in this module and instead just give the result and then look at a simple example. The result (which you do not need to remember) is that the eigenvalues of the matrix <span class="math inline">\(A\)</span> are given by <span class="math display">\[
 \lambda_k=1-4a\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2
-\]</span> for <span class="math inline">\(k=1,\ldots,N_x-1\)</span>. For stability we need <span class="math inline">\(|\lambda_k|&lt;1\)</span> for all <span class="math inline">\(k\)</span>, i.e., <span class="math display">\[
-0\leq a\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2&lt;\frac12
+\]</span> for <span class="math inline">\(k=1,\ldots,N_x-1\)</span>. For stability we need <span class="math inline">\(|\lambda_k|\leq 1\)</span> for all <span class="math inline">\(k\)</span>, i.e., <span class="math display">\[
+0\leq a\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2\leq\frac12
 \]</span> for all <span class="math inline">\(k\)</span>. The most stringent condition is that coming from <span class="math inline">\(k=N_x-1\)</span>, so the stability condition is <span class="math display">\[
 a\leq \frac{1}{2}\left(\sin\left(\frac{(N_x-1)\pi}{2N_x}\right)\right)^{-2}.
 \]</span></p>
@@ -853,7 +853,7 @@ a&amp;1-2a-\lambda
 \end{split}
 \]</span> The roots of this polynomial are <span class="math display">\[
 \lambda_\pm=1-2a\pm a.
-\]</span> We need both of these to have a magnitude less than 1 for the method to be stable. This gives us an upper bound on the allowed <span class="math inline">\(a\)</span>. The eigenvalue whose magnitude will increase above <span class="math inline">\(1\)</span> first as <span class="math inline">\(a\)</span> increases is <span class="math inline">\(\lambda_-=1-3a\)</span>, which equals <span class="math inline">\(-1\)</span> when <span class="math inline">\(a=2/3\)</span> (meaning the error in that mode alternates sign every time step). So the stability condition is <span class="math inline">\(a &lt; 2/3\)</span>.</p>
+\]</span> We need both of these to have a magnitude less than 1 for the method to be stable. This gives us an upper bound on the allowed <span class="math inline">\(a\)</span>. The eigenvalue whose magnitude will increase above <span class="math inline">\(1\)</span> first as <span class="math inline">\(a\)</span> increases is <span class="math inline">\(\lambda_-=1-3a\)</span>, which equals <span class="math inline">\(-1\)</span> when <span class="math inline">\(a=2/3\)</span> (meaning the error in that mode alternates sign every time step). So the stability condition is <span class="math inline">\(a \leq 2/3\)</span>.</p>
 </div>
 <hr>
 <p>In this chapter we have developed the <strong>explicit forward difference scheme</strong> for the 1D heat equation, seen how to handle Dirichlet and Neumann boundary conditions, and explored variations such as reaction-diffusion and advection-diffusion equations. We have also seen that the scheme is only stable when <span class="math inline">\(a = D\frac{\Delta t}{\Delta x^2} \leq \frac{1}{2}\)</span>, which places a severe constraint on the time step when the spatial resolution is fine. In the next chapter we will overcome this limitation by introducing <strong>implicit schemes</strong> such as the backward difference scheme and the Crank-Nicolson scheme, which are unconditionally stable and allow much larger time steps.</p>

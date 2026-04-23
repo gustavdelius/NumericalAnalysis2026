@@ -523,14 +523,14 @@ window.Quarto = {
 <hr>
 <section id="sec-polynomial_approximations" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="sec-polynomial_approximations"><span class="header-section-number">2.1</span> Polynomial Approximations</h2>
-<p>A class of functions that computers are very good at working with are polynomial functions. This is because to evaluate a polynomial function at any point we only need to addition and multiplication operations. In this section we will explore how we can use polynomial functions to approximate other functions.</p>
+<p>A class of functions that computers are very good at working with are polynomial functions. This is because to evaluate a polynomial function at any point we only need addition and multiplication operations. In this section we will explore how we can use polynomial functions to approximate other functions.</p>
 <div id="exr-1.22" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.1</strong></span> 💬 In this exercise you are going to make a bit of a wish list for all of the things that a computer will do when approximating a function. We are going to complete the following sentence:<br>
 <em>If we are going to approximate</em> a smooth function <span class="math inline">\(f(x)\)</span> near the point <span class="math inline">\(x=x_0\)</span> with a simpler function <span class="math inline">\(g(x)\)</span> then …</p>
-<p>(I will get us started with the first two things that seems natural to wish for. The rest of the wish list is for you to complete.)</p>
+<p>(I will get us started with the first two things that seem natural to wish for. The rest of the wish list is for you to complete.)</p>
 <ul>
 <li><p>the functions <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span> should agree at <span class="math inline">\(x=x_0\)</span>. In other words, <span class="math inline">\(f(x_0) = g(x_0)\)</span></p></li>
-<li><p>the function <span class="math inline">\(g(x)\)</span> should only involve addition, subtraction, multiplication, division, and integer exponents since computer are very good at those sorts of operations.</p></li>
+<li><p>the function <span class="math inline">\(g(x)\)</span> should only involve addition, subtraction, multiplication, division, and integer exponents since computers are very good at those sorts of operations.</p></li>
 <li><p>if <span class="math inline">\(f(x)\)</span> is increasing / decreasing near <span class="math inline">\(x=x_0\)</span> then <span class="math inline">\(g(x)\)</span> …</p></li>
 <li><p>if <span class="math inline">\(f(x)\)</span> is concave up / down near <span class="math inline">\(x=x_0\)</span> then <span class="math inline">\(g(x)\)</span>…</p></li>
 <li><p>if we zoom into plots of the functions <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g(x)\)</span> near <span class="math inline">\(x=x_0\)</span> then …</p></li>
@@ -561,7 +561,7 @@ window.Quarto = {
 <p><span class="theorem-title"><strong>Exercise 2.4</strong></span> 🖋 What is Euler’s number <span class="math inline">\(e\)</span>? You have been using this number often in Calculus and Differential Equations. Do you know the decimal approximation for this number? Moreover, is there a way that we could approximate something like <span class="math inline">\(\sqrt{e} = e^{0.5}\)</span> or <span class="math inline">\(e^{-1}\)</span> without actually having access to the full decimal expansion?</p>
 <p>For all of the questions below let us work with the function <span class="math inline">\(f(x) = e^x\)</span>.</p>
 <ol type="1">
-<li><p>The function <span class="math inline">\(g_0(x) = 1\)</span> matches <span class="math inline">\(f(x) = e^x\)</span> exactly at the point <span class="math inline">\(x=0\)</span> since <span class="math inline">\(f(0) = e^0 = 1\)</span>. Furthermore if <span class="math inline">\(x\)</span> is very very close to <span class="math inline">\(0\)</span> then the functions <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g_0(x)\)</span> are really close to each other. Hence we could say that <span class="math inline">\(g_0(x) = 1\)</span> is an approximation of the function <span class="math inline">\(f(x) = e^x\)</span> for values of <span class="math inline">\(x\)</span> very very close to <span class="math inline">\(x=0\)</span>. Admittedly, though, it is probably pretty clear that this is a horrible approximation for any <span class="math inline">\(x\)</span> just a little bit away from <span class="math inline">\(x=0\)</span>.</p></li>
+<li><p>The function <span class="math inline">\(g_0(x) = 1\)</span> matches <span class="math inline">\(f(x) = e^x\)</span> exactly at the point <span class="math inline">\(x=0\)</span> since <span class="math inline">\(f(0) = e^0 = 1\)</span>. Furthermore if <span class="math inline">\(x\)</span> is very close to <span class="math inline">\(0\)</span> then the functions <span class="math inline">\(f(x)\)</span> and <span class="math inline">\(g_0(x)\)</span> are really close to each other. Hence we could say that <span class="math inline">\(g_0(x) = 1\)</span> is an approximation of the function <span class="math inline">\(f(x) = e^x\)</span> for values of <span class="math inline">\(x\)</span> very close to <span class="math inline">\(x=0\)</span>. Admittedly, though, it is probably pretty clear that this is a horrible approximation for any <span class="math inline">\(x\)</span> just a little bit away from <span class="math inline">\(x=0\)</span>.</p></li>
 <li><p>Let us get a better approximation. What if we insist that our approximation <span class="math inline">\(g_1(x)\)</span> matches <span class="math inline">\(f(x) = e^x\)</span> exactly at <span class="math inline">\(x=0\)</span> and ALSO has exactly the same first derivative as <span class="math inline">\(f(x)\)</span> at <span class="math inline">\(x=0\)</span>.</p>
 <ol type="1">
 <li><p>What is the first derivative of <span class="math inline">\(f(x)\)</span>?</p></li>
@@ -570,7 +570,7 @@ window.Quarto = {
 </ol></li>
 <li><p>💻 Write Python code to build a plot like <a href="#fig-1.1" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>. This plot shows <span class="math inline">\(f(x) = e^x\)</span>, our first approximation <span class="math inline">\(g_0(x) = 1\)</span> and our second approximation <span class="math inline">\(g_1(x) = 1+x\)</span>. You may want to look at <a href="nmPython.html#exm-A.46" class="quarto-xref">Example&nbsp;<span>A.43</span></a> in the Python chapter for a refresher on how to build plots containing the graphs of several functions. If you need a hint on how to plot the function <span class="math inline">\(g_0(x)\)</span> since it is a constant function, take a look at the <code>np.ones_like()</code> function in <a href="nmPython.html#exm-A.42" class="quarto-xref">Example&nbsp;<span>A.40</span></a>.</p></li>
 </ol>
-<div id="cell-fig-1.1" class="cell" data-execution_count="2">
+<div id="cell-fig-1.1" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div id="fig-1.1" class="quarto-float quarto-figure quarto-figure-left anchored" alt="The first two polynomial approximations of the exponential function.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -598,7 +598,7 @@ g_2(x) = f(0) + f'(0) x + \frac{f''(0)}{2} x^2.
 <li><p>💻 Add your new function to the plot you created in the previous problem.</p></li>
 </ol></li>
 <li><p>Let us keep going!! Next we will do a cubic approximation. A cubic approximation takes the form <span class="math display">\[
-g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}(x-x_0)^3
+g_3(x) = f(x_0) + f'(x_0) (x-x_0) + \frac{f''(x_0)}{2}(x-x_0)^2 + \frac{f'''(x_0)}{3!}(x-x_0)^3
 \]</span></p>
 <ol type="1">
 <li><p>Find the cubic approximation for <span class="math inline">\(f(x) = e^x\)</span>.</p></li>
@@ -627,8 +627,9 @@ g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    approximation <span class="op">=</span> <span class="fl">1.0</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add higher-order terms</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, n <span class="op">+</span> <span class="dv">1</span>):</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        approximation <span class="op">+=</span> <span class="co"># </span><span class="al">TODO</span><span class="co">: calculate the i'th term of the Taylor series</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> approximation</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        term <span class="op">=</span> ...  <span class="co"># </span><span class="al">TODO</span><span class="co">: calculate the ith term of the Taylor series</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        approximation <span class="op">+=</span> term</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> approximation</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Make sure you perfectly understand the code. Use the AI to explain everything to you in detail. You can select parts of the code and ask the AI questions like “Why do we need to use <code>range(1, n + 1)</code>?” and “What does <code>approximation +=</code> do?”</p>
 </div>
 <hr>
@@ -648,9 +649,9 @@ g_3(x) = f(x_0) + f'(0) (x-x_0) + \frac{f''(0)}{2}(x-x_0)^2 + \frac{f'''(0)}{3!}
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="taylor-series"><span class="header-section-number">2.1.2</span> Taylor Series</h3>
 <p>What we have been exploring so far in this section is the <strong>Taylor Series</strong> of a function.</p>
 <div id="def-1.3" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 2.1 (Taylor Series)</strong></span> If <span class="math inline">\(f(x)\)</span> is an infinitely differentiable function at the point <span class="math inline">\(x_0\)</span> then <span class="math display">\[
+<p><span class="theorem-title"><strong>Definition 2.1 (Taylor Series)</strong></span> If <span class="math inline">\(f(x)\)</span> is analytic at the point <span class="math inline">\(x_0\)</span>, then <span class="math display">\[
 f(x) = f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2}(x-x_0)^2 + \cdots \frac{f^{(n)}(x_0)}{n!}(x-x_0)^n + \cdots
-\]</span> for any reasonably small interval around <span class="math inline">\(x_0\)</span>. The infinite polynomial expansion is called the <strong>Taylor Series</strong> of the function <span class="math inline">\(f(x)\)</span>. Taylor Series are named for the mathematician <a href="https://en.wikipedia.org/wiki/Brook_Taylor">Brook Taylor</a>.</p>
+\]</span> on some interval around <span class="math inline">\(x_0\)</span>. The infinite polynomial expansion is called the <strong>Taylor Series</strong> of the function <span class="math inline">\(f(x)\)</span>. Taylor Series are named for the mathematician <a href="https://en.wikipedia.org/wiki/Brook_Taylor">Brook Taylor</a>.</p>
 </div>
 <hr>
 <p>The Taylor Series of a function is often written with summation notation as <span class="math display">\[
@@ -664,7 +665,7 @@ f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k.
 <li><p>etc.</p></li>
 </ul>
 <p>(Take a moment and make sure that the summation notation makes sense to you.)</p>
-<p>Moreover, Taylor Series are built out of the easiest types of functions: polynomials. Computers are rather good at doing computations with addition, subtraction, multiplication, division, and integer exponents, so Taylor Series are a natural way to express functions in a computer. The down side is that we can only get true equality in the Taylor Series if we have infinitely many terms in the series. A computer cannot do infinitely many computations. So, in practice, we <strong>truncate</strong> Taylor Series after many terms and think of the new polynomial function as being <em>close enough</em> to the actual function so far as we do not stray too far from the anchor <span class="math inline">\(x_0\)</span>.</p>
+<p>Moreover, Taylor Series are built out of the easiest types of functions: polynomials. Computers are rather good at doing computations with addition, subtraction, multiplication, division, and integer exponents, so Taylor Series are a natural way to express functions in a computer. The downside is that we can only get true equality in the Taylor Series if we have infinitely many terms in the series. A computer cannot do infinitely many computations. So, in practice, we <strong>truncate</strong> Taylor Series after many terms and think of the new polynomial function as being <em>close enough</em> to the actual function so long as we do not stray too far from the anchor <span class="math inline">\(x_0\)</span>.</p>
 <hr>
 <div id="exr-1.32" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.9</strong></span> 🖋 Do all of the calculations to show that the Taylor Series centred at <span class="math inline">\(x_0 = 0\)</span> for the function <span class="math inline">\(f(x) = \sin(x)\)</span> is indeed <span class="math display">\[
@@ -673,7 +674,7 @@ f(x) = \sum_{k=0}^\infty \frac{f^{(k)}(x_0)}{k!} (x-x_0)^k.
 </div>
 <hr>
 <div id="exr-1.33" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.10</strong></span> 💻 Write a Pyton function <code>sin_approx(x, n)</code> that computes the <span class="math inline">\(n\)</span>th order Taylor Series approximation of <span class="math inline">\(\sin(x)\)</span> centred at <span class="math inline">\(x_0 = 0\)</span>. Test your function by comparing its output to <code>np.sin(x)</code> for a few values of <span class="math inline">\(x\)</span> and <span class="math inline">\(n\)</span>. Use it to make a plot of the first three approximations for <span class="math inline">\(x\)</span> in the range <span class="math inline">\([-\pi, \pi]\)</span> similar to the plots you made for approximations of <span class="math inline">\(e^x\)</span> above.</p>
+<p><span class="theorem-title"><strong>Exercise 2.10</strong></span> 💻 Write a Python function <code>sin_approx(x, n)</code> that computes the <span class="math inline">\(n\)</span>th order Taylor Series approximation of <span class="math inline">\(\sin(x)\)</span> centred at <span class="math inline">\(x_0 = 0\)</span>. Test your function by comparing its output to <code>np.sin(x)</code> for a few values of <span class="math inline">\(x\)</span> and <span class="math inline">\(n\)</span>. Use it to make a plot of the first three approximations for <span class="math inline">\(x\)</span> in the range <span class="math inline">\([-\pi, \pi]\)</span> similar to the plots you made for approximations of <span class="math inline">\(e^x\)</span> above.</p>
 </div>
 <hr>
 <div id="exr-1.34" class="theorem exercise">
@@ -684,8 +685,8 @@ f(x) = f\left( 1 \right) + f'\left( 1 \right)\left( x - 1 \right) + \frac{f''\le
 </div>
 <hr>
 <div id="exr-1.34b" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.12</strong></span> 💻 Write a Pyton function <code>log_approx(x, n)</code> that computes the <span class="math inline">\(n\)</span>th order Taylor Series approximation of <span class="math inline">\(\log(x)\)</span> centred at <span class="math inline">\(x_0 = 1\)</span>. Use it to build the plot below showing the approximations.</p>
-<div id="cell-fig-1.2" class="cell" data-execution_count="3">
+<p><span class="theorem-title"><strong>Exercise 2.12</strong></span> 💻 Write a Python function <code>log_approx(x, n)</code> that computes the <span class="math inline">\(n\)</span>th order Taylor Series approximation of <span class="math inline">\(\log(x)\)</span> centred at <span class="math inline">\(x_0 = 1\)</span>. Use it to build the plot below showing the approximations.</p>
+<div id="cell-fig-1.2" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display">
 <div id="fig-1.2" class="quarto-float quarto-figure quarto-figure-left anchored" alt="Taylor series approximation of the logarithm.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -707,7 +708,7 @@ f(x) = \frac{1}{1-x}.
 \]</span> If we build a Taylor Series centred at <span class="math inline">\(x_0 = 0\)</span> it is not too hard to show that we get <span class="math display">\[
 f(x) = 1 + x + x^2 + x^3 + x^4 + x^5 + \cdots
 \]</span> (you should stop now and verify this!). However, if we plot the function <span class="math inline">\(f(x)\)</span> along with several successive approximations for <span class="math inline">\(f(x)\)</span> we find that beyond <span class="math inline">\(x=1\)</span> we do not get the correct behaviour of the function (see <a href="#fig-1.3" class="quarto-xref">Figure&nbsp;<span>2.3</span></a>). More specifically, we cannot get the Taylor Series to change behaviour across the vertical asymptote of the function at <span class="math inline">\(x=1\)</span>. This example is meant to point out the fact that a Taylor Series will only ever make sense <em>near</em> the point at which you centre the expansion. For the function <span class="math inline">\(f(x) = \frac{1}{1-x}\)</span> centred at <span class="math inline">\(x_0 = 0\)</span> we can only get good approximations within the interval <span class="math inline">\(x \in (-1,1)\)</span> and no further.</p>
-<div id="cell-fig-1.3" class="cell" data-execution_count="4">
+<div id="cell-fig-1.3" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -721,7 +722,7 @@ f(x) = 1 + x + x^2 + x^3 + x^4 + x^5 + \cdots
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>y3 <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> x <span class="op">+</span> x<span class="op">**</span><span class="dv">2</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>y4 <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> x <span class="op">+</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> x<span class="op">**</span><span class="dv">3</span> <span class="op">+</span> x<span class="op">**</span><span class="dv">4</span> <span class="op">+</span> x<span class="op">**</span><span class="dv">5</span> <span class="op">+</span> x<span class="op">**</span><span class="dv">6</span> <span class="op">+</span> x<span class="op">**</span><span class="dv">7</span> <span class="op">+</span> x<span class="op">**</span><span class="dv">8</span></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot each of the functions </span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># plot each of the functions</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y0, <span class="st">'r-'</span>, label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">f</span><span class="kw">(</span><span class="vs">x</span><span class="kw">)</span><span class="vs">=1/</span><span class="kw">(</span><span class="vs">1-x</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>)</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y1, <span class="st">'c-'</span>, label<span class="op">=</span><span class="vs">r"constant"</span>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.plot(x, y2, <span class="st">'g:'</span>, label<span class="op">=</span><span class="vs">r"linear"</span>)</span>
@@ -763,7 +764,7 @@ Figure&nbsp;2.3: Several Taylor Series approximations of the function <span clas
 </section>
 <section id="sec-truncation_error" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="sec-truncation_error"><span class="header-section-number">2.2</span> Truncation Error</h2>
-<p>The great thing about Taylor Series is that they allow for the representation of potentially very complicated functions as polynomials – and polynomials are easily dealt with on a computer since they involve only addition, subtraction, multiplication, division, and integer powers. The down side is that the order of the polynomial is infinite. Hence, every time we use a Taylor series on a computer, what we are actually going to be using is a <strong>Truncated Taylor Series</strong> where we only take a finite number of terms. The idea here is simple in principle:</p>
+<p>The great thing about Taylor Series is that they allow for the representation of potentially very complicated functions as polynomials, and polynomials are easily dealt with on a computer since they involve only addition, subtraction, multiplication, division, and integer powers. The downside is that the order of the polynomial is infinite. Hence, every time we use a Taylor series on a computer, what we are actually going to be using is a <strong>Truncated Taylor Series</strong> where we only take a finite number of terms. The idea here is simple in principle:</p>
 <ul>
 <li><p>If a function <span class="math inline">\(f(x)\)</span> has a Taylor Series representation it can be written as an infinite sum.</p></li>
 <li><p>Computers cannot do infinite sums.</p></li>
@@ -792,7 +793,7 @@ e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+
 <p><span class="theorem-title"><strong>Exercise 2.13</strong></span> 🎓 💻 Now make the previous discussion a bit more concrete. You know the Taylor Series for <span class="math inline">\(f(x) = e^x\)</span> around <span class="math inline">\(x=0\)</span> quite well at this point so use it to approximate the values of <span class="math inline">\(f(0.1) = e^{0.1}\)</span> and <span class="math inline">\(f(0.2)=e^{0.2}\)</span> by truncating the Taylor series at different orders. Because <span class="math inline">\(x=0.1\)</span> and <span class="math inline">\(x=0.2\)</span> are pretty close to the centre of the Taylor Series <span class="math inline">\(x_0 = 0\)</span>, this sort of approximation is reasonable.</p>
 <p>Then compare your approximate values to Python’s values <span class="math inline">\(f(0.1)=e^{0.1} \approx\)</span> <code>np.exp(0.1)</code> <span class="math inline">\(=1.1051709180756477\)</span> and <span class="math inline">\(f(0.2)=e^{0.2} \approx\)</span> <code>np.exp(0.2)</code> <span class="math inline">\(=1.2214027581601699\)</span> to calculate the truncation errors <span class="math inline">\(\epsilon_n(0.1)=|f(0.1)-f_n(0.1)|\)</span> and <span class="math inline">\(\epsilon_n(0.2)=|f(0.2)-f_n(0.2)|\)</span>.</p>
 <p>Fill in the blanks in the table. If you like, you can copy and paste the code and extend it to fill in the missing rows. For a bit of explanation of the syntax of the print commands see <a href="nmPython.html#exm-A.20" class="quarto-xref">Example&nbsp;<span>A.20</span></a> but for more detailed information ask Gemini.</p>
-<div id="40884907" class="cell" data-execution_count="5">
+<div id="be2706dc" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -841,7 +842,7 @@ e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+
 <hr>
 <div id="exr-1.39b" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.14</strong></span> 💻 To investigate the dependence of the truncation error <span class="math inline">\(\epsilon_n(x)\)</span> on <span class="math inline">\(n\)</span> and <span class="math inline">\(x\)</span> a bit more, add an extra column to the table from the previous exercise with the ratio <span class="math inline">\(\epsilon_n(0.2) / \epsilon_n(0.1)\)</span>.</p>
-<div id="457c1d28" class="cell" data-execution_count="6">
+<div id="89ca0229" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Order n  | ε_n(0.1)        | ε_n(0.2)        |  ε_n(0.2) / ε_n(0.1)
 --------------------------------------------------------------------------------
@@ -861,7 +862,7 @@ e^x \approx 1 + x + \frac{x^2}{2!} + \cdots + \frac{x^n}{n!} + \mathcal{O}(x^{n+
 f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots.
 \]</span> So there are only approximations of odd order. Use the truncated Taylor series to approximate <span class="math inline">\(f(0.1)=\sin(0.1)\)</span> and <span class="math inline">\(f(0.2)=\sin(0.2)\)</span> and use Python’s values <code>np.sin(0.1)</code> and <code>np.sin(0.2)</code> to calculate the truncation errors <span class="math inline">\(\epsilon_n(0.1)=|f(0.1)-f_n(0.1)|\)</span> and <span class="math inline">\(\epsilon_n(0.2)=|f(0.2)-f_n(0.2)|\)</span>.</p>
 <p>Complete the following table:</p>
-<div id="fbe882d1" class="cell" data-execution_count="7">
+<div id="0bdaae3d" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Order n  | ε_n(0.1)        | ε_n(0.2)        |  ε_n(0.2) / ε_n(0.1)      
 --------------------------------------------------------------------------------
@@ -883,8 +884,8 @@ f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots.
 \]</span></p>
 </div>
 <hr>
-<div id="exr-1.40" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 2.17</strong></span> 💬 🖋 Write down your groups’s observations about how the truncation error changes as <span class="math inline">\(x\)</span> changes. Explain this in terms of the form of the remainder of the truncated Taylor series.</p>
+<div id="exr-log-truncation-observations" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 2.17</strong></span> 💬 🖋 Write down your group’s observations about how the truncation error changes as <span class="math inline">\(x\)</span> changes. Explain this in terms of the form of the remainder of the truncated Taylor series.</p>
 </div>
 </section>
 <section id="exam-style-question" class="level2" data-number="2.3">
@@ -902,7 +903,7 @@ f(x) = \sin(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots.
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    ....</span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(...):</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        ....</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="a">
 <li><ol type="i">
@@ -933,7 +934,7 @@ f(x) = \max(0, x).
 </div>
 <hr>
 <p>The ReLU function is an example of what is called an <strong>activation function</strong> in neural networks. The idea is that the neuron “activates” (produces a non-zero output) only when the input exceeds a certain threshold.</p>
-<div id="exr-1.42" class="theorem exercise">
+<div id="exr-nn-param-relu" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.19</strong></span> 🖋 Now let us make our neuron a bit more interesting by allowing it to have adjustable parameters.</p>
 <p>Consider the function <span class="math display">\[
 h(x) = \max(0, w x + b)
@@ -953,7 +954,7 @@ h(x) = \max(0, w x + b)
 </ol>
 </div>
 <hr>
-<div id="exr-1.43" class="theorem exercise">
+<div id="exr-nn-two-inputs" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.20</strong></span> 🖋 So far we have been working with a neuron that takes a single input <span class="math inline">\(x\)</span>. In many applications, we want to work with functions of multiple variables.</p>
 <p>Suppose we have two inputs <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>, and we define a neuron as <span class="math display">\[
 h(x_1, x_2) = \max(0, w_1 x_1 + w_2 x_2 + b)
@@ -969,7 +970,7 @@ h(x_1, x_2) = \max(0, w_1 x_1 + w_2 x_2 + b)
 <section id="sec-neural-layer" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="sec-neural-layer"><span class="header-section-number">2.4.2</span> Combining Neurons into a Layer</h3>
 <p>A single neuron can detect when the input crosses a particular threshold. But to approximate more complex functions, we need to combine multiple neurons together. Let us explore this idea.</p>
-<div id="exr-1.44" class="theorem exercise">
+<div id="exr-nn-two-neurons" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.21</strong></span> 🖋 Suppose we have two neurons, both taking the same input <span class="math inline">\(x\)</span>, but with different weights and biases: <span class="math display">\[\begin{align}
 h_1(x) &amp;= \max(0, w_1 x + b_1) \\
 h_2(x) &amp;= \max(0, w_2 x + b_2)
@@ -984,7 +985,7 @@ h_2(x) &amp;= \max(0, w_2 x + b_2)
 </ol>
 </div>
 <hr>
-<div id="exr-1.45" class="theorem exercise">
+<div id="exr-nn-weighted-relu" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.22</strong></span> 🖋 Rather than just adding two ReLU neurons, consider the weighted combination: <span class="math display">\[
 f(x) = c_1 h_1(x) + c_2 h_2(x)
 \]</span> where <span class="math inline">\(c_1\)</span> and <span class="math inline">\(c_2\)</span> are <strong>output weights</strong> that can be positive or negative.</p>
@@ -997,7 +998,7 @@ f(x) = c_1 h_1(x) + c_2 h_2(x)
 <p>By hand, sketch the graph of this function.</p>
 </div>
 <hr>
-<div id="exr-1.45" class="theorem exercise">
+<div id="exr-nn-triangular-bump" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.23</strong></span> 🖋 In the previous exercise you created a function with a triangular bump but the function continued decreasing to negative values beyond <span class="math inline">\(x=2\)</span>. Now see if you can find a way to combine three ReLU neurons to create a triangular bump function that:</p>
 <ul>
 <li>is zero for <span class="math inline">\(x &lt; 0\)</span> and <span class="math inline">\(x &gt; 2\)</span></li>
@@ -1029,7 +1030,7 @@ f(x) = c_1 h_1(x) + c_2 h_2(x) + \cdots + c_n h_n(x) + c_0
 <p>We can write this more compactly using summation notation: <span class="math display">\[
 f(x) = \sum_{i=1}^{n} c_i \max(0, w_i x + b_i) + c_0.
 \]</span></p>
-<div id="4eedddba" class="cell" data-execution_count="8">
+<div id="5d1ae1bf" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1041,34 +1042,32 @@ f(x) = \sum_{i=1}^{n} c_i \max(0, w_i x + b_i) + c_0.
 <p>This function <span class="math inline">\(f(x)\)</span> is determined by the parameters:</p>
 <ul>
 <li>Hidden layer weights: <span class="math inline">\(w_1, w_2, \ldots, w_n\)</span></li>
-<li>Hidden layer biases: <span class="math inline">\(b_1, b_2, \ldots, b_n\)</span><br>
-</li>
+<li>Hidden layer biases: <span class="math inline">\(b_1, b_2, \ldots, b_n\)</span></li>
 <li>Output weights: <span class="math inline">\(c_1, c_2, \ldots, c_n\)</span></li>
 <li>Output bias: <span class="math inline">\(c_0\)</span></li>
 </ul>
 <p>That gives us a total of <span class="math inline">\(3n + 1\)</span> parameters to work with.</p>
-<p>Note that, due to the simple linear nature of the ReLU activation function that we have chosen to use here, we can absorb the weights of the hidden layer neurons into a rescaling of the of the output weights and the biases. This would not be true for more general activation functions.</p>
-<p>So we choose to set all hidden weights to <span class="math inline">\(1\)</span> and thus work with <span class="math display">\[
+<p>For the one-dimensional piecewise linear examples below, it is enough to use hidden neurons with weight <span class="math inline">\(1\)</span>. The biases place the knots, and the output weights change the slopes from one interval to the next. Thus we choose to work with <span class="math display">\[
 f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 \]</span></p>
 <p>The following Python code implements such a neural network. Make sure you understand the code.</p>
-<div id="deee6703" class="cell" data-execution_count="9">
+<div id="b9c87def" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> two_layer_network(x, biases, output_weights, output_bias<span class="op">=</span><span class="dv">0</span>):</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Evaluates a two-layer neural network approximation.</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    x (float): The value at which to evaluate the network.</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">    x (float or array): The value or values at which to evaluate the network.</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">    biases (list or array): Biases for hidden layer</span></span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co">        These determine the knot points: x_i = -b_i</span></span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">    output_weights (list or array) : Weights for output layer</span></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">    output_bias (float): Bias for output layer (default: 0)</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">    --------</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">    float: The output of the neural network.</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">    float or array: The output of the neural network.</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    f_nn <span class="op">=</span> output_bias <span class="op">*</span> np.ones_like(x)  <span class="co"># bias term</span></span>
 <span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(biases)):</span>
@@ -1076,12 +1075,12 @@ f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f_nn</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
-<div id="exr-1.47" class="theorem exercise">
+<div id="exr-nn-flexibility" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.24</strong></span> 💬 Explain in your own words why a two-layer neural network is flexible enough to approximate many different functions. How do the output weights control the shape of the approximation?</p>
 <p>How is this similar to polynomial approximation? How is it different?</p>
 </div>
 <hr>
-<div id="exr-1.49" class="theorem exercise">
+<div id="exr-nn-sine" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.25</strong></span> 💻 In this exercise we will approximate a smooth function with a neural network using a simple but powerful idea: we can create a piecewise linear approximation by using a sum of ReLU neurons, each of which activates at a new point. Each ReLU neuron that activates at a new point changes the slope of our piecewise linear approximation.</p>
 <p>Consider approximating <span class="math inline">\(f(x) = \sin(x)\)</span> on the interval <span class="math inline">\([0, \pi]\)</span> using a two-layer neural network. We’ll place ReLU neurons at several “knot points” along the curve, and each neuron will adjust the slope.</p>
 <ol type="1">
@@ -1092,22 +1091,22 @@ f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 </ul>
 <p>Explain how the output weight <span class="math inline">\(c_2\)</span> controls the change in slope at <span class="math inline">\(x = \pi/2\)</span>.</p>
 <ul>
-<li>Suggest a choice for the output weights <span class="math inline">\(c_0, c_1, c_2\)</span> that you think will give some kind of crude approximation of <span class="math inline">\(\sin(x)\)</span> on the interval <span class="math inline">\([0,\pi]\)</span>. Use the Python function <code>plot_neural_network</code> provided below to make a plot of your approximation.</li>
+<li>Suggest a choice for the output bias <span class="math inline">\(c_0\)</span> and output weights <span class="math inline">\(c_1, c_2\)</span> that you think will give some kind of crude approximation of <span class="math inline">\(\sin(x)\)</span> on the interval <span class="math inline">\([0,\pi]\)</span>. Use the Python function <code>plot_neural_network</code> provided below to make a plot of your approximation.</li>
 </ul></li>
 <li><p>Use the Python function <code>plot_neural_network</code> with 4 knot points at <span class="math inline">\(x = 0, \pi/4, \pi/2, 3\pi/4\)</span>. Try to find output weights that create a good approximation.</p></li>
 <li><p>Calculate the maximum approximation error and discuss how it could be improved.</p></li>
 <li><p>Experiment with more knot points (try 9 or 17 points evenly spaced). How does the approximation improve?</p></li>
 </ol>
 <p><strong>Python helper function:</strong></p>
-<div id="018d4835" class="cell" data-execution_count="10">
+<div id="e0b6938d" class="cell" data-execution_count="9">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_neural_network(biases, output_weights, output_bias<span class="op">=</span><span class="dv">0</span>,</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                        x_range<span class="op">=</span>(<span class="dv">0</span>, np.pi), target_func<span class="op">=</span>np.sin):</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot a two-layer neural network approximation.</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters:</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">    biases (list or array): Biases for hidden layer</span></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">        These determine the knot points: x_i = -b_i</span></span>
@@ -1117,36 +1116,36 @@ f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 <span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">        (x_min, x_max) for plotting (default: (0, np.pi))</span></span>
 <span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">    target_func : function</span></span>
 <span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">        The target function to approximate (default: np.sin)</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">    float: Maximum absolute error</span></span>
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
 <span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(x_range[<span class="dv">0</span>], x_range[<span class="dv">1</span>], <span class="dv">500</span>)</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute neural network output</span></span>
 <span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    f_nn <span class="op">=</span> two_layer_network(x, biases, output_weights, output_bias)</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute target</span></span>
 <span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    f_target <span class="op">=</span> target_func(x)</span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Plot</span></span>
 <span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    plt.plot(x, f_target, <span class="st">'r-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Target function'</span>)</span>
 <span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    plt.plot(x, f_nn, <span class="st">'b--'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Neural network'</span>)</span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Mark knot points</span></span>
 <span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>    knots <span class="op">=</span> [<span class="op">-</span>b <span class="cf">for</span> b <span class="kw">in</span> biases]</span>
 <span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> knot <span class="kw">in</span> knots:</span>
 <span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> x_range[<span class="dv">0</span>] <span class="op">&lt;=</span> knot <span class="op">&lt;=</span> x_range[<span class="dv">1</span>]:</span>
 <span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>            plt.axvline(knot, color<span class="op">=</span><span class="st">'gray'</span>, linestyle<span class="op">=</span><span class="st">':'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a>    plt.grid(<span class="va">True</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
 <span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>    plt.legend()</span>
 <span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">'x'</span>)</span>
 <span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">'y'</span>)</span>
 <span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">'Neural Network Approximation'</span>)</span>
 <span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Calculate and return error</span></span>
 <span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a>    error <span class="op">=</span> np.<span class="bu">max</span>(np.<span class="bu">abs</span>(f_target <span class="op">-</span> f_nn))</span>
 <span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Maximum error: </span><span class="sc">{</span>error<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
@@ -1167,7 +1166,7 @@ f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 \]</span></p>
 </div>
 <hr>
-<div id="exr-1.52" class="theorem exercise">
+<div id="exr-nn-reflection" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.26</strong></span> 💬 Reflect on what you have learned about neural networks and compare them to Taylor series:</p>
 <ol type="1">
 <li><p>What are the advantages of using neural networks for function approximation compared to Taylor series?</p></li>
@@ -1175,8 +1174,7 @@ f_{nn}(x) = \sum_{i=1}^{n} c_i \max(0, x + b_i) + c_0
 <li><p>For each of the following functions, which approximation method (Taylor series or neural network) do you think would be more appropriate, and why?</p>
 <ul>
 <li><span class="math inline">\(f(x) = e^x\)</span> near <span class="math inline">\(x = 0\)</span></li>
-<li><span class="math inline">\(f(x) = |x|\)</span> near <span class="math inline">\(x = 0\)</span><br>
-</li>
+<li><span class="math inline">\(f(x) = |x|\)</span> near <span class="math inline">\(x = 0\)</span></li>
 <li><span class="math inline">\(f(x) = \sin(100x)\)</span> on <span class="math inline">\([0, 2\pi]\)</span></li>
 <li>A function defined by experimental data points</li>
 </ul></li>
@@ -1203,7 +1201,7 @@ f(x) = \sum_{j=1}^{n_2} c_j h_j^{(2)} + c_0
 \]</span></p></li>
 </ol>
 <p>This is called a <strong>deep neural network</strong> because it has multiple hidden layers. The term “deep learning” comes from using such multi-layer architectures.</p>
-<div id="cbe1100d" class="cell" data-execution_count="11">
+<div id="c50c4045" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1225,7 +1223,7 @@ f(x) = \begin{cases}
 4 - 4x &amp; \text{if } 0.75 \leq x \leq 1
 \end{cases}
 \]</span></p>
-<div id="4fad5215" class="cell" data-execution_count="12">
+<div id="d364ea1f" class="cell" data-execution_count="11">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1235,10 +1233,10 @@ f(x) = \begin{cases}
 </div>
 </div>
 <hr>
-<div id="exr-1.50" class="theorem exercise">
+<div id="exr-sawtooth-shallow" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.27 (Building a Shallow Network for the Sawtooth)</strong></span> You already know how to represent piecewise linear functions with a two-layer neural network. Each of the 5 “hinge points” (where the slope changes) requires a ReLU neuron.</p>
 <p><strong>a)</strong> For each hinge point at position <span class="math inline">\(x_i\)</span>, you need a ReLU neuron with bias <span class="math inline">\(b_i = -x_i\)</span>.</p>
-<p><strong>b)</strong> What are the output weights with which you need to combinae these neurons?</p>
+<p><strong>b)</strong> What are the output weights with which you need to combine these neurons?</p>
 <p>Use this to complete the code below and use the plot to check that the resulting function has the desired form.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> shallow_2_peak_network(x):</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    biases <span class="op">=</span> [.....]</span>
@@ -1256,12 +1254,12 @@ f(x) = \begin{cases}
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr>
-<div id="exr-1.51" class="theorem exercise">
+<div id="exr-sawtooth-deep" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.28 (Building the Deep Network)</strong></span> A deeper network takes a more elegant approach. Instead of directly creating all the peaks, it uses one layer to create a single peak and then another layer to duplicate this peak.</p>
 <p>The key insight is to create a single-peak function <span class="math display">\[
 g(x) = \begin{cases}2x&amp;0\leq x&lt;1/2\\2(1-x)&amp;1/2\leq x\leq1\\0 &amp; x\not\in [0,1]\end{cases}
-\]</span> that produces one triangular peak at <span class="math inline">\(x = 0.5\)</span> with height 1, returning to 0 at <span class="math inline">\(z &lt; 0\)</span> and <span class="math inline">\(z &gt; 1\)</span>.</p>
-<div id="6bc74778" class="cell" data-execution_count="13">
+\]</span> that produces one triangular peak at <span class="math inline">\(x = 0.5\)</span> with height 1, returning to 0 at <span class="math inline">\(x &lt; 0\)</span> and <span class="math inline">\(x &gt; 1\)</span>.</p>
+<div id="86076df5" class="cell" data-execution_count="12">
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -1281,14 +1279,14 @@ g(x) = \begin{cases}2x&amp;0\leq x&lt;1/2\\2(1-x)&amp;1/2\leq x\leq1\\0 &amp; x\
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="op">-</span><span class="fl">0.1</span>,<span class="fl">1.1</span>,<span class="dv">500</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, g(x), <span class="st">'r-'</span>, lw<span class="op">=</span><span class="dv">3</span>))</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.plot(x, g(x), <span class="st">'r-'</span>, lw<span class="op">=</span><span class="dv">3</span>)</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
 <span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
 <span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'g(x)'</span>)</span>
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Single peak function'</span>)</span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>b)</strong> Now comes the magic! Pass the result of your network <span class="math inline">\(g(x)\)</span> through the same network again: compute <span class="math inline">\(g(g(x))\)</span>. Plot the result and compare it to the target.</p>
-<div id="059bab05" class="cell" data-execution_count="14">
+<div id="e291ca37" class="cell" data-execution_count="13">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="kw">lambda</span> x: g(g(x))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
@@ -1312,7 +1310,7 @@ g(x) = \begin{cases}2x&amp;0\leq x&lt;1/2\\2(1-x)&amp;1/2\leq x\leq1\\0 &amp; x\
 <p><strong>d)</strong> Create a 4-peak sawtooth by composing <span class="math inline">\(g\)</span> three times: <span class="math inline">\(g(g(g(x)))\)</span>. Plot it. How many hidden neurons does this use? Compare to the shallow network approach from the previous exercise.</p>
 </div>
 <hr>
-<div id="exr-1.52" class="theorem exercise">
+<div id="exr-sawtooth-scaling" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 2.29 (Scaling Analysis: The Exponential Advantage)</strong></span> Now let’s compare how the two approaches scale as we increase the number of peaks.</p>
 <p><strong>a)</strong> 🖋 Complete this table by implementing both shallow and deep networks for different numbers of peaks:</p>
 <table class="caption-top table">
@@ -1436,7 +1434,7 @@ e^{i\theta} = \cos(\theta) + i \sin(\theta).
 E_{rel} = \gamma mc^2
 \]</span> where <span class="math display">\[
 \gamma = \frac{1}{\sqrt{1 - \frac{v^2}{c^2}}}.
-\]</span> In these equations, <span class="math inline">\(m\)</span> is the mass of the object, <span class="math inline">\(c\)</span> is the speed of light (<span class="math inline">\(c \approx 3 \times 10^8\)</span>m/s), and <span class="math inline">\(v\)</span> is the velocity of the object. For an object of fixed mass (m) we can expand the Taylor Series centred at <span class="math inline">\(v=0\)</span> for <span class="math inline">\(E_{rel}\)</span> to get <span class="math display">\[
+\]</span> In these equations, <span class="math inline">\(m\)</span> is the mass of the object, <span class="math inline">\(c\)</span> is the speed of light (<span class="math inline">\(c \approx 3 \times 10^8\)</span> m/s), and <span class="math inline">\(v\)</span> is the velocity of the object. For an object of fixed mass (m) we can expand the Taylor Series centred at <span class="math inline">\(v=0\)</span> for <span class="math inline">\(E_{rel}\)</span> to get <span class="math display">\[
 E_{rel} = mc^2 + \frac{1}{2} mv^2 + \frac{3}{8} \frac{mv^4}{c^2} + \frac{5}{16} \frac{mv^6}{c^4} + \cdots.
 \]</span></p>
 <ol type="1">
@@ -1455,7 +1453,7 @@ E_{rel} = mc^2 + \frac{1}{2} mv^2
 <hr>
 <ol>
 <li id="fn1"><p>There are many reasons why integrating an infinite series term by term should give you a moment of pause. For the sake of this problem we are doing this operation a little blindly, but in reality we should have verified that the infinite series actually converges uniformly.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>This is something that people in physics and engineering do all the time – there is some complicated nonlinear relationship that they wish to use, but the first few terms of the Taylor Series captures almost all of the behaviour since the higher-order terms are very very small.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>This is something that people in physics and engineering do all the time – there is some complicated nonlinear relationship that they wish to use, but the first few terms of the Taylor Series capture almost all of the behaviour since the higher-order terms are very small.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 

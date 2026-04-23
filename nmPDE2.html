@@ -475,9 +475,14 @@ window.Quarto = {
    
   <ul>
   <li><a href="#sec-heat2d" id="toc-sec-heat2d" class="nav-link active" data-scroll-target="#sec-heat2d"><span class="header-section-number">10.1</span> Two-dimensional Heat Equation</a></li>
-  <li><a href="#sec-heat_stability" id="toc-sec-heat_stability" class="nav-link" data-scroll-target="#sec-heat_stability"><span class="header-section-number">10.2</span> Implicit Methods</a></li>
-  <li><a href="#the-wave-equation" id="toc-the-wave-equation" class="nav-link" data-scroll-target="#the-wave-equation"><span class="header-section-number">10.3</span> The Wave Equation</a></li>
-  <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">10.4</span> Exam-Style Question</a></li>
+  <li><a href="#sec-heat_stability" id="toc-sec-heat_stability" class="nav-link" data-scroll-target="#sec-heat_stability"><span class="header-section-number">10.2</span> Implicit Methods</a>
+  <ul>
+  <li><a href="#backward-difference-method" id="toc-backward-difference-method" class="nav-link" data-scroll-target="#backward-difference-method"><span class="header-section-number">10.2.1</span> Backward Difference Method</a></li>
+  <li><a href="#stability-of-the-backward-difference-method" id="toc-stability-of-the-backward-difference-method" class="nav-link" data-scroll-target="#stability-of-the-backward-difference-method"><span class="header-section-number">10.2.2</span> Stability of the Backward Difference Method</a></li>
+  <li><a href="#the-crank-nicolson-method" id="toc-the-crank-nicolson-method" class="nav-link" data-scroll-target="#the-crank-nicolson-method"><span class="header-section-number">10.2.3</span> The Crank-Nicolson Method</a></li>
+  <li><a href="#stability-of-the-crank-nicolson-method" id="toc-stability-of-the-crank-nicolson-method" class="nav-link" data-scroll-target="#stability-of-the-crank-nicolson-method"><span class="header-section-number">10.2.4</span> Stability of the Crank-Nicolson Method</a></li>
+  </ul></li>
+  <li><a href="#exam-style-question" id="toc-exam-style-question" class="nav-link" data-scroll-target="#exam-style-question"><span class="header-section-number">10.3</span> Exam-Style Question</a></li>
   </ul>
 </nav>
     </div>
@@ -505,19 +510,6 @@ window.Quarto = {
 
 
 <div style="margin-top: -10px; margin-bottom: 20px;"><a href="nmPDE2.pdf" class="btn btn-sm btn-outline-primary" title="Download Chapter PDF"><i class="bi bi-file-earmark-pdf"></i> Download Chapter PDF</a></div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Caution
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This chapter is still undergoing changes, to be released on Thursday of week 9.</p>
-</div>
-</div>
 <section id="sec-heat2d" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="sec-heat2d"><span class="header-section-number">10.1</span> Two-dimensional Heat Equation</h2>
 <p>Now we transition to the two dimensional heat equation. Instead of thinking of this as heating a long metal rod we can think of heating a thin plate of metal (like a flat cookie sheet). The heat equation models the propagation of the heat energy throughout the 2D surface. In two spatial dimensions the heat equation is <span class="math display">\[
@@ -561,7 +553,7 @@ Figure&nbsp;10.1: The finite difference stencil for the 2D heat equation.
 </div>
 <hr>
 <div id="exr-6.36" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.2</strong></span> 💻 Now we need to implement the finite difference scheme that you developed in the previous problem. As a model problem, consider the 2D heat equation <span class="math inline">\(u_t = D(u_{xx} + u_{yy})\)</span> on the domain <span class="math inline">\((x,y) \in [0,1] \times [0,1]\)</span> with the initial condition <span class="math inline">\(u(0,x,y) = \sin(\pi x)\sin(\pi y)\)</span>, Dirichlet boundary conditions <span class="math inline">\(u(t,x,0) = u(t,x,1)=u(t,0,y)=u(t,1,y)=0\)</span>, and <span class="math inline">\(D=1\)</span>. Fill in the holes in the following code chunks.</p>
+<p><span class="theorem-title"><strong>Exercise 10.2</strong></span> 💻 🎓 Now we need to implement the finite difference scheme that you developed in the previous problem. As a model problem, consider the 2D heat equation <span class="math inline">\(u_t = D(u_{xx} + u_{yy})\)</span> on the domain <span class="math inline">\((x,y) \in [0,1] \times [0,1]\)</span> with the initial condition <span class="math inline">\(u(0,x,y) = \sin(\pi x)\sin(\pi y)\)</span>, Dirichlet boundary conditions <span class="math inline">\(u(t,x,0) = u(t,x,1)=u(t,0,y)=u(t,1,y)=0\)</span>, and <span class="math inline">\(D=1\)</span>. Fill in the holes in the following code chunks.</p>
 <ul>
 <li>First we import the proper libraries and set up the domains for <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span>, and <span class="math inline">\(t\)</span>.</li>
 </ul>
@@ -656,21 +648,18 @@ Figure&nbsp;10.1: The finite difference stencil for the 2D heat equation.
 </div>
 <hr>
 <div id="exr-6.37" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.3</strong></span> 💻 🎓 Time to do some experimentation with your new 2D heat equation code! Numerically solve the 2D heat equation with different boundary conditions (both Dirichlet and Neumann). Be prepared to present your solutions.</p>
+<p><span class="theorem-title"><strong>Exercise 10.3</strong></span> 💻 Time to do some experimentation with your new 2D heat equation code! Numerically solve the 2D heat equation with different boundary conditions (both Dirichlet and Neumann).</p>
 </div>
 <hr>
 <div id="exr-6.2db" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.4</strong></span> 💻 In order for the forward difference solution to the 2D heat equation on a square domain to be stable we need <span class="math inline">\(D \Delta t / \Delta x^2 &lt; \underline{\hspace{0.5in}}\)</span>.</p>
-<p>Experiment with several parameters to empirically determine the bound.</p>
+<p><span class="theorem-title"><strong>Exercise 10.4</strong></span> 💻 🎓 In order for the forward difference solution to the 2D heat equation on a square domain to be stable we need <span class="math inline">\(D \Delta t / \Delta x^2 &lt; \underline{\hspace{0.5in}}\)</span>.</p>
+<p>Experiment with several parameters to empirically determine the bound. It is again a simple fraction that you should be able to guess.</p>
 </div>
 <hr>
 <div id="exr-6.38" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.5</strong></span> 💻 Now solve the 2D heat equation on a rectangular domain. You will need to make some modifications to your code since it is unlikely that assuming that <span class="math inline">\(\Delta x = \Delta y\)</span> is a good assumption any longer. Again, be prepared to present your solutions.</p>
+<p><span class="theorem-title"><strong>Exercise 10.5</strong></span> 💻 Now solve the 2D heat equation on a rectangular domain. You will need to make some modifications to your code since it is unlikely that assuming that <span class="math inline">\(\Delta x = \Delta y\)</span> is a good assumption any longer.</p>
 </div>
 <hr>
-</section>
-<section id="sec-heat_stability" class="level2" data-number="10.2">
-<h2 data-number="10.2" class="anchored" data-anchor-id="sec-heat_stability"><span class="header-section-number">10.2</span> Implicit Methods</h2>
 <p>Let us summarize the stability criteria for the forward difference solutions to the heat equation.</p>
 <ul>
 <li><p>In the 1D heat equation the forward difference solution is stable if <span class="math inline">\(D \Delta t / \Delta x^2 &lt; \underline{\hspace{0.5in}}\)</span>.</p></li>
@@ -681,20 +670,19 @@ Figure&nbsp;10.1: The finite difference stencil for the 2D heat equation.
 </div>
 <hr>
 <div id="exr-6.40" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.7 (Hedgehog Errors)</strong></span> 💻 💬 Solve the 2D heat equation on the unit square with homogeneous Dirichlet boundary conditions with the following parameters:</p>
-<ul>
-<li><p>A diffusion coefficient of <span class="math inline">\(D=1\)</span>;</p></li>
-<li><p>A partition of 21 points in both the <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span> direction;</p></li>
-<li><p>301 points between 0 and 0.25 for time;</p></li>
-<li><p>An initial condition of <span class="math inline">\(u(0,x,y) = \sin(\pi x) \sin(\pi y)\)</span>.</p></li>
-</ul>
-<p>What happens near time step number 70?</p>
+<p><span class="theorem-title"><strong>Exercise 10.7 (Hedgehog Errors)</strong></span> 💻 💬 Solve the 2D heat equation on the unit square with homogeneous Dirichlet boundary conditions with the following parameters: diffusion coefficient <span class="math inline">\(D=1\)</span>, step sizes <span class="math inline">\(\Delta x = \Delta y = 0.05\)</span> and <span class="math inline">\(\Delta t = 0.001\)</span> and initial condition <span class="math inline">\(u(0,x,y) = \sin(\pi x) \sin(\pi y)\)</span>.</p>
+<p>Make a 3D plot of the solution at the final time step. Describe what you observe.</p>
 </div>
 <hr>
+</section>
+<section id="sec-heat_stability" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="sec-heat_stability"><span class="header-section-number">10.2</span> Implicit Methods</h2>
 <p>It is actually possible to beat the stability criteria given in the previous exercises! What follows are two implicit methods that use a forward-looking scheme to help completely avoid unstable solutions. The primary advantage to these schemes is that we will not need to pay as close attention to the ratio of the time step to the square of the spatial step. Instead, we can take time and spatial steps that are appropriate for the application we have in mind.</p>
 <hr>
+<section id="backward-difference-method" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="backward-difference-method"><span class="header-section-number">10.2.1</span> Backward Difference Method</h3>
 <div id="exr-6.43" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.8 (Backward Difference Scheme)</strong></span> 🖋 💻 🎓 For the 1D heat equation <span class="math inline">\(u_t = D u_{xx}\)</span> we have been finding the numerical solution using the explicit finite difference scheme <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 10.8</strong></span> 🖋 💻 For the 1D heat equation <span class="math inline">\(u_t = D u_{xx}\)</span> we have been finding the numerical solution using the explicit finite difference scheme <span class="math display">\[
 \frac{U_i^{n+1} - U_i^n}{\Delta t} = D \frac{U_{i+1}^{n} - 2U_i^{n} + U_{i-1}^{n}}{\Delta x^2}
 \]</span> where we approximate the spatial derivative with the centred difference and the time derivative with the usual forward difference. If, however, we use the backward difference formula for the time derivative we get the finite difference scheme <span class="math display">\[
 \frac{U_i^{n} - U_i^{n-1}}{\Delta t} = D \frac{U_{i+1}^{n} - 2U_i^{n} + U_{i-1}^{n}}{\Delta x^2}.
@@ -720,7 +708,7 @@ Figure&nbsp;10.1: The finite difference stencil for the 2D heat equation.
 \begin{pmatrix} \underline{\hspace{0.25in}} &amp; \underline{\hspace{0.25in}} &amp; 0 &amp; 0 \\ \underline{\hspace{0.25in}} &amp; \underline{\hspace{0.25in}} &amp; \underline{\hspace{0.25in}} &amp; 0 \\ 0 &amp; \underline{\hspace{0.25in}} &amp; \underline{\hspace{0.25in}} &amp; \underline{\hspace{0.25in}} \\ 0 &amp; 0 &amp; \underline{\hspace{0.25in}} &amp; \underline{\hspace{0.25in}} \end{pmatrix}\begin{pmatrix} U_1^{n+1} \\ U_2^{n+1} \\ U_3^{n+1} \\ U_4^{n+1} \end{pmatrix} = \begin{pmatrix} U_1^{n} \\ U_2^{n} \\ U_3^{n} \\ U_4^{n} \end{pmatrix} + \begin{pmatrix} \underline{\hspace{0.25in}} U_0^{n+1} \\ 0 \\ 0 \\ \underline{\hspace{0.25in}} U_5^{n+1} \end{pmatrix}
 \]</span></p></li>
 </ol></li>
-<li><p>At this point the structure of the coefficient matrix on the left and the vector sum on the right should be clear (even for more spatial points). It is time for us to start writing some code. we will start with the basic setup of the problem.</p></li>
+<li><p>At this point the structure of the coefficient matrix on the left and the vector sum on the right should be clear (even for more spatial points). It is time for us to start writing some code. We will start with the basic setup of the problem.</p></li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -767,7 +755,7 @@ Figure&nbsp;10.1: The finite difference stencil for the 2D heat equation.
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(t)<span class="op">-</span><span class="dv">1</span>):</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  b1 <span class="op">=</span> U[n,???] </span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># b1 is a vector of U at step n for the inner spatial nodes</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  b2 <span class="op">=</span> np.zeros(length(b1)) <span class="co"># set up the second right-hand vector</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  b2 <span class="op">=</span> np.zeros(<span class="bu">len</span>(b1)) <span class="co"># set up the second right-hand vector</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  b2[<span class="dv">0</span>] <span class="op">=</span> ???<span class="op">*</span>BCleft(t[n<span class="op">+</span><span class="dv">1</span>]) <span class="co"># fill in the correct first entry</span></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  b2[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> ???<span class="op">*</span>BCright(t[n<span class="op">+</span><span class="dv">1</span>]) <span class="co"># fill in the correct last entry</span></span>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  b <span class="op">=</span> b1 <span class="op">+</span> b2 <span class="co"># The vector "b" is the right side of the equation</span></span>
@@ -781,8 +769,36 @@ Figure&nbsp;10.1: The finite difference stencil for the 2D heat equation.
 </ol>
 </div>
 <hr>
+<div id="exr-backward1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10.9</strong></span> 💻 🎓 Solve the equation <span class="math inline">\(u_t=0.2 u_{xx}\)</span> with boundary conditions <span class="math inline">\(u(t,0)=u(t,1)=0\)</span> and initial condition <span class="math inline">\(u(0,x)=\sin(\pi x)\)</span> using the backward difference scheme with stepsizes <span class="math inline">\(\Delta x=0.05\)</span> and <span class="math inline">\(\Delta t=0.5\)</span> to determine an approximation of <span class="math inline">\(u(1,0.6)\)</span>.</p>
+</div>
+<hr>
+<div id="exr-backward2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10.10</strong></span> 💻 🎓 Solve the equation <span class="math inline">\(u_t=0.5 u_{xx}\)</span> with boundary conditions <span class="math inline">\(u(t,0)=t, u(t,2)=4-t\)</span> and initial condition <span class="math inline">\(u(0,x)=x^2\)</span> using the backward difference scheme with stepsizes <span class="math inline">\(\Delta x=0.1\)</span> and <span class="math inline">\(\Delta t=0.4\)</span> to determine an approximation of <span class="math inline">\(u(4,1)\)</span>.</p>
+</div>
+<hr>
+</section>
+<section id="stability-of-the-backward-difference-method" class="level3" data-number="10.2.2">
+<h3 data-number="10.2.2" class="anchored" data-anchor-id="stability-of-the-backward-difference-method"><span class="header-section-number">10.2.2</span> Stability of the Backward Difference Method</h3>
+<p>The backward difference scheme can be written in matrix form. Rearranging so that all terms at time step <span class="math inline">\(n+1\)</span> are on the left gives <span class="math display">\[
+B\mathbf{U}_{n+1} = \mathbf{U}_n,
+\]</span> where <span class="math inline">\(B\)</span> is the <span class="math inline">\((N_x-1)\times(N_x-1)\)</span> tridiagonal matrix with <span class="math inline">\(1+2a\)</span> on the diagonal and <span class="math inline">\(-a\)</span> on the two off-diagonals: <span class="math display">\[
+B = \begin{pmatrix}1+2a&amp;-a&amp;&amp;\\
+-a&amp;1+2a&amp;-a&amp;&amp;\\
+&amp;\ddots&amp;\ddots&amp;\ddots&amp;\\
+&amp;&amp;-a&amp;1+2a\end{pmatrix}.
+\]</span> Solving for <span class="math inline">\(\mathbf{U}_{n+1}\)</span> gives <span class="math display">\[
+\mathbf{U}_{n+1} = B^{-1}\mathbf{U}_n,
+\]</span> so after <span class="math inline">\(n\)</span> steps, <span class="math inline">\(\mathbf{U}_n = (B^{-1})^n\mathbf{U}_0\)</span>. Exactly as in the analysis of the forward difference method in <a href="nmPDE1.html#sec-stability-heat" class="quarto-xref"><span>Section 9.4</span></a>, if an error <span class="math inline">\(\mathbf{\epsilon}\)</span> is introduced at some step it evolves to <span class="math inline">\(\mathbf{\epsilon}^{(n)} = (B^{-1})^n\mathbf{\epsilon}\)</span>. For stability we need all eigenvalues of <span class="math inline">\(B^{-1}\)</span> to have absolute value at most 1, which is equivalent to requiring all eigenvalues of <span class="math inline">\(B\)</span> to have absolute value at least 1.</p>
+<p>Using the same Fourier analysis as for the forward difference method, the matrix <span class="math inline">\(B\)</span> shares the same eigenvectors as the forward difference matrix <span class="math inline">\(A\)</span>, and its eigenvalues are <span class="math display">\[
+\mu_k = 1 + 4a\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2, \quad k = 1,\ldots,N_x-1.
+\]</span> Since <span class="math inline">\(a &gt; 0\)</span> and <span class="math inline">\(\sin^2(\cdot) \geq 0\)</span>, we have <span class="math inline">\(\mu_k \geq 1\)</span> for all <span class="math inline">\(k\)</span> and all <span class="math inline">\(a &gt; 0\)</span>. Therefore <span class="math inline">\(|1/\mu_k| \leq 1\)</span> for every <span class="math inline">\(k\)</span>, and the backward difference method is <strong>unconditionally stable</strong>: no restriction on the ratio <span class="math inline">\(a = D\Delta t/(\Delta x)^2\)</span> is needed to keep the numerical solution bounded.</p>
+<hr>
+</section>
+<section id="the-crank-nicolson-method" class="level3" data-number="10.2.3">
+<h3 data-number="10.2.3" class="anchored" data-anchor-id="the-crank-nicolson-method"><span class="header-section-number">10.2.3</span> The Crank-Nicolson Method</h3>
 <div id="exr-6.44" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.9 (The Crank-Nicolson Method)</strong></span> 🖋 🎓 We conclude this section with one more implicit scheme: the <strong>Crank-Nicolson Method</strong>. In this method we take the average of the forward and backward difference schemes: <span class="math display">\[
+<p><span class="theorem-title"><strong>Exercise 10.11</strong></span> 🖋 We conclude this section with one more implicit scheme: the <strong>Crank-Nicolson Method</strong>. In this method we take the average of the forward and backward difference schemes: <span class="math display">\[
 \frac{U_i^{n+1} - U_i^n}{\Delta t} = \frac{1}{2} \left[D \left( \frac{U_{i-1}^n - 2U_i^n + U_{i+1}^n}{\Delta x^2}\right) +D \left(\frac{U_{i-1}^{n+1} - 2U_i^{n+1} + U_{i+1}^{n+1}}{\Delta x^2} \right) \right].
 \]</span> Letting <span class="math inline">\(r = D \Delta t / (2\Delta x^2)\)</span> we can rearrange to get <span class="math display">\[
 \underline{\hspace{0.25in}} U_{i-1}^{n+1} + \underline{\hspace{0.25in}} U_{i}^{n+1} + \underline{\hspace{0.25in}} U_{i+1}^{n+1} = \underline{\hspace{0.25in}} U_{i-1}^{n} + \underline{\hspace{0.25in}} U_{i}^{n} + \underline{\hspace{0.25in}} U_{i+1}^{n}.
@@ -799,17 +815,25 @@ Figure&nbsp;10.1: The finite difference stencil for the 2D heat equation.
 \begin{pmatrix} (1-2r) &amp; r &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\ r &amp; (1-2r) &amp; r &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; r &amp; (1-2r) &amp; r &amp; &amp; 0 \\ \vdots &amp; &amp; &amp; &amp; &amp; \\ &amp; &amp; &amp; &amp; r &amp; (1-2r) \end{pmatrix} \begin{pmatrix} U^{n}_1 \\ U^{n}_2 \\ U_3^n \\ \vdots \\U^{n}_{M-2} \end{pmatrix}\\ + \begin{pmatrix} r(U_0^{n+1}+U_0^{n}) \\ 0 \\ \vdots \\ 0 \\ r(U_{M-1}^{n}+U_{M-1}^{n+1}) \end{pmatrix}
 \]</span></p></li>
 <li><p>Now for the wonderful part! The entire system of equations from part (a) can be written as <span class="math display">\[
-A \mathcal{U}^{n+1} = B \mathcal{U}^n + D.
-\]</span> What are the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and what are the vectors <span class="math inline">\(\mathcal{U}^{n+1}\)</span>, <span class="math inline">\(\mathcal{U}^n\)</span>, and <span class="math inline">\(D\)</span>?</p></li>
+A \mathcal{U}^{n+1} = B \mathcal{U}^n + \mathbf{d}.
+\]</span> What are the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and what are the vectors <span class="math inline">\(\mathcal{U}^{n+1}\)</span>, <span class="math inline">\(\mathcal{U}^n\)</span>, and <span class="math inline">\(\mathbf{d}\)</span>?</p></li>
 <li><p>To solve for <span class="math inline">\(\mathcal{U}^{n+1}\)</span> at each time step we simply need to do a linear solve: <span class="math display">\[
-\mathcal{U}^{n+1} = A^{-1} \left( B \mathcal{U}^n + D \right).
+\mathcal{U}^{n+1} = A^{-1} \left( B \mathcal{U}^n + \mathbf{d} \right).
 \]</span> Of course, we will never do a matrix inverse on a computer. Instead we can lean on tools such as <code>np.linalg.solve()</code> to do the linear solve for us.</p></li>
 <li><p>💻 Finally. Write code to solve the 1D Heat Equation implementing the Crank Nicolson method described in this problem. The setup of your code should be largely the same as for the implicit method from <a href="#exr-6.43" class="quarto-xref">Exercise&nbsp;<span>10.8</span></a>. You will need to construct the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> as well as the vector <span class="math inline">\(D\)</span>. Then your time stepping loop will contain the code from part 6 of this problem.</p></li>
 </ol>
 </div>
 <hr>
+<div id="exr-CN1" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10.12</strong></span> 💻 🎓 Solve the equation <span class="math inline">\(u_t=0.2 u_{xx}\)</span> with boundary conditions <span class="math inline">\(u(t,0)=u(t,1)=0\)</span> and initial condition <span class="math inline">\(u(0,x)=\sin(\pi x)\)</span> using the Crank-Nicolson scheme with stepsizes <span class="math inline">\(\Delta x=0.05\)</span> and <span class="math inline">\(\Delta t=0.5\)</span> to determine an approximation of <span class="math inline">\(u(1,0.6)\)</span>.</p>
+</div>
+<hr>
+<div id="exr-CN2" class="theorem exercise">
+<p><span class="theorem-title"><strong>Exercise 10.13</strong></span> 💻 🎓 Solve the equation <span class="math inline">\(u_t=0.5 u_{xx}\)</span> with boundary conditions <span class="math inline">\(u(t,0)=t, u(t,2)=4-t\)</span> and initial condition <span class="math inline">\(u(0,x)=x^2\)</span> using the Crank-Nicolson scheme with stepsizes <span class="math inline">\(\Delta x=0.1\)</span> and <span class="math inline">\(\Delta t=0.4\)</span> to determine an approximation of <span class="math inline">\(u(4,1)\)</span>.</p>
+</div>
+<hr>
 <div id="exr-6.45" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.10</strong></span> 🖋 To graphically show the Crank Nicolson method we can again use a finite difference stencil to show where the information is coming from and where it is going to. In <a href="#fig-6.10" class="quarto-xref">Figure&nbsp;<span>10.2</span></a> notice that there are three points at the new time step that are used to calculate the value of <span class="math inline">\(U_i^{n+1}\)</span> at the new time step. Sketch a similar image for the original implicit scheme from <a href="#exr-6.43" class="quarto-xref">Exercise&nbsp;<span>10.8</span></a></p>
+<p><span class="theorem-title"><strong>Exercise 10.14</strong></span> 🖋 To graphically represent the Crank Nicolson method we can again use a finite difference stencil to show where the information is coming from and where it is going to. In <a href="#fig-6.10" class="quarto-xref">Figure&nbsp;<span>10.2</span></a> notice that there are three points at the new time step that are used to calculate the value of <span class="math inline">\(U_i^{n+1}\)</span> at the new time step. Sketch a similar image for the original implicit scheme from <a href="#exr-6.43" class="quarto-xref">Exercise&nbsp;<span>10.8</span></a></p>
 <div id="fig-6.10" class="quarto-float quarto-figure quarto-figure-left anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-6.10-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -821,72 +845,26 @@ Figure&nbsp;10.2: The finite difference stencil for the Crank Nicolson method.
 </figure>
 </div>
 </div>
-<p>It turns out that the error terms for the forward and backward difference methods have the form <span class="math inline">\(C\Delta t+O(\Delta t^2)\)</span> and <span class="math inline">\(C\Delta t+O(\Delta t^2)\)</span>. Taking the average cancels the <span class="math inline">\(\pm C\Delta t\)</span> terms and leaves an error of order <span class="math inline">\(O(\Delta t^2)\)</span>; in combination with the space variable, we have an error of order <span class="math inline">\(O(\Delta t^2)+O(\Delta x^2)\)</span> for the whole method, as compared with <span class="math inline">\(O(\Delta t)+O(\Delta x^2)\)</span> for the forward and backward difference methods. Like the backward difference method, the Crank-Nicolson method is absolutely stable.</p>
-</section>
-<section id="the-wave-equation" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="the-wave-equation"><span class="header-section-number">10.3</span> The Wave Equation</h2>
-<p>The problems that we have dealt with thus far all model natural diffusion processes: heat transport, molecular diffusion, etc. Another interesting physical phenomenon is that of wave propagation. The 1D <em>wave equation</em> is <span class="math display">\[
-u_{tt} = c^2 u_{xx}
-\]</span> where <span class="math inline">\(c\)</span> is a parameter modelling the stiffness of the medium the wave is travelling through. With homogeneous Dirichlet boundary conditions we can think of this as the behaviour of a guitar string after it has been plucked. If the boundaries are in motion then the model might be of someone wiggling a taught string from one end.</p>
-<hr>
-<div id="exr-6.46" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.11</strong></span> 🖋 💻 Let us write code to numerically solve the 1D wave equation. As before, we use the notation <span class="math inline">\(U_i^n\)</span> to represent the approximate solution <span class="math inline">\(u(t,x)\)</span> at the point <span class="math inline">\(t=t_n\)</span> and <span class="math inline">\(x=x_i\)</span>.</p>
-<ol type="1">
-<li><p>Give a reasonable discretization of the second derivative in time: <span class="math display">\[
-u_{tt}(t_{n}, x_i) \approx \underline{\hspace{1in}}.
-\]</span></p></li>
-<li><p>Give a reasonable discretization of the second derivative in space: <span class="math display">\[
-u_{xx}(t_n, x_i) \approx \underline{\hspace{1in}}.
-\]</span></p></li>
-<li><p>Put your answers to parts (a) and (b) together with the wave equation to get <span class="math display">\[
-\frac{??? - ??? + ???}{\Delta t^2} = c^2 \frac{??? - ??? + ???}{\Delta x^2}.
-\]</span></p></li>
-<li><p>Solve the equation from part 3 for <span class="math inline">\(U_i^{n+1}\)</span>. The resulting difference equation is the finite difference scheme for the 1D wave equation.</p></li>
-<li><p>You should notice that the finite difference scheme for the wave equation references two different times: <span class="math inline">\(U_i^n\)</span> and <span class="math inline">\(U_i^{n-1}\)</span>. Based on this observation, what information do we need to in order to actually start our numerical solution?</p></li>
-<li><p>Consider the wave equation <span class="math inline">\(u_{tt} = 2 u_{xx}\)</span> in <span class="math inline">\(x \in (0,1)\)</span> with <span class="math inline">\(u(0,x) = 4x(1-x)\)</span>, <span class="math inline">\(u_t(0,x) = 0\)</span>, and <span class="math inline">\(u(t,0) = u(t,1) = 0\)</span>. Use the finite difference scheme that you built in this problem to approximate the solution to this PDE.</p></li>
-</ol>
-</div>
-<hr>
-<p><a href="#fig-6.11" class="quarto-xref">Figure&nbsp;<span>10.3</span></a> shows the finite difference stencil for the 1D wave equation. Notice that we need two prior time steps in order to advance to the new time step. This means that in order to start the finite difference scheme for the wave equation we need to have information about time <span class="math inline">\(t_0\)</span> and also time <span class="math inline">\(t_1\)</span>. We get this information by using the two initial conditions <span class="math inline">\(u(0,x)\)</span> and <span class="math inline">\(u_t(0,x)\)</span>.</p>
-<div id="fig-6.11" class="quarto-float quarto-figure quarto-figure-left anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-6.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figures/PDE/WaveStencil.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-6.11-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10.3: The finite difference stencil for the 1D wave equation.
-</figcaption>
-</figure>
-</div>
-<hr>
-<div id="exr-6.47" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.12</strong></span> 💻 💬 The ratio <span class="math inline">\(c^2\Delta t^2 / \Delta x^2\)</span> shows up explicitly in the finite difference scheme for the 1D wave equation. Just like in the heat equation, this parameter controls when the finite difference solution will be stable. Experiment with your finite difference solution and conjecture a value of <span class="math inline">\(a = c^2 \Delta t^2 / \Delta x^2\)</span> which divides the regions of stability versus instability. Your answer should be in the form:</p>
-<p><em>If</em> <span class="math inline">\(a = c^2\Delta t^2 / \Delta x^2 &lt; \underline{\hspace{0.5in}}\)</span> then the finite difference scheme for the 1D wave equation will be stable. Otherwise it will be unstable.</p>
-</div>
-<hr>
-<div id="exr-6.48" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.13</strong></span> 💻 Show several plots demonstrating what occurs to the finite difference solution of the wave equation when the parameters are in the unstable region and right on the edge of the unstable region.</p>
-</div>
-<hr>
-<div id="exr-6.49" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.14</strong></span> 💬 What is the expected error in the finite difference scheme for the 1D wave equation? What does this mean in plain English?</p>
-</div>
-<hr>
-<div id="exr-6.50" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.15</strong></span> 💻 💬 Use your finite difference code to solve the 1D wave equation <span class="math display">\[
-u_{tt} = c^2 u_{xx}
-\]</span> with boundary conditions <span class="math inline">\(u(t,0) = u(t,1) = 0\)</span>, initial condition <span class="math inline">\(u(0,x) = 4x(1-x)\)</span>, and zero initial velocity. Experiment with different values of <span class="math inline">\(c^2\)</span>. What does the parameter <span class="math inline">\(c\)</span> do to the wave? Give a physical interpretation of <span class="math inline">\(c\)</span>.</p>
-</div>
-<hr>
-<div id="exr-6.51" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 10.16</strong></span> 💻 💬 Solve the 1D wave equation <span class="math display">\[
-u_{tt} = u_{xx}
-\]</span> with Dirichlet boundary conditions <span class="math inline">\(u(t,0) = 0.4 \sin(\pi t)\)</span> and <span class="math inline">\(u(t,1) = 0\)</span> along with initial condition <span class="math inline">\(u(0,x) = 0\)</span> and zero initial velocity. This time the left-hand boundary is being controlled externally and the string starts off at equilibrium. Give a physical situation where this sort of setup might arise. Then modify your solution so that both sides of the string are being wiggled at different frequencies.</p>
-</div>
 <hr>
 </section>
-<section id="exam-style-question" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">10.4</span> Exam-Style Question</h2>
+<section id="stability-of-the-crank-nicolson-method" class="level3" data-number="10.2.4">
+<h3 data-number="10.2.4" class="anchored" data-anchor-id="stability-of-the-crank-nicolson-method"><span class="header-section-number">10.2.4</span> Stability of the Crank-Nicolson Method</h3>
+<p>Ignoring the boundary terms (which are fixed and do not grow), the Crank-Nicolson scheme for homogeneous Dirichlet conditions reads <span class="math display">\[
+A\mathbf{U}_{n+1} = B\mathbf{U}_n,
+\]</span> where, using <span class="math inline">\(r = D\Delta t/(2\Delta x^2)\)</span>, the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are both tridiagonal: <span class="math display">\[
+A = \begin{pmatrix}1+2r&amp;-r&amp;&amp;\\-r&amp;1+2r&amp;-r&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\ddots\\&amp;&amp;-r&amp;1+2r\end{pmatrix}, \qquad
+B = \begin{pmatrix}1-2r&amp;r&amp;&amp;\\r&amp;1-2r&amp;r&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\ddots\\&amp;&amp;r&amp;1-2r\end{pmatrix}.
+\]</span> The update formula is <span class="math inline">\(\mathbf{U}_{n+1} = A^{-1}B\,\mathbf{U}_n\)</span>, so the amplification matrix is <span class="math inline">\(A^{-1}B\)</span>. Using the same Fourier analysis as in <a href="nmPDE1.html#sec-stability-heat" class="quarto-xref"><span>Section 9.4</span></a>, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> share the same eigenvectors, with eigenvalues <span class="math display">\[
+\mu_k^A = 1 + 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2, \qquad \mu_k^B = 1 - 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2,
+\]</span> for <span class="math inline">\(k=1,\ldots,N_x-1\)</span>. The eigenvalues of the amplification matrix <span class="math inline">\(A^{-1}B\)</span> are therefore <span class="math display">\[
+g_k = \frac{\mu_k^B}{\mu_k^A} = \frac{1 - 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}{1 + 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}.
+\]</span> Setting <span class="math inline">\(s = 4r\sin^2(k\pi/(2N_x)) \geq 0\)</span>, we have <span class="math inline">\(g_k = (1-s)/(1+s)\)</span>. Since <span class="math inline">\(|1-s| \leq 1+s\)</span> for all <span class="math inline">\(s \geq 0\)</span>, we conclude <span class="math inline">\(|g_k| \leq 1\)</span> for every <span class="math inline">\(k\)</span> and every <span class="math inline">\(r &gt; 0\)</span>. Hence the Crank-Nicolson method is <strong>unconditionally stable</strong>, with no restriction on <span class="math inline">\(\Delta t/(\Delta x)^2\)</span>.</p>
+<p>It turns out that the error terms for the forward and backward difference methods have the form <span class="math inline">\(C\Delta t+O(\Delta t^2)\)</span> and <span class="math inline">\(-C\Delta t+O(\Delta t^2)\)</span>. Taking the average cancels the <span class="math inline">\(\pm C\Delta t\)</span> terms and leaves an error of order <span class="math inline">\(O(\Delta t^2)\)</span>; in combination with the space variable, we have an error of order <span class="math inline">\(O(\Delta t^2)+O(\Delta x^2)\)</span> for the whole method, as compared with <span class="math inline">\(O(\Delta t)+O(\Delta x^2)\)</span> for the forward and backward difference methods.</p>
+<hr>
+</section>
+</section>
+<section id="exam-style-question" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">10.3</span> Exam-Style Question</h2>
 <ol type="a">
 <li><p>Consider the 2D heat equation <span class="math inline">\(u_t = D(u_{xx} + u_{yy})\)</span>. Let <span class="math inline">\(U_{i,j}^n\)</span> denote the numerical approximation to <span class="math inline">\(u(t_n, x_i, y_j)\)</span>. Using a forward difference for the time derivative and centred differences for the spatial derivatives, derive the explicit finite difference formula for <span class="math inline">\(U_{i,j}^{n+1}\)</span>. Assume <span class="math inline">\(\Delta x = \Delta y = h\)</span>. [3 marks]</p></li>
 <li><p>What is the finite difference stencil for the scheme derived in part (a)? Briefly explain how the points in the stencil are used to compute <span class="math inline">\(U_{i,j}^{n+1}\)</span>. [2 marks]</p></li>

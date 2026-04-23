@@ -549,7 +549,7 @@ y''(x) +  4 y'(x) + \sqrt[3]{y(x)} + \cos(x) = 0, \quad y(0)=2,\; y(1)=1.
 When solving a differential equation with analytic techniques the goal is to find an expression for the solution in terms of known functions. In a numerical solution the goal is typically to divide the domain for the solution function into a fine partition by introducing a grid of points, just like we did with numerical differentiation and integration, and then to approximate the solution to the differential equation at each point in that partition. Hence, the end result will be a list of approximate solution values at the grid points.</p>
 <p>In this chapter we will examine some of the more common ways to create approximations of solutions to initial value problems. Moreover, we will lean heavily on Taylor Series to give us ways to accurately measure the order of the errors that we make in the process.</p>
 <p>In this chapter we will often think of the argument of the function described by the ODE as time, but of course the methods are agnostic to the interpretation of the independent variable.</p>
-<p>We will first concentrate on first-order differential equations of the form <span class="math inline">\(x' = f(x)\)</span>. The geometric interpretation of this is that we are looking for a function <span class="math inline">\(x(t)\)</span> whose slope at every <span class="math inline">\(x\)</span> is known to us, given by <span class="math inline">\(f(x)\)</span>.</p>
+<p>We will first concentrate on first-order differential equations of the form <span class="math inline">\(x' = f(t,x)\)</span>. The geometric interpretation of this is that we are looking for a function <span class="math inline">\(x(t)\)</span> whose slope at every point <span class="math inline">\((t,x)\)</span> is known to us, given by <span class="math inline">\(f(t,x)\)</span>.</p>
 <section id="eulers-method" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="eulers-method"><span class="header-section-number">7.1</span> Euler’s Method</h2>
 <div id="exr-5.9" class="theorem exercise">
@@ -753,13 +753,11 @@ x(t) = \frac{1}{10} \left( 19 e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Step size'</span>)</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Maximum error'</span>)</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>plt.grid()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ol start="3" type="1">
-<li>What does the plot tell you? In general, if you were to divide your value of <span class="math inline">\(\Delta t\)</span> by 10, how much approximately does that reduce the error?</li>
-</ol>
+<p>What does the plot tell you? In general, if you were to divide your value of <span class="math inline">\(\Delta t\)</span> by 10, how much approximately does that reduce the error?</p>
 </div>
 <hr>
 <div id="exr-5.15" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 7.8</strong></span> 🖋 💬 🎓 Shelby solved a first order ODE <span class="math inline">\(x' = f(t,x)\)</span> using Euler’s method with a step size of <span class="math inline">\(dt = 0.1\)</span> on a domain <span class="math inline">\(t \in [0,3]\)</span>. To test her code she used a differential equation where she new the exact analytic solution and she found the maximum absolute error on the interval to be <span class="math inline">\(0.15\)</span>. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using Euler’s method and a step size of <span class="math inline">\(dt = 0.01\)</span>. What would be your best estimate of Jackson’s maximum absolute error?</p>
+<p><span class="theorem-title"><strong>Exercise 7.8</strong></span> 🖋 💬 🎓 Shelby solved a first order ODE <span class="math inline">\(x' = f(t,x)\)</span> using Euler’s method with a step size of <span class="math inline">\(dt = 0.1\)</span> on a domain <span class="math inline">\(t \in [0,3]\)</span>. To test her code she used a differential equation where she knew the exact analytic solution and she found the maximum absolute error on the interval to be <span class="math inline">\(0.15\)</span>. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using Euler’s method and a step size of <span class="math inline">\(dt = 0.01\)</span>. What would be your best estimate of Jackson’s maximum absolute error?</p>
 </div>
 <hr>
 <div id="thm-5.2" class="theorem">
@@ -875,7 +873,7 @@ F(t,\boldsymbol{x}) = \begin{pmatrix} x_0' \\ x_1' \end{pmatrix} = \begin{pmatri
 <div id="exr-5.21" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 7.10 (A Lotka-Volterra Predator-Prey Model)</strong></span> 🖋 💻 🎓 Let <span class="math inline">\(x_0(t)\)</span> denote the number of rabbits (prey) and <span class="math inline">\(x_1(t)\)</span> denote the number of foxes (predator) at time <span class="math inline">\(t\)</span>. The relationship between the species can be modelled by the classic 1920’s Lotka-Volterra Model: <span class="math display">\[\begin{equation}
 \left\{ \begin{array}{ll} x_0' &amp;= \alpha x_0 - \beta x_0 x_1 \\ x_1' &amp;= \delta x_0 x_1 - \gamma x_1 \end{array} \right.
-\end{equation}\]</span> where <span class="math inline">\(\alpha, \beta, \gamma,\)</span> and <span class="math inline">\(\delta\)</span> are positive constants. For this problems take <span class="math inline">\(\alpha =1\)</span>, <span class="math inline">\(\beta \approx 0.1\)</span>, <span class="math inline">\(\gamma =1\)</span>, and <span class="math inline">\(\delta =0.1\)</span>.</p>
+\end{equation}\]</span> where <span class="math inline">\(\alpha, \beta, \gamma,\)</span> and <span class="math inline">\(\delta\)</span> are positive constants. For this problems take <span class="math inline">\(\alpha =1\)</span>, <span class="math inline">\(\beta = 0.1\)</span>, <span class="math inline">\(\gamma =1\)</span>, and <span class="math inline">\(\delta =0.1\)</span>.</p>
 <ol type="1">
 <li><p>First rewrite the system of ODEs in the form <span class="math inline">\(\boldsymbol{x}' = F(t,\boldsymbol{x})\)</span> so you can use your <code>euler()</code> code.</p></li>
 <li><p>Modify your code from the previous problem so that it works for this problem. Use <code>tmax = 20</code> and <code>dt = 0.05</code>. Start with initial conditions <span class="math inline">\(x_0(0)=10\)</span> rabbits and <span class="math inline">\(x_1(0)=5\)</span> foxes.</p></li>
@@ -996,7 +994,7 @@ x_{n+1/2} &amp;= x_n + \frac{h}{2} f(t_n,x_n) \\ x_{n+1} &amp;= x_n + h f(t_{n+1
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    dt <span class="op">=</span> (tmax <span class="op">-</span> t0)<span class="op">/</span>N</span>
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    t <span class="op">=</span> ??? <span class="co"># build the times</span></span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> ??? <span class="co"># build an array for the x values</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> <span class="co"># save the initial condition</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>    x[<span class="dv">0</span>] <span class="op">=</span> ???  <span class="co"># save the initial condition</span></span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="co"># On the next line: be careful about how far you're looping</span></span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(???):</span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>        slope <span class="op">=</span> ??? <span class="co"># get the slope at the current point</span></span>
@@ -1027,7 +1025,7 @@ x(t) = \frac{1}{10} \left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 <hr>
 <div id="exr-5.27" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 7.16</strong></span> 💻 🎓 Repeat <a href="#exr-5.14" class="quarto-xref">Exercise&nbsp;<span>7.7</span></a> with the midpoint method. Compare your results to what you found with Euler’s method. Then use what you have discovered to answer the following, similar to <a href="#exr-5.15" class="quarto-xref">Exercise&nbsp;<span>7.8</span></a>:</p>
-<p>Shelby solved a first order ODE <span class="math inline">\(x' = f(t,x)\)</span> using the midpoint method with a step size of <span class="math inline">\(dt = 0.1\)</span> on a domain <span class="math inline">\(t \in [0,3]\)</span>. To test her code she used a differential equation where she new the exact analytic solution and she found the maximum absolute error on the interval to be <span class="math inline">\(0.15\)</span>. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using the midpoint method and a step size of <span class="math inline">\(dt = 0.01\)</span>. What would be your best estimate of Jackson’s maximum absolute error?</p>
+<p>Shelby solved a first order ODE <span class="math inline">\(x' = f(t,x)\)</span> using the midpoint method with a step size of <span class="math inline">\(dt = 0.1\)</span> on a domain <span class="math inline">\(t \in [0,3]\)</span>. To test her code she used a differential equation where she knew the exact analytic solution and she found the maximum absolute error on the interval to be <span class="math inline">\(0.15\)</span>. Jackson then solves the exact same differential equation, on the same interval, with the same initial condition using the midpoint method and a step size of <span class="math inline">\(dt = 0.01\)</span>. What would be your best estimate of Jackson’s maximum absolute error?</p>
 </div>
 <hr>
 <div id="exr-5.28" class="theorem exercise">
@@ -1064,7 +1062,7 @@ x(t) = \frac{1}{10} \left( 19e^{-t/3} + 3\sin(t) - 9\cos(t) \right).
 </tbody>
 </table>
 <p>When might you want to use Euler’s method instead of the midpoint method? When might you want to use the midpoint method instead of Euler’s method?</p>
-<div id="cell-fig-euler-midpoint" class="cell" data-execution_count="2">
+<div id="cell-fig-euler-midpoint" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div id="fig-euler-midpoint" class="quarto-float quarto-figure quarto-figure-left anchored" alt="Graphical depictions of two numerical methods. Euler (left) and Midpoint (right).">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1137,7 +1135,7 @@ Figure&nbsp;7.4: Graphical depictions of two numerical methods. Euler (left) and
 <p>We recall from <a href="nmCalculus.html#sec-truncation" class="quarto-xref"><span>Section 5.5</span></a> Taylor’s formula: for a function <span class="math inline">\(x\)</span> that is <span class="math inline">\(p\)</span> times differentiable, <span class="math display">\[
 x(t+h) = x(t) + h x'(t) + \frac{h^2}{2!}x''(t) + \cdots + \frac{h^{p-1}}{(p-1)!}x^{(p-1)}(t) + \frac{h^p}{p!}x^{(p)}(\xi)
 \]</span> for some <span class="math inline">\(\xi\)</span> between <span class="math inline">\(t\)</span> and <span class="math inline">\(t+h\)</span>.</p>
-<p>Her we consider the initial-value problem <span class="math inline">\(x'(t) = f(t, x(t))\)</span> with exact solution <span class="math inline">\(x(t)\)</span>. The <strong>local truncation error</strong> at step <span class="math inline">\(n\)</span> is defined as the error made in a single step starting from the exact solution, divided by the step size <span class="math inline">\(h\)</span>: <span class="math display">\[
+<p>Here we consider the initial-value problem <span class="math inline">\(x'(t) = f(t, x(t))\)</span> with exact solution <span class="math inline">\(x(t)\)</span>. The <strong>local truncation error</strong> at step <span class="math inline">\(n\)</span> is defined as the error made in a single step starting from the exact solution, divided by the step size <span class="math inline">\(h\)</span>: <span class="math display">\[
 \tau_n = \frac{1}{h}\left|x(t_{n+1}) - x_{n+1}\right|,
 \]</span> where <span class="math inline">\(x_{n+1}\)</span> is the value produced by the numerical method when started from the exact value <span class="math inline">\(x(t_n)\)</span>.</p>
 <section id="truncation-error-in-eulers-method" class="level3" data-number="7.6.1">

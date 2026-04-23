@@ -530,7 +530,7 @@ window.Quarto = {
 </blockquote>
 <p>Have you ever wondered how computers, which operate in a realm of zeros and ones, manage to perform mathematical calculations with real numbers? The secret lies in approximation.</p>
 <p>In this chapter and the next we will investigate the foundations that allow a computer to do mathematical calculations at all. How can it store real numbers? How can it calculate the values of mathematical functions? We will understand that the computer can do these things only approximately and will thus always make errors. Numerical Analysis is all about keeping these errors as small as possible while still being able to do efficient calculations.</p>
-<p>We will meet the two kinds of errors that a computer makes: <strong>rounding errors</strong> and <strong>truncation errors</strong>. Rounding errors arise from the way the computer needs to approximate real numbers by binary floating point numbers, which are the numbers it know how to add, subtract, multiply and divide. We’ll discuss this in this chapter. Truncation errors arise from the way the computer needs to reduce all calculations to a finite number of these four basic arithmetic operations. We will see that for the first time in <a href="nmFunctions.html" class="quarto-xref"><span>Chapter 2</span></a> when we discuss how computers approximate functions by power series and then have to truncate these at some finite order.</p>
+<p>We will meet the two kinds of errors that a computer makes: <strong>rounding errors</strong> and <strong>truncation errors</strong>. Rounding errors arise from the way the computer needs to approximate real numbers by binary floating-point numbers, which are the numbers it knows how to add, subtract, multiply and divide. We’ll discuss this in this chapter. Truncation errors arise from the way the computer needs to reduce all calculations to a finite number of these four basic arithmetic operations. We will see this for the first time in <a href="nmFunctions.html" class="quarto-xref"><span>Chapter 2</span></a> when we discuss how computers approximate functions by power series and then have to truncate these at some finite order.</p>
 <p>Let’s start with a striking example of how bad computers actually are at doing even simple calculations:</p>
 <div id="exr-1.1" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.1</strong></span> 🖋 By hand (no computers!) compute the first few terms of the sequence</p>
@@ -550,7 +550,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in \left[0,\frac{1}{2}\righ
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x<span class="op">&lt;</span> <span class="fl">0.5</span>:</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="co"># put the correct assignment here</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># put the correct assigment here</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># put the correct assignment here</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>(Even if you don’t know Python, you should be able to do this exercise after having read up to <a href="nmPython.html#sec-variables" class="quarto-xref"><span>Section A.2.1</span></a> in the chapter on Essential Python.)</p>
@@ -596,7 +596,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in \left[0,\frac{1}{2}\righ
 </div>
 <hr>
 <div id="exr-1.9" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.8</strong></span> 🖋 By hand, using the methods you developed above, convert the following numbers from base 10 to base 2 or visa versa.</p>
+<p><span class="theorem-title"><strong>Exercise 1.8</strong></span> 🖋 By hand, using the methods you developed above, convert the following numbers from base 10 to base 2 or vice versa.</p>
 <ul>
 <li><p>Write <span class="math inline">\(12_{10}\)</span> in binary</p></li>
 <li><p>Write <span class="math inline">\(11_{10}\)</span> in binary</p></li>
@@ -615,7 +615,7 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in \left[0,\frac{1}{2}\righ
 <div id="exm-1.b" class="theorem example">
 <p><span class="theorem-title"><strong>Example 1.1</strong></span> Let us take the base <span class="math inline">\(10\)</span> number <span class="math inline">\(5.341_{10}\)</span> and expand it out to get</p>
 <p><span class="math display">\[5.341_{10} = 5 + \frac{3}{10} + \frac{4}{100} + \frac{1}{1000} = 5 \times 10^0 + 3 \times 10^{-1} + 4 \times 10^{-2} + 1 \times 10^{-3}.\]</span></p>
-<p>The position to the right of the decimal point is the negative power of 10 for the given position.</p>
+<p>The position to the right of the decimal point gives the negative power of 10 for that digit.</p>
 </div>
 <p>We can do a similar thing with binary decimals.</p>
 <hr>
@@ -653,14 +653,14 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in \left[0,\frac{1}{2}\righ
 <p><span class="theorem-title"><strong>Example 1.3</strong></span> Let us start the discussion with a very concrete example. Consider the number <span class="math inline">\(x = -123.15625\)</span> (in base 10). As we have seen this number can be converted into binary. Indeed</p>
 <p><span class="math display">\[x = -123.15625_{10} = -1111011.00101_2\]</span></p>
 <p>(you should check this).</p>
-<p>If a computer needs to store this number then first they put in the binary version of scientific notation. In this case this will be</p>
+<p>If a computer needs to store this number, it first puts it in the binary version of scientific notation. In this case this will be</p>
 <p><span class="math display">\[
 x = -1.11101100101_2 \times 2^{6}.
-\]</span> This is the <strong>floating point representation</strong> of the number.</p>
+\]</span> This is the <strong>floating-point representation</strong> of the number.</p>
 </div>
 <hr>
 <div id="def-1.0" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.1</strong></span> For any non-zero base-2 number <span class="math inline">\(x\)</span> the <strong>floating point representation</strong> is given by</p>
+<p><span class="theorem-title"><strong>Definition 1.1</strong></span> For any non-zero base-2 number <span class="math inline">\(x\)</span> the <strong>floating-point representation</strong> is given by</p>
 <p><span class="math display">\[x = (-1)^{s} \times (1+ m) \times 2^E\]</span></p>
 <p>where <span class="math inline">\(s \in \{0,1\}\)</span>, <span class="math inline">\(m\)</span> is a binary number such that <span class="math inline">\(0 \le m &lt; 1\)</span>, and <span class="math inline">\(E\)</span> is an integer.</p>
 <p>The number <span class="math inline">\(1+m\)</span> is called the <strong>significand</strong>, <span class="math inline">\(s\)</span> is known as the <strong>sign bit</strong>, and <span class="math inline">\(E\)</span> is known as the <strong>exponent</strong>. We will refer to <span class="math inline">\(m\)</span>, the fractional part of the significand that actually contains the information, as the <strong>mantissa</strong>, but this use is not universal.</p>
@@ -672,24 +672,24 @@ x = -1.11101100101_2 \times 2^{6}.
 <strong>Solution:</strong></p>
 <ul>
 <li><p>For the number <span class="math inline">\(7_{10}=111_2 = 1.11 \times 2^2\)</span> we have <span class="math inline">\(s=0, m=0.11\)</span> and <span class="math inline">\(E=2\)</span>.</p></li>
-<li><p>For the number <span class="math inline">\(-7_{10}=111_2 = -1.11 \times 2^2\)</span> we have <span class="math inline">\(s=1, m=0.11\)</span> and <span class="math inline">\(E=2\)</span>.</p></li>
+<li><p>For the number <span class="math inline">\(-7_{10}=-111_2 = -1.11 \times 2^2\)</span> we have <span class="math inline">\(s=1, m=0.11\)</span> and <span class="math inline">\(E=2\)</span>.</p></li>
 <li><p>For the number <span class="math inline">\(\frac{1}{10} = 0.000110011001100\cdots = 1.100110011\cdots \times 2^{-4}\)</span> we have <span class="math inline">\(s=0, m=0.100110011\cdots\)</span>, and <span class="math inline">\(E = -4\)</span>.</p></li>
 </ul>
 </div>
 <hr>
-<p>In the last part of the previous example we saw that the number <span class="math inline">\((0.1)_{10}\)</span> is actually a repeating decimal in base-2. This means that in order to completely represent the number <span class="math inline">\((0.1)_{10}\)</span> in base-2 we need infinitely many decimal places. Obviously that cannot happen since we are dealing with computers with finite memory. Each number can only be allocated a finite number of bits. Thus the number needs to be rounded to the nearest number that can be represented with that number of bits. That leads to an error called the <strong>rounding error</strong> (sometimes also called <em>roundoff error</em>). We’ll look into these in more detail in <a href="#sec-rounding_errors" class="quarto-xref"><span>Section 1.3</span></a> below.</p>
+<p>In the last part of the previous example we saw that the number <span class="math inline">\((0.1)_{10}\)</span> is actually a repeating decimal in base-2. This means that in order to completely represent the number <span class="math inline">\((0.1)_{10}\)</span> in base-2 we need infinitely many decimal places. Obviously that cannot happen since we are dealing with computers with finite memory. Each number can only be allocated a finite number of bits. Thus the number needs to be rounded to the nearest number that can be represented with that number of bits. That leads to an error called the <strong>rounding error</strong> (sometimes also called <em>round-off error</em>). We’ll look into these in more detail in <a href="#sec-rounding_errors" class="quarto-xref"><span>Section 1.3</span></a> below.</p>
 <hr>
 <div id="def-1.2" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 1.2</strong></span> <strong>Machine precision</strong> is the gap between the number 1 and the next larger floating point number. Often it is represented by the symbol <span class="math inline">\(\epsilon\)</span>. To clarify: the number 1 can always be stored in a computer system exactly and if <span class="math inline">\(\epsilon\)</span> is machine precision for that computer then <span class="math inline">\(1+\epsilon\)</span> is the next largest number that can be stored with that machine.</p>
+<p><span class="theorem-title"><strong>Definition 1.2</strong></span> <strong>Machine precision</strong> is the gap between the number 1 and the next larger floating-point number. Often it is represented by the symbol <span class="math inline">\(\epsilon\)</span>. To clarify: the number 1 can always be stored in a computer system exactly and if <span class="math inline">\(\epsilon\)</span> is machine precision for that computer then <span class="math inline">\(1+\epsilon\)</span> is the next largest number that can be stored with that machine.</p>
 </div>
 <hr>
 <p>For all practical purposes the computer cannot tell the difference between two numbers if the relative difference is smaller than machine precision. It is important to remember this when you want to check the equality of two numbers in a computer.</p>
 <div id="exr-1.18" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.13</strong></span> 🖋 🎓 To make all of these ideas concrete let us play with a small computer system where each number is stored in the following format, using 6 bits:</p>
 <p><span class="math display">\[s \, e_1\, e_2 \, b_1 \, b_2 \, b_3\]</span></p>
-<p>The first bit is for the sign (<span class="math inline">\(0=+\)</span> and <span class="math inline">\(1=-\)</span>). The next two bits, <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span> are for the biased exponent, and we will assume in this example that the bias is <span class="math inline">\(B=1\)</span>. The three bits on the right represent the significand of the number. Hence, every number in this number system takes the form</p>
+<p>The first bit is for the sign (<span class="math inline">\(0=+\)</span> and <span class="math inline">\(1=-\)</span>). The next two bits, <span class="math inline">\(e_1\)</span> and <span class="math inline">\(e_2\)</span>, are for the biased exponent, and we will assume in this example that the bias is <span class="math inline">\(B=1\)</span>. The three bits on the right represent the fractional part of the significand. Hence, every number in this number system takes the form</p>
 <p><span class="math display">\[
-(-1)^s \times (1+ 0.b_1b_2b_3) \times 2^{e_1e_2-1}
+(-1)^s \times (1.b_1b_2b_3)_2 \times 2^{(e_1e_2)_2-1}
 \]</span></p>
 <ul>
 <li><p>What is the smallest positive number that can be represented in this form?</p></li>
@@ -712,7 +712,7 @@ x = -1.11101100101_2 \times 2^{6}.
 </div>
 <hr>
 <div id="exr-1.20" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.15</strong></span> 🖋 What is machine precision for the single and double precision standard?</p>
+<p><span class="theorem-title"><strong>Exercise 1.15</strong></span> 🖋 What is machine precision for the single- and double-precision standards?</p>
 </div>
 <hr>
 <div id="exr-1.20b" class="theorem exercise">
@@ -720,10 +720,10 @@ x = -1.11101100101_2 \times 2^{6}.
 </div>
 <hr>
 <div id="exr-1.20c" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.17</strong></span> 🖋 Computers contain hardware that can perform the basic operations of addition, subtraction, multiplication, and division on floating point numbers. To get a feel for what goes on under the hood, figure out how to add the numbers <span class="math inline">\(x = 1.010_2 \times 2^3\)</span> and <span class="math inline">\(y = 1.110_2 \times 2^1\)</span>. How do you deal with the different exponents? What do you do so that the result is in the correct floating point format?</p>
+<p><span class="theorem-title"><strong>Exercise 1.17</strong></span> 🖋 Computers contain hardware that can perform the basic operations of addition, subtraction, multiplication, and division on floating-point numbers. To get a feel for what goes on under the hood, figure out how to add the numbers <span class="math inline">\(x = 1.010_2 \times 2^3\)</span> and <span class="math inline">\(y = 1.110_2 \times 2^1\)</span>. How do you deal with the different exponents? What do you do so that the result is in the correct floating-point format?</p>
 </div>
 <hr>
-<p>Much more can be said about floating point numbers such as how we store infinity, how we store NaN, and how we store 0. The <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">Wikipedia page for floating point arithmetic</a> might be of interest for the curious reader. It is beyond the scope of this module to go into all of those details here.</p>
+<p>Much more can be said about floating-point numbers, such as how we store infinity, how we store NaN, and how we store 0. The <a href="https://en.wikipedia.org/wiki/Floating-point_arithmetic">Wikipedia page for floating-point arithmetic</a> might be of interest for the curious reader. It is beyond the scope of this module to go into all of those details here.</p>
 <p>The biggest takeaway points from this section and the previous are:</p>
 <ul>
 <li><p>Real numbers are stored with finite precision in a computer.</p></li>
@@ -734,34 +734,34 @@ x = -1.11101100101_2 \times 2^{6}.
 </section>
 <section id="sec-rounding_errors" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="sec-rounding_errors"><span class="header-section-number">1.3</span> Rounding Errors</h2>
-<p>When the binary representation of a real number has too many binary digits to be represented faithfully by a floating point number, we need to round it to the nearest floating point number that can be represented. That introduces rounding errors. We have seen above that the gap between two consecutive floating point numbers grows in proportion to the number. This means that the relative error of rounding is bounded by <span class="math inline">\(\epsilon/2\)</span> where <span class="math inline">\(\epsilon\)</span> is the machine precision.</p>
+<p>When the binary representation of a real number has too many binary digits to be represented faithfully by a floating-point number, we need to round it to the nearest floating-point number that can be represented. That introduces rounding errors. We have seen above that the gap between two consecutive floating-point numbers grows in proportion to the number. This means that the relative error of rounding is bounded by <span class="math inline">\(\epsilon/2\)</span> where <span class="math inline">\(\epsilon\)</span> is the machine precision.</p>
 <p>The rounding rule that is used is “<strong>round to nearest, ties to even</strong>”, which means that if the number is exactly halfway between two numbers that can be represented then we round the mantissa to an even binary number, i.e., to a mantissa that ends in 0.</p>
 <div id="exm-1.3b" class="theorem example">
-<p><span class="theorem-title"><strong>Example 1.5</strong></span> If we want to store the number <span class="math inline">\(1.625 = 1.101_2\)</span> in a floating point number system where the mantissa has only 2 bits then we round to <span class="math inline">\(1.10_2 = 1.5_{10}\)</span> because <span class="math inline">\(1.101_2\)</span> is exactly halfway between <span class="math inline">\(1.100_2\)</span> and <span class="math inline">\(1.110_2\)</span> and the rounding rule is “round to nearest, ties to even”.</p>
+<p><span class="theorem-title"><strong>Example 1.5</strong></span> If we want to store the number <span class="math inline">\(1.625 = 1.101_2\)</span> in a floating-point number system where the mantissa has only 2 bits then we round to <span class="math inline">\(1.10_2 = 1.5_{10}\)</span> because <span class="math inline">\(1.101_2\)</span> is exactly halfway between <span class="math inline">\(1.100_2\)</span> and <span class="math inline">\(1.110_2\)</span> and the rounding rule is “round to nearest, ties to even”.</p>
 </div>
 <hr>
-<p>To dive a little deeper into what happened in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a>, simplify the detailed analysis by working with only a 4 bit mantissa:</p>
+<p>To dive a little deeper into what happened in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a>, simplify the detailed analysis by working with only a 4-bit mantissa:</p>
 <div id="exr-1.21" class="theorem exercise">
-<p><span class="theorem-title"><strong>Exercise 1.18</strong></span> 🖋 Write down how the number <span class="math inline">\(1/10\)</span> is represented in a floating point number system where the mantissa has only 4 bits. Then calculate the first 10 terms of the sequence <span class="math display">\[\begin{equation}
-x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n - 1, &amp; x_n \in
-        (\frac{1}{2},1] \end{array} \right. \quad \text{with} \quad x_0 = \frac{1}{10}
+<p><span class="theorem-title"><strong>Exercise 1.18</strong></span> 🖋 Write down how the number <span class="math inline">\(1/10\)</span> is represented in a floating-point number system where the mantissa has only 4 bits. Then calculate the first 10 terms of the sequence <span class="math display">\[\begin{equation}
+x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}) \\ 2x_n - 1, &amp; x_n \in
+        [\frac{1}{2},1] \end{array} \right. \quad \text{with} \quad x_0 = \frac{1}{10}
 \end{equation}\]</span> using this number system.</p>
 </div>
 <hr>
 <div id="exr-1.51" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.19</strong></span> (This problem is modified from <span class="citation" data-cites="Greenbaum">(<a href="#ref-Greenbaum" role="doc-biblioref">Greenbaum and Chartier 2012</a>)</span>)<br>
-💻 Sometimes floating point arithmetic does not work like we would expect (and hope) as compared to exact mathematics. In each of the following problems we have a mathematical problem that the computer gets wrong. Explain why the computer is getting these wrong.</p>
+💻 Sometimes floating-point arithmetic does not work like we would expect (and hope) as compared to exact mathematics. In each of the following problems we have a mathematical problem that the computer gets wrong. Explain why the computer is getting these wrong.</p>
 <ol type="1">
 <li><p>Mathematically we know that <span class="math inline">\(\sqrt{5}^2\)</span> should just give us <span class="math inline">\(5\)</span> back. In Python type <code>np.sqrt(5)**2 == 5</code>. What do you get and why do you get it?</p></li>
 <li><p>Mathematically we know that <span class="math inline">\(49\cdot \left( \frac{1}{49} \right)\)</span> should just be 1. In Python type <code>49*(1/49) == 1</code>. What do you get and why do you get it?</p></li>
 <li><p>Mathematically we know that <span class="math inline">\(e^{\log(3)}\)</span> should just give us 3 back. In Python type <code>np.exp(np.log(3)) == 3</code>. What do you get and why do you get it?</p></li>
-<li><p>Create your own example of where Python gets something incorrect because of floating point arithmetic.</p></li>
+<li><p>Create your own example of where Python gets something incorrect because of floating-point arithmetic.</p></li>
 </ol>
 </div>
 </section>
 <section id="sec-loss_of_significant_digits" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="sec-loss_of_significant_digits"><span class="header-section-number">1.4</span> Loss of Significant Digits</h2>
-<p>As we have discussed, when representing real numbers by floating point numbers in the computer, rounding errors will usually occur. When doing a calculation with double-precision floating point numbers then the rounding error is only a tiny fraction of the actual number, so one might think that they really don’t matter. However, calculations usually involve a number of steps, and we saw in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a> that the rounding errors can accumulate and become quite noticeable after a large number of steps.</p>
+<p>As we have discussed, when representing real numbers by floating-point numbers in the computer, rounding errors will usually occur. When doing a calculation with double-precision floating-point numbers then the rounding error is only a tiny fraction of the actual number, so one might think that they really don’t matter. However, calculations usually involve a number of steps, and we saw in <a href="#exr-1.3" class="quarto-xref">Exercise&nbsp;<span>1.3</span></a> that the rounding errors can accumulate and become quite noticeable after a large number of steps.</p>
 <p>But the problem is even worse. If we are not careful, then the rounding errors can get magnified already after very few steps if we perform the steps in an unfortunate way. The following examples and exercises will illustrate this.</p>
 <hr>
 <div id="exm-r.0" class="theorem example">
@@ -770,13 +770,13 @@ x_{n+1} = \left\{ \begin{array}{ll} 2x_n, &amp; x_n \in [0,\frac{1}{2}] \\ 2x_n 
 \]</span> Mathematically, this is strictly equal to <span class="math display">\[
 (10^{10}  - 10^{10}) + 0.123456789=0.123456789.
 \]</span> However, let us evaluate this in Python:</p>
-<div id="6bbf550c" class="cell" data-execution_count="2">
+<div id="39fbff84" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span><span class="op">**</span><span class="dv">10</span> <span class="op">+</span> <span class="fl">0.123456789</span> <span class="op">-</span> <span class="dv">10</span><span class="op">**</span><span class="dv">10</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>0.12345695495605469</code></pre>
 </div>
 </div>
-<p>Only the first six digits after the decimal point were preserved, the other digits were replaced by something seemingly random. The reason should be clear. The computer makes a rounding error when it tries to store the <span class="math inline">\(10000000000.123456789\)</span>. This is known as the loss of significant digits. It occurs whenever you subtract two almost equal numbers from each other.</p>
+<p>Only the first six digits after the decimal point were preserved, the other digits were replaced by something seemingly random. The reason should be clear. The computer makes a rounding error when it tries to store the <span class="math inline">\(10000000000.123456789\)</span>. This is known as the loss of significant digits. It can occur whenever you subtract two nearly equal numbers from each other.</p>
 </div>
 <hr>
 <div id="exr-concept-4" class="theorem exercise">
@@ -815,7 +815,7 @@ x = \frac{2c}{-b-\sqrt{b^2-4ac}}.
 <p><span class="theorem-title"><strong>Exercise 1.23</strong></span> 💻 💬 Google the term “catastrophic cancellation” to find more examples of this phenomenon of loss of significant digits.</p>
 </div>
 <hr>
-<p>These exercises will give much material for in-class discussion. The aim is to make you sensitive to the issue of loss of significant figures and the fact that expressions that are mathematically equal are not always computationally equal.</p>
+<p>These exercises will give much material for in-class discussion. The aim is to make you sensitive to the issue of loss of significant digits and the fact that expressions that are mathematically equal are not always computationally equal.</p>
 </section>
 <section id="exam-style-question" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="exam-style-question"><span class="header-section-number">1.5</span> Exam-Style Question</h2>
@@ -827,11 +827,11 @@ x = \frac{2c}{-b-\sqrt{b^2-4ac}}.
 </ul>
 <p>The value of a number in this system is given by: <span class="math inline">\(x = (-1)^s \times (1.m)_2 \times 2^{e-3}\)</span>.</p>
 <ol type="a">
-<li><p>How is the <strong>machine precision</strong> <span class="math inline">\(\epsilon\)</span> defined. Give its value for this floating-point system. How is machine precision related to rounding errors? [3 marks]</p></li>
+<li><p>How is the <strong>machine precision</strong> <span class="math inline">\(\epsilon\)</span> defined? Give its value for this floating-point system. How is machine precision related to rounding errors? [3 marks]</p></li>
 <li><p>Convert the decimal number <strong>13.5</strong> into this 8-bit floating-point representation. Write your final answer as an 8-bit binary pattern (e.g., <code>0 101 1010</code>). [4 marks]</p></li>
 <li><p>Using this specific floating-point system, perform the addition of the number <strong>13.5</strong> (from part b) and <strong>0.25</strong>.</p>
 <ul>
-<li>Write 0.25 in this floating point system.</li>
+<li>Write 0.25 in this floating-point system.</li>
 <li>Perform the addition simulating the hardware: align exponents, add significands.</li>
 <li>Apply the rounding rule (“Round to Nearest, Ties to Even”) to determine the final stored bits.</li>
 <li>What is the final decimal value stored by the system, and what is the absolute error compared to the exact mathematical sum? [4 marks]</li>
@@ -865,7 +865,7 @@ x = \frac{2c}{-b-\sqrt{b^2-4ac}}.
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>accounts <span class="op">=</span> <span class="dv">100</span> <span class="op">+</span> (<span class="dv">100000</span><span class="op">-</span><span class="dv">100</span>) <span class="op">*</span> np.random.rand(<span class="dv">50000</span>,<span class="dv">1</span>)<span class="op">;</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>accounts <span class="op">=</span> np.floor(<span class="dv">100</span><span class="op">*</span>accounts)<span class="op">/</span><span class="dv">100</span><span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
-<li><p>By hand (no computer) write the mathematical steps necessary to increase the accounts by (5/365)% per day, truncate the accounts to the nearest penny, and add the truncated amount into an account titled “illegal.”</p></li>
+<li><p>By hand (no computer) write the mathematical steps necessary to increase the accounts by (5/365)% per day, truncate the accounts to pennies, and add the truncated amount into an account titled “illegal.”</p></li>
 <li><p>Write code to complete your plan from part 2.</p></li>
 <li><p>Using a <code>while</code> loop, iterate over your code until the illegal account has accumulated $1,000,000. How long does it take?</p></li>
 </ol>
@@ -873,7 +873,7 @@ x = \frac{2c}{-b-\sqrt{b^2-4ac}}.
 <hr>
 <div id="exr-1.53" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.25</strong></span> (This problem is modified from <span class="citation" data-cites="Greenbaum">(<a href="#ref-Greenbaum" role="doc-biblioref">Greenbaum and Chartier 2012</a>)</span>)<br>
-🖋 In the 1991 Gulf War, the Patriot missile defence system failed due to rounding error. The troubles stemmed from a computer that performed the tracking calculations with an internal clock whose integer values in tenths of a second were converted to seconds by multiplying by a 24-bit binary approximation to <span class="math inline">\(\frac{1}{10}\)</span>: <span class="math display">\[\begin{equation}
+🖋 In the 1991 Gulf War, the Patriot missile defence system failed due to rounding error. The trouble stemmed from a computer that performed the tracking calculations with an internal clock whose integer values in tenths of a second were converted to seconds by multiplying by a 24-bit binary approximation to <span class="math inline">\(\frac{1}{10}\)</span>: <span class="math display">\[\begin{equation}
 0.1_{10} \approx 0.00011001100110011001100_2.
 \end{equation}\]</span></p>
 <ol type="1">
@@ -887,7 +887,7 @@ x = \frac{2c}{-b-\sqrt{b^2-4ac}}.
 <div id="exr-1.58" class="theorem exercise">
 <p><span class="theorem-title"><strong>Exercise 1.26 (The Python Caret Operator)</strong></span> 🖋 💻 Now that you’re used to using Python to do some basic computations you are probably comfortable with the fact that the caret, <code>^</code>, does NOT do exponentiation like it does in many other programming languages. But what does the caret operator do? That’s what we explore here.</p>
 <ol type="1">
-<li><p>Consider the numbers <span class="math inline">\(9\)</span> and <span class="math inline">\(5\)</span>. Write these numbers in binary representation. We are going to use four bits to represent each number (it is OK if the first bit happens to be zero). <span class="math display">\[\begin{equation}
+<li><p>Consider the numbers <span class="math inline">\(9\)</span> and <span class="math inline">\(5\)</span>. Write these numbers in binary representation. We are going to use four bits to represent each number (it is okay if the first bit happens to be zero). <span class="math display">\[\begin{equation}
 \begin{aligned} 9 &amp;=&amp; \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \\ 5 &amp;=&amp; \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \, \underline{\hspace{0.2in}} \end{aligned}
 \end{equation}\]</span></p></li>
 <li><p>Now go to Python and evaluate the expression <code>9^5</code>. Convert Python’s answer to a binary representation (again using four bits).</p></li>

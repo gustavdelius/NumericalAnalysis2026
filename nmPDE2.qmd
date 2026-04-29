@@ -409,17 +409,18 @@ $$
 
 5.  Now for the wonderful part! The entire system of equations from part (a) can be written as
 $$
-A \mathcal{U}^{n+1} = B \mathcal{U}^n + \mathbf{d}.
+\mathcal{A} \mathbf{U}_{n+1} = \mathcal{B} \mathbf{U}_n + \mathbf{d},
 $$
- What are the matrices $A$ and $B$ and what are the vectors $\mathcal{U}^{n+1}$, $\mathcal{U}^n$, and $\mathbf{d}$?
 
-6.  To solve for $\mathcal{U}^{n+1}$ at each time step we simply need to do a linear solve:
+ What are the matrices $\mathcal{A}$ and $\mathcal{B}$ and what are the vectors $\mathbf{U}_{n+1}$, $\mathbf{U}_n$, and $\mathbf{d}$?
+
+6.  To solve for $\mathbf{U}_{n+1}$ at each time step we simply need to do a linear solve:
 $$
-\mathcal{U}^{n+1} = A^{-1} \left( B \mathcal{U}^n + \mathbf{d} \right).
+\mathbf{U}_{n+1} = \mathcal{A}^{-1} \left( \mathcal{B} \mathbf{U}_n + \mathbf{d} \right).
 $$
  Of course, we will never do a matrix inverse on a computer. Instead we can lean on tools such as `np.linalg.solve()` to do the linear solve for us.
 
-7. 💻 Finally. Write code to solve the 1D Heat Equation implementing the Crank Nicolson method described in this problem. The setup of your code should be largely the same as for the implicit method from @exr-6.43. You will need to construct the matrices $A$ and $B$ as well as the vector $D$. Then your time stepping loop will contain the code from part 6 of this problem.
+7. 💻 Finally. Write code to solve the 1D Heat Equation implementing the Crank Nicolson method described in this problem. The setup of your code should be largely the same as for the implicit method from @exr-6.43. You will need to construct the matrices $\mathcal{A}$ and $\mathcal{B}$ as well as the vector $\mathbf{d}$. Then your time stepping loop will contain the code from part 6 of this problem.
 
 :::
 ------------------------------------------------------------------------
@@ -444,37 +445,39 @@ $$
 
 ![The finite difference stencil for the Crank Nicolson method.](figures/PDE/HeatStencilCrankNicolson.png){#fig-6.10 alt="The finite difference stencil for the Crank Nicolson method."}
 :::
-
+ 
 ------------------------------------------------------------------------
 
-### Stability of the Crank-Nicolson Method
-
-Ignoring the boundary terms (which are fixed and do not grow), the Crank-Nicolson scheme for homogeneous Dirichlet conditions reads
-$$
-A\mathbf{U}_{n+1} = B\mathbf{U}_n,
-$$
-where, using $r = D\Delta t/(2\Delta x^2)$, the matrices $A$ and $B$ are both tridiagonal:
-$$
-A = \begin{pmatrix}1+2r&-r&&\\-r&1+2r&-r&&\\&\ddots&\ddots&\ddots\\&&-r&1+2r\end{pmatrix}, \qquad
-B = \begin{pmatrix}1-2r&r&&\\r&1-2r&r&&\\&\ddots&\ddots&\ddots\\&&r&1-2r\end{pmatrix}.
-$$
-The update formula is $\mathbf{U}_{n+1} = A^{-1}B\,\mathbf{U}_n$, so the amplification matrix is $A^{-1}B$. Using the same Fourier analysis as in @sec-stability-heat, $A$ and $B$ share the same eigenvectors, with eigenvalues
-$$
-\mu_k^A = 1 + 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2, \qquad \mu_k^B = 1 - 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2,
-$$
-for $k=1,\ldots,N_x-1$. The eigenvalues of the amplification matrix $A^{-1}B$ are therefore
-$$
-g_k = \frac{\mu_k^B}{\mu_k^A} = \frac{1 - 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}{1 + 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}.
-$$
-Setting $s = 4r\sin^2(k\pi/(2N_x)) \geq 0$, we have $g_k = (1-s)/(1+s)$. Since $|1-s| \leq 1+s$ for all $s \geq 0$, we conclude $|g_k| \leq 1$ for every $k$ and every $r > 0$. Hence the Crank-Nicolson method is **unconditionally stable**, with no restriction on $\Delta t/(\Delta x)^2$.
 
 It turns out that the error terms for the forward and backward difference methods have the form
 $C\Delta t+O(\Delta t^2)$ and
 $-C\Delta t+O(\Delta t^2)$. Taking the average cancels the
 $\pm C\Delta t$ terms and leaves an error of order $O(\Delta t^2)$; in combination with the space variable, we have an error of order $O(\Delta t^2)+O(\Delta x^2)$
  for the whole method, as compared with $O(\Delta t)+O(\Delta x^2)$
- for the forward and backward difference methods.
+ for the forward and backward difference methods. The Crank-Nicolson method is therefore a second-order method in time, as well as in space, and is often preferred for this reason.
+ 
+------------------------------------------------------------------------
 
+### Stability of the Crank-Nicolson Method
+
+Ignoring the boundary terms (which are fixed and do not grow), the Crank-Nicolson scheme for homogeneous Dirichlet conditions reads
+$$
+\mathcal{A}\mathbf{U}_{n+1} = \mathcal{B}\mathbf{U}_n,
+$$
+where, using $r = D\Delta t/(2\Delta x^2)$, the matrices $\mathcal{A}$ and $\mathcal{B}$ are both tridiagonal:
+$$
+\mathcal{A} = \begin{pmatrix}1+2r&-r&&\\-r&1+2r&-r&&\\&\ddots&\ddots&\ddots\\&&-r&1+2r\end{pmatrix}, \qquad
+\mathcal{B} = \begin{pmatrix}1-2r&r&&\\r&1-2r&r&&\\&\ddots&\ddots&\ddots\\&&r&1-2r\end{pmatrix}.
+$$
+The update formula is $\mathbf{U}_{n+1} = \mathcal{A}^{-1}\mathcal{B}\,\mathbf{U}_n$, so the amplification matrix is $\mathcal{A}^{-1}\mathcal{B}$. Using the same Fourier analysis as in @sec-stability-heat, $\mathcal{A}$ and $\mathcal{B}$ share the same eigenvectors, with eigenvalues
+$$
+\mu_k^{\mathcal{A}} = 1 + 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2, \qquad \mu_k^{\mathcal{B}} = 1 - 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2,
+$$
+for $k=1,\ldots,N_x-1$. The eigenvalues of the amplification matrix $\mathcal{A}^{-1}\mathcal{B}$ are therefore
+$$
+g_k = \frac{\mu_k^{\mathcal{B}}}{\mu_k^{\mathcal{A}}} = \frac{1 - 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}{1 + 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}.
+$$
+Setting $s = 4r\sin^2(k\pi/(2N_x)) \geq 0$, we have $g_k = (1-s)/(1+s)$. Since $|1-s| \leq 1+s$ for all $s \geq 0$, we conclude $|g_k| \leq 1$ for every $k$ and every $r > 0$. Hence the Crank-Nicolson method is **unconditionally stable**, with no restriction on $\Delta t/(\Delta x)^2$.
 
 
 ------------------------------------------------------------------------

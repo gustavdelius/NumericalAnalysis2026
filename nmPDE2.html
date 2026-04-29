@@ -815,12 +815,15 @@ B = \begin{pmatrix}1+2a&amp;-a&amp;&amp;\\
 \begin{pmatrix} (1-2r) &amp; r &amp; 0 &amp; 0 &amp; \cdots &amp; 0 \\ r &amp; (1-2r) &amp; r &amp; 0 &amp; \cdots &amp; 0 \\ 0 &amp; r &amp; (1-2r) &amp; r &amp; &amp; 0 \\ \vdots &amp; &amp; &amp; &amp; &amp; \\ &amp; &amp; &amp; &amp; r &amp; (1-2r) \end{pmatrix} \begin{pmatrix} U^{n}_1 \\ U^{n}_2 \\ U_3^n \\ \vdots \\U^{n}_{M-2} \end{pmatrix}\\ + \begin{pmatrix} r(U_0^{n+1}+U_0^{n}) \\ 0 \\ \vdots \\ 0 \\ r(U_{M-1}^{n}+U_{M-1}^{n+1}) \end{pmatrix}
 \]</span></p></li>
 <li><p>Now for the wonderful part! The entire system of equations from part (a) can be written as <span class="math display">\[
-A \mathcal{U}^{n+1} = B \mathcal{U}^n + \mathbf{d}.
-\]</span> What are the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and what are the vectors <span class="math inline">\(\mathcal{U}^{n+1}\)</span>, <span class="math inline">\(\mathcal{U}^n\)</span>, and <span class="math inline">\(\mathbf{d}\)</span>?</p></li>
-<li><p>To solve for <span class="math inline">\(\mathcal{U}^{n+1}\)</span> at each time step we simply need to do a linear solve: <span class="math display">\[
-\mathcal{U}^{n+1} = A^{-1} \left( B \mathcal{U}^n + \mathbf{d} \right).
+\mathcal{A} \mathbf{U}_{n+1} = \mathcal{B} \mathbf{U}_n + \mathbf{d},
+\]</span></p></li>
+</ol>
+<p>What are the matrices <span class="math inline">\(\mathcal{A}\)</span> and <span class="math inline">\(\mathcal{B}\)</span> and what are the vectors <span class="math inline">\(\mathbf{U}_{n+1}\)</span>, <span class="math inline">\(\mathbf{U}_n\)</span>, and <span class="math inline">\(\mathbf{d}\)</span>?</p>
+<ol start="6" type="1">
+<li><p>To solve for <span class="math inline">\(\mathbf{U}_{n+1}\)</span> at each time step we simply need to do a linear solve: <span class="math display">\[
+\mathbf{U}_{n+1} = \mathcal{A}^{-1} \left( \mathcal{B} \mathbf{U}_n + \mathbf{d} \right).
 \]</span> Of course, we will never do a matrix inverse on a computer. Instead we can lean on tools such as <code>np.linalg.solve()</code> to do the linear solve for us.</p></li>
-<li><p>💻 Finally. Write code to solve the 1D Heat Equation implementing the Crank Nicolson method described in this problem. The setup of your code should be largely the same as for the implicit method from <a href="#exr-6.43" class="quarto-xref">Exercise&nbsp;<span>10.8</span></a>. You will need to construct the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> as well as the vector <span class="math inline">\(D\)</span>. Then your time stepping loop will contain the code from part 6 of this problem.</p></li>
+<li><p>💻 Finally. Write code to solve the 1D Heat Equation implementing the Crank Nicolson method described in this problem. The setup of your code should be largely the same as for the implicit method from <a href="#exr-6.43" class="quarto-xref">Exercise&nbsp;<span>10.8</span></a>. You will need to construct the matrices <span class="math inline">\(\mathcal{A}\)</span> and <span class="math inline">\(\mathcal{B}\)</span> as well as the vector <span class="math inline">\(\mathbf{d}\)</span>. Then your time stepping loop will contain the code from part 6 of this problem.</p></li>
 </ol>
 </div>
 <hr>
@@ -846,20 +849,21 @@ Figure&nbsp;10.2: The finite difference stencil for the Crank Nicolson method.
 </div>
 </div>
 <hr>
+<p>It turns out that the error terms for the forward and backward difference methods have the form <span class="math inline">\(C\Delta t+O(\Delta t^2)\)</span> and <span class="math inline">\(-C\Delta t+O(\Delta t^2)\)</span>. Taking the average cancels the <span class="math inline">\(\pm C\Delta t\)</span> terms and leaves an error of order <span class="math inline">\(O(\Delta t^2)\)</span>; in combination with the space variable, we have an error of order <span class="math inline">\(O(\Delta t^2)+O(\Delta x^2)\)</span> for the whole method, as compared with <span class="math inline">\(O(\Delta t)+O(\Delta x^2)\)</span> for the forward and backward difference methods. The Crank-Nicolson method is therefore a second-order method in time, as well as in space, and is often preferred for this reason.</p>
+<hr>
 </section>
 <section id="stability-of-the-crank-nicolson-method" class="level3" data-number="10.2.4">
 <h3 data-number="10.2.4" class="anchored" data-anchor-id="stability-of-the-crank-nicolson-method"><span class="header-section-number">10.2.4</span> Stability of the Crank-Nicolson Method</h3>
 <p>Ignoring the boundary terms (which are fixed and do not grow), the Crank-Nicolson scheme for homogeneous Dirichlet conditions reads <span class="math display">\[
-A\mathbf{U}_{n+1} = B\mathbf{U}_n,
-\]</span> where, using <span class="math inline">\(r = D\Delta t/(2\Delta x^2)\)</span>, the matrices <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are both tridiagonal: <span class="math display">\[
-A = \begin{pmatrix}1+2r&amp;-r&amp;&amp;\\-r&amp;1+2r&amp;-r&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\ddots\\&amp;&amp;-r&amp;1+2r\end{pmatrix}, \qquad
-B = \begin{pmatrix}1-2r&amp;r&amp;&amp;\\r&amp;1-2r&amp;r&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\ddots\\&amp;&amp;r&amp;1-2r\end{pmatrix}.
-\]</span> The update formula is <span class="math inline">\(\mathbf{U}_{n+1} = A^{-1}B\,\mathbf{U}_n\)</span>, so the amplification matrix is <span class="math inline">\(A^{-1}B\)</span>. Using the same Fourier analysis as in <a href="nmPDE1.html#sec-stability-heat" class="quarto-xref"><span>Section 9.4</span></a>, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> share the same eigenvectors, with eigenvalues <span class="math display">\[
-\mu_k^A = 1 + 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2, \qquad \mu_k^B = 1 - 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2,
-\]</span> for <span class="math inline">\(k=1,\ldots,N_x-1\)</span>. The eigenvalues of the amplification matrix <span class="math inline">\(A^{-1}B\)</span> are therefore <span class="math display">\[
-g_k = \frac{\mu_k^B}{\mu_k^A} = \frac{1 - 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}{1 + 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}.
+\mathcal{A}\mathbf{U}_{n+1} = \mathcal{B}\mathbf{U}_n,
+\]</span> where, using <span class="math inline">\(r = D\Delta t/(2\Delta x^2)\)</span>, the matrices <span class="math inline">\(\mathcal{A}\)</span> and <span class="math inline">\(\mathcal{B}\)</span> are both tridiagonal: <span class="math display">\[
+\mathcal{A} = \begin{pmatrix}1+2r&amp;-r&amp;&amp;\\-r&amp;1+2r&amp;-r&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\ddots\\&amp;&amp;-r&amp;1+2r\end{pmatrix}, \qquad
+\mathcal{B} = \begin{pmatrix}1-2r&amp;r&amp;&amp;\\r&amp;1-2r&amp;r&amp;&amp;\\&amp;\ddots&amp;\ddots&amp;\ddots\\&amp;&amp;r&amp;1-2r\end{pmatrix}.
+\]</span> The update formula is <span class="math inline">\(\mathbf{U}_{n+1} = \mathcal{A}^{-1}\mathcal{B}\,\mathbf{U}_n\)</span>, so the amplification matrix is <span class="math inline">\(\mathcal{A}^{-1}\mathcal{B}\)</span>. Using the same Fourier analysis as in <a href="nmPDE1.html#sec-stability-heat" class="quarto-xref"><span>Section 9.4</span></a>, <span class="math inline">\(\mathcal{A}\)</span> and <span class="math inline">\(\mathcal{B}\)</span> share the same eigenvectors, with eigenvalues <span class="math display">\[
+\mu_k^{\mathcal{A}} = 1 + 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2, \qquad \mu_k^{\mathcal{B}} = 1 - 4r\left(\sin\left(\frac{k\pi}{2N_x}\right)\right)^2,
+\]</span> for <span class="math inline">\(k=1,\ldots,N_x-1\)</span>. The eigenvalues of the amplification matrix <span class="math inline">\(\mathcal{A}^{-1}\mathcal{B}\)</span> are therefore <span class="math display">\[
+g_k = \frac{\mu_k^{\mathcal{B}}}{\mu_k^{\mathcal{A}}} = \frac{1 - 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}{1 + 4r\sin^2\!\left(\frac{k\pi}{2N_x}\right)}.
 \]</span> Setting <span class="math inline">\(s = 4r\sin^2(k\pi/(2N_x)) \geq 0\)</span>, we have <span class="math inline">\(g_k = (1-s)/(1+s)\)</span>. Since <span class="math inline">\(|1-s| \leq 1+s\)</span> for all <span class="math inline">\(s \geq 0\)</span>, we conclude <span class="math inline">\(|g_k| \leq 1\)</span> for every <span class="math inline">\(k\)</span> and every <span class="math inline">\(r &gt; 0\)</span>. Hence the Crank-Nicolson method is <strong>unconditionally stable</strong>, with no restriction on <span class="math inline">\(\Delta t/(\Delta x)^2\)</span>.</p>
-<p>It turns out that the error terms for the forward and backward difference methods have the form <span class="math inline">\(C\Delta t+O(\Delta t^2)\)</span> and <span class="math inline">\(-C\Delta t+O(\Delta t^2)\)</span>. Taking the average cancels the <span class="math inline">\(\pm C\Delta t\)</span> terms and leaves an error of order <span class="math inline">\(O(\Delta t^2)\)</span>; in combination with the space variable, we have an error of order <span class="math inline">\(O(\Delta t^2)+O(\Delta x^2)\)</span> for the whole method, as compared with <span class="math inline">\(O(\Delta t)+O(\Delta x^2)\)</span> for the forward and backward difference methods.</p>
 <hr>
 </section>
 </section>

@@ -324,7 +324,7 @@ If you choose $x_0=3$ as your starting point and a learning rate of $0.001$, wha
 
 1. Write a Python function `gradient_descent_with_error_tracking()` that returns a list of absolute errors between the iterates and the exact minimum. You can adapt your `newton_with_error_tracking()` function from @exr-newton_error_tracking. 
 2. Use this to print the errors when applied to the function $f(x)=\cos(x)$ with a starting value of $x_0=3$, a learning rate of $\alpha = 0.1$ and a tolerance of $10^{-12}$. Make sure you use the correct exact minimum in your error calculations, namely the one that you expect gradient descent to find.
-3. Use your `plot_error_progression()` function that we wrote in @exm-3.1b to make a plot of the log of the absolute error at iteration $n+1$ against the log of the absolute error at iteration $n$. You should observe that the points line up approximately along a straight line.
+3. Use your `plot_error_progression()` function that we wrote in @exm-2.1b to make a plot of the log of the absolute error at iteration $n+1$ against the log of the absolute error at iteration $n$. You should observe that the points line up approximately along a straight line.
 4. 🎓 Read off the slope of the straight line fitted to the points.
 5. What does this slope tell you about how the error $\epsilon_{n+1}$ is related to the error at the previous iteration $\epsilon_n$?
 $$

@@ -223,7 +223,7 @@ Then, use this function to list the error progression for Newton's method for fi
 
 ::: {#exr-2.45}
 
-1.  💻 Plot the errors you calculated in @exr-newton_error_tracking using the `plot_error_progression()` function that we wrote in @exm-3.1b. Note that you will first need to remove the zeros from the error list, otherwise you will get an error. You can remind yourself of how to work with lists in @sec-lists.
+1.  💻 Plot the errors you calculated in @exr-newton_error_tracking using the `plot_error_progression()` function that we wrote in @exm-2.1b. Note that you will first need to remove the zeros from the error list, otherwise you will get an error. You can remind yourself of how to work with lists in @sec-lists.
 
 2.  💬 Give a thorough explanation for how to interpret the plot that you just made.
 
@@ -315,7 +315,7 @@ Up to this point we have done analysis work on the bisection method and Newton's
 You can start with your code from `secant()` from @exr-2.49 and add the collection of the errors in a list as in the `bisection_with_error_tracking()` function from @exm-2.1.
 Your new function should accept a Python function, the exact root, two starting points, and an optional error tolerance.
 
-Use this function to list the error progression for the secant method for finding the root of $f(x) = x^2 - 2$ with the starting points $x_0 = 1$ and $x_1 = 3$. Use a tolerance of $10^{-10}$. Use the `plot_error_progression()` function that we wrote in @exm-3.1b to plot the error progression.
+Use this function to list the error progression for the secant method for finding the root of $f(x) = x^2 - 2$ with the starting points $x_0 = 1$ and $x_1 = 3$. Use a tolerance of $10^{-10}$. Use the `plot_error_progression()` function that we wrote in @exm-2.1b to plot the error progression.
 :::
 
 ------------------------------------------------------------------------
